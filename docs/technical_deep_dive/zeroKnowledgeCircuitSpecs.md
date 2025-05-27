@@ -1300,10 +1300,3 @@ fn verify_kyc_proof(
 **Distribution:** Veridis Engineering, Auditors, Technical Partners
 
 **Document End**
-
-```
-
-This detailed technical specification document outlines the zero-knowledge circuits used in the Veridis protocol. It provides comprehensive information on the mathematical foundations, circuit designs, implementation details, and security properties of each ZK component, all leveraging zk-STARKs to take full advantage of StarkNet's native capabilities.
-
-The document would be valuable for developers implementing the system, auditors reviewing the security, and technical partners integrating with Veridis. I've maintained the same level of technical depth and professionalism as in the whitepaper while focusing specifically on the ZK circuit specifications.
-```
