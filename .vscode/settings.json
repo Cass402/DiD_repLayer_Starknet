@@ -1,0 +1,152 @@
+{
+  // VSCode workspace settings configuration
+  // Automatically formats code when saving files
+  "editor.formatOnSave": true,
+
+  // Configures code actions to run on save
+  // Explicitly runs ESLint auto-fix when saving files
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Displays a vertical ruler at column 100 to indicate line length limit
+  "editor.rulers": [100],
+
+  // Sets the tab size to 2 spaces for consistent indentation
+  "editor.tabSize": 2,
+
+  // Automatically removes trailing whitespace from lines when saving
+  "files.trimTrailingWhitespace": true,
+
+  // Ensures files end with a newline character when saving
+  "files.insertFinalNewline": true,
+
+  // Removes extra blank lines at the end of files when saving
+  "files.trimFinalNewlines": true,
+
+  // VS Code settings configuration for Cairo programming language support
+  //
+  // cairo1.languageServerPath: Specifies the path to the Cairo language server executable
+  // This enables IDE features like syntax highlighting, code completion, and error detection
+  //
+  // cairo1.enableLanguageServer: Boolean flag to enable/disable the Cairo language server
+  // When true, provides intelligent code assistance and real-time error checking
+  //
+  // cairo1.enableScarb: Enables Scarb package manager integration for Cairo projects
+  // Scarb is the official build tool and package manager for Cairo
+  //
+  // cairo1.enableProcMacros: Enables procedural macro support in Cairo
+  // Allows the use of compile-time code generation and transformation features
+  //
+  // [cairo]: Language-specific editor configuration for Cairo files
+  // - editor.defaultFormatter: Sets the default code formatter for .cairo files
+  //   Uses the StarkWare.cairo1 extension for consistent code formatting
+
+  "cairo1.languageServerPath": "cairo-language-server",
+  "cairo1.enableLanguageServer": true,
+  "cairo1.enableScarb": true,
+  "cairo1.enableProcMacros": true,
+  "[cairo]": {
+    "editor.defaultFormatter": "StarkWare.cairo1"
+  },
+
+  /**
+   * Language-specific editor formatter configurations for VS Code workspace
+   *
+   * This configuration sets default formatters for different file types:
+   * - TypeScript files: Uses Prettier formatter for consistent code styling
+   * - JavaScript files: Uses Prettier formatter for consistent code styling
+   * - JSON files: Uses Prettier formatter for proper JSON formatting
+   * - YAML files: Uses Red Hat YAML extension for YAML-specific formatting
+   * - Markdown files: Uses Markdown All in One extension for markdown formatting
+   *
+   * These settings ensure consistent code formatting across the project
+   * and will be applied automatically when using VS Code's format document feature.
+   */
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+
+  /**
+   * Default VS Code extensions to be installed automatically when opening this project
+   * in a remote container environment. These extensions provide essential development
+   * tools and language support for Cairo/Starknet development.
+   *
+   * Extensions included:
+   * - StarkWare.cairo1: Cairo 1.0 language support and syntax highlighting
+   * - starkware.cairo-lsp: Language Server Protocol support for Cairo
+   * - esbenp.prettier-vscode: Code formatting with Prettier
+   * - redhat.vscode-yaml: YAML language support and validation
+   * - yzhang.markdown-all-in-one: Comprehensive Markdown editing features
+   * - dbaeumer.vscode-eslint: ESLint integration for JavaScript/TypeScript linting
+   * - Github.copilot: AI-powered code completion and suggestions
+   * - cairo-security.cairo-security-scanner: Security analysis for Cairo smart contracts
+   */
+
+  "remote.containers.defaultExtensions": [
+    "StarkWare.cairo1",
+    "starkware.cairo-lsp",
+    "esbenp.prettier-vscode",
+    "redhat.vscode-yaml",
+    "yzhang.markdown-all-in-one",
+    "dbaeumer.vscode-eslint",
+    "Github.copilot",
+    "cairo-security.cairo-security-scanner"
+  ],
+
+  // Sets the default terminal profile for Linux systems to use bash shell
+  "terminal.integrated.defaultProfile.linux": "bash",
+
+  // Enables automatic fetching of git repository changes from remote
+  "git.autofetch": true,
+
+  /**
+   * VS Code workspace settings for DiD (Decentralized Identity) reputation layer project on Starknet
+   *
+   * Configuration for spell checker (cSpell) custom words dictionary.
+   * Contains project-specific terminology including:
+   * - Build tools: scarb (Cairo package manager), snforge (testing framework)
+   * - Blockchain: cairo (programming language), starknet (L2 blockchain), casm (Cairo assembly)
+   * - Cryptography: pedersen, poseidon (hash functions), merkle (trees), garaga (cryptographic library)
+   * - Identity: veridis, attestation, nullifier (identity and verification concepts)
+   * - DevOps: devcontainer, kubernetes, kubectl, kubeconfig (containerization and orchestration)
+   * - Compiler: mlir (Multi-Level Intermediate Representation)
+   *
+   * These words are added to prevent false positive spelling errors in the codebase.
+   */
+  "cSpell.words": [
+    "scarb",
+    "cairo",
+    "starknet",
+    "veridis",
+    "attestation",
+    "nullifier",
+    "garaga",
+    "pedersen",
+    "poseidon",
+    "merkle",
+    "snforge",
+    "devcontainer",
+    "kubernetes",
+    "kubectl",
+    "kubeconfig",
+    "mlir",
+    "casm"
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  // VSCode Tasks configuration file version
+  // Specifies the schema version for task definitions in VSCode
+  // Version 2.0.0 is the current standard format for tasks.json files
+  "version": "2.0.0",
+  "tasks": [
+    /**
+     * VS Code task configuration for building Cairo smart contracts
+     *
+     * This task performs the following actions:
+     * - Changes directory to the contracts folder within the workspace
+     * - Executes scarb build with Cairo native compilation
+     * - Enables optimized MLIR (Multi-Level Intermediate Representation) for better performance
+     * - Sets this as the default build task for the workspace
+     *
+     * @label build-cairo-contracts - Human-readable name for the task
+     * @type shell - Indicates this task runs shell commands
+     * @command The shell command to execute for building contracts
+     * @group.kind build - Categorizes this as a build-type task
+     * @group.isDefault true - Makes this the default task when running build commands
+     */
+    {
+      "label": "build-cairo-contracts",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/contracts && scarb build --cairo-native --optimized-mlir=true",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    /**
+     * Build task for the identity service component
+     *
+     * This task navigates to the identity-service directory within the services folder
+     * and executes the npm build script to compile/bundle the identity service application.
+     *
+     * @type {shell} - Executes shell commands
+     * @command Changes directory to services/identity-service and runs npm build
+     * @workspaceFolder Uses VS Code's workspace folder variable for relative pathing
+     */
+    {
+      "label": "build-identity-service",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/services/identity-service && npm run build"
+    },
+    /**
+     * Build task for the attestation service
+     *
+     * This task navigates to the attestation-service directory within the services folder
+     * and executes the npm build script to compile/build the attestation service module.
+     *
+     * @label build-attestation-service - Unique identifier for this build task
+     * @type shell - Executes the command in a shell environment
+     * @command Changes directory to attestation-service and runs npm build
+     */
+    {
+      "label": "build-attestation-service",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/services/attestation-service && npm run build"
+    },
+    /**
+     * VS Code task configuration for testing Cairo smart contracts
+     *
+     * This task runs the Starknet Foundry test suite for Cairo contracts with:
+     * - Gas usage reporting to analyze contract efficiency
+     * - Snapshot generation for test result comparison
+     *
+     * @label test-cairo-contracts - Human-readable task identifier
+     * @type shell - Executes as a shell command
+     * @command Navigates to contracts directory and runs snforge test with gas reporting and snapshots
+     * @group Configured as the default test task for the workspace
+     */
+    {
+      "label": "test-cairo-contracts",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/contracts && snforge test --gas-report --snapshot",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    // Task configuration for deploying smart contracts to development environment
+    // Uses Starknet Cast (sncast) tool to deploy the 'veridis_main' contract
+    // Targets the 'dev' network using the 'dev_account' account
+    // Execution directory is set to the contracts subfolder within the workspace
+    {
+      "label": "deploy-contracts-dev",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/contracts && sncast --network dev --account dev_account deploy --contract-name veridis_main"
+    },
+    // Task configuration for starting the development environment
+    // Uses Docker Compose to launch services defined in both the main docker-compose.yml
+    // and the development-specific docker-compose.dev.yml files in detached mode (-d)
+    // The problemMatcher array is empty, indicating no specific error pattern matching is configured
+    {
+      "label": "start-dev-environment",
+      "type": "shell",
+      "command": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
+      "problemMatcher": []
+    },
+    /**
+     * Task configuration to stop the development environment
+     *
+     * This task uses Docker Compose to shut down all services defined in both
+     * the main docker-compose.yml and development-specific docker-compose.dev.yml files.
+     *
+     * @property {string} label - Human-readable name for the task
+     * @property {string} type - Specifies this is a shell command task
+     * @property {string} command - Docker Compose command to stop and remove containers
+     * @property {array} problemMatcher - Empty array indicates no problem matching for output
+     */
+    {
+      "label": "stop-dev-environment",
+      "type": "shell",
+      "command": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down",
+      "problemMatcher": []
+    },
+    /**
+     * VS Code task configuration for running compliance checks
+     *
+     * This task executes a compliance audit script to verify that the codebase
+     * meets regulatory and organizational compliance requirements.
+     *
+     * @label run-compliance-checks - Human-readable name displayed in VS Code task list
+     * @type shell - Executes the command in the system shell
+     * @command Changes to workspace root directory and runs the compliance audit script
+     * @group Categorized under "test" group but not set as default test task
+     *
+     * Usage: Run via Command Palette (Ctrl+Shift+P) -> "Tasks: Run Task" -> "run-compliance-checks"
+     * or via Terminal menu -> "Run Task..." -> "run-compliance-checks"
+     */
+    {
+      "label": "run-compliance-checks",
+      "type": "shell",
+      "command": "cd ${workspaceFolder} && ./scripts/run-compliance-audit.sh",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      }
+    },
+    // Task configuration for running formal verification
+    // This task executes a shell script that performs formal verification on the project
+    // - Uses the workspace folder as the working directory
+    // - Runs the formal verification script located in the scripts directory
+    // - Categorized as a test task but not set as the default test task
+    {
+      "label": "run-formal-verification",
+      "type": "shell",
+      "command": "cd ${workspaceFolder} && ./scripts/run-formal-verification.sh",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      }
+    },
+    /**
+     * VS Code task configuration for running security scans on the project.
+     *
+     * This task executes a shell script that performs security analysis on the codebase.
+     * It changes to the workspace root directory and runs the security scan script.
+     *
+     * @label security-scan - Unique identifier for this task
+     * @type shell - Executes the command in a shell environment
+     * @command Runs the security scan script from the project's scripts directory
+     * @group Categorized as a test task but not set as the default test task
+     *
+     * Usage: Can be run via VS Code Command Palette (Ctrl+Shift+P) -> "Tasks: Run Task" -> "security-scan"
+     */
+    {
+      "label": "security-scan",
+      "type": "shell",
+      "command": "cd ${workspaceFolder} && ./scripts/run-security-scan.sh",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      }
+    },
+    /**
+     * VS Code task configuration for running zero-knowledge proof benchmarks.
+     *
+     * This task executes the benchmark script in the zk-circuits directory,
+     * which measures the performance of zero-knowledge proof generation and
+     * verification processes.
+     *
+     * @label zk-proof-benchmark - Identifier for the task
+     * @type shell - Runs as a shell command
+     * @command Changes to zk-circuits directory and runs npm benchmark script
+     * @problemMatcher Empty array - No specific problem matching patterns defined
+     */
+    {
+      "label": "zk-proof-benchmark",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/zk-circuits && npm run benchmark",
+      "problemMatcher": []
+    },
+    // Task configuration for running Cairo gas profiler
+    // Executes cairo-profiler tool in the contracts directory to analyze gas usage
+    // with a target limit of 1 million gas units for performance optimization
+    {
+      "label": "cairo-gas-profiler",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/contracts && cairo-profiler --target 1M-gas",
+      "problemMatcher": []
+    }
+  ]
+}

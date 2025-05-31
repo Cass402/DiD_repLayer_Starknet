@@ -1,0 +1,123 @@
+{
+  // Specifies the version of the VS Code debug configuration schema being used
+  // Version 0.2.0 is the current standard format for launch.json configurations
+  "version": "0.2.0",
+  "configurations": [
+    /**
+     * VS Code launch configuration for debugging the Identity Service
+     *
+     * This configuration sets up a Node.js debugging session for the identity service:
+     * - Launches the compiled JavaScript from dist/index.js
+     * - Runs a pre-build task to ensure the TypeScript is compiled
+     * - Loads environment variables from .env.local
+     * - Maps source files for debugging compiled TypeScript
+     * - Opens internal console on session start
+     * - Skips Node.js internal files during debugging
+     */
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Identity Service",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/services/identity-service/dist/index.js",
+      "preLaunchTask": "build-identity-service",
+      "outFiles": ["${workspaceFolder}/services/identity-service/dist/**/*.js"],
+      "envFile": "${workspaceFolder}/services/identity-service/.env.local",
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    /**
+     * VS Code launch configuration for debugging the Attestation Service
+     *
+     * This configuration enables debugging of the Node.js-based attestation service with the following setup:
+     * - Launches the compiled JavaScript entry point from the dist directory
+     * - Automatically builds the service before launching via the "build-attestation-service" task
+     * - Skips Node.js internal files during debugging for cleaner stack traces
+     * - Maps source files to compiled output for proper debugging experience
+     * - Loads environment variables from the service's local .env file
+     * - Monitors all JavaScript files in the dist directory for debugging symbols
+     */
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Attestation Service",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/services/attestation-service/dist/index.js",
+      "preLaunchTask": "build-attestation-service",
+      "outFiles": [
+        "${workspaceFolder}/services/attestation-service/dist/**/*.js"
+      ],
+      "envFile": "${workspaceFolder}/services/attestation-service/.env.local"
+    },
+
+    // VS Code launch configuration for running Cairo smart contract tests using Starknet Foundry (snforge)
+    // This configuration allows debugging and running specific Cairo test files with detailed resource reporting
+    //
+    // Configuration details:
+    // - Uses Node.js debugger to launch snforge test runner
+    // - Automatically runs tests for the currently opened file (without extension)
+    // - Provides detailed resource usage information during test execution
+    // - Executes tests within the contracts directory context
+    // - Outputs results to the integrated terminal for better debugging experience
+    // - Excludes Node.js internal files from debugging to focus on user code
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Cairo Contract Tests",
+      "program": "${workspaceFolder}/node_modules/.bin/snforge",
+      "args": ["test", "${fileBasenameNoExtension}", "--detailed-resources"],
+      "cwd": "${workspaceFolder}/contracts",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    /**
+     * VS Code launch configuration for debugging ZK (Zero-Knowledge) circuit tests
+     *
+     * This configuration allows developers to debug individual test files in the zk-circuits
+     * directory by running them through Node.js with debugging capabilities enabled.
+     *
+     * @type {object} Launch configuration object
+     * @property {string} type - Specifies Node.js as the runtime environment
+     * @property {string} request - Indicates this is a launch (not attach) configuration
+     * @property {string} name - Display name shown in VS Code's debug dropdown
+     * @property {string[]} skipFiles - Excludes Node.js internal files from debugging
+     * @property {string} program - Dynamic path to the test file being debugged, uses the currently open file's basename
+     * @property {string} cwd - Sets the working directory to the zk-circuits folder for proper module resolution
+     *
+     * @usage Open a test file in the zk-circuits/tests directory and select this debug configuration
+     * @example Running this on "merkle.test.js" will execute "${workspaceFolder}/zk-circuits/tests/merkle.test.js"
+     */
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug ZK Circuit Tests",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/zk-circuits/tests/${fileBasenameNoExtension}.test.js",
+      "cwd": "${workspaceFolder}/zk-circuits"
+    },
+    /**
+     * VS Code launch configuration for debugging formal verification scripts.
+     *
+     * This configuration allows developers to debug the formal verification process
+     * by launching the run-formal-verification.js script with the currently active
+     * file as an argument.
+     *
+     * @type {object} Launch configuration object
+     * @property {string} type - Debugger type (node for Node.js applications)
+     * @property {string} request - Launch mode (launch to start new process)
+     * @property {string} name - Display name in VS Code debug panel
+     * @property {string[]} skipFiles - Files to skip during debugging (excludes Node.js internals)
+     * @property {string} program - Path to the main script file to execute
+     * @property {string[]} args - Command line arguments passed to the script (current file path)
+     * @property {string} cwd - Working directory for the launched process (workspace root)
+     */
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Formal Verification",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/scripts/run-formal-verification.js",
+      "args": ["${file}"],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
