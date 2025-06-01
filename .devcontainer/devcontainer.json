@@ -1,0 +1,142 @@
+{
+  "name": "Veridis Development Environment", // Name of the dev container
+  /**
+   * Docker Compose configuration files for the development container.
+   *
+   * Specifies an array of Docker Compose files to be used when building and running
+   * the development container. Files are processed in order, with later files
+   * overriding settings from earlier ones.
+   *
+   * - "../docker-compose.yml": Base Docker Compose configuration
+   * - "../docker-compose.dev.yml": Development-specific overrides
+   * - "docker-compose.yml": Local devcontainer-specific Docker Compose file
+   */
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "../docker-compose.dev.yml",
+    "docker-compose.yml"
+  ],
+  "service": "dev", // Name of the service to use from the Docker Compose files
+  "workspaceFolder": "/workspace", // Path inside the container where the workspace is mounted
+  "shutdownAction": "stopCompose", // Action to take when the container is stopped (stopCompose stops the service)
+  // Customizations for the development environment (vscode settings, extensions, etc.)
+  "customizations": {
+    /**
+     * VS Code configuration for the Veridis development container
+     *
+     * Extensions:
+     * - Cairo development: starkware.cairo1, veridis.cairo-tools-v3, starware.cairo-lsp, cairo-security.cairo-security-scanner
+     * - Container/Docker: ms-azuretools.vscode-containers, ms-vscode-remote.remote-containers
+     * - Kubernetes: ms-kubernetes-tools.vscode-kubernetes-tools
+     * - Code quality: dbaeumer.vscode-eslint, esbenp.prettier-vscode, streetsidesoftware.code-spell-checker
+     * - AI assistants: GitHub.copilot, GitHub.copilot-chat, google.geminicodeassist, sourcegraph.cody-ai, Codium.codium
+     * - Language support: ms-vscode.vscode-typescript-next, rust-lang.rust-analyzer, tamasfe.even-better-toml
+     * - Development tools: ms-vscode.makefile-tools, eamodio.gitlens, ms-vsliveshare.vsliveshare
+     * - Documentation: yzhang.markdown-all-in-one, bierner.markdown-mermaid
+     * - YAML support: redhat.vscode-yaml
+     * - Starknet analysis: devarajv.starnet-analyzer
+     *
+     * Settings:
+     * - Sets bash as default terminal profile for Linux
+     * - Configures Cairo language server with full feature set (language server, Scarb, proc macros)
+     * - Sets StarkWare.cairo1 as default formatter for Cairo files
+     */
+    "vscode": {
+      "extensions": [
+        "starkware.cairo1",
+        "ms-azuretools.vscode-containers",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode-remote.remote-containers",
+        "redhat.vscode-yaml",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "google.geminicodeassist",
+        "sourcegraph.cody-ai",
+        "Codium.codium",
+        "ms-vscode.vscode-typescript-next",
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "ms-vscode.makefile-tools",
+        "eamodio.gitlens",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-mermaid",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vsliveshare.vsliveshare",
+        "veridis.cairo-tools-v3",
+        "devarajv.starnet-analyzer",
+        "starware.cairo-lsp",
+        "cairo-security.cairo-security-scanner"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "cairo1.languageServerPath": "cairo-language-server",
+        "cairo1.enableLanguageServer": true,
+        "cairo1.enableScarb": true,
+        "cairo1.enableProcMacros": true,
+        "[cairo]": {
+          "editor.defaultFormatter": "StarkWare.cairo1"
+        }
+      }
+    },
+    // Configuration for the remote user and environment variables in the dev container
+    //
+    // remoteUser: Specifies the user account to use when connecting to the container
+    // - "vscode": Uses the vscode user account for development operations
+    //
+    // remoteEnv: Environment variables to set in the remote container environment
+    // - LOCAL_WORKSPACE_FOLDER: Maps the local workspace folder path to the container
+    // - SCARB_VERSION: Specifies the version of Scarb (Cairo package manager) to use (2.11.4)
+    // - CAIRO_NATIVE_ENABLED: Enables native Cairo compilation for improved performance
+    // - MLIR_OPTIMIZATION_LEVEL: Sets Multi-Level Intermediate Representation optimization level (3 = highest)
+    // - STARKNET_TX_VERSION: Defines the Starknet transaction version to use (version 3)
+    // - RESOURCES_BOUNDS_ENABLED: Enables resource bounds checking for transaction validation
+    "remoteUser": "vscode",
+    "remoteEnv": {
+      "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+      "SCARB_VERSION": "2.11.4",
+      "CAIRO_NATIVE_ENABLED": "true",
+      "MLIR_OPTIMIZATION_LEVEL": "3",
+      "STARKNET_TX_VERSION": "3",
+      "RESOURCES_BOUNDS_ENABLED": "true"
+    },
+    "postCreateCommand": "scripts/init-veridis-env.sh", // Command to run after the container is created, initializes the Veridis environment
+    /**
+     * Development container features configuration
+     *
+     * Configures various development tools and runtime environments for the container:
+     * - docker-in-docker: Enables running Docker commands inside the dev container
+     * - kubectl-helm-minikube: Installs Kubernetes tools for container orchestration
+     * - rust: Installs Rust programming language toolchain and package manager
+     * - nvidia-cuda: Installs NVIDIA CUDA toolkit with cuDNN libraries for GPU computing
+     * - github-cli: Installs GitHub CLI tool for repository management from command line
+     */
+    "features": {
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+      "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+      "ghcr.io/devcontainers/features/rust:1": {},
+      "ghcr.io/devcontainers/features/nvidia-cuda:1": {
+        "installCudnn": true
+      },
+      "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    /**
+     * Host system requirements for the development container
+     *
+     * Specifies the minimum hardware requirements needed to run this development container effectively.
+     * These requirements ensure optimal performance for the development environment.
+     *
+     * @property {number} cpus - Minimum number of CPU cores required (4 cores)
+     * @property {string} memory - Minimum RAM requirement (8 gigabytes)
+     * @property {string} storage - Minimum disk space requirement (32 gigabytes)
+     */
+    "hostRequirements": {
+      "cpus": 4,
+      "memory": "8gb",
+      "storage": "32gb"
+    },
+    "securityOpt": ["seccomp=unconfined"], // Security options for the container, allowing unconfined seccomp profile which is necessary for certain debugging and development tasks
+    "capAdd": ["SYS_PTRACE"] // Capabilities to add to the container, enabling process tracing which is useful for debugging
+  }
+}

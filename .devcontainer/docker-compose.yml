@@ -1,0 +1,74 @@
+# Development container service for Cairo/Starknet development environment
+#
+# This service provides a complete development environment with:
+# - Cairo compiler and native runtime (v2.11.4)
+# - Scarb package manager (v2.11.4)
+# - Starknet Foundry tools (v0.44.0)
+# - MLIR optimization enabled at level 3
+# - Development tools and debugging capabilities
+#
+# Features:
+# - Persistent caches for Cairo, Scarb, and contract builds
+# - SSH and Git configuration mounting for seamless development
+# - Docker socket access for container management
+# - Enhanced security and debugging capabilities
+# - Resource limits (8GB max, 4GB reserved memory)
+# - Automatic restart on failure (max 3 attempts)
+# - Compliance and formal verification tools enabled
+# - Configured for Starknet devnet RPC connectivity
+services:
+  dev: # Cairo/Starknet Dev Environment
+    build: # dev container build configuration
+      context: .. # Build context is the parent directory
+      dockerfile: docker/cairo/dev.Dockerfile # Dockerfile for the dev container
+      args: # Build arguments for the dev container
+        SCARB_VERSION: "2.11.4" # Scarb version
+        CAIRO_NATIVE_VERSION: "2.11.4" # Cairo native version
+        STARKNET_FOUNDRY_VERSION: "0.44.0" # Starknet Foundry version
+        MLIR_OPTIMIZATION_LEVEL: "3" # MLIR optimization level
+      volumes: # Volumes to mount in the dev container
+        - ..:/workspace:cached # Mount workspace directory
+        - cairo-cache:/home/vscode/.cairo # Cairo cache directory
+        - scarb-cache:/home/vscode/.local/share/scarb # Scarb cache directory
+        - node_modules:/workspace/node_modules # Node modules directory
+        - contracts-cache:/workspace/contracts/target # Contracts cache directory
+        - ~/.ssh:/home/vscode/.ssh:ro # SSH configuration directory
+        - ~/.gitconfig:/home/vscode/.gitconfig:ro # Git configuration file
+        - /var/run/docker.sock:/var/run/docker.sock # Docker socket for container management
+      environment: # Environment variables for the dev container
+        - NODE_ENV=development # Node.js environment
+        - SCARB_VERSION=2.11.4 # Scarb version
+        - CAIRO_NATIVE_ENABLED=true # Enable Cairo native runtime
+        - STARKNET_RPC_URL=https://starknet-devnet:5050/rpc/v0_8_1 # Starknet devnet RPC URL
+        - STARKNET_TX_VERSION=3 # Starknet transaction version
+        - MLIR_OPTIMIZATION_LEVEL=3 # MLIR optimization level
+        - COMPLIANCE_ENABLED=true # Enable compliance tools
+        - FORMAL_VERIFICATION_ENABLED=true # Enable formal verification tools
+        - RESOURCE_BOUNDS_L1_GAS=100000 # Resource bounds for L1 gas
+        - RESOURCE_BOUNDS_L2_GAS=1000000 # Resource bounds for L2 gas
+      command: sleep infinity # Keep the container running
+      user: vscode # Run as vscode user
+      init: true # Use init system for process management
+      security_opt: # Security options for the container
+        - seccomp=unconfined # Unconfined seccomp profile
+      cap_add: # Capabilities to add for the container
+        - SYS_PTRACE # Allow ptrace for debugging
+      deploy: # Deployment configuration for the service
+        resources: # Resource limits and reservations
+          limits: # Maximum resources for the service
+            memory: 8G # Maximum memory limit
+          reservations: # Reserved resources for the service
+            memory: 4G # Reserved memory for the service
+        restart_policy: # Restart policy for the service
+          condition: on-failure # Restart on failure
+          max_attempts: 3 # Maximum restart attempts
+# Docker volumes for caching development dependencies and build artifacts
+# - cairo-cache: Stores Cairo compiler cache to speed up compilation
+# - scarb-cache: Stores Scarb package manager cache for faster dependency resolution
+# - node_modules: Caches Node.js dependencies to avoid repeated installations
+# - contracts-cache: Stores compiled contract artifacts and build cache
+volumes:
+  cairo-cache:
+  scarb-cache:
+  node_modules:
+  contracts-cache:
