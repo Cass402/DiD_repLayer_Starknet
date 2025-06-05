@@ -406,17 +406,26 @@ RUN if [ "$BUILD_MODE" = "release" ]; then \
         fi; \
     fi
 
-# Copy the compiled binary from the application-build stage to the bin directory
-# This uses a fallback approach, attempting to copy from different target directories in order:
-# 1. Release build for x86_64-unknown-linux-musl (optimized for Alpine Linux)
-# 2. Release build for the default target (general release build)
-# 3. Debug build for x86_64-unknown-linux-musl (unoptimized with debug symbols)
-# 4. Debug build for the default target (fallback debug build)
-# The 2>/dev/null suppresses error messages, and || allows trying the next option if the previous fails
-COPY --from=application-build /app/target/x86_64-unknown-linux-musl/release/${BINARY_NAME} ./bin/ 2>/dev/null || \
-COPY --from=application-build /app/target/release/${BINARY_NAME} ./bin/ 2>/dev/null || \
-COPY --from=application-build /app/target/x86_64-unknown-linux-musl/debug/${BINARY_NAME} ./bin/ 2>/dev/null || \
-COPY --from=application-build /app/target/debug/${BINARY_NAME} ./bin/
+# Copy the compiled binary from the build stage to the runtime image
+# This multi-conditional copy handles various build configurations:
+# 1. Release build with musl target (preferred for minimal Docker images)
+# 2. Standard release build
+# 3. Debug build with musl target (fallback for development)
+# 4. Standard debug build (fallback for development)
+# If no binary is found in any expected location, the build fails with an error
+RUN mkdir -p ./bin
+COPY --from=application-build /app/target/ /tmp/target/
+RUN if [ -f "/tmp/target/x86_64-unknown-linux-musl/release/${BINARY_NAME}" ]; then \
+      cp /tmp/target/x86_64-unknown-linux-musl/release/${BINARY_NAME} ./bin/; \
+    elif [ -f "/tmp/target/release/${BINARY_NAME}" ]; then \
+      cp /tmp/target/release/${BINARY_NAME} ./bin/; \
+    elif [ -f "/tmp/target/x86_64-unknown-linux-musl/debug/${BINARY_NAME}" ]; then \
+      cp /tmp/target/x86_64-unknown-linux-musl/debug/${BINARY_NAME} ./bin/; \
+    elif [ -f "/tmp/target/debug/${BINARY_NAME}" ]; then \
+      cp /tmp/target/debug/${BINARY_NAME} ./bin/; \
+    else \
+      echo "Binary not found in any expected location" && exit 1; \
+    fi
 
 # Copy configuration files and security audit from the correct stage
 # Security audit comes from security-scan stage, not application-build
