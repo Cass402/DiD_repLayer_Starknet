@@ -364,13 +364,14 @@ COPY --from=security /app/keys/ ./keys/
 COPY --from=security /app/config/ ./config/
 COPY --from=security /app/proof-service/ ./proof-service/
 COPY --from=security /app/security-report.txt ./security-report.txt
+COPY --from=security /app/scripts/ ./scripts/
 
 # Copy only production node_modules to minimize image size
 COPY --from=security /app/node_modules/ ./node_modules/
 
-# Copy startup and monitoring scripts
-COPY scripts/start-proof-service.sh ./scripts/
-COPY scripts/gpu-health-check.sh ./scripts/
+# Make all shell scripts in the scripts directory executable
+# The 2>/dev/null suppresses error messages if no .sh files exist
+# The || true ensures the command doesn't fail if chmod encounters errors
 RUN chmod +x ./scripts/*.sh 2>/dev/null || true
 
 # Create necessary runtime directories with proper ownership
