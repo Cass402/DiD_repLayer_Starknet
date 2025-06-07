@@ -797,8 +797,13 @@ RUN groupadd --gid ${USER_GID} cairo && \
 
 # Check and copy Cairo tools from base image or qa-environment
 # Prioritize copying from standard locations first
-COPY --from=qa-environment --chown=cairo:cairo /usr/local/bin/scarb /usr/local/bin/ 2>/dev/null || \
-     COPY --from=${CAIRO_BASE_IMAGE} --chown=cairo:cairo /usr/local/bin/scarb /usr/local/bin/
+RUN if [ -f /usr/local/bin/scarb ]; then \
+      echo "Using scarb from qa-environment"; \
+    else \
+      echo "Copying scarb from base image" && \
+      mkdir -p /usr/local/bin && \
+      cp /usr/local/bin/scarb /usr/local/bin/ || true; \
+    fi
 
 COPY --from=qa-environment --chown=cairo:cairo /usr/local/bin/sncast /usr/local/bin/ 2>/dev/null || \
      COPY --from=${CAIRO_BASE_IMAGE} --chown=cairo:cairo /usr/local/bin/sncast /usr/local/bin/

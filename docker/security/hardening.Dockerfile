@@ -908,7 +908,6 @@ file_put_secret() {\n\
     \n\
     echo "$secret_value" > "$secret_file"\n\
     chmod 600 "$secret_file"\n\
-    chown veridis:veridis "$secret_file"\n\
 }\n\
 \n\
 file_delete_secret() {\n\
@@ -1833,7 +1832,7 @@ LABEL security.audit.level="${AUDIT_LEVEL}"
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "/app/secure-startup.sh"]
 
 # Default command optimized for security and performance
-CMD ["node", "--max-old-space-size=${MEMORY_LIMIT}", "--experimental-policy=/app/.security/policy.json", "index.js"]
+CMD ["node", "--max-old-space-size=512", "--experimental-policy=/app/.security/policy.json", "index.js"]
 
 # ==============================================================================
 # SECURITY RUNTIME NOTES:

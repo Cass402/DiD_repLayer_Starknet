@@ -394,5 +394,5 @@ LABEL maintainer="Veridis Team" \
       org.opencontainers.image.vendor="Veridis Team" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.documentation="https://github.com/Cass402/DiD_repLayer_Starknet/blob/main/README.md" \
-      org.opencontainers.image.base.name="node:20-alpine" \
+      org.opencontainers.image.base.name="node:22-alpine" \
       org.opencontainers.image.base.os.version="alpine"
