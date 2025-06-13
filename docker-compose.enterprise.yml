@@ -34,6 +34,8 @@
 # • Network security policies
 # • Certificate management
 # • Security monitoring and SIEM integration
+# • NO DEBUG PORTS EXPOSED
+# • ALL SECRETS VIA EXTERNAL SECRET MANAGEMENT
 #
 # ==============================================================================
 
@@ -41,12 +43,13 @@ version: "3.8"
 
 # Enterprise extension fields
 x-enterprise-logging: &enterprise-logging
-  driver: ${ENTERPRISE_LOGGING_DRIVER:-json-file}
+  driver: ${ENTERPRISE_LOGGING_DRIVER:-syslog}
   options:
-    max-size: "100m"
-    max-file: "20"
-    compress: "true"
+    syslog-address: "tcp://${SIEM_ENDPOINT:-siem.veridis.internal:514}"
+    syslog-facility: "daemon"
+    tag: "{{.Name}}/{{.ID}}"
     labels: "service,environment=enterprise,compliance=enabled"
+    env: "SERVICE_NAME,SERVICE_VERSION"
 
 x-enterprise-security: &enterprise-security
   security_opt:
@@ -55,15 +58,14 @@ x-enterprise-security: &enterprise-security
     - apparmor:${ENTERPRISE_APPARMOR_PROFILE:-docker-enterprise}
   cap_drop:
     - ALL
-  cap_add:
-    - NET_BIND_SERVICE
+  cap_add: [] # Only add capabilities when absolutely necessary
   read_only: true
 
 x-enterprise-resources-small: &enterprise-resources-small
   limits:
     memory: 2G
     cpus: "2.0"
-    pids: 200
+    pids: 100
   reservations:
     memory: 1G
     cpus: "1.0"
@@ -72,7 +74,7 @@ x-enterprise-resources-medium: &enterprise-resources-medium
   limits:
     memory: 4G
     cpus: "4.0"
-    pids: 400
+    pids: 200
   reservations:
     memory: 2G
     cpus: "2.0"
@@ -81,22 +83,30 @@ x-enterprise-resources-large: &enterprise-resources-large
   limits:
     memory: 8G
     cpus: "8.0"
-    pids: 800
+    pids: 400
   reservations:
     memory: 4G
     cpus: "4.0"
 
 x-enterprise-healthcheck: &enterprise-healthcheck
-  interval: 15s
-  timeout: 5s
-  retries: 5
-  start_period: 30s
+  interval: 30s
+  timeout: 10s
+  retries: 3
+  start_period: 60s
 
 x-enterprise-restart-policy: &enterprise-restart-policy
   condition: unless-stopped
-  delay: 10s
-  max_attempts: 5
-  window: 120s
+  delay: 30s
+  max_attempts: 3
+  window: 300s
+
+# Enterprise network policy enforcement
+x-enterprise-network-policy: &enterprise-network-policy
+  driver_opts:
+    encrypted: "true"
+    com.docker.network.bridge.enable_icc: "false"
+    com.docker.network.bridge.enable_ip_masquerade: "true"
+    com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
 
 services:
   # ==============================================================================
@@ -111,12 +121,13 @@ services:
       GDPR_STRICT_MODE: "true"
       GDPR_AUTOMATION_ENABLED: "true"
       GDPR_CRYPTO_ERASURE_ENABLED: "true"
-      GDPR_CRYPTO_ERASURE_ROUNDS: "5"
+      GDPR_CRYPTO_ERASURE_ROUNDS: "7"
       GDPR_RETENTION_AUDIT: "true"
       GDPR_DATA_SUBJECT_RIGHTS_AUTOMATION: "true"
       GDPR_CONSENT_MANAGEMENT: "true"
       GDPR_RIGHT_TO_PORTABILITY: "true"
       GDPR_BREACH_NOTIFICATION: "true"
+      GDPR_PROCESSOR_AGREEMENTS: "true"
       # SOC 2 compliance
       SOC2_COMPLIANCE: "true"
       SOC2_AVAILABILITY_MONITORING: "true"
@@ -124,45 +135,77 @@ services:
       SOC2_PROCESSING_INTEGRITY: "true"
       SOC2_CONFIDENTIALITY: "true"
       SOC2_PRIVACY: "true"
+      SOC2_INCIDENT_RESPONSE: "true"
       # Audit and logging
       AUDIT_EVERYTHING: "true"
       AUDIT_LOG_IMMUTABLE: "true"
       AUDIT_LOG_ENCRYPTION: "true"
       AUDIT_LOG_DIGITAL_SIGNATURES: "true"
-      AUDIT_RETENTION_YEARS: "7"
+      AUDIT_RETENTION_YEARS: "10"
+      AUDIT_SIEM_INTEGRATION: "true"
       # Security hardening
       SECURITY_LEVEL: "5"
       SECURITY_HEADERS_ENABLED: "true"
+      SECURITY_HSTS_ENABLED: "true"
+      SECURITY_CSP_STRICT: "true"
       RESOURCE_BOUNDS_VALIDATION: "true"
       ENTERPRISE_SECURITY_POLICIES: "true"
       ADVANCED_THREAT_DETECTION: "true"
       BEHAVIORAL_ANALYTICS: "true"
       ZERO_TRUST_ARCHITECTURE: "true"
+      ML_ANOMALY_DETECTION: "true"
       # Performance and reliability
       HIGH_AVAILABILITY_MODE: "true"
       LOAD_BALANCING_ENABLED: "true"
       CIRCUIT_BREAKER_ENABLED: "true"
+      BULKHEAD_PATTERN_ENABLED: "true"
       RATE_LIMITING_ADVANCED: "true"
       CACHING_STRATEGY: "enterprise"
+      CONNECTION_POOLING_OPTIMIZED: "true"
       # Monitoring and observability
       METRICS_DETAILED: "true"
       TRACING_ENABLED: "true"
-      PROFILING_ENABLED: "true"
+      PROFILING_ENABLED: "false" # Disabled in production for security
       HEALTH_CHECK_COMPREHENSIVE: "true"
-      # Enterprise integrations
+      APM_INTEGRATION: "true"
+      # Enterprise integrations (ALL VIA SECRETS)
       ENTERPRISE_SSO_ENABLED: "true"
       ENTERPRISE_LDAP_ENABLED: "true"
       ENTERPRISE_MFA_ENFORCED: "true"
       ENTERPRISE_RBAC_ENABLED: "true"
+      ENTERPRISE_PAM_INTEGRATION: "true"
       # Backup and recovery
       BACKUP_ENABLED: "true"
       BACKUP_ENCRYPTION: "true"
       POINT_IN_TIME_RECOVERY: "true"
       DISASTER_RECOVERY_ENABLED: "true"
+      CROSS_REGION_REPLICATION: "true"
+      # Secrets management - ALL FROM FILES
+      DATABASE_URL_FILE: /run/secrets/database_url_enterprise
+      REDIS_URL_FILE: /run/secrets/redis_url_enterprise
+      VAULT_TOKEN_FILE: /run/secrets/vault_token_enterprise
+      JWT_SECRET_FILE: /run/secrets/jwt_secret_enterprise
+      ENCRYPTION_KEY_FILE: /run/secrets/encryption_key_enterprise
+      SSO_CERTIFICATE_FILE: /run/secrets/sso_certificate
+      LDAP_CREDENTIALS_FILE: /run/secrets/ldap_credentials
+      API_KEYS_FILE: /run/secrets/api_keys_enterprise
+      TLS_CERT_FILE: /run/secrets/tls_certificate
+      TLS_KEY_FILE: /run/secrets/tls_private_key
+      AUDIT_SIGNING_KEY_FILE: /run/secrets/audit_signing_key
+      # NO DEBUG SETTINGS IN ENTERPRISE
+      DEBUG: "false"
+      LOG_LEVEL: "warn"
+      RUST_LOG: "warn"
+      DEVELOPMENT_MODE: "false"
+      HOT_RELOAD_ENABLED: "false"
+      API_DOCS_ENABLED: "false"
+      PLAYGROUND_ENABLED: "false"
     volumes:
       - enterprise-audit-logs:/app/audit-logs:rw
       - enterprise-compliance-data:/app/compliance:rw
       - enterprise-backup-staging:/app/backup-staging:rw
+    # NO DEBUG PORTS EXPOSED
+    ports: []
     <<: *enterprise-security
     read_only: false
     tmpfs:
@@ -173,36 +216,47 @@ services:
       resources: *enterprise-resources-large
       update_config:
         parallelism: 1
-        delay: 30s
+        delay: 60s
         failure_action: rollback
-        monitor: 120s
-        max_failure_ratio: 0.1
+        monitor: 180s
+        max_failure_ratio: 0.05
         order: start-first
       rollback_config:
         parallelism: 1
-        delay: 10s
+        delay: 30s
         failure_action: pause
-        monitor: 60s
+        monitor: 120s
         order: stop-first
       restart_policy: *enterprise-restart-policy
       placement:
         constraints:
           - node.role == worker
           - node.labels.tier == enterprise
-          - node.labels.security == high
+          - node.labels.security == maximum
+          - node.labels.compliance == enabled
     logging: *enterprise-logging
     secrets:
-      - enterprise_audit_key
-      - enterprise_encryption_key
+      - database_url_enterprise
+      - redis_url_enterprise
+      - vault_token_enterprise
+      - jwt_secret_enterprise
+      - encryption_key_enterprise
       - sso_certificate
       - ldap_credentials
+      - api_keys_enterprise
+      - tls_certificate
+      - tls_private_key
+      - audit_signing_key
     labels:
       - "service.name=veridis-backend-enterprise"
       - "service.tier=core"
       - "compliance.soc2=enabled"
       - "compliance.gdpr=enabled"
-      - "security.level=enterprise"
+      - "compliance.iso27001=enabled"
+      - "compliance.pci=enabled"
+      - "security.level=maximum"
       - "monitoring.priority=critical"
+      - "backup.enabled=true"
 
   # ZK Circuits Service - Enterprise Mode
   zk-circuits:
@@ -213,6 +267,7 @@ services:
       GARAGA_ENTERPRISE_MODE: "true"
       GARAGA_FORMAL_VERIFICATION: "true"
       GARAGA_AUDIT_PROOFS: "true"
+      GARAGA_SECURE_RANDOM: "true"
       # Zero-knowledge security
       ZK_PROOF_SECURITY_LEVEL: "256"
       ZK_PROOF_VERIFICATION_THRESHOLD: "100"
@@ -220,20 +275,37 @@ services:
       ZK_TRUSTED_SETUP_VERIFICATION: "true"
       ZK_PROOF_INTEGRITY_CHECKS: "true"
       ZK_CIRCUIT_AUDIT_ENABLED: "true"
+      ZK_SIDE_CHANNEL_PROTECTION: "true"
+      ZK_CONSTANT_TIME_OPERATIONS: "true"
       # Performance optimization
       ZK_PARALLEL_PROVING: "true"
       ZK_GPU_ACCELERATION: ${ENTERPRISE_GPU_ENABLED:-true}
       ZK_MEMORY_OPTIMIZATION: "true"
       ZK_BATCH_PROCESSING: "true"
+      ZK_PROOF_CACHING_SECURE: "true"
       # Enterprise features
       ZK_ENTERPRISE_MONITORING: "true"
-      ZK_PROOF_CACHING_ENTERPRISE: "true"
       ZK_AUDIT_TRAIL: "true"
       ZK_COMPLIANCE_MODE: "true"
+      ZK_HSM_INTEGRATION: "true"
+      # Secrets via files only
+      REDIS_URL_FILE: /run/secrets/redis_url_enterprise
+      VAULT_TOKEN_FILE: /run/secrets/vault_token_enterprise
+      ZK_PROVING_KEYS_FILE: /run/secrets/zk_proving_keys_enterprise
+      ZK_VERIFICATION_KEYS_FILE: /run/secrets/zk_verification_keys_enterprise
+      TRUSTED_SETUP_FILE: /run/secrets/trusted_setup_enterprise
+      # NO DEBUG SETTINGS
+      NODE_ENV: "production"
+      DEBUG: "false"
+      LOG_LEVEL: "warn"
+      DEVELOPMENT_MODE: "false"
+      NODE_OPTIONS: "--max-old-space-size=${ZK_MEMORY_LIMIT:-16384}"
     volumes:
       - zk-enterprise-audit:/app/audit-logs:rw
       - zk-enterprise-proofs:/app/proofs:rw
       - zk-formal-verification:/app/verification:rw
+    # NO DEBUG PORTS
+    ports: []
     <<: *enterprise-security
     read_only: false
     tmpfs:
@@ -249,7 +321,7 @@ services:
         limits:
           memory: ${ZK_MEMORY_LIMIT:-16G}
           cpus: "${ZK_CPU_LIMIT:-8.0}"
-          pids: 1000
+          pids: 500
         reservations:
           memory: ${ZK_MEMORY_RESERVATION:-8G}
           cpus: "${ZK_CPU_RESERVATION:-4.0}"
@@ -262,23 +334,32 @@ services:
           - node.role == worker
           - node.labels.gpu == enterprise
           - node.labels.zk == true
-          - node.labels.security == high
+          - node.labels.security == maximum
+          - node.labels.hsm == available
       restart_policy: *enterprise-restart-policy
     logging: *enterprise-logging
     secrets:
-      - zk_enterprise_keys
+      - redis_url_enterprise
+      - vault_token_enterprise
+      - zk_proving_keys_enterprise
+      - zk_verification_keys_enterprise
+      - trusted_setup_enterprise
       - formal_verification_certificates
+      - hsm_credentials
     labels:
       - "service.name=zk-circuits-enterprise"
       - "service.tier=computation"
       - "computation.type=zk-proof"
-      - "security.level=enterprise"
+      - "security.level=maximum"
       - "gpu.enabled=true"
+      - "hsm.enabled=true"
 
   # UI Service - Enterprise Mode
   veridis-ui:
     environment:
       # Enterprise UI features
+      NODE_ENV: "production"
+      NEXT_TELEMETRY_DISABLED: "1"
       NEXT_PUBLIC_ENTERPRISE_MODE: "true"
       NEXT_PUBLIC_SSO_ENABLED: "true"
       NEXT_PUBLIC_MFA_REQUIRED: "true"
@@ -286,41 +367,61 @@ services:
       NEXT_PUBLIC_COMPLIANCE_DASHBOARD: "true"
       NEXT_PUBLIC_ENTERPRISE_BRANDING: "true"
       NEXT_PUBLIC_ADVANCED_ANALYTICS: "true"
+      NEXT_PUBLIC_ZERO_TRUST_UI: "true"
       # Security hardening
       NEXT_PUBLIC_CSP_ENTERPRISE: "true"
       NEXT_PUBLIC_SECURITY_HEADERS: "true"
       NEXT_PUBLIC_XSS_PROTECTION: "strict"
       NEXT_PUBLIC_CONTENT_TYPE_NOSNIFF: "true"
       NEXT_PUBLIC_REFERRER_POLICY: "strict-origin-when-cross-origin"
+      NEXT_PUBLIC_PERMISSIONS_POLICY: "strict"
+      NEXT_PUBLIC_HSTS_ENABLED: "true"
       # Performance
       NEXT_PUBLIC_CDN_ENABLED: "true"
       NEXT_PUBLIC_CACHING_STRATEGY: "enterprise"
       NEXT_PUBLIC_PERFORMANCE_MONITORING: "true"
+      NEXT_PUBLIC_COMPRESSION_ENABLED: "true"
+      # API URLs - internal network only
+      NEXT_PUBLIC_API_URL: "https://backend.veridis.internal"
+      NEXT_PUBLIC_ZK_PROOF_ENDPOINT: "https://zk-circuits.veridis.internal"
+      NEXT_PUBLIC_COMPLIANCE_API: "https://compliance.veridis.internal"
+      # NO DEBUG FEATURES
+      NEXT_PUBLIC_DEBUG_MODE: "false"
+      NEXT_PUBLIC_PLAYGROUND_ENABLED: "false"
+      FAST_REFRESH: "false"
     volumes:
       - ui-enterprise-logs:/app/logs:rw
       - ui-audit-trail:/app/audit:rw
+    # NO DEBUG PORTS
+    ports: []
     <<: *enterprise-security
     read_only: false
     tmpfs:
       - /app/tmp:rw,noexec,nosuid,size=200m
+      - /app/.next:rw,noexec,nosuid,size=500m
     deploy:
       replicas: ${ENTERPRISE_UI_REPLICAS:-3}
       resources: *enterprise-resources-medium
       update_config:
         parallelism: 1
-        delay: 20s
+        delay: 30s
         failure_action: rollback
-        monitor: 60s
+        monitor: 90s
       restart_policy: *enterprise-restart-policy
       placement:
         constraints:
           - node.role == worker
           - node.labels.tier == enterprise
+          - node.labels.security == maximum
     logging: *enterprise-logging
+    secrets:
+      - ui_session_secrets
+      - ui_csrf_tokens
     labels:
       - "service.name=veridis-ui-enterprise"
       - "service.tier=frontend"
-      - "security.level=enterprise"
+      - "security.level=maximum"
+      - "compliance.enabled=true"
 
   # ==============================================================================
   # Enterprise Monitoring and Observability Stack
@@ -331,8 +432,8 @@ services:
     image: prom/prometheus:v2.50.1
     container_name: ${COMPOSE_PROJECT_NAME:-veridis}-prometheus-enterprise
     hostname: prometheus.veridis.internal
-    ports:
-      - "${PROMETHEUS_PORT:-9090}:9090"
+    # NO EXTERNAL PORTS - INTERNAL ACCESS ONLY
+    ports: []
     networks:
       - veridis-monitoring-network
     volumes:
@@ -342,22 +443,25 @@ services:
       - prometheus-enterprise-data:/prometheus
       - prometheus-enterprise-config:/etc/prometheus/config
     environment:
-      PROMETHEUS_RETENTION_TIME: ${PROMETHEUS_RETENTION:-90d}
-      PROMETHEUS_RETENTION_SIZE: ${PROMETHEUS_RETENTION_SIZE:-50GB}
+      PROMETHEUS_RETENTION_TIME: ${PROMETHEUS_RETENTION:-180d}
+      PROMETHEUS_RETENTION_SIZE: ${PROMETHEUS_RETENTION_SIZE:-100GB}
+      PROMETHEUS_SECURITY_MODE: "enterprise"
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
-      - "--storage.tsdb.retention.time=${PROMETHEUS_RETENTION:-90d}"
-      - "--storage.tsdb.retention.size=${PROMETHEUS_RETENTION_SIZE:-50GB}"
+      - "--storage.tsdb.retention.time=${PROMETHEUS_RETENTION:-180d}"
+      - "--storage.tsdb.retention.size=${PROMETHEUS_RETENTION_SIZE:-100GB}"
       - "--web.console.libraries=/usr/share/prometheus/console_libraries"
       - "--web.console.templates=/usr/share/prometheus/consoles"
       - "--web.enable-lifecycle"
-      - "--web.enable-admin-api"
-      - "--web.route-prefix=/"
-      - "--web.external-url=https://prometheus.${DOMAIN:-veridis.local}"
+      - "--web.external-url=https://prometheus.${DOMAIN:-veridis.internal}"
       - "--storage.tsdb.wal-compression"
-      - "--query.max-concurrency=50"
-      - "--query.timeout=30s"
+      - "--query.max-concurrency=20"
+      - "--query.timeout=60s"
+      - "--web.config.file=/etc/prometheus/web-config.yml"
+      - "--storage.tsdb.retention.time=${PROMETHEUS_RETENTION:-180d}"
+      - "--log.level=warn"
+      - "--log.format=json"
     <<: *enterprise-security
     read_only: false
     tmpfs:
@@ -365,40 +469,36 @@ services:
     user: "nobody:nobody"
     healthcheck:
       test:
-        [
-          "CMD",
-          "wget",
-          "--quiet",
-          "--tries=1",
-          "--spider",
-          "http://localhost:9090/-/healthy",
-        ]
+        ["CMD", "promtool", "query", "instant", "http://localhost:9090", "up"]
       <<: *enterprise-healthcheck
     deploy:
-      replicas: ${PROMETHEUS_REPLICAS:-2}
+      replicas: ${PROMETHEUS_REPLICAS:-3}
       resources: *enterprise-resources-large
       placement:
         constraints:
           - node.role == worker
           - node.labels.monitoring == prometheus
+          - node.labels.security == maximum
       restart_policy: *enterprise-restart-policy
     logging: *enterprise-logging
     secrets:
-      - prometheus_config
-      - monitoring_certificates
+      - prometheus_config_enterprise
+      - prometheus_tls_cert
+      - prometheus_tls_key
+      - monitoring_auth_tokens
     labels:
       - "service.name=prometheus-enterprise"
       - "service.type=monitoring"
       - "monitoring.role=metrics"
-      - "security.level=enterprise"
+      - "security.level=maximum"
 
   # Grafana - Enterprise Dashboards
   grafana:
     image: grafana/grafana-enterprise:10.4.2
     container_name: ${COMPOSE_PROJECT_NAME:-veridis}-grafana-enterprise
     hostname: grafana.veridis.internal
-    ports:
-      - "${GRAFANA_PORT:-3001}:3000"
+    # NO EXTERNAL PORTS
+    ports: []
     networks:
       - veridis-monitoring-network
     volumes:
@@ -407,13 +507,15 @@ services:
       - ./monitoring/enterprise/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml:ro
       - ./monitoring/enterprise/grafana-dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
       - ./monitoring/enterprise/dashboards:/var/lib/grafana/dashboards:ro
-      - ./monitoring/enterprise/plugins:/var/lib/grafana/plugins:ro
+      - ./monitoring/enterprise/ldap.toml:/etc/grafana/ldap.toml:ro
     environment:
       # Basic configuration
-      GF_SERVER_DOMAIN: grafana.${DOMAIN:-veridis.local}
-      GF_SERVER_ROOT_URL: https://grafana.${DOMAIN:-veridis.local}
-      GF_SERVER_SERVE_FROM_SUB_PATH: "false"
-      # Security configuration
+      GF_SERVER_DOMAIN: grafana.${DOMAIN:-veridis.internal}
+      GF_SERVER_ROOT_URL: https://grafana.${DOMAIN:-veridis.internal}
+      GF_SERVER_PROTOCOL: https
+      GF_SERVER_CERT_FILE: /run/secrets/grafana_tls_cert
+      GF_SERVER_CERT_KEY: /run/secrets/grafana_tls_key
+      # Security configuration - ALL FROM SECRETS
       GF_SECURITY_ADMIN_USER__FILE: /run/secrets/grafana_admin_user
       GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password
       GF_SECURITY_SECRET_KEY__FILE: /run/secrets/grafana_secret_key
@@ -423,44 +525,51 @@ services:
       GF_SECURITY_STRICT_TRANSPORT_SECURITY: "true"
       GF_SECURITY_X_CONTENT_TYPE_OPTIONS: "true"
       GF_SECURITY_X_XSS_PROTECTION: "true"
+      GF_SECURITY_CONTENT_SECURITY_POLICY: "true"
       # Enterprise features
       GF_ENTERPRISE_LICENSE_PATH: /run/secrets/grafana_enterprise_license
-      GF_FEATURE_TOGGLES_ENABLE: "publicDashboards,topnav,panelTitleSearch"
-      # Authentication
-      GF_AUTH_DISABLE_LOGIN_FORM: "false"
+      GF_FEATURE_TOGGLES_ENABLE: "publicDashboards,topnav,panelTitleSearch,teamSync"
+      # Authentication - ENTERPRISE SSO ONLY
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
       GF_AUTH_DISABLE_SIGNOUT_MENU: "false"
       GF_AUTH_OAUTH_AUTO_LOGIN: "true"
       # LDAP integration
-      GF_AUTH_LDAP_ENABLED: ${ENTERPRISE_LDAP_ENABLED:-true}
+      GF_AUTH_LDAP_ENABLED: "true"
       GF_AUTH_LDAP_CONFIG_FILE: /etc/grafana/ldap.toml
-      # Database
+      # Database - SECURE CONNECTION
       GF_DATABASE_TYPE: postgres
       GF_DATABASE_HOST: postgres.veridis.internal:5432
       GF_DATABASE_NAME: grafana_enterprise
       GF_DATABASE_USER__FILE: /run/secrets/grafana_db_user
       GF_DATABASE_PASSWORD__FILE: /run/secrets/grafana_db_password
       GF_DATABASE_SSL_MODE: require
-      # Users and organizations
+      GF_DATABASE_CA_CERT_PATH: /run/secrets/postgres_ca_cert
+      # Users and organizations - LOCKED DOWN
       GF_USERS_ALLOW_SIGN_UP: "false"
       GF_USERS_ALLOW_ORG_CREATE: "false"
       GF_USERS_AUTO_ASSIGN_ORG: "true"
       GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Viewer"
+      GF_USERS_LOGIN_HINT: "Use enterprise SSO"
       # Alerting
       GF_ALERTING_ENABLED: "true"
       GF_UNIFIED_ALERTING_ENABLED: "true"
       GF_ALERTING_EXECUTE_ALERTS: "true"
-      # Plugins
+      # Plugins - RESTRICTED
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: "false"
-      GF_INSTALL_PLUGINS: "grafana-piechart-panel,grafana-clock-panel,grafana-worldmap-panel,grafana-polystat-panel"
-      # Logging
+      GF_PLUGINS_PLUGIN_ADMIN_ENABLED: "false"
+      # Logging - ENTERPRISE LEVEL
       GF_LOG_MODE: "console file"
-      GF_LOG_LEVEL: "info"
-      GF_LOG_FILTERS: "rendering:debug"
-      # Performance
+      GF_LOG_LEVEL: "warn"
+      GF_LOG_FORMAT: "json"
+      # Performance - ENTERPRISE OPTIMIZED
       GF_SERVER_ENABLE_GZIP: "true"
-      GF_DATABASE_CONNECTION_MAX_OPEN: "300"
-      GF_DATABASE_CONNECTION_MAX_IDLE: "2"
-      GF_DATABASE_CONNECTION_MAX_LIFETIME: "14400"
+      GF_DATABASE_CONNECTION_MAX_OPEN: "100"
+      GF_DATABASE_CONNECTION_MAX_IDLE: "10"
+      GF_DATABASE_CONNECTION_MAX_LIFETIME: "3600"
+      # Security headers
+      GF_SECURITY_COOKIE_HTTPONLY: "true"
+      GF_SECURITY_LOGIN_REMEMBER_DAYS: "1"
+      GF_SECURITY_LOGIN_MAXIMUM_INACTIVE_LIFETIME_DURATION: "1h"
     depends_on:
       - prometheus
       - postgres
@@ -470,7 +579,7 @@ services:
       - /tmp:rw,noexec,nosuid,size=500m
     user: "472:472"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      test: ["CMD", "curl", "-k", "-f", "https://localhost:3000/api/health"]
       <<: *enterprise-healthcheck
     deploy:
       replicas: ${GRAFANA_REPLICAS:-2}
@@ -479,6 +588,7 @@ services:
         constraints:
           - node.role == worker
           - node.labels.monitoring == grafana
+          - node.labels.security == maximum
       restart_policy: *enterprise-restart-policy
     logging: *enterprise-logging
     secrets:
@@ -488,53 +598,49 @@ services:
       - grafana_enterprise_license
       - grafana_db_user
       - grafana_db_password
+      - grafana_tls_cert
+      - grafana_tls_key
+      - postgres_ca_cert
+      - ldap_bind_credentials
     labels:
       - "service.name=grafana-enterprise"
       - "service.type=monitoring"
       - "monitoring.role=visualization"
-      - "security.level=enterprise"
+      - "security.level=maximum"
 
   # AlertManager - Enterprise Alerting
   alertmanager:
     image: prom/alertmanager:v0.27.0
     container_name: ${COMPOSE_PROJECT_NAME:-veridis}-alertmanager-enterprise
     hostname: alertmanager.veridis.internal
-    ports:
-      - "${ALERTMANAGER_PORT:-9093}:9093"
+    # NO EXTERNAL PORTS
+    ports: []
     networks:
       - veridis-monitoring-network
     volumes:
-      - ./monitoring/enterprise/alertmanager.yml:/etc/alertmanager/config.yml:ro
       - alertmanager-enterprise-data:/alertmanager
       - alertmanager-enterprise-templates:/etc/alertmanager/templates:ro
     environment:
       ALERTMANAGER_CLUSTER_LISTEN_ADDRESS: "0.0.0.0:9094"
       ALERTMANAGER_CLUSTER_PEER: ${ALERTMANAGER_CLUSTER_PEER:-}
-      ALERTMANAGER_EXTERNAL_URL: https://alertmanager.${DOMAIN:-veridis.local}
+      ALERTMANAGER_EXTERNAL_URL: https://alertmanager.${DOMAIN:-veridis.internal}
     command:
       - "--config.file=/etc/alertmanager/config.yml"
       - "--storage.path=/alertmanager"
-      - "--web.external-url=https://alertmanager.${DOMAIN:-veridis.local}"
-      - "--web.route-prefix=/"
+      - "--web.external-url=https://alertmanager.${DOMAIN:-veridis.internal}"
+      - "--web.config.file=/etc/alertmanager/web-config.yml"
       - "--cluster.listen-address=0.0.0.0:9094"
       - "--cluster.peer=${ALERTMANAGER_CLUSTER_PEER:-}"
-      - "--log.level=info"
+      - "--log.level=warn"
       - "--log.format=json"
+      - "--data.retention=720h"
     <<: *enterprise-security
     read_only: false
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=100m
     user: "nobody:nobody"
     healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--quiet",
-          "--tries=1",
-          "--spider",
-          "http://localhost:9093/-/healthy",
-        ]
+      test: ["CMD", "amtool", "config", "check", "/etc/alertmanager/config.yml"]
       <<: *enterprise-healthcheck
     deploy:
       replicas: ${ALERTMANAGER_REPLICAS:-3}
@@ -543,16 +649,21 @@ services:
         constraints:
           - node.role == worker
           - node.labels.monitoring == alertmanager
+          - node.labels.security == maximum
       restart_policy: *enterprise-restart-policy
     logging: *enterprise-logging
     secrets:
-      - alertmanager_config
-      - notification_webhooks
+      - alertmanager_config_enterprise
+      - alertmanager_tls_cert
+      - alertmanager_tls_key
+      - notification_webhook_tokens
+      - pagerduty_integration_key
+      - slack_webhook_urls
     labels:
       - "service.name=alertmanager-enterprise"
       - "service.type=monitoring"
       - "monitoring.role=alerting"
-      - "security.level=enterprise"
+      - "security.level=maximum"
 
   # ==============================================================================
   # Enterprise Security and Compliance Services
@@ -565,7 +676,8 @@ services:
       dockerfile: Dockerfile.enterprise
       args:
         SCANNER_VERSION: ${SECURITY_SCANNER_VERSION:-latest}
-        COMPLIANCE_MODULES: "soc2,gdpr,iso27001,nist,pci"
+        COMPLIANCE_MODULES: "soc2,gdpr,iso27001,nist,pci,hipaa"
+        ENTERPRISE_FEATURES: "true"
     image: ${DOCKER_REGISTRY:-veridis}/security-scanner-enterprise:${VERSION:-latest}
     container_name: ${COMPOSE_PROJECT_NAME:-veridis}-security-scanner
     hostname: security-scanner.veridis.internal
@@ -581,37 +693,39 @@ services:
     environment:
       # Scanning configuration
       SCAN_SCHEDULE: ${SECURITY_SCAN_SCHEDULE:-0 2 * * *}
-      SCAN_CONTINUOUS: ${SECURITY_SCAN_CONTINUOUS:-true}
-      SCAN_REAL_TIME: ${SECURITY_SCAN_REAL_TIME:-true}
-      # Compliance checks
-      COMPLIANCE_CHECK: "true"
+      SCAN_CONTINUOUS: "true"
+      SCAN_REAL_TIME: "true"
+      SCAN_DEEP_INSPECTION: "true"
+      # Compliance checks - ALL MAJOR STANDARDS
       SOC2_SCAN_ENABLED: "true"
       GDPR_SCAN_ENABLED: "true"
       ISO27001_SCAN_ENABLED: "true"
       NIST_SCAN_ENABLED: "true"
       PCI_SCAN_ENABLED: "true"
       HIPAA_SCAN_ENABLED: "true"
-      # Technology versions
-      CAIRO_VERSION: "2.11.4"
-      STARKNET_VERSION: "0.13.4"
-      RUST_VERSION: "1.87.0"
-      NODE_VERSION: "22.14.0"
-      # Security baselines
+      FISMA_SCAN_ENABLED: "true"
+      # Enterprise security baselines
       SECURITY_BASELINE: /baselines/enterprise-baseline.json
-      ENTERPRISE_SCAN_LEVEL: comprehensive
+      ENTERPRISE_SCAN_LEVEL: "maximum"
       VULNERABILITY_DATABASE: /signatures/enterprise-vuln-db.json
-      # Threat detection
+      # Advanced threat detection
       THREAT_DETECTION_ENABLED: "true"
       BEHAVIORAL_ANALYSIS: "true"
       ANOMALY_DETECTION: "true"
       IOC_SCANNING: "true"
       MALWARE_DETECTION: "true"
-      # Reporting
-      REPORT_FORMAT: "json,pdf,html"
-      REPORT_RETENTION_DAYS: "365"
+      APT_DETECTION: "true"
+      # Reporting - ENCRYPTED AND SIGNED
+      REPORT_FORMAT: "json,pdf"
+      REPORT_RETENTION_DAYS: "2555" # 7 years
       REPORT_ENCRYPTION: "true"
+      REPORT_SIGNING: "true"
       ALERT_ON_CRITICAL: "true"
       SIEM_INTEGRATION: "true"
+      # Configuration from secrets
+      SCANNER_CONFIG_FILE: /run/secrets/security_scanner_config
+      VULN_SIGNATURES_FILE: /run/secrets/vulnerability_signatures
+      THREAT_INTEL_FILE: /run/secrets/threat_intelligence_feeds
     depends_on:
       - veridis-backend
       - prometheus
@@ -629,12 +743,15 @@ services:
         constraints:
           - node.role == worker
           - node.labels.security == scanner
+          - node.labels.compliance == enabled
       restart_policy: *enterprise-restart-policy
     logging: *enterprise-logging
     secrets:
       - security_scanner_config
       - vulnerability_signatures
       - threat_intelligence_feeds
+      - scanner_api_keys
+      - siem_integration_tokens
     labels:
       - "service.name=security-scanner-enterprise"
       - "service.type=security"
@@ -648,6 +765,7 @@ services:
       dockerfile: Dockerfile.enterprise
       args:
         COMPLIANCE_VERSION: ${COMPLIANCE_VERSION:-latest}
+        ENTERPRISE_FEATURES: "maximum"
     image: ${DOCKER_REGISTRY:-veridis}/compliance-enterprise:${VERSION:-latest}
     container_name: ${COMPOSE_PROJECT_NAME:-veridis}-compliance
     hostname: compliance.veridis.internal
@@ -661,39 +779,50 @@ services:
       - compliance-enterprise-templates:/app/templates:ro
       - compliance-enterprise-evidence:/app/evidence:rw
     environment:
-      # Enterprise features
-      ENTERPRISE_FEATURES: "true"
+      # Enterprise features - MAXIMUM COMPLIANCE
+      ENTERPRISE_FEATURES: "maximum"
       REAL_TIME_MONITORING: "true"
       IMMUTABLE_AUDIT_LOG: "true"
       BLOCKCHAIN_AUDIT_TRAIL: "true"
-      # Compliance standards
+      CRYPTOGRAPHIC_PROOF_CHAIN: "true"
+      # Compliance standards - ALL ENABLED
       SOC2_COMPLIANCE: "true"
       GDPR_COMPLIANCE: "true"
       ISO27001_COMPLIANCE: "true"
       NIST_COMPLIANCE: "true"
       PCI_COMPLIANCE: "true"
       HIPAA_COMPLIANCE: "true"
-      # Data protection
-      CRYPTO_ERASURE_ROUNDS: "5"
-      DATA_CLASSIFICATION: "true"
+      FISMA_COMPLIANCE: "true"
+      # Data protection - MAXIMUM SECURITY
+      CRYPTO_ERASURE_ROUNDS: "10"
+      DATA_CLASSIFICATION: "automatic"
       DATA_LOSS_PREVENTION: "true"
       DATA_RETENTION_AUTOMATION: "true"
-      # Privacy features
+      DATA_LINEAGE_TRACKING: "true"
+      # Privacy features - FULL GDPR AUTOMATION
       PRIVACY_BY_DESIGN: "true"
-      CONSENT_MANAGEMENT: "true"
+      CONSENT_MANAGEMENT: "automated"
       DATA_SUBJECT_RIGHTS_AUTOMATION: "true"
-      RIGHT_TO_BE_FORGOTTEN: "true"
-      RIGHT_TO_PORTABILITY: "true"
-      RIGHT_TO_RECTIFICATION: "true"
-      # Reporting and evidence
+      RIGHT_TO_BE_FORGOTTEN: "automated"
+      RIGHT_TO_PORTABILITY: "automated"
+      RIGHT_TO_RECTIFICATION: "automated"
+      PRIVACY_IMPACT_ASSESSMENTS: "automated"
+      # Reporting and evidence - COMPREHENSIVE
       COMPLIANCE_REPORTS_ENABLED: "true"
-      EVIDENCE_COLLECTION: "true"
-      AUDIT_EVIDENCE_CHAIN: "true"
+      EVIDENCE_COLLECTION: "automated"
+      AUDIT_EVIDENCE_CHAIN: "cryptographic"
       CONTINUOUS_COMPLIANCE: "true"
-      # Integration
+      COMPLIANCE_DASHBOARDS: "true"
+      # Integration - ENTERPRISE GRADE
       SIEM_INTEGRATION: "true"
       GRC_INTEGRATION: "true"
       AUDIT_FIRM_API: "true"
+      REGULATORY_REPORTING: "automated"
+      # Configuration from secrets
+      DATABASE_URL_FILE: /run/secrets/compliance_database_url
+      AUDIT_SIGNING_KEY_FILE: /run/secrets/audit_signing_key
+      ENCRYPTION_KEY_FILE: /run/secrets/compliance_encryption_key
+      API_KEYS_FILE: /run/secrets/compliance_api_keys
     depends_on:
       - postgres
       - vault
@@ -704,24 +833,27 @@ services:
       - /tmp:rw,noexec,nosuid,size=1g
     user: "compliance:compliance"
     deploy:
-      replicas: ${COMPLIANCE_REPLICAS:-1}
+      replicas: ${COMPLIANCE_REPLICAS:-2}
       resources: *enterprise-resources-large
       placement:
         constraints:
           - node.role == worker
-          - node.labels.compliance == true
-          - node.labels.security == high
+          - node.labels.compliance == manager
+          - node.labels.security == maximum
       restart_policy: *enterprise-restart-policy
     logging: *enterprise-logging
     secrets:
-      - compliance_certificates
-      - audit_signing_keys
-      - privacy_encryption_keys
+      - compliance_database_url
+      - audit_signing_key
+      - compliance_encryption_key
+      - compliance_api_keys
+      - regulatory_api_tokens
+      - gdpr_processor_agreements
     labels:
       - "service.name=compliance-enterprise"
       - "service.type=compliance"
       - "compliance.role=management"
-      - "security.level=enterprise"
+      - "security.level=maximum"
 
   # ==============================================================================
   # Enterprise Backup and Disaster Recovery
@@ -734,8 +866,9 @@ services:
       dockerfile: Dockerfile.enterprise
       args:
         BACKUP_VERSION: ${BACKUP_VERSION:-latest}
-        ENCRYPTION_SUPPORT: "true"
+        ENCRYPTION_SUPPORT: "maximum"
         CLOUD_SUPPORT: "aws,azure,gcp"
+        ENTERPRISE_FEATURES: "true"
     image: ${DOCKER_REGISTRY:-veridis}/backup-enterprise:${VERSION:-latest}
     container_name: ${COMPOSE_PROJECT_NAME:-veridis}-backup-enterprise
     hostname: backup.veridis.internal
@@ -750,48 +883,48 @@ services:
       - compliance-enterprise-backup:/backups/compliance:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      # Backup schedule
-      BACKUP_SCHEDULE: ${BACKUP_SCHEDULE:-0 1,13 * * *}
-      BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS:-2555} # 7 years
-      BACKUP_RETENTION_WEEKLY: ${BACKUP_RETENTION_WEEKLY:-52}
-      BACKUP_RETENTION_MONTHLY: ${BACKUP_RETENTION_MONTHLY:-84} # 7 years
-      BACKUP_RETENTION_YEARLY: ${BACKUP_RETENTION_YEARLY:-7}
-      # Encryption
+      # Backup schedule - ENTERPRISE FREQUENCY
+      BACKUP_SCHEDULE: ${BACKUP_SCHEDULE:-0 */4 * * *} # Every 4 hours
+      BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS:-3650} # 10 years
+      BACKUP_RETENTION_WEEKLY: ${BACKUP_RETENTION_WEEKLY:-520} # 10 years
+      BACKUP_RETENTION_MONTHLY: ${BACKUP_RETENTION_MONTHLY:-120} # 10 years
+      BACKUP_RETENTION_YEARLY: ${BACKUP_RETENTION_YEARLY:-10}
+      # Encryption - MAXIMUM SECURITY
       ENCRYPTION_ENABLED: "true"
       ENCRYPTION_ALGORITHM: "AES-256-GCM"
       ENCRYPTION_KEY_ROTATION: "true"
-      ENCRYPTION_KEY_ROTATION_DAYS: "90"
-      # Compression
+      ENCRYPTION_KEY_ROTATION_DAYS: "30"
+      HSM_INTEGRATION: "true"
+      # Compression - OPTIMIZED
       COMPRESSION_ENABLED: "true"
       COMPRESSION_ALGORITHM: "zstd"
-      COMPRESSION_LEVEL: "3"
-      # Verification
-      BACKUP_VERIFICATION: "true"
-      INTEGRITY_CHECKS: "true"
-      RESTORE_TESTING: "true"
-      # Cloud storage
+      COMPRESSION_LEVEL: "9"
+      # Verification - COMPREHENSIVE
+      BACKUP_VERIFICATION: "cryptographic"
+      INTEGRITY_CHECKS: "continuous"
+      RESTORE_TESTING: "automated"
+      CHAIN_OF_CUSTODY: "enabled"
+      # Cloud storage - MULTI-CLOUD
       MULTI_CLOUD_BACKUP: "true"
+      CROSS_REGION_REPLICATION: "true"
       S3_BACKUP_ENABLED: ${S3_BACKUP_ENABLED:-true}
       AZURE_BACKUP_ENABLED: ${AZURE_BACKUP_ENABLED:-true}
-      GCP_BACKUP_ENABLED: ${GCP_BACKUP_ENABLED:-false}
-      # AWS S3 configuration
-      S3_BUCKET: ${S3_BACKUP_BUCKET}
-      S3_REGION: ${AWS_REGION:-us-east-1}
-      S3_STORAGE_CLASS: ${S3_STORAGE_CLASS:-STANDARD_IA}
-      S3_ENCRYPTION: "AES256"
-      # Azure configuration
-      AZURE_STORAGE_ACCOUNT: ${AZURE_STORAGE_ACCOUNT}
-      AZURE_CONTAINER: ${AZURE_BACKUP_CONTAINER}
-      AZURE_ENCRYPTION: "true"
-      # Monitoring
-      BACKUP_MONITORING: "true"
-      BACKUP_ALERTS: "true"
-      BACKUP_METRICS: "true"
-      # Disaster recovery
+      GCP_BACKUP_ENABLED: ${GCP_BACKUP_ENABLED:-true}
+      # Monitoring - ENTERPRISE GRADE
+      BACKUP_MONITORING: "comprehensive"
+      BACKUP_ALERTS: "immediate"
+      BACKUP_METRICS: "detailed"
+      BACKUP_AUDIT_TRAIL: "immutable"
+      # Disaster recovery - ENTERPRISE SLA
       DISASTER_RECOVERY_ENABLED: "true"
-      RTO_TARGET_MINUTES: ${RTO_TARGET:-60}
-      RPO_TARGET_MINUTES: ${RPO_TARGET:-15}
-      CROSS_REGION_REPLICATION: "true"
+      RTO_TARGET_MINUTES: ${RTO_TARGET:-30} # 30 minutes
+      RPO_TARGET_MINUTES: ${RPO_TARGET:-5} # 5 minutes
+      # Configuration from secrets
+      BACKUP_ENCRYPTION_KEY_FILE: /run/secrets/backup_encryption_key
+      AWS_CREDENTIALS_FILE: /run/secrets/aws_backup_credentials
+      AZURE_CREDENTIALS_FILE: /run/secrets/azure_backup_credentials
+      GCP_CREDENTIALS_FILE: /run/secrets/gcp_backup_credentials
+      HSM_CONFIG_FILE: /run/secrets/hsm_backup_config
     depends_on:
       - postgres
       - vault
@@ -799,16 +932,17 @@ services:
     <<: *enterprise-security
     read_only: false
     tmpfs:
-      - /tmp:rw,noexec,nosuid,size=5g
+      - /tmp:rw,noexec,nosuid,size=10g
     user: "backup:backup"
     deploy:
-      replicas: ${BACKUP_REPLICAS:-1}
+      replicas: ${BACKUP_REPLICAS:-2}
       resources: *enterprise-resources-large
       placement:
         constraints:
           - node.role == worker
-          - node.labels.backup == true
-          - node.labels.storage == high
+          - node.labels.backup == enterprise
+          - node.labels.storage == maximum
+          - node.labels.hsm == available
       restart_policy: *enterprise-restart-policy
     logging: *enterprise-logging
     secrets:
@@ -816,11 +950,14 @@ services:
       - aws_backup_credentials
       - azure_backup_credentials
       - gcp_backup_credentials
+      - hsm_backup_config
+      - backup_audit_keys
     labels:
       - "service.name=backup-enterprise"
       - "service.type=backup"
       - "backup.role=enterprise"
       - "disaster-recovery.enabled=true"
+      - "hsm.enabled=true"
 
 # ==============================================================================
 # Enterprise Network Configuration
@@ -830,6 +967,7 @@ networks:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-monitoring-network
     driver: ${NETWORK_DRIVER:-overlay}
     encrypted: true
+    <<: *enterprise-network-policy
     ipam:
       driver: default
       config:
@@ -837,13 +975,15 @@ networks:
           gateway: 172.25.0.1
     labels:
       - "network.type=monitoring"
-      - "security.level=enterprise"
+      - "security.level=maximum"
       - "encryption=enabled"
+      - "access=internal-only"
 
   veridis-security-network:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-security-network
     driver: ${NETWORK_DRIVER:-overlay}
     encrypted: true
+    <<: *enterprise-network-policy
     ipam:
       driver: default
       config:
@@ -851,13 +991,15 @@ networks:
           gateway: 172.26.0.1
     labels:
       - "network.type=security"
-      - "security.level=enterprise"
+      - "security.level=maximum"
       - "encryption=enabled"
+      - "access=restricted"
 
   veridis-compliance-network:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-compliance-network
     driver: ${NETWORK_DRIVER:-overlay}
     encrypted: true
+    <<: *enterprise-network-policy
     ipam:
       driver: default
       config:
@@ -865,13 +1007,15 @@ networks:
           gateway: 172.27.0.1
     labels:
       - "network.type=compliance"
-      - "security.level=enterprise"
+      - "security.level=maximum"
       - "encryption=enabled"
+      - "audit=required"
 
   veridis-backup-network:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-backup-network
     driver: ${NETWORK_DRIVER:-overlay}
     encrypted: true
+    <<: *enterprise-network-policy
     ipam:
       driver: default
       config:
@@ -879,8 +1023,9 @@ networks:
           gateway: 172.28.0.1
     labels:
       - "network.type=backup"
-      - "security.level=enterprise"
+      - "security.level=maximum"
       - "encryption=enabled"
+      - "access=backup-only"
 
 # ==============================================================================
 # Enterprise Volume Configuration
@@ -890,29 +1035,44 @@ volumes:
   enterprise-audit-logs:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-enterprise-audit-logs
     driver: ${VOLUME_DRIVER:-local}
+    driver_opts:
+      type: none
+      o: bind,rw
+      device: ${ENTERPRISE_AUDIT_PATH:-/var/lib/veridis/audit}
     labels:
       - "volume.type=audit"
       - "compliance.required=true"
       - "backup.enabled=true"
       - "encryption.enabled=true"
-      - "retention.years=7"
+      - "retention.years=10"
+      - "immutable=true"
 
   enterprise-compliance-data:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-enterprise-compliance-data
     driver: ${VOLUME_DRIVER:-local}
+    driver_opts:
+      type: none
+      o: bind,rw
+      device: ${ENTERPRISE_COMPLIANCE_PATH:-/var/lib/veridis/compliance}
     labels:
       - "volume.type=compliance"
       - "compliance.required=true"
       - "backup.enabled=true"
       - "encryption.enabled=true"
+      - "immutable=true"
 
   enterprise-backup-staging:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-enterprise-backup-staging
     driver: ${VOLUME_DRIVER:-local}
+    driver_opts:
+      type: none
+      o: bind,rw
+      device: ${ENTERPRISE_BACKUP_STAGING_PATH:-/var/lib/veridis/backup-staging}
     labels:
       - "volume.type=backup-staging"
       - "backup.enabled=true"
       - "encryption.enabled=true"
+      - "temporary=true"
 
   # ZK enterprise volumes
   zk-enterprise-audit:
@@ -923,6 +1083,7 @@ volumes:
       - "service=zk-circuits"
       - "compliance.required=true"
       - "backup.enabled=true"
+      - "encryption.enabled=true"
 
   zk-enterprise-proofs:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-enterprise-proofs
@@ -931,6 +1092,7 @@ volumes:
       - "volume.type=proofs"
       - "service=zk-circuits"
       - "backup.enabled=true"
+      - "encryption.enabled=true"
 
   zk-formal-verification:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-formal-verification
@@ -939,6 +1101,7 @@ volumes:
       - "volume.type=verification"
       - "service=zk-circuits"
       - "compliance.required=true"
+      - "backup.enabled=true"
 
   # UI enterprise volumes
   ui-enterprise-logs:
@@ -948,6 +1111,7 @@ volumes:
       - "volume.type=logs"
       - "service=ui"
       - "backup.enabled=true"
+      - "audit=true"
 
   ui-audit-trail:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-audit-trail
@@ -956,6 +1120,7 @@ volumes:
       - "volume.type=audit"
       - "service=ui"
       - "compliance.required=true"
+      - "immutable=true"
 
   # Monitoring volumes
   prometheus-enterprise-data:
@@ -965,7 +1130,7 @@ volumes:
       - "volume.type=metrics"
       - "service=prometheus"
       - "backup.enabled=true"
-      - "retention.days=90"
+      - "retention.days=180"
 
   prometheus-enterprise-config:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-prometheus-enterprise-config
@@ -1016,7 +1181,8 @@ volumes:
       - "service=security-scanner"
       - "compliance.required=true"
       - "backup.enabled=true"
-      - "retention.years=7"
+      - "retention.years=10"
+      - "immutable=true"
 
   security-enterprise-policies:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-security-enterprise-policies
@@ -1051,7 +1217,8 @@ volumes:
       - "service=compliance"
       - "compliance.required=true"
       - "backup.enabled=true"
-      - "retention.years=7"
+      - "retention.years=10"
+      - "immutable=true"
 
   compliance-enterprise-reports:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-compliance-enterprise-reports
@@ -1086,7 +1253,8 @@ volumes:
       - "service=compliance"
       - "compliance.required=true"
       - "backup.enabled=true"
-      - "retention.years=7"
+      - "retention.years=10"
+      - "immutable=true"
 
   # Backup volumes
   postgres-enterprise-backup:
@@ -1115,6 +1283,7 @@ volumes:
       - "backup.source=keys"
       - "encryption.enabled=true"
       - "security.level=critical"
+      - "hsm.required=true"
 
   audit-enterprise-backup:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-audit-enterprise-backup
@@ -1124,6 +1293,7 @@ volumes:
       - "backup.source=audit"
       - "compliance.required=true"
       - "encryption.enabled=true"
+      - "immutable=true"
 
   compliance-enterprise-backup:
     name: ${COMPOSE_PROJECT_NAME:-veridis}-compliance-enterprise-backup
@@ -1133,20 +1303,34 @@ volumes:
       - "backup.source=compliance"
       - "compliance.required=true"
       - "encryption.enabled=true"
+      - "immutable=true"
 
 # ==============================================================================
-# Enterprise Secrets Configuration
+# Enterprise Secrets Configuration - ALL EXTERNAL
 # ==============================================================================
 secrets:
-  # Application secrets
-  enterprise_audit_key:
+  # Core application secrets
+  database_url_enterprise:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-enterprise-audit-key
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-database-url-enterprise
 
-  enterprise_encryption_key:
+  redis_url_enterprise:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-enterprise-encryption-key
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-redis-url-enterprise
 
+  vault_token_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-vault-token-enterprise
+
+  jwt_secret_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-jwt-secret-enterprise
+
+  encryption_key_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-encryption-key-enterprise
+
+  # Authentication and authorization
   sso_certificate:
     external: true
     name: ${COMPOSE_PROJECT_NAME:-veridis}-sso-certificate
@@ -1155,23 +1339,70 @@ secrets:
     external: true
     name: ${COMPOSE_PROJECT_NAME:-veridis}-ldap-credentials
 
-  # ZK secrets
-  zk_enterprise_keys:
+  api_keys_enterprise:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-enterprise-keys
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-api-keys-enterprise
+
+  # TLS certificates
+  tls_certificate:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-tls-certificate
+
+  tls_private_key:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-tls-private-key
+
+  # Audit and compliance
+  audit_signing_key:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-audit-signing-key
+
+  # ZK secrets
+  zk_proving_keys_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-proving-keys-enterprise
+
+  zk_verification_keys_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-verification-keys-enterprise
+
+  trusted_setup_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-trusted-setup-enterprise
 
   formal_verification_certificates:
     external: true
     name: ${COMPOSE_PROJECT_NAME:-veridis}-formal-verification-certs
 
-  # Monitoring secrets
-  prometheus_config:
+  hsm_credentials:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-prometheus-config
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-hsm-credentials
 
-  monitoring_certificates:
+  # UI secrets
+  ui_session_secrets:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-monitoring-certificates
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-session-secrets
+
+  ui_csrf_tokens:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-csrf-tokens
+
+  # Monitoring secrets
+  prometheus_config_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-prometheus-config-enterprise
+
+  prometheus_tls_cert:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-prometheus-tls-cert
+
+  prometheus_tls_key:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-prometheus-tls-key
+
+  monitoring_auth_tokens:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-monitoring-auth-tokens
 
   grafana_admin_user:
     external: true
@@ -1197,13 +1428,45 @@ secrets:
     external: true
     name: ${COMPOSE_PROJECT_NAME:-veridis}-grafana-db-password
 
-  alertmanager_config:
+  grafana_tls_cert:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-alertmanager-config
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-grafana-tls-cert
 
-  notification_webhooks:
+  grafana_tls_key:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-notification-webhooks
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-grafana-tls-key
+
+  postgres_ca_cert:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-postgres-ca-cert
+
+  ldap_bind_credentials:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ldap-bind-credentials
+
+  alertmanager_config_enterprise:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-alertmanager-config-enterprise
+
+  alertmanager_tls_cert:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-alertmanager-tls-cert
+
+  alertmanager_tls_key:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-alertmanager-tls-key
+
+  notification_webhook_tokens:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-notification-webhook-tokens
+
+  pagerduty_integration_key:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-pagerduty-integration-key
+
+  slack_webhook_urls:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-slack-webhook-urls
 
   # Security secrets
   security_scanner_config:
@@ -1218,86 +1481,6 @@ secrets:
     external: true
     name: ${COMPOSE_PROJECT_NAME:-veridis}-threat-intelligence-feeds
 
-  # Compliance secrets
-  compliance_certificates:
+  scanner_api_keys:
     external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-compliance-certificates
-
-  audit_signing_keys:
-    external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-audit-signing-keys
-
-  privacy_encryption_keys:
-    external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-privacy-encryption-keys
-
-  # Backup secrets
-  backup_encryption_key:
-    external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-backup-encryption-key
-
-  aws_backup_credentials:
-    external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-aws-backup-credentials
-
-  azure_backup_credentials:
-    external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-azure-backup-credentials
-
-  gcp_backup_credentials:
-    external: true
-    name: ${COMPOSE_PROJECT_NAME:-veridis}-gcp-backup-credentials
-# ==============================================================================
-# Enterprise Environment Variables Reference
-# ==============================================================================
-# The following environment variables should be configured for enterprise deployment:
-#
-# # Replica Configuration
-# ENTERPRISE_BACKEND_REPLICAS=3
-# ENTERPRISE_ZK_REPLICAS=2
-# ENTERPRISE_UI_REPLICAS=3
-# PROMETHEUS_REPLICAS=2
-# GRAFANA_REPLICAS=2
-# ALERTMANAGER_REPLICAS=3
-# SECURITY_SCANNER_REPLICAS=2
-# COMPLIANCE_REPLICAS=1
-# BACKUP_REPLICAS=1
-#
-# # GPU Configuration
-# ENTERPRISE_GPU_ENABLED=true
-# ENTERPRISE_GPU_COUNT=2
-#
-# # Monitoring Configuration
-# PROMETHEUS_RETENTION=90d
-# PROMETHEUS_RETENTION_SIZE=50GB
-# GRAFANA_PORT=3001
-# ALERTMANAGER_PORT=9093
-#
-# # Security Configuration
-# SECURITY_SCAN_SCHEDULE="0 2 * * *"
-# SECURITY_SCAN_CONTINUOUS=true
-# SECURITY_SCAN_REAL_TIME=true
-#
-# # Backup Configuration
-# BACKUP_SCHEDULE="0 1,13 * * *"
-# BACKUP_RETENTION_DAYS=2555
-# S3_BACKUP_ENABLED=true
-# AZURE_BACKUP_ENABLED=true
-# S3_BACKUP_BUCKET=veridis-enterprise-backups
-# AZURE_STORAGE_ACCOUNT=veridisenterprisebackups
-#
-# # Cloud Provider Configuration
-# AWS_REGION=us-east-1
-# AZURE_BACKUP_CONTAINER=enterprise-backups
-#
-# # Disaster Recovery
-# RTO_TARGET=60
-# RPO_TARGET=15
-#
-# # Compliance
-# ENTERPRISE_LDAP_ENABLED=true
-#
-# # Domain Configuration
-# DOMAIN=veridis.enterprise.com
-#
-# ==============================================================================
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-scanner-api-keys
