@@ -21,7 +21,7 @@
 # SHARED CONFIGURATIONS:
 #   - x-dev-logging: JSON logging configuration with rotation policies
 #   - x-dev-security: Minimal security settings for development
-#   - x-dev-resources: Container resource allocation limits
+#   - x-dev-resources-*: Tiered container resource allocation limits
 #
 # VOLUMES:
 #   - Persistent storage for databases, caches, and build artifacts
@@ -41,19 +41,11 @@ version: "3.8"
 # This section defines reusable configurations for development environments:
 #
 # - x-dev-logging: Configures JSON file logging with rotation policies
-#   - Limits log files to 50MB with 5 file rotation
-#   - Disables compression
-#   - Adds environment and service labels
-#
 # - x-dev-security: Defines minimal security constraints for development
-#   - No specific security options, capability restrictions, or read-only mode
-#   - Allows full container access for development convenience
+# - x-dev-resources-*: Tiered resource allocation appropriate for development
 #
-# - x-dev-resources: Sets resource allocation limits for containers
-#   - Memory limits: 2GB maximum, 512MB reserved
-#   - CPU limits: 2 cores maximum, 0.5 cores reserved
-#
-# These configurations can be referenced in service definitions using YAML anchors.
+# Resource tiers are designed to prevent resource contention while allowing
+# efficient development on typical developer machines (8-16GB RAM, 4-8 CPU cores).
 x-dev-logging: &dev-logging
   driver: json-file
   options:
@@ -69,12 +61,44 @@ x-dev-security: &dev-security
   read_only: false
   tmpfs: []
 
-x-dev-resources: &dev-resources
+# Small services (Redis, Vault, UI)
+x-dev-resources-small: &dev-resources-small
+  limits:
+    memory: 1G
+    cpus: "1.0"
+    pids: 100
+  reservations:
+    memory: 256M
+    cpus: "0.25"
+
+# Medium services (PostgreSQL, Backend API)
+x-dev-resources-medium: &dev-resources-medium
   limits:
     memory: 2G
     cpus: "2.0"
+    pids: 200
   reservations:
     memory: 512M
+    cpus: "0.5"
+
+# Large services (ZK-Circuits, Cairo Dev, StarkNet)
+x-dev-resources-large: &dev-resources-large
+  limits:
+    memory: 3G
+    cpus: "2.0"
+    pids: 300
+  reservations:
+    memory: 1G
+    cpus: "1.0"
+
+# Development tools
+x-dev-resources-tools: &dev-resources-tools
+  limits:
+    memory: 1.5G
+    cpus: "1.5"
+    pids: 150
+  reservations:
+    memory: 384M
     cpus: "0.5"
 
 services:
@@ -82,21 +106,6 @@ services:
   # Infrastructure Service Overrides
   # ==============================================================================
 
-  # Vault Service Configuration
-  #
-  # This service runs HashiCorp Vault in development mode with the following configuration:
-  # - Development mode enabled with a predefined root token
-  # - Debug level logging for troubleshooting
-  # - Memory lock disabled for development environments
-  # - UI enabled for web-based management
-  # - API and cluster addresses configured for internal network access
-  # - Mounted configuration files from local directory
-  # - Custom initialization script to set up Vault after startup
-  # - Exposed ports 8200 (API) and 8201 (cluster communication)
-  # - Uses shared security settings defined elsewhere in the compose file
-  # - Configured with development logging and resource limitations
-  #
-  # Note: This configuration is for development purposes only and should not be used in production
   vault:
     environment:
       VAULT_DEV_MODE: "true"
@@ -121,35 +130,8 @@ services:
              wait"
     logging: *dev-logging
     deploy:
-      resources: *dev-resources
+      resources: *dev-resources-small
 
-  # PostgreSQL Database Service Configuration (Development Environment)
-  #
-  # This service configuration sets up a PostgreSQL database optimized for development use.
-  # It includes:
-  # - Development credentials with trusted authentication method
-  # - Sample data loading on initialization
-  # - Extensive logging for debugging purposes
-  # - Resource limitations appropriate for development
-  # - Container labels for environment identification
-  #
-  # Environment variables:
-  #   - DB_PORT: Optional port mapping (defaults to 5432)
-  #
-  # Volumes:
-  #   - postgres-dev-data: Persistent storage for database files
-  #   - ./scripts/database/: Mount points for initialization scripts
-  #
-  # Performance settings are deliberately conservative for development:
-  #   - 100 max connections
-  #   - 128MB shared buffers
-  #   - 512MB effective cache size
-  #   - 4MB work memory
-  #   - 64MB maintenance work memory
-  #
-  # Security:
-  #   - Running as non-root user (999:999)
-  #   - Inherits development security policy from template
   postgres:
     environment:
       POSTGRES_PASSWORD: devpassword
@@ -161,12 +143,12 @@ services:
         --encoding=UTF8
         --locale=C.UTF-8
       POSTGRES_HOST_AUTH_METHOD: trust
-      # Development-specific settings
-      POSTGRES_MAX_CONNECTIONS: 100
-      POSTGRES_SHARED_BUFFERS: 128MB
-      POSTGRES_EFFECTIVE_CACHE_SIZE: 512MB
-      POSTGRES_WORK_MEM: 4MB
-      POSTGRES_MAINTENANCE_WORK_MEM: 64MB
+      # Development-specific settings (reduced for dev)
+      POSTGRES_MAX_CONNECTIONS: 50
+      POSTGRES_SHARED_BUFFERS: 64MB
+      POSTGRES_EFFECTIVE_CACHE_SIZE: 256MB
+      POSTGRES_WORK_MEM: 2MB
+      POSTGRES_MAINTENANCE_WORK_MEM: 32MB
     volumes:
       - postgres-dev-data:/var/lib/postgresql/data
       - ./scripts/database/dev:/docker-entrypoint-initdb.d:ro
@@ -191,42 +173,19 @@ services:
     user: "999:999"
     logging: *dev-logging
     deploy:
-      resources: *dev-resources
+      resources: *dev-resources-medium
     labels:
       - "service.name=postgres-dev"
       - "service.version=16.1-dev"
       - "environment=development"
 
-  # Redis Container Configuration
-  #
-  # This configuration defines a Redis server instance for development with the following settings:
-  #
-  # Server Configuration:
-  # - Persistence: Enabled with append-only file (AOF) and synchronization every second
-  # - Authentication: Protected with password "devpassword"
-  # - Memory Management: Limited to 512MB with LRU eviction policy
-  # - Data Persistence: Saving RDB snapshots every 60 seconds if at least 1000 keys changed
-  # - Logging: Verbose level output to stdout (no log file)
-  # - Network: Listening on all interfaces (0.0.0.0) on port 6379
-  # - Security: Protected mode disabled for development purposes
-  # - Connection: TCP keepalive of 60 seconds, no connection timeout
-  # - Data: 16 databases available, data stored in /data directory
-  #
-  # Container Configuration:
-  # - Port Mapping: Container port 6379 mapped to host port from env variable REDIS_PORT (default: 6379)
-  # - Environment: Configured as replication master
-  # - Security: Using development security profile (referenced by anchor)
-  # - User: Running as non-root user with UID/GID 999
-  # - Logging: Using development logging configuration (referenced by anchor)
-  # - Resources: Limited by development resource constraints (referenced by anchor)
-  # - Labels: Metadata for service identification and environment tracking
   redis:
     command: >
       redis-server
       --appendonly yes
       --appendfsync everysec
       --requirepass devpassword
-      --maxmemory 512mb
+      --maxmemory 256mb
       --maxmemory-policy allkeys-lru
       --save 60 1000
       --loglevel verbose
@@ -247,43 +206,12 @@ services:
     user: "999:999"
     logging: *dev-logging
     deploy:
-      resources: *dev-resources
+      resources: *dev-resources-small
     labels:
       - "service.name=redis-dev"
       - "service.version=7.2.4-dev"
       - "environment=development"
 
-  # Starknet Devnet Service Configuration
-  #
-  # This service runs a local Starknet development network (devnet) with the following settings:
-  #
-  # Network Configuration:
-  # - Listens on all interfaces (0.0.0.0) on port 5050
-  # - Uses a fixed seed (42) for reproducible deployments
-  # - Runs in lite mode for faster operation
-  # - Provides 20 pre-funded accounts
-  # - Initial account balance of 10^21 (1000000000000000000000)
-  # - Gas price set to 10^9 (1000000000)
-  # - Operation timeout of 300 seconds
-  # - Chain ID set to SN_SEPOLIA
-  # - State is dumped to /data/devnet-dump.json on exit
-  #
-  # Environment Variables:
-  # - STARKNET_DEVNET_LITE_MODE: Enables lite mode for faster processing
-  # - STARKNET_TX_VERSION: Uses transaction version 3
-  # - STARKNET_RESOURCE_BOUNDS_ENABLED: Enables resource bounds checking
-  # - STARKNET_ACCOUNTS/SEED: Matches command line arguments
-  # - RUST_LOG/BACKTRACE: Configured for debugging
-  #
-  # Volumes:
-  # - Persists blockchain data to starknet-dev-data volume
-  # - Stores logs in starknet-dev-logs volume
-  # - Mounts local accounts.json file as read-only configuration
-  #
-  # Port Mapping:
-  # - Exposes devnet on host port defined by STARKNET_PORT env var (defaults to 5050)
-  #
-  # Inherits security context, logging configuration and resource limits from dev profiles
   starknet-devnet:
     command:
       - starknet-devnet
@@ -295,7 +223,7 @@ services:
       - "42"
       - --lite-mode
       - --accounts
-      - "20"
+      - "10" # Reduced for development
       - --initial-balance
       - "1000000000000000000000"
       - --gas-price
@@ -312,11 +240,11 @@ services:
       STARKNET_DEVNET_LITE_MODE: "true"
       STARKNET_TX_VERSION: "3"
       STARKNET_RESOURCE_BOUNDS_ENABLED: "true"
-      STARKNET_ACCOUNTS: "20"
+      STARKNET_ACCOUNTS: "10"
       STARKNET_SEED: "42"
       STARKNET_FORK_NETWORK: ""
       STARKNET_FORK_BLOCK: ""
-      RUST_LOG: debug
+      RUST_LOG: info # Reduced verbosity
       RUST_BACKTRACE: "1"
     ports:
       - "${STARKNET_PORT:-5050}:5050"
@@ -327,7 +255,7 @@ services:
     <<: *dev-security
     logging: *dev-logging
     deploy:
-      resources: *dev-resources
+      resources: *dev-resources-large
     labels:
       - "service.name=starknet-devnet-dev"
       - "blockchain.network=devnet"
@@ -337,38 +265,6 @@ services:
   # Application Service Overrides
   # ==============================================================================
 
-  # Veridis Backend Service Configuration (Development)
-  #
-  # This service configuration defines the backend API service for development environments.
-  #
-  # Key features:
-  # - Development-optimized Rust build with debug symbols
-  # - Hot reloading using cargo-watch
-  # - Non-production security settings (JWT, encryption keys in env vars)
-  # - Exposed debug port (9229)
-  # - Development credentials and relaxed security settings
-  # - Connected to local PostgreSQL, Redis, StarkNet devnet, and Vault instances
-  # - Mounted source code volumes for live editing
-  # - Configured for testnet bridges (Ethereum Sepolia, Cosmos Theta)
-  #
-  # Resources:
-  # - Memory: 1-4GB
-  # - CPU: 1-4 cores
-  #
-  # Dependencies:
-  # - postgres
-  # - redis
-  # - starknet-devnet
-  # - vault
-  #
-  # Ports:
-  # - 8080: API service
-  # - 9229: Debugging port
-  #
-  # Data persistence:
-  # - backend-dev-target: Cargo build artifacts
-  # - backend-dev-cargo: Cargo registry cache
-  # - backend-dev-logs: Application logs
   veridis-backend:
     build:
       target: development
@@ -382,8 +278,8 @@ services:
     environment:
       ENVIRONMENT: development
       LOG_LEVEL: debug
-      RUST_LOG: debug,hyper=info,tokio=info
-      RUST_BACKTRACE: "full"
+      RUST_LOG: info,veridis_backend=debug # Reduced global verbosity
+      RUST_BACKTRACE: "1" # Reduced from "full"
       RUST_LIB_BACKTRACE: "1"
       # Direct database connections (not using secrets in dev)
       DATABASE_URL: postgresql://devuser:devpassword@postgres.veridis.internal:5432/veridis_dev
@@ -401,7 +297,7 @@ services:
       CSRF_PROTECTION: "false"
       MFA_REQUIRED: "false"
       PASSWORD_MIN_LENGTH: "6"
-      RATE_LIMIT_REQUESTS: "10000"
+      RATE_LIMIT_REQUESTS: "1000" # Reduced from 10000
       RATE_LIMIT_WINDOW: "60"
       # StarkNet configuration
       STARKNET_TX_VERSION: "3"
@@ -421,6 +317,10 @@ services:
       # GDPR - disabled for development
       GDPR_AUTOMATION_ENABLED: "false"
       GDPR_CRYPTO_ERASURE_ENABLED: "false"
+      # Performance settings for development
+      MAX_REQUEST_SIZE: "10MB"
+      CONNECTION_POOL_SIZE: "5" # Reduced for dev
+      WORKER_THREADS: "2" # Reduced for dev
     volumes:
       - ./services:/app/src:ro
       - backend-dev-target:/app/target
@@ -428,7 +328,7 @@ services:
       - backend-dev-logs:/app/logs
     ports:
       - "${BACKEND_PORT:-8080}:8080"
-      - "${BACKEND_DEBUG_PORT:-9229}:9229" # Debug port
+      - "${BACKEND_DEBUG_PORT:-9229}:9229"
     <<: *dev-security
     user: "1001:1001"
     command: >
@@ -436,7 +336,8 @@ services:
              --watch src
              --watch Cargo.toml
              --watch Cargo.lock
-             --delay 2"
+             --delay 2
+             --ignore target/"
     depends_on:
       postgres:
         condition: service_healthy
@@ -448,43 +349,12 @@ services:
         condition: service_healthy
     logging: *dev-logging
     deploy:
-      resources:
-        limits:
-          memory: 4G
-          cpus: "4.0"
-        reservations:
-          memory: 1G
-          cpus: "1.0"
+      resources: *dev-resources-medium
     labels:
       - "service.name=veridis-backend-dev"
       - "service.tier=core"
       - "environment=development"
 
-  # ZK-Circuits Service (Development Environment)
-  #
-  # This service is responsible for zero-knowledge proof generation and verification.
-  # It's configured specifically for development with debugging tools enabled.
-  #
-  # Build Configuration:
-  # - Uses development target with specified Node.js and Rust versions
-  # - Garaga (ZK framework) configured with minimal optimization for faster builds
-  # - Memory and security levels set for development purposes
-  #
-  # Key Features:
-  # - Debug mode enabled for Node.js and Garaga frameworks
-  # - Hot reloading for circuits development
-  # - Reduced security parameters for faster development cycles
-  # - Circuit compilation caching for improved development experience
-  # - Mounted volumes for source code, node modules, cache, keys, and logs
-  # - Exposed ports for API (4000) and debugging (9230)
-  #
-  # Dependencies:
-  # - Redis for caching and messaging
-  # - Vault for secrets management
-  #
-  # Resource Allocation:
-  # - Limited to 3GB memory and 3 CPUs
-  # - Reserved 1GB memory and 1 CPU
   zk-circuits:
     build:
       target: development
@@ -494,11 +364,11 @@ services:
         GARAGA_VERSION: ${GARAGA_VERSION:-0.18.1}
         OPTIMIZATION_LEVEL: "0"
         SECURITY_LEVEL: "80"
-        MAX_MEMORY: "2048"
+        MAX_MEMORY: "1536" # Reduced from 2048
     environment:
       NODE_ENV: development
-      LOG_LEVEL: debug
-      DEBUG: "veridis:*,garaga:*"
+      LOG_LEVEL: info # Reduced from debug
+      DEBUG: "veridis:*" # Removed garaga debug
       REDIS_URL: redis://:devpassword@redis.veridis.internal:6379/1
       VAULT_ADDR: http://vault.veridis.internal:8200
       VAULT_TOKEN: veridis-dev-root-token
@@ -506,16 +376,16 @@ services:
       GARAGA_OPTIMIZATION: "false"
       GARAGA_OPTIMIZATION_LEVEL: "0"
       GARAGA_CUDA_ENABLED: "false"
-      GARAGA_MEMORY_POOL_SIZE: "1GB"
+      GARAGA_MEMORY_POOL_SIZE: "512MB" # Reduced from 1GB
       GARAGA_DEV_MODE: "true"
       # ZK proof development settings
       ZK_PROOF_SECURITY_LEVEL: "80"
-      PROOF_GENERATION_TIMEOUT: "120000"
-      PROOF_TIMEOUT_OVERRIDE: "120000"
+      PROOF_GENERATION_TIMEOUT: "60000" # Reduced from 120000
+      PROOF_TIMEOUT_OVERRIDE: "60000"
       CIRCUIT_COMPILATION_CACHE: "true"
       WITNESS_GENERATION_PARALLEL: "false"
       PROOF_VERIFICATION_CACHE_TTL: "300"
-      MAX_CONCURRENT_PROOFS: "2"
+      MAX_CONCURRENT_PROOFS: "1" # Reduced from 2
       TRUSTED_SETUP_VALIDATION: "false"
       CIRCUIT_INTEGRITY_CHECK: "false"
       # Development features
@@ -523,7 +393,7 @@ services:
       CIRCUIT_WATCH_MODE: "true"
       PROOF_DEBUGGING: "true"
       # Node.js development settings
-      NODE_OPTIONS: "--max-old-space-size=2048 --inspect=0.0.0.0:9230"
+      NODE_OPTIONS: "--max-old-space-size=1536 --inspect=0.0.0.0:9230"
     volumes:
       - ./circuits:/app/src:ro
       - zk-dev-node-modules:/app/node_modules
@@ -532,7 +402,7 @@ services:
       - zk-dev-logs:/app/logs
     ports:
       - "${ZK_PROOF_PORT:-4000}:4000"
-      - "${ZK_DEBUG_PORT:-9230}:9230" # Node.js debug port
+      - "${ZK_DEBUG_PORT:-9230}:9230"
     <<: *dev-security
     user: "1000:1000"
     command: npm run dev
@@ -543,52 +413,12 @@ services:
         condition: service_healthy
     logging: *dev-logging
     deploy:
-      resources:
-        limits:
-          memory: 3G
-          cpus: "3.0"
-        reservations:
-          memory: 1G
-          cpus: "1.0"
+      resources: *dev-resources-large
     labels:
       - "service.name=zk-circuits-dev"
       - "service.tier=computation"
       - "environment=development"
 
-  # Service: veridis-ui
-  #
-  # Purpose:
-  #   Frontend service for the Veridis application in development environment
-  #
-  # Configuration:
-  #   - Build Configuration:
-  #     - Uses 'development' target from Dockerfile
-  #     - Configures Node.js v22 (customizable via NODE_VERSION env var)
-  #     - Disables Next.js telemetry
-  #     - Builds in non-standalone mode
-  #
-  #   - Environment Variables:
-  #     - Development endpoints for API, UI, ZK proofs, and StarkNet RPC
-  #     - Development security settings (relaxed CORS, disabled CSP)
-  #     - Feature flags configuration (MFA, GDPR, Bridge, Playground, Debug mode)
-  #     - Analytics and monitoring disabled for development
-  #     - StarkNet configuration for Sepolia network
-  #
-  #   - Volumes:
-  #     - UI app source code mounted read-only
-  #     - Persistent volumes for node modules, Next.js cache, and logs
-  #
-  #   - Network:
-  #     - Exposes port 3000 (customizable via UI_PORT env var)
-  #
-  #   - Runtime Configuration:
-  #     - Runs as non-root user (1001:1001)
-  #     - Uses 'npm run dev' for development server
-  #     - Depends on veridis-backend service
-  #     - Configured with development-specific logging and resource limits
-  #
-  #   - Labels:
-  #     - Service identification and environment markers
   veridis-ui:
     build:
       target: development
@@ -638,7 +468,7 @@ services:
       - veridis-backend
     logging: *dev-logging
     deploy:
-      resources: *dev-resources
+      resources: *dev-resources-small
     labels:
       - "service.name=veridis-ui-dev"
       - "service.tier=frontend"
@@ -648,33 +478,6 @@ services:
   # Development-Only Services
   # ==============================================================================
 
-  # Cairo Development Container
-  #
-  # This container provides a fully configured Cairo development environment
-  # with support for smart contract development on StarkNet.
-  #
-  # Features:
-  # - Cairo compiler v2.11.4 with native compilation support
-  # - StarkNet Foundry v0.44.0 for testing
-  # - Language server, formatter, and linter for IDE integration
-  # - Formal verification tooling
-  # - Profiling and optimization capabilities
-  #
-  # Mounted volumes:
-  # - ./contracts → /app/contracts (read-write): Cairo contract source code
-  # - ./scripts/cairo → /app/scripts (read-only): Development scripts
-  # - Various caches for performance optimization
-  #
-  # External ports:
-  # - 5051: Development server port
-  # - 9257: Cairo Language Server Protocol
-  #
-  # Resource allocation:
-  # - Memory: 1-3GB
-  # - CPU: 1-3 cores
-  #
-  # Dependencies:
-  # - Requires starknet-devnet container to be running
   cairo-dev:
     build:
       context: .
@@ -683,7 +486,7 @@ services:
         SCARB_VERSION: "2.11.4"
         CAIRO_NATIVE_VERSION: "2.11.4"
         STARKNET_FOUNDRY_VERSION: "0.44.0"
-        MLIR_OPTIMIZATION_LEVEL: "3"
+        MLIR_OPTIMIZATION_LEVEL: "2" # Reduced from 3
         CAIRO_LANG_VERSION: "2.11.4"
         STARKNET_DEVNET_VERSION: "latest"
     container_name: ${COMPOSE_PROJECT_NAME:-veridis}-cairo-dev
@@ -704,7 +507,7 @@ services:
       # Cairo toolchain
       SCARB_VERSION: "2.11.4"
       CAIRO_NATIVE_ENABLED: "true"
-      MLIR_OPTIMIZATION_LEVEL: "3"
+      MLIR_OPTIMIZATION_LEVEL: "2"
       CAIRO_SIERRA_COMPILATION: "true"
       # StarkNet configuration
       STARKNET_TX_VERSION: "3"
@@ -713,13 +516,13 @@ services:
       STARKNET_NETWORK: sepolia
       STARKNET_WALLET: braavos
       # Development features
-      FORMAL_VERIFICATION_ENABLED: "true"
+      FORMAL_VERIFICATION_ENABLED: "false" # Disabled for faster dev
       CAIRO_PROFILER_ENABLED: "true"
       SIERRA_OPTIMIZER_ENABLED: "true"
       # Testing
       CAIRO_TEST_RUNNER: starknet-foundry
-      COVERAGE_ENABLED: "true"
-      FUZZING_ENABLED: "true"
+      COVERAGE_ENABLED: "false" # Disabled for performance
+      FUZZING_ENABLED: "false" # Disabled for performance
       # Development tools
       CAIRO_LS_ENABLED: "true"
       CAIRO_FORMATTER_ENABLED: "true"
@@ -733,48 +536,13 @@ services:
       - starknet-devnet
     logging: *dev-logging
     deploy:
-      resources:
-        limits:
-          memory: 3G
-          cpus: "3.0"
-        reservations:
-          memory: 1G
-          cpus: "1.0"
+      resources: *dev-resources-large
     labels:
       - "service.name=cairo-dev"
       - "service.type=development-tool"
       - "language=cairo"
       - "environment=development"
 
-  # Development Tools Service
-  #
-  # This service provides a development environment with Node.js, Python, and Rust tools
-  # preconfigured for the Veridis project. It mounts the local workspace and personal
-  # git/ssh configurations to provide a seamless development experience.
-  #
-  # Features:
-  # - Containerized development environment with Node.js, Python and Rust support
-  # - Shared volumes for workspace, git config, SSH keys, and persistent caches
-  # - Development server exposed on configurable ports
-  # - Pre-configured network access to all project services
-  # - Environment variables for connecting to databases, services and development tools
-  #
-  # Configuration:
-  # - NODE_VERSION: Node.js version (default: 22)
-  # - PYTHON_VERSION: Python version (fixed at 3.12)
-  # - RUST_VERSION: Rust version (default: 1.87)
-  # - DEV_TOOLS_PORT: Main development server port (default: 9876)
-  # - DEV_TOOLS_DEBUG_PORT: Debug port (default: 9999)
-  #
-  # Dependencies:
-  # - starknet-devnet: Local Starknet development network
-  # - postgres: PostgreSQL database
-  # - redis: Redis cache server
-  # - vault: HashiCorp Vault for secrets management
-  #
-  # Persistent volumes:
-  # - dev-tools-cache: Preserves package manager caches between sessions
-  # - dev-tools-config: Preserves tool configurations between sessions
   dev-tools:
     build:
       context: ./docker/dev-tools
@@ -835,7 +603,7 @@ services:
       - vault
     logging: *dev-logging
     deploy:
-      resources: *dev-resources
+      resources: *dev-resources-tools
     labels:
       - "service.name=dev-tools"
       - "service.type=development-tool"
@@ -844,47 +612,6 @@ services:
 # ==============================================================================
 # Development Volume Overrides
 # ==============================================================================
-# Volume Configuration for Development Environment
-# ------------------------------------------------
-# This section defines all the persistent volumes used for development.
-# The volumes are organized by service and labeled for better management.
-#
-# Database Volumes:
-#   - postgres-dev-data: Stores PostgreSQL database files
-#
-# Blockchain Volumes:
-#   - starknet-dev-data: Stores StarkNet blockchain data
-#   - starknet-dev-logs: Captures StarkNet node logs
-#
-# Backend Service Volumes:
-#   - backend-dev-target: Rust build artifacts cache
-#   - backend-dev-cargo: Cargo dependencies cache
-#   - backend-dev-logs: Backend service logs
-#
-# ZK Circuits Service Volumes:
-#   - zk-dev-node-modules: NPM package dependencies
-#   - zk-dev-cache: General cache for ZK circuit compilation
-#   - zk-dev-keys: Cryptographic keys for ZK proofs
-#   - zk-dev-logs: ZK service logs
-#
-# UI Service Volumes:
-#   - ui-dev-node-modules: Frontend NPM dependencies
-#   - ui-dev-next: Next.js build cache
-#   - ui-dev-logs: UI service logs
-#
-# Cairo Development Volumes:
-#   - cairo-cache: General cache for Cairo development
-#   - scarb-cache: Scarb package manager cache
-#   - foundry-cache: Cairo Foundry cache
-#
-# Development Tools Volumes:
-#   - dev-tools-cache: Cache for development tools
-#   - dev-tools-config: Configuration files for development tools
-#
-# Volume naming convention uses ${COMPOSE_PROJECT_NAME:-veridis} prefix,
-# defaulting to 'veridis' if COMPOSE_PROJECT_NAME is not set.
-# All volumes use the local driver and have appropriate labels
-# for type, service, and environment identification.
 volumes:
   # PostgreSQL development data
   postgres-dev-data:
@@ -1037,38 +764,29 @@ volumes:
       - "service=dev-tools"
       - "environment=development"
 # ==============================================================================
-# Development Environment Variables
+# Development Environment Resource Planning
 # ==============================================================================
-# The following environment variables should be set in your .env.dev file:
+# Total Resource Usage (worst case):
 #
-# # Service Ports
-# BACKEND_PORT=8080
-# BACKEND_DEBUG_PORT=9229
-# ZK_PROOF_PORT=4000
-# ZK_DEBUG_PORT=9230
-# UI_PORT=3000
-# CAIRO_DEV_PORT=5051
-# CAIRO_LSP_PORT=9257
-# DEV_TOOLS_PORT=9876
-# DEV_TOOLS_DEBUG_PORT=9999
+# Memory Allocation:
+#   Small Services (3): 3GB (vault, redis, ui)
+#   Medium Services (2): 4GB (postgres, backend)
+#   Large Services (3): 9GB (zk-circuits, cairo-dev, starknet)
+#   Tools (1): 1.5GB (dev-tools)
+#   Total: ~17.5GB
 #
-# # Database
-# DB_PORT=5432
-# REDIS_PORT=6379
-# STARKNET_PORT=5050
-# VAULT_PORT=8200
+# CPU Allocation:
+#   Small Services: 3 cores
+#   Medium Services: 4 cores
+#   Large Services: 6 cores
+#   Tools: 1.5 cores
+#   Total: ~14.5 cores
 #
-# # External Services
-# INFURA_PROJECT_ID=your-infura-project-id
+# Recommended Development Machine:
+#   - Minimum: 16GB RAM, 8-core CPU
+#   - Recommended: 32GB RAM, 12-core CPU
+#   - SSD storage for volume performance
 #
-# # Git Configuration
-# GIT_AUTHOR_NAME=Your Name
-# GIT_AUTHOR_EMAIL=your.email@example.com
-# GIT_COMMITTER_NAME=Your Name
-# GIT_COMMITTER_EMAIL=your.email@example.com
-#
-# # Docker Registry (optional)
-# DOCKER_REGISTRY=your-registry.com/veridis
-# VERSION=dev
-#
+# Note: Resource reservations are conservative to allow overcommit
+# and account for normal development workload variations.
 # ==============================================================================
