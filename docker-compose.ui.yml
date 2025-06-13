@@ -1,0 +1,222 @@
+# Veridis UI Docker Compose Configuration
+#
+# This file defines the Docker Compose setup for the Veridis identity platform frontend.
+#
+# Service: veridis-ui
+#   - Next.js frontend application for the Veridis identity platform
+#   - Built from ./ui/identity_app with production target
+#
+# Build Arguments:
+#   - NODE_VERSION: Node.js version (default: 22)
+#   - ALPINE_VERSION: Alpine Linux version (default: alpine)
+#   - BUILD_MODE: Next.js build mode (default: production)
+#   - PACKAGE_MANAGER: Package manager selection (default: auto-detect)
+#   - SECURITY_SCAN_REQUIRED: Enables security scanning (default: true)
+#   - UI_PORT: Service port (default: 3000)
+#   - NEXT_TELEMETRY_DISABLED: Next.js telemetry toggle (default: 1)
+#   - STANDALONE_OUTPUT: Next.js standalone mode (default: true)
+#
+# Environment Variables:
+#   - Service metadata: SERVICE_NAME, SERVICE_VERSION
+#   - Runtime: NODE_ENV, PORT, HOSTNAME, NEXT_TELEMETRY_DISABLED
+#   - API configuration: NEXT_PUBLIC_API_URL, NEXT_PUBLIC_APP_URL, NEXT_PUBLIC_ZK_PROOF_ENDPOINT, etc.
+#   - Security: CORS origins, Content Security Policy
+#   - Feature flags: MFA, GDPR, Bridge features
+#   - Analytics and monitoring configuration
+#
+# Security Features:
+#   - Non-root user (1001:1001)
+#   - Limited filesystem access
+#   - Dropped capabilities (except NET_BIND_SERVICE)
+#   - Security profiles (seccomp, apparmor)
+#   - Health checking
+#
+# Volumes:
+#   - ui-logs: Persistent application logs
+#   - ui-tmp: Temporary storage
+#
+# Networking:
+#   - Connected to veridis-core-network
+#   - Exposed on configurable port (default: 3000)
+#   - Configured for Traefik routing
+#
+# Dependencies:
+#   - veridis-backend service
+#
+# Secrets:
+#   - sentry_dsn: Error tracking configuration
+
+version: "3.8"
+
+services:
+  # Veridis UI Service Configuration
+  #
+  # This service configures the Next.js frontend application for the Veridis identity platform.
+  #
+  # Build arguments:
+  #   - NODE_VERSION: Node.js version to use (default: 22)
+  #   - ALPINE_VERSION: Alpine Linux version to use (default: alpine)
+  #   - BUILD_MODE: Build mode for Next.js (default: production)
+  #   - PACKAGE_MANAGER: NPM/Yarn/PNPM selection (default: auto-detect)
+  #   - SECURITY_SCAN_REQUIRED: Whether to run security scans during build (default: true)
+  #   - UI_PORT: Port for UI service (default: 3000)
+  #   - NEXT_TELEMETRY_DISABLED: Disables Next.js telemetry (default: 1)
+  #   - STANDALONE_OUTPUT: Builds Next.js in standalone mode (default: true)
+  #
+  # Environment variables:
+  #   - SERVICE_NAME/VERSION: Service metadata
+  #   - NODE_ENV: Runtime environment (default: production)
+  #   - API configuration: NEXT_PUBLIC_API_URL, NEXT_PUBLIC_APP_URL, etc.
+  #   - Security settings: CORS origins and Content Security Policy
+  #   - Feature flags: MFA, GDPR, Bridge
+  #   - Analytics configuration
+  #
+  # Security features:
+  #   - Runs as non-root user (1001:1001)
+  #   - Read-only filesystem with controlled writeable areas
+  #   - Dropped capabilities except NET_BIND_SERVICE
+  #   - Security opt configurations (seccomp, apparmor)
+  #   - Health checking via API endpoint
+  #
+  # Networking:
+  #   - Connects to veridis-core-network
+  #   - Exposed on configurable port (default: 3000)
+  #   - Traefik routing configuration
+  #
+  # Dependencies:
+  #   - Requires veridis-backend to be running
+  #
+  # Volumes:
+  #   - ui-logs: Persistent storage for application logs
+  #   - ui-tmp: Temporary storage (also mounted as tmpfs)
+  #
+  # Secrets:
+  #   - sentry_dsn: Sentry error tracking configuration
+  veridis-ui:
+    build:
+      context: ./ui/identity_app
+      dockerfile: Dockerfile
+      target: production
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22}
+        ALPINE_VERSION: ${ALPINE_VERSION:-alpine}
+        BUILD_MODE: ${BUILD_MODE:-production}
+        PACKAGE_MANAGER: ${PACKAGE_MANAGER:-auto-detect}
+        SECURITY_SCAN_REQUIRED: ${SECURITY_SCAN_REQUIRED:-true}
+        UI_PORT: ${UI_PORT:-3000}
+        NEXT_TELEMETRY_DISABLED: ${NEXT_TELEMETRY_DISABLED:-1}
+        STANDALONE_OUTPUT: ${STANDALONE_OUTPUT:-true}
+    image: ${DOCKER_REGISTRY:-veridis}/ui:${VERSION:-latest}
+    container_name: ${COMPOSE_PROJECT_NAME:-veridis}-ui
+    hostname: ui.veridis.internal
+    ports:
+      - "${UI_PORT:-3000}:3000"
+    networks:
+      - veridis-core-network
+    environment:
+      SERVICE_NAME: veridis-ui
+      SERVICE_VERSION: ${VERSION:-latest}
+      NODE_ENV: ${ENVIRONMENT:-production}
+      PORT: 3000
+      HOSTNAME: "0.0.0.0"
+      NEXT_TELEMETRY_DISABLED: ${NEXT_TELEMETRY_DISABLED:-1}
+      # Frontend configuration
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://backend.veridis.internal:8080}
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      NEXT_PUBLIC_ENVIRONMENT: ${ENVIRONMENT:-production}
+      NEXT_PUBLIC_ZK_PROOF_ENDPOINT: ${NEXT_PUBLIC_ZK_PROOF_ENDPOINT:-http://zk-circuits.veridis.internal:4000}
+      NEXT_PUBLIC_STARKNET_RPC_URL: ${NEXT_PUBLIC_STARKNET_RPC_URL:-http://starknet.veridis.internal:5050/rpc/v0_8_1}
+      # Security and CORS
+      NEXT_PUBLIC_CORS_ORIGINS: ${CORS_ORIGINS:-https://*.veridis.com}
+      NEXT_PUBLIC_CSP_ENABLED: ${CSP_ENABLED:-true}
+      # Feature flags
+      NEXT_PUBLIC_MFA_ENABLED: ${MFA_REQUIRED:-true}
+      NEXT_PUBLIC_GDPR_FEATURES_ENABLED: ${GDPR_AUTOMATION:-true}
+      NEXT_PUBLIC_BRIDGE_ENABLED: ${BRIDGE_ENABLED:-true}
+      # Analytics and monitoring
+      NEXT_PUBLIC_ANALYTICS_ENABLED: ${ANALYTICS_ENABLED:-false}
+      NEXT_PUBLIC_SENTRY_DSN_FILE: /run/secrets/sentry_dsn
+    volumes:
+      - ui-logs:/app/logs
+      - ui-tmp:/app/tmp
+    depends_on:
+      - veridis-backend
+    security_opt:
+      - no-new-privileges:true
+      - seccomp:${UI_SECCOMP_PROFILE:-./config/seccomp/nextjs.json}
+      - apparmor:${UI_APPARMOR_PROFILE:-docker-default}
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    read_only: false
+    tmpfs:
+      - /app/tmp:rw,noexec,nosuid,size=100m
+    user: "1001:1001"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "-f",
+          "-H",
+          "User-Agent: Docker-Health",
+          "http://localhost:3000/api/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 45s
+    logging:
+      driver: ${LOGGING_DRIVER:-json-file}
+      options:
+        max-size: "100m"
+        max-file: "10"
+        compress: "true"
+    secrets:
+      - sentry_dsn
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ui.rule=Host(`${DOMAIN:-localhost}`)"
+      - "traefik.http.routers.ui.tls=true"
+      - "service.name=veridis-ui"
+      - "service.tier=frontend"
+
+# Docker Compose Configuration for UI Services
+#
+# This file defines volume configurations for UI-related services:
+#
+# Volumes:
+# - ui-logs: Persistent storage for UI service logs
+#   - Uses project name as prefix (defaults to 'veridis')
+#   - Uses configurable volume driver (defaults to 'local')
+#
+# - ui-tmp: Temporary storage for UI service
+#   - Uses project name as prefix (defaults to 'veridis')
+#   - Uses configurable volume driver (defaults to 'local')
+#
+# Environment Variables:
+# - COMPOSE_PROJECT_NAME: Sets the project name prefix (default: 'veridis')
+# - VOLUME_DRIVER: Specifies the Docker volume driver (default: 'local')
+volumes:
+  ui-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-logs
+    driver: ${VOLUME_DRIVER:-local}
+  ui-tmp:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-tmp
+    driver: ${VOLUME_DRIVER:-local}
+
+# UI Docker Compose Configuration
+#
+# This file contains Docker Compose configuration for UI services.
+#
+# Secrets:
+#   sentry_dsn: External secret for Sentry DSN (Data Source Name) used for error tracking
+#               The secret name is prefixed with the project name (defaulting to "veridis" if not set)
+#
+# Environment Variables:
+#   COMPOSE_PROJECT_NAME: Project name prefix for the secret name (defaults to "veridis")
+secrets:
+  sentry_dsn:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-sentry-dsn

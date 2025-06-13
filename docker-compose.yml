@@ -1,0 +1,689 @@
+# Docker Compose Configuration for Veridis
+#
+# This Docker Compose configuration establishes a comprehensive development environment
+# with integrated services for blockchain development on StarkNet, focusing on security,
+# resource management, and operational best practices.
+#
+# ## Core Services:
+#
+# ### Vault (HashiCorp)
+# - Secure secrets management using Vault Enterprise 1.15.6
+# - Exposed on port 8200 (configurable)
+# - Enhanced security with memory locking and custom seccomp profiles
+# - Persistent storage for data and logs
+#
+# ### PostgreSQL
+# - PostgreSQL 16.1 database with Alpine 3.19 base image
+# - SCRAM-SHA-256 authentication and security hardening
+# - Configurable parameters for connections, buffers, and caching
+# - Data persistence and scheduled backups
+#
+# ### Redis
+# - Redis 7.2.4 cache server with Alpine 3.19 base image
+# - Password authentication using Docker secrets
+# - Configurable memory limits with eviction policies
+# - Data persistence with append-only file
+#
+# ### StarkNet Devnet
+# - Local StarkNet blockchain for development and testing
+# - Pre-funded accounts with configurable initial balances
+# - Configurable network parameters including gas price and chain ID
+# - Persistent blockchain state storage
+#
+# ## Architecture Features:
+#
+# ### Network Isolation
+# - Four isolated networks for different service types:
+#   * Core network (172.20.0.0/16)
+#   * Data network (172.21.0.0/16)
+#   * Cache network (172.22.0.0/16)
+#   * Blockchain network (172.23.0.0/16)
+#
+# ### Security Hardening
+# - No privilege escalation
+# - Custom seccomp/apparmor profiles
+# - Capability restrictions
+# - Read-only file systems with controlled temporary storage
+# - Non-root users where possible
+#
+# ### Resource Management
+# - Three resource profiles (small, medium, large) with defined:
+#   * Memory limits and reservations
+#   * CPU constraints
+#   * Process count limitations
+#
+# ### Data Persistence
+# - Named volumes for all services
+# - Backup scheduling through labels
+# - Encryption for sensitive data
+#
+# ### Observability
+# - Standardized logging with rotation and compression
+# - Uniform health check parameters across services
+# - Service labels for monitoring and management
+#
+# ## Usage:
+# - Set COMPOSE_PROJECT_NAME to change default prefix (default: veridis)
+# - Create required Docker secrets before deployment
+# - Configure services through environment variables
+# - Extension fields provide reusable configurations through YAML anchors
+version: "3.8"
+
+# Docker Compose Configuration for Veridis
+#
+# This configuration establishes reusable components for a containerized deployment,
+# focusing on security, resource management, and operational best practices.
+#
+# EXTENSION FIELDS:
+# - x-common-logging: Configures standardized logging with rotation and compression
+# - x-common-healthcheck: Defines uniform health check parameters across services
+# - x-security-defaults: Implements security hardening with seccomp/apparmor profiles and capability constraints
+# - x-resource-limits-*: Tiered resource allocation profiles (small, medium, large) for right-sizing containers
+# - x-environment-common: Common environment variables for service configuration
+#
+# SECURITY FEATURES:
+# - No privilege escalation
+# - Custom seccomp/apparmor profiles (configurable via environment variables)
+# - Capability restrictions
+# - Read-only file systems with controlled temporary storage
+#
+# RESOURCE MANAGEMENT:
+# - Three resource profiles (small, medium, large) with defined:
+#   * Memory limits and reservations
+#   * CPU constraints
+#   * Process count limitations
+#
+# ENVIRONMENT CONFIGURATION:
+# - Standard operational parameters with sensible defaults
+# - Security and compliance settings
+# - Observability configurations
+#
+# Usage: These extension fields can be referenced in service definitions using YAML anchors
+# Example: services.myservice.deploy: *resource-limits-medium
+# Global extension fields for common configurations
+x-common-logging: &default-logging
+  driver: ${LOGGING_DRIVER:-json-file}
+  options:
+    max-size: "100m"
+    max-file: "10"
+    compress: "true"
+    labels: "service,environment,version"
+
+x-common-healthcheck: &default-healthcheck
+  interval: 30s
+  timeout: 10s
+  retries: 3
+  start_period: 60s
+
+# Enhanced security defaults with proper seccomp profile
+x-security-defaults: &security-defaults
+  security_opt:
+    - no-new-privileges:true
+    - seccomp:${SECCOMP_PROFILE:-default}
+    - apparmor:${APPARMOR_PROFILE:-docker-default}
+  cap_drop:
+    - ALL
+  cap_add: []
+  read_only: true
+  tmpfs:
+    - /tmp:noexec,nosuid,size=100m
+
+x-resource-limits: &resource-limits-small
+  limits:
+    memory: 1G
+    cpus: "1.0"
+    pids: 100
+  reservations:
+    memory: 512M
+    cpus: "0.5"
+
+x-resource-limits-medium: &resource-limits-medium
+  limits:
+    memory: 2G
+    cpus: "2.0"
+    pids: 200
+  reservations:
+    memory: 1G
+    cpus: "1.0"
+
+x-resource-limits-large: &resource-limits-large
+  limits:
+    memory: 4G
+    cpus: "4.0"
+    pids: 500
+  reservations:
+    memory: 2G
+    cpus: "2.0"
+
+x-environment-common: &environment-common
+  NODE_ENV: ${ENVIRONMENT:-production}
+  LOG_LEVEL: ${LOG_LEVEL:-info}
+  RUST_LOG: ${RUST_LOG:-info}
+  TELEMETRY_ENABLED: ${TELEMETRY_ENABLED:-true}
+  SECURITY_LEVEL: ${SECURITY_LEVEL:-4}
+  TLS_VERSION: ${TLS_VERSION:-1.3}
+  FIPS_MODE: ${FIPS_MODE:-false}
+  AUDIT_ENABLED: ${AUDIT_ENABLED:-true}
+  METRICS_ENABLED: ${METRICS_ENABLED:-true}
+
+services:
+  # ==============================================================================
+  # Secrets Management - HashiCorp Vault
+  # ==============================================================================
+  # Vault Service Configuration
+  #
+  # This defines the HashiCorp Vault service container which provides secure secret management.
+  #
+  # Features:
+  # - Runs Vault Enterprise 1.15.6 in development mode
+  # - Configured with persistent storage for data and logs
+  # - Exposed on configurable port (default: 8200)
+  # - Enhanced security with read-only filesystem, MLOCK capabilities, and seccomp profiles
+  # - Integrated with the veridis-core-network
+  # - Resource limits applied to prevent overconsumption
+  # - Health checks to ensure service availability
+  #
+  # Environment Variables:
+  # - VAULT_PORT: External port mapping (default: 8200)
+  # - VAULT_ROOT_TOKEN: Root token for initial access
+  # - VAULT_DISABLE_MLOCK: Whether to disable memory locking (default: false)
+  # - VAULT_LOG_LEVEL: Logging verbosity (default: info)
+  # - VAULT_SECCOMP_PROFILE: Path to seccomp profile (default: ./config/seccomp/vault.json)
+  #
+  # Volumes:
+  # - vault-data: Persistent storage for Vault data
+  # - vault-logs: Persistent storage for Vault logs
+  # - ./config/vault: Mount point for configuration files (read-only)
+  #
+  # Security:
+  # - IPC_LOCK capability added for memory locking
+  # - No new privileges allowed for the container
+  # - Custom seccomp profile applied
+  # - Temporary filesystem with size restrictions
+  vault:
+    image: hashicorp/vault:1.15.6-enterprise
+    container_name: ${COMPOSE_PROJECT_NAME:-veridis}-vault
+    hostname: vault.veridis.internal
+    ports:
+      - "${VAULT_PORT:-8200}:8200"
+    networks:
+      - veridis-core-network
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_ROOT_TOKEN}
+      VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+      VAULT_API_ADDR: https://vault.veridis.internal:8200
+      VAULT_DISABLE_MLOCK: ${VAULT_DISABLE_MLOCK:-false}
+      VAULT_LOG_LEVEL: ${VAULT_LOG_LEVEL:-info}
+    volumes:
+      - vault-data:/vault/data
+      - vault-logs:/vault/logs
+      - ./config/vault:/vault/config:ro
+    cap_add:
+      - IPC_LOCK
+    <<: *security-defaults
+    security_opt:
+      - no-new-privileges:true
+      - seccomp:${VAULT_SECCOMP_PROFILE:-./config/seccomp/vault.json}
+    read_only: false
+    tmpfs:
+      - /vault/tmp:rw,noexec,nosuid,size=100m
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      <<: *default-healthcheck
+    deploy:
+      resources:
+        <<: *resource-limits-medium
+    logging: *default-logging
+    secrets:
+      - vault_root_token
+    labels:
+      - "service.name=vault"
+      - "service.version=1.15.6"
+      - "compliance.required=true"
+      - "backup.enabled=true"
+
+  # ==============================================================================
+  # Database - PostgreSQL with Enhanced Security
+  # ==============================================================================
+  # PostgreSQL Database Service
+  #
+  # This service runs a PostgreSQL 16.1 database server with Alpine 3.19 as the base image.
+  # It's configured with security best practices including:
+  #   - SCRAM-SHA-256 authentication
+  #   - Read-only filesystem where possible
+  #   - Non-root user (999:999)
+  #   - Seccomp profile for additional protection
+  #   - No new privileges flag
+  #   - Memory-limited tmpfs mounts
+  #
+  # Environment variables can be used to configure:
+  #   - DB_PORT: Port mapping (default: 5432)
+  #   - DB_NAME: Database name (default: veridis_main)
+  #   - DB_SSL_MODE: SSL mode (default: require)
+  #   - DB_MAX_CONNECTIONS: Maximum connections (default: 200)
+  #   - DB_SHARED_BUFFERS: Shared buffers size (default: 256MB)
+  #   - DB_EFFECTIVE_CACHE_SIZE: Cache size (default: 1GB)
+  #
+  # Persistent data is stored in named volumes:
+  #   - postgres-data: For database files
+  #   - postgres-backups: For database backups
+  #
+  # Initialization scripts are mounted from ./scripts/database
+  # Database credentials are provided via Docker secrets (db_user, db_password)
+  #
+  # Health checks ensure the database is responding properly before marking as healthy.
+  # Resource limits are applied via the resource-limits-large anchor reference.
+  postgres:
+    image: postgres:16.1-alpine3.19
+    container_name: ${COMPOSE_PROJECT_NAME:-veridis}-postgres
+    hostname: postgres.veridis.internal
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    networks:
+      - veridis-data-network
+    environment:
+      POSTGRES_DB: ${DB_NAME:-veridis_main}
+      POSTGRES_INITDB_ARGS: >-
+        --auth-host=scram-sha-256
+        --auth-local=scram-sha-256
+        --encoding=UTF8
+        --locale=C.UTF-8
+        --data-checksums
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_SSL_MODE: ${DB_SSL_MODE:-require}
+      POSTGRES_MAX_CONNECTIONS: ${DB_MAX_CONNECTIONS:-200}
+      POSTGRES_SHARED_BUFFERS: ${DB_SHARED_BUFFERS:-256MB}
+      POSTGRES_EFFECTIVE_CACHE_SIZE: ${DB_EFFECTIVE_CACHE_SIZE:-1GB}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - postgres-backups:/backups
+      - ./scripts/database:/docker-entrypoint-initdb.d:ro
+    <<: *security-defaults
+    security_opt:
+      - no-new-privileges:true
+      - seccomp:${POSTGRES_SECCOMP_PROFILE:-./config/seccomp/postgres.json}
+    read_only: false
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=200m
+      - /var/run/postgresql:rw,noexec,nosuid,size=100m
+    user: "999:999"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $${POSTGRES_USER:-veridis} -d $${POSTGRES_DB:-veridis_main}",
+        ]
+      <<: *default-healthcheck
+    deploy:
+      resources:
+        <<: *resource-limits-large
+    logging: *default-logging
+    secrets:
+      - db_user
+      - db_password
+    labels:
+      - "service.name=postgres"
+      - "service.version=16.1"
+      - "backup.enabled=true"
+      - "encryption.enabled=true"
+
+  # ==============================================================================
+  # Cache - Redis with Security Hardening
+  # ==============================================================================
+  # Redis Service Configuration
+  #
+  # This service sets up a Redis instance with the following features:
+  # - Uses Redis 7.2.4 Alpine 3.19 image
+  # - Container name based on the COMPOSE_PROJECT_NAME environment variable
+  # - Custom hostname for internal networking
+  # - Exposed on configurable port (default: 6379)
+  # - Connected to the veridis-cache-network
+  # - Data persistence with append-only file and configured save intervals
+  # - Password authentication using Docker secrets
+  # - Memory limitations with configurable policy (default: 1GB with allkeys-lru eviction)
+  # - Network keepalive and timeout settings
+  # - Binding to all interfaces with protected mode enabled
+  # - Custom logging level
+  #
+  # Security features:
+  # - Running as non-root user (999:999)
+  # - No privilege escalation
+  # - Custom seccomp profile for additional security
+  # - Inherits security defaults from a shared configuration
+  #
+  # Resources:
+  # - Configured with medium resource limits
+  # - Data persistence through named volumes for data and logs
+  # - Health monitoring through redis-cli ping command
+  # - Standard logging configuration
+  #
+  # Additional metadata:
+  # - Service labeled for identification and backup purposes
+  redis:
+    image: redis:7.2.4-alpine3.19
+    container_name: ${COMPOSE_PROJECT_NAME:-veridis}-redis
+    hostname: redis.veridis.internal
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    networks:
+      - veridis-cache-network
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --requirepass_file /run/secrets/redis_password
+      --maxmemory ${REDIS_MAXMEMORY:-1gb}
+      --maxmemory-policy ${REDIS_MAXMEMORY_POLICY:-allkeys-lru}
+      --save 900 1 300 10 60 10000
+      --tcp-keepalive 300
+      --timeout 0
+      --bind 0.0.0.0
+      --protected-mode yes
+      --port 6379
+      --loglevel notice
+      --disable-thp yes
+      --always-show-logo no
+    volumes:
+      - redis-data:/data
+      - redis-logs:/var/log/redis
+    <<: *security-defaults
+    security_opt:
+      - no-new-privileges:true
+      - seccomp:${REDIS_SECCOMP_PROFILE:-./config/seccomp/redis.json}
+    user: "999:999"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "redis-cli",
+          "--no-auth-warning",
+          "-a",
+          "$$(cat /run/secrets/redis_password)",
+          "ping",
+        ]
+      <<: *default-healthcheck
+    deploy:
+      resources:
+        <<: *resource-limits-medium
+    logging: *default-logging
+    secrets:
+      - redis_password
+    labels:
+      - "service.name=redis"
+      - "service.version=7.2.4"
+      - "backup.enabled=true"
+
+  # ==============================================================================
+  # Blockchain - StarkNet Devnet
+  # ==============================================================================
+  # Starknet Devnet Service Configuration
+  #
+  # This service runs a Starknet development network (devnet) using shardlabs' container image.
+  # It exposes a local Starknet blockchain for development and testing purposes.
+  #
+  # Environment Variables:
+  # - STARKNET_PORT: Port to expose Starknet devnet (default: 5050)
+  # - STARKNET_SEED: Seed for deterministic account generation (default: 42)
+  # - STARKNET_ACCOUNTS: Number of pre-funded accounts to create (default: 10)
+  # - STARKNET_INITIAL_BALANCE: Initial balance for pre-funded accounts in wei (default: 10^21)
+  # - STARKNET_GAS_PRICE: Default gas price in wei (default: 10^9)
+  # - STARKNET_TIMEOUT: RPC request timeout in seconds (default: 120)
+  # - STARKNET_CHAIN_ID: Chain ID for the network (default: SN_GOERLI)
+  # - STARKNET_SECCOMP_PROFILE: Security profile for container (default: default)
+  #
+  # Persistent Volumes:
+  # - starknet-data: Stores blockchain state
+  # - starknet-logs: Stores service logs
+  #
+  # Security:
+  # - Inherits security defaults from template
+  # - Read-only filesystem disabled to allow state persistence
+  # - Temporary filesystem mounted for runtime operations
+  #
+  # Health Check:
+  # - Checks if the devnet API is responding every 15 seconds
+  #
+  # Resource Management:
+  # - Uses the "large" resource limits template
+  #
+  # Networking:
+  # - Connected to veridis-blockchain-network
+  # - Available internally at starknet.veridis.internal
+  starknet-devnet:
+    image: shardlabs/starknet-devnet-rs:latest
+    container_name: ${COMPOSE_PROJECT_NAME:-veridis}-starknet-devnet
+    hostname: starknet.veridis.internal
+    ports:
+      - "${STARKNET_PORT:-5050}:5050"
+    networks:
+      - veridis-blockchain-network
+    command: >
+      starknet-devnet
+      --host 0.0.0.0
+      --port 5050
+      --seed ${STARKNET_SEED:-42}
+      --accounts ${STARKNET_ACCOUNTS:-10}
+      --initial-balance ${STARKNET_INITIAL_BALANCE:-1000000000000000000000}
+      --gas-price ${STARKNET_GAS_PRICE:-1000000000}
+      --timeout ${STARKNET_TIMEOUT:-120}
+      --chain-id ${STARKNET_CHAIN_ID:-SN_GOERLI}
+    volumes:
+      - starknet-data:/data
+      - starknet-logs:/var/log/starknet
+    <<: *security-defaults
+    security_opt:
+      - no-new-privileges:true
+      - seccomp:${STARKNET_SECCOMP_PROFILE:-default}
+    read_only: false
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=500m
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5050/is_alive"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        <<: *resource-limits-large
+    logging: *default-logging
+    labels:
+      - "service.name=starknet-devnet"
+      - "blockchain.network=testnet"
+
+# ==============================================================================
+# Network Configuration
+# ==============================================================================
+# Docker Compose Network Configuration
+#
+# This configuration defines four isolated Docker networks for the Veridis project:
+#
+# 1. veridis-core-network: Primary network for core application services
+#    - Subnet: 172.20.0.0/16
+#    - Security Level: High
+#
+# 2. veridis-data-network: Dedicated network for database and data storage services
+#    - Subnet: 172.21.0.0/16
+#    - Security Level: High
+#
+# 3. veridis-cache-network: Network for caching services like Redis
+#    - Subnet: 172.22.0.0/16
+#    - Security Level: Medium
+#
+# 4. veridis-blockchain-network: Isolated network for blockchain-related services
+#    - Subnet: 172.23.0.0/16
+#    - Security Level: High
+#
+# Environment Variables:
+#   COMPOSE_PROJECT_NAME: Prefix for network names (default: veridis)
+#   NETWORK_DRIVER: Docker network driver to use (default: bridge)
+#   NETWORK_ENCRYPTION: Enable network encryption (default: false)
+networks:
+  veridis-core-network:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-core-network
+    driver: ${NETWORK_DRIVER:-bridge}
+    encrypted: ${NETWORK_ENCRYPTION:-false}
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
+    labels:
+      - "network.type=core"
+      - "security.level=high"
+
+  veridis-data-network:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-data-network
+    driver: ${NETWORK_DRIVER:-bridge}
+    encrypted: ${NETWORK_ENCRYPTION:-false}
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
+    labels:
+      - "network.type=data"
+      - "security.level=high"
+
+  veridis-cache-network:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-cache-network
+    driver: ${NETWORK_DRIVER:-bridge}
+    encrypted: ${NETWORK_ENCRYPTION:-false}
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
+          gateway: 172.22.0.1
+    labels:
+      - "network.type=cache"
+      - "security.level=medium"
+
+  veridis-blockchain-network:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-blockchain-network
+    driver: ${NETWORK_DRIVER:-bridge}
+    encrypted: ${NETWORK_ENCRYPTION:-false}
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.23.0.0/16
+          gateway: 172.23.0.1
+    labels:
+      - "network.type=blockchain"
+      - "security.level=high"
+
+# ==============================================================================
+# Volume Configuration
+# ==============================================================================
+# Volumes configuration for the Veridis project
+#
+# This section defines persistent storage volumes for various services:
+#
+# - vault-data: Stores secure vault data with encryption and backup enabled
+# - vault-logs: Captures vault service logs with backup enabled
+# - postgres-data: Primary database storage with encryption and scheduled backups every 6 hours
+# - postgres-backups: Stores database backups with 90-day retention and encryption
+# - redis-data: Cache storage for Redis with backup enabled
+# - redis-logs: Redis service logs
+# - starknet-data: Blockchain data storage for Starknet with backup enabled
+# - starknet-logs: StarkNet service logs
+#
+# Environment variables:
+# - COMPOSE_PROJECT_NAME: Prefix for volume names (defaults to "veridis")
+# - VOLUME_DRIVER: Docker volume driver to use (defaults to "local")
+#
+# Custom labels are used to define volume properties for backup systems,
+# monitoring tools, and storage management utilities.
+volumes:
+  vault-data:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-vault-data
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=security"
+      - "backup.enabled=true"
+      - "encryption.enabled=true"
+
+  vault-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-vault-logs
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=logs"
+      - "backup.enabled=true"
+
+  postgres-data:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-postgres-data
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=database"
+      - "backup.enabled=true"
+      - "backup.schedule=0 */6 * * *"
+      - "encryption.enabled=true"
+
+  postgres-backups:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-postgres-backups
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=backup"
+      - "retention.days=90"
+      - "encryption.enabled=true"
+
+  redis-data:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-redis-data
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=cache"
+      - "backup.enabled=true"
+
+  redis-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-redis-logs
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=logs"
+
+  starknet-data:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-starknet-data
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=blockchain"
+      - "backup.enabled=true"
+
+  starknet-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-starknet-logs
+    driver: ${VOLUME_DRIVER:-local}
+    labels:
+      - "volume.type=logs"
+
+# ==============================================================================
+# Secrets Configuration
+# ==============================================================================
+# Docker Compose Secrets Configuration
+#
+# This section defines external secrets used across the services in this compose file:
+#
+# - vault_root_token: Root token for Hashicorp Vault
+# - db_user: Database user credentials
+# - db_password: Database password credentials
+# - redis_password: Redis password for authentication
+#
+# All secrets are configured as external, meaning they must be created
+# before running docker-compose, typically using the `docker secret create` command.
+#
+# The name of each secret includes the COMPOSE_PROJECT_NAME environment variable
+# with a default value of 'veridis' if not specified. This allows for
+# environment-specific secret naming.
+secrets:
+  vault_root_token:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-vault-root-token
+
+  db_user:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-db-user
+
+  db_password:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-db-password
+
+  redis_password:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-redis-password

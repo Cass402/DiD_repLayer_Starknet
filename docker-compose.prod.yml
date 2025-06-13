@@ -1,0 +1,130 @@
+# Production Docker Compose Configuration for DiD_repLayer_Starknet
+#
+# This configuration defines a production deployment with services:
+# - vault: Secure credential management with high availability (2 replicas)
+# - postgres: Database service with dedicated resources on database-labeled nodes
+# - redis: In-memory cache service with replication for high availability
+# - veridis-backend: Main application backend with scaling and careful update policies
+# - zk-circuits: Zero-knowledge proof services running on specialized nodes
+# - veridis-ui: Frontend service with redundancy and controlled rollout
+#
+# The deployment uses resource limits and reservations to ensure stable performance,
+# along with update configurations for safe deployments and specific placement constraints
+# for specialized services. All networks are encrypted for security.
+#
+# Note: This file only contains the deployment configuration and should be used
+# with a base docker-compose file that defines the actual services, volumes, and ports.
+version: "3.8"
+
+services:
+  vault:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+        reservations:
+          memory: 1G
+          cpus: "1.0"
+      update_config:
+        parallelism: 1
+        delay: 30s
+        failure_action: rollback
+      restart_policy:
+        condition: unless-stopped
+        delay: 30s
+        max_attempts: 5
+
+  postgres:
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 4G
+          cpus: "4.0"
+        reservations:
+          memory: 2G
+          cpus: "2.0"
+      placement:
+        constraints:
+          - node.labels.database == true
+      restart_policy:
+        condition: unless-stopped
+
+  redis:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+        reservations:
+          memory: 1G
+          cpus: "1.0"
+
+  veridis-backend:
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 4G
+          cpus: "4.0"
+        reservations:
+          memory: 2G
+          cpus: "2.0"
+      update_config:
+        parallelism: 1
+        delay: 30s
+        failure_action: rollback
+        monitor: 60s
+        max_failure_ratio: 0.1
+      restart_policy:
+        condition: unless-stopped
+        delay: 10s
+        max_attempts: 5
+
+  zk-circuits:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 8G
+          cpus: "4.0"
+        reservations:
+          memory: 4G
+          cpus: "2.0"
+      placement:
+        constraints:
+          - node.labels.zk == true
+      restart_policy:
+        condition: unless-stopped
+
+  veridis-ui:
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+        reservations:
+          memory: 1G
+          cpus: "1.0"
+      update_config:
+        parallelism: 1
+        delay: 30s
+        failure_action: rollback
+      restart_policy:
+        condition: unless-stopped
+
+networks:
+  veridis-core-network:
+    encrypted: true
+  veridis-data-network:
+    encrypted: true
+  veridis-cache-network:
+    encrypted: true
+  veridis-blockchain-network:
+    encrypted: true
+  veridis-zk-network:
+    encrypted: true

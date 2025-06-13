@@ -1,0 +1,792 @@
+# Docker Compose Development Configuration for Veridis DiD Layer on Starknet
+#
+# This configuration defines a complete development environment for the Veridis DiD (Decentralized Identity)
+# layer built on Starknet. The setup includes:
+#
+# INFRASTRUCTURE SERVICES:
+#   - vault: HashiCorp Vault in development mode for secrets management
+#   - postgres: PostgreSQL database for persistent storage with development settings
+#   - redis: Redis server for caching with development configuration
+#   - starknet-devnet: Local Starknet development network
+#
+# APPLICATION SERVICES:
+#   - veridis-backend: Rust-based API backend service with hot reloading
+#   - zk-circuits: Zero-knowledge proof generation service
+#   - veridis-ui: NextJS frontend application
+#
+# DEVELOPMENT TOOLS:
+#   - cairo-dev: Cairo smart contract development environment
+#   - dev-tools: General development container with Node.js, Python, and Rust
+#
+# SHARED CONFIGURATIONS:
+#   - x-dev-logging: JSON logging configuration with rotation policies
+#   - x-dev-security: Minimal security settings for development
+#   - x-dev-resources-*: Tiered container resource allocation limits
+#
+# VOLUMES:
+#   - Persistent storage for databases, caches, and build artifacts
+#   - Named volumes with appropriate labeling for service identification
+#
+# ENVIRONMENT VARIABLES:
+#   - Configurable ports and credentials through .env.dev file
+#   - Development-specific settings for faster iteration
+#
+# NOTE: This configuration is intended for development only and includes
+# non-production settings such as debug ports, development credentials,
+# and relaxed security configurations.
+version: "3.8"
+
+# Docker Compose Development Configuration
+#
+# This section defines reusable configurations for development environments:
+#
+# - x-dev-logging: Configures JSON file logging with rotation policies
+# - x-dev-security: Defines minimal security constraints for development
+# - x-dev-resources-*: Tiered resource allocation appropriate for development
+#
+# Resource tiers are designed to prevent resource contention while allowing
+# efficient development on typical developer machines (8-16GB RAM, 4-8 CPU cores).
+x-dev-logging: &dev-logging
+  driver: json-file
+  options:
+    max-size: "50m"
+    max-file: "5"
+    compress: "false"
+    labels: "service,environment=development"
+
+x-dev-security: &dev-security
+  security_opt: []
+  cap_drop: []
+  cap_add: []
+  read_only: false
+  tmpfs: []
+
+# Small services (Redis, Vault, UI)
+x-dev-resources-small: &dev-resources-small
+  limits:
+    memory: 1G
+    cpus: "1.0"
+    pids: 100
+  reservations:
+    memory: 256M
+    cpus: "0.25"
+
+# Medium services (PostgreSQL, Backend API)
+x-dev-resources-medium: &dev-resources-medium
+  limits:
+    memory: 2G
+    cpus: "2.0"
+    pids: 200
+  reservations:
+    memory: 512M
+    cpus: "0.5"
+
+# Large services (ZK-Circuits, Cairo Dev, StarkNet)
+x-dev-resources-large: &dev-resources-large
+  limits:
+    memory: 3G
+    cpus: "2.0"
+    pids: 300
+  reservations:
+    memory: 1G
+    cpus: "1.0"
+
+# Development tools
+x-dev-resources-tools: &dev-resources-tools
+  limits:
+    memory: 1.5G
+    cpus: "1.5"
+    pids: 150
+  reservations:
+    memory: 384M
+    cpus: "0.5"
+
+services:
+  # ==============================================================================
+  # Infrastructure Service Overrides
+  # ==============================================================================
+
+  vault:
+    environment:
+      VAULT_DEV_MODE: "true"
+      VAULT_DEV_ROOT_TOKEN_ID: veridis-dev-root-token
+      VAULT_LOG_LEVEL: debug
+      VAULT_DISABLE_MLOCK: "true"
+      VAULT_UI: "true"
+      VAULT_API_ADDR: http://vault.veridis.internal:8200
+      VAULT_CLUSTER_ADDR: http://vault.veridis.internal:8201
+    volumes:
+      - ./config/vault/dev:/vault/config:ro
+      - ./scripts/vault/dev-init.sh:/vault/dev-init.sh:ro
+    ports:
+      - "8200:8200"
+      - "8201:8201"
+    <<: *dev-security
+    command: >
+      sh -c "vault server -dev -dev-root-token-id=veridis-dev-root-token
+             -dev-listen-address=0.0.0.0:8200
+             -log-level=debug &
+             sleep 5 && /vault/dev-init.sh &&
+             wait"
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-small
+
+  postgres:
+    environment:
+      POSTGRES_PASSWORD: devpassword
+      POSTGRES_USER: devuser
+      POSTGRES_DB: veridis_dev
+      POSTGRES_INITDB_ARGS: >-
+        --auth-host=trust
+        --auth-local=trust
+        --encoding=UTF8
+        --locale=C.UTF-8
+      POSTGRES_HOST_AUTH_METHOD: trust
+      # Development-specific settings (reduced for dev)
+      POSTGRES_MAX_CONNECTIONS: 50
+      POSTGRES_SHARED_BUFFERS: 64MB
+      POSTGRES_EFFECTIVE_CACHE_SIZE: 256MB
+      POSTGRES_WORK_MEM: 2MB
+      POSTGRES_MAINTENANCE_WORK_MEM: 32MB
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql/data
+      - ./scripts/database/dev:/docker-entrypoint-initdb.d:ro
+      - ./scripts/database/init-dev-db.sql:/docker-entrypoint-initdb.d/001-init-dev-db.sql:ro
+      - ./scripts/database/sample-data.sql:/docker-entrypoint-initdb.d/999-sample-data.sql:ro
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    command: >
+      postgres
+      -c log_statement=all
+      -c log_destination=stderr
+      -c log_line_prefix='%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '
+      -c log_checkpoints=on
+      -c log_connections=on
+      -c log_disconnections=on
+      -c log_lock_waits=on
+      -c log_temp_files=0
+      -c log_autovacuum_min_duration=0
+      -c log_error_verbosity=verbose
+      -c shared_preload_libraries=pg_stat_statements
+    <<: *dev-security
+    user: "999:999"
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-medium
+    labels:
+      - "service.name=postgres-dev"
+      - "service.version=16.1-dev"
+      - "environment=development"
+
+  redis:
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --requirepass devpassword
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+      --save 60 1000
+      --loglevel verbose
+      --logfile ""
+      --bind 0.0.0.0
+      --protected-mode no
+      --port 6379
+      --tcp-keepalive 60
+      --timeout 0
+      --databases 16
+      --dir /data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    environment:
+      REDIS_REPLICATION_MODE: master
+      REDIS_PASSWORD: devpassword
+    <<: *dev-security
+    user: "999:999"
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-small
+    labels:
+      - "service.name=redis-dev"
+      - "service.version=7.2.4-dev"
+      - "environment=development"
+
+  starknet-devnet:
+    command:
+      - starknet-devnet
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "5050"
+      - --seed
+      - "42"
+      - --lite-mode
+      - --accounts
+      - "10" # Reduced for development
+      - --initial-balance
+      - "1000000000000000000000"
+      - --gas-price
+      - "1000000000"
+      - --timeout
+      - "300"
+      - --chain-id
+      - "SN_SEPOLIA"
+      - --dump-on
+      - "exit"
+      - --dump-path
+      - "/data/devnet-dump.json"
+    environment:
+      STARKNET_DEVNET_LITE_MODE: "true"
+      STARKNET_TX_VERSION: "3"
+      STARKNET_RESOURCE_BOUNDS_ENABLED: "true"
+      STARKNET_ACCOUNTS: "10"
+      STARKNET_SEED: "42"
+      STARKNET_FORK_NETWORK: ""
+      STARKNET_FORK_BLOCK: ""
+      RUST_LOG: info # Reduced verbosity
+      RUST_BACKTRACE: "1"
+    ports:
+      - "${STARKNET_PORT:-5050}:5050"
+    volumes:
+      - starknet-dev-data:/data
+      - starknet-dev-logs:/var/log/starknet
+      - ./scripts/starknet/accounts.json:/data/accounts.json:ro
+    <<: *dev-security
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-large
+    labels:
+      - "service.name=starknet-devnet-dev"
+      - "blockchain.network=devnet"
+      - "environment=development"
+
+  # ==============================================================================
+  # Application Service Overrides
+  # ==============================================================================
+
+  veridis-backend:
+    build:
+      target: development
+      args:
+        RUST_VERSION: ${RUST_VERSION:-1.87}
+        BUILD_MODE: debug
+        STATIC_BUILD: "false"
+        OPTIMIZATION_LEVEL: "0"
+        SECURITY_SCAN_REQUIRED: "false"
+        BINARY_NAME: veridis_backend
+    environment:
+      ENVIRONMENT: development
+      LOG_LEVEL: debug
+      RUST_LOG: info,veridis_backend=debug # Reduced global verbosity
+      RUST_BACKTRACE: "1" # Reduced from "full"
+      RUST_LIB_BACKTRACE: "1"
+      # Direct database connections (not using secrets in dev)
+      DATABASE_URL: postgresql://devuser:devpassword@postgres.veridis.internal:5432/veridis_dev
+      REDIS_URL: redis://:devpassword@redis.veridis.internal:6379/0
+      # Service URLs
+      STARKNET_RPC_URL: http://starknet.veridis.internal:5050/rpc/v0_8_1
+      ZK_PROOF_SERVICE_URL: http://zk-circuits.veridis.internal:4000
+      VAULT_ADDR: http://vault.veridis.internal:8200
+      VAULT_TOKEN: veridis-dev-root-token
+      # Development credentials (not secure, for dev only)
+      JWT_SECRET: dev-jwt-secret-key-that-is-long-enough-for-development
+      ENCRYPTION_KEY: dev-encryption-key-32-bytes-long!
+      # Relaxed security for development
+      CORS_ORIGINS: "http://localhost:3000,http://localhost:8080"
+      CSRF_PROTECTION: "true"
+      MFA_REQUIRED: "false"
+      PASSWORD_MIN_LENGTH: "6"
+      RATE_LIMIT_REQUESTS: "1000" # Reduced from 10000
+      RATE_LIMIT_WINDOW: "60"
+      # StarkNet configuration
+      STARKNET_TX_VERSION: "3"
+      RESOURCE_BOUNDS_ENABLED: "true"
+      STARKNET_ACCOUNT_ADDRESS: "0x64b48806902a367c8598f4f95c305e8c1a1acba5f082d294a43793113115691"
+      STARKNET_PRIVATE_KEY: "0x71d7bb07b9a64f6f78ac4c816aff4da9"
+      # Development features
+      HOT_RELOAD_ENABLED: "true"
+      API_DOCS_ENABLED: "true"
+      PLAYGROUND_ENABLED: "true"
+      METRICS_ENABLED: "true"
+      HEALTH_CHECK_TIMEOUT: "1000"
+      # Bridge configuration (testnet)
+      ETHEREUM_RPC_URL: https://sepolia.infura.io/v3/${INFURA_PROJECT_ID:-demo}
+      COSMOS_RPC_URL: https://rpc.sentry-02.theta-testnet.polypore.xyz
+      BRIDGE_SECURITY_THRESHOLD: "1"
+      # GDPR - disabled for development
+      GDPR_AUTOMATION_ENABLED: "false"
+      GDPR_CRYPTO_ERASURE_ENABLED: "false"
+      # Performance settings for development
+      MAX_REQUEST_SIZE: "10MB"
+      CONNECTION_POOL_SIZE: "5" # Reduced for dev
+      WORKER_THREADS: "2" # Reduced for dev
+    volumes:
+      - ./services:/app/src:ro
+      - backend-dev-target:/app/target
+      - backend-dev-cargo:/usr/local/cargo/registry
+      - backend-dev-logs:/app/logs
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+      - "${BACKEND_DEBUG_PORT:-9229}:9229"
+    <<: *dev-security
+    user: "1001:1001"
+    command: >
+      sh -c "cargo watch -x 'run --bin veridis_backend'
+             --watch src
+             --watch Cargo.toml
+             --watch Cargo.lock
+             --delay 2
+             --ignore target/"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      starknet-devnet:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-medium
+    labels:
+      - "service.name=veridis-backend-dev"
+      - "service.tier=core"
+      - "environment=development"
+
+  zk-circuits:
+    build:
+      target: development
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22.14.0}
+        RUST_VERSION: ${RUST_VERSION:-1.87.0}
+        GARAGA_VERSION: ${GARAGA_VERSION:-0.18.1}
+        OPTIMIZATION_LEVEL: "0"
+        SECURITY_LEVEL: "80"
+        MAX_MEMORY: "1536" # Reduced from 2048
+    environment:
+      NODE_ENV: development
+      LOG_LEVEL: info # Reduced from debug
+      DEBUG: "veridis:*" # Removed garaga debug
+      REDIS_URL: redis://:devpassword@redis.veridis.internal:6379/1
+      VAULT_ADDR: http://vault.veridis.internal:8200
+      VAULT_TOKEN: veridis-dev-root-token
+      # Garaga development settings
+      GARAGA_OPTIMIZATION: "false"
+      GARAGA_OPTIMIZATION_LEVEL: "0"
+      GARAGA_CUDA_ENABLED: "false"
+      GARAGA_MEMORY_POOL_SIZE: "512MB" # Reduced from 1GB
+      GARAGA_DEV_MODE: "true"
+      # ZK proof development settings
+      ZK_PROOF_SECURITY_LEVEL: "80"
+      PROOF_GENERATION_TIMEOUT: "60000" # Reduced from 120000
+      PROOF_TIMEOUT_OVERRIDE: "60000"
+      CIRCUIT_COMPILATION_CACHE: "true"
+      WITNESS_GENERATION_PARALLEL: "false"
+      PROOF_VERIFICATION_CACHE_TTL: "300"
+      MAX_CONCURRENT_PROOFS: "1" # Reduced from 2
+      TRUSTED_SETUP_VALIDATION: "false"
+      CIRCUIT_INTEGRITY_CHECK: "false"
+      # Development features
+      HOT_RELOAD_ENABLED: "true"
+      CIRCUIT_WATCH_MODE: "true"
+      PROOF_DEBUGGING: "true"
+      # Node.js development settings
+      NODE_OPTIONS: "--max-old-space-size=1536 --inspect=0.0.0.0:9230"
+    volumes:
+      - ./circuits:/app/src:ro
+      - zk-dev-node-modules:/app/node_modules
+      - zk-dev-cache:/app/cache
+      - zk-dev-keys:/app/keys
+      - zk-dev-logs:/app/logs
+    ports:
+      - "${ZK_PROOF_PORT:-4000}:4000"
+      - "${ZK_DEBUG_PORT:-9230}:9230"
+    <<: *dev-security
+    user: "1000:1000"
+    command: npm run dev
+    depends_on:
+      redis:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-large
+    labels:
+      - "service.name=zk-circuits-dev"
+      - "service.tier=computation"
+      - "environment=development"
+
+  veridis-ui:
+    build:
+      target: development
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22}
+        BUILD_MODE: development
+        NEXT_TELEMETRY_DISABLED: "1"
+        STANDALONE_OUTPUT: "false"
+    environment:
+      NODE_ENV: development
+      NEXT_TELEMETRY_DISABLED: "1"
+      # Development API endpoints
+      NEXT_PUBLIC_API_URL: http://localhost:8080
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      NEXT_PUBLIC_ENVIRONMENT: development
+      NEXT_PUBLIC_ZK_PROOF_ENDPOINT: http://localhost:4000
+      NEXT_PUBLIC_STARKNET_RPC_URL: http://localhost:5050/rpc/v0_8_1
+      # Relaxed security for development
+      NEXT_PUBLIC_CORS_ORIGINS: "*"
+      NEXT_PUBLIC_CSP_ENABLED: "false"
+      # Feature flags - all enabled for testing
+      NEXT_PUBLIC_MFA_ENABLED: "false"
+      NEXT_PUBLIC_GDPR_FEATURES_ENABLED: "true"
+      NEXT_PUBLIC_BRIDGE_ENABLED: "true"
+      NEXT_PUBLIC_PLAYGROUND_ENABLED: "true"
+      NEXT_PUBLIC_DEBUG_MODE: "true"
+      # Analytics disabled for development
+      NEXT_PUBLIC_ANALYTICS_ENABLED: "false"
+      NEXT_PUBLIC_SENTRY_DSN: ""
+      # Development tools
+      FAST_REFRESH: "true"
+      NEXT_PUBLIC_VERCEL_ENV: "development"
+      # StarkNet development
+      NEXT_PUBLIC_STARKNET_CHAIN_ID: "SN_SEPOLIA"
+      NEXT_PUBLIC_STARKNET_NETWORK: "sepolia"
+    volumes:
+      - ./ui/identity_app:/app/src:ro
+      - ui-dev-node-modules:/app/node_modules
+      - ui-dev-next:/app/.next
+      - ui-dev-logs:/app/logs
+    ports:
+      - "${UI_PORT:-3000}:3000"
+    <<: *dev-security
+    user: "1001:1001"
+    command: npm run dev
+    depends_on:
+      - veridis-backend
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-small
+    labels:
+      - "service.name=veridis-ui-dev"
+      - "service.tier=frontend"
+      - "environment=development"
+
+  # ==============================================================================
+  # Development-Only Services
+  # ==============================================================================
+
+  cairo-dev:
+    build:
+      context: .
+      dockerfile: docker/cairo/dev.Dockerfile
+      args:
+        SCARB_VERSION: "2.11.4"
+        CAIRO_NATIVE_VERSION: "2.11.4"
+        STARKNET_FOUNDRY_VERSION: "0.44.0"
+        MLIR_OPTIMIZATION_LEVEL: "2" # Reduced from 3
+        CAIRO_LANG_VERSION: "2.11.4"
+        STARKNET_DEVNET_VERSION: "latest"
+    container_name: ${COMPOSE_PROJECT_NAME:-veridis}-cairo-dev
+    hostname: cairo-dev.veridis.internal
+    volumes:
+      - ./contracts:/app/contracts:rw
+      - ./scripts/cairo:/app/scripts:ro
+      - cairo-cache:/home/vscode/.cairo
+      - scarb-cache:/home/vscode/.local/share/scarb
+      - foundry-cache:/home/vscode/.foundry
+      - ./config/cairo/Scarb.toml:/app/contracts/Scarb.toml:ro
+    working_dir: /app/contracts
+    command: sleep infinity
+    networks:
+      - veridis-core-network
+      - veridis-blockchain-network
+    environment:
+      # Cairo toolchain
+      SCARB_VERSION: "2.11.4"
+      CAIRO_NATIVE_ENABLED: "true"
+      MLIR_OPTIMIZATION_LEVEL: "2"
+      CAIRO_SIERRA_COMPILATION: "true"
+      # StarkNet configuration
+      STARKNET_TX_VERSION: "3"
+      RESOURCE_BOUNDS_ENABLED: "true"
+      STARKNET_RPC_URL: http://starknet.veridis.internal:5050/rpc/v0_8_1
+      STARKNET_NETWORK: sepolia
+      STARKNET_WALLET: braavos
+      # Development features
+      FORMAL_VERIFICATION_ENABLED: "false" # Disabled for faster dev
+      CAIRO_PROFILER_ENABLED: "true"
+      SIERRA_OPTIMIZER_ENABLED: "true"
+      # Testing
+      CAIRO_TEST_RUNNER: starknet-foundry
+      COVERAGE_ENABLED: "false" # Disabled for performance
+      FUZZING_ENABLED: "false" # Disabled for performance
+      # Development tools
+      CAIRO_LS_ENABLED: "true"
+      CAIRO_FORMATTER_ENABLED: "true"
+      CAIRO_LINTER_ENABLED: "true"
+    ports:
+      - "${CAIRO_DEV_PORT:-5051}:5051"
+      - "${CAIRO_LSP_PORT:-9257}:9257"
+    <<: *dev-security
+    user: "vscode:vscode"
+    depends_on:
+      - starknet-devnet
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-large
+    labels:
+      - "service.name=cairo-dev"
+      - "service.type=development-tool"
+      - "language=cairo"
+      - "environment=development"
+
+  dev-tools:
+    build:
+      context: ./docker/dev-tools
+      dockerfile: Dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22}
+        PYTHON_VERSION: "3.12"
+        RUST_VERSION: ${RUST_VERSION:-1.87}
+    image: ${DOCKER_REGISTRY:-veridis}/dev-tools:${VERSION:-latest}
+    container_name: ${COMPOSE_PROJECT_NAME:-veridis}-dev-tools
+    hostname: dev-tools.veridis.internal
+    volumes:
+      - .:/workspace:rw
+      - ~/.gitconfig:/home/dev/.gitconfig:ro
+      - ~/.ssh:/home/dev/.ssh:ro
+      - dev-tools-cache:/home/dev/.cache
+      - dev-tools-config:/home/dev/.config
+    ports:
+      - "${DEV_TOOLS_PORT:-9876}:9876"
+      - "${DEV_TOOLS_DEBUG_PORT:-9999}:9999"
+    networks:
+      - veridis-core-network
+      - veridis-data-network
+      - veridis-cache-network
+      - veridis-blockchain-network
+    environment:
+      NODE_ENV: development
+      WORKSPACE: /workspace
+      # Service endpoints
+      STARKNET_RPC_URL: http://starknet.veridis.internal:5050/rpc/v0_8_1
+      BACKEND_URL: http://veridis-backend.veridis.internal:8080
+      ZK_CIRCUITS_URL: http://zk-circuits.veridis.internal:4000
+      UI_URL: http://veridis-ui.veridis.internal:3000
+      VAULT_ADDR: http://vault.veridis.internal:8200
+      VAULT_TOKEN: veridis-dev-root-token
+      # Database connections
+      DATABASE_URL: postgresql://devuser:devpassword@postgres.veridis.internal:5432/veridis_dev
+      REDIS_URL: redis://:devpassword@redis.veridis.internal:6379
+      # Development tools configuration
+      PROMETHEUS_URL: http://prometheus:9090
+      GRAFANA_URL: http://grafana:3000
+      JAEGER_URL: http://jaeger:16686
+      # Git configuration
+      GIT_AUTHOR_NAME: ${GIT_AUTHOR_NAME:-Developer}
+      GIT_AUTHOR_EMAIL: ${GIT_AUTHOR_EMAIL:-dev@veridis.local}
+      GIT_COMMITTER_NAME: ${GIT_COMMITTER_NAME:-Developer}
+      GIT_COMMITTER_EMAIL: ${GIT_COMMITTER_EMAIL:-dev@veridis.local}
+    <<: *dev-security
+    user: "dev:dev"
+    working_dir: /workspace
+    command: >
+      sh -c "echo 'Starting development tools server...' &&
+             npm run dev-server"
+    depends_on:
+      - starknet-devnet
+      - postgres
+      - redis
+      - vault
+    logging: *dev-logging
+    deploy:
+      resources: *dev-resources-tools
+    labels:
+      - "service.name=dev-tools"
+      - "service.type=development-tool"
+      - "environment=development"
+
+# ==============================================================================
+# Development Volume Overrides
+# ==============================================================================
+volumes:
+  # PostgreSQL development data
+  postgres-dev-data:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-postgres-dev-data
+    driver: local
+    labels:
+      - "volume.type=database"
+      - "environment=development"
+
+  # StarkNet development data
+  starknet-dev-data:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-starknet-dev-data
+    driver: local
+    labels:
+      - "volume.type=blockchain"
+      - "environment=development"
+
+  starknet-dev-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-starknet-dev-logs
+    driver: local
+    labels:
+      - "volume.type=logs"
+      - "environment=development"
+
+  # Backend development volumes
+  backend-dev-target:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-backend-dev-target
+    driver: local
+    labels:
+      - "volume.type=build-cache"
+      - "service=backend"
+      - "environment=development"
+
+  backend-dev-cargo:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-backend-dev-cargo
+    driver: local
+    labels:
+      - "volume.type=package-cache"
+      - "service=backend"
+      - "environment=development"
+
+  backend-dev-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-backend-dev-logs
+    driver: local
+    labels:
+      - "volume.type=logs"
+      - "service=backend"
+      - "environment=development"
+
+  # ZK Circuits development volumes
+  zk-dev-node-modules:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-dev-node-modules
+    driver: local
+    labels:
+      - "volume.type=package-cache"
+      - "service=zk-circuits"
+      - "environment=development"
+
+  zk-dev-cache:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-dev-cache
+    driver: local
+    labels:
+      - "volume.type=cache"
+      - "service=zk-circuits"
+      - "environment=development"
+
+  zk-dev-keys:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-dev-keys
+    driver: local
+    labels:
+      - "volume.type=keys"
+      - "service=zk-circuits"
+      - "environment=development"
+
+  zk-dev-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-zk-dev-logs
+    driver: local
+    labels:
+      - "volume.type=logs"
+      - "service=zk-circuits"
+      - "environment=development"
+
+  # UI development volumes
+  ui-dev-node-modules:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-dev-node-modules
+    driver: local
+    labels:
+      - "volume.type=package-cache"
+      - "service=ui"
+      - "environment=development"
+
+  ui-dev-next:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-dev-next
+    driver: local
+    labels:
+      - "volume.type=build-cache"
+      - "service=ui"
+      - "environment=development"
+
+  ui-dev-logs:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-ui-dev-logs
+    driver: local
+    labels:
+      - "volume.type=logs"
+      - "service=ui"
+      - "environment=development"
+
+  # Cairo development volumes
+  cairo-cache:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-cairo-cache
+    driver: local
+    labels:
+      - "volume.type=cache"
+      - "service=cairo-dev"
+      - "language=cairo"
+      - "environment=development"
+
+  scarb-cache:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-scarb-cache
+    driver: local
+    labels:
+      - "volume.type=package-cache"
+      - "service=cairo-dev"
+      - "tool=scarb"
+      - "environment=development"
+
+  foundry-cache:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-foundry-cache
+    driver: local
+    labels:
+      - "volume.type=package-cache"
+      - "service=cairo-dev"
+      - "tool=foundry"
+      - "environment=development"
+
+  # Development tools volumes
+  dev-tools-cache:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-dev-tools-cache
+    driver: local
+    labels:
+      - "volume.type=cache"
+      - "service=dev-tools"
+      - "environment=development"
+
+  dev-tools-config:
+    name: ${COMPOSE_PROJECT_NAME:-veridis}-dev-tools-config
+    driver: local
+    labels:
+      - "volume.type=config"
+      - "service=dev-tools"
+      - "environment=development"
+# ==============================================================================
+# Development Environment Resource Planning
+# ==============================================================================
+# Total Resource Usage (worst case):
+#
+# Memory Allocation:
+#   Small Services (3): 3GB (vault, redis, ui)
+#   Medium Services (2): 4GB (postgres, backend)
+#   Large Services (3): 9GB (zk-circuits, cairo-dev, starknet)
+#   Tools (1): 1.5GB (dev-tools)
+#   Total: ~17.5GB
+#
+# CPU Allocation:
+#   Small Services: 3 cores
+#   Medium Services: 4 cores
+#   Large Services: 6 cores
+#   Tools: 1.5 cores
+#   Total: ~14.5 cores
+#
+# Recommended Development Machine:
+#   - Minimum: 16GB RAM, 8-core CPU
+#   - Recommended: 32GB RAM, 12-core CPU
+#   - SSD storage for volume performance
+#
+# Note: Resource reservations are conservative to allow overcommit
+# and account for normal development workload variations.
+# ==============================================================================
