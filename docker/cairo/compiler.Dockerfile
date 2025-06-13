@@ -19,7 +19,7 @@
 # INCLUDED COMPONENTS:
 # ===================
 # • Ubuntu 22.04 LTS base with optimized system dependencies
-# • Rust 1.76.0 (Cairo-compatible version) with LLVM tools
+# • Rust 1.87.0 (Cairo-compatible version) with LLVM tools
 # • Scarb (Cairo package manager) with version pinning and verification
 # • Starknet Foundry (testing framework) with checksum validation
 # • Cairo Native compiler with MLIR optimization support
