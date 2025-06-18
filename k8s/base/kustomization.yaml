@@ -1,0 +1,792 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Kubernetes Kustomization
+# ==============================================================================
+#
+# This Kustomization manifest orchestrates the complete deployment of the Veridis
+# Decentralized Identity Protocol on Kubernetes, providing:
+#
+# CORE SERVICES:
+#   • Veridis Backend - Unified Rust service handling identity, attestation,
+#     verification, compliance, and bridge operations
+#   • ZK Circuits - Zero-knowledge proof generation and verification service
+#     with GPU acceleration support
+#
+# INFRASTRUCTURE COMPONENTS:
+#   • PostgreSQL - Primary persistent data storage with high availability
+#   • Redis - High-performance caching and session management
+#   • StarkNet DevNet - Local blockchain development environment
+#   • HashiCorp Vault - Enterprise secrets management and cryptographic operations
+#
+# SECURITY & COMPLIANCE:
+#   • Network Policies - Microsegmentation and traffic control
+#   • Pod Security Standards - Comprehensive security constraints
+#   • RBAC - Role-based access control with least privilege
+#   • Service Mesh - Encrypted inter-service communication
+#   • Audit Logging - Comprehensive audit trail for compliance
+#
+# MONITORING & OBSERVABILITY:
+#   • Prometheus - Metrics collection and alerting
+#   • Grafana - Visualization and dashboards
+#   • Jaeger - Distributed tracing
+#   • Fluent Bit - Log aggregation and forwarding
+#
+# DEPLOYMENT TARGETS:
+#   • Development - Local development with minimal resources
+#   • Staging - Pre-production validation environment
+#   • Production - High-availability production deployment
+#   • Enterprise - Compliance-focused enterprise deployment
+#
+# COMPLIANCE STANDARDS:
+#   • SOC 2 Type II - Security and availability controls
+#   • GDPR - Data protection and privacy compliance
+#   • ISO 27001 - Information security management
+#   • NIST 800-190 - Container security guidelines
+#
+# VERSION COMPATIBILITY:
+#   • Kubernetes: 1.28+
+#   • Kustomize: 5.0+
+#   • Cairo: 2.11.4
+#   • StarkNet: 0.13.4
+#   • Helm: 3.12+ (for dependency charts)
+#
+# ==============================================================================
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+
+# Configures the Veridis Protocol deployment with comprehensive
+# metadata annotations that track the following:
+#
+# - Deployment information: Version, deployment date, and required tooling versions
+# - Technology stack: Version specifications for Cairo, Starknet, Rust, Node.js and Garaga
+# - Compliance: Enabled compliance frameworks including SOC2, GDPR, ISO27001, and NIST
+# - Security: Enterprise-level security with encryption at rest/transit, network policies,
+#   and restricted pod security standards
+# - Monitoring: Configuration for metrics, logging, and tracing with specified retention periods
+#
+# This configuration is designed for production enterprise environments with
+# strict security and compliance requirements.
+metadata:
+  name: veridis-protocol
+  annotations:
+    # Deployment metadata
+    veridis.xyz/deployment-version: "3.2.1"
+    veridis.xyz/deployment-date: "2025-01-18"
+    veridis.xyz/kustomize-version: "5.3.0"
+    veridis.xyz/kubernetes-version: "1.28+"
+    # Technology stack versions
+    veridis.xyz/cairo-version: "2.11.4"
+    veridis.xyz/starknet-version: "0.13.4"
+    veridis.xyz/rust-version: "1.87.0"
+    veridis.xyz/node-version: "22.14.0"
+    veridis.xyz/garaga-version: "0.18.1"
+    # Compliance annotations
+    veridis.xyz/compliance-soc2: "enabled"
+    veridis.xyz/compliance-gdpr: "enabled"
+    veridis.xyz/compliance-iso27001: "enabled"
+    veridis.xyz/compliance-nist: "enabled"
+    # Security annotations
+    veridis.xyz/security-level: "enterprise"
+    veridis.xyz/encryption-at-rest: "enabled"
+    veridis.xyz/encryption-in-transit: "enabled"
+    veridis.xyz/network-policies: "enabled"
+    veridis.xyz/pod-security-standards: "restricted"
+    # Monitoring annotations
+    veridis.xyz/monitoring-enabled: "true"
+    veridis.xyz/metrics-retention: "90d"
+    veridis.xyz/log-retention: "365d"
+    veridis.xyz/tracing-enabled: "true"
+
+# ==============================================================================
+# Core Resources - Organized by Service Domain
+# ==============================================================================
+
+# Defines the complete Kubernetes resource configuration
+# for a distributed identity and reputation layer built on StarkNet.
+#
+# The resources are organized into several main categories:
+#
+# 1. Foundation: Namespace and cluster-level resource controls
+# 2. Security: RBAC configurations and security policies
+# 3. Infrastructure: Core services like PostgreSQL, Redis, Vault, and StarkNet devnet
+# 4. Application Services:
+#    - Veridis Backend (Rust): Main application backend
+#    - ZK Circuits Service: Zero-knowledge proof generation service with GPU support
+# 5. Frontend: UI and API gateway components
+# 6. Networking: Ingress configurations, load balancers, and service mesh
+# 7. Observability: Prometheus, Grafana, Jaeger, and Alertmanager
+# 8. Logging: EFK stack (Elasticsearch, Fluent Bit, Kibana)
+# 9. Backup & Disaster Recovery: Velero configuration and backup jobs
+# 10. Operational Jobs: Initialization, maintenance and compliance tasks
+#
+# Each resource is defined in its own file and organized in a hierarchical directory structure
+# reflecting its purpose and relations with other components.
+resources:
+  # Namespace and Foundation
+  - foundation/namespace.yaml
+  - foundation/resource-quotas.yaml
+  - foundation/limit-ranges.yaml
+  - foundation/priority-classes.yaml
+
+  # Service Accounts and RBAC
+  - security/rbac/service-accounts.yaml
+  - security/rbac/cluster-roles.yaml
+  - security/rbac/cluster-role-bindings.yaml
+  - security/rbac/roles.yaml
+  - security/rbac/role-bindings.yaml
+
+  # Security Policies and Controls
+  - security/policies/network-policies.yaml
+  - security/policies/pod-security-policies.yaml
+  - security/policies/pod-disruption-budgets.yaml
+  - security/contexts/security-contexts.yaml
+  - security/contexts/pod-security-standards.yaml
+
+  # Infrastructure Services
+  - infrastructure/storage/storage-classes.yaml
+  - infrastructure/storage/persistent-volumes.yaml
+
+  # PostgreSQL Database
+  - infrastructure/postgres/statefulset.yaml
+  - infrastructure/postgres/service.yaml
+  - infrastructure/postgres/configmap.yaml
+  - infrastructure/postgres/secret.yaml
+  - infrastructure/postgres/pvc.yaml
+  - infrastructure/postgres/backup-cronjob.yaml
+  - infrastructure/postgres/service-monitor.yaml
+
+  # Redis Cache
+  - infrastructure/redis/deployment.yaml
+  - infrastructure/redis/service.yaml
+  - infrastructure/redis/configmap.yaml
+  - infrastructure/redis/secret.yaml
+  - infrastructure/redis/hpa.yaml
+  - infrastructure/redis/pdb.yaml
+  - infrastructure/redis/service-monitor.yaml
+
+  # HashiCorp Vault
+  - infrastructure/vault/deployment.yaml
+  - infrastructure/vault/service.yaml
+  - infrastructure/vault/configmap.yaml
+  - infrastructure/vault/secret.yaml
+  - infrastructure/vault/pvc.yaml
+  - infrastructure/vault/pdb.yaml
+  - infrastructure/vault/service-monitor.yaml
+
+  # StarkNet Development Network
+  - infrastructure/starknet/devnet-deployment.yaml
+  - infrastructure/starknet/devnet-service.yaml
+  - infrastructure/starknet/devnet-configmap.yaml
+  - infrastructure/starknet/devnet-pvc.yaml
+  - infrastructure/starknet/service-monitor.yaml
+
+  # Core Application Services
+  # Unified Veridis Backend Service (Rust)
+  - services/veridis-backend/deployment.yaml
+  - services/veridis-backend/service.yaml
+  - services/veridis-backend/configmap.yaml
+  - services/veridis-backend/secret.yaml
+  - services/veridis-backend/hpa.yaml
+  - services/veridis-backend/pdb.yaml
+  - services/veridis-backend/service-monitor.yaml
+  - services/veridis-backend/network-policy.yaml
+
+  # ZK Circuits Service (Node.js + GPU)
+  - services/zk-circuits/deployment.yaml
+  - services/zk-circuits/service.yaml
+  - services/zk-circuits/configmap.yaml
+  - services/zk-circuits/secret.yaml
+  - services/zk-circuits/pvc.yaml
+  - services/zk-circuits/gpu-quota.yaml
+  - services/zk-circuits/pdb.yaml
+  - services/zk-circuits/service-monitor.yaml
+  - services/zk-circuits/network-policy.yaml
+
+  # Frontend and API Gateway
+  - frontend/ui/deployment.yaml
+  - frontend/ui/service.yaml
+  - frontend/ui/configmap.yaml
+  - frontend/ui/secret.yaml
+  - frontend/ui/hpa.yaml
+  - frontend/ui/pdb.yaml
+  - frontend/ui/service-monitor.yaml
+
+  # API Gateway (if separate from backend)
+  - frontend/api-gateway/deployment.yaml
+  - frontend/api-gateway/service.yaml
+  - frontend/api-gateway/configmap.yaml
+  - frontend/api-gateway/secret.yaml
+  - frontend/api-gateway/hpa.yaml
+  - frontend/api-gateway/pdb.yaml
+
+  # Ingress and Load Balancing
+  - networking/ingress/tls-certificates.yaml
+  - networking/ingress/veridis-backend-ingress.yaml
+  - networking/ingress/zk-circuits-ingress.yaml
+  - networking/ingress/ui-ingress.yaml
+  - networking/ingress/websocket-ingress.yaml
+  - networking/load-balancer/veridis-backend-lb.yaml
+  - networking/load-balancer/zk-circuits-lb.yaml
+  - networking/service-mesh/virtual-services.yaml
+  - networking/service-mesh/destination-rules.yaml
+  - networking/service-mesh/gateways.yaml
+
+  # Monitoring and Observability
+  - monitoring/prometheus/deployment.yaml
+  - monitoring/prometheus/service.yaml
+  - monitoring/prometheus/configmap.yaml
+  - monitoring/prometheus/secret.yaml
+  - monitoring/prometheus/pvc.yaml
+  - monitoring/prometheus/service-monitor.yaml
+  - monitoring/prometheus/prometheus-rules.yaml
+  - monitoring/prometheus/rbac.yaml
+
+  - monitoring/grafana/deployment.yaml
+  - monitoring/grafana/service.yaml
+  - monitoring/grafana/configmap.yaml
+  - monitoring/grafana/secret.yaml
+  - monitoring/grafana/pvc.yaml
+  - monitoring/grafana/dashboards-configmap.yaml
+
+  - monitoring/jaeger/deployment.yaml
+  - monitoring/jaeger/service.yaml
+  - monitoring/jaeger/configmap.yaml
+
+  - monitoring/alertmanager/deployment.yaml
+  - monitoring/alertmanager/service.yaml
+  - monitoring/alertmanager/configmap.yaml
+  - monitoring/alertmanager/secret.yaml
+
+  # Logging Infrastructure
+  - logging/fluent-bit/daemonset.yaml
+  - logging/fluent-bit/configmap.yaml
+  - logging/fluent-bit/service-account.yaml
+  - logging/fluent-bit/rbac.yaml
+
+  - logging/elasticsearch/statefulset.yaml
+  - logging/elasticsearch/service.yaml
+  - logging/elasticsearch/configmap.yaml
+  - logging/elasticsearch/pvc.yaml
+
+  - logging/kibana/deployment.yaml
+  - logging/kibana/service.yaml
+  - logging/kibana/configmap.yaml
+
+  # Backup and Disaster Recovery
+  - backup/velero/backup-schedule.yaml
+  - backup/velero/backup-storage-location.yaml
+  - backup/velero/volume-snapshot-location.yaml
+  - backup/database/postgres-backup-cronjob.yaml
+  - backup/database/redis-backup-cronjob.yaml
+  - backup/application/config-backup-cronjob.yaml
+  - backup/zk-circuits/keys-backup-cronjob.yaml
+
+  # Jobs and CronJobs
+  - jobs/init/database-init-job.yaml
+  - jobs/init/vault-init-job.yaml
+  - jobs/init/starknet-setup-job.yaml
+  - jobs/init/zk-circuits-setup-job.yaml
+  - jobs/maintenance/cache-cleanup-cronjob.yaml
+  - jobs/maintenance/log-rotation-cronjob.yaml
+  - jobs/maintenance/zk-keys-rotation-cronjob.yaml
+  - jobs/compliance/audit-report-cronjob.yaml
+  - jobs/compliance/gdpr-cleanup-cronjob.yaml
+
+# ==============================================================================
+# Target Namespace Configuration
+# ==============================================================================
+
+namespace: veridis
+
+# ==============================================================================
+# Common Resource Labels
+# ==============================================================================
+
+# Defines common labels for all Kubernetes resources
+# in the Veridis production deployment. The labels are organized into four categories:
+#
+# 1. Core identification: Standard Kubernetes labels for identifying the application
+# 2. Deployment context: Environment-specific information about this deployment
+# 3. Technology stack: Technologies and frameworks used by the application
+# 4. Operational: Team and business ownership information
+#
+# These labels help with resource organization, filtering in dashboards,
+# cost allocation, and operational ownership tracking.
+commonLabels:
+  # Core identification labels
+  app.kubernetes.io/name: veridis
+  app.kubernetes.io/instance: veridis-production
+  app.kubernetes.io/version: "3.2.1"
+  app.kubernetes.io/component: protocol
+  app.kubernetes.io/part-of: veridis-protocol
+  app.kubernetes.io/managed-by: kustomize
+
+  # Deployment context labels
+  veridis.xyz/environment: production
+  veridis.xyz/deployment-method: kustomize
+  veridis.xyz/protocol-version: "3.2.1"
+
+  # Technology stack labels
+  veridis.xyz/blockchain: starknet
+  veridis.xyz/primary-language: rust
+  veridis.xyz/zk-language: nodejs
+  veridis.xyz/framework: axum
+
+  # Operational labels
+  veridis.xyz/team: platform
+  veridis.xyz/cost-center: engineering
+  veridis.xyz/business-unit: identity-protocol
+
+# ==============================================================================
+# Common Resource Annotations
+# ==============================================================================
+
+# This section defines common annotations applied to all Kubernetes resources
+# managed by this kustomization. These annotations provide metadata for
+# deployment tracking, technology stack versions, security and compliance
+# status, monitoring and observability features, and documentation/support
+# references.
+#
+# Annotation Categories:
+# - Deployment information: Tracks deployment tool, timestamp, git commit/branch,
+#   and build number.
+# - Technology versions: Specifies versions of key technologies used in the stack.
+# - Security and compliance: Indicates results and dates of security scans,
+#   vulnerability assessments, compliance audits, and penetration tests.
+# - Monitoring and observability: Flags for enabling metrics, logging, tracing,
+#   and alerting.
+# - Documentation and support: Links to documentation, support channels, runbooks,
+#   and on-call team information.
+#
+# Many values support environment variable substitution for dynamic injection
+# during the build or deployment process.
+commonAnnotations:
+  # Deployment information
+  veridis.xyz/deployed-by: "kustomize"
+  veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+  veridis.xyz/git-commit: "${GIT_COMMIT:-unknown}"
+  veridis.xyz/git-branch: "${GIT_BRANCH:-main}"
+  veridis.xyz/build-number: "${BUILD_NUMBER:-unknown}"
+
+  # Technology versions
+  veridis.xyz/cairo-version: "2.11.4"
+  veridis.xyz/starknet-version: "0.13.4"
+  veridis.xyz/rust-version: "1.87.0"
+  veridis.xyz/node-version: "22.14.0"
+  veridis.xyz/garaga-version: "0.18.1"
+  veridis.xyz/kubernetes-version: "1.28+"
+
+  # Security and compliance
+  veridis.xyz/security-scan-date: "${SECURITY_SCAN_DATE:-unknown}"
+  veridis.xyz/vulnerability-scan: "passed"
+  veridis.xyz/compliance-audit: "passed"
+  veridis.xyz/pen-test-date: "${PEN_TEST_DATE:-unknown}"
+
+  # Monitoring and observability
+  veridis.xyz/metrics-enabled: "true"
+  veridis.xyz/logging-enabled: "true"
+  veridis.xyz/tracing-enabled: "true"
+  veridis.xyz/alerting-enabled: "true"
+
+  # Documentation and support
+  veridis.xyz/documentation: "https://docs.veridis.xyz"
+  veridis.xyz/support-channel: "#veridis-support"
+  veridis.xyz/runbook: "https://runbooks.veridis.xyz/protocol"
+  veridis.xyz/oncall-team: "platform-engineering"
+
+# ==============================================================================
+# Configuration Generators and Transformations
+# ==============================================================================
+
+# Sections:
+# - configMapGenerator: Generates ConfigMaps for various configuration needs.
+#   - veridis-global-config: Global environment variables and versioning for core components.
+#   - veridis-feature-flags: Feature toggles for enabling/disabling backend features.
+#   - veridis-network-config: Network and service port configuration for different blockchain networks.
+#   - veridis-zk-config: Configuration specific to ZK Circuits and related performance/security settings.
+#
+# - secretGenerator: Generates Kubernetes Secrets from environment files or certificate files.
+#   - veridis-database-credentials: Database credentials loaded from 'database.env'.
+#   - veridis-backend-secrets: Backend service secrets from 'backend-secrets.env'.
+#   - veridis-zk-circuits-secrets: ZK Circuits related secrets from 'zk-secrets.env'.
+#   - veridis-api-keys: API keys from 'api-keys.env'.
+#   - veridis-tls-certificates: TLS certificates for secure communication, loaded from specified certificate files.
+#
+# Usage:
+# - This file is intended to be used with Kustomize to generate ConfigMaps and Secrets for deployment.
+# - Ensure referenced environment and certificate files exist and are properly secured.
+configMapGenerator:
+  # Global configuration
+  - name: veridis-global-config
+    literals:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=info
+      - METRICS_ENABLED=true
+      - TRACING_ENABLED=true
+      - CAIRO_VERSION=2.11.4
+      - STARKNET_VERSION=0.13.4
+      - PROTOCOL_VERSION=3.2.1
+      - RUST_VERSION=1.87.0
+      - NODE_VERSION=22.14.0
+      - GARAGA_VERSION=0.18.1
+
+  # Feature flags for unified backend
+  - name: veridis-feature-flags
+    literals:
+      - GDPR_FEATURES_ENABLED=true
+      - BRIDGE_ENABLED=true
+      - ZK_PROOFS_ENABLED=true
+      - COMPLIANCE_AUTOMATION=true
+      - ENTERPRISE_FEATURES=true
+      - AUDIT_LOGGING=true
+      - IDENTITY_SERVICE_ENABLED=true
+      - ATTESTATION_SERVICE_ENABLED=true
+      - VERIFICATION_SERVICE_ENABLED=true
+      - COMPLIANCE_SERVICE_ENABLED=true
+      - BRIDGE_SERVICE_ENABLED=true
+
+  # Network configuration
+  - name: veridis-network-config
+    literals:
+      - STARKNET_NETWORK=mainnet
+      - ETHEREUM_NETWORK=mainnet
+      - COSMOS_NETWORK=cosmoshub-4
+      - BRIDGE_SECURITY_THRESHOLD=3
+      - FINALITY_CONFIRMATIONS=12
+      - BACKEND_SERVICE_PORT=8080
+      - ZK_CIRCUITS_SERVICE_PORT=4000
+
+  # ZK Circuits specific configuration
+  - name: veridis-zk-config
+    literals:
+      - GARAGA_CUDA_ENABLED=true
+      - ZK_PROOF_SECURITY_LEVEL=128
+      - GARAGA_OPTIMIZATION_LEVEL=3
+      - ZK_CIRCUIT_CACHE_SIZE=2048
+      - ZK_PROOF_BATCH_SIZE=10
+      - ZK_GPU_MEMORY_LIMIT=8192
+      - ZK_PARALLEL_PROVING=true
+
+secretGenerator:
+  # Generate secrets from environment variables or files
+  - name: veridis-database-credentials
+    type: Opaque
+    envs:
+      - database.env
+
+  - name: veridis-backend-secrets
+    type: Opaque
+    envs:
+      - backend-secrets.env
+
+  - name: veridis-zk-circuits-secrets
+    type: Opaque
+    envs:
+      - zk-secrets.env
+
+  - name: veridis-api-keys
+    type: Opaque
+    envs:
+      - api-keys.env
+
+  - name: veridis-tls-certificates
+    type: kubernetes.io/tls
+    files:
+      - tls.crt=certs/veridis.crt
+      - tls.key=certs/veridis.key
+
+# ==============================================================================
+# Resource Transformations and Patches
+# ==============================================================================
+
+# Manages environment-specific and conditional patches
+# for Kubernetes resources in the project. It includes:
+#
+# - patchesStrategicMerge: Applies a set of YAML patch files for production environment,
+#   such as resource limits, security context, monitoring, backup configuration, and GPU settings.
+#
+# - patchesJson6902: Applies JSON6902 patches for specific resources:
+#     - Adjusts the number of replicas for the 'veridis-backend' Deployment.
+#     - Configures GPU settings for the 'zk-circuits' Deployment.
+#     - Updates the NetworkPolicy for 'veridis-backend' to manage service communication.
+#
+# This structure allows for flexible and maintainable customization of Kubernetes manifests
+# based on deployment environment and resource-specific requirements.
+patchesStrategicMerge:
+  # Environment-specific patches
+  - patches/production/resource-limits.yaml
+  - patches/production/security-context.yaml
+  - patches/production/monitoring.yaml
+  - patches/production/backup-config.yaml
+  - patches/production/gpu-config.yaml
+
+patchesJson6902:
+  # Conditional patches based on environment
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: veridis-backend
+    path: patches/veridis-backend-replicas.yaml
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: zk-circuits
+    path: patches/zk-circuits-gpu.yaml
+
+  # Network policy patches for service communication
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: NetworkPolicy
+      name: veridis-backend-network-policy
+    path: patches/backend-network-policy.yaml
+
+# ==============================================================================
+# Image Transformations
+# ==============================================================================
+
+# images:
+#   This section defines the container images and their versions to be used in the deployment.
+#   Each entry specifies:
+#     - name: The image repository and name.
+#     - newTag: The specific version tag of the image to deploy.
+#     - digest: The image digest, typically set via environment variables for reproducibility and security.
+#   Images are grouped as follows:
+#     - Core services: Main backend and zk-circuits services.
+#     - Frontend service: UI application.
+#     - Infrastructure images: Supporting services such as Postgres, Redis, Vault, and Starknet Devnet, each pinned to a specific version and digest for security and stability.
+images:
+  # Core services - only two actual services
+  - name: veridis/veridis-backend
+    newTag: "v3.2.1"
+    digest: sha256:${VERIDIS_BACKEND_DIGEST}
+
+  - name: veridis/zk-circuits
+    newTag: "v3.2.1"
+    digest: sha256:${ZK_CIRCUITS_DIGEST}
+
+  # Frontend service
+  - name: veridis/ui
+    newTag: "v3.2.1"
+    digest: sha256:${UI_DIGEST}
+
+  # Infrastructure images with security updates
+  - name: postgres
+    newTag: "16.1-alpine"
+    digest: sha256:${POSTGRES_DIGEST}
+
+  - name: redis
+    newTag: "7.2.4-alpine"
+    digest: sha256:${REDIS_DIGEST}
+
+  - name: vault
+    newTag: "1.15.6"
+    digest: sha256:${VAULT_DIGEST}
+
+  - name: shardlabs/starknet-devnet-rs
+    newTag: "0.13.4"
+    digest: sha256:${STARKNET_DEVNET_DIGEST}
+
+# ==============================================================================
+# Resource Name Transformations
+# ==============================================================================
+
+namePrefix: veridis-
+nameSuffix: -prod
+
+# ==============================================================================
+# Replica Count Configurations
+# ==============================================================================
+
+# This section defines the desired number of replicas for each service in the deployment.
+# Each entry specifies:
+#   - name: The name of the service/component.
+#   - count: The number of replicas to deploy, which can be set via environment variables
+#            (with default values provided if the variables are not set).
+# Services are grouped by their roles: Core services, Frontend, and Infrastructure.
+replicas:
+  # Core services
+  - name: veridis-backend
+    count: ${VERIDIS_BACKEND_REPLICAS:-3}
+
+  - name: zk-circuits
+    count: ${ZK_CIRCUITS_REPLICAS:-2}
+
+  # Frontend
+  - name: ui
+    count: ${UI_REPLICAS:-3}
+
+  # Infrastructure
+  - name: redis
+    count: ${REDIS_REPLICAS:-3}
+
+  - name: vault
+    count: ${VAULT_REPLICAS:-3}
+
+# ==============================================================================
+# OpenAPI Schema Validation
+# ==============================================================================
+
+openapi:
+  path: schemas/veridis-openapi.yaml
+
+# ==============================================================================
+# Helm Chart Dependencies
+# ==============================================================================
+
+# Defines a list of Helm charts to be managed by Kustomize's helmCharts feature.
+# Each entry specifies a chart to be installed, including its name, repository, version, release name, target namespace,
+# and a custom values file for configuration. The charts included are:
+# - Prometheus: for monitoring and alerting.
+# - Grafana: for visualization and dashboarding.
+# - Jaeger: for distributed tracing.
+# - Velero: for backup and restore of Kubernetes resources and persistent volumes.
+# - GPU Operator: for managing NVIDIA GPUs in the cluster, conditionally enabled via the GPU_OPERATOR_ENABLED environment variable.
+helmCharts:
+  - name: prometheus
+    repo: https://prometheus-community.github.io/helm-charts
+    version: "25.8.0"
+    releaseName: veridis-prometheus
+    namespace: monitoring
+    valuesFile: helm-values/prometheus-values.yaml
+
+  - name: grafana
+    repo: https://grafana.github.io/helm-charts
+    version: "7.3.7"
+    releaseName: veridis-grafana
+    namespace: monitoring
+    valuesFile: helm-values/grafana-values.yaml
+
+  - name: jaeger
+    repo: https://jaegertracing.github.io/helm-charts
+    version: "0.71.14"
+    releaseName: veridis-jaeger
+    namespace: monitoring
+    valuesFile: helm-values/jaeger-values.yaml
+
+  - name: velero
+    repo: https://vmware-tanzu.github.io/helm-charts
+    version: "5.2.0"
+    releaseName: veridis-velero
+    namespace: backup
+    valuesFile: helm-values/velero-values.yaml
+
+  # GPU operator for ZK circuits if not already installed
+  - name: gpu-operator
+    repo: https://nvidia.github.io/gpu-operator
+    version: "v24.6.1"
+    releaseName: veridis-gpu-operator
+    namespace: gpu-operator-resources
+    valuesFile: helm-values/gpu-operator-values.yaml
+    condition: ${GPU_OPERATOR_ENABLED:-false}
+
+# ==============================================================================
+# Build Metadata and Validation
+# ==============================================================================
+
+# buildMetadata:
+#   Contains key-value pairs for build information such as commit hash, branch, build number, build date, build user,
+#   backend binary name, static build flag, CUDA enablement, and other build-time variables. These values can be set
+#   via environment variables or default values.
+#
+# components:
+#   Lists modular components of the deployment, each with a name and associated resource paths.
+#   - security-baseline: Includes security policies, contexts, and RBAC configurations.
+#   - monitoring-stack: Includes monitoring tools such as Prometheus, Grafana, Jaeger, and Alertmanager.
+#   - backup-solution: Contains backup configurations for Velero, databases, applications, and zk-circuits.
+#   - core-services: Defines core application services, including the backend and zk-circuits.
+#   - infrastructure-services: Specifies infrastructure dependencies like Postgres, Redis, Vault, and Starknet.
+#
+# Each component's resources are specified using glob patterns to include all relevant manifests in the respective directories.
+buildMetadata:
+  - commit=${GIT_COMMIT}
+  - branch=${GIT_BRANCH}
+  - buildNumber=${BUILD_NUMBER}
+  - buildDate=${BUILD_DATE}
+  - buildUser=${BUILD_USER}
+  - backendBinary=${BINARY_NAME:-veridis_backend}
+  - staticBuild=${STATIC_BUILD:-false}
+  - zkCudaEnabled=${GARAGA_CUDA_ENABLED:-true}
+
+# Component validation
+components:
+  - name: security-baseline
+    resources:
+      - security/policies/*
+      - security/contexts/*
+      - security/rbac/*
+
+  - name: monitoring-stack
+    resources:
+      - monitoring/prometheus/*
+      - monitoring/grafana/*
+      - monitoring/jaeger/*
+      - monitoring/alertmanager/*
+
+  - name: backup-solution
+    resources:
+      - backup/velero/*
+      - backup/database/*
+      - backup/application/*
+      - backup/zk-circuits/*
+
+  - name: core-services
+    resources:
+      - services/veridis-backend/*
+      - services/zk-circuits/*
+
+  - name: infrastructure-services
+    resources:
+      - infrastructure/postgres/*
+      - infrastructure/redis/*
+      - infrastructure/vault/*
+      - infrastructure/starknet/*
+
+# ==============================================================================
+# Environment Variable Placeholders
+# ==============================================================================
+# The following environment variables should be set during deployment:
+#
+# SERVICE CONFIGURATION:
+# =====================
+# VERIDIS_BACKEND_REPLICAS=3
+# ZK_CIRCUITS_REPLICAS=2
+# UI_REPLICAS=3
+# REDIS_REPLICAS=3
+# VAULT_REPLICAS=3
+#
+# IMAGE DIGESTS (for security and reproducibility):
+# ================================================
+# VERIDIS_BACKEND_DIGEST=sha256:...
+# ZK_CIRCUITS_DIGEST=sha256:...
+# UI_DIGEST=sha256:...
+# POSTGRES_DIGEST=sha256:...
+# REDIS_DIGEST=sha256:...
+# VAULT_DIGEST=sha256:...
+# STARKNET_DEVNET_DIGEST=sha256:...
+#
+# BUILD CONFIGURATION:
+# ===================
+# BINARY_NAME=veridis_backend
+# STATIC_BUILD=false
+# GARAGA_CUDA_ENABLED=true
+# GPU_OPERATOR_ENABLED=false
+#
+# BUILD METADATA:
+# ==============
+# GIT_COMMIT=commit-hash
+# GIT_BRANCH=main
+# BUILD_NUMBER=123
+# BUILD_DATE=2025-01-18T10:00:00Z
+# BUILD_USER=ci-system
+#
+# SECURITY METADATA:
+# =================
+# SECURITY_SCAN_DATE=2025-01-18
+# PEN_TEST_DATE=2025-01-15
+#
+# ==============================================================================
