@@ -1,0 +1,606 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Resource Quotas
+# ==============================================================================
+#
+# This manifest defines comprehensive resource quotas for the Veridis namespace,
+# providing:
+#
+# RESOURCE MANAGEMENT:
+#   • CPU and memory limits with burst allowances for peak workloads
+#   • Storage quotas with tier-based allocation (SSD, HDD, NVMe)
+#   • Network bandwidth policies and quality of service controls
+#   • GPU resource allocation for zero-knowledge proof generation
+#   • Pod and container count limits to prevent resource exhaustion
+#
+# WORKLOAD CATEGORIES:
+#   • Core Services - Backend API and ZK circuits with high resource allocation
+#   • Infrastructure - Database, cache, and supporting services
+#   • Monitoring - Observability stack with dedicated resource pools
+#   • Jobs - Batch processing and maintenance tasks with burst capacity
+#   • Development - Limited resources for testing and debugging
+#
+# SECURITY CONTROLS:
+#   • Resource exhaustion attack prevention
+#   • Multi-tenancy isolation and fair resource sharing
+#   • Priority-based resource allocation for critical workloads
+#   • Compliance with enterprise governance policies
+#   • Cost control and budget enforcement mechanisms
+#
+# SCALABILITY FEATURES:
+#   • Auto-scaling integration with HPA and VPA
+#   • Burst capacity for handling traffic spikes
+#   • Resource reservation for guaranteed performance
+#   • Dynamic quota adjustment based on utilization patterns
+#   • Integration with cluster autoscaler for node scaling
+#
+# COMPLIANCE STANDARDS:
+#   • Resource governance for SOC 2 Type II compliance
+#   • GDPR data processing resource limitations
+#   • ISO 27001 resource management controls
+#   • Enterprise cost allocation and chargeback
+#   • Audit trail for resource usage and modifications
+#
+# MONITORING INTEGRATION:
+#   • Prometheus metrics for quota utilization tracking
+#   • Grafana dashboards for resource consumption visualization
+#   • Alerting for quota threshold breaches and resource exhaustion
+#   • Historical usage analysis and capacity planning
+#   • Cost optimization recommendations and insights
+#
+# ==============================================================================
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-compute-quota
+  namespace: veridis
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: resource-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Resource quota specific labels
+    quota.veridis.xyz/type: compute
+    quota.veridis.xyz/scope: namespace
+    quota.veridis.xyz/tier: production
+    quota.veridis.xyz/priority: high
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance and governance
+    compliance.veridis.xyz/soc2: "enabled"
+    compliance.veridis.xyz/gdpr: "enabled"
+    governance.veridis.xyz/cost-control: "enabled"
+    governance.veridis.xyz/approval-required: "true"
+
+  annotations:
+    # Resource quota information
+    veridis.xyz/description: "Comprehensive compute resource quota for Veridis Protocol production deployment"
+    veridis.xyz/purpose: "Prevents resource exhaustion, ensures fair allocation, and enforces cost controls"
+    veridis.xyz/scope: "Covers CPU, memory, GPU, and pod/container limits for all workloads"
+
+    # Resource allocation strategy
+    veridis.xyz/allocation-strategy: "priority-based"
+    veridis.xyz/scaling-model: "horizontal"
+    veridis.xyz/burst-capacity: "enabled"
+    veridis.xyz/resource-reservation: "guaranteed"
+
+    # Capacity planning
+    veridis.xyz/baseline-utilization: "70%"
+    veridis.xyz/peak-utilization: "90%"
+    veridis.xyz/burst-duration: "15m"
+    veridis.xyz/cooldown-period: "5m"
+
+    # Cost management
+    veridis.xyz/monthly-budget: "$50000"
+    veridis.xyz/cost-per-cpu-hour: "$0.05"
+    veridis.xyz/cost-per-gb-hour: "$0.01"
+    veridis.xyz/cost-optimization: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-residency: "eu-us"
+    compliance.veridis.xyz/resource-governance: "iso27001"
+    compliance.veridis.xyz/audit-frequency: "quarterly"
+
+    # Monitoring and alerting
+    monitoring.veridis.xyz/quota-alerts: "enabled"
+    monitoring.veridis.xyz/threshold-warning: "80%"
+    monitoring.veridis.xyz/threshold-critical: "95%"
+    monitoring.veridis.xyz/dashboard: "veridis-resource-quotas"
+
+    # Contact information
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/cost-owner: "finance@veridis.xyz"
+    veridis.xyz/escalation: "oncall@veridis.xyz"
+
+spec:
+  # ==============================================================================
+  # CPU Resource Limits
+  # ==============================================================================
+  # Total CPU allocation designed for production workloads with the following distribution:
+  # - Core Services (Backend + ZK): 32 cores (64% of total)
+  # - Infrastructure Services: 12 cores (24% of total)
+  # - Monitoring Stack: 4 cores (8% of total)
+  # - Jobs and Utilities: 2 cores (4% of total)
+  # Total: 50 cores with 20% headroom for burst capacity
+  hard:
+    # CPU Limits and Requests
+    limits.cpu: "50"                    # Maximum CPU cores for all pods
+    requests.cpu: "30"                  # Guaranteed CPU cores reservation
+
+    # CPU resource breakdown by priority:
+    # - Critical workloads (backend, zk-circuits): 32 cores
+    # - High priority (postgres, redis, vault): 8 cores
+    # - Medium priority (monitoring, logging): 6 cores
+    # - Low priority (jobs, utilities): 4 cores
+
+    # ==============================================================================
+    # Memory Resource Limits
+    # ==============================================================================
+    # Total memory allocation optimized for ZK proof generation and database operations:
+    # - ZK Circuits (GPU workloads): 64Gi (40% of total)
+    # - Backend Services: 32Gi (20% of total)
+    # - PostgreSQL: 24Gi (15% of total)
+    # - Redis Cache: 16Gi (10% of total)
+    # - Monitoring Stack: 16Gi (10% of total)
+    # - Other Services: 8Gi (5% of total)
+    # Total: 160Gi with 25% headroom for memory-intensive operations
+    limits.memory: "200Gi"              # Maximum memory for all pods
+    requests.memory: "120Gi"            # Guaranteed memory reservation
+
+    # ==============================================================================
+    # GPU Resource Limits
+    # ==============================================================================
+    # GPU allocation for zero-knowledge proof generation and acceleration:
+    # - ZK Circuits: 4 GPUs for parallel proof generation
+    # - ML/AI workloads: 2 GPUs for potential future AI features
+    # - Development/Testing: 2 GPUs for development workflows
+    requests.nvidia.com/gpu: "4"        # Guaranteed GPU allocation
+    limits.nvidia.com/gpu: "8"          # Maximum GPU allocation for burst capacity
+
+    # ==============================================================================
+    # Pod and Container Limits
+    # ==============================================================================
+    # Pod limits designed to prevent resource exhaustion while allowing scaling:
+    # - Core services can scale to handle high traffic
+    # - Infrastructure services have dedicated pod allocations
+    # - Jobs and batch processes have separate pod pools
+    # - Development and testing have limited pod counts
+    count/pods: "200"                   # Maximum total pods in namespace
+    count/replicationcontrollers: "0"   # Deprecated, using Deployments
+    count/deployments.apps: "25"        # Maximum Deployment objects
+    count/statefulsets.apps: "10"       # Maximum StatefulSet objects (databases)
+    count/daemonsets.apps: "5"          # Maximum DaemonSet objects (logging, monitoring)
+    count/jobs.batch: "20"              # Maximum Job objects for batch processing
+    count/cronjobs.batch: "15"          # Maximum CronJob objects for scheduled tasks
+
+    # ==============================================================================
+    # Service and Network Resource Limits
+    # ==============================================================================
+    # Network resource limits to prevent service discovery exhaustion:
+    # - Load balancers for external traffic
+    # - ClusterIP services for internal communication
+    # - NodePort services for development access
+    # - Ingress resources for HTTP/HTTPS traffic routing
+    count/services: "50"                # Maximum Service objects
+    count/services.loadbalancer: "5"    # Maximum LoadBalancer services
+    count/services.nodeport: "10"       # Maximum NodePort services
+    count/ingresses.networking.k8s.io: "10"  # Maximum Ingress objects
+
+    # ==============================================================================
+    # ConfigMap and Secret Limits
+    # ==============================================================================
+    # Configuration and secret limits for security and organization:
+    # - Application configurations separated by service
+    # - Secrets management with rotation capabilities
+    # - Environment-specific configurations
+    # - Feature flag and runtime configuration storage
+    count/configmaps: "100"             # Maximum ConfigMap objects
+    count/secrets: "50"                 # Maximum Secret objects
+
+    # ==============================================================================
+    # Persistent Volume Claims Limits
+    # ==============================================================================
+    # Storage resource limits covering all storage tiers and use cases:
+    # - Database storage with high IOPS requirements
+    # - Application logs and audit trails
+    # - Backup storage for disaster recovery
+    # - ZK circuit keys and cryptographic material storage
+    count/persistentvolumeclaims: "30"  # Maximum PVC objects
+
+    # ==============================================================================
+    # Resource Scope Selectors
+    # ==============================================================================
+    # Additional resource controls for specific resource types and priority classes
+    count/replicasets.apps: "100"       # Maximum ReplicaSet objects (managed by Deployments)
+    count/horizontalpodautoscalers.autoscaling: "15"  # Maximum HPA objects
+    count/verticalpodautoscalers.autoscaling.k8s.io: "10"  # Maximum VPA objects
+    count/poddisruptionbudgets.policy: "25"  # Maximum PDB objects for availability
+    count/networkpolicies.networking.k8s.io: "20"  # Maximum NetworkPolicy objects
+
+---
+# ==============================================================================
+# Storage Resource Quota - SSD Tier
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-storage-ssd-quota
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: resource-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    quota.veridis.xyz/type: storage
+    quota.veridis.xyz/tier: ssd
+    quota.veridis.xyz/performance: high-iops
+    quota.veridis.xyz/scope: namespace
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "High-performance SSD storage quota for databases and critical workloads"
+    veridis.xyz/use-cases: "PostgreSQL, Redis, ZK circuit keys, monitoring data, audit logs"
+    veridis.xyz/iops-requirement: "10000+"
+    veridis.xyz/latency-requirement: "<1ms"
+    veridis.xyz/backup-tier: "premium"
+
+    # Storage allocation strategy
+    veridis.xyz/allocation-postgresql: "1Ti"
+    veridis.xyz/allocation-redis: "500Gi"
+    veridis.xyz/allocation-zk-keys: "200Gi"
+    veridis.xyz/allocation-monitoring: "500Gi"
+    veridis.xyz/allocation-logs: "300Gi"
+    veridis.xyz/allocation-backup: "1Ti"
+
+    # Performance characteristics
+    veridis.xyz/iops-baseline: "3000"
+    veridis.xyz/iops-burst: "10000"
+    veridis.xyz/throughput-baseline: "250MB/s"
+    veridis.xyz/throughput-burst: "1GB/s"
+
+    # Cost management
+    veridis.xyz/cost-per-gb-month: "$0.15"
+    veridis.xyz/monthly-storage-budget: "$750"
+    veridis.xyz/retention-policy: "90d"
+
+spec:
+  hard:
+    # SSD Storage Limits
+    requests.storage: "3Ti"             # Guaranteed SSD storage allocation
+    persistentvolumeclaims: "20"        # Maximum PVCs for SSD storage
+
+  # Scope selector for SSD storage class
+  scopeSelector:
+    matchExpressions:
+    - operator: In
+      scopeName: StorageClass
+      values: ["ssd", "fast-ssd", "premium-ssd"]
+
+---
+# ==============================================================================
+# Storage Resource Quota - Standard Tier
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-storage-standard-quota
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: resource-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    quota.veridis.xyz/type: storage
+    quota.veridis.xyz/tier: standard
+    quota.veridis.xyz/performance: balanced
+    quota.veridis.xyz/scope: namespace
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Standard storage quota for application data, logs, and backups"
+    veridis.xyz/use-cases: "Application storage, long-term logs, configuration backups, artifacts"
+    veridis.xyz/iops-requirement: "1000-3000"
+    veridis.xyz/latency-requirement: "<10ms"
+    veridis.xyz/backup-tier: "standard"
+
+    # Storage allocation strategy
+    veridis.xyz/allocation-app-data: "2Ti"
+    veridis.xyz/allocation-logs: "3Ti"
+    veridis.xyz/allocation-backups: "5Ti"
+    veridis.xyz/allocation-artifacts: "1Ti"
+
+    # Cost management
+    veridis.xyz/cost-per-gb-month: "$0.05"
+    veridis.xyz/monthly-storage-budget: "$550"
+    veridis.xyz/lifecycle-policy: "enabled"
+
+spec:
+  hard:
+    # Standard Storage Limits
+    requests.storage: "10Ti"            # Guaranteed standard storage allocation
+    persistentvolumeclaims: "15"        # Maximum PVCs for standard storage
+
+  # Scope selector for standard storage class
+  scopeSelector:
+    matchExpressions:
+    - operator: In
+      scopeName: StorageClass
+      values: ["standard", "gp2", "balanced"]
+
+---
+# ==============================================================================
+# Priority Class Resource Quota - Critical Workloads
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-critical-workload-quota
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: resource-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    quota.veridis.xyz/type: priority-class
+    quota.veridis.xyz/priority: critical
+    quota.veridis.xyz/workload-type: core-services
+    quota.veridis.xyz/scope: namespace
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Resource quota for critical workloads with highest priority scheduling"
+    veridis.xyz/workloads: "veridis-backend, zk-circuits, postgresql-primary"
+    veridis.xyz/sla-target: "99.9%"
+    veridis.xyz/response-time: "<100ms"
+    veridis.xyz/availability-requirement: "24/7"
+
+    # Resource guarantees for critical workloads
+    veridis.xyz/cpu-guarantee: "80%"
+    veridis.xyz/memory-guarantee: "85%"
+    veridis.xyz/storage-guarantee: "90%"
+    veridis.xyz/network-guarantee: "high"
+
+    # Scheduling preferences
+    veridis.xyz/preemption-policy: "never"
+    veridis.xyz/node-affinity: "high-performance"
+    veridis.xyz/anti-affinity: "strict"
+
+spec:
+  hard:
+    # Critical workload resource allocation
+    limits.cpu: "32"                    # Maximum CPU for critical workloads
+    limits.memory: "128Gi"              # Maximum memory for critical workloads
+    requests.cpu: "24"                  # Guaranteed CPU for critical workloads
+    requests.memory: "96Gi"             # Guaranteed memory for critical workloads
+    requests.nvidia.com/gpu: "4"        # Guaranteed GPU allocation
+    count/pods: "50"                    # Maximum pods for critical workloads
+
+  # Scope selector for critical priority class
+  scopeSelector:
+    matchExpressions:
+    - operator: In
+      scopeName: PriorityClass
+      values: ["veridis-critical", "system-critical", "critical"]
+
+---
+# ==============================================================================
+# Priority Class Resource Quota - High Priority Workloads
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-high-priority-quota
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: resource-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    quota.veridis.xyz/type: priority-class
+    quota.veridis.xyz/priority: high
+    quota.veridis.xyz/workload-type: infrastructure
+    quota.veridis.xyz/scope: namespace
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Resource quota for high priority infrastructure services"
+    veridis.xyz/workloads: "redis, vault, starknet-devnet, monitoring"
+    veridis.xyz/sla-target: "99.5%"
+    veridis.xyz/response-time: "<500ms"
+    veridis.xyz/availability-requirement: "business-hours"
+
+spec:
+  hard:
+    # High priority workload resource allocation
+    limits.cpu: "12"                    # Maximum CPU for high priority workloads
+    limits.memory: "48Gi"               # Maximum memory for high priority workloads
+    requests.cpu: "8"                   # Guaranteed CPU for high priority workloads
+    requests.memory: "32Gi"             # Guaranteed memory for high priority workloads
+    count/pods: "75"                    # Maximum pods for high priority workloads
+
+  # Scope selector for high priority class
+  scopeSelector:
+    matchExpressions:
+    - operator: In
+      scopeName: PriorityClass
+      values: ["veridis-high", "high-priority", "important"]
+
+---
+# ==============================================================================
+# Priority Class Resource Quota - Best Effort Workloads
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-best-effort-quota
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: resource-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    quota.veridis.xyz/type: priority-class
+    quota.veridis.xyz/priority: best-effort
+    quota.veridis.xyz/workload-type: batch-jobs
+    quota.veridis.xyz/scope: namespace
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Resource quota for best-effort jobs and maintenance tasks"
+    veridis.xyz/workloads: "backup-jobs, maintenance-cronjobs, audit-reports"
+    veridis.xyz/sla-target: "95%"
+    veridis.xyz/preemptible: "true"
+    veridis.xyz/cost-optimization: "aggressive"
+
+spec:
+  hard:
+    # Best effort workload resource allocation
+    limits.cpu: "6"                     # Maximum CPU for best effort workloads
+    limits.memory: "24Gi"               # Maximum memory for best effort workloads
+    requests.cpu: "0"                   # No guaranteed CPU (best effort)
+    requests.memory: "0"                # No guaranteed memory (best effort)
+    count/pods: "75"                    # Maximum pods for best effort workloads
+    count/jobs.batch: "20"              # Maximum concurrent batch jobs
+    count/cronjobs.batch: "15"          # Maximum scheduled jobs
+
+  # Scope selector for best effort priority class
+  scopeSelector:
+    matchExpressions:
+    - operator: In
+      scopeName: PriorityClass
+      values: ["best-effort", "low-priority", "batch"]
+
+---
+# ==============================================================================
+# Network Resource Quota
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-network-quota
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: resource-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    quota.veridis.xyz/type: network
+    quota.veridis.xyz/scope: namespace
+    quota.veridis.xyz/tier: production
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Network resource quota for load balancers, ingress, and service mesh"
+    veridis.xyz/bandwidth-limit: "10Gbps"
+    veridis.xyz/connection-limit: "100000"
+    veridis.xyz/ingress-classes: "nginx, istio"
+    veridis.xyz/load-balancer-type: "application"
+
+    # Network cost management
+    veridis.xyz/bandwidth-cost-per-gb: "$0.09"
+    veridis.xyz/load-balancer-cost-per-hour: "$0.025"
+    veridis.xyz/monthly-network-budget: "$2000"
+
+    # Security and compliance
+    veridis.xyz/tls-required: "true"
+    veridis.xyz/waf-enabled: "true"
+    veridis.xyz/ddos-protection: "enabled"
+
+spec:
+  hard:
+    # Load balancer limits
+    count/services.loadbalancer: "5"    # Maximum external load balancers
+
+    # Ingress limits
+    count/ingresses.networking.k8s.io: "10"  # Maximum ingress resources
+
+    # Network policy limits
+    count/networkpolicies.networking.k8s.io: "20"  # Maximum network policies
+
+# ==============================================================================
+# Resource Quota Summary and Monitoring
+# ==============================================================================
+#
+# TOTAL RESOURCE ALLOCATION:
+# ==========================
+# CPU: 50 cores (30 guaranteed, 20 burst)
+# Memory: 200Gi (120Gi guaranteed, 80Gi burst)
+# GPU: 8 units (4 guaranteed, 4 burst)
+# Storage: 13Ti (3Ti SSD + 10Ti Standard)
+# Pods: 200 maximum
+# Services: 50 maximum
+#
+# ESTIMATED MONTHLY COSTS:
+# ========================
+# Compute: ~$35,000 (CPU + Memory + GPU)
+# Storage: ~$1,300 (SSD + Standard tiers)
+# Network: ~$2,000 (Load balancers + bandwidth)
+# Total: ~$38,300/month
+#
+# MONITORING INTEGRATION:
+# ======================
+# - Prometheus metrics: kube_resourcequota_*
+# - Grafana dashboard: veridis-resource-quotas
+# - Alerts: quota-usage-high (>80%), quota-exhausted (>95%)
+# - Cost tracking: Monthly budget alerts and optimization recommendations
+#
+# GOVERNANCE CONTROLS:
+# ===================
+# - Quarterly quota reviews and adjustments
+# - Cost center allocation and chargeback reporting
+# - Compliance audit trails for resource modifications
+# - Approval workflow for quota increase requests
+#
+# ==============================================================================

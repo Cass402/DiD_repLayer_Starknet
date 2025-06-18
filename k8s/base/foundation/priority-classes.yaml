@@ -1,0 +1,731 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Priority Classes
+# ==============================================================================
+#
+# This manifest defines comprehensive priority classes for the Veridis namespace,
+# providing:
+#
+# WORKLOAD PRIORITIZATION:
+#   • Critical system services with highest scheduling priority
+#   • Core business services with guaranteed resource allocation
+#   • Infrastructure services with high availability requirements
+#   • Monitoring and observability with balanced priority
+#   • Batch processing and maintenance with best-effort scheduling
+#
+# SCHEDULING OPTIMIZATION:
+#   • Preemption policies to ensure critical workload availability
+#   • Resource guarantee enforcement through priority-based allocation
+#   • Node affinity integration for optimal workload placement
+#   • Multi-tenancy support with fair resource sharing
+#   • Disaster recovery and failover prioritization
+#
+# BUSINESS CONTINUITY:
+#   • Revenue-generating services receive highest priority
+#   • Compliance and security services maintain high priority
+#   • Customer-facing services prioritized over internal tools
+#   • Data integrity services protected from resource contention
+#   • Backup and recovery services scheduled appropriately
+#
+# COST OPTIMIZATION:
+#   • Expensive resources allocated to high-value workloads
+#   • GPU resources reserved for critical ZK proof generation
+#   • Non-critical workloads use preemptible instances
+#   • Development and testing workloads deprioritized
+#   • Resource waste minimization through intelligent scheduling
+#
+# COMPLIANCE FRAMEWORK:
+#   • SOC 2 Type II availability controls through priority scheduling
+#   • GDPR data processing prioritization for compliance deadlines
+#   • ISO 27001 security control prioritization requirements
+#   • Audit logging and compliance reporting priority management
+#   • Regulatory deadline enforcement through workload prioritization
+#
+# OPERATIONAL EXCELLENCE:
+#   • SLA enforcement through priority-based resource allocation
+#   • Incident response prioritization for faster resolution
+#   • Maintenance window optimization with priority scheduling
+#   • Capacity planning integration with priority-aware scaling
+#   • Performance SLA guarantee through resource prioritization
+#
+# ==============================================================================
+
+# ==============================================================================
+# System Critical Priority Class - Highest Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-system-critical
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Priority class specific labels
+    priority.veridis.xyz/level: system-critical
+    priority.veridis.xyz/tier: 1
+    priority.veridis.xyz/preemption: never
+    priority.veridis.xyz/resource-guarantee: full
+    priority.veridis.xyz/sla: "99.99%"
+
+    # Business classification
+    business.veridis.xyz/impact: critical
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/customer-facing: "true"
+    business.veridis.xyz/compliance-required: "true"
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance and governance
+    compliance.veridis.xyz/soc2: "critical"
+    compliance.veridis.xyz/gdpr: "critical"
+    compliance.veridis.xyz/iso27001: "critical"
+    governance.veridis.xyz/approval-required: "true"
+    governance.veridis.xyz/change-control: "strict"
+
+  annotations:
+    # Priority class information
+    veridis.xyz/description: "Highest priority class for system-critical workloads that are essential for business operations and regulatory compliance"
+    veridis.xyz/purpose: "Ensures absolute scheduling priority and resource guarantee for mission-critical services that directly impact revenue and compliance"
+    veridis.xyz/workloads: "Core DID protocol services, primary database instances, critical security services"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Revenue loss, compliance violations, customer impact within minutes of downtime"
+    veridis.xyz/sla-availability: "99.99%"
+    veridis.xyz/sla-response-time: "<50ms p95"
+    veridis.xyz/sla-recovery-time: "<2 minutes"
+    veridis.xyz/customer-impact: "Direct impact on all customer operations and identity verification"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "guaranteed"
+    veridis.xyz/node-selection: "premium-nodes"
+    veridis.xyz/anti-affinity: "strict"
+    veridis.xyz/resource-isolation: "dedicated"
+    veridis.xyz/scaling-priority: "immediate"
+
+    # Preemption and scheduling
+    veridis.xyz/preemption-policy: "never-preempt"
+    veridis.xyz/scheduling-latency: "<5 seconds"
+    veridis.xyz/resource-contention: "protected"
+    veridis.xyz/failover-priority: "highest"
+
+    # Compliance requirements
+    compliance.veridis.xyz/availability-requirement: "continuous"
+    compliance.veridis.xyz/data-processing-priority: "immediate"
+    compliance.veridis.xyz/audit-requirement: "real-time"
+    compliance.veridis.xyz/security-priority: "maximum"
+
+    # Cost justification
+    veridis.xyz/cost-justification: "Revenue protection and compliance mandate"
+    veridis.xyz/cost-per-minute-downtime: "$10000"
+    veridis.xyz/resource-efficiency: "maximum-performance"
+
+    # Monitoring and alerting
+    monitoring.veridis.xyz/priority-alerts: "immediate"
+    monitoring.veridis.xyz/escalation-path: "ceo,cto,legal"
+    monitoring.veridis.xyz/notification-channels: "pagerduty,slack,sms,email"
+
+    # Contact information
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/business-owner: "cto@veridis.xyz"
+    veridis.xyz/compliance-owner: "compliance@veridis.xyz"
+    veridis.xyz/escalation: "executive-oncall@veridis.xyz"
+
+# System critical priority - maximum value (1000000000)
+# This priority ensures these workloads are never preempted and always scheduled first
+value: 1000000000
+
+# Global priority class - affects cluster-wide scheduling decisions
+globalDefault: false
+
+# Preemption policy - these workloads cannot be preempted by any other workload
+preemptionPolicy: Never
+
+# Description for administrators and operators
+description: "System critical priority class for essential Veridis Protocol services including core DID operations, primary database, and critical security services. These workloads have guaranteed resources and cannot be preempted."
+
+---
+# ==============================================================================
+# Business Critical Priority Class - Very High Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-business-critical
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/level: business-critical
+    priority.veridis.xyz/tier: 2
+    priority.veridis.xyz/preemption: conditional
+    priority.veridis.xyz/resource-guarantee: high
+    priority.veridis.xyz/sla: "99.9%"
+
+    business.veridis.xyz/impact: high
+    business.veridis.xyz/revenue-impact: indirect
+    business.veridis.xyz/customer-facing: "true"
+    business.veridis.xyz/compliance-required: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "high"
+    compliance.veridis.xyz/gdpr: "high"
+    compliance.veridis.xyz/iso27001: "high"
+
+  annotations:
+    veridis.xyz/description: "Business critical priority class for core protocol services and infrastructure essential for business operations"
+    veridis.xyz/purpose: "Ensures high scheduling priority for services that directly support customer operations and business functionality"
+    veridis.xyz/workloads: "ZK circuits service, verification service, attestation service, bridge service, Redis cache"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Reduced functionality, potential customer dissatisfaction, delayed compliance processing"
+    veridis.xyz/sla-availability: "99.9%"
+    veridis.xyz/sla-response-time: "<100ms p95"
+    veridis.xyz/sla-recovery-time: "<5 minutes"
+    veridis.xyz/customer-impact: "Partial impact on customer operations, degraded performance"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "prioritized"
+    veridis.xyz/node-selection: "high-performance"
+    veridis.xyz/anti-affinity: "preferred"
+    veridis.xyz/resource-isolation: "shared-prioritized"
+    veridis.xyz/scaling-priority: "high"
+
+    # ZK circuits specific optimizations
+    veridis.xyz/gpu-priority: "high"
+    veridis.xyz/compute-intensive: "true"
+    veridis.xyz/parallel-processing: "optimized"
+    veridis.xyz/cryptographic-workload: "true"
+
+    # Compliance requirements
+    compliance.veridis.xyz/availability-requirement: "high"
+    compliance.veridis.xyz/data-processing-priority: "high"
+    compliance.veridis.xyz/audit-requirement: "near-real-time"
+
+    # Cost management
+    veridis.xyz/cost-justification: "Customer satisfaction and operational efficiency"
+    veridis.xyz/cost-per-minute-downtime: "$1000"
+    veridis.xyz/resource-efficiency: "high-performance"
+
+value: 900000000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: "Business critical priority class for core Veridis Protocol services including ZK circuits, verification, attestation, and bridge services. These workloads have high resource priority and can preempt lower priority workloads."
+
+---
+# ==============================================================================
+# Infrastructure High Priority Class - High Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-infrastructure-high
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/level: infrastructure-high
+    priority.veridis.xyz/tier: 3
+    priority.veridis.xyz/preemption: enabled
+    priority.veridis.xyz/resource-guarantee: medium
+    priority.veridis.xyz/sla: "99.5%"
+
+    business.veridis.xyz/impact: medium
+    business.veridis.xyz/revenue-impact: supporting
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-required: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "medium"
+    compliance.veridis.xyz/gdpr: "medium"
+    compliance.veridis.xyz/iso27001: "medium"
+
+  annotations:
+    veridis.xyz/description: "High priority class for critical infrastructure services that support core business operations"
+    veridis.xyz/purpose: "Ensures adequate scheduling priority for infrastructure services essential for system stability and security"
+    veridis.xyz/workloads: "HashiCorp Vault, StarkNet DevNet, backup services, security scanning, compliance automation"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Infrastructure instability, security vulnerabilities, compliance risks"
+    veridis.xyz/sla-availability: "99.5%"
+    veridis.xyz/sla-response-time: "<500ms p95"
+    veridis.xyz/sla-recovery-time: "<10 minutes"
+    veridis.xyz/customer-impact: "Indirect impact through system stability and security"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "balanced"
+    veridis.xyz/node-selection: "standard"
+    veridis.xyz/anti-affinity: "preferred"
+    veridis.xyz/resource-isolation: "shared"
+    veridis.xyz/scaling-priority: "medium"
+
+    # Security and compliance focus
+    veridis.xyz/security-critical: "true"
+    veridis.xyz/secrets-management: "critical"
+    veridis.xyz/blockchain-integration: "required"
+    veridis.xyz/backup-critical: "true"
+
+    # Compliance requirements
+    compliance.veridis.xyz/availability-requirement: "high"
+    compliance.veridis.xyz/security-priority: "high"
+    compliance.veridis.xyz/audit-requirement: "scheduled"
+
+    # Cost management
+    veridis.xyz/cost-justification: "System stability and security compliance"
+    veridis.xyz/cost-per-minute-downtime: "$500"
+    veridis.xyz/resource-efficiency: "balanced"
+
+value: 800000000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: "Infrastructure high priority class for critical supporting services including Vault secrets management, StarkNet DevNet, backup services, and security infrastructure."
+
+---
+# ==============================================================================
+# Monitoring Priority Class - Medium Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-monitoring
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/level: monitoring
+    priority.veridis.xyz/tier: 4
+    priority.veridis.xyz/preemption: enabled
+    priority.veridis.xyz/resource-guarantee: medium
+    priority.veridis.xyz/sla: "99%"
+
+    business.veridis.xyz/impact: medium
+    business.veridis.xyz/revenue-impact: operational
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-required: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "medium"
+    compliance.veridis.xyz/gdpr: "medium"
+    compliance.veridis.xyz/iso27001: "medium"
+
+  annotations:
+    veridis.xyz/description: "Medium priority class for monitoring, observability, and logging infrastructure"
+    veridis.xyz/purpose: "Ensures adequate resources for system visibility while allowing preemption by higher priority workloads"
+    veridis.xyz/workloads: "Prometheus, Grafana, Jaeger, AlertManager, Fluent Bit, Elasticsearch, Kibana"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Reduced visibility, delayed incident response, compliance monitoring gaps"
+    veridis.xyz/sla-availability: "99%"
+    veridis.xyz/sla-response-time: "<2s p95"
+    veridis.xyz/sla-recovery-time: "<15 minutes"
+    veridis.xyz/customer-impact: "No direct customer impact, operational visibility impact"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "flexible"
+    veridis.xyz/node-selection: "standard"
+    veridis.xyz/anti-affinity: "none"
+    veridis.xyz/resource-isolation: "shared"
+    veridis.xyz/scaling-priority: "medium"
+
+    # Observability specific characteristics
+    veridis.xyz/data-retention: "90d-365d"
+    veridis.xyz/query-performance: "optimized"
+    veridis.xyz/alerting-critical: "true"
+    veridis.xyz/dashboard-availability: "high"
+
+    # Compliance requirements
+    compliance.veridis.xyz/audit-logging: "required"
+    compliance.veridis.xyz/monitoring-retention: "required"
+    compliance.veridis.xyz/alerting-compliance: "required"
+
+    # Cost management
+    veridis.xyz/cost-justification: "Operational visibility and compliance monitoring"
+    veridis.xyz/cost-per-minute-downtime: "$100"
+    veridis.xyz/resource-efficiency: "cost-optimized"
+
+value: 600000000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: "Monitoring priority class for observability infrastructure including Prometheus, Grafana, Jaeger, and logging services. Essential for operational visibility and compliance monitoring."
+
+---
+# ==============================================================================
+# Application Standard Priority Class - Standard Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-application-standard
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/level: application-standard
+    priority.veridis.xyz/tier: 5
+    priority.veridis.xyz/preemption: enabled
+    priority.veridis.xyz/resource-guarantee: standard
+    priority.veridis.xyz/sla: "95%"
+
+    business.veridis.xyz/impact: low
+    business.veridis.xyz/revenue-impact: supporting
+    business.veridis.xyz/customer-facing: "mixed"
+    business.veridis.xyz/compliance-required: "false"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Standard priority class for general application workloads and supporting services"
+    veridis.xyz/purpose: "Provides balanced resource allocation for standard application workloads without strict SLA requirements"
+    veridis.xyz/workloads: "Frontend UI, API Gateway, documentation services, development tools"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Reduced functionality for non-critical features"
+    veridis.xyz/sla-availability: "95%"
+    veridis.xyz/sla-response-time: "<1s p95"
+    veridis.xyz/sla-recovery-time: "<30 minutes"
+    veridis.xyz/customer-impact: "Limited impact on non-essential features"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "best-effort-plus"
+    veridis.xyz/node-selection: "any"
+    veridis.xyz/anti-affinity: "none"
+    veridis.xyz/resource-isolation: "shared"
+    veridis.xyz/scaling-priority: "standard"
+
+    # Application characteristics
+    veridis.xyz/user-facing: "partial"
+    veridis.xyz/session-based: "true"
+    veridis.xyz/stateless: "preferred"
+    veridis.xyz/cache-friendly: "true"
+
+    # Cost management
+    veridis.xyz/cost-justification: "User experience and feature completeness"
+    veridis.xyz/cost-per-minute-downtime: "$50"
+    veridis.xyz/resource-efficiency: "cost-optimized"
+
+value: 400000000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: "Standard priority class for general application workloads including frontend UI, API gateway, and supporting services with moderate availability requirements."
+
+---
+# ==============================================================================
+# Batch Processing Priority Class - Low Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-batch-processing
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/level: batch-processing
+    priority.veridis.xyz/tier: 6
+    priority.veridis.xyz/preemption: enabled
+    priority.veridis.xyz/resource-guarantee: low
+    priority.veridis.xyz/sla: "90%"
+
+    business.veridis.xyz/impact: low
+    business.veridis.xyz/revenue-impact: none
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-required: "conditional"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Low priority class for batch processing, maintenance tasks, and background operations"
+    veridis.xyz/purpose: "Cost-effective resource allocation for non-urgent tasks that can tolerate delays and preemption"
+    veridis.xyz/workloads: "Backup jobs, data migration, compliance reports, maintenance scripts, cleanup tasks"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Delayed processing, extended maintenance windows"
+    veridis.xyz/sla-availability: "90%"
+    veridis.xyz/sla-response-time: "best-effort"
+    veridis.xyz/sla-recovery-time: "<2 hours"
+    veridis.xyz/customer-impact: "No direct customer impact"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "opportunistic"
+    veridis.xyz/node-selection: "spot-instances"
+    veridis.xyz/anti-affinity: "none"
+    veridis.xyz/resource-isolation: "shared"
+    veridis.xyz/scaling-priority: "low"
+
+    # Batch processing characteristics
+    veridis.xyz/execution-pattern: "scheduled"
+    veridis.xyz/completion-time: "flexible"
+    veridis.xyz/retry-policy: "aggressive"
+    veridis.xyz/preemption-tolerance: "high"
+
+    # Cost optimization
+    veridis.xyz/cost-optimization: "maximum"
+    veridis.xyz/spot-instance-eligible: "true"
+    veridis.xyz/resource-efficiency: "cost-first"
+
+    # Compliance batch processing
+    compliance.veridis.xyz/batch-reports: "scheduled"
+    compliance.veridis.xyz/data-retention: "automated"
+    compliance.veridis.xyz/audit-processing: "background"
+
+value: 200000000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: "Batch processing priority class for background tasks, maintenance operations, and scheduled jobs that can tolerate delays and preemption for cost optimization."
+
+---
+# ==============================================================================
+# Development and Testing Priority Class - Lowest Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-development
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/level: development
+    priority.veridis.xyz/tier: 7
+    priority.veridis.xyz/preemption: enabled
+    priority.veridis.xyz/resource-guarantee: none
+    priority.veridis.xyz/sla: "best-effort"
+
+    business.veridis.xyz/impact: none
+    business.veridis.xyz/revenue-impact: none
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-required: "false"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: development
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Lowest priority class for development, testing, and experimental workloads"
+    veridis.xyz/purpose: "Minimal resource allocation for non-production workloads that can be freely preempted"
+    veridis.xyz/workloads: "Development environments, testing frameworks, CI/CD pipelines, debugging tools"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Development velocity impact only"
+    veridis.xyz/sla-availability: "best-effort"
+    veridis.xyz/sla-response-time: "best-effort"
+    veridis.xyz/sla-recovery-time: "best-effort"
+    veridis.xyz/customer-impact: "No customer impact"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "best-effort"
+    veridis.xyz/node-selection: "spot-instances-preferred"
+    veridis.xyz/anti-affinity: "none"
+    veridis.xyz/resource-isolation: "none"
+    veridis.xyz/scaling-priority: "lowest"
+
+    # Development characteristics
+    veridis.xyz/environment-type: "non-production"
+    veridis.xyz/data-sensitivity: "test-data-only"
+    veridis.xyz/uptime-requirement: "none"
+    veridis.xyz/preemption-tolerance: "maximum"
+
+    # Cost optimization
+    veridis.xyz/cost-optimization: "aggressive"
+    veridis.xyz/spot-instance-required: "true"
+    veridis.xyz/resource-efficiency: "maximum-cost-savings"
+    veridis.xyz/shutdown-schedule: "nights-weekends"
+
+value: 100000000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+description: "Development priority class for non-production workloads including development environments, testing, and CI/CD pipelines. These workloads can be freely preempted and use minimal resources."
+
+---
+# ==============================================================================
+# Best Effort Priority Class - Default for Unspecified Workloads
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-best-effort
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: priority-class
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/level: best-effort
+    priority.veridis.xyz/tier: 8
+    priority.veridis.xyz/preemption: enabled
+    priority.veridis.xyz/resource-guarantee: none
+    priority.veridis.xyz/sla: "none"
+
+    business.veridis.xyz/impact: none
+    business.veridis.xyz/revenue-impact: none
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-required: "false"
+
+    veridis.xyz/environment: mixed
+    veridis.xyz/team: mixed
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Best effort priority class for workloads without explicit priority classification"
+    veridis.xyz/purpose: "Catch-all priority class for unclassified workloads with minimal resource guarantees"
+    veridis.xyz/workloads: "Unclassified pods, temporary workloads, experimental services, third-party tools"
+
+    # Business impact and SLA
+    veridis.xyz/business-impact: "Unknown or minimal"
+    veridis.xyz/sla-availability: "none"
+    veridis.xyz/sla-response-time: "none"
+    veridis.xyz/sla-recovery-time: "none"
+    veridis.xyz/customer-impact: "Unknown"
+
+    # Resource allocation strategy
+    veridis.xyz/resource-allocation: "minimal"
+    veridis.xyz/node-selection: "any-available"
+    veridis.xyz/anti-affinity: "none"
+    veridis.xyz/resource-isolation: "none"
+    veridis.xyz/scaling-priority: "minimal"
+
+    # Default characteristics
+    veridis.xyz/classification: "unspecified"
+    veridis.xyz/importance: "unknown"
+    veridis.xyz/preemption-tolerance: "complete"
+
+    # Cost optimization
+    veridis.xyz/cost-optimization: "maximum"
+    veridis.xyz/resource-efficiency: "opportunistic"
+
+value: 0
+globalDefault: true
+preemptionPolicy: PreemptLowerPriority
+description: "Best effort priority class serving as the default for workloads without explicit priority classification. Provides minimal resource guarantees and can be freely preempted."
+
+# ==============================================================================
+# Priority Class Summary and Usage Guidelines
+# ==============================================================================
+#
+# PRIORITY HIERARCHY (Highest to Lowest):
+# =======================================
+# 1. veridis-system-critical     (1,000,000,000) - Core DID protocol, primary DB
+# 2. veridis-business-critical   (900,000,000)   - ZK circuits, verification, attestation
+# 3. veridis-infrastructure-high (800,000,000)   - Vault, StarkNet, backup services
+# 4. veridis-monitoring          (600,000,000)   - Prometheus, Grafana, logging
+# 5. veridis-application-standard(400,000,000)   - Frontend UI, API gateway
+# 6. veridis-batch-processing    (200,000,000)   - Backup jobs, maintenance
+# 7. veridis-development         (100,000,000)   - Dev environments, testing
+# 8. veridis-best-effort         (0)             - Unclassified workloads (default)
+#
+# RESOURCE ALLOCATION STRATEGY:
+# =============================
+# System Critical:    Full resource guarantee, never preempted
+# Business Critical:  High resource priority, GPU allocation
+# Infrastructure High: Medium resource priority, security focused
+# Monitoring:         Balanced allocation, observability focused
+# Application Standard: Standard allocation, user-facing services
+# Batch Processing:   Opportunistic resources, cost-optimized
+# Development:        Minimal resources, spot instances preferred
+# Best Effort:        No guarantees, freely preemptible
+#
+# PREEMPTION POLICIES:
+# ===================
+# System Critical:    Never - Cannot be preempted under any circumstances
+# All Others:         PreemptLowerPriority - Can preempt lower priority workloads
+#
+# SLA TARGETS:
+# ============
+# System Critical:    99.99% availability, <50ms response, <2min recovery
+# Business Critical:  99.9% availability, <100ms response, <5min recovery
+# Infrastructure High: 99.5% availability, <500ms response, <10min recovery
+# Monitoring:         99% availability, <2s response, <15min recovery
+# Application Standard: 95% availability, <1s response, <30min recovery
+# Batch Processing:   90% availability, best effort response, <2hr recovery
+# Development:        Best effort for all metrics
+# Best Effort:        No SLA commitments
+#
+# USAGE GUIDELINES:
+# ================
+# - Always specify priority class for production workloads
+# - Use system-critical sparingly for truly essential services
+# - Business-critical for revenue-impacting services
+# - Infrastructure-high for security and stability services
+# - Monitoring for observability stack
+# - Application-standard for general user-facing services
+# - Batch-processing for background and maintenance tasks
+# - Development for non-production environments only
+# - Best-effort serves as catch-all default
+#
+# COMPLIANCE INTEGRATION:
+# ======================
+# - SOC 2: Priority classes support availability controls
+# - GDPR: Data processing prioritization for compliance deadlines
+# - ISO 27001: Security service prioritization requirements
+# - Audit trails maintained for priority class assignments
+# - Resource allocation aligned with compliance requirements
+#
+# COST IMPACT:
+# ============
+# Higher priority classes receive better resource allocation but at higher cost.
+# Estimated monthly cost impact per priority class:
+# - System Critical: +200% (premium nodes, guaranteed resources)
+# - Business Critical: +150% (high-performance nodes, GPU allocation)
+# - Infrastructure High: +100% (standard nodes, priority scheduling)
+# - Monitoring: +50% (balanced allocation)
+# - Application Standard: Baseline cost
+# - Batch Processing: -30% (spot instances, opportunistic scheduling)
+# - Development: -50% (spot instances, minimal guarantees)
+# - Best Effort: -60% (cheapest possible allocation)
+#
+# ==============================================================================
