@@ -1,0 +1,690 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Limit Ranges
+# ==============================================================================
+#
+# This manifest defines comprehensive limit ranges for the Veridis namespace,
+# providing:
+#
+# RESOURCE GOVERNANCE:
+#   • Default resource requests and limits for pods and containers
+#   • Minimum and maximum resource boundaries to prevent resource starvation
+#   • Ratio limits to enforce balanced resource allocation
+#   • Container-level controls for CPU, memory, and ephemeral storage
+#   • Pod-level controls for total resource consumption per pod
+#
+# WORKLOAD OPTIMIZATION:
+#   • Performance-tuned defaults for Rust backend services
+#   • GPU-optimized limits for zero-knowledge proof generation
+#   • Database-optimized settings for PostgreSQL workloads
+#   • Cache-optimized settings for Redis instances
+#   • Monitoring-optimized settings for observability stack
+#
+# SECURITY CONTROLS:
+#   • Resource exhaustion attack prevention
+#   • Container escape mitigation through resource isolation
+#   • Denial of service protection through bounded resource usage
+#   • Multi-tenancy support with fair resource sharing
+#   • Compliance with enterprise security policies
+#
+# COST MANAGEMENT:
+#   • Default resource allocation aligned with cost budgets
+#   • Prevention of resource over-provisioning
+#   • Encourages efficient resource utilization
+#   • Supports chargeback and cost allocation models
+#   • Automated rightsizing through sensible defaults
+#
+# OPERATIONAL EXCELLENCE:
+#   • Consistent resource allocation across environments
+#   • Simplified deployment with automatic resource assignment
+#   • Reduced manual configuration overhead
+#   • Integration with HPA and VPA for dynamic scaling
+#   • Support for different workload patterns and requirements
+#
+# COMPLIANCE STANDARDS:
+#   • SOC 2 Type II resource management controls
+#   • GDPR data processing resource limitations
+#   • ISO 27001 resource governance requirements
+#   • Enterprise IT governance and policy compliance
+#   • Audit trail for resource allocation decisions
+#
+# ==============================================================================
+
+# ==============================================================================
+# Container-Level Limit Range - Core Services
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-container-limits-core
+  namespace: veridis
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: limit-range
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Limit range specific labels
+    limitrange.veridis.xyz/type: container
+    limitrange.veridis.xyz/scope: core-services
+    limitrange.veridis.xyz/tier: production
+    limitrange.veridis.xyz/priority: high
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance and governance
+    compliance.veridis.xyz/soc2: "enabled"
+    compliance.veridis.xyz/gdpr: "enabled"
+    governance.veridis.xyz/resource-control: "enabled"
+    governance.veridis.xyz/cost-optimization: "enabled"
+
+  annotations:
+    # Limit range information
+    veridis.xyz/description: "Container-level resource limits for core Veridis services including backend and ZK circuits"
+    veridis.xyz/purpose: "Enforces consistent resource allocation, prevents resource exhaustion, and ensures optimal performance"
+    veridis.xyz/scope: "Applies to veridis-backend and zk-circuits containers"
+
+    # Resource allocation strategy
+    veridis.xyz/allocation-strategy: "performance-optimized"
+    veridis.xyz/scaling-model: "horizontal-first"
+    veridis.xyz/resource-efficiency: "high"
+    veridis.xyz/cost-model: "predictable"
+
+    # Performance characteristics
+    veridis.xyz/cpu-baseline: "500m-2000m"
+    veridis.xyz/memory-baseline: "1Gi-8Gi"
+    veridis.xyz/storage-baseline: "10Gi-100Gi"
+    veridis.xyz/gpu-support: "enabled"
+
+    # Workload patterns
+    veridis.xyz/workload-type: "cpu-memory-intensive"
+    veridis.xyz/traffic-pattern: "variable"
+    veridis.xyz/scaling-frequency: "high"
+    veridis.xyz/resource-burst: "supported"
+
+    # Compliance annotations
+    compliance.veridis.xyz/resource-governance: "iso27001"
+    compliance.veridis.xyz/data-processing-limits: "gdpr-compliant"
+    compliance.veridis.xyz/security-isolation: "container-level"
+
+    # Monitoring and alerting
+    monitoring.veridis.xyz/resource-alerts: "enabled"
+    monitoring.veridis.xyz/threshold-warning: "80%"
+    monitoring.veridis.xyz/threshold-critical: "95%"
+    monitoring.veridis.xyz/dashboard: "veridis-resource-limits"
+
+    # Contact information
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/resource-architect: "sre@veridis.xyz"
+    veridis.xyz/escalation: "oncall@veridis.xyz"
+
+spec:
+  limits:
+  # ==============================================================================
+  # Container Resource Limits - Optimized for Core Services
+  # ==============================================================================
+  # These limits are designed for the Veridis backend (Rust) and ZK circuits (Node.js)
+  # services, providing:
+  # - Sufficient CPU for high-concurrency Rust applications
+  # - Adequate memory for ZK proof generation and caching
+  # - Ephemeral storage for logs, temporary files, and build artifacts
+  # - Balanced ratios to prevent resource imbalances
+  # ==============================================================================
+  - type: Container
+    # CPU Limits
+    # - Default request: 1 CPU core for stable performance
+    # - Default limit: 4 CPU cores for burst capacity
+    # - Min/Max: 100m-16 CPU cores for flexibility
+    # - Ratio: 1:4 max ratio prevents CPU overcommit
+    default:
+      cpu: "2000m"                    # Default CPU limit (2 cores)
+      memory: "4Gi"                   # Default memory limit (4GB)
+      ephemeral-storage: "50Gi"       # Default ephemeral storage limit
+    defaultRequest:
+      cpu: "500m"                     # Default CPU request (0.5 cores)
+      memory: "1Gi"                   # Default memory request (1GB)
+      ephemeral-storage: "10Gi"       # Default ephemeral storage request
+    min:
+      cpu: "100m"                     # Minimum CPU (for sidecars, utilities)
+      memory: "128Mi"                 # Minimum memory (for sidecars, utilities)
+      ephemeral-storage: "1Gi"        # Minimum ephemeral storage
+    max:
+      cpu: "16000m"                   # Maximum CPU (16 cores for ZK circuits)
+      memory: "64Gi"                  # Maximum memory (64GB for ZK circuits)
+      ephemeral-storage: "500Gi"      # Maximum ephemeral storage
+    # Resource ratios to prevent imbalanced allocations
+    maxLimitRequestRatio:
+      cpu: "4"                        # Max 4:1 ratio between limit and request
+      memory: "4"                     # Max 4:1 ratio between limit and request
+      ephemeral-storage: "5"          # Max 5:1 ratio for storage burst
+
+---
+# ==============================================================================
+# Container-Level Limit Range - Infrastructure Services
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-container-limits-infra
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: limit-range
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    limitrange.veridis.xyz/type: container
+    limitrange.veridis.xyz/scope: infrastructure
+    limitrange.veridis.xyz/tier: production
+    limitrange.veridis.xyz/priority: high
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Container-level resource limits for infrastructure services including PostgreSQL, Redis, and Vault"
+    veridis.xyz/purpose: "Optimized resource allocation for database and caching workloads with high I/O requirements"
+    veridis.xyz/scope: "Applies to postgres, redis, vault, and starknet-devnet containers"
+
+    # Infrastructure-specific optimizations
+    veridis.xyz/workload-type: "database-cache-intensive"
+    veridis.xyz/io-pattern: "high-iops"
+    veridis.xyz/memory-pattern: "large-working-set"
+    veridis.xyz/cpu-pattern: "moderate-consistent"
+
+    # Performance characteristics
+    veridis.xyz/cpu-baseline: "250m-1000m"
+    veridis.xyz/memory-baseline: "512Mi-16Gi"
+    veridis.xyz/storage-baseline: "20Gi-1Ti"
+    veridis.xyz/connection-pooling: "optimized"
+
+    # Database-specific settings
+    veridis.xyz/postgres-optimization: "enabled"
+    veridis.xyz/redis-optimization: "enabled"
+    veridis.xyz/cache-efficiency: "high"
+    veridis.xyz/persistence-model: "durable"
+
+spec:
+  limits:
+  # ==============================================================================
+  # Infrastructure Container Resource Limits
+  # ==============================================================================
+  # Optimized for database and caching workloads:
+  # - PostgreSQL: Memory-intensive with moderate CPU needs
+  # - Redis: Memory-focused with low CPU requirements
+  # - Vault: Security-focused with moderate resource needs
+  # - StarkNet DevNet: Blockchain simulation with variable loads
+  # ==============================================================================
+  - type: Container
+    default:
+      cpu: "1000m"                    # Default CPU limit (1 core)
+      memory: "8Gi"                   # Default memory limit (8GB for databases)
+      ephemeral-storage: "100Gi"      # Default ephemeral storage limit
+    defaultRequest:
+      cpu: "250m"                     # Default CPU request (0.25 cores)
+      memory: "2Gi"                   # Default memory request (2GB)
+      ephemeral-storage: "20Gi"       # Default ephemeral storage request
+    min:
+      cpu: "50m"                      # Minimum CPU (for monitoring sidecars)
+      memory: "64Mi"                  # Minimum memory (for monitoring sidecars)
+      ephemeral-storage: "1Gi"        # Minimum ephemeral storage
+    max:
+      cpu: "8000m"                    # Maximum CPU (8 cores for heavy DB loads)
+      memory: "128Gi"                 # Maximum memory (128GB for large datasets)
+      ephemeral-storage: "1Ti"        # Maximum ephemeral storage
+    maxLimitRequestRatio:
+      cpu: "8"                        # Higher ratio for variable DB workloads
+      memory: "8"                     # Higher ratio for caching workloads
+      ephemeral-storage: "10"         # Higher ratio for log and temp files
+
+---
+# ==============================================================================
+# Container-Level Limit Range - Monitoring Services
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-container-limits-monitoring
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: limit-range
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    limitrange.veridis.xyz/type: container
+    limitrange.veridis.xyz/scope: monitoring
+    limitrange.veridis.xyz/tier: production
+    limitrange.veridis.xyz/priority: medium
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Container-level resource limits for monitoring and observability services"
+    veridis.xyz/purpose: "Balanced resource allocation for Prometheus, Grafana, Jaeger, and logging infrastructure"
+    veridis.xyz/scope: "Applies to prometheus, grafana, jaeger, alertmanager, fluent-bit, elasticsearch, kibana containers"
+
+    # Monitoring-specific optimizations
+    veridis.xyz/workload-type: "metrics-logs-traces"
+    veridis.xyz/data-pattern: "time-series"
+    veridis.xyz/query-pattern: "analytical"
+    veridis.xyz/retention-pattern: "rolling"
+
+    # Performance characteristics
+    veridis.xyz/cpu-baseline: "200m-1000m"
+    veridis.xyz/memory-baseline: "512Mi-8Gi"
+    veridis.xyz/storage-baseline: "50Gi-500Gi"
+    veridis.xyz/query-performance: "optimized"
+
+spec:
+  limits:
+  # ==============================================================================
+  # Monitoring Container Resource Limits
+  # ==============================================================================
+  # Optimized for observability workloads:
+  # - Prometheus: High memory for metric storage, moderate CPU
+  # - Grafana: Low resources for dashboards and queries
+  # - Jaeger: Moderate resources for trace collection and storage
+  # - Logging: Variable resources based on log volume
+  # ==============================================================================
+  - type: Container
+    default:
+      cpu: "500m"                     # Default CPU limit (0.5 cores)
+      memory: "2Gi"                   # Default memory limit (2GB)
+      ephemeral-storage: "50Gi"       # Default ephemeral storage limit
+    defaultRequest:
+      cpu: "100m"                     # Default CPU request (0.1 cores)
+      memory: "256Mi"                 # Default memory request (256MB)
+      ephemeral-storage: "5Gi"        # Default ephemeral storage request
+    min:
+      cpu: "25m"                      # Minimum CPU (for lightweight collectors)
+      memory: "32Mi"                  # Minimum memory (for lightweight collectors)
+      ephemeral-storage: "1Gi"        # Minimum ephemeral storage
+    max:
+      cpu: "4000m"                    # Maximum CPU (4 cores for heavy processing)
+      memory: "32Gi"                  # Maximum memory (32GB for large datasets)
+      ephemeral-storage: "200Gi"      # Maximum ephemeral storage
+    maxLimitRequestRatio:
+      cpu: "10"                       # Higher ratio for variable monitoring loads
+      memory: "16"                    # Higher ratio for metric/log bursts
+      ephemeral-storage: "20"         # Higher ratio for log storage
+
+---
+# ==============================================================================
+# Container-Level Limit Range - Batch Jobs and Utilities
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-container-limits-batch
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: limit-range
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    limitrange.veridis.xyz/type: container
+    limitrange.veridis.xyz/scope: batch-jobs
+    limitrange.veridis.xyz/tier: production
+    limitrange.veridis.xyz/priority: low
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Container-level resource limits for batch jobs, maintenance tasks, and utility containers"
+    veridis.xyz/purpose: "Cost-optimized resource allocation for non-critical background tasks and maintenance operations"
+    veridis.xyz/scope: "Applies to backup jobs, maintenance cronjobs, init containers, and utility scripts"
+
+    # Batch job optimizations
+    veridis.xyz/workload-type: "batch-maintenance"
+    veridis.xyz/execution-pattern: "periodic"
+    veridis.xyz/priority-class: "best-effort"
+    veridis.xyz/cost-optimization: "aggressive"
+
+    # Performance characteristics
+    veridis.xyz/cpu-baseline: "100m-500m"
+    veridis.xyz/memory-baseline: "128Mi-2Gi"
+    veridis.xyz/storage-baseline: "5Gi-50Gi"
+    veridis.xyz/completion-time: "flexible"
+
+spec:
+  limits:
+  # ==============================================================================
+  # Batch Job Container Resource Limits
+  # ==============================================================================
+  # Optimized for batch and maintenance workloads:
+  # - Backup jobs: I/O intensive with moderate CPU/memory needs
+  # - Maintenance tasks: Low resource requirements
+  # - Init containers: Short-lived with minimal resources
+  # - Compliance jobs: Periodic execution with predictable resources
+  # ==============================================================================
+  - type: Container
+    default:
+      cpu: "200m"                     # Default CPU limit (0.2 cores)
+      memory: "512Mi"                 # Default memory limit (512MB)
+      ephemeral-storage: "10Gi"       # Default ephemeral storage limit
+    defaultRequest:
+      cpu: "50m"                      # Default CPU request (0.05 cores)
+      memory: "128Mi"                 # Default memory request (128MB)
+      ephemeral-storage: "2Gi"        # Default ephemeral storage request
+    min:
+      cpu: "10m"                      # Minimum CPU (for init containers)
+      memory: "16Mi"                  # Minimum memory (for init containers)
+      ephemeral-storage: "100Mi"      # Minimum ephemeral storage
+    max:
+      cpu: "2000m"                    # Maximum CPU (2 cores for intensive jobs)
+      memory: "8Gi"                   # Maximum memory (8GB for data processing)
+      ephemeral-storage: "100Gi"      # Maximum ephemeral storage
+    maxLimitRequestRatio:
+      cpu: "20"                       # High ratio for variable batch workloads
+      memory: "32"                    # High ratio for data processing bursts
+      ephemeral-storage: "50"         # High ratio for temporary file processing
+
+---
+# ==============================================================================
+# Pod-Level Limit Range - Overall Pod Constraints
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-pod-limits
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: limit-range
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    limitrange.veridis.xyz/type: pod
+    limitrange.veridis.xyz/scope: all-pods
+    limitrange.veridis.xyz/tier: production
+    limitrange.veridis.xyz/priority: critical
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Pod-level resource limits enforcing total resource consumption per pod across all containers"
+    veridis.xyz/purpose: "Prevents individual pods from consuming excessive resources and ensures fair scheduling"
+    veridis.xyz/scope: "Applies to all pods in the veridis namespace, including multi-container pods"
+
+    # Pod-level optimizations
+    veridis.xyz/multi-container-support: "enabled"
+    veridis.xyz/sidecar-optimization: "enabled"
+    veridis.xyz/init-container-handling: "optimized"
+    veridis.xyz/resource-sharing: "efficient"
+
+    # Total resource boundaries
+    veridis.xyz/max-pod-cpu: "32 cores"
+    veridis.xyz/max-pod-memory: "128GB"
+    veridis.xyz/max-pod-storage: "1TB"
+    veridis.xyz/typical-pod-size: "2-8GB memory, 1-4 CPU cores"
+
+    # Compliance and governance
+    compliance.veridis.xyz/resource-isolation: "pod-level"
+    compliance.veridis.xyz/multi-tenancy: "supported"
+    governance.veridis.xyz/fair-scheduling: "enforced"
+
+spec:
+  limits:
+  # ==============================================================================
+  # Pod-Level Resource Limits
+  # ==============================================================================
+  # These limits apply to the total resource consumption of all containers
+  # within a single pod, including:
+  # - Main application containers
+  # - Sidecar containers (service mesh, monitoring agents)
+  # - Init containers (setup, migration, configuration)
+  # - Ephemeral containers (debugging, troubleshooting)
+  # ==============================================================================
+  - type: Pod
+    # Maximum total resources per pod
+    # Designed to accommodate:
+    # - ZK circuits pod: Up to 32 CPU cores, 128GB memory for intensive computation
+    # - Backend pod: Up to 8 CPU cores, 32GB memory for high-throughput API serving
+    # - Database pod: Up to 16 CPU cores, 64GB memory for large datasets
+    # - Monitoring pod: Up to 8 CPU cores, 32GB memory for metric storage
+    max:
+      cpu: "32000m"                   # Maximum 32 CPU cores per pod
+      memory: "128Gi"                 # Maximum 128GB memory per pod
+      ephemeral-storage: "1Ti"        # Maximum 1TB ephemeral storage per pod
+
+    # Minimum total resources per pod
+    # Ensures pods have sufficient resources to start and function:
+    # - Covers basic runtime requirements
+    # - Accounts for sidecar container overhead
+    # - Provides minimal viable resource allocation
+    min:
+      cpu: "10m"                      # Minimum 10m CPU per pod
+      memory: "16Mi"                  # Minimum 16MB memory per pod
+      ephemeral-storage: "100Mi"      # Minimum 100MB ephemeral storage per pod
+
+---
+# ==============================================================================
+# Persistent Volume Claim Limit Range
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-pvc-limits
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: limit-range
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    limitrange.veridis.xyz/type: pvc
+    limitrange.veridis.xyz/scope: persistent-storage
+    limitrange.veridis.xyz/tier: production
+    limitrange.veridis.xyz/priority: high
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+
+  annotations:
+    veridis.xyz/description: "Persistent Volume Claim limits for database storage, application data, and backup volumes"
+    veridis.xyz/purpose: "Controls storage allocation costs and prevents excessive storage provisioning"
+    veridis.xyz/scope: "Applies to all PVCs for databases, monitoring, logging, and application storage"
+
+    # Storage optimization
+    veridis.xyz/storage-tiers: "ssd,standard,cold"
+    veridis.xyz/backup-strategy: "automated"
+    veridis.xyz/retention-policy: "tiered"
+    veridis.xyz/cost-optimization: "enabled"
+
+    # Performance characteristics
+    veridis.xyz/iops-range: "1000-50000"
+    veridis.xyz/throughput-range: "100MB/s-2GB/s"
+    veridis.xyz/latency-target: "<10ms"
+
+    # Use case allocation
+    veridis.xyz/database-storage: "100Gi-5Ti"
+    veridis.xyz/monitoring-storage: "50Gi-2Ti"
+    veridis.xyz/backup-storage: "1Ti-10Ti"
+    veridis.xyz/application-storage: "10Gi-1Ti"
+
+spec:
+  limits:
+  # ==============================================================================
+  # Persistent Volume Claim Limits
+  # ==============================================================================
+  # Storage limits designed for different use cases:
+  # - Database storage: Large volumes with high IOPS requirements
+  # - Application storage: Medium volumes for application data and logs
+  # - Backup storage: Large volumes with lower performance requirements
+  # - Monitoring storage: Medium volumes for metrics and traces
+  # ==============================================================================
+  - type: PersistentVolumeClaim
+    # Default storage allocation
+    # Balanced for typical application needs:
+    # - Sufficient space for growth
+    # - Cost-effective default size
+    # - Expandable for future needs
+    default:
+      storage: "100Gi"                # Default PVC size (100GB)
+
+    # Minimum storage allocation
+    # Ensures volumes are large enough for basic functionality:
+    # - Database minimum working set
+    # - Application log retention
+    # - Monitoring data collection
+    min:
+      storage: "1Gi"                  # Minimum PVC size (1GB)
+
+    # Maximum storage allocation
+    # Prevents accidental over-provisioning:
+    # - Cost control mechanism
+    # - Cluster resource protection
+    # - Requires approval for larger volumes
+    max:
+      storage: "10Ti"                 # Maximum PVC size (10TB)
+
+---
+# ==============================================================================
+# GPU Resource Limit Range - ZK Circuits
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-gpu-limits
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: limit-range
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    limitrange.veridis.xyz/type: gpu
+    limitrange.veridis.xyz/scope: zk-circuits
+    limitrange.veridis.xyz/tier: production
+    limitrange.veridis.xyz/priority: critical
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/gpu-vendor: nvidia
+
+  annotations:
+    veridis.xyz/description: "GPU resource limits for zero-knowledge proof generation and cryptographic computation"
+    veridis.xyz/purpose: "Manages GPU allocation for ZK circuits while preventing resource monopolization"
+    veridis.xyz/scope: "Applies to containers requiring GPU acceleration for cryptographic workloads"
+
+    # GPU optimization
+    veridis.xyz/gpu-type: "compute-optimized"
+    veridis.xyz/cuda-version: "12.0+"
+    veridis.xyz/compute-capability: "8.0+"
+    veridis.xyz/memory-per-gpu: "16GB+"
+
+    # Performance characteristics
+    veridis.xyz/parallel-proving: "enabled"
+    veridis.xyz/batch-processing: "optimized"
+    veridis.xyz/memory-efficiency: "high"
+    veridis.xyz/power-efficiency: "balanced"
+
+    # Cost management
+    veridis.xyz/gpu-cost-per-hour: "$2.50"
+    veridis.xyz/utilization-target: "80%"
+    veridis.xyz/sharing-strategy: "time-slicing"
+
+spec:
+  limits:
+  # ==============================================================================
+  # GPU Resource Limits
+  # ==============================================================================
+  # GPU allocation for zero-knowledge proof generation:
+  # - Individual containers: 1-4 GPUs for parallel computation
+  # - Pod maximum: 8 GPUs for intensive batch processing
+  # - Cluster sharing: Fair allocation across workloads
+  # ==============================================================================
+  - type: Container
+    default:
+      nvidia.com/gpu: "1"             # Default GPU allocation per container
+    defaultRequest:
+      nvidia.com/gpu: "1"             # Default GPU request per container
+    min:
+      nvidia.com/gpu: "0"             # Minimum GPU (for CPU fallback)
+    max:
+      nvidia.com/gpu: "4"             # Maximum GPU per container
+
+  - type: Pod
+    max:
+      nvidia.com/gpu: "8"             # Maximum GPU per pod
+
+# ==============================================================================
+# Limit Range Summary and Resource Planning
+# ==============================================================================
+#
+# CONTAINER RESOURCE ALLOCATION:
+# ==============================
+# Core Services: 0.5-16 CPU cores, 1-64GB memory, 10-500GB storage
+# Infrastructure: 0.25-8 CPU cores, 2-128GB memory, 20GB-1TB storage
+# Monitoring: 0.1-4 CPU cores, 256MB-32GB memory, 5-200GB storage
+# Batch Jobs: 0.05-2 CPU cores, 128MB-8GB memory, 2-100GB storage
+#
+# POD RESOURCE LIMITS:
+# ====================
+# Maximum per pod: 32 CPU cores, 128GB memory, 1TB ephemeral storage
+# Minimum per pod: 10m CPU, 16MB memory, 100MB ephemeral storage
+#
+# STORAGE ALLOCATION:
+# ===================
+# PVC range: 1GB-10TB per volume
+# Default size: 100GB per PVC
+# Total namespace storage: Up to 13TB (from resource quotas)
+#
+# GPU ALLOCATION:
+# ===============
+# Per container: 0-4 GPUs
+# Per pod: Maximum 8 GPUs
+# Total namespace: Up to 8 GPUs (from resource quotas)
+#
+# COST ESTIMATION:
+# ================
+# Typical core service pod: ~$200-800/month
+# Typical infrastructure pod: ~$100-400/month
+# Typical monitoring pod: ~$50-200/month
+# GPU-enabled pod: ~$1500-6000/month
+#
+# COMPLIANCE CONTROLS:
+# ===================
+# - Resource isolation at container and pod levels
+# - Fair resource sharing with ratio controls
+# - Cost management through default allocations
+# - Security boundaries through resource limits
+# - Audit trails for resource consumption tracking
+#
+# ==============================================================================

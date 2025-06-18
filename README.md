@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://github.com/veridis/veridis/workflows/Tests/badge.svg)](https://github.com/veridis/veridis/actions)
 [![Coverage](https://codecov.io/gh/veridis/veridis/branch/main/graph/badge.svg)](https://codecov.io/gh/veridis/veridis)
-[![Security](https://img.shields.io/badge/Security-Audited-brightgreen.svg)](docs/Security,%20Testing,%20and%20Audits/)
+[![Security](https://img.shields.io/badge/Security-NotAudited-red.svg)](docs/Security,%20Testing,%20and%20Audits/)
 
 ## Overview
 
