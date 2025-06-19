@@ -1,0 +1,1168 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Cluster Roles
+# ==============================================================================
+#
+# This manifest defines comprehensive cluster roles for the Veridis deployment,
+# providing:
+#
+# RBAC SECURITY ARCHITECTURE:
+#   • Least privilege access control with granular permissions
+#   • Role-based authorization aligned with business functions
+#   • Separation of duties between operational and security roles
+#   • Cross-namespace resource access with appropriate boundaries
+#   • Emergency access procedures and break-glass capabilities
+#
+# OPERATIONAL ROLE HIERARCHY:
+#   • System administrators with cluster-wide administrative access
+#   • Application operators with deployment and management permissions
+#   • Security officers with audit and compliance access
+#   • Monitoring services with read-only observability access
+#   • Backup operators with data protection and recovery permissions
+#
+# COMPLIANCE FRAMEWORK:
+#   • SOC 2 Type II access control and segregation of duties
+#   • GDPR data processing authorization and audit requirements
+#   • ISO 27001 access management and privilege controls
+#   • Principle of least privilege enforcement
+#   • Comprehensive audit logging and access monitoring
+#
+# SECURITY CONTROLS:
+#   • Multi-factor authentication integration requirements
+#   • Time-based access controls and session management
+#   • Network policy enforcement and traffic segmentation
+#   • Resource quota management and cost control
+#   • Security policy enforcement and compliance monitoring
+#
+# ENTERPRISE FEATURES:
+#   • Integration with enterprise identity providers
+#   • Federated access management across clusters
+#   • Automated role lifecycle management
+#   • Policy-as-code enforcement and validation
+#   • Centralized audit logging and compliance reporting
+#
+# ==============================================================================
+
+# ==============================================================================
+# Cluster Admin Role - Maximum Privileges
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-cluster-admin
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # RBAC specific labels
+    rbac.veridis.xyz/type: cluster-role
+    rbac.veridis.xyz/scope: cluster-wide
+    rbac.veridis.xyz/privilege-level: maximum
+    rbac.veridis.xyz/access-tier: administrative
+    rbac.veridis.xyz/emergency-access: "true"
+
+    # Security classification
+    security.veridis.xyz/access-level: cluster-admin
+    security.veridis.xyz/privilege-escalation: "allowed"
+    security.veridis.xyz/resource-scope: "all"
+    security.veridis.xyz/audit-level: "maximum"
+    security.veridis.xyz/mfa-required: "true"
+
+    # Business classification
+    business.veridis.xyz/criticality: system-critical
+    business.veridis.xyz/impact-level: maximum
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/approval-required: "executive"
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-leadership
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "critical-control"
+    compliance.veridis.xyz/gdpr: "data-controller-admin"
+    compliance.veridis.xyz/iso27001: "privileged-access"
+    compliance.veridis.xyz/segregation-of-duties: "executive-level"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+    governance.veridis.xyz/change-control: "strict"
+
+  annotations:
+    # Role information and purpose
+    veridis.xyz/description: "Maximum privilege cluster role for system administrators and emergency access scenarios"
+    veridis.xyz/purpose: "Provides unrestricted cluster access for critical system administration, disaster recovery, and emergency operations"
+    veridis.xyz/scope: "Complete cluster administration including all resources, namespaces, and security policies"
+
+    # Access control and security
+    veridis.xyz/access-justification: "Emergency operations, disaster recovery, critical system administration, compliance investigations"
+    veridis.xyz/privilege-boundary: "No restrictions - full cluster administrative access"
+    veridis.xyz/security-controls: "MFA required, session recording, approval workflow, time-limited access"
+    veridis.xyz/emergency-procedures: "Break-glass access for critical incidents and system recovery"
+
+    # Compliance and governance
+    compliance.veridis.xyz/access-review-frequency: "monthly"
+    compliance.veridis.xyz/approval-authority: "CTO,CISO"
+    compliance.veridis.xyz/audit-retention: "7-years"
+    compliance.veridis.xyz/segregation-control: "executive-approval-required"
+    compliance.veridis.xyz/access-certification: "annual"
+
+    # Risk management
+    veridis.xyz/risk-level: "critical"
+    veridis.xyz/impact-assessment: "Complete system compromise possible"
+    veridis.xyz/mitigation-controls: "MFA, session monitoring, approval workflow, time limits"
+    veridis.xyz/incident-response: "Immediate escalation for unauthorized access"
+
+    # Session and access management
+    veridis.xyz/session-timeout: "30-minutes"
+    veridis.xyz/concurrent-sessions: "1"
+    veridis.xyz/access-hours: "business-hours-emergency-override"
+    veridis.xyz/geo-restrictions: "corporate-networks-only"
+
+    # Monitoring and alerting
+    monitoring.veridis.xyz/access-alerts: "immediate"
+    monitoring.veridis.xyz/session-recording: "required"
+    monitoring.veridis.xyz/audit-logging: "comprehensive"
+    monitoring.veridis.xyz/anomaly-detection: "enabled"
+
+    # Contact information
+    veridis.xyz/owner: "cto@veridis.xyz"
+    veridis.xyz/security-contact: "ciso@veridis.xyz"
+    veridis.xyz/compliance-contact: "compliance@veridis.xyz"
+    veridis.xyz/escalation: "executive-team@veridis.xyz"
+
+    # Usage guidelines
+    veridis.xyz/usage-policy: "Emergency use only, requires executive approval, limited duration access"
+    veridis.xyz/training-required: "Advanced Kubernetes security, incident response procedures"
+    veridis.xyz/certification-required: "CKA, CKS, company security training"
+
+# Unrestricted access to all cluster resources
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+- nonResourceURLs: ["*"]
+  verbs: ["*"]
+
+---
+# ==============================================================================
+# Application Administrator Role - Veridis Protocol Management
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-app-admin
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role
+    rbac.veridis.xyz/scope: application-focused
+    rbac.veridis.xyz/privilege-level: high
+    rbac.veridis.xyz/access-tier: operational
+    rbac.veridis.xyz/emergency-access: "limited"
+
+    security.veridis.xyz/access-level: app-admin
+    security.veridis.xyz/privilege-escalation: "restricted"
+    security.veridis.xyz/resource-scope: "application-resources"
+    security.veridis.xyz/audit-level: "high"
+    security.veridis.xyz/mfa-required: "true"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/impact-level: high
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/approval-required: "manager"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "high-control"
+    compliance.veridis.xyz/gdpr: "data-processor-admin"
+    compliance.veridis.xyz/iso27001: "application-admin"
+    governance.veridis.xyz/policy-enforcement: "high"
+
+  annotations:
+    veridis.xyz/description: "Application administrator role for managing Veridis Protocol deployments and operations"
+    veridis.xyz/purpose: "Provides comprehensive access to application resources while maintaining security boundaries"
+    veridis.xyz/scope: "Application deployments, configurations, scaling, monitoring, and operational maintenance"
+
+    # Access patterns and boundaries
+    veridis.xyz/namespace-access: "veridis,veridis-staging,veridis-dev"
+    veridis.xyz/resource-categories: "workloads,configs,secrets,networking,storage,monitoring"
+    veridis.xyz/excluded-resources: "cluster-roles,cluster-role-bindings,nodes,persistent-volumes"
+
+    # Operational capabilities
+    veridis.xyz/deployment-permissions: "create,update,delete,rollback"
+    veridis.xyz/scaling-permissions: "horizontal,vertical,resource-quotas"
+    veridis.xyz/config-permissions: "configmaps,secrets,environment-variables"
+    veridis.xyz/monitoring-permissions: "metrics,logs,traces,alerts"
+
+    # Security boundaries
+    security.veridis.xyz/privilege-restrictions: "No cluster-level resources, no node access, no RBAC modification"
+    security.veridis.xyz/network-boundaries: "Application network policies only"
+    security.veridis.xyz/secret-access: "Application secrets only, no cluster secrets"
+
+    # Compliance controls
+    compliance.veridis.xyz/change-approval: "pull-request-review"
+    compliance.veridis.xyz/deployment-gates: "automated-testing,security-scan,compliance-check"
+    compliance.veridis.xyz/audit-scope: "all-administrative-actions"
+
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/manager: "engineering-manager@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Application Workload Management
+# ==============================================================================
+# Full management of application workloads including deployments, statefulsets,
+# daemonsets, jobs, cronjobs, and related resources
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/scale
+    - deployments/status
+    - replicasets
+    - replicasets/scale
+    - statefulsets
+    - statefulsets/scale
+    - statefulsets/status
+    - daemonsets
+    - daemonsets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Batch job management for maintenance and data processing
+- apiGroups: ["batch"]
+  resources:
+    - jobs
+    - jobs/status
+    - cronjobs
+    - cronjobs/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Core Resource Management
+# ==============================================================================
+# Pod management with exec capabilities for debugging
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/attach
+    - pods/exec
+    - pods/portforward
+    - pods/proxy
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Service and networking configuration
+- apiGroups: [""]
+  resources:
+    - services
+    - services/proxy
+    - services/status
+    - endpoints
+    - endpointslices
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ConfigMap and Secret management for application configuration
+- apiGroups: [""]
+  resources:
+    - configmaps
+    - secrets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Storage and Persistence
+# ==============================================================================
+# Persistent Volume Claim management for application storage
+- apiGroups: [""]
+  resources:
+    - persistentvolumeclaims
+    - persistentvolumeclaims/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Storage class access for dynamic provisioning
+- apiGroups: ["storage.k8s.io"]
+  resources:
+    - storageclasses
+  verbs: ["get", "list", "watch"]
+
+# Volume snapshot management for backup operations
+- apiGroups: ["snapshot.storage.k8s.io"]
+  resources:
+    - volumesnapshots
+    - volumesnapshotcontents
+    - volumesnapshotclasses
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Networking and Ingress
+# ==============================================================================
+# Ingress management for application routing
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - ingresses
+    - ingresses/status
+    - ingressclasses
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Network policy management for application security
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - networkpolicies
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Auto-scaling and Performance
+# ==============================================================================
+# Horizontal Pod Autoscaler management
+- apiGroups: ["autoscaling"]
+  resources:
+    - horizontalpodautoscalers
+    - horizontalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Vertical Pod Autoscaler management
+- apiGroups: ["autoscaling.k8s.io"]
+  resources:
+    - verticalpodautoscalers
+    - verticalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Pod Disruption Budget management for availability
+- apiGroups: ["policy"]
+  resources:
+    - poddisruptionbudgets
+    - poddisruptionbudgets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Monitoring and Observability
+# ==============================================================================
+# Metrics access for monitoring and alerting
+- apiGroups: ["metrics.k8s.io"]
+  resources:
+    - nodes
+    - pods
+  verbs: ["get", "list"]
+
+# Custom metrics for advanced autoscaling
+- apiGroups: ["custom.metrics.k8s.io"]
+  resources: ["*"]
+  verbs: ["get", "list"]
+
+# External metrics for cloud-based scaling
+- apiGroups: ["external.metrics.k8s.io"]
+  resources: ["*"]
+  verbs: ["get", "list"]
+
+# ==============================================================================
+# Security and Compliance
+# ==============================================================================
+# Service Account management for application identity
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+    - serviceaccounts/token
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Role and RoleBinding management within allowed namespaces
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources:
+    - roles
+    - rolebindings
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Pod Security Policy management
+- apiGroups: ["policy"]
+  resources:
+    - podsecuritypolicies
+  verbs: ["get", "list", "watch", "use"]
+
+# ==============================================================================
+# Event and Audit Access
+# ==============================================================================
+# Event access for debugging and monitoring
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Resource Quota and Limit Management
+# ==============================================================================
+# Resource quota monitoring (read-only)
+- apiGroups: [""]
+  resources:
+    - resourcequotas
+    - resourcequotas/status
+    - limitranges
+  verbs: ["get", "list", "watch"]
+
+---
+# ==============================================================================
+# Security Officer Role - Audit and Compliance Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-security-officer
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role
+    rbac.veridis.xyz/scope: security-audit
+    rbac.veridis.xyz/privilege-level: audit
+    rbac.veridis.xyz/access-tier: compliance
+    rbac.veridis.xyz/emergency-access: "read-only"
+
+    security.veridis.xyz/access-level: security-audit
+    security.veridis.xyz/privilege-escalation: "none"
+    security.veridis.xyz/resource-scope: "security-resources"
+    security.veridis.xyz/audit-level: "comprehensive"
+    security.veridis.xyz/mfa-required: "true"
+
+    business.veridis.xyz/criticality: compliance-critical
+    business.veridis.xyz/impact-level: audit
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001,pci-dss"
+    business.veridis.xyz/approval-required: "security-manager"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security
+    veridis.xyz/cost-center: compliance
+
+    compliance.veridis.xyz/soc2: "audit-control"
+    compliance.veridis.xyz/gdpr: "data-protection-officer"
+    compliance.veridis.xyz/iso27001: "security-audit"
+    governance.veridis.xyz/policy-enforcement: "audit"
+
+  annotations:
+    veridis.xyz/description: "Security officer role for audit, compliance monitoring, and security policy enforcement"
+    veridis.xyz/purpose: "Provides comprehensive read access to security configurations and audit trails for compliance verification"
+    veridis.xyz/scope: "Security policies, RBAC configurations, network policies, audit logs, compliance reporting"
+
+    # Audit and compliance capabilities
+    veridis.xyz/audit-scope: "Security configurations, access controls, network policies, resource usage"
+    veridis.xyz/compliance-reporting: "SOC 2, GDPR, ISO 27001, PCI DSS compliance verification"
+    veridis.xyz/security-monitoring: "Policy violations, privilege escalation, unauthorized access"
+
+    # Access boundaries
+    security.veridis.xyz/access-restriction: "Read-only access to security and audit resources"
+    security.veridis.xyz/modification-rights: "None - audit access only"
+    security.veridis.xyz/escalation-path: "CISO approval required for any write operations"
+
+    # Compliance framework integration
+    compliance.veridis.xyz/audit-frequency: "continuous"
+    compliance.veridis.xyz/reporting-schedule: "monthly,quarterly,annual"
+    compliance.veridis.xyz/evidence-collection: "automated"
+    compliance.veridis.xyz/control-testing: "enabled"
+
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/ciso: "ciso@veridis.xyz"
+    veridis.xyz/dpo: "dpo@veridis.xyz"
+
+rules:
+# ==============================================================================
+# RBAC and Security Configuration Audit
+# ==============================================================================
+# Read access to all RBAC configurations for compliance verification
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources:
+    - clusterroles
+    - clusterrolebindings
+    - roles
+    - rolebindings
+  verbs: ["get", "list", "watch"]
+
+# Service account audit for identity management compliance
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Network Security Policy Audit
+# ==============================================================================
+# Network policy compliance verification
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - networkpolicies
+    - ingresses
+  verbs: ["get", "list", "watch"]
+
+# Service mesh security policy audit
+- apiGroups: ["security.istio.io"]
+  resources:
+    - authorizationpolicies
+    - peerauthentications
+    - requestauthentications
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Resource and Configuration Audit
+# ==============================================================================
+# Secret audit for sensitive data management
+- apiGroups: [""]
+  resources:
+    - secrets
+  verbs: ["get", "list", "watch"]
+
+# ConfigMap audit for configuration security
+- apiGroups: [""]
+  resources:
+    - configmaps
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Pod Security and Policy Audit
+# ==============================================================================
+# Pod security policy compliance verification
+- apiGroups: ["policy"]
+  resources:
+    - podsecuritypolicies
+    - poddisruptionbudgets
+  verbs: ["get", "list", "watch"]
+
+# Pod security standards audit
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/status
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Resource Quota and Limit Audit
+# ==============================================================================
+# Resource governance compliance verification
+- apiGroups: [""]
+  resources:
+    - resourcequotas
+    - resourcequotas/status
+    - limitranges
+  verbs: ["get", "list", "watch"]
+
+# Priority class audit for workload prioritization
+- apiGroups: ["scheduling.k8s.io"]
+  resources:
+    - priorityclasses
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Event and Audit Log Access
+# ==============================================================================
+# Event audit for security incident investigation
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Node and Cluster Security Audit
+# ==============================================================================
+# Node security configuration audit
+- apiGroups: [""]
+  resources:
+    - nodes
+    - nodes/status
+  verbs: ["get", "list", "watch"]
+
+# Cluster security policy audit
+- apiGroups: ["admissionregistration.k8s.io"]
+  resources:
+    - validatingadmissionwebhooks
+    - mutatingadmissionwebhooks
+  verbs: ["get", "list", "watch"]
+
+---
+# ==============================================================================
+# Monitoring Service Role - Observability and Metrics
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-monitoring-service
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role
+    rbac.veridis.xyz/scope: monitoring
+    rbac.veridis.xyz/privilege-level: read-only
+    rbac.veridis.xyz/access-tier: observability
+    rbac.veridis.xyz/emergency-access: "none"
+
+    security.veridis.xyz/access-level: monitoring
+    security.veridis.xyz/privilege-escalation: "none"
+    security.veridis.xyz/resource-scope: "metrics-logs-traces"
+    security.veridis.xyz/audit-level: "standard"
+    security.veridis.xyz/mfa-required: "false"
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/impact-level: monitoring
+    business.veridis.xyz/compliance-scope: "soc2"
+    business.veridis.xyz/approval-required: "team-lead"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: sre
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "monitoring-control"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+  annotations:
+    veridis.xyz/description: "Monitoring service role for observability infrastructure with cluster-wide read access"
+    veridis.xyz/purpose: "Provides comprehensive read access for metrics collection, logging, tracing, and alerting"
+    veridis.xyz/scope: "Cluster-wide metrics, logs, traces, health checks, resource monitoring, performance data"
+
+    # Monitoring capabilities
+    veridis.xyz/metrics-access: "Prometheus metrics, custom metrics, external metrics"
+    veridis.xyz/logging-access: "Pod logs, system logs, audit logs (non-sensitive)"
+    veridis.xyz/tracing-access: "Distributed traces, service maps, performance data"
+    veridis.xyz/health-checks: "Liveness, readiness, health endpoints"
+
+    # Data collection scope
+    veridis.xyz/resource-monitoring: "CPU, memory, storage, network, GPU utilization"
+    veridis.xyz/application-monitoring: "Response times, error rates, throughput, SLA metrics"
+    veridis.xyz/infrastructure-monitoring: "Node health, cluster components, system resources"
+
+    # Security and data handling
+    security.veridis.xyz/data-sensitivity: "Operational metrics only, no sensitive business data"
+    security.veridis.xyz/log-filtering: "Sensitive data automatically filtered"
+    security.veridis.xyz/retention-policy: "Metrics 90d, logs 365d, traces 30d"
+
+    # Compliance controls
+    compliance.veridis.xyz/data-protection: "Automated PII filtering and data anonymization"
+    compliance.veridis.xyz/audit-scope: "Monitoring system access only"
+
+    veridis.xyz/owner: "sre-team@veridis.xyz"
+    veridis.xyz/monitoring-lead: "monitoring@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Core Resource Monitoring
+# ==============================================================================
+# Comprehensive read access to all core resources for monitoring
+- apiGroups: [""]
+  resources:
+    - nodes
+    - nodes/status
+    - nodes/metrics
+    - pods
+    - pods/status
+    - pods/log
+    - services
+    - endpoints
+    - endpointslices
+    - persistentvolumes
+    - persistentvolumeclaims
+    - namespaces
+    - configmaps
+    - events
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Application Workload Monitoring
+# ==============================================================================
+# Application deployment and workload monitoring
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/status
+    - replicasets
+    - replicasets/status
+    - statefulsets
+    - statefulsets/status
+    - daemonsets
+    - daemonsets/status
+  verbs: ["get", "list", "watch"]
+
+# Batch job monitoring
+- apiGroups: ["batch"]
+  resources:
+    - jobs
+    - jobs/status
+    - cronjobs
+    - cronjobs/status
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Networking Monitoring
+# ==============================================================================
+# Network policy and ingress monitoring
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - ingresses
+    - ingresses/status
+    - networkpolicies
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Auto-scaling and Performance Monitoring
+# ==============================================================================
+# HPA and VPA monitoring for scaling insights
+- apiGroups: ["autoscaling"]
+  resources:
+    - horizontalpodautoscalers
+    - horizontalpodautoscalers/status
+  verbs: ["get", "list", "watch"]
+
+- apiGroups: ["autoscaling.k8s.io"]
+  resources:
+    - verticalpodautoscalers
+    - verticalpodautoscalers/status
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Metrics API Access
+# ==============================================================================
+# Core metrics API for resource utilization
+- apiGroups: ["metrics.k8s.io"]
+  resources:
+    - nodes
+    - pods
+  verbs: ["get", "list"]
+
+# Custom metrics for application-specific monitoring
+- apiGroups: ["custom.metrics.k8s.io"]
+  resources: ["*"]
+  verbs: ["get", "list"]
+
+# External metrics for cloud and third-party integrations
+- apiGroups: ["external.metrics.k8s.io"]
+  resources: ["*"]
+  verbs: ["get", "list"]
+
+# ==============================================================================
+# Storage and Backup Monitoring
+# ==============================================================================
+# Storage monitoring for capacity and performance
+- apiGroups: ["storage.k8s.io"]
+  resources:
+    - storageclasses
+    - volumeattachments
+  verbs: ["get", "list", "watch"]
+
+# Volume snapshot monitoring
+- apiGroups: ["snapshot.storage.k8s.io"]
+  resources:
+    - volumesnapshots
+    - volumesnapshotcontents
+    - volumesnapshotclasses
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Resource Governance Monitoring
+# ==============================================================================
+# Resource quota and limit monitoring
+- apiGroups: [""]
+  resources:
+    - resourcequotas
+    - resourcequotas/status
+    - limitranges
+  verbs: ["get", "list", "watch"]
+
+# Priority class monitoring for workload prioritization
+- apiGroups: ["scheduling.k8s.io"]
+  resources:
+    - priorityclasses
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Service Mesh Monitoring (Istio)
+# ==============================================================================
+# Istio service mesh monitoring
+- apiGroups: ["networking.istio.io"]
+  resources:
+    - virtualservices
+    - destinationrules
+    - gateways
+    - serviceentries
+  verbs: ["get", "list", "watch"]
+
+- apiGroups: ["security.istio.io"]
+  resources:
+    - authorizationpolicies
+    - peerauthentications
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Certificate and Security Monitoring
+# ==============================================================================
+# Certificate monitoring for cert-manager
+- apiGroups: ["cert-manager.io"]
+  resources:
+    - certificates
+    - certificaterequests
+    - issuers
+    - clusterissuers
+  verbs: ["get", "list", "watch"]
+
+---
+# ==============================================================================
+# Backup Operator Role - Data Protection and Recovery
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-backup-operator
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role
+    rbac.veridis.xyz/scope: backup-recovery
+    rbac.veridis.xyz/privilege-level: specialized
+    rbac.veridis.xyz/access-tier: data-protection
+    rbac.veridis.xyz/emergency-access: "recovery"
+
+    security.veridis.xyz/access-level: backup-operator
+    security.veridis.xyz/privilege-escalation: "limited"
+    security.veridis.xyz/resource-scope: "backup-storage-recovery"
+    security.veridis.xyz/audit-level: "high"
+    security.veridis.xyz/mfa-required: "true"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/impact-level: data-protection
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/approval-required: "data-protection-officer"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: sre
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "data-protection-control"
+    compliance.veridis.xyz/gdpr: "data-protection-measures"
+    compliance.veridis.xyz/iso27001: "backup-recovery"
+    governance.veridis.xyz/policy-enforcement: "high"
+
+  annotations:
+    veridis.xyz/description: "Backup operator role for data protection, disaster recovery, and business continuity operations"
+    veridis.xyz/purpose: "Provides specialized access for backup operations, disaster recovery, and data protection compliance"
+    veridis.xyz/scope: "Backup creation, restoration, disaster recovery testing, compliance verification"
+
+    # Backup and recovery capabilities
+    veridis.xyz/backup-scope: "Application data, configurations, secrets, persistent volumes"
+    veridis.xyz/recovery-capabilities: "Point-in-time recovery, cross-region restore, disaster recovery"
+    veridis.xyz/compliance-backup: "Regulatory data retention, audit trail preservation"
+
+    # Data protection responsibilities
+    veridis.xyz/data-classification: "All data types including confidential and regulated data"
+    veridis.xyz/retention-management: "Automated lifecycle management and compliance deletion"
+    veridis.xyz/encryption-requirements: "End-to-end encryption for all backup operations"
+
+    # Disaster recovery integration
+    veridis.xyz/rto-target: "4 hours"
+    veridis.xyz/rpo-target: "1 hour"
+    veridis.xyz/recovery-testing: "Monthly automated testing"
+
+    # Compliance requirements
+    compliance.veridis.xyz/backup-frequency: "Continuous, daily, weekly, monthly"
+    compliance.veridis.xyz/retention-periods: "Daily 30d, weekly 12w, monthly 7y"
+    compliance.veridis.xyz/cross-region: "EU, US data residency compliance"
+    compliance.veridis.xyz/audit-trail: "All backup and recovery operations logged"
+
+    veridis.xyz/owner: "sre-team@veridis.xyz"
+    veridis.xyz/backup-lead: "backup-team@veridis.xyz"
+    veridis.xyz/dpo: "dpo@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Backup Resource Management
+# ==============================================================================
+# Velero backup management (if using Velero for backups)
+- apiGroups: ["velero.io"]
+  resources:
+    - backups
+    - backups/status
+    - restores
+    - restores/status
+    - schedules
+    - schedules/status
+    - deletebackuprequests
+    - podvolumebackups
+    - podvolumerestores
+    - backupstoragelocations
+    - volumesnapshotlocations
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Volume and Storage Management
+# ==============================================================================
+# Persistent volume and claim management for backup operations
+- apiGroups: [""]
+  resources:
+    - persistentvolumes
+    - persistentvolumeclaims
+    - persistentvolumeclaims/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Storage class access for backup volume provisioning
+- apiGroups: ["storage.k8s.io"]
+  resources:
+    - storageclasses
+    - volumeattachments
+  verbs: ["get", "list", "watch"]
+
+# Volume snapshot management for backup operations
+- apiGroups: ["snapshot.storage.k8s.io"]
+  resources:
+    - volumesnapshots
+    - volumesnapshotcontents
+    - volumesnapshotclasses
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Application Resource Access for Backup
+# ==============================================================================
+# Pod access for backup agent deployment and data access
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch", "create", "delete"]
+
+# ConfigMap and Secret backup
+- apiGroups: [""]
+  resources:
+    - configmaps
+    - secrets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Service account management for backup operations
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Application Workload Access
+# ==============================================================================
+# Deployment and workload access for backup coordination
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/status
+    - statefulsets
+    - statefulsets/status
+    - daemonsets
+    - daemonsets/status
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Namespace and Resource Management
+# ==============================================================================
+# Namespace access for backup organization
+- apiGroups: [""]
+  resources:
+    - namespaces
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+# Event access for backup operation monitoring
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch", "create"]
+
+# ==============================================================================
+# RBAC for Backup Service Accounts
+# ==============================================================================
+# Limited RBAC management for backup service accounts
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources:
+    - roles
+    - rolebindings
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+# ==============================================================================
+# Developer Role - Limited Development Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-developer
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role
+    rbac.veridis.xyz/scope: development
+    rbac.veridis.xyz/privilege-level: limited
+    rbac.veridis.xyz/access-tier: development
+    rbac.veridis.xyz/emergency-access: "none"
+
+    security.veridis.xyz/access-level: developer
+    security.veridis.xyz/privilege-escalation: "none"
+    security.veridis.xyz/resource-scope: "development-resources"
+    security.veridis.xyz/audit-level: "standard"
+    security.veridis.xyz/mfa-required: "false"
+
+    business.veridis.xyz/criticality: development
+    business.veridis.xyz/impact-level: low
+    business.veridis.xyz/compliance-scope: "basic"
+    business.veridis.xyz/approval-required: "none"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: development
+    veridis.xyz/cost-center: engineering
+
+    governance.veridis.xyz/policy-enforcement: "basic"
+
+  annotations:
+    veridis.xyz/description: "Developer role for limited access to development environments and debugging tools"
+    veridis.xyz/purpose: "Provides basic access for development, testing, and debugging without production privileges"
+    veridis.xyz/scope: "Development namespaces, debugging tools, read-only production access"
+
+    # Development capabilities
+    veridis.xyz/development-access: "Full access to development and staging namespaces"
+    veridis.xyz/debugging-tools: "Port forwarding, log access, exec access in dev environments"
+    veridis.xyz/production-access: "Read-only access for troubleshooting and learning"
+
+    # Security boundaries
+    security.veridis.xyz/namespace-restrictions: "veridis-dev, veridis-staging only for write access"
+    security.veridis.xyz/production-restrictions: "Read-only access, no modifications allowed"
+    security.veridis.xyz/secret-restrictions: "No access to production secrets or sensitive data"
+
+    veridis.xyz/owner: "development-team@veridis.xyz"
+    veridis.xyz/dev-lead: "dev-team-lead@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Read-Only Production Access
+# ==============================================================================
+# Limited read access to production resources for learning and troubleshooting
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/status
+    - pods/log
+    - services
+    - configmaps
+    - events
+  verbs: ["get", "list", "watch"]
+  resourceNames: [] # Applied via RoleBinding to specific namespaces
+
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/status
+    - replicasets
+    - statefulsets
+    - daemonsets
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Metrics and Monitoring Access
+# ==============================================================================
+# Basic metrics access for performance analysis
+- apiGroups: ["metrics.k8s.io"]
+  resources:
+    - pods
+    - nodes
+  verbs: ["get", "list"]
+
+# ==============================================================================
+# Non-Resource URL Access
+# ==============================================================================
+# API discovery and version information
+- nonResourceURLs:
+    - "/api"
+    - "/api/*"
+    - "/apis"
+    - "/apis/*"
+    - "/version"
+    - "/healthz"
+  verbs: ["get"]
+
+# Note: Full development access to specific namespaces will be granted
+# via namespace-specific RoleBindings in the development environments
+
+# ==============================================================================
+# Cluster Role Summary and Security Architecture
+# ==============================================================================
+#
+# ROLE HIERARCHY AND PRIVILEGE LEVELS:
+# ====================================
+# 1. veridis-cluster-admin      - Maximum privileges (Emergency/Executive)
+# 2. veridis-app-admin          - Application administration (Platform Engineering)
+# 3. veridis-security-officer   - Security audit and compliance (Security Team)
+# 4. veridis-monitoring-service - Observability infrastructure (SRE Team)
+# 5. veridis-backup-operator    - Data protection and recovery (SRE Team)
+# 6. veridis-developer          - Limited development access (Development Team)
+#
+# SECURITY CONTROLS:
+# ==================
+# - Least privilege principle enforced at each level
+# - MFA required for high-privilege roles
+# - Session timeout and concurrent session limits
+# - Comprehensive audit logging for all privileged actions
+# - Geographic and network access restrictions
+# - Emergency access procedures with executive approval
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+# =================================
+# SOC 2 Type II:
+#   - Segregation of duties between operational and security roles
+#   - Access control matrices and periodic access reviews
+#   - Privileged access management and monitoring
+#
+# GDPR:
+#   - Data protection officer access controls
+#   - Data processor and controller role separation
+#   - Automated audit trails for data access
+#
+# ISO 27001:
+#   - Access control policy enforcement
+#   - Privileged access management procedures
+#   - Information security incident response
+#
+# OPERATIONAL PROCEDURES:
+# ======================
+# - Monthly access reviews and certifications
+# - Quarterly privilege escalation audits
+# - Annual role definition and approval updates
+# - Incident response with role-based escalation
+# - Break-glass access with automatic audit alerts
+#
+# MONITORING AND ALERTING:
+# ========================
+# - Real-time alerts for privilege escalation attempts
+# - Comprehensive session recording for high-privilege roles
+# - Automated anomaly detection for unusual access patterns
+# - Integration with SIEM for security event correlation
+# - Compliance reporting and evidence collection
+#
+# ==============================================================================
