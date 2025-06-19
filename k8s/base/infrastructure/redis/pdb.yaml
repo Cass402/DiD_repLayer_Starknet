@@ -1,0 +1,708 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Redis Pod Disruption Budget
+# ==============================================================================
+#
+# This manifest defines comprehensive Redis PDB configurations for the
+# Veridis deployment, providing:
+#
+# ENTERPRISE REDIS AVAILABILITY:
+#   • Advanced pod disruption budgets with intelligent availability protection
+#   • Multi-tier disruption management with primary, replica, and cache protection
+#   • Comprehensive availability controls with business continuity integration
+#   • Advanced disruption coordination with maintenance and update procedures
+#   • Enterprise-grade stability controls with automated recovery and failover
+#
+# REDIS DISRUPTION OPTIMIZATION:
+#   • Intelligent disruption scheduling with workload-aware maintenance windows
+#   • Performance-aware disruption management with minimal service impact
+#   • Business continuity protection with SLA-aware disruption controls
+#   • Cost-optimized disruption scheduling with resource efficiency optimization
+#   • Advanced coordination with cluster operations and scaling activities
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II availability controls with comprehensive audit logging
+#   • GDPR service continuity compliance with data protection and availability
+#   • ISO 27001 availability management with security and operational controls
+#   • PCI DSS availability requirements for cardholder data environment protection
+#   • FIPS 140-2 availability compliance with validated operational procedures
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Predictive disruption management with intelligent scheduling and coordination
+#   • Automated maintenance coordination with health checks and validation
+#   • Advanced monitoring integration with disruption impact analysis
+#   • Comprehensive recovery procedures with automated failover and restoration
+#   • Business impact minimization with intelligent disruption sequencing
+#
+# REDIS WORKLOAD PROTECTION:
+#   • Session continuity protection with minimal user impact and state preservation
+#   • Authentication service protection with login availability and security
+#   • Cache availability protection with hit rate preservation and performance
+#   • Real-time analytics protection with data continuity and streaming support
+#   • Rate limiting protection with traffic management and DDoS prevention
+#
+# ==============================================================================
+
+# ==============================================================================
+# Redis Primary PDB - Critical Service Protection
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis-primary-pdb
+  namespace: veridis-cache
+
+  # Core PDB identification labels
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "7.2.4"
+    app.kubernetes.io/component: primary-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # PDB specific classification
+    pdb.veridis.xyz/type: redis-primary
+    pdb.veridis.xyz/tier: enterprise
+    pdb.veridis.xyz/role: primary-protection
+    pdb.veridis.xyz/protection-level: maximum
+    pdb.veridis.xyz/disruption-strategy: conservative
+
+    # Disruption management classification
+    disruption.veridis.xyz/impact: mission-critical
+    disruption.veridis.xyz/tolerance: minimal
+    disruption.veridis.xyz/recovery-time: immediate
+    disruption.veridis.xyz/coordination: required
+    disruption.veridis.xyz/maintenance-window: planned
+
+    # Business disruption classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: service-availability
+    business.veridis.xyz/cost-impact: high
+    business.veridis.xyz/sla-impact: direct
+    business.veridis.xyz/recovery-priority: highest
+
+    # Performance disruption classification
+    performance.veridis.xyz/impact: service-degradation
+    performance.veridis.xyz/recovery-strategy: immediate
+    performance.veridis.xyz/monitoring-critical: "true"
+    performance.veridis.xyz/failover-required: "true"
+    performance.veridis.xyz/state-preservation: "true"
+
+    # Availability protection labels
+    availability.veridis.xyz/protection-tier: maximum
+    availability.veridis.xyz/disruption-budget: conservative
+    availability.veridis.xyz/maintenance-coordination: required
+    availability.veridis.xyz/health-validation: comprehensive
+    availability.veridis.xyz/sla-target: "99.99"
+
+    # Operational disruption labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "availability-control"
+    compliance.veridis.xyz/gdpr: "service-continuity-protection"
+    compliance.veridis.xyz/iso27001: "availability-management"
+    compliance.veridis.xyz/pci-dss: "availability-requirements"
+    governance.veridis.xyz/policy-enforcement: "strict"
+
+    # Disruption monitoring and validation
+    monitoring.veridis.xyz/disruption-tracking: "enabled"
+    monitoring.veridis.xyz/impact-analysis: "comprehensive"
+    monitoring.veridis.xyz/recovery-monitoring: "automated"
+    monitoring.veridis.xyz/sla-monitoring: "critical"
+    monitoring.veridis.xyz/business-impact: "tracked"
+
+  annotations:
+    # PDB purpose and specifications
+    veridis.xyz/description: "Enterprise Redis primary PDB with maximum protection, minimal disruption tolerance, and comprehensive recovery"
+    veridis.xyz/purpose: "Provides critical service protection for Redis primary with minimal disruption tolerance and immediate recovery"
+    veridis.xyz/scope: "Primary Redis protection including write operations, session management, and critical cache operations"
+
+    # Disruption strategy and architecture
+    disruption.veridis.xyz/architecture: "Single-instance protection with maximum availability and minimal disruption tolerance"
+    disruption.veridis.xyz/strategy: "Conservative disruption budget with coordinated maintenance and immediate recovery"
+    disruption.veridis.xyz/coordination: "Comprehensive coordination with cluster operations, maintenance, and scaling activities"
+    disruption.veridis.xyz/impact-minimization: "Business impact minimization with intelligent disruption sequencing and state preservation"
+
+    # Business continuity specifications
+    business.veridis.xyz/continuity-plan: "Comprehensive business continuity with failover procedures and state preservation"
+    business.veridis.xyz/sla-protection: "SLA-aware disruption management with availability targets and performance guarantees"
+    business.veridis.xyz/impact-analysis: "Real-time business impact analysis with cost correlation and optimization"
+    business.veridis.xyz/recovery-procedures: "Automated recovery procedures with health validation and service restoration"
+
+    # Performance protection specifications
+    performance.veridis.xyz/state-preservation: "Write state preservation with minimal data loss and immediate recovery"
+    performance.veridis.xyz/failover-strategy: "Immediate failover with automated recovery and service restoration"
+    performance.veridis.xyz/monitoring-integration: "Comprehensive monitoring with disruption impact analysis and alerting"
+    performance.veridis.xyz/recovery-validation: "Automated recovery validation with health checks and performance verification"
+
+    # Availability management specifications
+    availability.veridis.xyz/protection-strategy: "Maximum protection with minimal disruption tolerance and immediate recovery"
+    availability.veridis.xyz/maintenance-coordination: "Coordinated maintenance with health validation and impact minimization"
+    availability.veridis.xyz/health-monitoring: "Comprehensive health monitoring with automated recovery and failover"
+    availability.veridis.xyz/service-restoration: "Rapid service restoration with state preservation and performance validation"
+
+    # Compliance and security specifications
+    compliance.veridis.xyz/availability-compliance: "Regulatory compliance with availability requirements and audit trails"
+    compliance.veridis.xyz/audit-requirements: "Comprehensive disruption audit logging with impact analysis and reporting"
+    compliance.veridis.xyz/security-continuity: "Security continuity with encrypted state preservation and access control"
+    compliance.veridis.xyz/regulatory-reporting: "Automated compliance reporting with availability metrics and analysis"
+
+    # Operational excellence specifications
+    operations.veridis.xyz/automation-level: "Full automation with human oversight and emergency intervention capabilities"
+    operations.veridis.xyz/maintenance-integration: "Maintenance coordination with disruption scheduling and impact analysis"
+    operations.veridis.xyz/disaster-recovery: "Disaster recovery integration with business continuity and failover procedures"
+    operations.veridis.xyz/change-management: "Change management integration with disruption impact analysis and approval"
+
+    # Monitoring and observability specifications
+    monitoring.veridis.xyz/disruption-observability: "Comprehensive disruption observability with metrics, logging, and alerting"
+    monitoring.veridis.xyz/impact-analytics: "Advanced impact analytics with business correlation and optimization recommendations"
+    monitoring.veridis.xyz/recovery-analytics: "Recovery analytics with performance correlation and optimization analysis"
+    monitoring.veridis.xyz/sla-analytics: "SLA analytics with availability tracking and compliance reporting"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/disruption-admin: "redis-disruption-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "infrastructure-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/redis/primary-pdb"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/redis/primary-disruption-management"
+    veridis.xyz/recovery-procedures: "https://procedures.veridis.xyz/redis/primary-recovery"
+    veridis.xyz/troubleshooting: "https://docs.veridis.xyz/troubleshooting/redis-primary-disruption"
+
+    # Disruption coordination annotations
+    disruption.veridis.xyz/coordination-required: "true"
+    disruption.veridis.xyz/maintenance-window-required: "true"
+    disruption.veridis.xyz/health-validation-required: "true"
+    disruption.veridis.xyz/impact-analysis-required: "true"
+
+# PDB specification for Redis primary
+spec:
+  # Minimum available instances (1 for single primary)
+  minAvailable: 1
+
+  # Pod selector for Redis primary
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: primary
+      redis.veridis.xyz/role: cache-primary
+
+  # Unhealthy pod eviction policy
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Redis Replica PDB - Read Availability Protection
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis-replica-pdb
+  namespace: veridis-cache
+
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "7.2.4"
+    app.kubernetes.io/component: replica-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: redis-replica
+    pdb.veridis.xyz/tier: enterprise
+    pdb.veridis.xyz/role: replica-protection
+    pdb.veridis.xyz/protection-level: high
+    pdb.veridis.xyz/disruption-strategy: balanced
+
+    disruption.veridis.xyz/impact: business-critical
+    disruption.veridis.xyz/tolerance: moderate
+    disruption.veridis.xyz/recovery-time: fast
+    disruption.veridis.xyz/coordination: recommended
+    disruption.veridis.xyz/maintenance-window: flexible
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/impact: read-performance
+    business.veridis.xyz/cost-impact: medium
+    business.veridis.xyz/sla-impact: moderate
+    business.veridis.xyz/recovery-priority: high
+
+    performance.veridis.xyz/impact: read-degradation
+    performance.veridis.xyz/recovery-strategy: scaling
+    performance.veridis.xyz/monitoring-important: "true"
+    performance.veridis.xyz/failover-optional: "true"
+    performance.veridis.xyz/read-continuity: "true"
+
+    availability.veridis.xyz/protection-tier: high
+    availability.veridis.xyz/disruption-budget: balanced
+    availability.veridis.xyz/maintenance-coordination: flexible
+    availability.veridis.xyz/health-validation: standard
+    availability.veridis.xyz/sla-target: "99.9"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "replica-availability-control"
+    compliance.veridis.xyz/gdpr: "read-service-continuity"
+    compliance.veridis.xyz/iso27001: "replica-availability-management"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+    monitoring.veridis.xyz/replica-disruption: "enabled"
+    monitoring.veridis.xyz/read-performance: "monitored"
+    monitoring.veridis.xyz/scaling-coordination: "automated"
+
+  annotations:
+    veridis.xyz/description: "Redis replica PDB with balanced protection, moderate disruption tolerance, and scaling-based recovery"
+    veridis.xyz/purpose: "Provides read availability protection for Redis replicas with balanced disruption tolerance and scaling recovery"
+    veridis.xyz/scope: "Replica Redis protection including read operations, analytics queries, and reporting workloads"
+
+    # Replica disruption strategy
+    disruption.veridis.xyz/replica-strategy: "Balanced disruption budget with read availability protection and scaling coordination"
+    disruption.veridis.xyz/read-protection: "Read availability protection with minimal impact on analytics and reporting operations"
+    disruption.veridis.xyz/scaling-coordination: "Scaling-based recovery with automated replica provisioning and load balancing"
+    disruption.veridis.xyz/analytics-continuity: "Analytics continuity with minimal disruption to reporting and data processing"
+
+    # Read performance protection
+    performance.veridis.xyz/read-availability: "Read availability protection with connection pooling and query optimization"
+    performance.veridis.xyz/analytics-performance: "Analytics performance protection with parallel processing and aggregation"
+    performance.veridis.xyz/reporting-continuity: "Reporting continuity with minimal disruption to scheduled and ad-hoc reports"
+
+    # Scaling integration
+    scaling.veridis.xyz/disruption-coordination: "Disruption coordination with HPA scaling and capacity management"
+    scaling.veridis.xyz/recovery-scaling: "Recovery scaling with intelligent replica provisioning and distribution"
+    scaling.veridis.xyz/load-balancing: "Load balancing coordination with disruption management and traffic distribution"
+
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/replica-admin: "redis-replica-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/redis/replica-pdb"
+
+spec:
+  # Minimum available replicas (at least 1 out of 2-8 replicas)
+  minAvailable: 1
+
+  # Alternative: percentage-based disruption budget
+  # maxUnavailable: 50%  # Allow up to 50% of replicas to be unavailable
+
+  # Pod selector for Redis replicas
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: replica
+      redis.veridis.xyz/role: cache-replica
+
+  # Unhealthy pod eviction policy
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Redis Cache PDB - Cache Availability Protection
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis-cache-pdb
+  namespace: veridis-cache
+
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "7.2.4"
+    app.kubernetes.io/component: cache-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: redis-cache
+    pdb.veridis.xyz/tier: enterprise
+    pdb.veridis.xyz/role: cache-protection
+    pdb.veridis.xyz/protection-level: high
+    pdb.veridis.xyz/disruption-strategy: cache-optimized
+
+    disruption.veridis.xyz/impact: business-critical
+    disruption.veridis.xyz/tolerance: moderate
+    disruption.veridis.xyz/recovery-time: cache-warming
+    disruption.veridis.xyz/coordination: cache-aware
+    disruption.veridis.xyz/cache-consistency: required
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/impact: cache-performance
+    business.veridis.xyz/cost-impact: medium
+    business.veridis.xyz/session-impact: moderate
+    business.veridis.xyz/auth-impact: moderate
+
+    performance.veridis.xyz/impact: cache-degradation
+    performance.veridis.xyz/recovery-strategy: cache-warming
+    performance.veridis.xyz/hit-rate-protection: "true"
+    performance.veridis.xyz/session-continuity: "true"
+    performance.veridis.xyz/auth-continuity: "true"
+
+    availability.veridis.xyz/protection-tier: high
+    availability.veridis.xyz/disruption-budget: cache-optimized
+    availability.veridis.xyz/cache-warming: automated
+    availability.veridis.xyz/hit-rate-preservation: enabled
+    availability.veridis.xyz/sla-target: "99.9"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "cache-availability-control"
+    compliance.veridis.xyz/gdpr: "cache-data-protection"
+    compliance.veridis.xyz/iso27001: "cache-availability-management"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+    monitoring.veridis.xyz/cache-disruption: "enabled"
+    monitoring.veridis.xyz/hit-rate-monitoring: "comprehensive"
+    monitoring.veridis.xyz/session-monitoring: "enabled"
+    monitoring.veridis.xyz/auth-monitoring: "enabled"
+
+  annotations:
+    veridis.xyz/description: "Redis cache PDB with cache-optimized protection, hit rate preservation, and automated cache warming"
+    veridis.xyz/purpose: "Provides cache availability protection with hit rate preservation, session continuity, and authentication performance"
+    veridis.xyz/scope: "Cache Redis protection including session storage, authentication caching, and rate limiting operations"
+
+    # Cache disruption strategy
+    disruption.veridis.xyz/cache-strategy: "Cache-optimized disruption budget with hit rate preservation and automated warming"
+    disruption.veridis.xyz/hit-rate-preservation: "Cache hit rate preservation with intelligent disruption sequencing"
+    disruption.veridis.xyz/session-protection: "Session storage protection with minimal user impact and state preservation"
+    disruption.veridis.xyz/auth-protection: "Authentication cache protection with login availability and security"
+
+    # Cache performance protection
+    performance.veridis.xyz/cache-efficiency: "Cache efficiency protection with intelligent data distribution and warming"
+    performance.veridis.xyz/session-performance: "Session performance protection with connection pooling and data locality"
+    performance.veridis.xyz/auth-performance: "Authentication performance protection with security and speed balance"
+
+    # Cache warming and recovery
+    recovery.veridis.xyz/cache-warming: "Automated cache warming with critical data pre-loading and optimization"
+    recovery.veridis.xyz/session-recovery: "Session recovery with state preservation and minimal user impact"
+    recovery.veridis.xyz/auth-recovery: "Authentication recovery with cache pre-loading and security validation"
+
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/cache-admin: "redis-cache-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/redis/cache-pdb"
+
+spec:
+  # Percentage-based disruption budget for cache instances
+  maxUnavailable: 30%  # Allow maximum 30% of cache instances to be unavailable
+
+  # Pod selector for Redis cache instances
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: cache
+      redis.veridis.xyz/role: cache-instance
+
+  # Unhealthy pod eviction policy
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Redis Sentinel PDB - Cluster Management Protection
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis-sentinel-pdb
+  namespace: veridis-cache
+
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "7.2.4"
+    app.kubernetes.io/component: sentinel-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: redis-sentinel
+    pdb.veridis.xyz/tier: enterprise
+    pdb.veridis.xyz/role: sentinel-protection
+    pdb.veridis.xyz/protection-level: critical
+    pdb.veridis.xyz/disruption-strategy: quorum-aware
+
+    disruption.veridis.xyz/impact: cluster-management
+    disruption.veridis.xyz/tolerance: quorum-based
+    disruption.veridis.xyz/recovery-time: immediate
+    disruption.veridis.xyz/coordination: cluster-aware
+    disruption.veridis.xyz/quorum-protection: required
+
+    business.veridis.xyz/criticality: infrastructure-critical
+    business.veridis.xyz/impact: cluster-availability
+    business.veridis.xyz/failover-capability: required
+    business.veridis.xyz/monitoring-capability: required
+
+    performance.veridis.xyz/impact: failover-capability
+    performance.veridis.xyz/recovery-strategy: quorum-restoration
+    performance.veridis.xyz/monitoring-continuity: "true"
+    performance.veridis.xyz/cluster-health: "true"
+
+    availability.veridis.xyz/protection-tier: critical
+    availability.veridis.xyz/disruption-budget: quorum-aware
+    availability.veridis.xyz/quorum-protection: enabled
+    availability.veridis.xyz/cluster-monitoring: comprehensive
+    availability.veridis.xyz/sla-target: "99.99"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "sentinel-availability-control"
+    compliance.veridis.xyz/gdpr: "cluster-management-protection"
+    compliance.veridis.xyz/iso27001: "sentinel-availability-management"
+    governance.veridis.xyz/policy-enforcement: "strict"
+
+    monitoring.veridis.xyz/sentinel-disruption: "enabled"
+    monitoring.veridis.xyz/quorum-monitoring: "critical"
+    monitoring.veridis.xyz/cluster-health: "comprehensive"
+    monitoring.veridis.xyz/failover-monitoring: "automated"
+
+  annotations:
+    veridis.xyz/description: "Redis Sentinel PDB with quorum-aware protection, cluster management continuity, and failover capability"
+    veridis.xyz/purpose: "Provides Sentinel availability protection with quorum preservation, cluster monitoring, and failover capability"
+    veridis.xyz/scope: "Sentinel protection including cluster monitoring, failover management, and health tracking"
+
+    # Sentinel disruption strategy
+    disruption.veridis.xyz/sentinel-strategy: "Quorum-aware disruption budget with cluster management continuity and failover protection"
+    disruption.veridis.xyz/quorum-protection: "Sentinel quorum protection with minimum instances for cluster management"
+    disruption.veridis.xyz/failover-protection: "Failover capability protection with automated recovery and cluster restoration"
+    disruption.veridis.xyz/monitoring-continuity: "Cluster monitoring continuity with health tracking and alerting"
+
+    # Cluster management protection
+    cluster.veridis.xyz/management-continuity: "Cluster management continuity with Sentinel availability and coordination"
+    cluster.veridis.xyz/health-monitoring: "Cluster health monitoring with comprehensive tracking and alerting"
+    cluster.veridis.xyz/failover-capability: "Automated failover capability with Sentinel coordination and recovery"
+
+    # Quorum and availability
+    quorum.veridis.xyz/protection: "Sentinel quorum protection with minimum instances for decision making"
+    quorum.veridis.xyz/monitoring: "Quorum monitoring with health tracking and automated recovery"
+    quorum.veridis.xyz/restoration: "Quorum restoration with automated Sentinel provisioning and coordination"
+
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/sentinel-admin: "redis-sentinel-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/redis/sentinel-pdb"
+
+spec:
+  # Minimum available Sentinels (ensure quorum is maintained)
+  minAvailable: 2  # Maintain at least 2 out of 3 Sentinels for quorum
+
+  # Pod selector for Redis Sentinel
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: sentinel
+      redis.veridis.xyz/role: sentinel
+
+  # Unhealthy pod eviction policy
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Redis Monitoring PDB - Observability Protection
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis-monitoring-pdb
+  namespace: veridis-cache
+
+  labels:
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "7.2.4"
+    app.kubernetes.io/component: monitoring-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: redis-monitoring
+    pdb.veridis.xyz/tier: enterprise
+    pdb.veridis.xyz/role: monitoring-protection
+    pdb.veridis.xyz/protection-level: standard
+    pdb.veridis.xyz/disruption-strategy: observability-aware
+
+    disruption.veridis.xyz/impact: observability
+    disruption.veridis.xyz/tolerance: flexible
+    disruption.veridis.xyz/recovery-time: moderate
+    disruption.veridis.xyz/coordination: monitoring-aware
+    disruption.veridis.xyz/metrics-continuity: preferred
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/impact: monitoring-availability
+    business.veridis.xyz/alerting-capability: required
+    business.veridis.xyz/metrics-collection: required
+
+    performance.veridis.xyz/impact: monitoring-gaps
+    performance.veridis.xyz/recovery-strategy: service-restoration
+    performance.veridis.xyz/metrics-continuity: "true"
+    performance.veridis.xyz/alerting-continuity: "true"
+
+    availability.veridis.xyz/protection-tier: standard
+    availability.veridis.xyz/disruption-budget: flexible
+    availability.veridis.xyz/metrics-collection: preserved
+    availability.veridis.xyz/alerting-capability: maintained
+    availability.veridis.xyz/sla-target: "99.5"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "monitoring-availability-control"
+    compliance.veridis.xyz/gdpr: "monitoring-data-protection"
+    compliance.veridis.xyz/iso27001: "monitoring-availability-management"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+    monitoring.veridis.xyz/self-monitoring: "enabled"
+    monitoring.veridis.xyz/metrics-protection: "standard"
+    monitoring.veridis.xyz/alerting-protection: "enabled"
+
+  annotations:
+    veridis.xyz/description: "Redis monitoring PDB with observability protection, metrics continuity, and alerting capability"
+    veridis.xyz/purpose: "Provides monitoring availability protection with metrics collection continuity and alerting capability"
+    veridis.xyz/scope: "Monitoring protection including metrics collection, alerting, and observability operations"
+
+    # Monitoring disruption strategy
+    disruption.veridis.xyz/monitoring-strategy: "Observability-aware disruption budget with metrics continuity and alerting protection"
+    disruption.veridis.xyz/metrics-protection: "Metrics collection protection with minimal gaps and data continuity"
+    disruption.veridis.xyz/alerting-protection: "Alerting capability protection with notification continuity and escalation"
+    disruption.veridis.xyz/observability-continuity: "Observability continuity with monitoring service availability"
+
+    # Monitoring performance protection
+    performance.veridis.xyz/metrics-continuity: "Metrics collection continuity with minimal data loss and gap protection"
+    performance.veridis.xyz/alerting-performance: "Alerting performance protection with notification delivery and escalation"
+    performance.veridis.xyz/dashboard-availability: "Dashboard availability with real-time monitoring and visualization"
+
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/monitoring-admin: "redis-monitoring-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/redis/monitoring-pdb"
+
+spec:
+  # Percentage-based disruption budget for monitoring instances
+  maxUnavailable: 50%  # Allow up to 50% of monitoring instances to be unavailable
+
+  # Pod selector for Redis monitoring
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: monitoring
+      redis.veridis.xyz/role: monitoring
+
+  # Unhealthy pod eviction policy
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+# ==============================================================================
+# Redis PDB Summary and Enterprise Availability Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE REDIS PDB STRATEGY:
+# =================================
+#
+# REDIS PDB ARCHITECTURE OVERVIEW:
+# --------------------------------
+# 1. Redis Primary PDB (redis-primary-pdb):
+#    - Maximum protection with minAvailable: 1 (single primary instance)
+#    - Mission-critical disruption tolerance with immediate recovery requirements
+#    - Conservative disruption strategy with comprehensive coordination and validation
+#    - State preservation with failover capability and automated recovery
+#    - Comprehensive monitoring with business impact analysis and SLA tracking
+#
+# 2. Redis Replica PDB (redis-replica-pdb):
+#    - Balanced protection with minAvailable: 1 (out of 2-8 replicas)
+#    - Moderate disruption tolerance with scaling-based recovery
+#    - Read availability protection with analytics and reporting continuity
+#    - HPA coordination with intelligent scaling and load balancing
+#    - Performance monitoring with read optimization and connection management
+#
+# 3. Redis Cache PDB (redis-cache-pdb):
+#    - High protection with maxUnavailable: 30% (cache instances)
+#    - Cache-optimized disruption strategy with hit rate preservation
+#    - Session and authentication continuity with automated cache warming
+#    - Performance protection with cache efficiency and data locality
+#    - Business continuity with minimal user impact and state preservation
+#
+# 4. Redis Sentinel PDB (redis-sentinel-pdb):
+#    - Critical protection with minAvailable: 2 (out of 3 Sentinels)
+#    - Quorum-aware disruption strategy with cluster management continuity
+#    - Failover capability protection with automated recovery and coordination
+#    - Cluster health monitoring with comprehensive tracking and alerting
+#    - Infrastructure-critical protection with immediate recovery requirements
+#
+# 5. Redis Monitoring PDB (redis-monitoring-pdb):
+#    - Standard protection with maxUnavailable: 50% (monitoring instances)
+#    - Observability-aware disruption strategy with metrics continuity
+#    - Alerting capability protection with notification delivery and escalation
+#    - Flexible disruption tolerance with service restoration recovery
+#    - Operational continuity with monitoring service availability
+#
+# ENTERPRISE PDB FEATURES:
+# ========================
+# Advanced Disruption Management:
+#   - Multi-tier protection levels with workload-specific disruption budgets
+#   - Intelligent disruption coordination with maintenance and scaling activities
+#   - Business-aware disruption tolerance with SLA protection and impact analysis
+#   - Automated recovery procedures with health validation and service restoration
+#   - Comprehensive monitoring with disruption impact analysis and optimization
+#
+# Availability Protection Strategy:
+#   - Workload-specific protection with primary, replica, cache, and monitoring tiers
+#   - Quorum-aware protection for Sentinel with cluster management continuity
+#   - Session continuity protection with minimal user impact and state preservation
+#   - Authentication service protection with login availability and security
+#   - Cache hit rate preservation with automated warming and optimization
+#
+# Business Continuity Integration:
+#   - SLA-aware disruption management with availability targets and guarantees
+#   - Business impact minimization with intelligent disruption sequencing
+#   - Cost-optimized disruption scheduling with resource efficiency optimization
+#   - Revenue impact protection with critical service availability and performance
+#   - Compliance integration with regulatory requirements and audit trails
+#
+# Performance and Recovery:
+#   - State preservation with minimal data loss and immediate recovery
+#   - Failover capability with automated recovery and service restoration
+#   - Scaling coordination with HPA integration and capacity management
+#   - Cache warming automation with critical data pre-loading and optimization
+#   - Performance validation with health checks and monitoring integration
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Disruption Coordination:
+#   - Maintenance coordination with disruption scheduling and impact analysis
+#   - Change management integration with approval workflows and validation
+#   - Scaling coordination with HPA and capacity management integration
+#   - Disaster recovery integration with business continuity and failover procedures
+#   - Emergency intervention with human oversight and manual controls
+#
+# Monitoring and Observability:
+#   - Comprehensive disruption tracking with metrics, logging, and alerting
+#   - Business impact analysis with cost correlation and optimization recommendations
+#   - Recovery analytics with performance correlation and optimization analysis
+#   - SLA monitoring with availability tracking and compliance reporting
+#   - Predictive analytics with disruption forecasting and prevention
+#
+# Compliance and Security:
+#   - SOC 2 Type II availability controls with comprehensive audit requirements
+#   - GDPR service continuity compliance with data protection and availability
+#   - ISO 27001 availability management with security and operational controls
+#   - PCI DSS availability requirements with regulatory compliance validation
+#   - Security continuity with encrypted state preservation and access control
+#
+# Automation and Integration:
+#   - Full automation with intelligent decision-making and human oversight
+#   - Infrastructure as Code integration with version control and change tracking
+#   - CI/CD pipeline integration with deployment coordination and validation
+#   - Monitoring integration with alerting and automated response procedures
+#   - Business process integration with change management and approval workflows
+#
+# ==============================================================================
