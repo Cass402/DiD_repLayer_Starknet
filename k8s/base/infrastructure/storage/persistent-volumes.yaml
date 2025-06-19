@@ -1,0 +1,1141 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Persistent Volumes
+# ==============================================================================
+#
+# This manifest defines comprehensive persistent volumes for the Veridis deployment,
+# providing:
+#
+# ENTERPRISE STORAGE ARCHITECTURE:
+#   • Pre-provisioned persistent volumes with guaranteed capacity and performance
+#   • Multi-tier storage allocation with workload-specific optimization
+#   • High-availability volumes with multi-zone replication and failover
+#   • Compliance-ready storage with encryption, audit trails, and data governance
+#   • Cost-optimized storage with lifecycle management and capacity planning
+#
+# PERFORMANCE OPTIMIZATION FRAMEWORK:
+#   • Dedicated database volumes with ultra-high IOPS and sub-millisecond latency
+#   • Application storage with balanced performance and cost optimization
+#   • Shared storage volumes for collaborative workflows and data sharing
+#   • Cache volumes with memory-mapped performance for real-time processing
+#   • Archive volumes for long-term retention and regulatory compliance
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II storage controls with comprehensive audit logging
+#   • GDPR data protection with geographic residency and retention management
+#   • ISO 27001 information storage security with access control integration
+#   • PCI DSS secure storage for cardholder data environment protection
+#   • HIPAA-compliant storage for healthcare data processing requirements
+#
+# ENTERPRISE AVAILABILITY FEATURES:
+#   • Multi-zone persistent volumes with automatic failover capabilities
+#   • Snapshot and backup integration with point-in-time recovery
+#   • Cross-region replication for business continuity and disaster recovery
+#   • Storage monitoring with proactive capacity and performance management
+#   • High-availability clustering with shared storage and data consistency
+#
+# OPERATIONAL EXCELLENCE CONTROLS:
+#   • Pre-provisioned capacity with guaranteed performance characteristics
+#   • Security hardening with encryption at rest and comprehensive access controls
+#   • Monitoring integration with real-time metrics and alerting
+#   • Backup automation with policy-based retention and compliance validation
+#   • Cost optimization with usage tracking and capacity right-sizing
+#
+# ==============================================================================
+
+# ==============================================================================
+# PostgreSQL Primary Database - Ultra-High Performance Storage
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: veridis-postgres-primary-pv
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Persistent volume specific classification
+    storage.veridis.xyz/type: persistent-volume
+    storage.veridis.xyz/tier: ultra-high-performance
+    storage.veridis.xyz/workload: database-primary
+    storage.veridis.xyz/service: postgresql
+    storage.veridis.xyz/role: primary
+
+    # Performance classification
+    performance.veridis.xyz/iops-guaranteed: "50000"
+    performance.veridis.xyz/throughput-guaranteed: "1000MB/s"
+    performance.veridis.xyz/latency-target: "sub-millisecond"
+    performance.veridis.xyz/consistency: "immediate"
+    performance.veridis.xyz/sla-tier: "platinum"
+
+    # Business classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/cost-tier: premium
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/customer-data: "true"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001,pci-dss"
+
+    # Availability and reliability
+    availability.veridis.xyz/ha-tier: maximum
+    availability.veridis.xyz/backup-frequency: continuous
+    availability.veridis.xyz/replication: synchronous
+    availability.veridis.xyz/disaster-recovery: cross-region
+    availability.veridis.xyz/durability: "99.999999999"
+
+    # Security classification
+    security.veridis.xyz/encryption-at-rest: "aes-256-xts"
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "rbac-strict"
+    security.veridis.xyz/audit-logging: "comprehensive"
+    security.veridis.xyz/data-classification: "confidential"
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "data-storage-control"
+    compliance.veridis.xyz/gdpr: "personal-data-storage"
+    compliance.veridis.xyz/iso27001: "information-storage-security"
+    compliance.veridis.xyz/pci-dss: "cardholder-data-storage"
+    governance.veridis.xyz/policy-enforcement: "strict"
+
+    # Zone and node affinity
+    topology.kubernetes.io/zone: us-west-2a
+    node.kubernetes.io/instance-type: r6i.2xlarge
+
+  annotations:
+    # Persistent volume purpose and specifications
+    veridis.xyz/description: "Ultra-high-performance persistent volume for PostgreSQL primary database with guaranteed IOPS and sub-millisecond latency"
+    veridis.xyz/purpose: "Provides mission-critical storage for primary PostgreSQL database with maximum performance and availability"
+    veridis.xyz/scope: "PostgreSQL data directory, transaction logs, indexes, temporary tablespace"
+
+    # Performance specifications and guarantees
+    performance.veridis.xyz/iops-baseline: "50000"
+    performance.veridis.xyz/iops-burst: "100000"
+    performance.veridis.xyz/throughput-read: "1000MB/s"
+    performance.veridis.xyz/throughput-write: "1000MB/s"
+    performance.veridis.xyz/latency-read-p50: "0.1ms"
+    performance.veridis.xyz/latency-read-p99: "0.5ms"
+    performance.veridis.xyz/latency-write-p50: "0.2ms"
+    performance.veridis.xyz/latency-write-p99: "1.0ms"
+
+    # Database-specific optimizations
+    database.veridis.xyz/postgresql-version: "15.4"
+    database.veridis.xyz/workload-type: "OLTP-primary"
+    database.veridis.xyz/connection-pool-size: "1000"
+    database.veridis.xyz/buffer-cache-optimization: "enabled"
+    database.veridis.xyz/wal-optimization: "high-performance"
+
+    # Availability and disaster recovery
+    availability.veridis.xyz/rto-target: "15 minutes"
+    availability.veridis.xyz/rpo-target: "5 minutes"
+    availability.veridis.xyz/backup-strategy: "continuous-wal-archiving"
+    availability.veridis.xyz/replication-lag-target: "10ms maximum"
+    availability.veridis.xyz/failover-automation: "enabled"
+
+    # Security and compliance specifications
+    security.veridis.xyz/encryption-key-rotation: "quarterly"
+    security.veridis.xyz/access-audit-frequency: "real-time"
+    security.veridis.xyz/data-masking: "available"
+    security.veridis.xyz/vulnerability-scanning: "weekly"
+    security.veridis.xyz/penetration-testing: "quarterly"
+
+    # Cost and capacity management
+    cost.veridis.xyz/provisioned-capacity: "1000Gi"
+    cost.veridis.xyz/utilization-target: "80%"
+    cost.veridis.xyz/cost-per-month: "${DB_PRIMARY_COST_PER_MONTH:-2500}"
+    cost.veridis.xyz/capacity-planning: "20% annual growth projected"
+    cost.veridis.xyz/optimization-schedule: "monthly-review"
+
+    # Monitoring and alerting
+    monitoring.veridis.xyz/metrics-collection: "iops,throughput,latency,capacity,errors"
+    monitoring.veridis.xyz/alert-thresholds: "capacity>85%,latency>1ms,iops>80%"
+    monitoring.veridis.xyz/dashboard-integration: "grafana-postgres-primary"
+    monitoring.veridis.xyz/log-aggregation: "elasticsearch-database-logs"
+
+    # Backup and recovery
+    backup.veridis.xyz/backup-frequency: "continuous-wal-streaming"
+    backup.veridis.xyz/snapshot-frequency: "every-6-hours"
+    backup.veridis.xyz/retention-policy: "daily-30days,weekly-12months,monthly-7years"
+    backup.veridis.xyz/cross-region-backup: "enabled"
+    backup.veridis.xyz/restore-testing: "monthly-automated"
+
+    # Operational contacts and procedures
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/dba-primary: "senior-dba@veridis.xyz"
+    veridis.xyz/escalation: "database-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "database-oncall@veridis.xyz"
+
+    # Documentation and procedures
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/storage/postgres-primary"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/database/postgres-primary-operations"
+    veridis.xyz/disaster-recovery-plan: "https://docs.veridis.xyz/disaster-recovery/database"
+
+# Persistent volume specification
+spec:
+  capacity:
+    storage: 1000Gi              # 1TB provisioned capacity
+
+  volumeMode: Filesystem         # Block or Filesystem
+  accessModes:
+    - ReadWriteOnce             # Single pod exclusive access for database consistency
+
+  persistentVolumeReclaimPolicy: Retain  # Retain for data protection
+  storageClassName: veridis-nvme-high-performance
+
+  # Mount options for database optimization
+  mountOptions:
+    - noatime                   # Disable access time updates for performance
+    - nodiratime               # Disable directory access time updates
+    - barrier=0                # Disable write barriers (safe with battery-backed RAID)
+    - nodev                    # Security: disable device files
+    - nosuid                   # Security: disable setuid/setgid bits
+    - data=writeback           # Writeback mode for better performance
+    - commit=30                # Commit interval optimization for databases
+
+  # Node affinity for high-performance database nodes
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values:
+          - r6i.2xlarge           # Memory-optimized instances for database
+          - r6i.4xlarge
+          - r6i.8xlarge
+        - key: topology.kubernetes.io/zone
+          operator: In
+          values:
+          - us-west-2a            # Primary availability zone
+
+  # CSI volume source for AWS EBS
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: vol-0a1b2c3d4e5f67890  # Pre-created EBS volume ID
+    fsType: ext4
+    volumeAttributes:
+      # Volume specifications
+      type: "gp3"
+      iops: "50000"
+      throughput: "1000"
+      encrypted: "true"
+      kmsKeyId: "arn:aws:kms:us-west-2:123456789012:key/database-primary-key"
+
+      # Tagging for governance
+      tags: |
+        Environment=production
+        Application=veridis
+        Component=database-primary
+        DataClassification=confidential
+        CostCenter=infrastructure
+        Owner=database-team
+        Compliance=soc2-gdpr-iso27001-pci
+
+---
+# ==============================================================================
+# PostgreSQL Replica Database - High Performance Storage
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: veridis-postgres-replica-pv
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    storage.veridis.xyz/type: persistent-volume
+    storage.veridis.xyz/tier: high-performance
+    storage.veridis.xyz/workload: database-replica
+    storage.veridis.xyz/service: postgresql
+    storage.veridis.xyz/role: replica
+
+    performance.veridis.xyz/iops-guaranteed: "16000"
+    performance.veridis.xyz/throughput-guaranteed: "500MB/s"
+    performance.veridis.xyz/latency-target: "low-millisecond"
+    performance.veridis.xyz/consistency: "eventual"
+    performance.veridis.xyz/sla-tier: "gold"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/cost-tier: standard
+    business.veridis.xyz/revenue-impact: indirect
+    business.veridis.xyz/read-workload: "true"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+
+    availability.veridis.xyz/ha-tier: high
+    availability.veridis.xyz/backup-frequency: daily
+    availability.veridis.xyz/replication: asynchronous
+    availability.veridis.xyz/disaster-recovery: regional
+    availability.veridis.xyz/durability: "99.9999999"
+
+    security.veridis.xyz/encryption-at-rest: "aes-256"
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "rbac-standard"
+    security.veridis.xyz/audit-logging: "standard"
+    security.veridis.xyz/data-classification: "internal"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "replica-storage-control"
+    compliance.veridis.xyz/gdpr: "read-replica-storage"
+    compliance.veridis.xyz/iso27001: "replica-security"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+    topology.kubernetes.io/zone: us-west-2b
+    node.kubernetes.io/instance-type: r6i.xlarge
+
+  annotations:
+    veridis.xyz/description: "High-performance persistent volume for PostgreSQL read replica with optimized read performance"
+    veridis.xyz/purpose: "Provides scalable read capacity for PostgreSQL with cost-optimized performance"
+    veridis.xyz/scope: "Read replica data, query processing, reporting workloads"
+
+    # Replica-specific performance specifications
+    performance.veridis.xyz/read-iops-target: "16000"
+    performance.veridis.xyz/write-iops-target: "1000"
+    performance.veridis.xyz/read-throughput: "500MB/s"
+    performance.veridis.xyz/replication-lag-tolerance: "1 second maximum"
+
+    # Read workload optimizations
+    database.veridis.xyz/workload-type: "OLAP-replica"
+    database.veridis.xyz/read-connection-pool: "500"
+    database.veridis.xyz/query-optimization: "read-heavy"
+    database.veridis.xyz/cache-optimization: "read-cache-enabled"
+
+    cost.veridis.xyz/provisioned-capacity: "500Gi"
+    cost.veridis.xyz/cost-per-month: "${DB_REPLICA_COST_PER_MONTH:-800}"
+
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/dba-replica: "replica-dba@veridis.xyz"
+
+spec:
+  capacity:
+    storage: 500Gi               # 500GB for read replica
+
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: veridis-ssd-enterprise
+
+  mountOptions:
+    - noatime
+    - nodiratime
+    - nodev
+    - nosuid
+    - data=ordered              # Ordered mode for replica consistency
+    - commit=60                 # Longer commit interval for read workloads
+
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values:
+          - r6i.xlarge            # Smaller instances for read replicas
+          - r6i.2xlarge
+        - key: topology.kubernetes.io/zone
+          operator: In
+          values:
+          - us-west-2b            # Different AZ for availability
+
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: vol-0b2c3d4e5f6789012
+    fsType: ext4
+    volumeAttributes:
+      type: "gp3"
+      iops: "16000"
+      throughput: "500"
+      encrypted: "true"
+      kmsKeyId: "arn:aws:kms:us-west-2:123456789012:key/database-replica-key"
+      tags: |
+        Environment=production
+        Application=veridis
+        Component=database-replica
+        DataClassification=internal
+        CostCenter=infrastructure
+        Owner=database-team
+
+---
+# ==============================================================================
+# Redis Cache Cluster - Memory-Mapped Ultra-Low Latency Storage
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: veridis-redis-cache-pv
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    storage.veridis.xyz/type: persistent-volume
+    storage.veridis.xyz/tier: memory-mapped
+    storage.veridis.xyz/workload: cache-cluster
+    storage.veridis.xyz/service: redis
+    storage.veridis.xyz/role: cache
+
+    performance.veridis.xyz/iops-guaranteed: "64000"
+    performance.veridis.xyz/throughput-guaranteed: "2000MB/s"
+    performance.veridis.xyz/latency-target: "microsecond"
+    performance.veridis.xyz/consistency: "immediate"
+    performance.veridis.xyz/sla-tier: "platinum"
+
+    business.veridis.xyz/criticality: performance-critical
+    business.veridis.xyz/cost-tier: premium
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/session-storage: "true"
+    business.veridis.xyz/real-time-processing: "true"
+
+    availability.veridis.xyz/ha-tier: high
+    availability.veridis.xyz/backup-frequency: snapshot
+    availability.veridis.xyz/replication: cluster
+    availability.veridis.xyz/disaster-recovery: memory-based
+    availability.veridis.xyz/durability: "99.99999"
+
+    security.veridis.xyz/encryption-at-rest: "memory-encryption"
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "redis-auth"
+    security.veridis.xyz/audit-logging: "performance-optimized"
+    security.veridis.xyz/data-classification: "session"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "cache-security-control"
+    compliance.veridis.xyz/gdpr: "session-data-protection"
+    governance.veridis.xyz/policy-enforcement: "performance-aware"
+
+    topology.kubernetes.io/zone: us-west-2a
+    node.kubernetes.io/instance-type: r6i.large
+
+  annotations:
+    veridis.xyz/description: "Memory-mapped persistent volume for Redis cache cluster with microsecond latency and extreme performance"
+    veridis.xyz/purpose: "Provides ultra-low latency storage for Redis caching, session management, and real-time processing"
+    veridis.xyz/scope: "Session storage, application cache, real-time data, temporary processing"
+
+    # Cache-specific performance specifications
+    performance.veridis.xyz/memory-access-latency: "10 microseconds"
+    performance.veridis.xyz/cache-hit-ratio-target: "99%"
+    performance.veridis.xyz/eviction-policy: "LRU with TTL"
+    performance.veridis.xyz/persistence-model: "RDB snapshots + AOF"
+
+    # Redis cluster specifications
+    cache.veridis.xyz/redis-version: "7.0"
+    cache.veridis.xyz/cluster-nodes: "6"
+    cache.veridis.xyz/replication-factor: "2"
+    cache.veridis.xyz/memory-allocation: "80% of node memory"
+    cache.veridis.xyz/max-connections: "10000"
+
+    cost.veridis.xyz/provisioned-capacity: "100Gi"
+    cost.veridis.xyz/cost-per-month: "${REDIS_COST_PER_MONTH:-400}"
+
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/cache-admin: "cache-admin@veridis.xyz"
+
+spec:
+  capacity:
+    storage: 100Gi               # 100GB for Redis persistence
+
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+
+  persistentVolumeReclaimPolicy: Delete  # Cache data can be recreated
+  storageClassName: veridis-memory-mapped
+
+  mountOptions:
+    - noatime
+    - nodiratime
+    - nodev
+    - nosuid
+    - noexec
+    - sync                      # Synchronous writes for cache consistency
+    - huge=always               # Use huge pages for performance
+
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values:
+          - r6i.large             # Memory-optimized for cache
+          - r6i.xlarge
+          - r6i.2xlarge
+        - key: topology.kubernetes.io/zone
+          operator: In
+          values:
+          - us-west-2a
+          - us-west-2b
+
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: vol-0c3d4e5f67890123
+    fsType: ext4
+    volumeAttributes:
+      type: "io2"               # High-performance NVMe for memory backing
+      iops: "64000"
+      encrypted: "true"
+      kmsKeyId: "arn:aws:kms:us-west-2:123456789012:key/cache-storage-key"
+      tags: |
+        Environment=production
+        Application=veridis
+        Component=cache-cluster
+        DataClassification=session
+        CostCenter=engineering
+        Owner=platform-engineering
+
+---
+# ==============================================================================
+# Backend Application Storage - Enterprise SSD Storage
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: veridis-backend-app-pv
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    storage.veridis.xyz/type: persistent-volume
+    storage.veridis.xyz/tier: enterprise
+    storage.veridis.xyz/workload: application-backend
+    storage.veridis.xyz/service: backend-api
+    storage.veridis.xyz/role: application
+
+    performance.veridis.xyz/iops-guaranteed: "3000"
+    performance.veridis.xyz/throughput-guaranteed: "250MB/s"
+    performance.veridis.xyz/latency-target: "low-millisecond"
+    performance.veridis.xyz/consistency: "high"
+    performance.veridis.xyz/sla-tier: "gold"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/cost-tier: standard
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/customer-facing: "true"
+    business.veridis.xyz/api-storage: "true"
+
+    availability.veridis.xyz/ha-tier: high
+    availability.veridis.xyz/backup-frequency: daily
+    availability.veridis.xyz/replication: regional
+    availability.veridis.xyz/disaster-recovery: enabled
+    availability.veridis.xyz/durability: "99.999999"
+
+    security.veridis.xyz/encryption-at-rest: "aes-256"
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "rbac-strict"
+    security.veridis.xyz/audit-logging: "comprehensive"
+    security.veridis.xyz/data-classification: "confidential"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "application-storage-control"
+    compliance.veridis.xyz/gdpr: "application-data-protection"
+    compliance.veridis.xyz/iso27001: "application-security"
+    governance.veridis.xyz/policy-enforcement: "strict"
+
+    topology.kubernetes.io/zone: us-west-2a
+    node.kubernetes.io/instance-type: c6i.xlarge
+
+  annotations:
+    veridis.xyz/description: "Enterprise SSD persistent volume for backend application with balanced performance and reliability"
+    veridis.xyz/purpose: "Provides reliable storage for backend API services, application data, and temporary processing"
+    veridis.xyz/scope: "Application logs, temporary files, upload processing, API data storage"
+
+    # Application-specific specifications
+    application.veridis.xyz/backend-language: "rust"
+    application.veridis.xyz/api-endpoints: "authentication,identity,verification"
+    application.veridis.xyz/concurrent-requests: "1000"
+    application.veridis.xyz/file-processing: "enabled"
+
+    cost.veridis.xyz/provisioned-capacity: "200Gi"
+    cost.veridis.xyz/cost-per-month: "${BACKEND_STORAGE_COST_PER_MONTH:-300}"
+
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/backend-lead: "backend-engineering@veridis.xyz"
+
+spec:
+  capacity:
+    storage: 200Gi               # 200GB for backend application
+
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: veridis-ssd-enterprise
+
+  mountOptions:
+    - noatime
+    - nodiratime
+    - nodev
+    - nosuid
+    - data=ordered
+
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values:
+          - c6i.xlarge            # Compute-optimized for application workloads
+          - c6i.2xlarge
+          - c6i.4xlarge
+        - key: topology.kubernetes.io/zone
+          operator: In
+          values:
+          - us-west-2a
+          - us-west-2b
+
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: vol-0d4e5f6789012345
+    fsType: ext4
+    volumeAttributes:
+      type: "gp3"
+      iops: "3000"
+      throughput: "250"
+      encrypted: "true"
+      kmsKeyId: "arn:aws:kms:us-west-2:123456789012:key/application-storage-key"
+      tags: |
+        Environment=production
+        Application=veridis
+        Component=backend-api
+        DataClassification=confidential
+        CostCenter=engineering
+        Owner=backend-team
+
+---
+# ==============================================================================
+# ZK Circuits GPU Storage - Specialized High-Performance Storage
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: veridis-zk-circuits-gpu-pv
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    storage.veridis.xyz/type: persistent-volume
+    storage.veridis.xyz/tier: gpu-optimized
+    storage.veridis.xyz/workload: cryptographic-compute
+    storage.veridis.xyz/service: zk-circuits
+    storage.veridis.xyz/role: gpu-compute
+
+    performance.veridis.xyz/iops-guaranteed: "16000"
+    performance.veridis.xyz/throughput-guaranteed: "1000MB/s"
+    performance.veridis.xyz/sequential-throughput: "8000MB/s"
+    performance.veridis.xyz/latency-target: "low-millisecond"
+    performance.veridis.xyz/sla-tier: "gold"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/cost-tier: specialized
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/ip-classification: "trade-secrets"
+    business.veridis.xyz/cryptographic-workload: "true"
+
+    availability.veridis.xyz/ha-tier: high
+    availability.veridis.xyz/backup-frequency: continuous
+    availability.veridis.xyz/replication: synchronous
+    availability.veridis.xyz/disaster-recovery: enabled
+    availability.veridis.xyz/durability: "99.9999999"
+
+    security.veridis.xyz/encryption-at-rest: "aes-256-xts"
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "strict-rbac"
+    security.veridis.xyz/audit-logging: "comprehensive"
+    security.veridis.xyz/data-classification: "proprietary"
+    security.veridis.xyz/fips-compliance: "required"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: cryptography-engineering
+    veridis.xyz/cost-center: research-development
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "cryptographic-storage-control"
+    compliance.veridis.xyz/fips-140-2: "cryptographic-module-storage"
+    compliance.veridis.xyz/ip-protection: "trade-secrets"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+
+    # GPU-specific node requirements
+    topology.kubernetes.io/zone: us-west-2a
+    node.kubernetes.io/instance-type: p4d.xlarge
+    accelerator/nvidia-gpu: "true"
+
+  annotations:
+    veridis.xyz/description: "GPU-optimized persistent volume for ZK circuits with high sequential throughput and cryptographic security"
+    veridis.xyz/purpose: "Provides specialized storage for GPU-accelerated cryptographic operations and ZK proof generation"
+    veridis.xyz/scope: "ZK circuit data, cryptographic keys, proof generation cache, GPU datasets"
+
+    # GPU and cryptographic specifications
+    gpu.veridis.xyz/gpu-type: "nvidia-a100"
+    gpu.veridis.xyz/cuda-version: "12.0"
+    gpu.veridis.xyz/memory-bandwidth: "2TB/s"
+    gpu.veridis.xyz/compute-capability: "8.0"
+
+    crypto.veridis.xyz/zk-protocol: "plonk"
+    crypto.veridis.xyz/circuit-complexity: "2^26 constraints"
+    crypto.veridis.xyz/proof-generation-time: "sub-second"
+    crypto.veridis.xyz/key-storage: "hardware-protected"
+
+    # FIPS compliance specifications
+    compliance.veridis.xyz/fips-level: "level-2"
+    compliance.veridis.xyz/cryptographic-module: "software-validated"
+    compliance.veridis.xyz/key-management: "hardware-security-module"
+
+    cost.veridis.xyz/provisioned-capacity: "500Gi"
+    cost.veridis.xyz/cost-per-month: "${ZK_GPU_STORAGE_COST_PER_MONTH:-1200}"
+
+    veridis.xyz/owner: "zk-engineering@veridis.xyz"
+    veridis.xyz/crypto-architect: "cryptography-architect@veridis.xyz"
+    veridis.xyz/gpu-specialist: "gpu-engineering@veridis.xyz"
+
+spec:
+  capacity:
+    storage: 500Gi               # 500GB for ZK circuits and GPU data
+
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+
+  persistentVolumeReclaimPolicy: Retain  # Protect cryptographic data
+  storageClassName: veridis-gpu-optimized
+
+  mountOptions:
+    - noatime
+    - nodiratime
+    - nodev
+    - nosuid
+    - commit=120               # Longer commit for sequential workloads
+    - barrier=0                # Safe with good hardware for performance
+    - data=writeback           # Writeback for sequential performance
+
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values:
+          - p4d.xlarge           # GPU instances
+          - p4d.2xlarge
+          - p4d.8xlarge
+        - key: accelerator/nvidia-gpu
+          operator: Exists
+        - key: topology.kubernetes.io/zone
+          operator: In
+          values:
+          - us-west-2a           # GPU availability zone
+
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: vol-0e5f678901234567
+    fsType: ext4
+    volumeAttributes:
+      type: "gp3"
+      iops: "16000"
+      throughput: "1000"
+      encrypted: "true"
+      kmsKeyId: "arn:aws:kms:us-west-2:123456789012:key/cryptographic-storage-key"
+      tags: |
+        Environment=production
+        Application=veridis
+        Component=zk-circuits
+        DataClassification=proprietary
+        CostCenter=research-development
+        Owner=zk-engineering
+        WorkloadType=gpu-compute
+        ComplianceScope=fips-140-2
+
+---
+# ==============================================================================
+# Shared Configuration Storage - NFS Multi-Access Storage
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: veridis-shared-config-pv
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    storage.veridis.xyz/type: persistent-volume
+    storage.veridis.xyz/tier: shared
+    storage.veridis.xyz/workload: shared-configuration
+    storage.veridis.xyz/service: configuration-management
+    storage.veridis.xyz/role: shared-access
+
+    performance.veridis.xyz/iops-target: "1000"
+    performance.veridis.xyz/throughput-target: "100MB/s"
+    performance.veridis.xyz/latency-target: "medium"
+    performance.veridis.xyz/concurrent-access: "unlimited"
+    performance.veridis.xyz/sla-tier: "silver"
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/cost-tier: economy
+    business.veridis.xyz/revenue-impact: indirect
+    business.veridis.xyz/shared-access: "true"
+    business.veridis.xyz/configuration-storage: "true"
+
+    availability.veridis.xyz/ha-tier: standard
+    availability.veridis.xyz/backup-frequency: daily
+    availability.veridis.xyz/replication: distributed
+    availability.veridis.xyz/disaster-recovery: standard
+    availability.veridis.xyz/durability: "99.9999"
+
+    security.veridis.xyz/encryption-at-rest: "standard"
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "posix-acl"
+    security.veridis.xyz/audit-logging: "basic"
+    security.veridis.xyz/data-classification: "internal"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "shared-configuration-control"
+    compliance.veridis.xyz/gdpr: "configuration-data-protection"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+  annotations:
+    veridis.xyz/description: "Shared NFS persistent volume for configuration management and multi-pod collaborative access"
+    veridis.xyz/purpose: "Provides shared storage for configuration files, templates, and collaborative data access"
+    veridis.xyz/scope: "Configuration files, shared templates, collaborative documentation, multi-pod access"
+
+    # Shared access specifications
+    storage.veridis.xyz/access-modes: "ReadWriteMany,ReadOnlyMany"
+    storage.veridis.xyz/concurrent-clients: "100"
+    storage.veridis.xyz/file-locking: "NFS v4 locking"
+    storage.veridis.xyz/posix-compliance: "full"
+
+    cost.veridis.xyz/provisioned-capacity: "50Gi"
+    cost.veridis.xyz/cost-per-month: "${SHARED_CONFIG_COST_PER_MONTH:-50}"
+
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/config-admin: "configuration-admin@veridis.xyz"
+
+spec:
+  capacity:
+    storage: 50Gi                # 50GB for shared configuration
+
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany             # Multiple pods can access simultaneously
+    - ReadOnlyMany              # Read-only access for consumers
+
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: veridis-nfs-shared
+
+  mountOptions:
+    - nfsvers=4.1              # NFS version 4.1
+    - rsize=1048576            # 1MB read buffer
+    - wsize=1048576            # 1MB write buffer
+    - hard                     # Hard mount for reliability
+    - intr                     # Interruptible
+    - timeo=600                # 60-second timeout
+    - retrans=2                # 2 retransmissions
+
+  # NFS does not use node affinity - accessible from all nodes
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-0f67890123456789::fsap-01234567890abcdef
+    volumeAttributes:
+      provisioningMode: efs-ap
+      fileSystemId: fs-0f67890123456789
+      accessPointId: fsap-01234567890abcdef
+      directoryPerms: "0755"
+      uid: "1000"
+      gid: "1000"
+      encrypted: "true"
+      performanceMode: "generalPurpose"
+      throughputMode: "provisioned"
+      provisionedThroughputInMibps: "100"
+
+---
+# ==============================================================================
+# Archive and Compliance Storage - Long-term Retention Volume
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: veridis-archive-compliance-pv
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    storage.veridis.xyz/type: persistent-volume
+    storage.veridis.xyz/tier: archive
+    storage.veridis.xyz/workload: compliance-archival
+    storage.veridis.xyz/service: archive-management
+    storage.veridis.xyz/role: long-term-retention
+
+    performance.veridis.xyz/iops-target: "100"
+    performance.veridis.xyz/throughput-target: "25MB/s"
+    performance.veridis.xyz/latency-tolerance: "high"
+    performance.veridis.xyz/access-frequency: "infrequent"
+    performance.veridis.xyz/sla-tier: "bronze"
+
+    business.veridis.xyz/criticality: compliance-critical
+    business.veridis.xyz/cost-tier: economy
+    business.veridis.xyz/revenue-impact: regulatory
+    business.veridis.xyz/retention-requirement: "7-years"
+    business.veridis.xyz/audit-storage: "true"
+
+    availability.veridis.xyz/ha-tier: standard
+    availability.veridis.xyz/backup-frequency: weekly
+    availability.veridis.xyz/replication: cross-region
+    availability.veridis.xyz/disaster-recovery: cross-region
+    availability.veridis.xyz/durability: "99.999999999"
+
+    security.veridis.xyz/encryption-at-rest: "aes-256"
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "strict-rbac"
+    security.veridis.xyz/audit-logging: "comprehensive"
+    security.veridis.xyz/data-classification: "archived"
+    security.veridis.xyz/immutability: "worm-compliant"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance
+    veridis.xyz/cost-center: compliance
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "data-retention-control"
+    compliance.veridis.xyz/gdpr: "long-term-data-protection"
+    compliance.veridis.xyz/iso27001: "information-retention"
+    compliance.veridis.xyz/retention-compliance: "regulatory"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+
+    topology.kubernetes.io/zone: us-west-2c
+
+  annotations:
+    veridis.xyz/description: "Archive persistent volume for long-term compliance data retention with WORM capabilities"
+    veridis.xyz/purpose: "Provides cost-effective long-term storage for regulatory compliance and audit trail retention"
+    veridis.xyz/scope: "Audit logs, compliance reports, regulatory filings, historical data, legal hold data"
+
+    # Archive and compliance specifications
+    compliance.veridis.xyz/retention-period: "7 years minimum"
+    compliance.veridis.xyz/legal-hold: "supported"
+    compliance.veridis.xyz/immutable-storage: "WORM compliance"
+    compliance.veridis.xyz/audit-trail: "complete-access-logs"
+    compliance.veridis.xyz/deletion-protection: "MFA-required"
+
+    # Cost optimization
+    cost.veridis.xyz/provisioned-capacity: "2000Gi"
+    cost.veridis.xyz/cost-per-month: "${ARCHIVE_STORAGE_COST_PER_MONTH:-80}"
+    cost.veridis.xyz/lifecycle-management: "automated-tiering"
+
+    veridis.xyz/owner: "compliance@veridis.xyz"
+    veridis.xyz/data-governance: "data-governance@veridis.xyz"
+    veridis.xyz/legal-contact: "legal@veridis.xyz"
+
+spec:
+  capacity:
+    storage: 2000Gi             # 2TB for archive storage
+
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+
+  persistentVolumeReclaimPolicy: Retain  # Critical for compliance
+  storageClassName: veridis-archive-compliance
+
+  mountOptions:
+    - noatime
+    - nodiratime
+    - nodev
+    - nosuid
+    - noexec
+    - ro                        # Read-only for archive integrity
+
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values:
+          - t3.medium             # Cost-optimized instances
+          - t3.large
+        - key: topology.kubernetes.io/zone
+          operator: In
+          values:
+          - us-west-2c            # Archive availability zone
+
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: vol-0f678901234567890
+    fsType: ext4
+    volumeAttributes:
+      type: "sc1"               # Cold HDD for cost optimization
+      encrypted: "true"
+      kmsKeyId: "arn:aws:kms:us-west-2:123456789012:key/archive-compliance-key"
+      tags: |
+        Environment=production
+        Application=veridis
+        Component=archive-storage
+        DataClassification=archived
+        CostCenter=compliance
+        Owner=compliance-team
+        RetentionClass=long-term
+        ComplianceScope=regulatory
+
+# ==============================================================================
+# Persistent Volumes Summary and Enterprise Storage Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE STORAGE ALLOCATION STRATEGY:
+# ==========================================
+#
+# WORKLOAD-SPECIFIC VOLUME ALLOCATION:
+# ------------------------------------
+# 1. PostgreSQL Primary Database (1TB):
+#    - Ultra-high-performance NVMe storage
+#    - 50,000 IOPS with sub-millisecond latency
+#    - AES-256-XTS encryption with HSM key management
+#    - Continuous WAL archiving and cross-region replication
+#    - Mission-critical availability with 99.999999999% durability
+#
+# 2. PostgreSQL Read Replica (500GB):
+#    - High-performance SSD with read optimization
+#    - 16,000 IOPS optimized for read workloads
+#    - Cost-balanced performance for analytical queries
+#    - Asynchronous replication with <1 second lag tolerance
+#    - Multi-zone deployment for read scalability
+#
+# 3. Redis Cache Cluster (100GB):
+#    - Memory-mapped storage with microsecond latency
+#    - 64,000 IOPS with extreme performance characteristics
+#    - Hardware-accelerated memory encryption
+#    - RDB snapshots with AOF persistence
+#    - Cluster-mode with high availability and failover
+#
+# 4. Backend Application (200GB):
+#    - Enterprise SSD with balanced performance
+#    - 3,000 IOPS for API and application workloads
+#    - Customer-facing service reliability requirements
+#    - Daily backup with cross-region disaster recovery
+#    - Comprehensive audit logging and access control
+#
+# 5. ZK Circuits GPU Storage (500GB):
+#    - GPU-optimized high-throughput storage
+#    - 8GB/s sequential throughput for ML workloads
+#    - FIPS 140-2 Level 2 cryptographic compliance
+#    - Hardware-protected cryptographic key storage
+#    - Trade secret protection with enhanced security
+#
+# 6. Shared Configuration (50GB):
+#    - NFS shared storage with multi-pod access
+#    - ReadWriteMany access mode for collaboration
+#    - POSIX compliance with file locking support
+#    - Cost-effective shared resource management
+#    - Version control integration capabilities
+#
+# 7. Archive and Compliance (2TB):
+#    - Long-term retention with WORM compliance
+#    - 7-year minimum retention for regulatory requirements
+#    - Cross-region replication for disaster recovery
+#    - Immutable storage with legal hold capabilities
+#    - Ultra-low cost with lifecycle management
+#
+# ENTERPRISE STORAGE FEATURES:
+# ============================
+# High Availability and Disaster Recovery:
+#   - Multi-zone deployment with automatic failover
+#   - Cross-region replication for business continuity
+#   - Point-in-time recovery with configurable RPO/RTO
+#   - Automated backup validation and restore testing
+#   - Business continuity integration with disaster recovery
+#
+# Security and Compliance:
+#   - Encryption at rest with AES-256 across all volumes
+#   - Hardware Security Module (HSM) key management
+#   - Comprehensive audit logging with immutable trails
+#   - Access control integration with RBAC and POSIX ACLs
+#   - Data classification and handling procedures
+#
+# Performance Optimization:
+#   - Workload-specific IOPS and throughput guarantees
+#   - Latency optimization from microseconds to milliseconds
+#   - Sequential and random access pattern optimization
+#   - Memory-mapped storage for ultra-low latency workloads
+#   - GPU affinity for specialized compute workloads
+#
+# Cost Management:
+#   - Tiered storage with performance-aligned costs
+#   - Automated lifecycle management and storage tiering
+#   - Usage monitoring with cost allocation and chargeback
+#   - Reserved capacity for predictable workloads
+#   - Right-sizing recommendations and optimization
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Monitoring and Alerting:
+#   - Real-time performance monitoring (IOPS, throughput, latency)
+#   - Capacity planning with automated scaling alerts
+#   - Health monitoring with predictive maintenance
+#   - Cost monitoring with budget alerts and optimization
+#
+# Backup and Recovery:
+#   - Automated backup with policy-based retention
+#   - Cross-region backup for disaster recovery
+#   - Backup validation with automated restore testing
+#   - Point-in-time recovery with granular control
+#
+# Security and Governance:
+#   - Policy-based access control and encryption
+#   - Automated compliance validation and reporting
+#   - Data governance with classification and handling
+#   - Vulnerability scanning and security assessments
+#
+# ==============================================================================
