@@ -1,0 +1,1038 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Role Bindings
+# ==============================================================================
+#
+# This manifest defines comprehensive role bindings for the Veridis deployment,
+# providing:
+#
+# IDENTITY AND ACCESS MANAGEMENT:
+#   • Secure binding of users, groups, and service accounts to appropriate roles
+#   • Multi-factor authentication integration with identity providers
+#   • Time-based access controls with session management and expiration
+#   • Emergency access procedures with automated audit trails
+#   • Cross-namespace access coordination with proper isolation boundaries
+#
+# ENTERPRISE IDENTITY INTEGRATION:
+#   • OIDC integration with corporate identity providers (Azure AD, Okta, etc.)
+#   • LDAP/Active Directory group synchronization and mapping
+#   • SAML federation for enterprise single sign-on workflows
+#   • Just-in-time access provisioning with approval workflows
+#   • Service account authentication with workload identity federation
+#
+# COMPLIANCE FRAMEWORK:
+#   • SOC 2 Type II access control implementation and audit trails
+#   • GDPR data subject access rights and controller/processor separation
+#   • ISO 27001 access management with privileged access monitoring
+#   • Segregation of duties enforcement with role conflict detection
+#   • Comprehensive audit logging with tamper-evident storage
+#
+# OPERATIONAL SECURITY:
+#   • Principle of least privilege with dynamic access adjustment
+#   • Role-based access control with attribute-based enhancements
+#   • Emergency break-glass procedures with executive approval
+#   • Automated access reviews with periodic recertification
+#   • Incident response with role-based escalation procedures
+#
+# BUSINESS CONTINUITY:
+#   • Disaster recovery access procedures with geographic distribution
+#   • Business process continuity with role coverage redundancy
+#   • Succession planning with deputy role assignments
+#   • Critical system access with 24/7 availability requirements
+#   • Vendor access management with limited-time authorizations
+#
+# ==============================================================================
+
+# ==============================================================================
+# Production Environment - Backend Service Administration
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: veridis-backend-admin-production-binding
+  namespace: veridis
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Role binding specific classification
+    rbac.veridis.xyz/type: namespace-role-binding
+    rbac.veridis.xyz/scope: backend-service-admin
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: high
+    rbac.veridis.xyz/access-tier: service-administration
+    rbac.veridis.xyz/binding-category: human-access
+
+    # Security classification
+    security.veridis.xyz/access-level: service-admin
+    security.veridis.xyz/identity-verification: "mfa-required"
+    security.veridis.xyz/access-pattern: "interactive"
+    security.veridis.xyz/audit-level: "comprehensive"
+    security.veridis.xyz/session-monitoring: "enabled"
+    security.veridis.xyz/geo-restriction: "corporate-networks"
+
+    # Business classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/customer-facing: "true"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/business-hours-access: "24x7"
+
+    # Identity and access management
+    iam.veridis.xyz/identity-provider: "azure-ad"
+    iam.veridis.xyz/authentication-method: "oidc+mfa"
+    iam.veridis.xyz/access-review-frequency: "monthly"
+    iam.veridis.xyz/emergency-access: "break-glass-enabled"
+    iam.veridis.xyz/deputy-coverage: "required"
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/service: backend
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "access-control-implementation"
+    compliance.veridis.xyz/gdpr: "data-controller-access"
+    compliance.veridis.xyz/iso27001: "privileged-access-management"
+    compliance.veridis.xyz/access-certification: "required"
+    governance.veridis.xyz/policy-enforcement: "strict"
+    governance.veridis.xyz/change-approval: "manager-required"
+
+  annotations:
+    # Role binding purpose and scope
+    veridis.xyz/description: "Production backend service administrator role binding with comprehensive access controls and audit requirements"
+    veridis.xyz/purpose: "Binds qualified backend service administrators to production backend management role with strict security controls"
+    veridis.xyz/scope: "Backend service lifecycle management, configuration, scaling, monitoring, and incident response in production environment"
+
+    # Access management and identity verification
+    iam.veridis.xyz/access-justification: "Critical backend service administration for customer-facing production systems"
+    iam.veridis.xyz/identity-requirements: "Corporate identity, manager approval, security clearance, technical certification"
+    iam.veridis.xyz/authentication-flow: "OIDC authentication → MFA verification → role assumption → session establishment"
+    iam.veridis.xyz/access-validation: "Manager approval, security review, technical assessment, compliance verification"
+
+    # Security controls and monitoring
+    security.veridis.xyz/access-controls: "MFA enforcement, session recording, network restrictions, time-based access"
+    security.veridis.xyz/monitoring-requirements: "Real-time session monitoring, privileged command logging, anomaly detection"
+    security.veridis.xyz/security-boundaries: "Production namespace isolation, service-specific permissions, network policy enforcement"
+    security.veridis.xyz/threat-mitigation: "Insider threat monitoring, behavioral analysis, concurrent session limits"
+
+    # Emergency access and business continuity
+    iam.veridis.xyz/emergency-procedures: "Break-glass access with executive approval, incident commander authorization"
+    iam.veridis.xyz/business-continuity: "24/7 access coverage, deputy assignments, cross-training requirements"
+    iam.veridis.xyz/escalation-matrix: "Team lead → Engineering manager → CTO → Executive team"
+    iam.veridis.xyz/recovery-procedures: "Account lockout recovery, emergency access activation, incident response coordination"
+
+    # Compliance and audit requirements
+    compliance.veridis.xyz/audit-scope: "All administrative actions, configuration changes, emergency access usage"
+    compliance.veridis.xyz/retention-requirements: "7-year audit trail, access log preservation, compliance evidence"
+    compliance.veridis.xyz/access-review: "Monthly manager review, quarterly security review, annual compliance audit"
+    compliance.veridis.xyz/violation-response: "Immediate access suspension, incident investigation, regulatory notification"
+
+    # Performance and reliability responsibilities
+    veridis.xyz/sla-commitments: "99.9% backend uptime, sub-100ms API response, zero data loss guarantee"
+    veridis.xyz/performance-monitoring: "Real-time metrics, alerting thresholds, capacity planning, optimization"
+    veridis.xyz/incident-response: "Tier 1 escalation, root cause analysis, post-incident review, prevention measures"
+
+    # Training and certification requirements
+    iam.veridis.xyz/training-requirements: "Kubernetes administration, security best practices, incident response, compliance training"
+    iam.veridis.xyz/certification-requirements: "CKA, CKS, company security certification, annual recertification"
+    iam.veridis.xyz/competency-validation: "Technical assessment, scenario-based testing, peer review"
+
+    # Contact information and ownership
+    veridis.xyz/owner: "backend-team-lead@veridis.xyz"
+    veridis.xyz/manager: "platform-engineering-manager@veridis.xyz"
+    veridis.xyz/security-contact: "security@veridis.xyz"
+    veridis.xyz/compliance-contact: "compliance@veridis.xyz"
+    veridis.xyz/escalation: "cto@veridis.xyz"
+
+    # Access procedures and documentation
+    iam.veridis.xyz/access-request-process: "Manager approval → Security review → Technical assessment → Access provisioning"
+    iam.veridis.xyz/onboarding-checklist: "Background verification, security training, technical certification, mentor assignment"
+    iam.veridis.xyz/offboarding-procedures: "Immediate access revocation, knowledge transfer, asset recovery"
+
+# Reference to the namespace-scoped role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: veridis-backend-admin-production
+
+# Subject definitions with comprehensive identity management
+subjects:
+# ==============================================================================
+# Senior Backend Engineers - Primary Administrators
+# ==============================================================================
+# Senior backend engineers with full production access
+- kind: User
+  name: "alice.johnson@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior Backend Engineer, Team Lead
+  # Access Level: Full production backend administration
+  # MFA: Required, Corporate device required
+  # Certifications: CKA, CKS, Veridis Security Certified
+  # Manager: platform-engineering-manager@veridis.xyz
+  # Emergency Contact: +1-555-0101
+  # Last Security Review: 2025-01-15
+  # Access Expires: 2025-12-31
+
+- kind: User
+  name: "bob.smith@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior Backend Engineer, Architecture Specialist
+  # Access Level: Full production backend administration
+  # MFA: Required, Hardware token + biometric
+  # Certifications: CKA, CKS, AWS Solutions Architect
+  # Manager: platform-engineering-manager@veridis.xyz
+  # Emergency Contact: +1-555-0102
+  # Last Security Review: 2025-01-12
+  # Access Expires: 2025-12-31
+
+- kind: User
+  name: "charlie.davis@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior Backend Engineer, Performance Specialist
+  # Access Level: Full production backend administration
+  # MFA: Required, Mobile app + corporate device
+  # Certifications: CKA, CKS, Performance Engineering Certified
+  # Manager: platform-engineering-manager@veridis.xyz
+  # Emergency Contact: +1-555-0103
+  # Last Security Review: 2025-01-10
+  # Access Expires: 2025-12-31
+
+# ==============================================================================
+# Backend Engineering Team - Group Access
+# ==============================================================================
+# Backend engineering team group for collective access management
+- kind: Group
+  name: "veridis-backend-engineers"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Backend Engineering Team
+  # Members: Senior and mid-level backend engineers
+  # Access Review: Monthly group membership review
+  # Access Control: Manager approval required for group membership
+  # Emergency Procedures: Group-level access suspension capability
+  # Compliance: Group-based access certification and audit
+
+# Platform engineering team group for cross-functional access
+- kind: Group
+  name: "veridis-platform-team"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Platform Engineering Team
+  # Members: Platform engineers with backend administration needs
+  # Access Pattern: Cross-service administration and coordination
+  # Security Level: High - requires additional verification
+  # Business Justification: Platform-wide operational responsibility
+
+# ==============================================================================
+# Service Account - Backend Service Identity
+# ==============================================================================
+# Backend service identity for automated operations
+- kind: ServiceAccount
+  name: veridis-backend
+  namespace: veridis
+  # Service Account: Backend service workload identity
+  # Usage: Automated backend operations and service mesh communication
+  # Security: Workload identity federation, short-lived tokens
+  # Monitoring: Service account usage tracking and anomaly detection
+  # Rotation: Automated token rotation every 24 hours
+
+# ==============================================================================
+# Emergency Access - Break Glass Procedures
+# ==============================================================================
+# Emergency access for critical incident response
+- kind: User
+  name: "emergency.backend@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Emergency Access Account: Break-glass backend administration
+  # Usage: Critical incident response only
+  # Activation: CTO or CISO approval required
+  # Monitoring: Real-time alerting on account usage
+  # Audit: Comprehensive logging of all emergency access activities
+  # Deactivation: Automatic after incident resolution
+
+# ==============================================================================
+# Deputy Coverage - Business Continuity
+# ==============================================================================
+# Deputy administrators for business continuity
+- kind: User
+  name: "diana.wilson@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Deputy Backend Administrator
+  # Role: Backup administrator for business continuity
+  # Access Level: Full backend administration during coverage periods
+  # Activation: Primary administrator unavailability
+  # Training: Cross-trained on backend operations and procedures
+
+- kind: User
+  name: "evan.brown@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Deputy Backend Administrator #2
+  # Role: Secondary backup for high availability coverage
+  # Access Level: Full backend administration during coverage periods
+  # Geographic: Different timezone for 24/7 coverage
+  # Specialization: Incident response and disaster recovery
+
+---
+# ==============================================================================
+# Production Environment - Database Administration
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: veridis-database-admin-production-binding
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role-binding
+    rbac.veridis.xyz/scope: database-administration
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: critical
+    rbac.veridis.xyz/access-tier: data-administration
+    rbac.veridis.xyz/binding-category: critical-access
+
+    security.veridis.xyz/access-level: database-admin
+    security.veridis.xyz/identity-verification: "enhanced-mfa-required"
+    security.veridis.xyz/access-pattern: "high-privilege"
+    security.veridis.xyz/audit-level: "maximum"
+    security.veridis.xyz/session-monitoring: "mandatory"
+    security.veridis.xyz/data-access: "all-customer-data"
+
+    business.veridis.xyz/criticality: system-critical
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/data-sovereignty: "regulated"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001,pci-dss"
+    business.veridis.xyz/disaster-recovery: "tier-1"
+
+    iam.veridis.xyz/identity-provider: "azure-ad"
+    iam.veridis.xyz/authentication-method: "oidc+enhanced-mfa+biometric"
+    iam.veridis.xyz/access-review-frequency: "bi-weekly"
+    iam.veridis.xyz/privileged-access-management: "required"
+    iam.veridis.xyz/data-classification-clearance: "confidential-restricted"
+
+    veridis.xyz/environment: production
+    veridis.xyz/service: database
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "data-security-control"
+    compliance.veridis.xyz/gdpr: "data-controller-admin"
+    compliance.veridis.xyz/iso27001: "information-security-admin"
+    compliance.veridis.xyz/pci-dss: "cardholder-data-access"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+
+  annotations:
+    veridis.xyz/description: "Production database administrator role binding with maximum security controls and comprehensive audit requirements"
+    veridis.xyz/purpose: "Binds qualified database administrators to critical data management role with enhanced security and compliance controls"
+    veridis.xyz/scope: "Complete database lifecycle management, backup operations, disaster recovery, performance optimization, security administration"
+
+    # Enhanced security requirements for database access
+    security.veridis.xyz/enhanced-controls: "Biometric authentication, hardware security keys, network isolation, session recording"
+    security.veridis.xyz/data-protection: "Customer PII, financial data, authentication credentials, audit logs, cryptographic keys"
+    security.veridis.xyz/access-monitoring: "Real-time database query monitoring, privileged operation logging, data access tracking"
+    security.veridis.xyz/threat-protection: "Data exfiltration prevention, anomalous query detection, unauthorized access prevention"
+
+    # Compliance and regulatory requirements
+    compliance.veridis.xyz/data-handling: "GDPR Article 32 security measures, PCI DSS data protection, SOC 2 data integrity"
+    compliance.veridis.xyz/audit-requirements: "Comprehensive database operation logging, configuration change tracking, access pattern analysis"
+    compliance.veridis.xyz/regulatory-compliance: "GDPR data controller responsibilities, PCI DSS cardholder data protection"
+
+    # Disaster recovery and business continuity
+    veridis.xyz/rto-commitment: "15-minute maximum recovery time objective"
+    veridis.xyz/rpo-commitment: "5-minute maximum recovery point objective"
+    veridis.xyz/backup-responsibility: "Continuous backup verification, disaster recovery testing, cross-region replication"
+    veridis.xyz/business-continuity: "24/7 database availability, zero data loss guarantee, geographic redundancy"
+
+    # Advanced training and certification requirements
+    iam.veridis.xyz/advanced-training: "PostgreSQL DBA certification, security hardening, disaster recovery, compliance training"
+    iam.veridis.xyz/specialized-certifications: "Database security, data protection, backup/recovery, performance optimization"
+    iam.veridis.xyz/continuous-education: "Annual security updates, compliance changes, technology evolution, best practices"
+
+    veridis.xyz/owner: "database-admin@veridis.xyz"
+    veridis.xyz/manager: "infrastructure-manager@veridis.xyz"
+    veridis.xyz/dpo-contact: "dpo@veridis.xyz"
+    veridis.xyz/security-officer: "ciso@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: veridis-database-admin-production
+
+subjects:
+# ==============================================================================
+# Senior Database Administrators - Maximum Privilege
+# ==============================================================================
+- kind: User
+  name: "frank.garcia@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior Database Administrator, Team Lead
+  # Specialization: PostgreSQL administration, performance optimization
+  # Security Clearance: Enhanced background check, data handler certification
+  # Access Level: Complete database administration with audit responsibility
+  # Emergency Role: Primary DBA for critical incident response
+  # Certifications: PostgreSQL Professional, Security+, GDPR Data Protection
+
+- kind: User
+  name: "grace.lee@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior Database Administrator, Backup & Recovery Specialist
+  # Specialization: Disaster recovery, backup strategy, business continuity
+  # Security Clearance: Enhanced background check, compliance certified
+  # Access Level: Full database administration with DR responsibility
+  # Geographic Coverage: Different region for disaster recovery coordination
+  # Certifications: Disaster Recovery Institute, PostgreSQL Expert
+
+# ==============================================================================
+# Database Administration Team - Group Access
+# ==============================================================================
+- kind: Group
+  name: "veridis-database-administrators"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Database Administration Team
+  # Members: Senior database administrators and specialists
+  # Access Review: Bi-weekly group membership and access review
+  # Compliance: Enhanced compliance requirements for data access
+  # Emergency Procedures: Group-level emergency access coordination
+
+# ==============================================================================
+# Database Service Account - Data Operations
+# ==============================================================================
+- kind: ServiceAccount
+  name: veridis-database
+  namespace: veridis
+  # Service Account: Database service workload identity
+  # Usage: Database operations, backup jobs, monitoring
+  # Security: Enhanced service account security with HSM integration
+  # Monitoring: Comprehensive service account activity monitoring
+
+# ==============================================================================
+# Emergency Database Access - Critical Incidents
+# ==============================================================================
+- kind: User
+  name: "emergency.database@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Emergency Database Access Account
+  # Usage: Critical database incidents, data recovery operations
+  # Activation: CISO and DPO dual approval required
+  # Monitoring: Real-time monitoring with immediate executive alerting
+  # Compliance: Enhanced audit logging for regulatory compliance
+
+---
+# ==============================================================================
+# Production Environment - ZK Circuits Cryptographic Operations
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: veridis-zk-circuits-admin-production-binding
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role-binding
+    rbac.veridis.xyz/scope: cryptographic-operations
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: specialized
+    rbac.veridis.xyz/access-tier: cryptographic-compute
+    rbac.veridis.xyz/binding-category: specialized-access
+
+    security.veridis.xyz/access-level: crypto-specialist
+    security.veridis.xyz/identity-verification: "crypto-clearance-required"
+    security.veridis.xyz/access-pattern: "cryptographic-operations"
+    security.veridis.xyz/audit-level: "high"
+    security.veridis.xyz/fips-compliance: "required"
+    security.veridis.xyz/ip-protection: "critical"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/ip-classification: "trade-secrets"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001,fips-140-2"
+    business.veridis.xyz/competitive-advantage: "core-technology"
+
+    iam.veridis.xyz/identity-provider: "azure-ad"
+    iam.veridis.xyz/authentication-method: "oidc+mfa+crypto-token"
+    iam.veridis.xyz/clearance-level: "cryptographic-operations"
+    iam.veridis.xyz/access-review-frequency: "monthly"
+    iam.veridis.xyz/specialized-training: "required"
+
+    veridis.xyz/environment: production
+    veridis.xyz/service: zk-circuits
+    veridis.xyz/team: cryptography-engineering
+    veridis.xyz/cost-center: research-development
+
+    compliance.veridis.xyz/soc2: "cryptographic-control"
+    compliance.veridis.xyz/fips-140-2: "level-2-operations"
+    compliance.veridis.xyz/iso27001: "cryptographic-key-management"
+    governance.veridis.xyz/policy-enforcement: "specialized"
+
+  annotations:
+    veridis.xyz/description: "ZK circuits cryptographic operations role binding with specialized security controls and intellectual property protection"
+    veridis.xyz/purpose: "Binds qualified cryptographic engineers to GPU-accelerated ZK proof generation with specialized security and IP protection"
+    veridis.xyz/scope: "Zero-knowledge proof generation, circuit optimization, GPU resource management, cryptographic algorithm implementation"
+
+    # Specialized cryptographic security requirements
+    security.veridis.xyz/crypto-requirements: "FIPS 140-2 Level 2 compliance, secure key handling, side-channel attack prevention"
+    security.veridis.xyz/gpu-security: "Secure GPU memory management, cryptographic isolation, hardware security integration"
+    security.veridis.xyz/algorithm-protection: "Proprietary algorithm security, implementation confidentiality, performance optimization secrets"
+
+    # Intellectual property protection
+    business.veridis.xyz/ip-protection: "Trade secret algorithms, proprietary optimizations, competitive advantage preservation"
+    business.veridis.xyz/confidentiality: "Non-disclosure agreements, confidentiality training, secure development practices"
+    business.veridis.xyz/competitive-intelligence: "Algorithm performance data, optimization techniques, efficiency improvements"
+
+    # Technical specialization requirements
+    iam.veridis.xyz/technical-requirements: "Advanced cryptography knowledge, GPU programming expertise, zero-knowledge proof systems"
+    iam.veridis.xyz/specialized-certifications: "Cryptographic engineering, GPU programming, zero-knowledge systems, performance optimization"
+    iam.veridis.xyz/research-background: "Cryptography research, algorithm development, performance engineering, security analysis"
+
+    # Hardware and resource management
+    veridis.xyz/gpu-management: "NVIDIA RTX 4090/A100 optimization, CUDA programming, parallel processing, memory management"
+    veridis.xyz/performance-targets: "Sub-second proof generation, optimal GPU utilization, scalable parallel processing"
+    veridis.xyz/resource-optimization: "Cost-effective GPU usage, energy efficiency, performance per dollar optimization"
+
+    veridis.xyz/owner: "zk-engineering-lead@veridis.xyz"
+    veridis.xyz/manager: "cryptography-architect@veridis.xyz"
+    veridis.xyz/ip-counsel: "legal@veridis.xyz"
+    veridis.xyz/escalation: "cto@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: veridis-zk-circuits-admin-production
+
+subjects:
+# ==============================================================================
+# Senior Cryptographic Engineers - Specialized Access
+# ==============================================================================
+- kind: User
+  name: "henry.kim@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior Cryptographic Engineer, ZK Specialist
+  # Specialization: Zero-knowledge proof systems, circuit optimization
+  # Education: PhD in Cryptography, research publications
+  # Security Clearance: Cryptographic operations clearance
+  # IP Agreement: Enhanced confidentiality and non-compete
+  # Certifications: Advanced cryptography, GPU programming, FIPS compliance
+
+- kind: User
+  name: "isabel.martinez@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior GPU Engineer, Performance Specialist
+  # Specialization: GPU acceleration, parallel processing, CUDA optimization
+  # Education: MS Computer Science, GPU architecture expertise
+  # Security Clearance: Hardware security and cryptographic operations
+  # Performance Focus: Algorithm optimization, resource efficiency
+  # Certifications: NVIDIA certified, cryptographic engineering
+
+# ==============================================================================
+# Cryptography Engineering Team - Group Access
+# ==============================================================================
+- kind: Group
+  name: "veridis-cryptography-engineers"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Cryptography Engineering Team
+  # Members: Cryptographic engineers and GPU specialists
+  # Access Pattern: Collaborative algorithm development and optimization
+  # IP Protection: Enhanced confidentiality requirements for group members
+  # Research Coordination: Algorithm development and performance optimization
+
+# ==============================================================================
+# ZK Circuits Service Account - Cryptographic Operations
+# ==============================================================================
+- kind: ServiceAccount
+  name: veridis-zk-circuits
+  namespace: veridis
+  # Service Account: ZK circuits service workload identity
+  # Usage: Automated proof generation, circuit compilation, GPU scheduling
+  # Security: Hardware security module integration, secure key storage
+  # Performance: Optimized for high-throughput cryptographic operations
+
+# ==============================================================================
+# Research and Development Access - Algorithm Development
+# ==============================================================================
+- kind: User
+  name: "research.cryptography@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Research Account: Algorithm research and development
+  # Usage: Experimental algorithm development, performance benchmarking
+  # Access Control: Research director approval, IP protection protocols
+  # Innovation Focus: Next-generation cryptographic algorithms and optimizations
+
+---
+# ==============================================================================
+# Staging Environment - Full Application Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: veridis-staging-admin-binding
+  namespace: veridis-staging
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role-binding
+    rbac.veridis.xyz/scope: staging-environment
+    rbac.veridis.xyz/environment: staging
+    rbac.veridis.xyz/privilege-level: high
+    rbac.veridis.xyz/access-tier: pre-production
+    rbac.veridis.xyz/binding-category: testing-access
+
+    security.veridis.xyz/access-level: staging-admin
+    security.veridis.xyz/identity-verification: "standard-mfa"
+    security.veridis.xyz/access-pattern: "testing-validation"
+    security.veridis.xyz/audit-level: "standard"
+    security.veridis.xyz/data-classification: "test-data-only"
+
+    business.veridis.xyz/criticality: pre-production
+    business.veridis.xyz/revenue-impact: testing
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-scope: "basic"
+    business.veridis.xyz/quality-assurance: "comprehensive"
+
+    iam.veridis.xyz/identity-provider: "azure-ad"
+    iam.veridis.xyz/authentication-method: "oidc+mfa"
+    iam.veridis.xyz/access-review-frequency: "quarterly"
+    iam.veridis.xyz/testing-environment: "true"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/service: all-services
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+
+    governance.veridis.xyz/policy-enforcement: "relaxed"
+
+  annotations:
+    veridis.xyz/description: "Staging environment administrator role binding for comprehensive pre-production testing and validation"
+    veridis.xyz/purpose: "Provides platform engineering teams with complete staging environment access for integration testing and deployment validation"
+    veridis.xyz/scope: "Full application stack testing, performance validation, deployment verification, quality assurance workflows"
+
+    # Staging environment testing capabilities
+    veridis.xyz/testing-scope: "Integration testing, performance testing, security testing, user acceptance testing, regression testing"
+    veridis.xyz/validation-procedures: "Deployment validation, configuration testing, data migration testing, disaster recovery testing"
+    veridis.xyz/quality-gates: "Automated testing pipelines, manual validation procedures, performance benchmarks"
+
+    # Production promotion pipeline integration
+    veridis.xyz/promotion-responsibility: "Staging validation gate for production deployments"
+    veridis.xyz/release-management: "Feature validation, release candidate testing, rollback procedures"
+    veridis.xyz/risk-mitigation: "Pre-production issue identification, performance validation, security verification"
+
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/qa-lead: "quality-assurance@veridis.xyz"
+    veridis.xyz/test-manager: "test-engineering@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: veridis-staging-admin
+
+subjects:
+# ==============================================================================
+# Platform Engineering Team - Staging Access
+# ==============================================================================
+- kind: Group
+  name: "veridis-platform-engineers"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Platform Engineering Team
+  # Access: Complete staging environment administration
+  # Purpose: Integration testing, deployment validation, performance testing
+  # Coverage: All platform engineers with staging responsibilities
+
+- kind: Group
+  name: "veridis-qa-engineers"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Quality Assurance Engineering Team
+  # Access: Comprehensive testing and validation capabilities
+  # Purpose: Quality gates, test automation, validation procedures
+  # Testing Focus: End-to-end testing, performance validation, security testing
+
+# ==============================================================================
+# Individual Access - Senior Engineers
+# ==============================================================================
+- kind: User
+  name: "alice.johnson@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Cross-environment access for senior backend engineer
+
+- kind: User
+  name: "bob.smith@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Cross-environment access for senior backend engineer
+
+- kind: User
+  name: "janet.wong@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior QA Engineer, Test Automation Lead
+  # Specialization: Automated testing, CI/CD integration, quality gates
+  # Responsibility: Staging environment quality assurance and validation
+
+# ==============================================================================
+# Service Accounts - Staging Operations
+# ==============================================================================
+- kind: ServiceAccount
+  name: veridis-backend
+  namespace: veridis-staging
+  # Staging backend service account
+
+- kind: ServiceAccount
+  name: veridis-zk-circuits
+  namespace: veridis-staging
+  # Staging ZK circuits service account
+
+---
+# ==============================================================================
+# Development Environment - Developer Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: veridis-developer-access-binding
+  namespace: veridis-dev
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role-binding
+    rbac.veridis.xyz/scope: development-environment
+    rbac.veridis.xyz/environment: development
+    rbac.veridis.xyz/privilege-level: moderate
+    rbac.veridis.xyz/access-tier: development
+    rbac.veridis.xyz/binding-category: developer-access
+
+    security.veridis.xyz/access-level: developer
+    security.veridis.xyz/identity-verification: "basic"
+    security.veridis.xyz/access-pattern: "development-iteration"
+    security.veridis.xyz/audit-level: "minimal"
+    security.veridis.xyz/learning-environment: "true"
+
+    business.veridis.xyz/criticality: development
+    business.veridis.xyz/revenue-impact: none
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-scope: "none"
+    business.veridis.xyz/innovation-focus: "true"
+
+    iam.veridis.xyz/identity-provider: "azure-ad"
+    iam.veridis.xyz/authentication-method: "oidc"
+    iam.veridis.xyz/access-review-frequency: "annual"
+    iam.veridis.xyz/onboarding-environment: "true"
+
+    veridis.xyz/environment: development
+    veridis.xyz/service: development-tools
+    veridis.xyz/team: development
+    veridis.xyz/cost-center: engineering
+
+    governance.veridis.xyz/policy-enforcement: "minimal"
+
+  annotations:
+    veridis.xyz/description: "Development environment access role binding for application developers with comprehensive learning and experimentation capabilities"
+    veridis.xyz/purpose: "Provides development teams with complete development environment access for rapid iteration, learning, and innovation"
+    veridis.xyz/scope: "Full development stack, debugging tools, experimentation workflows, learning resources, collaboration platforms"
+
+    # Development environment characteristics
+    veridis.xyz/development-philosophy: "Maximum development flexibility, rapid experimentation, learning-focused, innovation-enabled"
+    veridis.xyz/collaboration-features: "Shared development resources, pair programming support, knowledge sharing, mentorship integration"
+    veridis.xyz/learning-integration: "Skill development, technology exploration, best practice implementation, architectural experimentation"
+
+    # Safety and isolation
+    security.veridis.xyz/isolation-boundaries: "Complete isolation from production, no customer data access, resource limits enforced"
+    security.veridis.xyz/safety-measures: "Automated cleanup, resource quotas, network isolation, data protection"
+
+    veridis.xyz/owner: "development-team@veridis.xyz"
+    veridis.xyz/mentor: "senior-developers@veridis.xyz"
+    veridis.xyz/team-lead: "development-manager@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: veridis-developer-access
+
+subjects:
+# ==============================================================================
+# Development Team - Full Team Access
+# ==============================================================================
+- kind: Group
+  name: "veridis-developers"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Development Team
+  # Access: Complete development environment access
+  # Purpose: Application development, feature implementation, bug fixes
+  # Collaboration: Team-based development and knowledge sharing
+
+- kind: Group
+  name: "veridis-junior-developers"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Junior Developers
+  # Access: Development environment with mentorship integration
+  # Purpose: Learning, skill development, supervised development work
+  # Growth Path: Progression to senior developer roles
+
+# ==============================================================================
+# Individual Developer Access
+# ==============================================================================
+- kind: User
+  name: "karen.taylor@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Senior Full-Stack Developer
+  # Specialization: Frontend and backend development
+  # Mentor Role: Junior developer mentorship and guidance
+
+- kind: User
+  name: "louis.anderson@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Mid-Level Backend Developer
+  # Focus: API development, service integration
+  # Learning Path: Kubernetes proficiency, cloud-native development
+
+- kind: User
+  name: "maria.rodriguez@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Junior Developer
+  # Learning Focus: Microservices architecture, container orchestration
+  # Mentorship: Assigned senior developer mentor
+
+# ==============================================================================
+# Intern and Contractor Access
+# ==============================================================================
+- kind: User
+  name: "intern.summer2025@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Summer Intern Account
+  # Access: Limited development environment access
+  # Supervision: Assigned mentor, structured learning program
+  # Duration: Temporary access with defined end date
+
+- kind: Group
+  name: "veridis-contractors"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: External Contractors
+  # Access: Limited development access with specific project scope
+  # Security: Enhanced monitoring, limited duration access
+  # Compliance: Contractor agreement compliance, IP protection
+
+# ==============================================================================
+# Development Service Accounts
+# ==============================================================================
+- kind: ServiceAccount
+  name: veridis-backend
+  namespace: veridis-dev
+  # Development backend service account
+
+- kind: ServiceAccount
+  name: veridis-zk-circuits
+  namespace: veridis-dev
+  # Development ZK circuits service account
+
+---
+# ==============================================================================
+# Monitoring Namespace - Read-Only Observability Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: veridis-monitoring-readonly-binding
+  namespace: monitoring
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role-binding
+    rbac.veridis.xyz/scope: monitoring-readonly
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: read-only
+    rbac.veridis.xyz/access-tier: observability
+    rbac.veridis.xyz/binding-category: monitoring-access
+
+    security.veridis.xyz/access-level: monitoring-readonly
+    security.veridis.xyz/identity-verification: "basic"
+    security.veridis.xyz/access-pattern: "observability-consumption"
+    security.veridis.xyz/audit-level: "minimal"
+    security.veridis.xyz/data-sensitivity: "operational-metrics"
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/revenue-impact: indirect
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-scope: "soc2"
+    business.veridis.xyz/visibility-enablement: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/service: monitoring-infrastructure
+    veridis.xyz/team: sre
+    veridis.xyz/cost-center: engineering
+
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+  annotations:
+    veridis.xyz/description: "Read-only monitoring access role binding for observability infrastructure consumption and dashboard viewing"
+    veridis.xyz/purpose: "Provides safe read-only access to monitoring tools for operational visibility and performance analysis"
+    veridis.xyz/scope: "Monitoring dashboards, metrics queries, log viewing, alert status, performance analysis, capacity planning"
+
+    # Monitoring access patterns and safety
+    veridis.xyz/access-safety: "Read-only access only, no configuration changes, no infrastructure modifications"
+    veridis.xyz/data-filtering: "Sensitive data automatically filtered, PII protection, security information redacted"
+    veridis.xyz/dashboard-access: "Business dashboards, technical metrics, SLA monitoring, capacity planning dashboards"
+
+    veridis.xyz/owner: "sre-team@veridis.xyz"
+    veridis.xyz/monitoring-lead: "monitoring@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: veridis-monitoring-readonly
+
+subjects:
+# ==============================================================================
+# Broad Access - All Engineering Teams
+# ==============================================================================
+- kind: Group
+  name: "veridis-all-engineers"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: All Engineering Teams
+  # Access: Read-only monitoring and observability
+  # Purpose: Operational visibility, performance awareness, system health
+
+- kind: Group
+  name: "veridis-sre-team"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Site Reliability Engineering Team
+  # Access: Enhanced monitoring access for operational responsibility
+  # Purpose: System monitoring, alerting, capacity planning
+
+# ==============================================================================
+# Business and Leadership Access
+# ==============================================================================
+- kind: Group
+  name: "veridis-engineering-management"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Engineering Management
+  # Access: Business metrics, team performance, system health
+  # Purpose: Management visibility, decision support, resource planning
+
+- kind: User
+  name: "executive.dashboard@veridis.xyz"
+  apiGroup: rbac.authorization.k8s.io
+  # Executive Dashboard Account
+  # Access: High-level business metrics and system health
+  # Purpose: Executive visibility, business intelligence, strategic planning
+
+# ==============================================================================
+# External Stakeholder Access
+# ==============================================================================
+- kind: Group
+  name: "veridis-business-stakeholders"
+  apiGroup: rbac.authorization.k8s.io
+  # Group: Business Stakeholders
+  # Access: Business-relevant metrics and performance indicators
+  # Purpose: Business visibility, performance tracking, SLA monitoring
+
+# ==============================================================================
+# Role Binding Summary and Access Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE ACCESS CONTROL MATRIX:
+# ====================================
+#
+# PRODUCTION ENVIRONMENT ACCESS:
+# -----------------------------
+# Backend Administration:
+#   - Users: Senior backend engineers (alice.johnson, bob.smith, charlie.davis)
+#   - Groups: veridis-backend-engineers, veridis-platform-team
+#   - Service Accounts: veridis-backend
+#   - Emergency: emergency.backend@veridis.xyz
+#   - Deputies: diana.wilson, evan.brown (business continuity)
+#   - Security: MFA required, session recording, comprehensive audit
+#
+# Database Administration:
+#   - Users: Senior DBAs (frank.garcia, grace.lee)
+#   - Groups: veridis-database-administrators
+#   - Service Accounts: veridis-database
+#   - Emergency: emergency.database@veridis.xyz
+#   - Security: Enhanced MFA, biometric, maximum audit level
+#   - Compliance: GDPR, SOC 2, ISO 27001, PCI DSS controls
+#
+# Cryptographic Operations:
+#   - Users: Crypto engineers (henry.kim, isabel.martinez)
+#   - Groups: veridis-cryptography-engineers
+#   - Service Accounts: veridis-zk-circuits
+#   - Research: research.cryptography@veridis.xyz
+#   - Security: FIPS 140-2 compliance, IP protection, specialized clearance
+#
+# STAGING ENVIRONMENT ACCESS:
+# --------------------------
+# Complete Environment Administration:
+#   - Groups: veridis-platform-engineers, veridis-qa-engineers
+#   - Users: Senior engineers with cross-environment access
+#   - Service Accounts: Staging-specific service accounts
+#   - Purpose: Integration testing, deployment validation, quality assurance
+#   - Security: Standard MFA, relaxed policies for testing flexibility
+#
+# DEVELOPMENT ENVIRONMENT ACCESS:
+# ------------------------------
+# Developer-Friendly Access:
+#   - Groups: veridis-developers, veridis-junior-developers, veridis-contractors
+#   - Users: Individual developers, interns, contractors
+#   - Service Accounts: Development-specific service accounts
+#   - Purpose: Rapid development, learning, experimentation, innovation
+#   - Security: Minimal controls, maximum development flexibility
+#
+# MONITORING ACCESS:
+# -----------------
+# Read-Only Observability:
+#   - Groups: veridis-all-engineers, veridis-sre-team, veridis-engineering-management
+#   - Users: Executive dashboard access, business stakeholders
+#   - Purpose: Operational visibility, performance monitoring, business intelligence
+#   - Security: Read-only access, data filtering, PII protection
+#
+# IDENTITY AND ACCESS MANAGEMENT FEATURES:
+# ========================================
+# - Enterprise Identity Integration: Azure AD, OIDC, SAML federation
+# - Multi-Factor Authentication: MFA, biometric, hardware tokens
+# - Session Management: Recording, monitoring, timeout controls
+# - Emergency Access: Break-glass procedures, executive approval
+# - Business Continuity: Deputy coverage, 24/7 access, geographic distribution
+# - Compliance Integration: SOC 2, GDPR, ISO 27001, PCI DSS, FIPS 140-2
+# - Audit and Monitoring: Comprehensive logging, real-time alerting, behavioral analysis
+# - Role Lifecycle: Automated reviews, periodic recertification, access cleanup
+#
+# SECURITY ARCHITECTURE:
+# =====================
+# - Zero Trust Model: Explicit permissions, continuous verification
+# - Least Privilege: Minimal required access, just-in-time elevation
+# - Defense in Depth: Multiple security layers, redundant controls
+# - Threat Detection: Behavioral analysis, anomaly detection, real-time alerting
+# - Incident Response: Role-based escalation, emergency procedures, forensic preservation
+# - Compliance Automation: Policy enforcement, evidence collection, regulatory reporting
+#
+# ==============================================================================
