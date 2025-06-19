@@ -1,0 +1,1497 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Namespace-Scoped Roles
+# ==============================================================================
+#
+# This manifest defines comprehensive namespace-scoped roles for the Veridis deployment,
+# providing:
+#
+# NAMESPACE-SPECIFIC RBAC SECURITY:
+#   • Granular permissions within specific namespaces and environments
+#   • Environment-specific access controls (production, staging, development)
+#   • Resource-level access control with precise verb permissions
+#   • Application-specific role definitions aligned with service architecture
+#   • Cross-namespace coordination with controlled boundaries
+#
+# MULTI-ENVIRONMENT ACCESS MANAGEMENT:
+#   • Production environment strict access controls and audit requirements
+#   • Staging environment operational flexibility with safety guardrails
+#   • Development environment permissive access for rapid iteration
+#   • Testing environment isolated permissions for quality assurance
+#   • Disaster recovery environment emergency access procedures
+#
+# COMPLIANCE FRAMEWORK:
+#   • SOC 2 Type II environment separation and access controls
+#   • GDPR data processing authorization by environment and data classification
+#   • ISO 27001 information classification and access management
+#   • Regulatory compliance with environment-specific audit trails
+#   • Zero-trust security model with explicit namespace permissions
+#
+# SERVICE-ORIENTED SECURITY:
+#   • Microservice-specific access patterns and resource boundaries
+#   • Database access controls with read/write separation
+#   • Secret management with service-specific scope and rotation
+#   • Network policy integration with service mesh security
+#   • Container image management and deployment authorization
+#
+# OPERATIONAL GOVERNANCE:
+#   • Environment promotion workflows with appropriate access controls
+#   • Deployment pipeline integration with role-based approvals
+#   • Monitoring and observability access aligned with operational needs
+#   • Incident response escalation with environment-aware permissions
+#   • Backup and recovery operations with data classification awareness
+#
+# ==============================================================================
+
+# ==============================================================================
+# Production Environment - Backend Service Administrator
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: veridis-backend-admin-production
+  namespace: veridis
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Role-specific classification
+    rbac.veridis.xyz/type: namespace-role
+    rbac.veridis.xyz/scope: backend-service
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: high
+    rbac.veridis.xyz/access-tier: service-admin
+    rbac.veridis.xyz/resource-category: application-workload
+
+    # Security classification
+    security.veridis.xyz/access-level: service-admin
+    security.veridis.xyz/data-access: confidential
+    security.veridis.xyz/privilege-escalation: "controlled"
+    security.veridis.xyz/audit-level: "comprehensive"
+    security.veridis.xyz/mfa-required: "true"
+    security.veridis.xyz/session-recording: "enabled"
+
+    # Business classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/customer-facing: "true"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/data-classification: "confidential,restricted"
+
+    # Environment and operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/service: backend
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "critical-system-access"
+    compliance.veridis.xyz/gdpr: "data-controller-operations"
+    compliance.veridis.xyz/iso27001: "information-system-admin"
+    compliance.veridis.xyz/data-residency: "eu-us-compliant"
+    governance.veridis.xyz/policy-enforcement: "strict"
+    governance.veridis.xyz/change-control: "production-gates"
+
+  annotations:
+    # Role purpose and scope
+    veridis.xyz/description: "Production backend service administrator role with comprehensive application lifecycle management permissions"
+    veridis.xyz/purpose: "Provides full administrative access to backend services in production with strict security controls and audit requirements"
+    veridis.xyz/scope: "Backend service deployment, configuration, scaling, monitoring, secret management, database connectivity"
+
+    # Service-specific access patterns
+    veridis.xyz/service-responsibilities: "API server management, database connections, external integrations, performance optimization, incident response"
+    veridis.xyz/deployment-capabilities: "Rolling updates, rollbacks, canary deployments, blue-green deployments, emergency patches"
+    veridis.xyz/configuration-management: "Environment variables, config maps, secrets, feature flags, service mesh configuration"
+    veridis.xyz/scaling-operations: "Horizontal scaling, vertical scaling, auto-scaling configuration, resource optimization"
+
+    # Security and access controls
+    security.veridis.xyz/access-justification: "Critical business operations, customer-facing services, regulatory compliance, data protection"
+    security.veridis.xyz/security-boundaries: "Namespace isolation, service mesh policies, network policies, resource quotas"
+    security.veridis.xyz/secret-scope: "Backend service secrets, database credentials, API keys, signing certificates"
+    security.veridis.xyz/network-access: "Database connectivity, external APIs, service mesh communication, monitoring endpoints"
+
+    # Production environment controls
+    veridis.xyz/production-controls: "Change approval required, automated testing gates, security scans, compliance checks"
+    veridis.xyz/deployment-gates: "Security review, performance testing, backup verification, rollback planning"
+    veridis.xyz/monitoring-requirements: "Real-time alerting, performance monitoring, error tracking, audit logging"
+
+    # Compliance and audit
+    compliance.veridis.xyz/audit-scope: "All administrative actions, configuration changes, deployment operations"
+    compliance.veridis.xyz/data-handling: "Customer PII, financial data, authentication tokens, audit logs"
+    compliance.veridis.xyz/retention-requirements: "7-year audit trail, configuration history, change documentation"
+    compliance.veridis.xyz/incident-response: "Immediate escalation, forensic preservation, regulatory notification"
+
+    # Performance and reliability
+    veridis.xyz/sla-responsibility: "99.9% uptime, sub-100ms response time, zero data loss, 4-hour recovery"
+    veridis.xyz/performance-tuning: "Resource optimization, caching strategies, database query optimization"
+    veridis.xyz/capacity-planning: "Growth projections, resource forecasting, cost optimization"
+
+    # Team and ownership
+    veridis.xyz/owner: "backend-team-lead@veridis.xyz"
+    veridis.xyz/escalation: "platform-engineering-manager@veridis.xyz"
+    veridis.xyz/security-contact: "security@veridis.xyz"
+    veridis.xyz/compliance-contact: "compliance@veridis.xyz"
+
+    # Operational procedures
+    veridis.xyz/access-procedures: "Manager approval, security review, MFA setup, audit trail activation"
+    veridis.xyz/emergency-procedures: "Incident commander authorization, real-time audit, post-incident review"
+    veridis.xyz/maintenance-windows: "Scheduled maintenance approval, change coordination, rollback preparation"
+
+# Comprehensive backend service administration permissions
+rules:
+# ==============================================================================
+# Core Application Workload Management - Production Backend
+# ==============================================================================
+# Full lifecycle management of backend deployments with production controls
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/scale
+    - deployments/status
+    - deployments/rollback
+    - replicasets
+    - replicasets/scale
+    - replicasets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend"
+    - "veridis-api-server"
+    - "veridis-auth-service"
+    - "veridis-verification-service"
+
+# Stateful workload management for persistent backend services
+- apiGroups: ["apps"]
+  resources:
+    - statefulsets
+    - statefulsets/scale
+    - statefulsets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-stateful"
+    - "veridis-session-store"
+
+# ==============================================================================
+# Pod and Container Management - Backend Services
+# ==============================================================================
+# Comprehensive pod management including debugging and maintenance
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/attach
+    - pods/exec
+    - pods/portforward
+    - pods/proxy
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Configuration and Secret Management - Backend Specific
+# ==============================================================================
+# Backend service configuration management
+- apiGroups: [""]
+  resources:
+    - configmaps
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-config"
+    - "veridis-api-config"
+    - "veridis-auth-config"
+    - "veridis-feature-flags"
+    - "veridis-environment-config"
+
+# Backend service secret management with strict controls
+- apiGroups: [""]
+  resources:
+    - secrets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-secrets"
+    - "veridis-database-credentials"
+    - "veridis-api-keys"
+    - "veridis-signing-keys"
+    - "veridis-tls-certificates"
+    - "veridis-auth-tokens"
+
+# ==============================================================================
+# Service and Networking - Backend Service Mesh
+# ==============================================================================
+# Backend service networking and load balancing
+- apiGroups: [""]
+  resources:
+    - services
+    - services/proxy
+    - services/status
+    - endpoints
+    - endpointslices
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-service"
+    - "veridis-api-service"
+    - "veridis-auth-service"
+    - "veridis-internal-api"
+
+# Ingress management for backend API endpoints
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - ingresses
+    - ingresses/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-ingress"
+    - "veridis-api-ingress"
+
+# Network policy management for backend security
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - networkpolicies
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-network-policy"
+    - "veridis-database-access-policy"
+    - "veridis-external-api-policy"
+
+# ==============================================================================
+# Storage and Persistence - Backend Data Management
+# ==============================================================================
+# Persistent volume claims for backend storage
+- apiGroups: [""]
+  resources:
+    - persistentvolumeclaims
+    - persistentvolumeclaims/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-storage"
+    - "veridis-cache-storage"
+    - "veridis-log-storage"
+
+# ==============================================================================
+# Auto-scaling and Performance - Backend Optimization
+# ==============================================================================
+# Horizontal Pod Autoscaler for backend services
+- apiGroups: ["autoscaling"]
+  resources:
+    - horizontalpodautoscalers
+    - horizontalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-hpa"
+    - "veridis-api-hpa"
+
+# Vertical Pod Autoscaler for resource optimization
+- apiGroups: ["autoscaling.k8s.io"]
+  resources:
+    - verticalpodautoscalers
+    - verticalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-vpa"
+
+# Pod Disruption Budget for availability management
+- apiGroups: ["policy"]
+  resources:
+    - poddisruptionbudgets
+    - poddisruptionbudgets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-pdb"
+
+# ==============================================================================
+# Service Account and Identity - Backend Service Identity
+# ==============================================================================
+# Backend service account management
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+    - serviceaccounts/token
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend"
+    - "veridis-api-server"
+
+# ==============================================================================
+# Monitoring and Events - Backend Observability
+# ==============================================================================
+# Event access for debugging and audit trails
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+# Service monitors for Prometheus integration
+- apiGroups: ["monitoring.coreos.com"]
+  resources:
+    - servicemonitors
+    - prometheusrules
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-backend-metrics"
+    - "veridis-api-metrics"
+
+---
+# ==============================================================================
+# Production Environment - Database Administrator
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: veridis-database-admin-production
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role
+    rbac.veridis.xyz/scope: database-service
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: critical
+    rbac.veridis.xyz/access-tier: data-admin
+    rbac.veridis.xyz/resource-category: data-management
+
+    security.veridis.xyz/access-level: database-admin
+    security.veridis.xyz/data-access: all-data
+    security.veridis.xyz/privilege-escalation: "restricted"
+    security.veridis.xyz/audit-level: "maximum"
+    security.veridis.xyz/mfa-required: "true"
+    security.veridis.xyz/session-recording: "mandatory"
+
+    business.veridis.xyz/criticality: system-critical
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/data-sovereignty: "regulated"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001,pci-dss"
+    business.veridis.xyz/data-classification: "confidential,restricted,regulated"
+
+    veridis.xyz/environment: production
+    veridis.xyz/service: database
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "data-security-control"
+    compliance.veridis.xyz/gdpr: "data-controller-admin"
+    compliance.veridis.xyz/iso27001: "data-security-admin"
+    compliance.veridis.xyz/pci-dss: "cardholder-data-access"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+
+  annotations:
+    veridis.xyz/description: "Production database administrator role with comprehensive data management and security permissions"
+    veridis.xyz/purpose: "Provides full administrative access to database infrastructure with maximum security controls and compliance requirements"
+    veridis.xyz/scope: "Database deployment, configuration, backup, recovery, performance tuning, security management"
+
+    # Database administration responsibilities
+    veridis.xyz/database-responsibilities: "PostgreSQL administration, backup operations, performance tuning, security configuration, disaster recovery"
+    veridis.xyz/data-management: "Schema management, data migration, archival operations, compliance data handling"
+    veridis.xyz/backup-operations: "Automated backups, point-in-time recovery, cross-region replication, disaster recovery testing"
+    veridis.xyz/performance-tuning: "Query optimization, index management, connection pooling, resource allocation"
+
+    # Security and compliance
+    security.veridis.xyz/data-protection: "Encryption at rest, encryption in transit, key management, access logging"
+    security.veridis.xyz/access-patterns: "Database connections, administrative operations, backup access, monitoring queries"
+    compliance.veridis.xyz/data-handling: "PII protection, data classification, retention policies, secure deletion"
+    compliance.veridis.xyz/audit-requirements: "All database operations logged, configuration changes tracked"
+
+    # Disaster recovery and business continuity
+    veridis.xyz/rto-target: "15-minutes maximum downtime"
+    veridis.xyz/rpo-target: "5-minutes maximum data loss"
+    veridis.xyz/backup-frequency: "Continuous WAL archiving, hourly snapshots, daily full backups"
+    veridis.xyz/disaster-recovery: "Hot standby, cross-region replication, automated failover"
+
+    veridis.xyz/owner: "database-admin@veridis.xyz"
+    veridis.xyz/dba-lead: "senior-dba@veridis.xyz"
+    veridis.xyz/escalation: "infrastructure-manager@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Database Workload Management - PostgreSQL
+# ==============================================================================
+# Database StatefulSet management with data persistence
+- apiGroups: ["apps"]
+  resources:
+    - statefulsets
+    - statefulsets/scale
+    - statefulsets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-primary"
+    - "veridis-postgresql-replica"
+    - "veridis-postgresql-backup"
+
+# Database deployment management for operators and utilities
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/scale
+    - deployments/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-operator"
+    - "veridis-pgbouncer"
+    - "veridis-pg-exporter"
+
+# ==============================================================================
+# Database Pod and Container Management
+# ==============================================================================
+# Comprehensive database pod management including maintenance operations
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/attach
+    - pods/exec
+    - pods/portforward
+    - pods/proxy
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Database Configuration and Secrets
+# ==============================================================================
+# Database configuration management
+- apiGroups: [""]
+  resources:
+    - configmaps
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-config"
+    - "veridis-postgresql-primary-config"
+    - "veridis-postgresql-replica-config"
+    - "veridis-pgbouncer-config"
+    - "veridis-backup-config"
+
+# Database credentials and sensitive configuration
+- apiGroups: [""]
+  resources:
+    - secrets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-credentials"
+    - "veridis-postgresql-admin"
+    - "veridis-postgresql-replication"
+    - "veridis-postgresql-backup"
+    - "veridis-postgresql-tls"
+
+# ==============================================================================
+# Database Storage Management
+# ==============================================================================
+# Persistent volume claims for database storage
+- apiGroups: [""]
+  resources:
+    - persistentvolumeclaims
+    - persistentvolumeclaims/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-primary-data"
+    - "veridis-postgresql-replica-data"
+    - "veridis-postgresql-backup-storage"
+    - "veridis-postgresql-wal-archive"
+
+# Volume snapshots for backup operations
+- apiGroups: ["snapshot.storage.k8s.io"]
+  resources:
+    - volumesnapshots
+    - volumesnapshotcontents
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-snapshot-*"
+    - "veridis-database-backup-*"
+
+# ==============================================================================
+# Database Networking and Services
+# ==============================================================================
+# Database service management
+- apiGroups: [""]
+  resources:
+    - services
+    - services/proxy
+    - services/status
+    - endpoints
+    - endpointslices
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-primary"
+    - "veridis-postgresql-replica"
+    - "veridis-postgresql-headless"
+    - "veridis-pgbouncer"
+
+# Database network policies for security
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - networkpolicies
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-network-policy"
+    - "veridis-database-access-policy"
+
+# ==============================================================================
+# Database Service Accounts and Identity
+# ==============================================================================
+# Database service account management
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+    - serviceaccounts/token
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-database"
+    - "veridis-postgresql"
+    - "veridis-backup-operator"
+
+# ==============================================================================
+# Database Jobs and Batch Operations
+# ==============================================================================
+# Database maintenance and backup jobs
+- apiGroups: ["batch"]
+  resources:
+    - jobs
+    - jobs/status
+    - cronjobs
+    - cronjobs/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-database-backup"
+    - "veridis-database-maintenance"
+    - "veridis-database-migration"
+    - "veridis-database-vacuum"
+
+# ==============================================================================
+# Database Monitoring and Events
+# ==============================================================================
+# Database event monitoring
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+# Database-specific monitoring resources
+- apiGroups: ["monitoring.coreos.com"]
+  resources:
+    - servicemonitors
+    - prometheusrules
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-postgresql-metrics"
+    - "veridis-database-alerts"
+
+---
+# ==============================================================================
+# Production Environment - ZK Circuits Specialist
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: veridis-zk-circuits-admin-production
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role
+    rbac.veridis.xyz/scope: zk-cryptography
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: specialized
+    rbac.veridis.xyz/access-tier: cryptographic-compute
+    rbac.veridis.xyz/resource-category: gpu-workload
+
+    security.veridis.xyz/access-level: crypto-specialist
+    security.veridis.xyz/data-access: cryptographic
+    security.veridis.xyz/privilege-escalation: "minimal"
+    security.veridis.xyz/audit-level: "high"
+    security.veridis.xyz/mfa-required: "true"
+    security.veridis.xyz/fips-compliance: "required"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/ip-protection: "critical"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001,fips-140-2"
+    business.veridis.xyz/performance-critical: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/service: zk-circuits
+    veridis.xyz/team: cryptography-engineering
+    veridis.xyz/cost-center: research-development
+
+    compliance.veridis.xyz/soc2: "cryptographic-control"
+    compliance.veridis.xyz/fips-140-2: "level-2-compliance"
+    compliance.veridis.xyz/iso27001: "cryptographic-operations"
+    governance.veridis.xyz/policy-enforcement: "specialized"
+
+  annotations:
+    veridis.xyz/description: "ZK circuits specialist role for cryptographic computation with GPU acceleration and specialized security requirements"
+    veridis.xyz/purpose: "Provides specialized access to GPU-accelerated cryptographic operations with FIPS compliance and performance optimization"
+    veridis.xyz/scope: "Zero-knowledge proof generation, circuit compilation, GPU resource management, cryptographic key operations"
+
+    # Cryptographic responsibilities
+    veridis.xyz/crypto-responsibilities: "ZK proof generation, circuit optimization, cryptographic algorithm implementation, performance tuning"
+    veridis.xyz/gpu-management: "CUDA workload scheduling, GPU memory optimization, parallel processing coordination"
+    veridis.xyz/circuit-operations: "Circuit compilation, proving key generation, verification key management, parameter optimization"
+    veridis.xyz/performance-requirements: "Low-latency proof generation, high-throughput processing, resource efficiency"
+
+    # Security and compliance requirements
+    security.veridis.xyz/cryptographic-standards: "FIPS 140-2 Level 2, NIST cryptographic standards, secure key management"
+    security.veridis.xyz/gpu-security: "Secure GPU memory handling, cryptographic isolation, side-channel protection"
+    security.veridis.xyz/key-management: "Hardware security module integration, key rotation, secure key storage"
+
+    # Specialized hardware requirements
+    veridis.xyz/gpu-requirements: "NVIDIA RTX 4090/A100, CUDA 12.0+, 16GB+ VRAM, compute capability 8.0+"
+    veridis.xyz/memory-requirements: "High-bandwidth memory, ECC support, cryptographic acceleration"
+    veridis.xyz/performance-targets: "Sub-second proof generation, parallel circuit execution, optimal GPU utilization"
+
+    # Intellectual property protection
+    veridis.xyz/ip-protection: "Proprietary algorithms, circuit designs, optimization techniques, performance enhancements"
+    veridis.xyz/confidentiality: "Trade secrets, cryptographic innovations, competitive advantages"
+
+    veridis.xyz/owner: "zk-engineering-lead@veridis.xyz"
+    veridis.xyz/crypto-architect: "cryptography-architect@veridis.xyz"
+    veridis.xyz/escalation: "cto@veridis.xyz"
+
+rules:
+# ==============================================================================
+# ZK Circuits Workload Management - GPU Acceleration
+# ==============================================================================
+# ZK circuits deployment management with GPU scheduling
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/scale
+    - deployments/status
+    - statefulsets
+    - statefulsets/scale
+    - statefulsets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-circuits"
+    - "veridis-proof-generator"
+    - "veridis-circuit-compiler"
+    - "veridis-gpu-scheduler"
+
+# ==============================================================================
+# GPU Pod and Container Management
+# ==============================================================================
+# Specialized pod management for GPU workloads
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/attach
+    - pods/exec
+    - pods/portforward
+    - pods/proxy
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Cryptographic Configuration and Secrets
+# ==============================================================================
+# ZK circuits configuration management
+- apiGroups: [""]
+  resources:
+    - configmaps
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-config"
+    - "veridis-circuit-parameters"
+    - "veridis-gpu-config"
+    - "veridis-performance-config"
+    - "veridis-garaga-config"
+
+# Cryptographic keys and sensitive parameters
+- apiGroups: [""]
+  resources:
+    - secrets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-circuits-keys"
+    - "veridis-proving-keys"
+    - "veridis-verification-keys"
+    - "veridis-circuit-secrets"
+    - "veridis-crypto-parameters"
+
+# ==============================================================================
+# GPU Resource Management
+# ==============================================================================
+# GPU-specific resource quotas and limits
+- apiGroups: [""]
+  resources:
+    - resourcequotas
+    - limitranges
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-gpu-quota"
+    - "veridis-zk-resources"
+
+# ==============================================================================
+# ZK Circuits Services and Networking
+# ==============================================================================
+# ZK circuits service management
+- apiGroups: [""]
+  resources:
+    - services
+    - services/proxy
+    - services/status
+    - endpoints
+    - endpointslices
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-circuits-service"
+    - "veridis-proof-api"
+    - "veridis-circuit-compiler-service"
+
+# Network policies for cryptographic workloads
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - networkpolicies
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-network-policy"
+    - "veridis-crypto-isolation-policy"
+
+# ==============================================================================
+# ZK Circuits Storage and Caching
+# ==============================================================================
+# Persistent storage for circuit artifacts and caching
+- apiGroups: [""]
+  resources:
+    - persistentvolumeclaims
+    - persistentvolumeclaims/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-circuit-storage"
+    - "veridis-proof-cache"
+    - "veridis-gpu-workspace"
+
+# ==============================================================================
+# ZK Circuits Service Identity
+# ==============================================================================
+# ZK circuits service account management
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+    - serviceaccounts/token
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-circuits"
+    - "veridis-proof-generator"
+
+# ==============================================================================
+# ZK Circuits Jobs and Batch Processing
+# ==============================================================================
+# Cryptographic batch jobs and parallel processing
+- apiGroups: ["batch"]
+  resources:
+    - jobs
+    - jobs/status
+    - cronjobs
+    - cronjobs/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-circuit-compilation"
+    - "veridis-batch-proving"
+    - "veridis-key-generation"
+    - "veridis-performance-benchmarks"
+
+# ==============================================================================
+# ZK Circuits Auto-scaling for GPU Workloads
+# ==============================================================================
+# Horizontal scaling for parallel proof generation
+- apiGroups: ["autoscaling"]
+  resources:
+    - horizontalpodautoscalers
+    - horizontalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-circuits-hpa"
+    - "veridis-proof-generator-hpa"
+
+# ==============================================================================
+# ZK Circuits Monitoring and Performance
+# ==============================================================================
+# Events for debugging and performance analysis
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+# Specialized monitoring for GPU and cryptographic operations
+- apiGroups: ["monitoring.coreos.com"]
+  resources:
+    - servicemonitors
+    - prometheusrules
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  resourceNames:
+    - "veridis-zk-performance-metrics"
+    - "veridis-gpu-utilization-metrics"
+    - "veridis-crypto-operations-metrics"
+
+---
+# ==============================================================================
+# Staging Environment - Full Application Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: veridis-staging-admin
+  namespace: veridis-staging
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role
+    rbac.veridis.xyz/scope: full-application
+    rbac.veridis.xyz/environment: staging
+    rbac.veridis.xyz/privilege-level: high
+    rbac.veridis.xyz/access-tier: pre-production
+    rbac.veridis.xyz/resource-category: full-stack
+
+    security.veridis.xyz/access-level: staging-admin
+    security.veridis.xyz/data-access: test-data
+    security.veridis.xyz/privilege-escalation: "moderate"
+    security.veridis.xyz/audit-level: "standard"
+    security.veridis.xyz/mfa-required: "false"
+
+    business.veridis.xyz/criticality: pre-production
+    business.veridis.xyz/revenue-impact: testing
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-scope: "basic"
+    business.veridis.xyz/testing-environment: "true"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/service: all-services
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+
+    governance.veridis.xyz/policy-enforcement: "relaxed"
+
+  annotations:
+    veridis.xyz/description: "Staging environment administrator role with comprehensive access for pre-production testing and validation"
+    veridis.xyz/purpose: "Provides full administrative access to staging environment for integration testing, performance validation, and deployment verification"
+    veridis.xyz/scope: "Complete application stack management, testing workflows, performance validation, deployment verification"
+
+    # Staging environment characteristics
+    veridis.xyz/testing-capabilities: "Integration testing, performance testing, security testing, user acceptance testing"
+    veridis.xyz/deployment-validation: "Blue-green deployments, canary testing, rollback procedures, configuration validation"
+    veridis.xyz/data-management: "Test data generation, data masking, synthetic data, performance datasets"
+
+    # Pre-production responsibilities
+    veridis.xyz/validation-responsibilities: "Feature validation, performance benchmarking, security testing, compliance verification"
+    veridis.xyz/integration-testing: "API testing, database integration, external service mocking, end-to-end testing"
+    veridis.xyz/performance-testing: "Load testing, stress testing, scalability validation, resource optimization"
+
+    # Production promotion pipeline
+    veridis.xyz/promotion-gate: "Staging validation required before production deployment"
+    veridis.xyz/quality-assurance: "Automated testing, manual testing, security scans, performance validation"
+    veridis.xyz/deployment-confidence: "Risk reduction through comprehensive staging validation"
+
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/qa-lead: "quality-assurance@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Full Application Stack Management - Staging Environment
+# ==============================================================================
+# Complete workload management for all services
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/scale
+    - deployments/status
+    - deployments/rollback
+    - replicasets
+    - replicasets/scale
+    - statefulsets
+    - statefulsets/scale
+    - statefulsets/status
+    - daemonsets
+    - daemonsets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Batch job management for testing workflows
+- apiGroups: ["batch"]
+  resources:
+    - jobs
+    - jobs/status
+    - cronjobs
+    - cronjobs/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Complete Pod and Container Management
+# ==============================================================================
+# Full pod lifecycle management
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/attach
+    - pods/exec
+    - pods/portforward
+    - pods/proxy
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Configuration and Secret Management - All Resources
+# ==============================================================================
+# Complete configuration management
+- apiGroups: [""]
+  resources:
+    - configmaps
+    - secrets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Networking and Services - Full Stack
+# ==============================================================================
+# Complete service and networking management
+- apiGroups: [""]
+  resources:
+    - services
+    - services/proxy
+    - services/status
+    - endpoints
+    - endpointslices
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Ingress and network policy management
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - ingresses
+    - ingresses/status
+    - networkpolicies
+    - ingressclasses
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Storage Management - All Storage Resources
+# ==============================================================================
+# Complete storage management
+- apiGroups: [""]
+  resources:
+    - persistentvolumeclaims
+    - persistentvolumeclaims/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Volume snapshots for testing and backup
+- apiGroups: ["snapshot.storage.k8s.io"]
+  resources:
+    - volumesnapshots
+    - volumesnapshotcontents
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Auto-scaling and Performance Management
+# ==============================================================================
+# Complete auto-scaling management
+- apiGroups: ["autoscaling"]
+  resources:
+    - horizontalpodautoscalers
+    - horizontalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+- apiGroups: ["autoscaling.k8s.io"]
+  resources:
+    - verticalpodautoscalers
+    - verticalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Pod Disruption Budget management
+- apiGroups: ["policy"]
+  resources:
+    - poddisruptionbudgets
+    - poddisruptionbudgets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Service Account and RBAC Management
+# ==============================================================================
+# Service account management for testing
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+    - serviceaccounts/token
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Role and role binding management within namespace
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources:
+    - roles
+    - rolebindings
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Resource Management and Quotas
+# ==============================================================================
+# Resource quota and limit management
+- apiGroups: [""]
+  resources:
+    - resourcequotas
+    - resourcequotas/status
+    - limitranges
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Events and Monitoring
+# ==============================================================================
+# Event management for debugging
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Monitoring resource management
+- apiGroups: ["monitoring.coreos.com"]
+  resources:
+    - servicemonitors
+    - prometheusrules
+    - podmonitors
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+# ==============================================================================
+# Development Environment - Developer Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: veridis-developer-access
+  namespace: veridis-dev
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role
+    rbac.veridis.xyz/scope: development
+    rbac.veridis.xyz/environment: development
+    rbac.veridis.xyz/privilege-level: moderate
+    rbac.veridis.xyz/access-tier: development
+    rbac.veridis.xyz/resource-category: development-tools
+
+    security.veridis.xyz/access-level: developer
+    security.veridis.xyz/data-access: development-data
+    security.veridis.xyz/privilege-escalation: "none"
+    security.veridis.xyz/audit-level: "minimal"
+    security.veridis.xyz/mfa-required: "false"
+
+    business.veridis.xyz/criticality: development
+    business.veridis.xyz/revenue-impact: none
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-scope: "none"
+    business.veridis.xyz/learning-environment: "true"
+
+    veridis.xyz/environment: development
+    veridis.xyz/service: development-tools
+    veridis.xyz/team: development
+    veridis.xyz/cost-center: engineering
+
+    governance.veridis.xyz/policy-enforcement: "minimal"
+
+  annotations:
+    veridis.xyz/description: "Development environment access role for application developers with safe experimentation capabilities"
+    veridis.xyz/purpose: "Provides comprehensive development environment access for rapid iteration, testing, and learning"
+    veridis.xyz/scope: "Full development environment management, debugging tools, experimentation platforms, learning resources"
+
+    # Development environment characteristics
+    veridis.xyz/development-freedom: "Maximum flexibility for experimentation, rapid prototyping, and learning"
+    veridis.xyz/safety-boundaries: "Isolated from production, no customer data, resource limits enforced"
+    veridis.xyz/collaboration-tools: "Shared development resources, team debugging, knowledge sharing"
+
+    # Learning and skill development
+    veridis.xyz/learning-objectives: "Kubernetes proficiency, microservices architecture, cloud-native development"
+    veridis.xyz/experimentation: "New technologies, architecture patterns, performance optimization"
+    veridis.xyz/best-practices: "DevOps workflows, testing strategies, monitoring implementation"
+
+    # Development workflow integration
+    veridis.xyz/ci-cd-integration: "Development pipeline, automated testing, deployment validation"
+    veridis.xyz/code-quality: "Linting, testing, security scanning, peer review"
+    veridis.xyz/deployment-patterns: "Feature branches, pull request workflows, automated deployment"
+
+    veridis.xyz/owner: "development-team@veridis.xyz"
+    veridis.xyz/mentor: "senior-developers@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Complete Development Environment Management
+# ==============================================================================
+# Full workload management for development and experimentation
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/scale
+    - deployments/status
+    - deployments/rollback
+    - replicasets
+    - replicasets/scale
+    - statefulsets
+    - statefulsets/scale
+    - statefulsets/status
+    - daemonsets
+    - daemonsets/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Development and testing job management
+- apiGroups: ["batch"]
+  resources:
+    - jobs
+    - jobs/status
+    - cronjobs
+    - cronjobs/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Development Pod and Container Management
+# ==============================================================================
+# Full pod lifecycle for development and debugging
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/attach
+    - pods/exec
+    - pods/portforward
+    - pods/proxy
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Development Configuration and Experimentation
+# ==============================================================================
+# Complete configuration management for development
+- apiGroups: [""]
+  resources:
+    - configmaps
+    - secrets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Development Networking and Services
+# ==============================================================================
+# Complete service management for development
+- apiGroups: [""]
+  resources:
+    - services
+    - services/proxy
+    - services/status
+    - endpoints
+    - endpointslices
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Development ingress and networking
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - ingresses
+    - ingresses/status
+    - networkpolicies
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Development Storage and Persistence
+# ==============================================================================
+# Storage management for development data
+- apiGroups: [""]
+  resources:
+    - persistentvolumeclaims
+    - persistentvolumeclaims/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Development Auto-scaling and Performance Testing
+# ==============================================================================
+# Auto-scaling for development and testing
+- apiGroups: ["autoscaling"]
+  resources:
+    - horizontalpodautoscalers
+    - horizontalpodautoscalers/status
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Development Service Accounts and Identity
+# ==============================================================================
+# Service account management for development
+- apiGroups: [""]
+  resources:
+    - serviceaccounts
+    - serviceaccounts/token
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Development RBAC management
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources:
+    - roles
+    - rolebindings
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# ==============================================================================
+# Development Resource Management
+# ==============================================================================
+# Resource quotas and limits for development
+- apiGroups: [""]
+  resources:
+    - resourcequotas
+    - resourcequotas/status
+    - limitranges
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Development Events and Debugging
+# ==============================================================================
+# Event management for debugging and learning
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Development monitoring and observability
+- apiGroups: ["monitoring.coreos.com"]
+  resources:
+    - servicemonitors
+    - prometheusrules
+    - podmonitors
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+# ==============================================================================
+# Monitoring Namespace - Read-Only Observability Access
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: veridis-monitoring-readonly
+  namespace: monitoring
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: namespace-role
+    rbac.veridis.xyz/scope: monitoring-readonly
+    rbac.veridis.xyz/environment: production
+    rbac.veridis.xyz/privilege-level: read-only
+    rbac.veridis.xyz/access-tier: observability
+    rbac.veridis.xyz/resource-category: monitoring-infrastructure
+
+    security.veridis.xyz/access-level: monitoring-readonly
+    security.veridis.xyz/data-access: metrics-logs
+    security.veridis.xyz/privilege-escalation: "none"
+    security.veridis.xyz/audit-level: "minimal"
+    security.veridis.xyz/mfa-required: "false"
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/revenue-impact: indirect
+    business.veridis.xyz/customer-facing: "false"
+    business.veridis.xyz/compliance-scope: "soc2"
+    business.veridis.xyz/visibility-tool: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/service: monitoring-infrastructure
+    veridis.xyz/team: sre
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "monitoring-access"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+  annotations:
+    veridis.xyz/description: "Read-only monitoring access role for observability infrastructure and metrics consumption"
+    veridis.xyz/purpose: "Provides safe read-only access to monitoring infrastructure for metrics viewing, dashboard access, and observability"
+    veridis.xyz/scope: "Monitoring dashboards, metrics queries, log viewing, alert status, performance analysis"
+
+    # Monitoring access patterns
+    veridis.xyz/monitoring-tools: "Grafana dashboards, Prometheus queries, AlertManager status, Jaeger traces"
+    veridis.xyz/data-access: "System metrics, application metrics, infrastructure logs, performance data"
+    veridis.xyz/dashboard-access: "Business metrics, technical metrics, SLA dashboards, capacity planning"
+
+    # Read-only safety boundaries
+    security.veridis.xyz/modification-restrictions: "No configuration changes, no alert modifications, no infrastructure changes"
+    security.veridis.xyz/data-sensitivity: "Operational metrics only, filtered for sensitive information"
+
+    veridis.xyz/owner: "sre-team@veridis.xyz"
+    veridis.xyz/monitoring-lead: "monitoring@veridis.xyz"
+
+rules:
+# ==============================================================================
+# Read-Only Monitoring Infrastructure Access
+# ==============================================================================
+# Read-only access to monitoring workloads
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - deployments/status
+    - statefulsets
+    - statefulsets/status
+    - daemonsets
+    - daemonsets/status
+  verbs: ["get", "list", "watch"]
+
+# Read-only pod access for monitoring infrastructure
+- apiGroups: [""]
+  resources:
+    - pods
+    - pods/status
+    - pods/log
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Monitoring Configuration - Read-Only
+# ==============================================================================
+# Read-only access to monitoring configuration
+- apiGroups: [""]
+  resources:
+    - configmaps
+    - secrets
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Monitoring Services - Read-Only
+# ==============================================================================
+# Read-only access to monitoring services
+- apiGroups: [""]
+  resources:
+    - services
+    - services/status
+    - endpoints
+    - endpointslices
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Monitoring Resources - Read-Only
+# ==============================================================================
+# Read-only access to monitoring-specific resources
+- apiGroups: ["monitoring.coreos.com"]
+  resources:
+    - prometheuses
+    - prometheuses/status
+    - alertmanagers
+    - alertmanagers/status
+    - servicemonitors
+    - podmonitors
+    - prometheusrules
+    - probes
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Events and Monitoring Status
+# ==============================================================================
+# Read-only event access for monitoring
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: ["get", "list", "watch"]
+
+# ==============================================================================
+# Namespace-Scoped Role Summary and Access Matrix
+# ==============================================================================
+#
+# NAMESPACE-SPECIFIC ROLE HIERARCHY:
+# ==================================
+# 1. Production Backend Admin (veridis namespace)
+#    - Scope: Backend service lifecycle management
+#    - Privileges: Full backend service administration
+#    - Security: MFA required, comprehensive audit, session recording
+#    - Compliance: SOC 2, GDPR, ISO 27001 critical controls
+#
+# 2. Production Database Admin (veridis namespace)
+#    - Scope: Database infrastructure and data management
+#    - Privileges: Complete database administration and backup operations
+#    - Security: Maximum security controls, mandatory session recording
+#    - Compliance: All frameworks including PCI DSS for cardholder data
+#
+# 3. Production ZK Circuits Admin (veridis namespace)
+#    - Scope: Cryptographic computation and GPU resource management
+#    - Privileges: Specialized cryptographic operations and performance tuning
+#    - Security: FIPS 140-2 compliance, cryptographic key management
+#    - Compliance: Intellectual property protection, trade secret security
+#
+# 4. Staging Environment Admin (veridis-staging namespace)
+#    - Scope: Complete pre-production environment management
+#    - Privileges: Full application stack for integration testing
+#    - Security: Relaxed controls for testing flexibility
+#    - Compliance: Basic compliance for testing workflows
+#
+# 5. Development Environment Access (veridis-dev namespace)
+#    - Scope: Development environment and learning resources
+#    - Privileges: Complete development environment management
+#    - Security: Minimal controls to maximize development flexibility
+#    - Compliance: No compliance requirements for development
+#
+# 6. Monitoring Read-Only Access (monitoring namespace)
+#    - Scope: Observability infrastructure and metrics consumption
+#    - Privileges: Read-only access to monitoring tools and dashboards
+#    - Security: Standard controls with no modification rights
+#    - Compliance: Basic monitoring access controls
+#
+# ENVIRONMENT-SPECIFIC SECURITY CONTROLS:
+# =======================================
+# Production Environment:
+#   - MFA mandatory for all administrative roles
+#   - Comprehensive audit logging and session recording
+#   - Strict change control and approval workflows
+#   - Maximum security controls and compliance requirements
+#
+# Staging Environment:
+#   - Moderate security controls balancing testing flexibility
+#   - Standard audit logging for deployment validation
+#   - Relaxed change control for rapid iteration
+#   - Basic compliance requirements for pre-production
+#
+# Development Environment:
+#   - Minimal security controls for maximum development flexibility
+#   - Basic audit logging for learning and troubleshooting
+#   - No change control restrictions for experimentation
+#   - No compliance requirements for development activities
+#
+# SERVICE-SPECIFIC ACCESS PATTERNS:
+# =================================
+# Backend Services:
+#   - Application lifecycle management (deployment, scaling, rollback)
+#   - Configuration and secret management with version control
+#   - Service mesh integration and network policy management
+#   - Performance monitoring and optimization
+#
+# Database Services:
+#   - Database infrastructure management and performance tuning
+#   - Backup and recovery operations with compliance requirements
+#   - Data protection and encryption key management
+#   - Disaster recovery and business continuity procedures
+#
+# Cryptographic Services:
+#   - GPU resource management and cryptographic computation
+#   - Circuit compilation and proving key management
+#   - Performance optimization and algorithm implementation
+#   - Intellectual property protection and trade secret security
+#
+# COMPLIANCE AND GOVERNANCE:
+# =========================
+# - Environment separation enforcing development lifecycle security
+# - Role-based access control aligned with job responsibilities
+# - Least privilege principle with service-specific boundaries
+# - Comprehensive audit trails for all privileged operations
+# - Automated compliance reporting and evidence collection
+#
+# ==============================================================================
