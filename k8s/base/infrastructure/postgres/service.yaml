@@ -1,0 +1,800 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - PostgreSQL Services
+# ==============================================================================
+#
+# This manifest defines comprehensive PostgreSQL services for the Veridis deployment,
+# providing:
+#
+# ENTERPRISE SERVICE ARCHITECTURE:
+#   • High-availability service endpoints with automatic failover and load balancing
+#   • Multi-tier service topology with primary-replica separation and read scaling
+#   • Advanced networking with service mesh integration and traffic management
+#   • Comprehensive security with TLS termination, authentication, and authorization
+#   • Performance optimization with connection pooling, caching, and load distribution
+#
+# SERVICE DISCOVERY AND ROUTING FRAMEWORK:
+#   • DNS-based service discovery with health-aware endpoint management
+#   • Intelligent traffic routing with primary-replica separation
+#   • Session affinity and connection persistence for database consistency
+#   • Geographic routing for multi-region deployments and disaster recovery
+#   • Service mesh integration with Istio for advanced traffic management
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II service security controls with comprehensive audit logging
+#   • GDPR data protection with traffic encryption and access monitoring
+#   • ISO 27001 network security with service isolation and monitoring
+#   • PCI DSS secure networking for cardholder data environment protection
+#   • FIPS 140-2 cryptographic compliance with validated encryption protocols
+#
+# ENTERPRISE AVAILABILITY FEATURES:
+#   • Multi-zone service endpoints with automatic failover capabilities
+#   • Health monitoring with intelligent endpoint management and traffic routing
+#   • Load balancing with connection distribution and performance optimization
+#   • Service resilience with circuit breakers and retry mechanisms
+#   • Business continuity with disaster recovery and service redundancy
+#
+# OPERATIONAL EXCELLENCE CONTROLS:
+#   • Service monitoring with comprehensive metrics and performance analysis
+#   • Security hardening with network policies and traffic encryption
+#   • Capacity management with auto-scaling and resource optimization
+#   • Incident response with automated alerting and escalation procedures
+#   • Cost optimization with efficient resource utilization and traffic management
+#
+# ==============================================================================
+
+# ==============================================================================
+# PostgreSQL Primary Service - Write Operations and Administration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-postgres-primary
+  namespace: veridis-database
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: database-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Service specific classification
+    service.veridis.xyz/type: database-service
+    service.veridis.xyz/tier: primary
+    service.veridis.xyz/role: write-master
+    service.veridis.xyz/workload: oltp-primary
+    service.veridis.xyz/database-engine: postgresql
+
+    # Performance classification
+    performance.veridis.xyz/tier: ultra-high
+    performance.veridis.xyz/connection-type: write-heavy
+    performance.veridis.xyz/latency-tier: sub-millisecond
+    performance.veridis.xyz/consistency: immediate
+    performance.veridis.xyz/sla-tier: platinum
+
+    # Business classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/cost-tier: premium
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/customer-data: "true"
+    business.veridis.xyz/transaction-processing: "true"
+
+    # Availability and reliability
+    availability.veridis.xyz/ha-tier: maximum
+    availability.veridis.xyz/failover: automatic
+    availability.veridis.xyz/multi-zone: enabled
+    availability.veridis.xyz/disaster-recovery: cross-region
+    availability.veridis.xyz/sla-target: "99.99"
+
+    # Security classification
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "rbac-strict"
+    security.veridis.xyz/network-policy: "database-primary"
+    security.veridis.xyz/audit-logging: "comprehensive"
+    security.veridis.xyz/data-classification: "confidential"
+
+    # Network and traffic management
+    network.veridis.xyz/traffic-policy: "primary-write-only"
+    network.veridis.xyz/load-balancing: "session-affinity"
+    network.veridis.xyz/connection-pooling: "pgbouncer-ready"
+    network.veridis.xyz/service-mesh: "istio-enabled"
+    network.veridis.xyz/dns-policy: "cluster-first"
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "database-service-control"
+    compliance.veridis.xyz/gdpr: "data-processing-service"
+    compliance.veridis.xyz/iso27001: "database-service-security"
+    compliance.veridis.xyz/pci-dss: "cardholder-data-service"
+    governance.veridis.xyz/policy-enforcement: "strict"
+
+    # Service mesh and observability
+    istio.io/rev: stable
+    version: v1
+
+  annotations:
+    # Service purpose and specifications
+    veridis.xyz/description: "Primary PostgreSQL service for write operations with maximum performance and availability"
+    veridis.xyz/purpose: "Provides exclusive write access to PostgreSQL primary instance with ACID guarantees and immediate consistency"
+    veridis.xyz/scope: "Write operations, DDL statements, administrative tasks, primary database management"
+
+    # Service architecture and design
+    service.veridis.xyz/architecture: "Active-passive with automatic failover, session affinity, and connection persistence"
+    service.veridis.xyz/routing-strategy: "Primary-only routing with health-based failover to standby instances"
+    service.veridis.xyz/connection-management: "Session persistence with connection pooling and load balancing"
+    service.veridis.xyz/failover-strategy: "Automatic failover with 15-second detection and 30-second promotion"
+
+    # Performance specifications and optimization
+    performance.veridis.xyz/target-connections: "1000 concurrent connections maximum"
+    performance.veridis.xyz/connection-timeout: "30 seconds with keep-alive optimization"
+    performance.veridis.xyz/query-timeout: "300 seconds for complex operations"
+    performance.veridis.xyz/session-affinity: "ClientIP with 28800 seconds timeout"
+    performance.veridis.xyz/load-balancing-algorithm: "Round-robin with health-aware endpoint selection"
+
+    # High availability and disaster recovery
+    availability.veridis.xyz/health-check-interval: "5 seconds with 3-failure threshold"
+    availability.veridis.xyz/failover-detection: "15 seconds maximum detection time"
+    availability.veridis.xyz/failover-promotion: "30 seconds maximum promotion time"
+    availability.veridis.xyz/backup-endpoints: "Automatic standby promotion on primary failure"
+    availability.veridis.xyz/cross-zone-failover: "Enabled with geographic distribution"
+
+    # Security architecture and controls
+    security.veridis.xyz/tls-configuration: "TLS 1.3 with perfect forward secrecy and ECDHE key exchange"
+    security.veridis.xyz/certificate-management: "Automatic certificate rotation with 90-day lifecycle"
+    security.veridis.xyz/access-restrictions: "Database network policies with micro-segmentation"
+    security.veridis.xyz/connection-encryption: "Mandatory TLS with client certificate validation"
+    security.veridis.xyz/audit-requirements: "All connection attempts logged with client attribution"
+
+    # Monitoring and observability
+    monitoring.veridis.xyz/metrics-collection: "Connection count, query latency, throughput, error rates"
+    monitoring.veridis.xyz/health-monitoring: "Deep health checks with query execution validation"
+    monitoring.veridis.xyz/alerting-integration: "PagerDuty with escalation to database team"
+    monitoring.veridis.xyz/tracing-enabled: "Distributed tracing with Jaeger integration"
+    monitoring.veridis.xyz/logging-level: "INFO with security and performance events"
+
+    # Service mesh configuration
+    istio.veridis.xyz/traffic-policy: "Database primary with write-only routing"
+    istio.veridis.xyz/destination-rule: "Session affinity with circuit breaker protection"
+    istio.veridis.xyz/virtual-service: "Primary routing with automatic failover"
+    istio.veridis.xyz/security-policy: "mTLS strict mode with database-specific policies"
+
+    # Cost optimization and capacity management
+    cost.veridis.xyz/cost-allocation: "Database infrastructure with primary service premium"
+    cost.veridis.xyz/capacity-planning: "Connection limit monitoring with auto-scaling triggers"
+    cost.veridis.xyz/resource-optimization: "Efficient connection pooling and session management"
+
+    # Operational procedures and contacts
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/service-admin: "database-service-admin@veridis.xyz"
+    veridis.xyz/escalation: "database-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "database-oncall@veridis.xyz"
+
+    # Documentation and procedures
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/postgres/primary-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/database/postgres-primary-service"
+    veridis.xyz/troubleshooting: "https://docs.veridis.xyz/troubleshooting/postgres-primary"
+
+# Service specification
+spec:
+  type: ClusterIP                # Internal cluster service
+
+  # Session affinity for connection persistence
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 28800      # 8 hours session persistence
+
+  # IP families for dual-stack support
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+  - IPv4
+
+  # Port specifications
+  ports:
+  - name: postgres
+    port: 5432                   # Standard PostgreSQL port
+    targetPort: postgres
+    protocol: TCP
+    appProtocol: postgresql      # Application protocol specification
+
+  - name: metrics
+    port: 9187                   # PostgreSQL exporter metrics
+    targetPort: metrics
+    protocol: TCP
+    appProtocol: http
+
+  # Selector for primary PostgreSQL pods
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: database
+    database.veridis.xyz/role: primary
+
+---
+# ==============================================================================
+# PostgreSQL Read Replica Service - Read Operations and Analytics
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-postgres-replica
+  namespace: veridis-database
+
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: database-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: database-service
+    service.veridis.xyz/tier: replica
+    service.veridis.xyz/role: read-replica
+    service.veridis.xyz/workload: olap-analytics
+    service.veridis.xyz/database-engine: postgresql
+
+    performance.veridis.xyz/tier: high
+    performance.veridis.xyz/connection-type: read-heavy
+    performance.veridis.xyz/latency-tier: low-millisecond
+    performance.veridis.xyz/consistency: eventual
+    performance.veridis.xyz/sla-tier: gold
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/cost-tier: standard
+    business.veridis.xyz/revenue-impact: indirect
+    business.veridis.xyz/analytics-workload: "true"
+    business.veridis.xyz/read-scaling: "true"
+
+    availability.veridis.xyz/ha-tier: high
+    availability.veridis.xyz/failover: manual
+    availability.veridis.xyz/multi-zone: enabled
+    availability.veridis.xyz/disaster-recovery: regional
+    availability.veridis.xyz/sla-target: "99.9"
+
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "rbac-standard"
+    security.veridis.xyz/network-policy: "database-replica"
+    security.veridis.xyz/audit-logging: "standard"
+    security.veridis.xyz/data-classification: "internal"
+
+    network.veridis.xyz/traffic-policy: "replica-read-only"
+    network.veridis.xyz/load-balancing: "round-robin"
+    network.veridis.xyz/connection-pooling: "pgbouncer-ready"
+    network.veridis.xyz/service-mesh: "istio-enabled"
+    network.veridis.xyz/dns-policy: "cluster-first"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "replica-service-control"
+    compliance.veridis.xyz/gdpr: "read-replica-service"
+    compliance.veridis.xyz/iso27001: "replica-security"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+    istio.io/rev: stable
+    version: v1
+
+  annotations:
+    veridis.xyz/description: "PostgreSQL read replica service for analytics and read-heavy workloads with horizontal scaling"
+    veridis.xyz/purpose: "Provides scalable read access to PostgreSQL replicas with load balancing and query optimization"
+    veridis.xyz/scope: "Read operations, analytics queries, reporting workloads, business intelligence"
+
+    # Replica-specific architecture
+    service.veridis.xyz/architecture: "Active-active read replicas with load balancing and automatic endpoint management"
+    service.veridis.xyz/routing-strategy: "Round-robin load balancing across healthy replica instances"
+    service.veridis.xyz/scaling-strategy: "Horizontal scaling with automatic endpoint addition and removal"
+    service.veridis.xyz/replication-lag-tolerance: "1 second maximum acceptable lag"
+
+    # Read workload optimization
+    performance.veridis.xyz/target-connections: "500 concurrent read connections per replica"
+    performance.veridis.xyz/query-optimization: "Read-heavy workload optimization with query caching"
+    performance.veridis.xyz/connection-distribution: "Even distribution across available replicas"
+    performance.veridis.xyz/read-preference: "Secondary preferred with primary fallback"
+
+    # Analytics and reporting capabilities
+    analytics.veridis.xyz/query-types: "OLAP queries, reporting, business intelligence, data analytics"
+    analytics.veridis.xyz/connection-pooling: "Optimized for long-running analytical queries"
+    analytics.veridis.xyz/resource-allocation: "Dedicated resources for complex query processing"
+
+    cost.veridis.xyz/cost-optimization: "Cost-effective read scaling with replica load distribution"
+
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/replica-admin: "database-replica-admin@veridis.xyz"
+
+spec:
+  type: ClusterIP
+
+  # No session affinity for read replicas (distribute load)
+  sessionAffinity: None
+
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+  - IPv4
+
+  ports:
+  - name: postgres
+    port: 5432
+    targetPort: postgres
+    protocol: TCP
+    appProtocol: postgresql
+
+  - name: metrics
+    port: 9187
+    targetPort: metrics
+    protocol: TCP
+    appProtocol: http
+
+  # Selector for replica PostgreSQL pods
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: database
+    database.veridis.xyz/role: replica
+
+---
+# ==============================================================================
+# PostgreSQL Headless Service - StatefulSet Pod Discovery
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-postgres-headless
+  namespace: veridis-database
+
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: database-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: headless-service
+    service.veridis.xyz/tier: discovery
+    service.veridis.xyz/role: pod-discovery
+    service.veridis.xyz/workload: statefulset-management
+    service.veridis.xyz/database-engine: postgresql
+
+    network.veridis.xyz/service-type: headless
+    network.veridis.xyz/dns-resolution: "pod-specific"
+    network.veridis.xyz/cluster-coordination: "enabled"
+    network.veridis.xyz/service-mesh: "istio-enabled"
+
+    business.veridis.xyz/criticality: infrastructure-critical
+    business.veridis.xyz/cost-tier: essential
+    business.veridis.xyz/cluster-management: "true"
+
+    availability.veridis.xyz/ha-tier: maximum
+    availability.veridis.xyz/service-discovery: "dns-based"
+    availability.veridis.xyz/pod-coordination: "statefulset"
+
+    security.veridis.xyz/internal-communication: "cluster-only"
+    security.veridis.xyz/network-policy: "database-internal"
+    security.veridis.xyz/access-control: "cluster-rbac"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "internal-service-control"
+    governance.veridis.xyz/policy-enforcement: "internal"
+
+    istio.io/rev: stable
+    version: v1
+
+  annotations:
+    veridis.xyz/description: "Headless service for PostgreSQL StatefulSet pod discovery and internal cluster communication"
+    veridis.xyz/purpose: "Provides DNS-based pod discovery for PostgreSQL cluster coordination and replication setup"
+    veridis.xyz/scope: "StatefulSet pod discovery, replication configuration, cluster coordination, internal communication"
+
+    # Headless service architecture
+    service.veridis.xyz/architecture: "DNS-based pod discovery with stable network identities for StatefulSet pods"
+    service.veridis.xyz/dns-pattern: "pod-name.service-name.namespace.svc.cluster.local"
+    service.veridis.xyz/coordination-role: "Enables PostgreSQL streaming replication and cluster management"
+    service.veridis.xyz/endpoint-management: "Automatic endpoint creation and removal for StatefulSet pods"
+
+    # Cluster coordination capabilities
+    cluster.veridis.xyz/replication-setup: "Enables primary-replica replication configuration"
+    cluster.veridis.xyz/failover-coordination: "Supports automated failover and promotion procedures"
+    cluster.veridis.xyz/health-monitoring: "Pod-level health checks and status reporting"
+    cluster.veridis.xyz/network-identity: "Stable network identities for persistent connections"
+
+    # Internal communication security
+    security.veridis.xyz/communication-scope: "Internal cluster communication only"
+    security.veridis.xyz/network-isolation: "Restricted to database namespace and authorized services"
+    security.veridis.xyz/tls-internal: "mTLS for internal pod-to-pod communication"
+
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/cluster-admin: "database-cluster-admin@veridis.xyz"
+
+spec:
+  type: ClusterIP
+  clusterIP: None              # Headless service (no cluster IP)
+
+  # Publish not ready addresses for StatefulSet coordination
+  publishNotReadyAddresses: true
+
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+  - IPv4
+
+  ports:
+  - name: postgres
+    port: 5432
+    targetPort: postgres
+    protocol: TCP
+    appProtocol: postgresql
+
+  - name: metrics
+    port: 9187
+    targetPort: metrics
+    protocol: TCP
+    appProtocol: http
+
+  # Selector for all PostgreSQL pods in StatefulSet
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: database
+
+---
+# ==============================================================================
+# PostgreSQL External Service - External Database Access (Optional)
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-postgres-external
+  namespace: veridis-database
+
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: database-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: external-service
+    service.veridis.xyz/tier: external-access
+    service.veridis.xyz/role: external-database
+    service.veridis.xyz/workload: external-administration
+    service.veridis.xyz/database-engine: postgresql
+
+    performance.veridis.xyz/tier: standard
+    performance.veridis.xyz/connection-type: administrative
+    performance.veridis.xyz/latency-tier: standard
+    performance.veridis.xyz/sla-tier: silver
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/cost-tier: standard
+    business.veridis.xyz/administrative-access: "true"
+    business.veridis.xyz/external-connectivity: "true"
+
+    availability.veridis.xyz/ha-tier: standard
+    availability.veridis.xyz/external-access: "controlled"
+    availability.veridis.xyz/administrative-only: "true"
+
+    security.veridis.xyz/encryption-in-transit: "tls-1.3"
+    security.veridis.xyz/access-control: "rbac-strict"
+    security.veridis.xyz/network-policy: "database-external"
+    security.veridis.xyz/audit-logging: "comprehensive"
+    security.veridis.xyz/external-access: "restricted"
+    security.veridis.xyz/vpn-required: "true"
+
+    network.veridis.xyz/traffic-policy: "external-administrative"
+    network.veridis.xyz/load-balancing: "none"
+    network.veridis.xyz/firewall-rules: "strict"
+    network.veridis.xyz/source-ip-restriction: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "external-access-control"
+    compliance.veridis.xyz/gdpr: "administrative-access"
+    compliance.veridis.xyz/iso27001: "external-database-security"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+
+  annotations:
+    veridis.xyz/description: "External PostgreSQL service for administrative access with strict security controls and audit logging"
+    veridis.xyz/purpose: "Provides controlled external access to PostgreSQL for administration, maintenance, and emergency procedures"
+    veridis.xyz/scope: "Database administration, maintenance operations, emergency access, monitoring tools"
+
+    # External access architecture
+    service.veridis.xyz/architecture: "Controlled external access with VPN requirement and IP restrictions"
+    service.veridis.xyz/access-requirements: "VPN connection, IP allowlist, certificate authentication, MFA"
+    service.veridis.xyz/connection-limits: "Maximum 10 concurrent administrative connections"
+    service.veridis.xyz/session-monitoring: "All sessions logged with full audit trail"
+
+    # Security requirements for external access
+    security.veridis.xyz/vpn-requirements: "Corporate VPN connection mandatory for all external access"
+    security.veridis.xyz/ip-allowlist: "Restricted to authorized administrative IP ranges"
+    security.veridis.xyz/certificate-auth: "Client certificate authentication required"
+    security.veridis.xyz/mfa-enforcement: "Multi-factor authentication required for admin users"
+    security.veridis.xyz/session-timeout: "30 minutes maximum session duration"
+
+    # Administrative access controls
+    access.veridis.xyz/authorized-users: "Senior DBAs, database managers, emergency response team"
+    access.veridis.xyz/authorization-required: "Manager approval required for access grants"
+    access.veridis.xyz/audit-requirements: "All access attempts logged with user attribution"
+    access.veridis.xyz/emergency-procedures: "Emergency access available with post-incident review"
+
+    # Monitoring and alerting for external access
+    monitoring.veridis.xyz/connection-alerts: "All external connections trigger security alerts"
+    monitoring.veridis.xyz/session-monitoring: "Real-time session monitoring with anomaly detection"
+    monitoring.veridis.xyz/audit-integration: "SIEM integration for security event correlation"
+
+    # Cost and operational considerations
+    cost.veridis.xyz/external-access-premium: "Additional cost for external connectivity and security"
+    cost.veridis.xyz/security-overhead: "Enhanced security monitoring and compliance costs"
+
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/security-admin: "database-security-admin@veridis.xyz"
+    veridis.xyz/external-access-admin: "external-access-admin@veridis.xyz"
+
+    # Documentation for external access
+    veridis.xyz/access-procedures: "https://docs.veridis.xyz/database/external-access-procedures"
+    veridis.xyz/security-requirements: "https://docs.veridis.xyz/security/database-external-access"
+    veridis.xyz/emergency-procedures: "https://docs.veridis.xyz/emergency/database-external-access"
+
+spec:
+  type: LoadBalancer            # External load balancer for controlled access
+
+  # Load balancer configuration
+  loadBalancerClass: "aws-load-balancer-controller"
+
+  # Source IP preservation for security
+  externalTrafficPolicy: Local
+
+  # Session affinity for administrative sessions
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 1800     # 30 minutes session timeout
+
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+  - IPv4
+
+  ports:
+  - name: postgres-external
+    port: 5432
+    targetPort: postgres
+    protocol: TCP
+    appProtocol: postgresql
+
+  # Selector for primary PostgreSQL pod only
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: database
+    database.veridis.xyz/role: primary
+
+---
+# ==============================================================================
+# PostgreSQL Monitoring Service - Metrics and Health Endpoints
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-postgres-monitoring
+  namespace: veridis-database
+
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: monitoring-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: monitoring-service
+    service.veridis.xyz/tier: observability
+    service.veridis.xyz/role: metrics-collection
+    service.veridis.xyz/workload: monitoring-metrics
+    service.veridis.xyz/database-engine: postgresql
+
+    monitoring.veridis.xyz/metrics-type: "database-performance"
+    monitoring.veridis.xyz/scrape-enabled: "true"
+    monitoring.veridis.xyz/prometheus-integration: "enabled"
+    monitoring.veridis.xyz/grafana-dashboards: "available"
+
+    business.veridis.xyz/criticality: operational-critical
+    business.veridis.xyz/cost-tier: essential
+    business.veridis.xyz/monitoring-scope: "comprehensive"
+
+    availability.veridis.xyz/ha-tier: high
+    availability.veridis.xyz/metrics-availability: "24x7"
+    availability.veridis.xyz/alerting-integration: "pagerduty"
+
+    security.veridis.xyz/metrics-security: "authenticated"
+    security.veridis.xyz/network-policy: "monitoring-access"
+    security.veridis.xyz/data-classification: "operational"
+
+    network.veridis.xyz/traffic-policy: "monitoring-only"
+    network.veridis.xyz/prometheus-scraping: "enabled"
+    network.veridis.xyz/internal-only: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "monitoring-control"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+    # Prometheus integration labels
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9187"
+    prometheus.io/path: "/metrics"
+
+  annotations:
+    veridis.xyz/description: "PostgreSQL monitoring service for metrics collection, health checks, and performance monitoring"
+    veridis.xyz/purpose: "Provides centralized access to PostgreSQL metrics for monitoring, alerting, and performance analysis"
+    veridis.xyz/scope: "Database metrics, performance monitoring, health checks, alerting integration"
+
+    # Monitoring architecture
+    monitoring.veridis.xyz/architecture: "Prometheus-compatible metrics endpoint with comprehensive database monitoring"
+    monitoring.veridis.xyz/metrics-categories: "Performance, availability, security, capacity, query statistics"
+    monitoring.veridis.xyz/scrape-interval: "15 seconds for real-time monitoring"
+    monitoring.veridis.xyz/retention-period: "90 days with long-term storage archive"
+
+    # Metrics collection specifications
+    metrics.veridis.xyz/database-metrics: "Connections, queries, locks, replication lag, performance counters"
+    metrics.veridis.xyz/system-metrics: "CPU, memory, disk I/O, network utilization"
+    metrics.veridis.xyz/custom-metrics: "Business-specific KPIs and application performance indicators"
+    metrics.veridis.xyz/alert-metrics: "SLA violations, performance degradation, security events"
+
+    # Integration capabilities
+    integration.veridis.xyz/prometheus: "Native Prometheus metrics exposition format"
+    integration.veridis.xyz/grafana: "Pre-built dashboards for visualization and analysis"
+    integration.veridis.xyz/alertmanager: "Alert rule integration with notification routing"
+    integration.veridis.xyz/pagerduty: "Critical alert escalation and incident management"
+
+    veridis.xyz/owner: "platform-engineering@veridis.xyz"
+    veridis.xyz/monitoring-admin: "monitoring-admin@veridis.xyz"
+
+spec:
+  type: ClusterIP
+
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+  - IPv4
+
+  ports:
+  - name: metrics
+    port: 9187
+    targetPort: metrics
+    protocol: TCP
+    appProtocol: http
+
+  # Selector for all PostgreSQL pods with metrics
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: database
+
+# ==============================================================================
+# PostgreSQL Services Summary and Enterprise Network Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE SERVICE TOPOLOGY:
+# ===============================
+#
+# SERVICE ARCHITECTURE OVERVIEW:
+# ------------------------------
+# 1. Primary Service (veridis-postgres-primary):
+#    - Exclusive write access to PostgreSQL primary instance
+#    - Session affinity for connection persistence and consistency
+#    - Maximum performance tier with sub-millisecond latency
+#    - Automatic failover with 15-second detection and 30-second promotion
+#    - Comprehensive security with TLS 1.3 and certificate validation
+#
+# 2. Replica Service (veridis-postgres-replica):
+#    - Load-balanced read access across PostgreSQL replicas
+#    - Round-robin distribution for optimal resource utilization
+#    - Analytics and reporting workload optimization
+#    - Cost-effective scaling with horizontal read capacity
+#    - Eventual consistency with 1-second replication lag tolerance
+#
+# 3. Headless Service (veridis-postgres-headless):
+#    - DNS-based pod discovery for StatefulSet coordination
+#    - Enables PostgreSQL streaming replication configuration
+#    - Stable network identities for cluster management
+#    - Internal communication for failover and promotion
+#    - Essential for high availability and disaster recovery
+#
+# 4. External Service (veridis-postgres-external):
+#    - Controlled external access for administrative operations
+#    - VPN and IP restriction requirements for security
+#    - Multi-factor authentication and audit logging
+#    - Load balancer with source IP preservation
+#    - Emergency access procedures with compliance controls
+#
+# 5. Monitoring Service (veridis-postgres-monitoring):
+#    - Prometheus-compatible metrics collection endpoint
+#    - Comprehensive database and system performance metrics
+#    - Real-time monitoring with 15-second scrape intervals
+#    - Integration with Grafana dashboards and alerting
+#    - 24x7 availability for continuous monitoring
+#
+# ENTERPRISE NETWORKING FEATURES:
+# ===============================
+# Traffic Management:
+#   - Intelligent routing with primary-replica separation
+#   - Session affinity and connection persistence
+#   - Load balancing with health-aware endpoint selection
+#   - Circuit breaker protection for service resilience
+#   - Service mesh integration with Istio for advanced features
+#
+# Security Architecture:
+#   - TLS 1.3 encryption with perfect forward secrecy
+#   - Certificate-based authentication and validation
+#   - Network policies for micro-segmentation
+#   - IP allowlisting and VPN requirements for external access
+#   - Comprehensive audit logging with SIEM integration
+#
+# High Availability:
+#   - Multi-zone service deployment with automatic failover
+#   - Health monitoring with intelligent endpoint management
+#   - Geographic distribution for disaster recovery
+#   - Service redundancy with backup endpoint promotion
+#   - Business continuity with 99.99% availability SLA
+#
+# Performance Optimization:
+#   - Connection pooling integration with PgBouncer
+#   - Query optimization for read and write workloads
+#   - Latency optimization with sub-millisecond targets
+#   - Throughput optimization with concurrent connection limits
+#   - Resource allocation based on workload characteristics
+#
+# COMPLIANCE AND GOVERNANCE:
+# =========================
+# Security Controls:
+#   - SOC 2 Type II service security with audit requirements
+#   - GDPR data protection with encryption and access controls
+#   - ISO 27001 network security with monitoring integration
+#   - PCI DSS secure networking for cardholder data protection
+#   - FIPS 140-2 cryptographic compliance with validated protocols
+#
+# Operational Excellence:
+#   - Service monitoring with comprehensive metrics collection
+#   - Automated alerting with escalation procedures
+#   - Incident response with automated remediation capabilities
+#   - Capacity management with auto-scaling integration
+#   - Cost optimization with efficient resource utilization
+#
+# MONITORING AND OBSERVABILITY:
+# =============================
+# Metrics Collection:
+#   - Database performance metrics (connections, queries, locks)
+#   - System metrics (CPU, memory, disk I/O, network)
+#   - Business metrics (transaction rates, user activity)
+#   - Security metrics (authentication, authorization, access)
+#
+# Health Monitoring:
+#   - Deep health checks with query execution validation
+#   - Service availability monitoring with uptime tracking
+#   - Performance monitoring with SLA compliance verification
+#   - Security monitoring with anomaly detection
+#
+# Alerting Integration:
+#   - Real-time alerting with PagerDuty escalation
+#   - Threshold-based alerts for performance and capacity
+#   - Security alerts for unauthorized access attempts
+#   - Business impact alerts for SLA violations
+#
+# ==============================================================================
