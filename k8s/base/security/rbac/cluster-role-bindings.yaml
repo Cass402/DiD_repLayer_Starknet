@@ -1,0 +1,889 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Cluster Role Bindings
+# ==============================================================================
+#
+# This manifest defines comprehensive cluster role bindings for the Veridis deployment,
+# providing:
+#
+# IDENTITY AND ACCESS MANAGEMENT:
+#   • Enterprise identity provider integration (OIDC, SAML, Active Directory)
+#   • Service account to cluster role mappings with least privilege
+#   • User group to role assignments with business function alignment
+#   • Cross-cluster and federated identity management
+#   • Emergency access procedures and break-glass account bindings
+#
+# SECURITY ARCHITECTURE:
+#   • Multi-factor authentication enforcement for privileged access
+#   • Time-based access controls and session management
+#   • Geographic and network-based access restrictions
+#   • Privilege escalation monitoring and prevention
+#   • Comprehensive audit logging and access monitoring
+#
+# COMPLIANCE FRAMEWORK:
+#   • SOC 2 Type II segregation of duties and access control matrices
+#   • GDPR data processing authorization and controller/processor separation
+#   • ISO 27001 access management and privileged access controls
+#   • Regulatory compliance with automated access reviews
+#   • Evidence collection and compliance reporting automation
+#
+# OPERATIONAL GOVERNANCE:
+#   • Role-based access control aligned with organizational structure
+#   • Automated provisioning and deprovisioning workflows
+#   • Emergency access procedures with approval workflows
+#   • Access certification and periodic review processes
+#   • Integration with HR systems for lifecycle management
+#
+# BUSINESS CONTINUITY:
+#   • Disaster recovery access procedures and emergency accounts
+#   • Cross-regional access management for global operations
+#   • Service continuity through automated service account bindings
+#   • Incident response team access escalation procedures
+#   • Business function continuity through role-based access
+#
+# ==============================================================================
+
+# ==============================================================================
+# Executive Emergency Access - Cluster Administrator Binding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-emergency-cluster-admin
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # RBAC binding specific labels
+    rbac.veridis.xyz/type: cluster-role-binding
+    rbac.veridis.xyz/scope: emergency-access
+    rbac.veridis.xyz/privilege-level: maximum
+    rbac.veridis.xyz/access-tier: executive
+    rbac.veridis.xyz/binding-category: emergency
+
+    # Security classification
+    security.veridis.xyz/access-level: cluster-admin
+    security.veridis.xyz/risk-level: critical
+    security.veridis.xyz/approval-required: "ceo-cto"
+    security.veridis.xyz/mfa-required: "true"
+    security.veridis.xyz/session-recording: "mandatory"
+
+    # Business classification
+    business.veridis.xyz/criticality: system-critical
+    business.veridis.xyz/impact-level: maximum
+    business.veridis.xyz/revenue-protection: "direct"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/emergency-only: "true"
+
+    # Operational labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: executive
+    veridis.xyz/cost-center: executive
+    veridis.xyz/business-unit: corporate
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "critical-access-control"
+    compliance.veridis.xyz/gdpr: "data-controller-emergency"
+    compliance.veridis.xyz/iso27001: "emergency-access-procedure"
+    compliance.veridis.xyz/segregation-of-duties: "executive-override"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+    governance.veridis.xyz/change-control: "emergency-procedure"
+    governance.veridis.xyz/approval-workflow: "board-level"
+
+  annotations:
+    # Binding purpose and scope
+    veridis.xyz/description: "Emergency cluster administrator access for executive leadership during critical incidents and disaster recovery"
+    veridis.xyz/purpose: "Provides unrestricted cluster access for C-level executives during business-critical emergencies and regulatory incidents"
+    veridis.xyz/scope: "Complete cluster administration for incident response, disaster recovery, regulatory compliance, and business continuity"
+
+    # Access control and security
+    veridis.xyz/emergency-conditions: "System-wide outage, security breach, regulatory investigation, disaster recovery, business continuity threat"
+    veridis.xyz/activation-procedure: "CEO/CTO approval, documented business justification, time-limited access, comprehensive audit trail"
+    veridis.xyz/access-duration: "4-hour maximum with extension approval"
+    veridis.xyz/concurrent-sessions: "2 maximum (CEO + CTO or designated executive)"
+
+    # Security controls and monitoring
+    security.veridis.xyz/access-controls: "MFA mandatory, biometric preferred, hardware token required, session recording mandatory"
+    security.veridis.xyz/network-restrictions: "Executive VPN required, corporate network mandatory, geo-fencing enabled"
+    security.veridis.xyz/monitoring-level: "real-time alerting, SOC notification, board notification, audit committee notification"
+    security.veridis.xyz/session-timeout: "15-minutes idle, 4-hour maximum"
+
+    # Compliance and audit requirements
+    compliance.veridis.xyz/audit-requirements: "Real-time logging, video recording, witness required, legal notification"
+    compliance.veridis.xyz/documentation-required: "Business justification, impact assessment, recovery plan, post-incident report"
+    compliance.veridis.xyz/notification-required: "Board of directors, audit committee, regulatory bodies (if applicable)"
+    compliance.veridis.xyz/evidence-retention: "7-years minimum, legal hold capability"
+
+    # Risk management and mitigation
+    veridis.xyz/risk-assessment: "Maximum risk - complete system control, regulatory exposure, business impact"
+    veridis.xyz/mitigation-controls: "Dual approval, session monitoring, time limits, comprehensive logging, post-access review"
+    veridis.xyz/incident-escalation: "Immediate SOC notification, CISO alert, board notification within 1 hour"
+
+    # Business continuity integration
+    veridis.xyz/disaster-recovery: "Primary access mechanism for DR scenarios"
+    veridis.xyz/business-continuity: "Enables rapid response to business-threatening incidents"
+    veridis.xyz/regulatory-response: "Facilitates compliance with regulatory orders and investigations"
+
+    # Contact and escalation
+    veridis.xyz/primary-contact: "ceo@veridis.xyz"
+    veridis.xyz/secondary-contact: "cto@veridis.xyz"
+    veridis.xyz/security-contact: "ciso@veridis.xyz"
+    veridis.xyz/legal-contact: "legal@veridis.xyz"
+    veridis.xyz/compliance-contact: "compliance@veridis.xyz"
+
+    # Usage guidelines and procedures
+    veridis.xyz/activation-checklist: "Business justification, dual approval, MFA setup, session recording, timeline establishment"
+    veridis.xyz/deactivation-procedure: "Access review, incident documentation, compliance report, lessons learned"
+    veridis.xyz/review-schedule: "Immediate post-use, monthly access review, quarterly policy review"
+
+# Reference to the cluster admin role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-cluster-admin
+
+# Executive leadership subjects with emergency access
+subjects:
+# Chief Executive Officer - Ultimate emergency authority
+- kind: User
+  name: ceo@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Chief Technology Officer - Technical emergency leadership
+- kind: User
+  name: cto@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Chief Information Security Officer - Security incident response
+- kind: User
+  name: ciso@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Emergency response group for enterprise OIDC integration
+- kind: Group
+  name: veridis-emergency-response
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# ==============================================================================
+# Platform Engineering - Application Administrator Binding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-platform-engineering-admin
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role-binding
+    rbac.veridis.xyz/scope: application-administration
+    rbac.veridis.xyz/privilege-level: high
+    rbac.veridis.xyz/access-tier: operational
+    rbac.veridis.xyz/binding-category: platform-engineering
+
+    security.veridis.xyz/access-level: app-admin
+    security.veridis.xyz/risk-level: high
+    security.veridis.xyz/approval-required: "engineering-manager"
+    security.veridis.xyz/mfa-required: "true"
+    security.veridis.xyz/session-recording: "enabled"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/impact-level: high
+    business.veridis.xyz/revenue-protection: "direct"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/operational-team: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: technology
+
+    compliance.veridis.xyz/soc2: "high-privilege-control"
+    compliance.veridis.xyz/gdpr: "data-processor-admin"
+    compliance.veridis.xyz/iso27001: "system-administration"
+    governance.veridis.xyz/policy-enforcement: "high"
+
+  annotations:
+    veridis.xyz/description: "Platform engineering team access for comprehensive application administration and operational management"
+    veridis.xyz/purpose: "Provides application-focused administrative access for deployment, scaling, configuration, and operational maintenance"
+    veridis.xyz/scope: "Application lifecycle management, configuration management, scaling operations, monitoring setup, incident response"
+
+    # Operational responsibilities
+    veridis.xyz/responsibilities: "Application deployment, configuration management, scaling operations, performance tuning, incident response"
+    veridis.xyz/on-call-rotation: "24/7 coverage for production incidents"
+    veridis.xyz/sla-accountability: "Application availability, performance, and reliability metrics"
+
+    # Access patterns and boundaries
+    security.veridis.xyz/access-scope: "Application resources, configurations, scaling, monitoring - no cluster-level infrastructure"
+    security.veridis.xyz/excluded-resources: "Node management, cluster RBAC, security policies, network infrastructure"
+    security.veridis.xyz/time-restrictions: "Business hours primary, on-call override for incidents"
+
+    # Team structure and management
+    veridis.xyz/team-lead: "platform-engineering-lead@veridis.xyz"
+    veridis.xyz/manager: "engineering-manager@veridis.xyz"
+    veridis.xyz/team-size: "8-12 engineers"
+    veridis.xyz/skill-requirements: "Kubernetes expertise, application architecture, DevOps practices"
+
+    # Compliance and audit
+    compliance.veridis.xyz/access-review-frequency: "quarterly"
+    compliance.veridis.xyz/training-requirements: "Kubernetes security, data protection, incident response"
+    compliance.veridis.xyz/certification-preferred: "CKA, CKAD, cloud provider certifications"
+
+    veridis.xyz/owner: "platform-engineering-lead@veridis.xyz"
+    veridis.xyz/manager: "engineering-manager@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-app-admin
+
+subjects:
+# Platform Engineering Team Lead
+- kind: User
+  name: platform-engineering-lead@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Senior Platform Engineers
+- kind: User
+  name: senior-platform-engineer-1@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+- kind: User
+  name: senior-platform-engineer-2@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Platform Engineers (Active Directory/OIDC Group)
+- kind: Group
+  name: veridis-platform-engineers
+  apiGroup: rbac.authorization.k8s.io
+
+# DevOps Engineers
+- kind: Group
+  name: veridis-devops-engineers
+  apiGroup: rbac.authorization.k8s.io
+
+# Backend Service Account for Application Operations
+- kind: ServiceAccount
+  name: veridis-backend
+  namespace: veridis
+
+---
+# ==============================================================================
+# Security Team - Security Officer Binding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-security-officers
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role-binding
+    rbac.veridis.xyz/scope: security-audit
+    rbac.veridis.xyz/privilege-level: audit
+    rbac.veridis.xyz/access-tier: compliance
+    rbac.veridis.xyz/binding-category: security-compliance
+
+    security.veridis.xyz/access-level: security-audit
+    security.veridis.xyz/risk-level: medium
+    security.veridis.xyz/approval-required: "ciso"
+    security.veridis.xyz/mfa-required: "true"
+    security.veridis.xyz/session-recording: "enabled"
+
+    business.veridis.xyz/criticality: compliance-critical
+    business.veridis.xyz/impact-level: audit
+    business.veridis.xyz/revenue-protection: "indirect"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001,pci-dss"
+    business.veridis.xyz/audit-function: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security
+    veridis.xyz/cost-center: compliance
+    veridis.xyz/business-unit: risk-management
+
+    compliance.veridis.xyz/soc2: "audit-control"
+    compliance.veridis.xyz/gdpr: "data-protection-audit"
+    compliance.veridis.xyz/iso27001: "security-audit"
+    compliance.veridis.xyz/pci-dss: "security-assessment"
+    governance.veridis.xyz/policy-enforcement: "audit"
+
+  annotations:
+    veridis.xyz/description: "Security team access for audit, compliance monitoring, and security policy verification"
+    veridis.xyz/purpose: "Provides comprehensive read access for security auditing, compliance verification, and policy enforcement monitoring"
+    veridis.xyz/scope: "Security configuration audit, compliance monitoring, policy verification, incident investigation"
+
+    # Security audit responsibilities
+    veridis.xyz/audit-scope: "RBAC configurations, network policies, security controls, access patterns, compliance posture"
+    veridis.xyz/compliance-reporting: "SOC 2 evidence collection, GDPR compliance verification, ISO 27001 control testing"
+    veridis.xyz/security-monitoring: "Policy violations, privilege escalation, unauthorized access attempts"
+
+    # Audit capabilities and limitations
+    security.veridis.xyz/access-type: "Read-only audit access with comprehensive visibility"
+    security.veridis.xyz/modification-rights: "None - audit function only, escalation required for changes"
+    security.veridis.xyz/investigation-tools: "Log analysis, configuration review, access pattern analysis"
+
+    # Compliance framework integration
+    compliance.veridis.xyz/audit-standards: "SOC 2 Type II, ISO 27001, GDPR Article 32, PCI DSS"
+    compliance.veridis.xyz/evidence-collection: "Automated screenshot capture, configuration exports, access logs"
+    compliance.veridis.xyz/reporting-frequency: "Monthly compliance reports, quarterly risk assessments"
+
+    # Data protection officer integration
+    veridis.xyz/dpo-access: "Dedicated DPO access for GDPR compliance monitoring"
+    veridis.xyz/privacy-audit: "Personal data processing verification, consent management audit"
+
+    veridis.xyz/owner: "ciso@veridis.xyz"
+    veridis.xyz/dpo: "dpo@veridis.xyz"
+    veridis.xyz/security-lead: "security-team-lead@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-security-officer
+
+subjects:
+# Chief Information Security Officer
+- kind: User
+  name: ciso@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Data Protection Officer (GDPR)
+- kind: User
+  name: dpo@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Security Team Lead
+- kind: User
+  name: security-team-lead@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Compliance Officers
+- kind: Group
+  name: veridis-compliance-officers
+  apiGroup: rbac.authorization.k8s.io
+
+# Security Analysts and Auditors
+- kind: Group
+  name: veridis-security-analysts
+  apiGroup: rbac.authorization.k8s.io
+
+# External Audit Firms (Temporary Access)
+- kind: Group
+  name: veridis-external-auditors
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# ==============================================================================
+# SRE Team - Monitoring Service Binding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-sre-monitoring
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role-binding
+    rbac.veridis.xyz/scope: monitoring-observability
+    rbac.veridis.xyz/privilege-level: read-only
+    rbac.veridis.xyz/access-tier: observability
+    rbac.veridis.xyz/binding-category: sre-operations
+
+    security.veridis.xyz/access-level: monitoring
+    security.veridis.xyz/risk-level: low
+    security.veridis.xyz/approval-required: "sre-manager"
+    security.veridis.xyz/mfa-required: "false"
+    security.veridis.xyz/session-recording: "disabled"
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/impact-level: monitoring
+    business.veridis.xyz/revenue-protection: "indirect"
+    business.veridis.xyz/compliance-scope: "soc2"
+    business.veridis.xyz/operational-visibility: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: sre
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: technology
+
+    compliance.veridis.xyz/soc2: "monitoring-control"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+  annotations:
+    veridis.xyz/description: "SRE team access for monitoring, observability, and system reliability engineering"
+    veridis.xyz/purpose: "Provides cluster-wide read access for metrics collection, alerting, performance monitoring, and reliability engineering"
+    veridis.xyz/scope: "System monitoring, performance analysis, reliability engineering, capacity planning, incident investigation"
+
+    # SRE responsibilities and capabilities
+    veridis.xyz/sre-responsibilities: "System reliability, performance monitoring, capacity planning, incident response, SLA management"
+    veridis.xyz/monitoring-capabilities: "Metrics collection, alerting, dashboards, performance analysis, trend analysis"
+    veridis.xyz/reliability-engineering: "Error budget management, SLI/SLO definition, reliability improvements"
+
+    # Observability stack management
+    veridis.xyz/observability-stack: "Prometheus, Grafana, Jaeger, AlertManager, Elasticsearch, Kibana"
+    veridis.xyz/data-retention: "Metrics 90d, logs 365d, traces 30d"
+    veridis.xyz/alerting-integration: "PagerDuty, Slack, email, webhook notifications"
+
+    # Performance and capacity planning
+    veridis.xyz/performance-monitoring: "Response times, throughput, error rates, resource utilization"
+    veridis.xyz/capacity-planning: "Growth projections, resource forecasting, scaling recommendations"
+    veridis.xyz/cost-optimization: "Resource efficiency monitoring, cost allocation, optimization recommendations"
+
+    # Incident response integration
+    veridis.xyz/incident-response: "On-call rotation, escalation procedures, post-mortem analysis"
+    veridis.xyz/sla-monitoring: "Availability tracking, performance SLA verification, customer impact analysis"
+
+    veridis.xyz/owner: "sre-team-lead@veridis.xyz"
+    veridis.xyz/manager: "sre-manager@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-monitoring-service
+
+subjects:
+# SRE Team Lead
+- kind: User
+  name: sre-team-lead@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Senior SRE Engineers
+- kind: Group
+  name: veridis-senior-sre
+  apiGroup: rbac.authorization.k8s.io
+
+# SRE Engineers
+- kind: Group
+  name: veridis-sre-engineers
+  apiGroup: rbac.authorization.k8s.io
+
+# Monitoring Service Accounts
+- kind: ServiceAccount
+  name: veridis-monitoring
+  namespace: veridis
+
+# Prometheus Service Account for metrics collection
+- kind: ServiceAccount
+  name: prometheus-server
+  namespace: monitoring
+
+# Grafana Service Account for dashboard access
+- kind: ServiceAccount
+  name: grafana
+  namespace: monitoring
+
+---
+# ==============================================================================
+# SRE Team - Backup Operator Binding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-sre-backup-operators
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role-binding
+    rbac.veridis.xyz/scope: backup-recovery
+    rbac.veridis.xyz/privilege-level: specialized
+    rbac.veridis.xyz/access-tier: data-protection
+    rbac.veridis.xyz/binding-category: backup-operations
+
+    security.veridis.xyz/access-level: backup-operator
+    security.veridis.xyz/risk-level: medium
+    security.veridis.xyz/approval-required: "data-protection-officer"
+    security.veridis.xyz/mfa-required: "true"
+    security.veridis.xyz/session-recording: "enabled"
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/impact-level: data-protection
+    business.veridis.xyz/revenue-protection: "business-continuity"
+    business.veridis.xyz/compliance-scope: "soc2,gdpr,iso27001"
+    business.veridis.xyz/disaster-recovery: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: sre
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: technology
+
+    compliance.veridis.xyz/soc2: "data-protection-control"
+    compliance.veridis.xyz/gdpr: "data-protection-measures"
+    compliance.veridis.xyz/iso27001: "backup-recovery"
+    governance.veridis.xyz/policy-enforcement: "high"
+
+  annotations:
+    veridis.xyz/description: "SRE backup operators for data protection, disaster recovery, and business continuity operations"
+    veridis.xyz/purpose: "Provides specialized access for backup operations, disaster recovery testing, and compliance-driven data protection"
+    veridis.xyz/scope: "Backup creation and management, disaster recovery procedures, compliance data retention, cross-region replication"
+
+    # Backup and recovery responsibilities
+    veridis.xyz/backup-responsibilities: "Automated backup orchestration, disaster recovery testing, compliance data retention"
+    veridis.xyz/recovery-capabilities: "Point-in-time recovery, cross-region restore, emergency data recovery"
+    veridis.xyz/compliance-obligations: "GDPR data retention, SOC 2 data protection, regulatory compliance backups"
+
+    # Data protection requirements
+    veridis.xyz/data-classification: "All data including confidential, regulated, and customer data"
+    veridis.xyz/encryption-requirements: "End-to-end encryption, key management integration, compliance encryption standards"
+    veridis.xyz/retention-policies: "Automated lifecycle management, compliance-driven retention, secure deletion"
+
+    # Disaster recovery integration
+    veridis.xyz/rto-responsibility: "4-hour recovery time objective"
+    veridis.xyz/rpo-responsibility: "1-hour recovery point objective"
+    veridis.xyz/dr-testing: "Monthly testing, quarterly full DR exercises"
+
+    # Compliance and audit requirements
+    compliance.veridis.xyz/backup-audit: "All backup and recovery operations logged and monitored"
+    compliance.veridis.xyz/data-residency: "EU and US data residency compliance"
+    compliance.veridis.xyz/cross-border: "Controlled cross-border data transfer for DR"
+
+    veridis.xyz/owner: "sre-team-lead@veridis.xyz"
+    veridis.xyz/dpo: "dpo@veridis.xyz"
+    veridis.xyz/backup-lead: "backup-team-lead@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-backup-operator
+
+subjects:
+# Senior SRE Engineers with backup specialization
+- kind: User
+  name: senior-sre-backup-lead@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Backup Operations Specialists
+- kind: Group
+  name: veridis-backup-operators
+  apiGroup: rbac.authorization.k8s.io
+
+# Disaster Recovery Team
+- kind: Group
+  name: veridis-disaster-recovery
+  apiGroup: rbac.authorization.k8s.io
+
+# Backup Service Accounts
+- kind: ServiceAccount
+  name: veridis-maintenance
+  namespace: veridis
+
+# Velero Service Account (if using Velero)
+- kind: ServiceAccount
+  name: velero-server
+  namespace: velero
+
+---
+# ==============================================================================
+# Development Team - Developer Binding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-developers
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role-binding
+    rbac.veridis.xyz/scope: development
+    rbac.veridis.xyz/privilege-level: limited
+    rbac.veridis.xyz/access-tier: development
+    rbac.veridis.xyz/binding-category: development-team
+
+    security.veridis.xyz/access-level: developer
+    security.veridis.xyz/risk-level: low
+    security.veridis.xyz/approval-required: "dev-manager"
+    security.veridis.xyz/mfa-required: "false"
+    security.veridis.xyz/session-recording: "disabled"
+
+    business.veridis.xyz/criticality: development
+    business.veridis.xyz/impact-level: low
+    business.veridis.xyz/revenue-protection: "none"
+    business.veridis.xyz/compliance-scope: "basic"
+    business.veridis.xyz/development-team: "true"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: development
+    veridis.xyz/cost-center: engineering
+    veridis.xyz/business-unit: technology
+
+    governance.veridis.xyz/policy-enforcement: "basic"
+
+  annotations:
+    veridis.xyz/description: "Development team access for application development, testing, and debugging with limited production visibility"
+    veridis.xyz/purpose: "Provides safe development environment access with read-only production access for learning and troubleshooting"
+    veridis.xyz/scope: "Development and staging environments, read-only production access, debugging tools, learning resources"
+
+    # Development team structure and access
+    veridis.xyz/development-focus: "Frontend development, backend services, smart contract development, UI/UX design"
+    veridis.xyz/production-access: "Read-only for troubleshooting and learning - no modifications allowed"
+    veridis.xyz/development-environments: "Full access to development, staging, and testing environments"
+
+    # Learning and skill development
+    veridis.xyz/learning-access: "Production system observation for learning and skill development"
+    veridis.xyz/debugging-tools: "Log access, metrics viewing, basic debugging in non-production environments"
+    veridis.xyz/mentorship-program: "Senior developer guidance and knowledge transfer"
+
+    # Security boundaries and restrictions
+    security.veridis.xyz/production-restrictions: "No write access to production, no secret access, no privileged operations"
+    security.veridis.xyz/namespace-boundaries: "Restricted to development namespaces for write operations"
+    security.veridis.xyz/escalation-path: "Team lead approval required for additional access"
+
+    # Career development and progression
+    veridis.xyz/career-development: "Path to platform engineering and SRE roles through skill demonstration"
+    veridis.xyz/certification-support: "Company-sponsored Kubernetes and cloud certifications"
+
+    veridis.xyz/owner: "dev-team-lead@veridis.xyz"
+    veridis.xyz/manager: "development-manager@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-developer
+
+subjects:
+# Development Team Lead
+- kind: User
+  name: dev-team-lead@veridis.xyz
+  apiGroup: rbac.authorization.k8s.io
+
+# Senior Developers
+- kind: Group
+  name: veridis-senior-developers
+  apiGroup: rbac.authorization.k8s.io
+
+# Frontend Developers
+- kind: Group
+  name: veridis-frontend-developers
+  apiGroup: rbac.authorization.k8s.io
+
+# Backend Developers
+- kind: Group
+  name: veridis-backend-developers
+  apiGroup: rbac.authorization.k8s.io
+
+# Smart Contract Developers
+- kind: Group
+  name: veridis-blockchain-developers
+  apiGroup: rbac.authorization.k8s.io
+
+# UI/UX Designers with technical access
+- kind: Group
+  name: veridis-technical-designers
+  apiGroup: rbac.authorization.k8s.io
+
+# Quality Assurance Engineers
+- kind: Group
+  name: veridis-qa-engineers
+  apiGroup: rbac.authorization.k8s.io
+
+# Frontend Service Account
+- kind: ServiceAccount
+  name: veridis-frontend
+  namespace: veridis
+
+---
+# ==============================================================================
+# Service Account Bindings - Automated Service Operations
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-service-accounts-monitoring
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cluster-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: cluster-role-binding
+    rbac.veridis.xyz/scope: service-account-automation
+    rbac.veridis.xyz/privilege-level: automated
+    rbac.veridis.xyz/access-tier: service-automation
+    rbac.veridis.xyz/binding-category: automated-services
+
+    security.veridis.xyz/access-level: service-automation
+    security.veridis.xyz/risk-level: low
+    security.veridis.xyz/automated-access: "true"
+    security.veridis.xyz/human-oversight: "required"
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/automation-level: "full"
+    business.veridis.xyz/compliance-scope: "soc2"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: automation
+    veridis.xyz/cost-center: engineering
+
+    compliance.veridis.xyz/soc2: "automated-monitoring"
+    governance.veridis.xyz/policy-enforcement: "automated"
+
+  annotations:
+    veridis.xyz/description: "Service account bindings for automated monitoring and observability services"
+    veridis.xyz/purpose: "Enables automated monitoring services to collect metrics, logs, and traces across the cluster"
+    veridis.xyz/scope: "Automated observability data collection, metrics aggregation, log processing, trace collection"
+
+    # Automation characteristics
+    veridis.xyz/automation-type: "Continuous monitoring, metrics collection, log aggregation, alerting"
+    veridis.xyz/human-oversight: "SRE team monitors automated systems, alert escalation for anomalies"
+    veridis.xyz/fail-safe-mechanisms: "Automatic rollback, error alerting, degraded mode operation"
+
+    # Service reliability and monitoring
+    veridis.xyz/service-reliability: "High availability monitoring services with redundancy"
+    veridis.xyz/error-handling: "Graceful degradation, automatic retry, alert escalation"
+    veridis.xyz/performance-monitoring: "Self-monitoring of monitoring services"
+
+    veridis.xyz/owner: "sre-team@veridis.xyz"
+    veridis.xyz/automation-lead: "automation-engineer@veridis.xyz"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-monitoring-service
+
+subjects:
+# Core monitoring service accounts
+- kind: ServiceAccount
+  name: veridis-monitoring
+  namespace: veridis
+
+# Prometheus metrics collection
+- kind: ServiceAccount
+  name: prometheus-server
+  namespace: monitoring
+
+# Grafana dashboard service
+- kind: ServiceAccount
+  name: grafana
+  namespace: monitoring
+
+# Jaeger tracing service
+- kind: ServiceAccount
+  name: jaeger-operator
+  namespace: observability
+
+# Fluent Bit log collection
+- kind: ServiceAccount
+  name: fluent-bit
+  namespace: logging
+
+# AlertManager notification service
+- kind: ServiceAccount
+  name: alertmanager
+  namespace: monitoring
+
+# ==============================================================================
+# Cluster Role Binding Summary and Access Matrix
+# ==============================================================================
+#
+# ACCESS HIERARCHY AND PRIVILEGE MAPPING:
+# =======================================
+# 1. Emergency Cluster Admin (veridis-cluster-admin)
+#    - Subjects: CEO, CTO, CISO, Emergency Response Group
+#    - Privileges: Unrestricted cluster access
+#    - Use Case: Critical incidents, disaster recovery, compliance investigations
+#    - Controls: MFA mandatory, session recording, executive approval
+#
+# 2. Platform Engineering Admin (veridis-app-admin)
+#    - Subjects: Platform engineers, DevOps team, Backend service account
+#    - Privileges: Application administration, deployment management
+#    - Use Case: Daily operations, application lifecycle, scaling, monitoring
+#    - Controls: MFA required, engineering manager approval, operational hours
+#
+# 3. Security Officers (veridis-security-officer)
+#    - Subjects: CISO, DPO, Security analysts, Compliance officers, External auditors
+#    - Privileges: Read-only security audit and compliance verification
+#    - Use Case: Security audits, compliance monitoring, policy verification
+#    - Controls: MFA required, CISO approval, comprehensive audit logging
+#
+# 4. SRE Monitoring (veridis-monitoring-service)
+#    - Subjects: SRE team, Monitoring service accounts (Prometheus, Grafana, etc.)
+#    - Privileges: Cluster-wide read access for observability
+#    - Use Case: System monitoring, performance analysis, reliability engineering
+#    - Controls: SRE manager approval, automated service monitoring
+#
+# 5. SRE Backup Operators (veridis-backup-operator)
+#    - Subjects: Backup specialists, Disaster recovery team, Backup service accounts
+#    - Privileges: Specialized backup and recovery operations
+#    - Use Case: Data protection, disaster recovery, compliance backups
+#    - Controls: MFA required, DPO approval, comprehensive audit trails
+#
+# 6. Developers (veridis-developer)
+#    - Subjects: Development teams (Frontend, Backend, Blockchain, QA)
+#    - Privileges: Limited development access, read-only production
+#    - Use Case: Application development, debugging, learning, testing
+#    - Controls: Development manager approval, namespace restrictions
+#
+# SECURITY CONTROL MATRIX:
+# ========================
+# Role                    | MFA | Session Recording | Approval Required | Risk Level
+# ----------------------- | --- | ---------------- | ----------------- | ----------
+# Emergency Cluster Admin | ✓   | Mandatory        | CEO/CTO           | Critical
+# Platform Engineering    | ✓   | Enabled          | Eng Manager       | High
+# Security Officers       | ✓   | Enabled          | CISO              | Medium
+# SRE Monitoring          | ✗   | Disabled         | SRE Manager       | Low
+# SRE Backup Operators    | ✓   | Enabled          | DPO               | Medium
+# Developers              | ✗   | Disabled         | Dev Manager       | Low
+#
+# COMPLIANCE MAPPING:
+# ==================
+# SOC 2 Type II:
+#   - Segregation of duties enforced through role separation
+#   - Access control matrices implemented via RBAC bindings
+#   - Automated access reviews through group membership management
+#
+# GDPR:
+#   - Data Protection Officer (DPO) dedicated access
+#   - Data processor vs controller role separation
+#   - Comprehensive audit trails for data access
+#
+# ISO 27001:
+#   - Privileged access management through emergency procedures
+#   - Access control policy enforcement via Kubernetes RBAC
+#   - Security incident response through role-based escalation
+#
+# OPERATIONAL PROCEDURES:
+# ======================
+# - Monthly access reviews for all privileged roles
+# - Quarterly group membership audits and certification
+# - Annual role definition reviews and policy updates
+# - Automated provisioning/deprovisioning via HR integration
+# - Emergency access activation with automated audit alerts
+# - Real-time monitoring of all privileged access activities
+#
+# ==============================================================================
