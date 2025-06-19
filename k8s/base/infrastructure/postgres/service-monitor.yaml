@@ -1,0 +1,1049 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - PostgreSQL ServiceMonitor
+# ==============================================================================
+#
+# This manifest defines comprehensive PostgreSQL ServiceMonitor configurations for
+# the Veridis deployment, providing:
+#
+# ENTERPRISE MONITORING ARCHITECTURE:
+#   • Comprehensive database metrics collection with performance and health monitoring
+#   • Advanced alerting framework with intelligent thresholds and ML-based anomaly detection
+#   • Multi-tier monitoring strategy with operational, business, and security metrics
+#   • Real-time performance monitoring with SLA tracking and capacity forecasting
+#   • Comprehensive observability with distributed tracing and correlation analysis
+#
+# MONITORING PERFORMANCE OPTIMIZATION:
+#   • High-frequency metrics collection with intelligent sampling and aggregation
+#   • Advanced metric processing with statistical analysis and trend detection
+#   • Optimized scraping with connection pooling and resource management
+#   • Intelligent metric filtering with relevance scoring and dimensionality reduction
+#   • Performance-aware monitoring with minimal production impact
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II monitoring controls with comprehensive audit logging
+#   • GDPR monitoring compliance with data protection and privacy controls
+#   • ISO 27001 monitoring security with access controls and audit trails
+#   • PCI DSS monitoring requirements for cardholder data environment protection
+#   • Regulatory monitoring with compliance reporting and audit integration
+#
+# ENTERPRISE ALERTING AND INCIDENT RESPONSE:
+#   • Multi-tier alerting with severity classification and escalation procedures
+#   • Intelligent alert correlation with root cause analysis and impact assessment
+#   • Automated incident response with runbook integration and remediation workflows
+#   • Business impact analysis with SLA monitoring and customer impact assessment
+#   • Comprehensive incident management with post-incident analysis and improvement
+#
+# OPERATIONAL EXCELLENCE CONTROLS:
+#   • Automated monitoring deployment with policy-based configuration management
+#   • Capacity planning with predictive analytics and resource optimization
+#   • Performance optimization with continuous monitoring and tuning recommendations
+#   • Cost optimization with monitoring efficiency and resource utilization analysis
+#   • Continuous improvement with monitoring effectiveness analysis and optimization
+#
+# ==============================================================================
+
+# ==============================================================================
+# PostgreSQL Primary Database ServiceMonitor - Core Database Metrics
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postgres-primary-metrics
+  namespace: veridis-database
+
+  # Core resource identification labels
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: database-monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Monitoring specific classification
+    monitoring.veridis.xyz/type: database-metrics
+    monitoring.veridis.xyz/tier: enterprise
+    monitoring.veridis.xyz/scope: primary-database
+    monitoring.veridis.xyz/frequency: high-frequency
+    monitoring.veridis.xyz/criticality: mission-critical
+
+    # Performance monitoring classification
+    performance.veridis.xyz/monitoring-tier: comprehensive
+    performance.veridis.xyz/metrics-collection: detailed
+    performance.veridis.xyz/sampling-rate: high
+    performance.veridis.xyz/retention-policy: long-term
+    performance.veridis.xyz/analysis-depth: advanced
+
+    # Business monitoring classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/cost-tier: premium
+    business.veridis.xyz/revenue-impact: direct
+    business.veridis.xyz/sla-monitoring: "true"
+    business.veridis.xyz/customer-impact: "true"
+
+    # Security monitoring classification
+    security.veridis.xyz/monitoring-scope: comprehensive
+    security.veridis.xyz/access-monitoring: "enabled"
+    security.veridis.xyz/anomaly-detection: "enabled"
+    security.veridis.xyz/threat-monitoring: "enabled"
+    security.veridis.xyz/audit-integration: "enabled"
+
+    # Availability and reliability monitoring
+    availability.veridis.xyz/ha-monitoring: maximum
+    availability.veridis.xyz/health-checks: comprehensive
+    availability.veridis.xyz/performance-monitoring: detailed
+    availability.veridis.xyz/capacity-monitoring: predictive
+    availability.veridis.xyz/sla-target: "99.99"
+
+    # Alerting and incident response
+    alerting.veridis.xyz/integration: pagerduty
+    alerting.veridis.xyz/severity-levels: "critical,warning,info"
+    alerting.veridis.xyz/escalation-policy: "database-team"
+    alerting.veridis.xyz/correlation-analysis: "enabled"
+    alerting.veridis.xyz/automated-response: "enabled"
+
+    # Operational monitoring labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "monitoring-control-database"
+    compliance.veridis.xyz/gdpr: "data-processing-monitoring"
+    compliance.veridis.xyz/iso27001: "monitoring-security-management"
+    compliance.veridis.xyz/pci-dss: "database-monitoring-requirements"
+    governance.veridis.xyz/policy-enforcement: "strict"
+
+    # Observability and tracing
+    observability.veridis.xyz/tracing-integration: "enabled"
+    observability.veridis.xyz/correlation-analysis: "cross-service"
+    observability.veridis.xyz/context-propagation: "enabled"
+    observability.veridis.xyz/distributed-tracing: "enabled"
+
+  annotations:
+    # Monitoring purpose and specifications
+    veridis.xyz/description: "Comprehensive PostgreSQL primary database monitoring with enterprise-grade metrics, alerting, and observability"
+    veridis.xyz/purpose: "Provides detailed monitoring of PostgreSQL primary database performance, health, security, and business metrics"
+    veridis.xyz/scope: "Database performance, connection metrics, query performance, replication status, storage utilization, security events"
+
+    # Monitoring architecture and strategy
+    monitoring.veridis.xyz/architecture: "Multi-tier monitoring with operational, business, and security metrics collection and analysis"
+    monitoring.veridis.xyz/collection-strategy: "High-frequency detailed metrics with intelligent sampling and aggregation"
+    monitoring.veridis.xyz/analysis-framework: "Real-time analysis with statistical processing and machine learning-based anomaly detection"
+    monitoring.veridis.xyz/correlation-engine: "Cross-service correlation with dependency mapping and impact analysis"
+
+    # Performance monitoring specifications
+    performance.veridis.xyz/key-metrics: "Connections, queries/sec, lock waits, buffer cache hit ratio, replication lag, storage I/O"
+    performance.veridis.xyz/baseline-establishment: "Statistical baseline with seasonal adjustment and trend analysis"
+    performance.veridis.xyz/anomaly-detection: "Multi-variate anomaly detection with confidence intervals and severity scoring"
+    performance.veridis.xyz/capacity-forecasting: "Predictive capacity analysis with growth modeling and resource planning"
+
+    # Business metrics and SLA monitoring
+    business.veridis.xyz/sla-metrics: "Availability, response time, error rate, throughput, user experience"
+    business.veridis.xyz/business-kpis: "Transaction success rate, identity verification latency, system availability"
+    business.veridis.xyz/customer-impact: "Customer-facing metrics with business impact analysis and escalation"
+    business.veridis.xyz/revenue-correlation: "Revenue impact analysis with business metric correlation"
+
+    # Security monitoring and threat detection
+    security.veridis.xyz/security-metrics: "Failed login attempts, privilege escalation, data access patterns, anomalous queries"
+    security.veridis.xyz/threat-detection: "Behavioral analysis with baseline deviation and threat intelligence integration"
+    security.veridis.xyz/compliance-monitoring: "Regulatory compliance monitoring with audit trail and reporting"
+    security.veridis.xyz/incident-correlation: "Security incident correlation with automated response and escalation"
+
+    # Alerting and escalation procedures
+    alerting.veridis.xyz/alert-hierarchy: "Critical (immediate) → Warning (5min) → Info (aggregated)"
+    alerting.veridis.xyz/escalation-matrix: "Database team → Infrastructure manager → CTO → CEO"
+    alerting.veridis.xyz/notification-channels: "PagerDuty, Slack, email, SMS, webhook integrations"
+    alerting.veridis.xyz/alert-correlation: "Intelligent alert grouping with root cause analysis and impact assessment"
+
+    # Compliance and regulatory requirements
+    compliance.veridis.xyz/audit-requirements: "All monitoring access logged with comprehensive audit trail"
+    compliance.veridis.xyz/data-retention: "Metrics retained for 2 years with automated archival and compliance validation"
+    compliance.veridis.xyz/privacy-controls: "Data anonymization with privacy-preserving monitoring and GDPR compliance"
+    compliance.veridis.xyz/regulatory-reporting: "Automated compliance reporting with regulatory requirement validation"
+
+    # High availability and disaster recovery monitoring
+    availability.veridis.xyz/ha-monitoring: "Multi-region monitoring with failover detection and automated recovery"
+    availability.veridis.xyz/disaster-recovery: "DR monitoring with recovery time and data consistency validation"
+    availability.veridis.xyz/backup-monitoring: "Backup success monitoring with integrity validation and recovery testing"
+    availability.veridis.xyz/failover-monitoring: "Automated failover detection with impact analysis and recovery tracking"
+
+    # Cost optimization and resource management
+    cost.veridis.xyz/cost-monitoring: "Resource utilization monitoring with cost attribution and optimization recommendations"
+    cost.veridis.xyz/efficiency-metrics: "Performance per dollar with cost-effectiveness analysis and optimization"
+    cost.veridis.xyz/capacity-optimization: "Right-sizing recommendations with performance and cost balance"
+    cost.veridis.xyz/budget-tracking: "Cost tracking with budget alerts and variance analysis"
+
+    # Integration and automation specifications
+    integration.veridis.xyz/prometheus-integration: "Native Prometheus metrics with custom collectors and exporters"
+    integration.veridis.xyz/grafana-dashboards: "Enterprise dashboards with drill-down capabilities and real-time visualization"
+    integration.veridis.xyz/alertmanager-integration: "Advanced alerting with routing, silencing, and escalation management"
+    integration.veridis.xyz/siem-integration: "Security event correlation with SIEM integration and threat intelligence"
+
+    # Operational procedures and contacts
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/monitoring-admin: "monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "database-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "database-oncall@veridis.xyz"
+
+    # Documentation and procedures
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/postgres-primary-servicemonitor"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/monitoring/postgres-primary-alerts"
+    veridis.xyz/dashboard: "https://grafana.veridis.xyz/d/postgres-primary-overview"
+    veridis.xyz/alerting-guide: "https://docs.veridis.xyz/alerting/postgres-primary-playbook"
+
+# ServiceMonitor specification
+spec:
+  # Selector for PostgreSQL primary service
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: primary
+      monitoring.veridis.xyz/scrape: "true"
+
+  # Namespace selector (optional, defaults to ServiceMonitor namespace)
+  namespaceSelector:
+    matchNames:
+    - veridis-database
+
+  # Endpoints configuration for metrics collection
+  endpoints:
+  # Primary database metrics endpoint
+  - port: metrics
+    path: /metrics
+    interval: 15s              # High-frequency collection for critical metrics
+    scrapeTimeout: 10s         # Timeout for scrape operations
+    honorLabels: true          # Preserve original metric labels
+    honorTimestamps: true      # Preserve original timestamps
+
+    # Metrics relabeling for enhanced observability
+    metricRelabelings:
+    # Add environment and cluster information
+    - sourceLabels: [__name__]
+      targetLabel: environment
+      replacement: production
+
+    - sourceLabels: [__name__]
+      targetLabel: cluster
+      replacement: veridis-production
+
+    - sourceLabels: [__name__]
+      targetLabel: database_role
+      replacement: primary
+
+    # Enhance PostgreSQL specific metrics
+    - sourceLabels: [__name__, datname]
+      regex: 'pg_stat_database_(.+);(.+)'
+      targetLabel: database_name
+      replacement: '${2}'
+
+    - sourceLabels: [__name__, schemaname, relname]
+      regex: 'pg_stat_user_tables_(.+);(.+);(.+)'
+      targetLabel: table_name
+      replacement: '${2}.${3}'
+
+    # Add business context labels
+    - sourceLabels: [__name__]
+      targetLabel: business_unit
+      replacement: identity-protocol
+
+    - sourceLabels: [__name__]
+      targetLabel: cost_center
+      replacement: infrastructure
+
+    - sourceLabels: [__name__]
+      targetLabel: team
+      replacement: database-administration
+
+    # Security classification labels
+    - sourceLabels: [__name__]
+      targetLabel: security_classification
+      replacement: confidential
+
+    - sourceLabels: [__name__]
+      targetLabel: compliance_scope
+      replacement: soc2-gdpr-iso27001-pci
+
+    # Relabeling for custom metrics
+    relabelings:
+    # Preserve original instance label
+    - sourceLabels: [__address__]
+      targetLabel: __tmp_address
+
+    # Add custom instance identification
+    - sourceLabels: [__meta_kubernetes_pod_name]
+      targetLabel: pod_name
+
+    - sourceLabels: [__meta_kubernetes_pod_node_name]
+      targetLabel: node_name
+
+    - sourceLabels: [__meta_kubernetes_namespace]
+      targetLabel: namespace
+
+    # Add Kubernetes metadata
+    - sourceLabels: [__meta_kubernetes_pod_label_app_kubernetes_io_version]
+      targetLabel: postgres_version
+
+    - sourceLabels: [__meta_kubernetes_pod_label_app_kubernetes_io_instance]
+      targetLabel: instance_name
+
+    # Add monitoring metadata
+    - sourceLabels: [__meta_kubernetes_pod_annotation_monitoring_veridis_xyz_scrape_interval]
+      targetLabel: scrape_interval
+
+    - sourceLabels: [__meta_kubernetes_pod_annotation_monitoring_veridis_xyz_alert_severity]
+      targetLabel: alert_severity
+
+    # TLS configuration for secure metrics collection
+    tlsConfig:
+      # Use service account token for authentication
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      certFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.crt
+      keyFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.key
+      serverName: veridis-postgres-primary.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    # Authentication configuration
+    basicAuth:
+      username:
+        name: postgres-exporter-secret
+        key: monitoring-username
+      password:
+        name: postgres-exporter-secret
+        key: monitoring-password
+
+    # Additional scrape parameters
+    params:
+      # Enable extended metrics collection
+      'collect.stat_database': ['true']
+      'collect.stat_user_tables': ['true']
+      'collect.stat_bgwriter': ['true']
+      'collect.stat_archiver': ['true']
+      'collect.stat_replication': ['true']
+      'collect.stat_user_indexes': ['true']
+      'collect.stat_statements': ['true']
+      'collect.locks': ['true']
+      'collect.process_idle': ['true']
+      'collect.custom_query_hr': ['true']
+      'collect.custom_query_lr': ['true']
+
+      # Security monitoring parameters
+      'collect.stat_activity': ['true']
+      'collect.stat_ssl': ['true']
+      'collect.stat_subscription': ['true']
+
+      # Performance monitoring parameters
+      'collect.stat_wal_receiver': ['true']
+      'collect.stat_progress_vacuum': ['true']
+      'collect.stat_progress_cluster': ['true']
+      'collect.stat_progress_create_index': ['true']
+      'collect.stat_progress_analyze': ['true']
+      'collect.stat_progress_basebackup': ['true']
+      'collect.stat_progress_copy': ['true']
+
+    # Custom headers for enhanced security
+    headers:
+      'X-Monitoring-Source': 'veridis-prometheus'
+      'X-Monitoring-Environment': 'production'
+      'X-Monitoring-Team': 'database-administration'
+
+  # High-frequency endpoint for critical metrics
+  - port: metrics
+    path: /metrics/critical
+    interval: 5s               # Very high frequency for critical metrics
+    scrapeTimeout: 3s
+    honorLabels: true
+    honorTimestamps: true
+
+    metricRelabelings:
+    # Only collect critical metrics for high-frequency scraping
+    - sourceLabels: [__name__]
+      regex: 'pg_up|pg_stat_database_numbackends|pg_stat_database_xact_commit|pg_stat_database_xact_rollback|pg_stat_bgwriter_checkpoint_write_time|pg_stat_replication_sent_lsn|pg_stat_replication_replay_lag'
+      action: keep
+
+    # Add criticality labels
+    - sourceLabels: [__name__]
+      targetLabel: metric_tier
+      replacement: critical
+
+    - sourceLabels: [__name__]
+      targetLabel: scrape_frequency
+      replacement: high
+
+    relabelings:
+    # Critical metrics endpoint identification
+    - sourceLabels: [__address__]
+      targetLabel: endpoint_type
+      replacement: critical-metrics
+
+    # Enhanced security for critical metrics
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      certFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.crt
+      keyFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.key
+      serverName: veridis-postgres-primary.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    basicAuth:
+      username:
+        name: postgres-exporter-secret
+        key: monitoring-username
+      password:
+        name: postgres-exporter-secret
+        key: monitoring-password
+
+    # Critical metrics only parameters
+    params:
+      'collect.stat_database': ['true']
+      'collect.stat_bgwriter': ['true']
+      'collect.stat_replication': ['true']
+      'collect.locks': ['true']
+
+  # Business metrics endpoint
+  - port: metrics
+    path: /metrics/business
+    interval: 30s              # Business metrics collection frequency
+    scrapeTimeout: 15s
+    honorLabels: true
+    honorTimestamps: true
+
+    metricRelabelings:
+    # Business-specific metric filtering
+    - sourceLabels: [__name__]
+      regex: 'veridis_(.+)'
+      action: keep
+
+    # Add business context
+    - sourceLabels: [__name__]
+      targetLabel: metric_type
+      replacement: business
+
+    - sourceLabels: [__name__]
+      targetLabel: business_impact
+      replacement: direct
+
+    # SLA metrics enhancement
+    - sourceLabels: [__name__]
+      regex: 'veridis_(identity_verification|transaction_processing|user_authentication)_(.+)'
+      targetLabel: sla_component
+      replacement: '${1}'
+
+    relabelings:
+    # Business metrics endpoint identification
+    - sourceLabels: [__address__]
+      targetLabel: endpoint_type
+      replacement: business-metrics
+
+    - sourceLabels: [__name__]
+      targetLabel: reporting_frequency
+      replacement: business-hours
+
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      certFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.crt
+      keyFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.key
+      serverName: veridis-postgres-primary.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    basicAuth:
+      username:
+        name: postgres-exporter-secret
+        key: monitoring-username
+      password:
+        name: postgres-exporter-secret
+        key: monitoring-password
+
+    # Business-specific collection parameters
+    params:
+      'collect.custom_query_business': ['true']
+      'collect.stat_statements': ['true']
+      'collect.stat_database': ['true']
+
+  # Security metrics endpoint
+  - port: metrics
+    path: /metrics/security
+    interval: 60s              # Security metrics collection frequency
+    scrapeTimeout: 30s
+    honorLabels: true
+    honorTimestamps: true
+
+    metricRelabelings:
+    # Security-specific metric filtering
+    - sourceLabels: [__name__]
+      regex: 'pg_stat_ssl_(.+)|pg_stat_activity_(.+)|pg_locks_(.+)|veridis_security_(.+)'
+      action: keep
+
+    # Add security classification
+    - sourceLabels: [__name__]
+      targetLabel: metric_type
+      replacement: security
+
+    - sourceLabels: [__name__]
+      targetLabel: security_level
+      replacement: confidential
+
+    # Threat detection labels
+    - sourceLabels: [__name__]
+      regex: 'pg_stat_activity_(.+)'
+      targetLabel: threat_detection
+      replacement: enabled
+
+    relabelings:
+    # Security metrics endpoint identification
+    - sourceLabels: [__address__]
+      targetLabel: endpoint_type
+      replacement: security-metrics
+
+    - sourceLabels: [__name__]
+      targetLabel: audit_scope
+      replacement: comprehensive
+
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      certFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.crt
+      keyFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.key
+      serverName: veridis-postgres-primary.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    basicAuth:
+      username:
+        name: postgres-exporter-secret
+        key: monitoring-username
+      password:
+        name: postgres-exporter-secret
+        key: monitoring-password
+
+    # Security-specific collection parameters
+    params:
+      'collect.stat_activity': ['true']
+      'collect.stat_ssl': ['true']
+      'collect.locks': ['true']
+      'collect.custom_query_security': ['true']
+
+---
+# ==============================================================================
+# PostgreSQL Replica Database ServiceMonitor - Read Replica Metrics
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postgres-replica-metrics
+  namespace: veridis-database
+
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: database-monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: database-metrics
+    monitoring.veridis.xyz/tier: enterprise
+    monitoring.veridis.xyz/scope: replica-database
+    monitoring.veridis.xyz/frequency: standard
+    monitoring.veridis.xyz/criticality: business-critical
+
+    performance.veridis.xyz/monitoring-tier: standard
+    performance.veridis.xyz/metrics-collection: selective
+    performance.veridis.xyz/sampling-rate: standard
+    performance.veridis.xyz/retention-policy: standard
+    performance.veridis.xyz/analysis-depth: standard
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/cost-tier: standard
+    business.veridis.xyz/revenue-impact: indirect
+    business.veridis.xyz/analytics-workload: "true"
+    business.veridis.xyz/read-scaling: "true"
+
+    security.veridis.xyz/monitoring-scope: standard
+    security.veridis.xyz/access-monitoring: "enabled"
+    security.veridis.xyz/data-classification: "internal"
+
+    availability.veridis.xyz/ha-monitoring: high
+    availability.veridis.xyz/health-checks: standard
+    availability.veridis.xyz/performance-monitoring: standard
+    availability.veridis.xyz/replication-monitoring: "enabled"
+    availability.veridis.xyz/sla-target: "99.9"
+
+    alerting.veridis.xyz/integration: slack
+    alerting.veridis.xyz/severity-levels: "warning,info"
+    alerting.veridis.xyz/escalation-policy: "database-team"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "monitoring-control-replica"
+    compliance.veridis.xyz/gdpr: "replica-monitoring"
+    governance.veridis.xyz/policy-enforcement: "standard"
+
+  annotations:
+    veridis.xyz/description: "PostgreSQL read replica monitoring with analytics performance and replication lag tracking"
+    veridis.xyz/purpose: "Provides monitoring of PostgreSQL read replicas for analytics workloads and read scaling"
+    veridis.xyz/scope: "Replica performance, replication lag, query performance, analytics workload monitoring"
+
+    # Replica-specific monitoring
+    monitoring.veridis.xyz/replica-focus: "Replication lag, read performance, analytics query optimization"
+    monitoring.veridis.xyz/replication-monitoring: "Streaming replication lag, WAL replay, synchronization status"
+    monitoring.veridis.xyz/analytics-monitoring: "Long-running queries, materialized view refresh, index usage"
+
+    # Performance monitoring for read workloads
+    performance.veridis.xyz/read-optimization: "Read query performance, index effectiveness, cache hit ratios"
+    performance.veridis.xyz/analytics-performance: "Complex query performance, aggregation efficiency, parallel processing"
+    performance.veridis.xyz/capacity-monitoring: "Read capacity utilization, connection pool efficiency"
+
+    # Replication health and lag monitoring
+    replication.veridis.xyz/lag-monitoring: "Replication lag tracking with threshold alerting"
+    replication.veridis.xyz/sync-monitoring: "Synchronization status with primary database"
+    replication.veridis.xyz/wal-monitoring: "WAL replay progress and streaming status"
+
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/replica-admin: "replica-admin@veridis.xyz"
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: replica
+      monitoring.veridis.xyz/scrape: "true"
+
+  namespaceSelector:
+    matchNames:
+    - veridis-database
+
+  endpoints:
+  # Replica database metrics endpoint
+  - port: metrics
+    path: /metrics
+    interval: 30s              # Standard frequency for replica metrics
+    scrapeTimeout: 15s
+    honorLabels: true
+    honorTimestamps: true
+
+    metricRelabelings:
+    # Add replica-specific labels
+    - sourceLabels: [__name__]
+      targetLabel: database_role
+      replacement: replica
+
+    - sourceLabels: [__name__]
+      targetLabel: workload_type
+      replacement: analytics
+
+    # Replication-specific metrics enhancement
+    - sourceLabels: [__name__, application_name]
+      regex: 'pg_stat_replication_(.+);(.+)'
+      targetLabel: replica_name
+      replacement: '${2}'
+
+    - sourceLabels: [__name__]
+      regex: 'pg_stat_wal_receiver_(.+)'
+      targetLabel: replication_status
+      replacement: active
+
+    relabelings:
+    # Replica identification
+    - sourceLabels: [__meta_kubernetes_pod_name]
+      regex: '(.+)-replica-(.+)'
+      targetLabel: replica_instance
+      replacement: '${2}'
+
+    - sourceLabels: [__address__]
+      targetLabel: endpoint_type
+      replacement: replica-metrics
+
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      certFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.crt
+      keyFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.key
+      serverName: veridis-postgres-replica.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    basicAuth:
+      username:
+        name: postgres-exporter-secret
+        key: monitoring-username
+      password:
+        name: postgres-exporter-secret
+        key: monitoring-password
+
+    # Replica-specific collection parameters
+    params:
+      'collect.stat_database': ['true']
+      'collect.stat_user_tables': ['true']
+      'collect.stat_user_indexes': ['true']
+      'collect.stat_statements': ['true']
+      'collect.stat_wal_receiver': ['true']
+      'collect.stat_subscription': ['true']
+      'collect.custom_query_replica': ['true']
+      'collect.custom_query_analytics': ['true']
+
+  # Replication lag monitoring endpoint
+  - port: metrics
+    path: /metrics/replication
+    interval: 10s              # High frequency for replication lag monitoring
+    scrapeTimeout: 5s
+    honorLabels: true
+    honorTimestamps: true
+
+    metricRelabelings:
+    # Focus on replication metrics
+    - sourceLabels: [__name__]
+      regex: 'pg_stat_wal_receiver_(.+)|pg_stat_subscription_(.+)|pg_replication_lag_(.+)'
+      action: keep
+
+    - sourceLabels: [__name__]
+      targetLabel: metric_type
+      replacement: replication
+
+    - sourceLabels: [__name__]
+      targetLabel: monitoring_priority
+      replacement: high
+
+    relabelings:
+    - sourceLabels: [__address__]
+      targetLabel: endpoint_type
+      replacement: replication-metrics
+
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      certFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.crt
+      keyFile: /etc/prometheus/secrets/postgres-metrics-tls/tls.key
+      serverName: veridis-postgres-replica.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    basicAuth:
+      username:
+        name: postgres-exporter-secret
+        key: monitoring-username
+      password:
+        name: postgres-exporter-secret
+        key: monitoring-password
+
+    params:
+      'collect.stat_wal_receiver': ['true']
+      'collect.stat_subscription': ['true']
+      'collect.custom_query_replication_lag': ['true']
+
+---
+# ==============================================================================
+# PostgreSQL Connection Pooler ServiceMonitor - PgBouncer Metrics
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postgres-pgbouncer-metrics
+  namespace: veridis-database
+
+  labels:
+    app.kubernetes.io/name: pgbouncer
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.21"
+    app.kubernetes.io/component: connection-pooler-monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: connection-pooler-metrics
+    monitoring.veridis.xyz/tier: enterprise
+    monitoring.veridis.xyz/scope: connection-management
+    monitoring.veridis.xyz/frequency: high-frequency
+    monitoring.veridis.xyz/criticality: business-critical
+
+    performance.veridis.xyz/monitoring-tier: comprehensive
+    performance.veridis.xyz/connection-monitoring: detailed
+    performance.veridis.xyz/pool-monitoring: advanced
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/cost-tier: standard
+    business.veridis.xyz/connection-efficiency: "true"
+
+    availability.veridis.xyz/ha-monitoring: high
+    availability.veridis.xyz/connection-health: comprehensive
+    availability.veridis.xyz/pool-management: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+  annotations:
+    veridis.xyz/description: "PgBouncer connection pooler monitoring with comprehensive connection and pool management metrics"
+    veridis.xyz/purpose: "Provides detailed monitoring of database connection pooling, efficiency, and performance"
+    veridis.xyz/scope: "Connection pools, active connections, queue status, pool efficiency, client connections"
+
+    # Connection pooling monitoring
+    monitoring.veridis.xyz/pool-monitoring: "Pool utilization, connection efficiency, queue management, client distribution"
+    monitoring.veridis.xyz/connection-tracking: "Active connections, idle connections, connection lifecycle"
+    monitoring.veridis.xyz/performance-optimization: "Connection reuse, pool efficiency, latency optimization"
+
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/pgbouncer-admin: "pgbouncer-admin@veridis.xyz"
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: pgbouncer
+      app.kubernetes.io/instance: veridis-production
+      monitoring.veridis.xyz/scrape: "true"
+
+  namespaceSelector:
+    matchNames:
+    - veridis-database
+
+  endpoints:
+  # PgBouncer metrics endpoint
+  - port: metrics
+    path: /metrics
+    interval: 15s
+    scrapeTimeout: 10s
+    honorLabels: true
+    honorTimestamps: true
+
+    metricRelabelings:
+    # Add connection pooler context
+    - sourceLabels: [__name__]
+      targetLabel: component
+      replacement: connection-pooler
+
+    - sourceLabels: [__name__]
+      targetLabel: pool_technology
+      replacement: pgbouncer
+
+    # Pool-specific metrics enhancement
+    - sourceLabels: [__name__, database, user]
+      regex: 'pgbouncer_pools_(.+);(.+);(.+)'
+      targetLabel: pool_name
+      replacement: '${2}_${3}'
+
+    relabelings:
+    - sourceLabels: [__address__]
+      targetLabel: endpoint_type
+      replacement: pgbouncer-metrics
+
+    - sourceLabels: [__meta_kubernetes_pod_name]
+      targetLabel: pgbouncer_instance
+
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      serverName: veridis-pgbouncer.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    basicAuth:
+      username:
+        name: pgbouncer-exporter-secret
+        key: monitoring-username
+      password:
+        name: pgbouncer-exporter-secret
+        key: monitoring-password
+
+---
+# ==============================================================================
+# PostgreSQL Backup Monitoring ServiceMonitor - Backup Process Metrics
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postgres-backup-metrics
+  namespace: veridis-database
+
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "15.4"
+    app.kubernetes.io/component: backup-monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: backup-metrics
+    monitoring.veridis.xyz/tier: enterprise
+    monitoring.veridis.xyz/scope: backup-operations
+    monitoring.veridis.xyz/frequency: standard
+    monitoring.veridis.xyz/criticality: business-critical
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/disaster-recovery: "true"
+    business.veridis.xyz/compliance-backup: "true"
+
+    availability.veridis.xyz/backup-monitoring: comprehensive
+    availability.veridis.xyz/disaster-recovery: enabled
+
+    compliance.veridis.xyz/backup-compliance: "soc2-gdpr-iso27001"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-administration
+    veridis.xyz/cost-center: infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+  annotations:
+    veridis.xyz/description: "PostgreSQL backup process monitoring with comprehensive backup health and compliance tracking"
+    veridis.xyz/purpose: "Provides monitoring of backup operations, success rates, and disaster recovery readiness"
+    veridis.xyz/scope: "Backup job status, backup size, compression ratios, backup validation, disaster recovery metrics"
+
+    # Backup monitoring specifications
+    monitoring.veridis.xyz/backup-tracking: "Backup job success, duration, size, compression efficiency"
+    monitoring.veridis.xyz/compliance-monitoring: "Backup retention compliance, validation status, recovery testing"
+    monitoring.veridis.xyz/disaster-recovery: "Recovery time objectives, recovery point objectives, failover readiness"
+
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/backup-admin: "backup-admin@veridis.xyz"
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backup
+      monitoring.veridis.xyz/scrape: "true"
+
+  namespaceSelector:
+    matchNames:
+    - veridis-database
+
+  endpoints:
+  # Backup metrics endpoint
+  - port: metrics
+    path: /metrics
+    interval: 60s              # Standard frequency for backup metrics
+    scrapeTimeout: 30s
+    honorLabels: true
+    honorTimestamps: true
+
+    metricRelabelings:
+    # Add backup-specific context
+    - sourceLabels: [__name__]
+      targetLabel: component
+      replacement: backup-system
+
+    - sourceLabels: [__name__]
+      targetLabel: backup_scope
+      replacement: database
+
+    # Backup type classification
+    - sourceLabels: [__name__, backup_type]
+      regex: 'postgres_backup_(.+);(.+)'
+      targetLabel: backup_category
+      replacement: '${2}'
+
+    relabelings:
+    - sourceLabels: [__address__]
+      targetLabel: endpoint_type
+      replacement: backup-metrics
+
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      serverName: veridis-postgres-backup.veridis-database.svc.cluster.local
+      insecureSkipVerify: false
+
+    basicAuth:
+      username:
+        name: postgres-backup-secret
+        key: monitoring-username
+      password:
+        name: postgres-backup-secret
+        key: monitoring-password
+
+# ==============================================================================
+# PostgreSQL ServiceMonitor Summary and Enterprise Monitoring Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE MONITORING STRATEGY:
+# ==================================
+#
+# MONITORING ARCHITECTURE OVERVIEW:
+# ---------------------------------
+# 1. Primary Database ServiceMonitor (postgres-primary-metrics):
+#    - Comprehensive database metrics with multi-tier collection
+#    - High-frequency critical metrics (5s) and standard metrics (15s)
+#    - Business metrics (30s) and security metrics (60s)
+#    - Advanced metric relabeling with business context
+#    - TLS-secured metrics collection with authentication
+#
+# 2. Replica Database ServiceMonitor (postgres-replica-metrics):
+#    - Read replica performance and replication lag monitoring
+#    - Analytics workload optimization tracking
+#    - Replication health and synchronization status
+#    - High-frequency replication lag monitoring (10s)
+#    - Standard replica metrics collection (30s)
+#
+# 3. Connection Pooler ServiceMonitor (postgres-pgbouncer-metrics):
+#    - PgBouncer connection pooling efficiency monitoring
+#    - Pool utilization and connection management metrics
+#    - Client connection distribution and queue management
+#    - Connection lifecycle and performance optimization
+#    - High-frequency pool monitoring (15s)
+#
+# 4. Backup Process ServiceMonitor (postgres-backup-metrics):
+#    - Backup operation success and performance monitoring
+#    - Disaster recovery readiness and compliance tracking
+#    - Backup validation and integrity verification
+#    - Retention compliance and archival monitoring
+#    - Standard backup metrics collection (60s)
+#
+# ENTERPRISE MONITORING FEATURES:
+# ===============================
+# Multi-Tier Metrics Collection:
+#   - Critical metrics: 5s interval for immediate alerting
+#   - Standard metrics: 15s interval for operational monitoring
+#   - Business metrics: 30s interval for SLA tracking
+#   - Security metrics: 60s interval for threat detection
+#   - Backup metrics: 60s interval for compliance monitoring
+#
+# Enhanced Observability:
+#   - Comprehensive metric relabeling with business context
+#   - Kubernetes metadata integration for correlation
+#   - Custom metric filtering and dimensionality enhancement
+#   - Distributed tracing integration for end-to-end visibility
+#   - Cross-service correlation with dependency mapping
+#
+# Security and Compliance:
+#   - TLS-secured metrics collection with certificate validation
+#   - Authentication with service account tokens and basic auth
+#   - Comprehensive audit logging with access tracking
+#   - Security metric collection for threat detection
+#   - Compliance monitoring with regulatory requirements
+#
+# Performance Optimization:
+#   - Intelligent metric sampling with relevance scoring
+#   - Connection pooling for efficient metrics collection
+#   - Resource-aware scraping with timeout management
+#   - Metric filtering to reduce cardinality and storage
+#   - Performance-aware collection with minimal impact
+#
+# BUSINESS AND OPERATIONAL METRICS:
+# =================================
+# Business Intelligence:
+#   - SLA metrics with availability and performance tracking
+#   - Customer impact analysis with business metric correlation
+#   - Revenue impact assessment with transaction monitoring
+#   - User experience metrics with latency and error tracking
+#   - Business KPI monitoring with trend analysis
+#
+# Operational Excellence:
+#   - Capacity planning with predictive analytics
+#   - Performance optimization with continuous monitoring
+#   - Cost optimization with resource utilization tracking
+#   - Incident response with automated alerting and escalation
+#   - Continuous improvement with monitoring effectiveness analysis
+#
+# ALERTING AND INCIDENT RESPONSE:
+# ===============================
+# Multi-Tier Alerting:
+#   - Critical alerts: Immediate PagerDuty notification
+#   - Warning alerts: Slack notification with 5-minute delay
+#   - Info alerts: Aggregated daily reports
+#   - Business alerts: Executive dashboard with SLA tracking
+#   - Security alerts: SIEM integration with threat correlation
+#
+# Intelligent Alert Management:
+#   - Alert correlation with root cause analysis
+#   - Escalation procedures with team and manager notification
+#   - Alert suppression during maintenance windows
+#   - Alert enrichment with context and remediation guidance
+#   - Post-incident analysis with improvement recommendations
+#
+# ==============================================================================
