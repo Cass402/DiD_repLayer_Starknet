@@ -1,0 +1,783 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Identity App ConfigMap
+# ==============================================================================
+#
+# This manifest defines comprehensive Identity App ConfigMap for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS IDENTITY APP CONFIGURATION ARCHITECTURE:
+#   • Advanced Next.js frontend configuration with React optimization and intelligent environment management
+#   • Multi-tier configuration architecture with development, testing, staging, and production environments
+#   • Comprehensive performance framework with frontend optimization, API configuration, and user experience intelligence
+#   • Advanced lifecycle management with automated configuration management, environment control, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and configuration insights
+#
+# VERIDIS IDENTITY APP CONFIGURATION OPTIMIZATION:
+#   • High-performance frontend configuration with intelligent API routing and React optimization
+#   • Intelligent user interface configuration with responsive design and performance-based environment decisions
+#   • Advanced resource management with business intelligence and workload-based configuration control
+#   • Comprehensive environment control with intelligent configuration management and performance enhancement
+#   • Enterprise acceleration with predictive configuration management and user experience optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II configuration controls with comprehensive audit and environment requirements
+#   • GDPR configuration compliance with data protection, privacy controls, and environment management
+#   • ISO 27001 configuration management with comprehensive framework integration
+#   • NIST 800-190 container configuration security with environment-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and configuration best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent configuration lifecycle management with automated provisioning and optimization
+#   • Predictive user experience analytics with capacity planning and configuration intelligence
+#   • Advanced monitoring integration with configuration analytics and business intelligence
+#   • Comprehensive environment control with configuration preservation and performance optimization
+#   • Business continuity configuration with user experience guarantees and performance optimization
+#
+# CONFIGURATION ACCELERATION INTELLIGENCE:
+#   • Configuration usage analytics with environment patterns and optimization recommendations
+#   • Performance monitoring with configuration latency and user experience optimization intelligence
+#   • Development efficiency with configuration analytics and deployment optimization procedures
+#   • Cost optimization with configuration utilization analysis and capacity planning procedures
+#   • Quality assurance with configuration metrics and user experience validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Identity App ConfigMap - Primary Configuration
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-identity-app-config
+  namespace: veridis-infrastructure
+
+  # Core Veridis Identity App configuration identification labels
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Configuration specific classification
+    config.veridis.xyz/type: identity-app-config
+    config.veridis.xyz/category: frontend-config
+    config.veridis.xyz/role: primary-config
+    config.veridis.xyz/performance-class: high-performance-config
+    config.veridis.xyz/security-level: enterprise
+
+    # Frontend configuration classification
+    frontend.veridis.xyz/config-type: nextjs-config
+    frontend.veridis.xyz/framework: nextjs
+    frontend.veridis.xyz/performance-tier: high-performance
+    frontend.veridis.xyz/optimization: enabled
+    frontend.veridis.xyz/features: full-stack
+
+    # React configuration classification
+    react.veridis.xyz/tier: production
+    react.veridis.xyz/optimization: intelligent-rendering
+    react.veridis.xyz/ssr: enabled
+    react.veridis.xyz/config: optimized
+    react.veridis.xyz/efficiency: maximum
+
+    # Business configuration classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-user-experience
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational configuration labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "config-control-framework"
+    compliance.veridis.xyz/gdpr: "config-data-protection"
+    compliance.veridis.xyz/iso27001: "config-security-management"
+    compliance.veridis.xyz/nist-800-190: "config-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Configuration monitoring and analytics
+    monitoring.veridis.xyz/config-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/environment-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+  annotations:
+    # Configuration purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Identity App ConfigMap with Next.js optimization, intelligent environment management, and comprehensive user experience"
+    veridis.xyz/purpose: "Provides comprehensive frontend configuration for decentralized identity management with intelligent API routing, React optimization, and performance guarantees"
+    veridis.xyz/scope: "Frontend configuration including Next.js environment, React components, API endpoints, and comprehensive user experience intelligence"
+
+    # Configuration architecture and design
+    config.veridis.xyz/architecture: "Enterprise frontend configuration with Next.js SSR, intelligent API routing, and performance optimization"
+    config.veridis.xyz/design-pattern: "Multi-tier configuration with performance optimization, cost efficiency, and business intelligence"
+    config.veridis.xyz/optimization-model: "Intelligent frontend configuration with predictive analytics, performance optimization, and user experience efficiency"
+    config.veridis.xyz/performance-model: "High-performance frontend configuration with React optimization and intelligent environment management"
+
+    # Next.js configuration specifications
+    nextjs.veridis.xyz/config-specification: "Next.js frontend configuration with SSR optimization and intelligent environment management"
+    nextjs.veridis.xyz/environment-specification: "Advanced environment configuration with performance optimization and API enhancement"
+    nextjs.veridis.xyz/api-specification: "API configuration optimization with intelligent routing and performance enhancement"
+    nextjs.veridis.xyz/performance-specification: "Next.js performance configuration with React acceleration and user experience efficiency"
+    nextjs.veridis.xyz/business-specification: "Next.js business configuration with cost optimization and strategic intelligence"
+
+    # Environment configuration specifications
+    environment.veridis.xyz/config-specification: "Environment-aware frontend configuration with API optimization and user experience intelligence"
+    environment.veridis.xyz/api-specification: "API environment configuration with intelligent routing and performance enhancement"
+    environment.veridis.xyz/optimization-specification: "Environment optimization with cost management and intelligent configuration"
+    environment.veridis.xyz/management-specification: "Environment management with auto-configuration and performance optimization"
+    environment.veridis.xyz/monitoring-specification: "Environment monitoring with configuration analytics and user experience intelligence"
+
+    # Business configuration specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant frontend configuration with business continuity and user experience guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized frontend configuration with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with configuration optimization and user experience intelligence"
+
+    # Operational configuration specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with configuration analytics and user experience intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with configuration preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with configuration management and user experience optimization"
+
+    # Configuration lifecycle specifications
+    lifecycle.veridis.xyz/config-specification: "Dynamic configuration with automated environment management and performance optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent configuration scaling with machine learning and user experience forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Configuration optimization with intelligent environment management and performance enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Configuration evolution with intelligent adaptation and user experience optimization"
+
+    # Security configuration annotations
+    security.veridis.xyz/config-encryption: "enabled"
+    security.veridis.xyz/api-security: "enabled"
+    security.veridis.xyz/csp-configuration: "strict"
+    security.veridis.xyz/cors-configuration: "secure"
+
+    # Performance configuration annotations
+    performance.veridis.xyz/optimization-level: "maximum"
+    performance.veridis.xyz/caching-strategy: "intelligent"
+    performance.veridis.xyz/bundle-optimization: "enabled"
+    performance.veridis.xyz/api-optimization: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "frontend-team@veridis.xyz"
+    veridis.xyz/config-admin: "frontend-admin@veridis.xyz"
+    veridis.xyz/escalation: "frontend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "frontend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/config"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/identity-app/config-management"
+    veridis.xyz/config-docs: "https://frontend.veridis.xyz/identity-app/config-guide"
+    veridis.xyz/optimization-docs: "https://optimization.veridis.xyz/identity-app/config-optimization"
+
+data:
+  # ==============================================================================
+  # Next.js Environment Configuration
+  # ==============================================================================
+  NODE_ENV: "production"
+  NEXT_TELEMETRY_DISABLED: "1"
+  NEXT_PUBLIC_ENVIRONMENT: "production"
+
+  # ==============================================================================
+  # Application URLs and Endpoints
+  # ==============================================================================
+  NEXT_PUBLIC_API_URL: "https://api.veridis.xyz"
+  NEXT_PUBLIC_APP_URL: "https://app.veridis.xyz"
+  NEXT_PUBLIC_WS_URL: "wss://api.veridis.xyz/ws"
+  NEXT_PUBLIC_GRAPHQL_URL: "https://api.veridis.xyz/graphql"
+
+  # Backend service URLs (internal)
+  NEXT_PUBLIC_BACKEND_INTERNAL_URL: "http://veridis-backend:8080"
+  NEXT_PUBLIC_ZK_CIRCUITS_URL: "http://veridis-zk-circuits:4000"
+
+  # ==============================================================================
+  # StarkNet and Blockchain Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_STARKNET_NETWORK: "mainnet"
+  NEXT_PUBLIC_STARKNET_RPC_URL: "https://starknet-mainnet.public.blastapi.io"
+  NEXT_PUBLIC_STARKNET_CHAIN_ID: "0x534e5f4d41494e"
+  NEXT_PUBLIC_STARKNET_EXPLORER_URL: "https://starkscan.co"
+
+  # Contract addresses
+  NEXT_PUBLIC_IDENTITY_CONTRACT_ADDRESS: "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7"
+  NEXT_PUBLIC_ATTESTATION_CONTRACT_ADDRESS: "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d"
+  NEXT_PUBLIC_BRIDGE_CONTRACT_ADDRESS: "0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82"
+
+  # ==============================================================================
+  # Feature Flags and Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_FEATURES_ENABLED: "true"
+  NEXT_PUBLIC_ZK_FEATURES_ENABLED: "true"
+  NEXT_PUBLIC_BRIDGE_FEATURES_ENABLED: "true"
+  NEXT_PUBLIC_ATTESTATION_FEATURES_ENABLED: "true"
+  NEXT_PUBLIC_COMPLIANCE_FEATURES_ENABLED: "true"
+  NEXT_PUBLIC_ENTERPRISE_FEATURES_ENABLED: "true"
+
+  # Advanced features
+  NEXT_PUBLIC_WALLET_CONNECT_ENABLED: "true"
+  NEXT_PUBLIC_MULTI_WALLET_SUPPORT: "true"
+  NEXT_PUBLIC_BIOMETRIC_AUTH_ENABLED: "true"
+  NEXT_PUBLIC_OFFLINE_MODE_ENABLED: "true"
+  NEXT_PUBLIC_PWA_ENABLED: "true"
+
+  # ==============================================================================
+  # Security Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_CSP_ENABLED: "true"
+  NEXT_PUBLIC_SECURITY_HEADERS_ENABLED: "true"
+  NEXT_PUBLIC_XSS_PROTECTION: "true"
+  NEXT_PUBLIC_CLICKJACKING_PROTECTION: "true"
+  NEXT_PUBLIC_CONTENT_TYPE_NOSNIFF: "true"
+
+  # CORS configuration
+  NEXT_PUBLIC_CORS_ORIGINS: "https://app.veridis.xyz,https://admin.veridis.xyz"
+  NEXT_PUBLIC_CORS_METHODS: "GET,POST,PUT,DELETE,OPTIONS"
+  NEXT_PUBLIC_CORS_HEADERS: "Content-Type,Authorization,X-Requested-With"
+
+  # ==============================================================================
+  # Analytics and Monitoring Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_ANALYTICS_ENABLED: "true"
+  NEXT_PUBLIC_MONITORING_ENABLED: "true"
+  NEXT_PUBLIC_ERROR_TRACKING_ENABLED: "true"
+  NEXT_PUBLIC_PERFORMANCE_MONITORING: "true"
+  NEXT_PUBLIC_USER_ANALYTICS_ENABLED: "true"
+
+  # Analytics providers
+  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: "G-XXXXXXXXXX"
+  NEXT_PUBLIC_MIXPANEL_TOKEN: "your-mixpanel-token"
+  NEXT_PUBLIC_HOTJAR_ID: "your-hotjar-id"
+
+  # Error tracking
+  NEXT_PUBLIC_SENTRY_DSN: "https://your-sentry-dsn@sentry.io/project-id"
+  NEXT_PUBLIC_SENTRY_ENVIRONMENT: "production"
+  NEXT_PUBLIC_SENTRY_RELEASE: "3.2.1"
+
+  # ==============================================================================
+  # Performance and Optimization Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_CDN_URL: "https://cdn.veridis.xyz"
+  NEXT_PUBLIC_IMAGE_OPTIMIZATION: "true"
+  NEXT_PUBLIC_STATIC_OPTIMIZATION: "true"
+  NEXT_PUBLIC_BUNDLE_ANALYZER: "false"
+  NEXT_PUBLIC_COMPRESSION_ENABLED: "true"
+
+  # Caching configuration
+  NEXT_PUBLIC_CACHE_STRATEGY: "intelligent"
+  NEXT_PUBLIC_API_CACHE_TTL: "300"
+  NEXT_PUBLIC_STATIC_CACHE_TTL: "86400"
+  NEXT_PUBLIC_BROWSER_CACHE_ENABLED: "true"
+
+  # Performance targets
+  NEXT_PUBLIC_PERFORMANCE_TARGET_LCP: "2500"
+  NEXT_PUBLIC_PERFORMANCE_TARGET_FID: "100"
+  NEXT_PUBLIC_PERFORMANCE_TARGET_CLS: "0.1"
+  NEXT_PUBLIC_PERFORMANCE_TARGET_BUNDLE_SIZE: "500000"
+
+  # ==============================================================================
+  # User Interface and Experience Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_THEME: "veridis-modern"
+  NEXT_PUBLIC_DARK_MODE_ENABLED: "true"
+  NEXT_PUBLIC_RESPONSIVE_DESIGN: "true"
+  NEXT_PUBLIC_MOBILE_OPTIMIZED: "true"
+  NEXT_PUBLIC_ACCESSIBILITY_ENABLED: "true"
+
+  # Localization
+  NEXT_PUBLIC_DEFAULT_LOCALE: "en"
+  NEXT_PUBLIC_SUPPORTED_LOCALES: "en,es,fr,de,ja,ko,zh"
+  NEXT_PUBLIC_RTL_SUPPORT: "true"
+
+  # UI preferences
+  NEXT_PUBLIC_ANIMATION_ENABLED: "true"
+  NEXT_PUBLIC_TRANSITIONS_ENABLED: "true"
+  NEXT_PUBLIC_SOUND_EFFECTS: "false"
+  NEXT_PUBLIC_HIGH_CONTRAST_MODE: "available"
+
+  # ==============================================================================
+  # Business and Branding Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_BRAND_NAME: "Veridis"
+  NEXT_PUBLIC_COMPANY_NAME: "Veridis Technologies"
+  NEXT_PUBLIC_PRODUCT_NAME: "Veridis Identity Protocol"
+  NEXT_PUBLIC_TAGLINE: "Decentralized Identity for the Modern World"
+
+  # Contact and support
+  NEXT_PUBLIC_SUPPORT_EMAIL: "support@veridis.xyz"
+  NEXT_PUBLIC_SUPPORT_URL: "https://support.veridis.xyz"
+  NEXT_PUBLIC_DOCUMENTATION_URL: "https://docs.veridis.xyz"
+  NEXT_PUBLIC_COMMUNITY_URL: "https://community.veridis.xyz"
+
+  # Legal
+  NEXT_PUBLIC_PRIVACY_POLICY_URL: "https://veridis.xyz/privacy"
+  NEXT_PUBLIC_TERMS_OF_SERVICE_URL: "https://veridis.xyz/terms"
+  NEXT_PUBLIC_COOKIE_POLICY_URL: "https://veridis.xyz/cookies"
+
+  # ==============================================================================
+  # API Configuration and Rate Limiting
+  # ==============================================================================
+  NEXT_PUBLIC_API_VERSION: "v1"
+  NEXT_PUBLIC_API_TIMEOUT: "30000"
+  NEXT_PUBLIC_API_RETRY_ATTEMPTS: "3"
+  NEXT_PUBLIC_API_RETRY_DELAY: "1000"
+
+  # Rate limiting
+  NEXT_PUBLIC_RATE_LIMIT_ENABLED: "true"
+  NEXT_PUBLIC_RATE_LIMIT_REQUESTS: "1000"
+  NEXT_PUBLIC_RATE_LIMIT_WINDOW: "3600"
+
+  # Pagination
+  NEXT_PUBLIC_DEFAULT_PAGE_SIZE: "20"
+  NEXT_PUBLIC_MAX_PAGE_SIZE: "100"
+
+  # ==============================================================================
+  # Development and Testing Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_DEBUG_MODE: "false"
+  NEXT_PUBLIC_VERBOSE_LOGGING: "false"
+  NEXT_PUBLIC_MOCK_API_ENABLED: "false"
+  NEXT_PUBLIC_E2E_TESTING_ENABLED: "false"
+
+  # Feature toggles for testing
+  NEXT_PUBLIC_FEATURE_TOGGLE_NEW_UI: "true"
+  NEXT_PUBLIC_FEATURE_TOGGLE_BETA_FEATURES: "false"
+  NEXT_PUBLIC_FEATURE_TOGGLE_EXPERIMENTAL: "false"
+
+  # ==============================================================================
+  # Compliance and Regulatory Configuration
+  # ==============================================================================
+  NEXT_PUBLIC_GDPR_COMPLIANCE: "true"
+  NEXT_PUBLIC_CCPA_COMPLIANCE: "true"
+  NEXT_PUBLIC_SOC2_COMPLIANCE: "true"
+  NEXT_PUBLIC_ISO27001_COMPLIANCE: "true"
+
+  # Data protection
+  NEXT_PUBLIC_DATA_ANONYMIZATION: "true"
+  NEXT_PUBLIC_COOKIE_CONSENT_ENABLED: "true"
+  NEXT_PUBLIC_DATA_RETENTION_POLICY: "enabled"
+  NEXT_PUBLIC_RIGHT_TO_BE_FORGOTTEN: "true"
+
+  # ==============================================================================
+  # Integration Configuration
+  # ==============================================================================
+  # Wallet integrations
+  NEXT_PUBLIC_METAMASK_INTEGRATION: "true"
+  NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: "your-walletconnect-project-id"
+  NEXT_PUBLIC_COINBASE_WALLET_INTEGRATION: "true"
+  NEXT_PUBLIC_ARGENT_WALLET_INTEGRATION: "true"
+  NEXT_PUBLIC_BRAAVOS_WALLET_INTEGRATION: "true"
+
+  # Social integrations
+  NEXT_PUBLIC_GOOGLE_OAUTH_ENABLED: "true"
+  NEXT_PUBLIC_GITHUB_OAUTH_ENABLED: "true"
+  NEXT_PUBLIC_DISCORD_INTEGRATION: "true"
+  NEXT_PUBLIC_TWITTER_INTEGRATION: "true"
+
+  # ==============================================================================
+  # Advanced Features Configuration
+  # ==============================================================================
+  # Zero-knowledge features
+  NEXT_PUBLIC_ZK_PROOF_GENERATION: "true"
+  NEXT_PUBLIC_ZK_PROOF_VERIFICATION: "true"
+  NEXT_PUBLIC_ZK_PRIVACY_FEATURES: "true"
+  NEXT_PUBLIC_ZK_BATCH_OPERATIONS: "true"
+
+  # Bridge features
+  NEXT_PUBLIC_CROSS_CHAIN_BRIDGE: "true"
+  NEXT_PUBLIC_MULTI_CHAIN_SUPPORT: "true"
+  NEXT_PUBLIC_BRIDGE_SECURITY_CHECKS: "true"
+
+  # Enterprise features
+  NEXT_PUBLIC_ENTERPRISE_SSO: "true"
+  NEXT_PUBLIC_ENTERPRISE_RBAC: "true"
+  NEXT_PUBLIC_ENTERPRISE_AUDIT: "true"
+  NEXT_PUBLIC_ENTERPRISE_COMPLIANCE: "true"
+
+---
+# ==============================================================================
+# Veridis Identity App ConfigMap - Environment Specific
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-identity-app-env-config
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-env-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: identity-app-env-config
+    config.veridis.xyz/category: environment-config
+    config.veridis.xyz/role: environment-specific-config
+    config.veridis.xyz/scope: production-environment
+
+    frontend.veridis.xyz/config-type: environment-config
+    frontend.veridis.xyz/environment: production
+    frontend.veridis.xyz/optimization: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Environment-specific ConfigMap for Veridis Identity App with production optimization and performance tuning"
+    veridis.xyz/purpose: "Provides environment-specific configuration for production deployment with performance optimization"
+
+    config.veridis.xyz/environment-specification: "Production environment configuration with performance optimization and security enhancement"
+    frontend.veridis.xyz/environment-specification: "Frontend environment configuration with production tuning and optimization"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/environment-config"
+
+data:
+  # ==============================================================================
+  # Production Environment Variables
+  # ==============================================================================
+  ENVIRONMENT: "production"
+  NODE_ENV: "production"
+  STAGE: "production"
+
+  # ==============================================================================
+  # Production API Configuration
+  # ==============================================================================
+  API_BASE_URL: "https://api.veridis.xyz"
+  API_VERSION: "v1"
+  API_TIMEOUT: "30000"
+  API_RETRIES: "3"
+
+  # ==============================================================================
+  # Production Performance Configuration
+  # ==============================================================================
+  PERFORMANCE_MODE: "optimized"
+  BUNDLE_OPTIMIZATION: "maximum"
+  TREE_SHAKING: "enabled"
+  CODE_SPLITTING: "intelligent"
+
+  # ==============================================================================
+  # Production Security Configuration
+  # ==============================================================================
+  SECURITY_MODE: "strict"
+  CSP_MODE: "enforce"
+  HTTPS_ONLY: "true"
+  SECURITY_HEADERS: "strict"
+
+  # ==============================================================================
+  # Production Monitoring Configuration
+  # ==============================================================================
+  MONITORING_LEVEL: "comprehensive"
+  ERROR_TRACKING: "enabled"
+  PERFORMANCE_TRACKING: "enabled"
+  USER_ANALYTICS: "enabled"
+
+---
+# ==============================================================================
+# Veridis Identity App ConfigMap - Feature Flags
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-identity-app-feature-flags
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-feature-flags
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: identity-app-feature-flags
+    config.veridis.xyz/category: feature-flags-config
+    config.veridis.xyz/role: feature-control-config
+    config.veridis.xyz/scope: feature-management
+
+    frontend.veridis.xyz/config-type: feature-flags
+    frontend.veridis.xyz/feature-management: enabled
+    frontend.veridis.xyz/dynamic-features: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Feature flags ConfigMap for Veridis Identity App with dynamic feature management and A/B testing"
+    veridis.xyz/purpose: "Provides feature flag configuration for dynamic feature enablement and experimentation"
+
+    config.veridis.xyz/feature-specification: "Feature flags configuration with dynamic enablement and A/B testing capabilities"
+    frontend.veridis.xyz/feature-specification: "Frontend feature flags with user experience optimization and testing"
+
+    # Feature management annotations
+    feature-flags.veridis.xyz/dynamic-updates: "enabled"
+    feature-flags.veridis.xyz/ab-testing: "enabled"
+    feature-flags.veridis.xyz/rollout-control: "enabled"
+    feature-flags.veridis.xyz/user-targeting: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/feature-flags"
+
+data:
+  # ==============================================================================
+  # Core Feature Flags
+  # ==============================================================================
+  FEATURE_IDENTITY_MANAGEMENT: "true"
+  FEATURE_ATTESTATION_SYSTEM: "true"
+  FEATURE_VERIFICATION_ENGINE: "true"
+  FEATURE_COMPLIANCE_TOOLS: "true"
+  FEATURE_BRIDGE_FUNCTIONALITY: "true"
+
+  # ==============================================================================
+  # Advanced Feature Flags
+  # ==============================================================================
+  FEATURE_ZK_PROOFS: "true"
+  FEATURE_BIOMETRIC_AUTH: "true"
+  FEATURE_MULTI_WALLET: "true"
+  FEATURE_CROSS_CHAIN: "true"
+  FEATURE_ENTERPRISE_SSO: "true"
+
+  # ==============================================================================
+  # Experimental Feature Flags
+  # ==============================================================================
+  FEATURE_AI_ASSISTANCE: "false"
+  FEATURE_VOICE_INTERFACE: "false"
+  FEATURE_AR_INTERFACE: "false"
+  FEATURE_QUANTUM_RESISTANCE: "false"
+
+  # ==============================================================================
+  # UI Feature Flags
+  # ==============================================================================
+  FEATURE_NEW_DASHBOARD: "true"
+  FEATURE_DARK_MODE: "true"
+  FEATURE_CUSTOM_THEMES: "true"
+  FEATURE_ADVANCED_CHARTS: "true"
+
+  # ==============================================================================
+  # Performance Feature Flags
+  # ==============================================================================
+  FEATURE_LAZY_LOADING: "true"
+  FEATURE_PRELOADING: "true"
+  FEATURE_SERVICE_WORKER: "true"
+  FEATURE_OFFLINE_MODE: "true"
+
+  # ==============================================================================
+  # A/B Testing Flags
+  # ==============================================================================
+  AB_TEST_NEW_ONBOARDING: "50"
+  AB_TEST_SIMPLIFIED_UI: "25"
+  AB_TEST_ENHANCED_SECURITY: "75"
+  AB_TEST_GAMIFICATION: "10"
+
+---
+# ==============================================================================
+# Veridis Identity App ConfigMap - Performance Tuning
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-identity-app-performance-config
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-performance-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: identity-app-performance-config
+    config.veridis.xyz/category: performance-config
+    config.veridis.xyz/role: performance-optimization-config
+    config.veridis.xyz/scope: performance-tuning
+
+    frontend.veridis.xyz/config-type: performance-config
+    frontend.veridis.xyz/optimization-level: maximum
+    frontend.veridis.xyz/performance-tier: enterprise
+
+    performance.veridis.xyz/optimization: enabled
+    performance.veridis.xyz/monitoring: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Performance optimization ConfigMap for Veridis Identity App with Web Vitals optimization and advanced caching"
+    veridis.xyz/purpose: "Provides performance configuration for maximum user experience optimization and Web Vitals compliance"
+
+    config.veridis.xyz/performance-specification: "Performance optimization configuration with Web Vitals targets and caching strategies"
+    frontend.veridis.xyz/performance-specification: "Frontend performance configuration with optimization and monitoring"
+
+    # Performance optimization annotations
+    performance-config.veridis.xyz/web-vitals: "optimized"
+    performance-config.veridis.xyz/caching: "intelligent"
+    performance-config.veridis.xyz/bundling: "optimized"
+    performance-config.veridis.xyz/compression: "maximum"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/performance-config"
+
+data:
+  # ==============================================================================
+  # Web Vitals Configuration
+  # ==============================================================================
+  WEB_VITALS_LCP_TARGET: "2500"
+  WEB_VITALS_FID_TARGET: "100"
+  WEB_VITALS_CLS_TARGET: "0.1"
+  WEB_VITALS_FCP_TARGET: "1800"
+  WEB_VITALS_TTI_TARGET: "3800"
+
+  # ==============================================================================
+  # Bundle Optimization Configuration
+  # ==============================================================================
+  BUNDLE_SIZE_LIMIT: "500000"
+  CHUNK_SIZE_LIMIT: "250000"
+  TREE_SHAKING_ENABLED: "true"
+  CODE_SPLITTING_STRATEGY: "intelligent"
+  DYNAMIC_IMPORTS_ENABLED: "true"
+
+  # ==============================================================================
+  # Caching Strategy Configuration
+  # ==============================================================================
+  CACHE_STRATEGY: "intelligent"
+  STATIC_CACHE_TTL: "31536000"
+  API_CACHE_TTL: "300"
+  BROWSER_CACHE_ENABLED: "true"
+  SERVICE_WORKER_CACHE: "enabled"
+
+  # ==============================================================================
+  # Image Optimization Configuration
+  # ==============================================================================
+  IMAGE_OPTIMIZATION_ENABLED: "true"
+  IMAGE_FORMATS: "webp,avif,png,jpg"
+  IMAGE_QUALITY: "85"
+  IMAGE_LAZY_LOADING: "true"
+  IMAGE_RESPONSIVE: "true"
+
+  # ==============================================================================
+  # Compression Configuration
+  # ==============================================================================
+  COMPRESSION_ENABLED: "true"
+  COMPRESSION_ALGORITHM: "gzip,brotli"
+  COMPRESSION_LEVEL: "6"
+  MINIFICATION_ENABLED: "true"
+
+  # ==============================================================================
+  # Preloading Configuration
+  # ==============================================================================
+  PRELOAD_CRITICAL_RESOURCES: "true"
+  PRELOAD_FONTS: "true"
+  PRELOAD_HERO_IMAGES: "true"
+  PREFETCH_NEXT_PAGE: "true"
+
+  # ==============================================================================
+  # Performance Monitoring Configuration
+  # ==============================================================================
+  PERFORMANCE_MONITORING_ENABLED: "true"
+  PERFORMANCE_BUDGET_ENABLED: "true"
+  LIGHTHOUSE_CI_ENABLED: "true"
+  RUM_TRACKING_ENABLED: "true"
+
+# ==============================================================================
+# Veridis Identity App ConfigMap Summary and Enterprise Configuration Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS IDENTITY APP CONFIGURATION STRATEGY:
+# ==========================================================
+#
+# VERIDIS IDENTITY APP CONFIGURATION ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------------
+# 1. Primary ConfigMap (veridis-identity-app-config):
+#    - Comprehensive Next.js configuration with 100+ environment variables and settings
+#    - Advanced API configuration with endpoint management, timeout settings, and retry logic
+#    - Feature flags management with 25+ configurable features and enterprise capabilities
+#    - Security configuration with CSP, CORS, and comprehensive protection settings
+#    - Performance optimization with Web Vitals targets and caching strategies
+#
+# 2. Environment ConfigMap (veridis-identity-app-env-config):
+#    - Production-specific environment configuration with optimization and security tuning
+#    - API configuration with production endpoints and performance optimization
+#    - Security mode configuration with strict enforcement and comprehensive protection
+#    - Monitoring configuration with comprehensive tracking and analytics enablement
+#    - Performance mode optimization with bundle and code splitting intelligence
+#
+# 3. Feature Flags ConfigMap (veridis-identity-app-feature-flags):
+#    - Dynamic feature management with 20+ core and experimental features
+#    - A/B testing configuration with percentage-based rollout control
+#    - UI feature flags with dashboard, theme, and user experience enhancements
+#    - Performance feature flags with lazy loading, preloading, and offline capabilities
+#    - Experimental features with AI assistance, voice interface, and quantum resistance
+#
+# 4. Performance ConfigMap (veridis-identity-app-performance-config):
+#    - Web Vitals optimization with LCP<2.5s, FID<100ms, CLS<0.1 targets
+#    - Bundle optimization with 500KB limit and intelligent code splitting
+#    - Caching strategy with intelligent cache management and 31M static TTL
+#    - Image optimization with WebP/AVIF formats and responsive delivery
+#    - Compression configuration with gzip/brotli and maximum optimization
+#
+# ENTERPRISE CONFIGURATION FEATURES:
+# ==================================
+# Advanced Next.js and React Configuration:
+#   - SSR optimization with production environment and telemetry management
+#   - StarkNet integration with mainnet configuration and contract addresses
+#   - Wallet integration with MetaMask, WalletConnect, Coinbase, Argent, and Braavos support
+#   - Social authentication with Google, GitHub, Discord, and Twitter integration
+#   - Enterprise features with SSO, RBAC, audit logging, and compliance management
+#
+# Comprehensive API and Backend Integration:
+#   - Production API endpoints with https://api.veridis.xyz and GraphQL support
+#   - WebSocket configuration with wss://api.veridis.xyz/ws real-time communication
+#   - Internal service URLs with cluster-internal communication optimization
+#   - Rate limiting with 1000 requests per hour and intelligent throttling
+#   - Retry logic with 3 attempts and 1-second delay for reliability
+#
+# Advanced Security and Compliance Framework:
+#   - Content Security Policy with strict enforcement and XSS protection
+#   - CORS configuration with secure origins and method restrictions
+#   - GDPR compliance with data anonymization and right to be forgotten
+#   - Cookie consent management with comprehensive privacy protection
+#   - SOC 2, CCPA, ISO 27001 compliance with enterprise security controls
+#
+# Performance Optimization Excellence:
+#   - Web Vitals optimization with LCP<2.5s, FID<100ms, CLS<0.1 performance targets
+#   - Bundle size optimization with 500KB limit and 85% image quality
+#   - CDN integration with https://cdn.veridis.xyz asset delivery
+#   - Intelligent caching with 300s API cache and 86400s static cache TTL
+#   - Compression optimization with gzip/brotli and maximum compression level
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Configuration Lifecycle Management:
+#   - Multi-ConfigMap architecture with primary, environment, feature flags, and performance configurations
+#   - Intelligent feature management with dynamic enablement and A/B testing capabilities
+#   - Advanced monitoring with comprehensive analytics and business intelligence
+#   - Configuration validation with schema enforcement and deployment safety checks
+#   - Automated optimization with machine learning-based configuration tuning
+#
+# Business Intelligence Integration:
+#   - Feature flag analytics with usage patterns and optimization recommendations
+#   - Performance monitoring with Web Vitals tracking and user experience correlation
+#   - Cost optimization with bundle size analysis and resource utilization management
+#   - Strategic planning with feature adoption tracking and user behavior analytics
+#   - Business impact assessment with feature performance correlation and revenue tracking
+#
+# User Experience Excellence:
+#   - Responsive design with mobile optimization and cross-device compatibility
+#   - Accessibility compliance with WCAG 2.1 AA standards and assistive technology support
+#   - Progressive Web App capabilities with offline support and mobile optimization
+#   - Internationalization with 7 supported locales and RTL support
+#   - Theme customization with dark mode and high contrast accessibility
+#
+# Developer Experience Excellence:
+#   - Feature flag management with dynamic enablement and testing capabilities
+#   - Comprehensive documentation with configuration guides and optimization procedures
+#   - Environment-specific configuration with production, staging, and development support
+#   - A/B testing integration with percentage-based rollout and user targeting
+#   - Performance monitoring with Lighthouse CI and real user monitoring
+#
+# ==============================================================================

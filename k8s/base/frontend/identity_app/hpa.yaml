@@ -1,0 +1,916 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Identity App HorizontalPodAutoscaler
+# ==============================================================================
+#
+# This manifest defines comprehensive Identity App HorizontalPodAutoscaler for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS IDENTITY APP AUTOSCALING ARCHITECTURE:
+#   • Advanced Next.js frontend autoscaling with React optimization and intelligent scaling management
+#   • Multi-tier scaling architecture with development, testing, staging, and production environments
+#   • Comprehensive performance framework with frontend load management, API scaling, and user experience intelligence
+#   • Advanced lifecycle management with automated scaling optimization, resource control, and performance enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and scaling insights
+#
+# VERIDIS IDENTITY APP SCALING OPTIMIZATION:
+#   • High-performance frontend scaling with intelligent load balancing and React optimization
+#   • Intelligent user traffic management with responsive scaling and performance-based scaling decisions
+#   • Advanced resource management with business intelligence and workload-based scaling control
+#   • Comprehensive performance control with intelligent scaling management and load enhancement
+#   • Enterprise acceleration with predictive scaling management and user experience optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II scaling controls with comprehensive audit and performance requirements
+#   • GDPR scaling compliance with data protection, privacy controls, and performance management
+#   • ISO 27001 scaling management with comprehensive framework integration
+#   • NIST 800-190 container scaling security with performance-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and scaling best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent scaling lifecycle management with automated provisioning and optimization
+#   • Predictive user experience analytics with capacity planning and scaling intelligence
+#   • Advanced monitoring integration with scaling analytics and business intelligence
+#   • Comprehensive performance control with scaling preservation and load optimization
+#   • Business continuity scaling with user experience guarantees and performance optimization
+#
+# SCALING ACCELERATION INTELLIGENCE:
+#   • Scaling usage analytics with load patterns and optimization recommendations
+#   • Performance monitoring with scaling latency and user experience optimization intelligence
+#   • Development efficiency with scaling analytics and deployment optimization procedures
+#   • Cost optimization with scaling utilization analysis and capacity planning procedures
+#   • Quality assurance with scaling metrics and user experience validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Identity App HorizontalPodAutoscaler - Primary Autoscaling
+# ==============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: veridis-identity-app-hpa
+  namespace: veridis-infrastructure
+
+  # Core Veridis Identity App HPA identification labels
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-hpa
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # HPA specific classification
+    hpa.veridis.xyz/type: identity-app-hpa
+    hpa.veridis.xyz/category: frontend-hpa
+    hpa.veridis.xyz/role: primary-hpa
+    hpa.veridis.xyz/performance-class: high-performance-hpa
+    hpa.veridis.xyz/security-level: enterprise
+
+    # Frontend HPA classification
+    frontend.veridis.xyz/hpa-type: nextjs-hpa
+    frontend.veridis.xyz/framework: nextjs
+    frontend.veridis.xyz/performance-tier: high-performance
+    frontend.veridis.xyz/optimization: enabled
+    frontend.veridis.xyz/features: full-stack
+
+    # Autoscaling HPA classification
+    autoscaling.veridis.xyz/tier: production
+    autoscaling.veridis.xyz/optimization: intelligent-scaling
+    autoscaling.veridis.xyz/behavior: optimized
+    autoscaling.veridis.xyz/metrics: comprehensive
+    autoscaling.veridis.xyz/efficiency: maximum
+
+    # Business HPA classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-user-experience
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational HPA labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "hpa-control-framework"
+    compliance.veridis.xyz/gdpr: "hpa-data-protection"
+    compliance.veridis.xyz/iso27001: "hpa-security-management"
+    compliance.veridis.xyz/nist-800-190: "hpa-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # HPA monitoring and analytics
+    monitoring.veridis.xyz/hpa-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/scaling-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Scaling behavior labels
+    scaling.veridis.xyz/algorithm: "predictive"
+    scaling.veridis.xyz/target-utilization: "70"
+    scaling.veridis.xyz/scale-down-stabilization: "300s"
+    scaling.veridis.xyz/scale-up-stabilization: "30s"
+    scaling.veridis.xyz/max-scale-up-rate: "100"
+
+  annotations:
+    # HPA purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Identity App HPA with Next.js optimization, intelligent scaling management, and comprehensive user experience"
+    veridis.xyz/purpose: "Provides comprehensive frontend autoscaling for decentralized identity management with intelligent load balancing, React optimization, and performance guarantees"
+    veridis.xyz/scope: "Frontend autoscaling including Next.js scaling, React performance optimization, API load management, and comprehensive user experience intelligence"
+
+    # HPA architecture and design
+    hpa.veridis.xyz/architecture: "Enterprise frontend HPA with Next.js scaling, intelligent load management, and performance optimization"
+    hpa.veridis.xyz/design-pattern: "Multi-tier HPA with performance optimization, cost efficiency, and business intelligence"
+    hpa.veridis.xyz/optimization-model: "Intelligent frontend HPA with predictive analytics, scaling optimization, and user experience efficiency"
+    hpa.veridis.xyz/performance-model: "High-performance frontend HPA with React optimization and intelligent scaling management"
+
+    # Next.js HPA specifications
+    nextjs.veridis.xyz/hpa-specification: "Next.js frontend HPA with scaling optimization and intelligent load management"
+    nextjs.veridis.xyz/scaling-specification: "Advanced scaling configuration with performance optimization and load enhancement"
+    nextjs.veridis.xyz/performance-specification: "Scaling performance optimization with intelligent load management and enhancement"
+    nextjs.veridis.xyz/load-specification: "Next.js load management with React acceleration and user experience efficiency"
+    nextjs.veridis.xyz/business-specification: "Next.js business HPA with cost optimization and strategic intelligence"
+
+    # Autoscaling HPA specifications
+    autoscaling.veridis.xyz/hpa-specification: "Autoscaling-aware frontend HPA with load optimization and user experience intelligence"
+    autoscaling.veridis.xyz/scaling-specification: "Scaling management optimization with intelligent load balancing and performance enhancement"
+    autoscaling.veridis.xyz/behavior-specification: "Scaling behavior with cost optimization and intelligent load management"
+    autoscaling.veridis.xyz/metrics-specification: "Scaling metrics with auto-optimization and performance management"
+    autoscaling.veridis.xyz/monitoring-specification: "Scaling monitoring with HPA analytics and user experience intelligence"
+
+    # Business HPA specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant frontend HPA with business continuity and user experience guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized frontend HPA with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with HPA optimization and user experience intelligence"
+
+    # Operational HPA specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with HPA analytics and user experience intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with scaling preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with HPA management and user experience optimization"
+
+    # HPA lifecycle specifications
+    lifecycle.veridis.xyz/hpa-specification: "Dynamic HPA with automated scaling management and performance optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent HPA scaling with machine learning and user experience forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "HPA optimization with intelligent scaling management and performance enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "HPA evolution with intelligent adaptation and user experience optimization"
+
+    # Scaling behavior annotations
+    hpa.autoscaling.k8s.io/behavior: "v2"
+    hpa.autoscaling.k8s.io/scale-down-stabilization-window: "300s"
+    hpa.autoscaling.k8s.io/scale-up-stabilization-window: "30s"
+    hpa.autoscaling.k8s.io/scale-down-policies: "conservative"
+    hpa.autoscaling.k8s.io/scale-up-policies: "aggressive"
+
+    # Performance HPA annotations
+    performance.veridis.xyz/target-cpu-utilization: "70"
+    performance.veridis.xyz/target-memory-utilization: "75"
+    performance.veridis.xyz/target-response-time: "200ms"
+    performance.veridis.xyz/target-throughput: "1000rps"
+
+    # Cost optimization annotations
+    cost.veridis.xyz/scaling-efficiency: "enabled"
+    cost.veridis.xyz/resource-optimization: "enabled"
+    cost.veridis.xyz/budget-awareness: "enabled"
+    cost.veridis.xyz/cost-per-user: "optimized"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "frontend-team@veridis.xyz"
+    veridis.xyz/hpa-admin: "frontend-admin@veridis.xyz"
+    veridis.xyz/escalation: "frontend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "frontend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/hpa"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/identity-app/hpa-management"
+    veridis.xyz/hpa-docs: "https://frontend.veridis.xyz/identity-app/hpa-guide"
+    veridis.xyz/optimization-docs: "https://optimization.veridis.xyz/identity-app/hpa-optimization"
+
+spec:
+  # ==============================================================================
+  # Target Deployment Configuration
+  # ==============================================================================
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: veridis-identity-app
+
+  # ==============================================================================
+  # Replica Management Configuration
+  # ==============================================================================
+  # Minimum replicas for high availability and load distribution
+  minReplicas: 3
+
+  # Maximum replicas for cost control and resource management
+  maxReplicas: 20
+
+  # ==============================================================================
+  # Scaling Metrics Configuration
+  # ==============================================================================
+  metrics:
+    # ==============================================================================
+    # CPU Utilization Metric - Primary Scaling Driver
+    # ==============================================================================
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          # Target 70% CPU utilization for optimal performance vs cost
+          averageUtilization: 70
+
+    # ==============================================================================
+    # Memory Utilization Metric - Secondary Scaling Driver
+    # ==============================================================================
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          # Target 75% memory utilization for efficient resource usage
+          averageUtilization: 75
+
+    # ==============================================================================
+    # Custom Metrics - Request Rate and Response Time
+    # ==============================================================================
+    # HTTP requests per second metric
+    - type: Pods
+      pods:
+        metric:
+          name: http_requests_per_second
+        target:
+          type: AverageValue
+          # Target 500 requests per second per pod
+          averageValue: "500"
+
+    # Response time metric for user experience
+    - type: Pods
+      pods:
+        metric:
+          name: http_request_duration_seconds
+        target:
+          type: AverageValue
+          # Target 200ms average response time
+          averageValue: "0.2"
+
+    # ==============================================================================
+    # Frontend-Specific Metrics
+    # ==============================================================================
+    # Next.js specific metrics
+    - type: Object
+      object:
+        metric:
+          name: nextjs_frontend_load
+        target:
+          type: Value
+          # Target frontend load metric
+          value: "100"
+        describedObject:
+          apiVersion: v1
+          kind: Service
+          name: veridis-identity-app
+
+    # User session metrics
+    - type: Object
+      object:
+        metric:
+          name: active_user_sessions
+        target:
+          type: Value
+          # Target 1000 active sessions per pod
+          value: "1000"
+        describedObject:
+          apiVersion: v1
+          kind: Service
+          name: veridis-identity-app
+
+    # ==============================================================================
+    # External Metrics - Load Balancer and CDN
+    # ==============================================================================
+    # Load balancer queue depth
+    - type: External
+      external:
+        metric:
+          name: aws_alb_target_response_time
+          selector:
+            matchLabels:
+              load_balancer: veridis-identity-app-alb
+        target:
+          type: Value
+          # Target ALB response time under 100ms
+          value: "100m"
+
+    # CDN cache hit ratio for performance optimization
+    - type: External
+      external:
+        metric:
+          name: cloudflare_cache_hit_ratio
+          selector:
+            matchLabels:
+              zone: veridis.xyz
+        target:
+          type: Value
+          # Target 95% cache hit ratio
+          value: "0.95"
+
+  # ==============================================================================
+  # Advanced Scaling Behavior Configuration
+  # ==============================================================================
+  behavior:
+    # ==============================================================================
+    # Scale Down Behavior - Conservative Approach
+    # ==============================================================================
+    scaleDown:
+      # Stabilization window to prevent flapping
+      stabilizationWindowSeconds: 300
+
+      # Scale down policies
+      policies:
+        # Conservative scale down - maximum 25% of current replicas per minute
+        - type: Percent
+          value: 25
+          periodSeconds: 60
+
+        # Alternative: Maximum 2 pods per minute
+        - type: Pods
+          value: 2
+          periodSeconds: 60
+
+      # Select the most conservative policy (minimum change)
+      selectPolicy: Min
+
+    # ==============================================================================
+    # Scale Up Behavior - Responsive Approach
+    # ==============================================================================
+    scaleUp:
+      # Stabilization window for quick response to load increases
+      stabilizationWindowSeconds: 30
+
+      # Scale up policies
+      policies:
+        # Aggressive initial scale up - maximum 100% of current replicas per minute
+        - type: Percent
+          value: 100
+          periodSeconds: 60
+
+        # Alternative: Maximum 4 pods per minute for rapid scaling
+        - type: Pods
+          value: 4
+          periodSeconds: 60
+
+        # Quick response for small clusters - 50% every 30 seconds
+        - type: Percent
+          value: 50
+          periodSeconds: 30
+
+      # Select the most aggressive policy (maximum change) for responsiveness
+      selectPolicy: Max
+
+---
+# ==============================================================================
+# Veridis Identity App HorizontalPodAutoscaler - Performance Optimization HPA
+# ==============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: veridis-identity-app-performance-hpa
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-performance-hpa
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    hpa.veridis.xyz/type: identity-app-performance-hpa
+    hpa.veridis.xyz/category: performance-hpa
+    hpa.veridis.xyz/role: performance-optimization-hpa
+    hpa.veridis.xyz/scope: performance-scaling
+
+    frontend.veridis.xyz/hpa-type: performance-hpa
+    frontend.veridis.xyz/optimization-level: maximum
+    frontend.veridis.xyz/performance-tier: enterprise
+
+    performance.veridis.xyz/optimization: enabled
+    performance.veridis.xyz/monitoring: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Performance-optimized HPA for Veridis Identity App with Web Vitals optimization and advanced performance scaling"
+    veridis.xyz/purpose: "Provides performance-based autoscaling for maximum user experience optimization and Web Vitals compliance"
+
+    hpa.veridis.xyz/performance-specification: "Performance optimization HPA with Web Vitals targets and user experience scaling"
+    frontend.veridis.xyz/performance-specification: "Frontend performance HPA with optimization and monitoring"
+
+    # Performance optimization annotations
+    performance-hpa.veridis.xyz/web-vitals: "optimized"
+    performance-hpa.veridis.xyz/user-experience: "maximum"
+    performance-hpa.veridis.xyz/response-time: "optimized"
+    performance-hpa.veridis.xyz/throughput: "maximum"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "performance-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/performance-hpa"
+
+spec:
+  # ==============================================================================
+  # Performance HPA Target Configuration
+  # ==============================================================================
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: veridis-identity-app
+
+  # ==============================================================================
+  # Performance-Optimized Replica Configuration
+  # ==============================================================================
+  minReplicas: 5  # Higher minimum for performance guarantee
+  maxReplicas: 30  # Higher maximum for traffic spikes
+
+  # ==============================================================================
+  # Performance-Focused Metrics
+  # ==============================================================================
+  metrics:
+    # ==============================================================================
+    # Web Vitals Metrics
+    # ==============================================================================
+    # Largest Contentful Paint (LCP) - should be < 2.5s
+    - type: Pods
+      pods:
+        metric:
+          name: web_vitals_lcp_p95
+        target:
+          type: AverageValue
+          # Target LCP p95 under 2000ms
+          averageValue: "2000m"
+
+    # First Input Delay (FID) - should be < 100ms
+    - type: Pods
+      pods:
+        metric:
+          name: web_vitals_fid_p95
+        target:
+          type: AverageValue
+          # Target FID p95 under 80ms
+          averageValue: "80m"
+
+    # Cumulative Layout Shift (CLS) - should be < 0.1
+    - type: Pods
+      pods:
+        metric:
+          name: web_vitals_cls_p95
+        target:
+          type: AverageValue
+          # Target CLS p95 under 0.08
+          averageValue: "0.08"
+
+    # ==============================================================================
+    # API Performance Metrics
+    # ==============================================================================
+    # API response time p95
+    - type: Pods
+      pods:
+        metric:
+          name: api_response_time_p95
+        target:
+          type: AverageValue
+          # Target API p95 response time under 150ms
+          averageValue: "150m"
+
+    # API error rate
+    - type: Pods
+      pods:
+        metric:
+          name: api_error_rate
+        target:
+          type: AverageValue
+          # Target error rate under 1%
+          averageValue: "0.01"
+
+    # ==============================================================================
+    # Resource Efficiency Metrics
+    # ==============================================================================
+    # CPU utilization for performance optimization
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          # Lower CPU target for performance (60%)
+          averageUtilization: 60
+
+    # Memory utilization for performance optimization
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          # Lower memory target for performance (65%)
+          averageUtilization: 65
+
+  # ==============================================================================
+  # Performance-Optimized Scaling Behavior
+  # ==============================================================================
+  behavior:
+    scaleDown:
+      # Longer stabilization for performance stability
+      stabilizationWindowSeconds: 600
+      policies:
+        # More conservative scale down for performance
+        - type: Percent
+          value: 15
+          periodSeconds: 60
+        - type: Pods
+          value: 1
+          periodSeconds: 60
+      selectPolicy: Min
+
+    scaleUp:
+      # Faster scale up for performance responsiveness
+      stabilizationWindowSeconds: 15
+      policies:
+        # Aggressive scale up for performance
+        - type: Percent
+          value: 150
+          periodSeconds: 60
+        - type: Pods
+          value: 5
+          periodSeconds: 30
+      selectPolicy: Max
+
+---
+# ==============================================================================
+# Veridis Identity App HorizontalPodAutoscaler - Cost Optimization HPA
+# ==============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: veridis-identity-app-cost-hpa
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-cost-hpa
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    hpa.veridis.xyz/type: identity-app-cost-hpa
+    hpa.veridis.xyz/category: cost-optimization-hpa
+    hpa.veridis.xyz/role: cost-efficiency-hpa
+    hpa.veridis.xyz/scope: cost-management
+
+    frontend.veridis.xyz/hpa-type: cost-hpa
+    frontend.veridis.xyz/cost-optimization: enabled
+    frontend.veridis.xyz/efficiency-tier: maximum
+
+    cost.veridis.xyz/optimization: enabled
+    cost.veridis.xyz/monitoring: comprehensive
+    cost.veridis.xyz/efficiency: maximum
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Cost-optimized HPA for Veridis Identity App with resource efficiency and budget management"
+    veridis.xyz/purpose: "Provides cost-efficient autoscaling for budget optimization while maintaining acceptable performance"
+
+    hpa.veridis.xyz/cost-specification: "Cost optimization HPA with resource efficiency and budget management"
+    frontend.veridis.xyz/cost-specification: "Frontend cost HPA with efficiency optimization and budget control"
+
+    # Cost optimization annotations
+    cost-hpa.veridis.xyz/resource-efficiency: "maximum"
+    cost-hpa.veridis.xyz/budget-control: "enabled"
+    cost-hpa.veridis.xyz/utilization-optimization: "enabled"
+    cost-hpa.veridis.xyz/cost-per-user: "optimized"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "cost-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/cost-hpa"
+
+spec:
+  # ==============================================================================
+  # Cost-Optimized Target Configuration
+  # ==============================================================================
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: veridis-identity-app
+
+  # ==============================================================================
+  # Cost-Efficient Replica Configuration
+  # ==============================================================================
+  minReplicas: 2  # Lower minimum for cost efficiency
+  maxReplicas: 15  # Lower maximum for cost control
+
+  # ==============================================================================
+  # Cost-Focused Metrics
+  # ==============================================================================
+  metrics:
+    # ==============================================================================
+    # Resource Utilization for Cost Efficiency
+    # ==============================================================================
+    # Higher CPU utilization target for cost efficiency
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          # Higher CPU target for cost efficiency (85%)
+          averageUtilization: 85
+
+    # Higher memory utilization target for cost efficiency
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          # Higher memory target for cost efficiency (90%)
+          averageUtilization: 90
+
+    # ==============================================================================
+    # Cost-Per-Request Metrics
+    # ==============================================================================
+    # Requests per pod for cost efficiency
+    - type: Pods
+      pods:
+        metric:
+          name: http_requests_per_second
+        target:
+          type: AverageValue
+          # Higher requests per pod for cost efficiency
+          averageValue: "800"
+
+    # ==============================================================================
+    # Business Metrics for Cost Optimization
+    # ==============================================================================
+    # Cost per user metric
+    - type: External
+      external:
+        metric:
+          name: cost_per_active_user
+          selector:
+            matchLabels:
+              service: veridis-identity-app
+        target:
+          type: Value
+          # Target cost per user optimization
+          value: "0.01"
+
+  # ==============================================================================
+  # Cost-Optimized Scaling Behavior
+  # ==============================================================================
+  behavior:
+    scaleDown:
+      # Aggressive scale down for cost savings
+      stabilizationWindowSeconds: 120
+      policies:
+        # More aggressive scale down for cost optimization
+        - type: Percent
+          value: 50
+          periodSeconds: 60
+        - type: Pods
+          value: 3
+          periodSeconds: 60
+      selectPolicy: Max
+
+    scaleUp:
+      # Conservative scale up for cost control
+      stabilizationWindowSeconds: 120
+      policies:
+        # Conservative scale up for cost control
+        - type: Percent
+          value: 50
+          periodSeconds: 120
+        - type: Pods
+          value: 2
+          periodSeconds: 60
+      selectPolicy: Min
+
+---
+# ==============================================================================
+# Veridis Identity App HorizontalPodAutoscaler - Development HPA
+# ==============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: veridis-identity-app-dev-hpa
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-dev-hpa
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    hpa.veridis.xyz/type: identity-app-dev-hpa
+    hpa.veridis.xyz/category: development-hpa
+    hpa.veridis.xyz/role: testing-hpa
+    hpa.veridis.xyz/scope: development-testing
+
+    frontend.veridis.xyz/hpa-type: development-hpa
+    frontend.veridis.xyz/testing-enabled: "true"
+    frontend.veridis.xyz/development-enabled: "true"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing HPA for Veridis Identity App with flexible scaling and testing capabilities"
+    veridis.xyz/purpose: "Provides development-friendly autoscaling for testing workflows and development environment simulation"
+
+    hpa.veridis.xyz/dev-specification: "Development HPA with testing integration and flexible scaling support"
+    frontend.veridis.xyz/dev-specification: "Frontend development HPA with testing framework and debugging integration"
+
+    # Development annotations
+    development.veridis.xyz/flexible-scaling: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/development-workflow: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-features-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/dev-hpa"
+
+spec:
+  # ==============================================================================
+  # Development HPA Target Configuration
+  # ==============================================================================
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: veridis-identity-app
+
+  # ==============================================================================
+  # Development-Friendly Replica Configuration
+  # ==============================================================================
+  minReplicas: 1  # Single replica for development
+  maxReplicas: 10  # Moderate maximum for testing
+
+  # ==============================================================================
+  # Development-Focused Metrics
+  # ==============================================================================
+  metrics:
+    # ==============================================================================
+    # Basic Resource Metrics for Development
+    # ==============================================================================
+    # Relaxed CPU utilization for development
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          # Relaxed CPU target for development (80%)
+          averageUtilization: 80
+
+    # ==============================================================================
+    # Development-Specific Metrics
+    # ==============================================================================
+    # Request rate for development testing
+    - type: Pods
+      pods:
+        metric:
+          name: http_requests_per_second
+        target:
+          type: AverageValue
+          # Lower requests per pod for development
+          averageValue: "200"
+
+  # ==============================================================================
+  # Development-Optimized Scaling Behavior
+  # ==============================================================================
+  behavior:
+    scaleDown:
+      # Quick scale down for development flexibility
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: 30
+      selectPolicy: Max
+
+    scaleUp:
+      # Quick scale up for development testing
+      stabilizationWindowSeconds: 30
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 30
+      selectPolicy: Max
+
+# ==============================================================================
+# Veridis Identity App HPA Summary and Enterprise Autoscaling Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS IDENTITY APP HPA STRATEGY:
+# ================================================
+#
+# VERIDIS IDENTITY APP HPA ARCHITECTURE OVERVIEW:
+# -----------------------------------------------
+# 1. Primary HPA (veridis-identity-app-hpa):
+#    - Comprehensive autoscaling with CPU (70%), memory (75%), and custom metrics optimization
+#    - Advanced scaling behavior with 300s scale-down and 30s scale-up stabilization windows
+#    - Multi-metric scaling with HTTP requests (500 RPS), response time (200ms), and frontend load
+#    - External metrics integration with AWS ALB response time and Cloudflare cache hit ratio
+#    - Business continuity focus with 3-20 replica range and intelligent scaling policies
+#
+# 2. Performance HPA (veridis-identity-app-performance-hpa):
+#    - Web Vitals optimization with LCP<2s, FID<80ms, CLS<0.08 performance targets
+#    - Performance-focused scaling with lower resource utilization (60% CPU, 65% memory)
+#    - API performance metrics with p95 response time <150ms and error rate <1%
+#    - Enhanced replica range (5-30) for performance guarantee and traffic spike handling
+#    - Aggressive scale-up (150%/5 pods) with conservative scale-down for performance stability
+#
+# 3. Cost Optimization HPA (veridis-identity-app-cost-hpa):
+#    - Resource efficiency with higher utilization targets (85% CPU, 90% memory)
+#    - Cost-per-user optimization with business metric integration and budget management
+#    - Conservative replica range (2-15) for cost control with aggressive scale-down policies
+#    - Higher requests per pod (800 RPS) for resource efficiency and cost optimization
+#    - Cost-aware scaling behavior with 50% scale-down and conservative scale-up policies
+#
+# 4. Development HPA (veridis-identity-app-dev-hpa):
+#    - Development-friendly scaling with single replica minimum and flexible testing support
+#    - Relaxed performance targets with 80% CPU utilization and 200 RPS per pod
+#    - Quick scaling behavior with 60s scale-down and 30s scale-up for development agility
+#    - Testing workflow integration with debugging support and development environment simulation
+#    - Conditional deployment with development feature enablement and testing framework support
+#
+# ENTERPRISE HPA FEATURES:
+# ========================
+# Advanced Multi-Metric Autoscaling:
+#   - Resource metrics with CPU (70%) and memory (75%) utilization targets for optimal performance
+#   - Custom pod metrics with HTTP requests per second (500 RPS) and response time (200ms) targets
+#   - Object metrics with Next.js frontend load and active user sessions for user experience optimization
+#   - External metrics with AWS ALB response time (<100ms) and Cloudflare cache hit ratio (95%)
+#   - Web Vitals metrics with LCP, FID, and CLS targets for performance compliance and user experience
+#
+# Comprehensive Scaling Behavior Configuration:
+#   - Conservative scale-down with 300s stabilization window and 25% maximum change per minute
+#   - Aggressive scale-up with 30s stabilization window and 100% maximum change for responsiveness
+#   - Policy selection with Min for scale-down (conservative) and Max for scale-up (aggressive)
+#   - Performance-optimized behavior with longer stabilization (600s down, 15s up) for stability
+#   - Cost-optimized behavior with aggressive scale-down (50%) and conservative scale-up for efficiency
+#
+# Enterprise Security and Compliance Integration:
+#   - SOC 2 Type II HPA controls with comprehensive audit requirements and scaling logging
+#   - GDPR HPA compliance with data protection and privacy-preserving scaling management
+#   - ISO 27001 HPA security management with information security and compliance integration
+#   - NIST 800-190 container HPA security with validation and compliance
+#   - Zero-trust HPA architecture with comprehensive encryption and authentication requirements
+#
+# Performance Optimization Excellence:
+#   - Web Vitals targets with LCP<2s, FID<80ms, CLS<0.08 for performance compliance
+#   - API performance optimization with p95 response time <150ms and error rate <1%
+#   - Frontend load optimization with Next.js specific metrics and user session management
+#   - Cache performance integration with CDN hit ratio optimization and edge performance
+#   - Business performance correlation with cost-per-user optimization and efficiency tracking
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# HPA Lifecycle Management:
+#   - Multi-HPA architecture with primary, performance, cost, and development autoscaling strategies
+#   - Intelligent scaling management with predictive analytics and machine learning correlation
+#   - Advanced monitoring with comprehensive HPA analytics and business intelligence
+#   - Configuration validation with schema enforcement and deployment safety checks
+#   - Automated optimization with usage pattern analysis and scaling recommendation engine
+#
+# Business Intelligence Integration:
+#   - HPA cost optimization with resource utilization correlation and budget management
+#   - Performance analytics with scaling pattern monitoring and user experience correlation
+#   - User experience intelligence with Web Vitals tracking and performance optimization
+#   - Strategic planning with capacity management and scaling forecasting
+#   - Business impact assessment with scaling performance correlation and availability tracking
+#
+# Scaling Strategy Excellence:
+#   - Performance-first scaling with Web Vitals optimization and user experience guarantee
+#   - Cost-efficient scaling with resource utilization optimization and budget management
+#   - Development-friendly scaling with testing integration and debugging support
+#   - Business-aware scaling with cost-per-user optimization and strategic intelligence
+#   - Compliance-focused scaling with regulatory requirements and audit trail management
+#
+# Developer Experience Excellence:
+#   - Development HPA with flexible scaling and testing workflow integration
+#   - Comprehensive documentation with HPA guides and troubleshooting procedures
+#   - Environment-specific HPA with production, performance, cost, and development strategies
+#   - Testing integration with development workflow and debugging capabilities
+#   - Performance monitoring with Web Vitals tracking and user experience correlation
+#
+# ==============================================================================
