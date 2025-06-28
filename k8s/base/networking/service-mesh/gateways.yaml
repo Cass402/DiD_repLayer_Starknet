@@ -1,0 +1,1213 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Service Mesh Gateways Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Service Mesh Gateways for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS SERVICE MESH GATEWAYS ARCHITECTURE:
+#   • Advanced Service mesh gateways with intelligent traffic ingress and gateway-based service mesh routing
+#   • Multi-tier gateways architecture with development, testing, staging, and production environments
+#   • Comprehensive networking framework with gateway policies, traffic optimization, ingress gateway integration
+#   • Advanced lifecycle management with automated gateway optimization, service mesh ingress control, and traffic enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and service mesh gateway performance insights
+#
+# VERIDIS SERVICE MESH GATEWAYS OPTIMIZATION:
+#   • High-performance service mesh ingress with intelligent TLS termination and gateway-based optimization
+#   • Intelligent service mesh traffic management with responsive ingress and performance-based gateway decisions
+#   • Advanced TLS management with business intelligence and certificate-based gateway control
+#   • Comprehensive networking control with intelligent service mesh gateway management and traffic enhancement
+#   • Enterprise acceleration with predictive service mesh gateway management and traffic optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II service mesh gateway controls with comprehensive audit and traffic requirements
+#   • GDPR service mesh gateway compliance with data protection, privacy controls, and traffic management
+#   • ISO 27001 service mesh gateway management with comprehensive framework integration
+#   • NIST 800-190 container service mesh gateway security with traffic-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and service mesh gateway best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent service mesh gateway lifecycle management with automated provisioning and traffic optimization
+#   • Predictive traffic analytics with capacity planning and service mesh gateway intelligence
+#   • Advanced monitoring integration with service mesh gateway analytics and traffic business intelligence
+#   • Comprehensive networking control with service mesh gateway preservation and traffic optimization
+#   • Business continuity service mesh gateway with traffic guarantees and service mesh optimization
+#
+# GATEWAY ACCELERATION INTELLIGENCE:
+#   • Service mesh gateway usage analytics with traffic patterns and optimization recommendations
+#   • Traffic monitoring with service mesh gateway latency and ingress optimization intelligence
+#   • Development efficiency with service mesh gateway analytics and deployment optimization procedures
+#   • Cost optimization with service mesh gateway utilization analysis and traffic capacity planning procedures
+#   • Quality assurance with service mesh gateway metrics and traffic validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Main Gateway - Production HTTP/HTTPS Ingress Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-main-gateway
+  namespace: veridis-infrastructure
+
+  # Core Veridis Main Gateway identification labels
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: main-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Gateway specific classification
+    gateway.veridis.xyz/type: main-gateway
+    gateway.veridis.xyz/category: production-gateway
+    gateway.veridis.xyz/role: primary-ingress-gateway
+    gateway.veridis.xyz/performance-class: high-performance-gateway
+    gateway.veridis.xyz/security-level: enterprise
+
+    # Ingress Gateway classification
+    ingress.veridis.xyz/gateway-type: intelligent-gateway
+    ingress.veridis.xyz/service-type: external-ingress
+    ingress.veridis.xyz/performance-tier: high-performance
+    ingress.veridis.xyz/optimization: enabled
+    ingress.veridis.xyz/features: full-ingress-stack
+
+    # Service Mesh Gateway classification
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-ingress-policies
+    servicemesh.veridis.xyz/tls-termination: advanced
+    servicemesh.veridis.xyz/traffic-management: optimized
+    servicemesh.veridis.xyz/efficiency: maximum
+
+    # Business Gateway classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-ingress-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Gateway labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: networking-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "main-gateway-control-framework"
+    compliance.veridis.xyz/gdpr: "main-gateway-data-protection"
+    compliance.veridis.xyz/iso27001: "main-gateway-security-management"
+    compliance.veridis.xyz/nist-800-190: "main-gateway-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Main Gateway monitoring and analytics
+    monitoring.veridis.xyz/main-gateway-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/traffic-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # TLS and security labels
+    tls.veridis.xyz/termination-enabled: "true"
+    tls.veridis.xyz/version: "1.3"
+    tls.veridis.xyz/cipher-suite: "modern"
+    tls.veridis.xyz/certificate-management: "automated"
+    tls.veridis.xyz/hsts-enabled: "true"
+
+  annotations:
+    # Gateway purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Main Gateway with intelligent TLS termination, advanced HTTP/HTTPS ingress, and comprehensive external traffic management"
+    veridis.xyz/purpose: "Provides comprehensive main gateway for decentralized identity management with intelligent traffic ingress, TLS optimization, and networking guarantees"
+    veridis.xyz/scope: "Main gateway including TLS termination, HTTP/HTTPS ingress, traffic routing, and comprehensive ingress intelligence"
+
+    # Gateway architecture and design
+    gateway.veridis.xyz/architecture: "Enterprise main gateway with intelligent TLS termination, advanced HTTP/HTTPS routing, and traffic optimization"
+    gateway.veridis.xyz/design-pattern: "Multi-protocol main gateway with traffic optimization, cost efficiency, and business intelligence"
+    gateway.veridis.xyz/optimization-model: "Intelligent main gateway with predictive analytics, traffic optimization, and TLS efficiency"
+    gateway.veridis.xyz/performance-model: "High-performance main gateway with traffic optimization and intelligent TLS management"
+
+    # Ingress Gateway specifications
+    ingress.veridis.xyz/gateway-specification: "Ingress gateway with traffic optimization and intelligent external traffic management"
+    ingress.veridis.xyz/routing-specification: "Advanced ingress routing configuration with traffic optimization and TLS enhancement"
+    ingress.veridis.xyz/traffic-specification: "Ingress traffic management optimization with intelligent routing and enhancement"
+    ingress.veridis.xyz/performance-specification: "Ingress performance routing with traffic acceleration and TLS efficiency"
+    ingress.veridis.xyz/business-specification: "Ingress business gateway with cost optimization and strategic traffic intelligence"
+
+    # Service Mesh Gateway specifications
+    servicemesh.veridis.xyz/gateway-specification: "Service mesh-aware main gateway with TLS optimization and traffic intelligence"
+    servicemesh.veridis.xyz/ingress-specification: "Service mesh ingress management optimization with intelligent TLS and traffic enhancement"
+    servicemesh.veridis.xyz/mesh-specification: "Service mesh integration with cost optimization and intelligent traffic management"
+    servicemesh.veridis.xyz/tls-specification: "Service mesh TLS termination with auto-optimization and traffic management"
+    servicemesh.veridis.xyz/monitoring-specification: "Service mesh monitoring with main gateway analytics and traffic intelligence"
+
+    # Business Gateway specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant main gateway with business continuity and traffic guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized main gateway with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with main gateway optimization and traffic intelligence"
+
+    # Operational Gateway specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with main gateway analytics and traffic intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with main gateway preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with main gateway management and traffic optimization"
+
+    # Main Gateway lifecycle specifications
+    lifecycle.veridis.xyz/main-gateway-specification: "Dynamic main gateway with automated traffic management and TLS optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent main gateway scaling with machine learning and traffic forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Main gateway optimization with intelligent traffic management and TLS enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Main gateway evolution with intelligent adaptation and traffic optimization"
+
+    # Istio Gateway annotations
+    istio.veridis.xyz/gateway-type: "ingress-gateway"
+    istio.veridis.xyz/tls-mode: "SIMPLE"
+    istio.veridis.xyz/protocol-support: "HTTP-HTTPS"
+    istio.veridis.xyz/certificate-source: "mounted"
+    istio.veridis.xyz/traffic-direction: "inbound"
+
+    # TLS configuration annotations
+    tls.veridis.xyz/version: "1.3"
+    tls.veridis.xyz/cipher-suites: "ECDHE-RSA-AES256-GCM-SHA384,ECDHE-RSA-CHACHA20-POLY1305"
+    tls.veridis.xyz/certificate-path: "/etc/istio/ingressgateway-certs/"
+    tls.veridis.xyz/hsts-max-age: "31536000"
+    tls.veridis.xyz/certificate-rotation: "automated"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/connection-optimization: "enabled"
+    performance.veridis.xyz/keep-alive: "enabled"
+    performance.veridis.xyz/compression: "enabled"
+    performance.veridis.xyz/http2-support: "enabled"
+    performance.veridis.xyz/traffic-optimization: "maximum"
+
+    # Security annotations
+    security.veridis.xyz/security-headers: "enabled"
+    security.veridis.xyz/csrf-protection: "enabled"
+    security.veridis.xyz/rate-limiting: "enabled"
+    security.veridis.xyz/ddos-protection: "enabled"
+    security.veridis.xyz/waf-integration: "enabled"
+
+    # Monitoring and observability annotations
+    monitoring.veridis.xyz/prometheus-scrape: "true"
+    monitoring.veridis.xyz/jaeger-tracing: "enabled"
+    monitoring.veridis.xyz/kiali-visualization: "enabled"
+    monitoring.veridis.xyz/grafana-dashboard: "main-gateway"
+    monitoring.veridis.xyz/alerting-enabled: "true"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/gateway-admin: "platform-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "platform-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/main-gateway"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/networking/gateway-management"
+    veridis.xyz/gateway-docs: "https://networking.veridis.xyz/main-gateway-guide"
+    veridis.xyz/service-mesh-docs: "https://servicemesh.veridis.xyz/main-gateway"
+
+spec:
+  # ==============================================================================
+  # Gateway Selector Configuration
+  # ==============================================================================
+  selector:
+    istio: ingressgateway
+
+  # ==============================================================================
+  # Server Configuration
+  # ==============================================================================
+  servers:
+    # ==============================================================================
+    # HTTPS Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: veridis-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "veridis.xyz"
+        - "*.veridis.xyz"
+        - "api.veridis.xyz"
+        - "backend.veridis.xyz"
+        - "ui.veridis.xyz"
+        - "app.veridis.xyz"
+
+    # ==============================================================================
+    # HTTP Server Configuration (Redirect to HTTPS)
+    # ==============================================================================
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "veridis.xyz"
+        - "*.veridis.xyz"
+        - "api.veridis.xyz"
+        - "backend.veridis.xyz"
+        - "ui.veridis.xyz"
+        - "app.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis API Gateway - Backend Services Ingress Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-api-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: api-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: api-gateway
+    gateway.veridis.xyz/category: backend-gateway
+    gateway.veridis.xyz/role: api-ingress-gateway
+    gateway.veridis.xyz/scope: backend-services
+
+    ingress.veridis.xyz/gateway-type: api-gateway
+    ingress.veridis.xyz/service-type: backend-api
+    ingress.veridis.xyz/performance-tier: high-performance
+    ingress.veridis.xyz/optimization: enabled
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-api-policies
+    servicemesh.veridis.xyz/tls-termination: advanced
+    servicemesh.veridis.xyz/api-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis API Gateway with backend service ingress, API management, and comprehensive backend traffic routing"
+    veridis.xyz/purpose: "Provides comprehensive API gateway for backend services with intelligent API routing, backend optimization, and service management"
+
+    gateway.veridis.xyz/architecture: "Enterprise API gateway with intelligent backend routing, API management, and traffic optimization"
+    ingress.veridis.xyz/api-specification: "API gateway with backend service optimization and intelligent API management"
+
+    # API-specific annotations
+    api.veridis.xyz/version: "v1"
+    api.veridis.xyz/rate-limiting: "enabled"
+    api.veridis.xyz/authentication: "required"
+    api.veridis.xyz/authorization: "rbac"
+    api.veridis.xyz/throttling: "enabled"
+
+    # Backend integration annotations
+    backend.veridis.xyz/service-discovery: "enabled"
+    backend.veridis.xyz/load-balancing: "intelligent"
+    backend.veridis.xyz/circuit-breaker: "enabled"
+    backend.veridis.xyz/retry-policy: "exponential-backoff"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/api-caching: "enabled"
+    performance.veridis.xyz/response-compression: "enabled"
+    performance.veridis.xyz/connection-pooling: "optimized"
+    performance.veridis.xyz/keep-alive: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/api-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # HTTPS API Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https-api
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: veridis-api-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "api.veridis.xyz"
+        - "backend-api.veridis.xyz"
+        - "zk-api.veridis.xyz"
+        - "identity-api.veridis.xyz"
+        - "attestation-api.veridis.xyz"
+        - "verification-api.veridis.xyz"
+        - "compliance-api.veridis.xyz"
+        - "bridge-api.veridis.xyz"
+
+    # ==============================================================================
+    # HTTP API Server Configuration (Redirect to HTTPS)
+    # ==============================================================================
+    - port:
+        number: 80
+        name: http-api
+        protocol: HTTP
+      hosts:
+        - "api.veridis.xyz"
+        - "backend-api.veridis.xyz"
+        - "zk-api.veridis.xyz"
+        - "identity-api.veridis.xyz"
+        - "attestation-api.veridis.xyz"
+        - "verification-api.veridis.xyz"
+        - "compliance-api.veridis.xyz"
+        - "bridge-api.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Gateway - GPU Services Ingress Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-zk-circuits-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: zk-circuits-gateway
+    gateway.veridis.xyz/category: zk-gateway
+    gateway.veridis.xyz/role: zk-circuits-ingress-gateway
+    gateway.veridis.xyz/scope: zk-services
+
+    zkCircuits.veridis.xyz/gateway-type: gpu-accelerated-gateway
+    zkCircuits.veridis.xyz/performance-tier: high-performance
+    zkCircuits.veridis.xyz/gpu-enabled: "true"
+    zkCircuits.veridis.xyz/optimization: enabled
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-zk-policies
+    servicemesh.veridis.xyz/tls-termination: advanced
+    servicemesh.veridis.xyz/zk-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits Gateway with GPU-optimized ingress, proof generation routing, and comprehensive ZK traffic management"
+    veridis.xyz/purpose: "Provides comprehensive ZK circuits gateway for zero-knowledge proof services with GPU optimization and intelligent ZK routing"
+
+    gateway.veridis.xyz/architecture: "Enterprise ZK circuits gateway with GPU acceleration, proof generation routing, and ZK optimization"
+    zkCircuits.veridis.xyz/gateway-specification: "ZK circuits gateway with GPU optimization and intelligent proof generation management"
+
+    # ZK-specific annotations
+    zkCircuits.veridis.xyz/proof-generation: "gpu-accelerated"
+    zkCircuits.veridis.xyz/circuit-optimization: "enabled"
+    zkCircuits.veridis.xyz/batch-processing: "enabled"
+    zkCircuits.veridis.xyz/extended-timeouts: "enabled"
+
+    # GPU annotations
+    gpu.veridis.xyz/acceleration: "enabled"
+    gpu.veridis.xyz/memory-optimization: "enabled"
+    gpu.veridis.xyz/cuda-support: "enabled"
+    gpu.veridis.xyz/ingress-optimization: "enabled"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/extended-timeout: "enabled"
+    performance.veridis.xyz/resource-aware-routing: "enabled"
+    performance.veridis.xyz/gpu-affinity: "enabled"
+    performance.veridis.xyz/batch-optimization: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/zk-circuits-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # HTTPS ZK Circuits Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https-zk
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: veridis-zk-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "zk.veridis.xyz"
+        - "zk-circuits.veridis.xyz"
+        - "proof-generation.veridis.xyz"
+        - "garaga.veridis.xyz"
+        - "circuits-api.veridis.xyz"
+
+    # ==============================================================================
+    # HTTP ZK Circuits Server Configuration (Redirect to HTTPS)
+    # ==============================================================================
+    - port:
+        number: 80
+        name: http-zk
+        protocol: HTTP
+      hosts:
+        - "zk.veridis.xyz"
+        - "zk-circuits.veridis.xyz"
+        - "proof-generation.veridis.xyz"
+        - "garaga.veridis.xyz"
+        - "circuits-api.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis UI Gateway - Frontend Application Ingress Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-ui-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: ui-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: ui-gateway
+    gateway.veridis.xyz/category: frontend-gateway
+    gateway.veridis.xyz/role: ui-ingress-gateway
+    gateway.veridis.xyz/scope: frontend-services
+
+    frontend.veridis.xyz/gateway-type: spa-optimized-gateway
+    frontend.veridis.xyz/framework: react
+    frontend.veridis.xyz/optimization: enabled
+    frontend.veridis.xyz/caching: aggressive
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-ui-policies
+    servicemesh.veridis.xyz/tls-termination: advanced
+    servicemesh.veridis.xyz/spa-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis UI Gateway with SPA-optimized ingress, static asset delivery, and comprehensive frontend traffic management"
+    veridis.xyz/purpose: "Provides comprehensive UI gateway for frontend applications with SPA optimization and intelligent frontend routing"
+
+    gateway.veridis.xyz/architecture: "Enterprise UI gateway with SPA routing, static asset optimization, and frontend management"
+    frontend.veridis.xyz/gateway-specification: "UI gateway with SPA optimization and intelligent frontend management"
+
+    # Frontend-specific annotations
+    frontend.veridis.xyz/spa-routing: "enabled"
+    frontend.veridis.xyz/static-assets: "optimized"
+    frontend.veridis.xyz/compression: "enabled"
+    frontend.veridis.xyz/cdn-integration: "enabled"
+
+    # Caching annotations
+    caching.veridis.xyz/static-assets: "aggressive"
+    caching.veridis.xyz/dynamic-content: "conditional"
+    caching.veridis.xyz/compression: "gzip-brotli"
+    caching.veridis.xyz/browser-caching: "optimized"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/asset-optimization: "enabled"
+    performance.veridis.xyz/lazy-loading: "enabled"
+    performance.veridis.xyz/preload-critical: "enabled"
+    performance.veridis.xyz/minification: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/ui-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # HTTPS UI Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https-ui
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: veridis-ui-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "ui.veridis.xyz"
+        - "app.veridis.xyz"
+        - "dashboard.veridis.xyz"
+        - "identity.veridis.xyz"
+        - "wallet.veridis.xyz"
+        - "dapp.veridis.xyz"
+
+    # ==============================================================================
+    # HTTP UI Server Configuration (Redirect to HTTPS)
+    # ==============================================================================
+    - port:
+        number: 80
+        name: http-ui
+        protocol: HTTP
+      hosts:
+        - "ui.veridis.xyz"
+        - "app.veridis.xyz"
+        - "dashboard.veridis.xyz"
+        - "identity.veridis.xyz"
+        - "wallet.veridis.xyz"
+        - "dapp.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis WebSocket Gateway - Real-time Communication Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-websocket-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: websocket-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: websocket-gateway
+    gateway.veridis.xyz/category: realtime-gateway
+    gateway.veridis.xyz/role: websocket-ingress-gateway
+    gateway.veridis.xyz/scope: realtime-services
+
+    websocket.veridis.xyz/gateway-type: realtime-gateway
+    websocket.veridis.xyz/protocol: websocket
+    websocket.veridis.xyz/optimization: enabled
+    websocket.veridis.xyz/session-persistence: enabled
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-websocket-policies
+    servicemesh.veridis.xyz/tls-termination: advanced
+    servicemesh.veridis.xyz/realtime-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis WebSocket Gateway with real-time communication, persistent connections, and comprehensive WebSocket traffic management"
+    veridis.xyz/purpose: "Provides comprehensive WebSocket gateway for real-time services with persistent connections and intelligent WebSocket routing"
+
+    gateway.veridis.xyz/architecture: "Enterprise WebSocket gateway with persistent connections, real-time optimization, and WebSocket management"
+    websocket.veridis.xyz/gateway-specification: "WebSocket gateway with real-time optimization and intelligent connection management"
+
+    # WebSocket-specific annotations
+    websocket.veridis.xyz/persistent-connections: "enabled"
+    websocket.veridis.xyz/connection-pooling: "optimized"
+    websocket.veridis.xyz/heartbeat: "enabled"
+    websocket.veridis.xyz/reconnection: "automatic"
+
+    # Real-time annotations
+    realtime.veridis.xyz/latency-optimization: "enabled"
+    realtime.veridis.xyz/message-queuing: "enabled"
+    realtime.veridis.xyz/load-balancing: "session-aware"
+    realtime.veridis.xyz/scalability: "horizontal"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/connection-optimization: "enabled"
+    performance.veridis.xyz/message-compression: "enabled"
+    performance.veridis.xyz/buffer-optimization: "enabled"
+    performance.veridis.xyz/concurrent-connections: "high"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/websocket-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # HTTPS WebSocket Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https-ws
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: veridis-ws-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "ws.veridis.xyz"
+        - "websocket.veridis.xyz"
+        - "realtime.veridis.xyz"
+        - "notifications.veridis.xyz"
+        - "events.veridis.xyz"
+
+    # ==============================================================================
+    # HTTP WebSocket Server Configuration (Redirect to HTTPS)
+    # ==============================================================================
+    - port:
+        number: 80
+        name: http-ws
+        protocol: HTTP
+      hosts:
+        - "ws.veridis.xyz"
+        - "websocket.veridis.xyz"
+        - "realtime.veridis.xyz"
+        - "notifications.veridis.xyz"
+        - "events.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis Internal Gateway - Service Mesh Internal Communication Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-internal-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: internal-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: internal-gateway
+    gateway.veridis.xyz/category: internal-gateway
+    gateway.veridis.xyz/role: internal-communication-gateway
+    gateway.veridis.xyz/scope: internal-services
+
+    internal.veridis.xyz/gateway-type: service-mesh-gateway
+    internal.veridis.xyz/communication: internal
+    internal.veridis.xyz/encryption: mtls
+    internal.veridis.xyz/authentication: required
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-internal-policies
+    servicemesh.veridis.xyz/mtls-mode: strict
+    servicemesh.veridis.xyz/internal-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis Internal Gateway with mTLS communication, service mesh integration, and comprehensive internal traffic management"
+    veridis.xyz/purpose: "Provides comprehensive internal gateway for service-to-service communication with mTLS encryption and secure internal routing"
+
+    gateway.veridis.xyz/architecture: "Enterprise internal gateway with mTLS encryption, service mesh integration, and internal optimization"
+    internal.veridis.xyz/gateway-specification: "Internal gateway with mTLS optimization and intelligent service mesh management"
+
+    # Internal communication annotations
+    internal.veridis.xyz/mtls-enabled: "true"
+    internal.veridis.xyz/service-mesh-integration: "enabled"
+    internal.veridis.xyz/mutual-authentication: "required"
+    internal.veridis.xyz/authorization: "rbac"
+
+    # Security annotations
+    security.veridis.xyz/internal-encryption: "enabled"
+    security.veridis.xyz/certificate-rotation: "automatic"
+    security.veridis.xyz/access-control: "strict"
+    security.veridis.xyz/traffic-monitoring: "comprehensive"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "internal-gateway-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/internal-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # Internal HTTPS Server Configuration
+    # ==============================================================================
+    - port:
+        number: 15443
+        name: tls-internal
+        protocol: HTTPS
+      tls:
+        mode: MUTUAL
+        credentialName: veridis-internal-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "internal.veridis.xyz"
+        - "service-mesh.veridis.xyz"
+        - "backend-internal.veridis.xyz"
+        - "zk-internal.veridis.xyz"
+        - "infrastructure-internal.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis Monitoring Gateway - Observability Services Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-monitoring-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: monitoring-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: monitoring-gateway
+    gateway.veridis.xyz/category: observability-gateway
+    gateway.veridis.xyz/role: monitoring-ingress-gateway
+    gateway.veridis.xyz/scope: monitoring-services
+
+    monitoring.veridis.xyz/gateway-type: observability-gateway
+    monitoring.veridis.xyz/services: prometheus-grafana-jaeger
+    monitoring.veridis.xyz/access-control: restricted
+    monitoring.veridis.xyz/authentication: required
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-monitoring-policies
+    servicemesh.veridis.xyz/tls-termination: advanced
+    servicemesh.veridis.xyz/observability-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis Monitoring Gateway with observability services access, metrics ingress, and comprehensive monitoring traffic management"
+    veridis.xyz/purpose: "Provides comprehensive monitoring gateway for observability services with restricted access and intelligent monitoring routing"
+
+    gateway.veridis.xyz/architecture: "Enterprise monitoring gateway with observability services, metrics ingress, and monitoring optimization"
+    monitoring.veridis.xyz/gateway-specification: "Monitoring gateway with observability optimization and intelligent metrics management"
+
+    # Monitoring-specific annotations
+    monitoring.veridis.xyz/prometheus-access: "enabled"
+    monitoring.veridis.xyz/grafana-access: "enabled"
+    monitoring.veridis.xyz/jaeger-access: "enabled"
+    monitoring.veridis.xyz/alertmanager-access: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/restricted-access: "enabled"
+    security.veridis.xyz/authentication-required: "true"
+    security.veridis.xyz/authorization: "rbac"
+    security.veridis.xyz/ip-whitelist: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "monitoring-gateway-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/monitoring-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # HTTPS Monitoring Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https-monitoring
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: veridis-monitoring-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "monitoring.veridis.xyz"
+        - "prometheus.veridis.xyz"
+        - "grafana.veridis.xyz"
+        - "jaeger.veridis.xyz"
+        - "alertmanager.veridis.xyz"
+        - "kiali.veridis.xyz"
+
+    # ==============================================================================
+    # HTTP Monitoring Server Configuration (Redirect to HTTPS)
+    # ==============================================================================
+    - port:
+        number: 80
+        name: http-monitoring
+        protocol: HTTP
+      hosts:
+        - "monitoring.veridis.xyz"
+        - "prometheus.veridis.xyz"
+        - "grafana.veridis.xyz"
+        - "jaeger.veridis.xyz"
+        - "alertmanager.veridis.xyz"
+        - "kiali.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis Development Gateway - Development and Testing Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-development-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: development-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: development-gateway
+    gateway.veridis.xyz/category: development-gateway
+    gateway.veridis.xyz/role: development-ingress-gateway
+    gateway.veridis.xyz/scope: development-services
+
+    development.veridis.xyz/gateway-type: development-gateway
+    development.veridis.xyz/environment: development
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/debugging-enabled: "true"
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: development-policies
+    servicemesh.veridis.xyz/tls-termination: basic
+    servicemesh.veridis.xyz/development-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: development-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis Development Gateway with development services access, testing ingress, and comprehensive development traffic management"
+    veridis.xyz/purpose: "Provides comprehensive development gateway for testing and development services with flexible access and development routing"
+
+    gateway.veridis.xyz/architecture: "Enterprise development gateway with testing services, development ingress, and flexible optimization"
+    development.veridis.xyz/gateway-specification: "Development gateway with testing optimization and intelligent development management"
+
+    # Development-specific annotations
+    development.veridis.xyz/flexible-routing: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/canary-deployment: "enabled"
+
+    # Testing annotations
+    testing.veridis.xyz/environment-isolation: "enabled"
+    testing.veridis.xyz/traffic-mirroring: "enabled"
+    testing.veridis.xyz/load-testing: "enabled"
+    testing.veridis.xyz/chaos-engineering: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-gateway-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/development-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # HTTPS Development Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https-dev
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: veridis-dev-tls-certificate
+        minProtocolVersion: TLSV1_2
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+          - ECDHE-RSA-AES128-GCM-SHA256
+      hosts:
+        - "dev.veridis.xyz"
+        - "*.dev.veridis.xyz"
+        - "staging.veridis.xyz"
+        - "*.staging.veridis.xyz"
+        - "test.veridis.xyz"
+        - "*.test.veridis.xyz"
+
+    # ==============================================================================
+    # HTTP Development Server Configuration (Redirect to HTTPS)
+    # ==============================================================================
+    - port:
+        number: 80
+        name: http-dev
+        protocol: HTTP
+      hosts:
+        - "dev.veridis.xyz"
+        - "*.dev.veridis.xyz"
+        - "staging.veridis.xyz"
+        - "*.staging.veridis.xyz"
+        - "test.veridis.xyz"
+        - "*.test.veridis.xyz"
+
+---
+# ==============================================================================
+# Veridis Backup Gateway - Backup and Recovery Services Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: veridis-backup-gateway
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-gateway
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backup-gateway
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    gateway.veridis.xyz/type: backup-gateway
+    gateway.veridis.xyz/category: backup-gateway
+    gateway.veridis.xyz/role: backup-ingress-gateway
+    gateway.veridis.xyz/scope: backup-services
+
+    backup.veridis.xyz/gateway-type: backup-recovery-gateway
+    backup.veridis.xyz/services: velero-database-application
+    backup.veridis.xyz/access-control: restricted
+    backup.veridis.xyz/encryption: required
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: backup-policies
+    servicemesh.veridis.xyz/tls-termination: advanced
+    servicemesh.veridis.xyz/backup-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis Backup Gateway with backup and recovery services access, disaster recovery ingress, and comprehensive backup traffic management"
+    veridis.xyz/purpose: "Provides comprehensive backup gateway for disaster recovery services with encrypted access and intelligent backup routing"
+
+    gateway.veridis.xyz/architecture: "Enterprise backup gateway with disaster recovery services, backup ingress, and recovery optimization"
+    backup.veridis.xyz/gateway-specification: "Backup gateway with disaster recovery optimization and intelligent backup management"
+
+    # Backup-specific annotations
+    backup.veridis.xyz/velero-access: "enabled"
+    backup.veridis.xyz/database-backup: "enabled"
+    backup.veridis.xyz/application-backup: "enabled"
+    backup.veridis.xyz/disaster-recovery: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/encrypted-access: "required"
+    security.veridis.xyz/access-logging: "comprehensive"
+    security.veridis.xyz/authentication: "strict"
+    security.veridis.xyz/authorization: "rbac"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "backup-gateway-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/networking/backup-gateway"
+
+spec:
+  selector:
+    istio: ingressgateway
+
+  servers:
+    # ==============================================================================
+    # HTTPS Backup Server Configuration
+    # ==============================================================================
+    - port:
+        number: 443
+        name: https-backup
+        protocol: HTTPS
+      tls:
+        mode: MUTUAL
+        credentialName: veridis-backup-tls-certificate
+        minProtocolVersion: TLSV1_3
+        maxProtocolVersion: TLSV1_3
+        cipherSuites:
+          - ECDHE-RSA-AES256-GCM-SHA384
+          - ECDHE-RSA-CHACHA20-POLY1305
+          - ECDHE-ECDSA-AES256-GCM-SHA384
+          - ECDHE-ECDSA-CHACHA20-POLY1305
+      hosts:
+        - "backup.veridis.xyz"
+        - "velero.veridis.xyz"
+        - "disaster-recovery.veridis.xyz"
+        - "restore.veridis.xyz"
+
+# ==============================================================================
+# Veridis Service Mesh Gateways Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS SERVICE MESH GATEWAYS STRATEGY:
+# ====================================================
+#
+# VERIDIS SERVICE MESH GATEWAYS ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------
+# 1. Main Gateway (veridis-main-gateway):
+#    - Comprehensive external traffic ingress with HTTPS/HTTP termination and multi-domain support for production traffic
+#    - Advanced TLS 1.3 configuration with modern cipher suites, automated certificate management, and comprehensive security
+#    - Multi-host routing with wildcard support (*.veridis.xyz) and service-specific subdomains for flexible traffic distribution
+#    - Enterprise security with HSTS, CSRF protection, rate limiting, DDoS protection, and comprehensive traffic security controls
+#    - Performance optimization with HTTP/2 support, compression, keep-alive, and intelligent traffic optimization
+#
+# 2. API Gateway (veridis-api-gateway):
+#    - Backend service ingress with API management, rate limiting, authentication, and comprehensive API traffic routing
+#    - Advanced API policies with throttling, circuit breaking, retry policies, and intelligent backend service discovery
+#    - Service-specific routing with identity, attestation, verification, compliance, and bridge API endpoints
+#    - Conditional deployment with API gateway enablement and backend service management
+#    - Advanced API monitoring with performance tracking, usage analytics, and comprehensive API intelligence
+#
+# 3. ZK Circuits Gateway (veridis-zk-circuits-gateway):
+#    - GPU-optimized ingress with extended timeouts and resource-aware routing for zero-knowledge proof generation
+#    - Performance-specific configuration with proof generation routing, circuit optimization, and batch processing support
+#    - Extended timeout policies with ZK-specific optimization and GPU resource management for complex computations
+#    - Conditional deployment with ZK circuits gateway enablement and GPU acceleration management
+#    - Advanced ZK monitoring with proof generation tracking, GPU utilization analytics, and comprehensive ZK intelligence
+#
+# 4. UI Gateway (veridis-ui-gateway):
+#    - Frontend-optimized ingress with SPA routing, static asset optimization, and aggressive caching for user applications
+#    - Static asset delivery with compression, minification, lazy loading, and CDN integration for optimal performance
+#    - SPA routing with dashboard, identity, wallet, and dApp routing for comprehensive frontend support
+#    - Conditional deployment with UI gateway enablement and frontend optimization management
+#    - Advanced UI monitoring with user experience tracking, performance analytics, and comprehensive frontend intelligence
+#
+# 5. WebSocket Gateway (veridis-websocket-gateway):
+#    - Real-time communication ingress with persistent connections, message queuing, and session-aware load balancing
+#    - WebSocket optimization with connection pooling, heartbeat management, automatic reconnection, and message compression
+#    - Real-time services routing with notifications, events, and real-time updates for interactive applications
+#    - Conditional deployment with WebSocket gateway enablement and real-time communication management
+#    - Advanced WebSocket monitoring with connection tracking, message analytics, and comprehensive real-time intelligence
+#
+# 6. Internal Gateway (veridis-internal-gateway):
+#    - Service mesh internal communication with mTLS encryption, mutual authentication, and secure service-to-service routing
+#    - Advanced security with certificate rotation, access control, traffic monitoring, and comprehensive internal security
+#    - Internal service routing with backend, ZK circuits, and infrastructure services for secure internal communication
+#    - Conditional deployment with internal gateway enablement and service mesh security management
+#    - Advanced internal monitoring with security tracking, access analytics, and comprehensive internal intelligence
+#
+# 7. Monitoring Gateway (veridis-monitoring-gateway):
+#    - Observability services ingress with restricted access, authentication, and comprehensive monitoring traffic routing
+#    - Security-focused configuration with IP whitelisting, RBAC enforcement, and restricted access for monitoring services
+#    - Monitoring services routing with Prometheus, Grafana, Jaeger, Alertmanager, and Kiali for comprehensive observability
+#    - Conditional deployment with monitoring gateway enablement and observability access management
+#    - Advanced monitoring tracking with access analytics, usage patterns, and comprehensive observability intelligence
+#
+# 8. Development Gateway (veridis-development-gateway):
+#    - Development and testing ingress with flexible routing, debugging support, and comprehensive development traffic management
+#    - Testing-friendly configuration with canary deployment, traffic mirroring, load testing, and chaos engineering support
+#    - Development services routing with dev, staging, and test environments for comprehensive development workflow
+#    - Conditional deployment with development gateway enablement and testing workflow management
+#    - Advanced development monitoring with testing analytics, debugging insights, and comprehensive development intelligence
+#
+# 9. Backup Gateway (veridis-backup-gateway):
+#    - Disaster recovery services ingress with encrypted access, mutual TLS, and comprehensive backup traffic management
+#    - Security-focused configuration with strict authentication, comprehensive logging, and encrypted communication
+#    - Backup services routing with Velero, database backup, application backup, and disaster recovery for comprehensive DR
+#    - Conditional deployment with backup gateway enablement and disaster recovery management
+#    - Advanced backup monitoring with recovery analytics, backup tracking, and comprehensive disaster recovery intelligence
+#
+# ENTERPRISE SERVICE MESH GATEWAYS FEATURES:
+# ==========================================
+# Advanced Istio Gateway Configuration and TLS Management:
+#   - TLS 1.3 termination with modern cipher suites (ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-CHACHA20-POLY1305) for secure communication
+#   - Automated certificate management with credentialName references and certificate rotation for comprehensive security
+#   - Multi-protocol support with HTTPS, HTTP, mTLS modes for flexible traffic handling and security requirements
+#   - Advanced security headers with HSTS, CSRF protection, rate limiting, and DDoS protection for comprehensive traffic security
+#   • Domain and subdomain routing with wildcard support (*.veridis.xyz) for flexible service access and traffic distribution
+#
+# Comprehensive Service Mesh Traffic Management and Routing:
+#   - Multi-gateway architecture with main, API, ZK circuits, UI, WebSocket, internal, monitoring, development, and backup gateways
+#   - Service-specific routing with backend APIs, ZK circuits, frontend applications, real-time services, and monitoring tools
+#   - Environment-specific gateways with production, development, staging, and testing environments for complete lifecycle support
+#   - Protocol optimization with HTTP/2 support, WebSocket handling, mTLS for internal communication, and performance tuning
+#   - Conditional deployment with gateway enablement flags for flexible gateway deployment and management
+#
+# Enterprise Service Mesh Performance and Security Optimization:
+#   - Performance-specific configuration with ZK circuits extended timeouts, UI static asset optimization, WebSocket persistence
+#   - Security-focused policies with monitoring gateway restricted access, internal gateway mTLS, backup gateway encryption
+#   - Resource-aware routing with GPU optimization for ZK circuits, SPA routing for UI, session-aware load balancing for WebSocket
+#   - Advanced caching with static asset optimization, browser caching, compression, and CDN integration for performance
+#   - Traffic optimization with intelligent routing, connection pooling, keep-alive, and comprehensive performance management
+#
+# Advanced Service Mesh Security and Compliance Integration:
+#   - Multi-level TLS configuration with SIMPLE mode for external traffic, MUTUAL mode for internal/backup services
+#   - Certificate management with service-specific credentials, automated rotation, and comprehensive certificate lifecycle
+#   - Access control with restricted access for monitoring, IP whitelisting, RBAC enforcement, and comprehensive authorization
+#   - Security monitoring with access logging, traffic monitoring, authentication tracking, and comprehensive security analytics
+#   - Compliance integration with SOC 2, GDPR, ISO 27001, NIST compliance and comprehensive audit support
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Service Mesh Gateway Lifecycle Management:
+#   - Multi-gateway architecture with specialized gateways for different service types and traffic patterns
+#   - Intelligent service mesh traffic management with predictive analytics and gateway utilization correlation
+#   - Advanced monitoring with comprehensive gateway analytics and traffic business intelligence
+#   - Configuration validation with gateway schema enforcement and traffic deployment safety checks
+#   - Automated optimization with traffic pattern analysis and gateway policy recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II gateway controls with comprehensive audit requirements and traffic logging
+#   - GDPR gateway compliance with data protection and privacy-preserving traffic management
+#   - ISO 27001 gateway security management with information security and traffic compliance integration
+#   - NIST 800-190 container gateway security with traffic validation and compliance
+#   - Zero-trust gateway architecture with comprehensive encryption and traffic authentication requirements
+#
+# Business Intelligence Integration:
+#   - Service mesh traffic analytics with gateway cost correlation and traffic resource utilization optimization
+#   - Performance analytics with gateway user experience optimization and traffic business intelligence
+#   - Gateway intelligence with traffic pattern monitoring and service mesh optimization recommendations
+#   - Strategic planning with gateway capacity management and traffic forecasting
+#   - Business impact assessment with gateway traffic performance correlation and service mesh availability tracking
+#
+# Developer Experience Excellence:
+#   - Service-specific gateways with backend, ZK circuits, UI, WebSocket, monitoring, and development optimization
+#   - Comprehensive documentation with gateway guides and traffic troubleshooting procedures
+#   - Environment-specific gateways with production, development, staging, and testing support
+#   - Testing integration with development gateway workflow and traffic debugging capabilities
+#   - Gateway monitoring with comprehensive tracking and traffic correlation
+#
+# ==============================================================================
