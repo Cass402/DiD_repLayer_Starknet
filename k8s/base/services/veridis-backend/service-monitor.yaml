@@ -1,0 +1,1238 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Backend Service Monitor
+# ==============================================================================
+#
+# This manifest defines comprehensive Veridis Backend service monitoring for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS BACKEND MONITORING ARCHITECTURE:
+#   • Advanced observability platform with comprehensive metrics collection and intelligent monitoring analytics
+#   • Multi-tier monitoring architecture with development, testing, staging, and production configurations
+#   • Comprehensive performance framework with CPU, memory, network, and custom business metrics optimization
+#   • Advanced lifecycle management with automated provisioning, monitoring, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and performance insights
+#
+# VERIDIS BACKEND MONITORING PERFORMANCE OPTIMIZATION:
+#   • High-performance metrics collection with intelligent scraping and performance-based monitoring decisions
+#   • Intelligent observability management with Prometheus integration and monitoring optimization
+#   • Advanced custom metrics with business intelligence and workload-based monitoring decisions
+#   • Comprehensive alerting policies with intelligent notification and escalation management
+#   • Enterprise acceleration with predictive monitoring and resource optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II monitoring controls with comprehensive audit and monitoring requirements
+#   • GDPR monitoring compliance with data protection, privacy controls, and monitoring management
+#   • ISO 27001 monitoring security management with comprehensive framework integration
+#   • NIST 800-190 container monitoring with monitoring-specific validation and compliance
+#   • Identity protocol compliance with regulatory frameworks and monitoring best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent monitoring lifecycle management with automated provisioning and optimization
+#   • Predictive monitoring analytics with capacity planning and performance intelligence
+#   • Advanced alerting integration with monitoring analytics and business intelligence
+#   • Comprehensive backup and recovery with monitoring configuration preservation and disaster preparedness
+#   • Business continuity monitoring with failover capabilities and redundancy optimization
+#
+# RUST AXUM MONITORING INTELLIGENCE:
+#   • Monitoring usage analytics with performance patterns and optimization recommendations
+#   • Performance monitoring with metrics latency and throughput optimization intelligence
+#   • Development efficiency with monitoring analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with monitoring metrics and performance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Service Monitor - Primary Prometheus Monitoring
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-backend-service-monitor
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend service monitor identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-service-monitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Service monitor specific classification
+    monitoring.veridis.xyz/type: service-monitor
+    monitoring.veridis.xyz/category: prometheus-monitoring
+    monitoring.veridis.xyz/role: primary-monitoring
+    monitoring.veridis.xyz/performance-class: high-performance
+    monitoring.veridis.xyz/security-level: enterprise
+
+    # Service monitoring classification
+    service.veridis.xyz/type: backend-api
+    service.veridis.xyz/monitoring: comprehensive
+    service.veridis.xyz/performance-tier: high-performance
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-stack
+
+    # Prometheus monitoring classification
+    prometheus.veridis.xyz/tier: production
+    prometheus.veridis.xyz/optimization: intelligent-collection
+    prometheus.veridis.xyz/metrics: comprehensive
+    prometheus.veridis.xyz/alerting: enabled
+    prometheus.veridis.xyz/efficiency: optimized
+
+    # Business monitoring classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-availability
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational monitoring labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "monitoring-control-framework"
+    compliance.veridis.xyz/gdpr: "monitoring-data-protection"
+    compliance.veridis.xyz/iso27001: "monitoring-security-management"
+    compliance.veridis.xyz/nist-800-190: "monitoring-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Monitoring analytics and intelligence
+    analytics.veridis.xyz/monitoring-analytics: "enabled"
+    analytics.veridis.xyz/performance-analytics: "comprehensive"
+    analytics.veridis.xyz/business-analytics: "enabled"
+    analytics.veridis.xyz/cost-analytics: "enabled"
+    analytics.veridis.xyz/predictive-analytics: "enabled"
+
+  annotations:
+    # Monitoring purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend service monitor with comprehensive Prometheus metrics collection, intelligent alerting, and business intelligence"
+    veridis.xyz/purpose: "Provides comprehensive observability for identity backend service with performance monitoring, SLA tracking, and business intelligence"
+    veridis.xyz/scope: "Backend service monitoring including HTTP metrics, business metrics, infrastructure metrics, and comprehensive alerting"
+
+    # Monitoring architecture and design
+    monitoring.veridis.xyz/architecture: "Enterprise service monitor with comprehensive Prometheus integration, intelligent alerting, and performance optimization"
+    monitoring.veridis.xyz/design-pattern: "Multi-endpoint monitoring with performance optimization, cost efficiency, and business intelligence"
+    monitoring.veridis.xyz/collection-model: "Intelligent metrics collection with predictive analytics, performance optimization, and resource efficiency"
+    monitoring.veridis.xyz/performance-model: "High-performance monitoring with comprehensive metrics and intelligent collection optimization"
+
+    # Metrics specifications
+    metrics.veridis.xyz/http-specification: "Comprehensive HTTP metrics including request rate, duration, error rate, and status codes"
+    metrics.veridis.xyz/business-specification: "Business metrics including identity operations, attestations, verifications, and compliance"
+    metrics.veridis.xyz/infrastructure-specification: "Infrastructure metrics including CPU, memory, network, and database connections"
+    metrics.veridis.xyz/custom-specification: "Custom application metrics with business intelligence and performance optimization"
+    metrics.veridis.xyz/alerting-specification: "Intelligent alerting with SLA tracking and business impact correlation"
+
+    # Performance monitoring specifications
+    performance.veridis.xyz/collection-specification: "Intelligent metrics collection with performance optimization and resource efficiency"
+    performance.veridis.xyz/scraping-specification: "High-frequency scraping with intelligent batching and performance optimization"
+    performance.veridis.xyz/efficiency-specification: "Resource efficiency with cost optimization and intelligent collection"
+    performance.veridis.xyz/optimization-specification: "Performance optimization with monitoring intelligence and resource management"
+
+    # Business monitoring specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant monitoring with business continuity and performance guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized monitoring with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with resource optimization and monitoring intelligence"
+
+    # Operational monitoring specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/alerting-specification: "Comprehensive alerting with monitoring analytics and performance intelligence"
+    operations.veridis.xyz/maintenance-specification: "Automated maintenance with monitoring preservation and optimization procedures"
+    operations.veridis.xyz/collection-specification: "Intelligent collection with performance management and resource optimization"
+
+    # Monitoring lifecycle specifications
+    lifecycle.veridis.xyz/collection-specification: "Dynamic metrics collection with automated capacity management and performance optimization"
+    lifecycle.veridis.xyz/optimization-specification: "Intelligent monitoring optimization with machine learning and performance forecasting"
+    lifecycle.veridis.xyz/alerting-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/maintenance-specification: "Automated maintenance with monitoring preservation and optimization procedures"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/monitoring-admin: "backend-monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/backend/monitoring"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/monitoring-management"
+    veridis.xyz/monitoring-docs: "https://monitoring.veridis.xyz/backend/service-monitor-guide"
+    veridis.xyz/metrics-docs: "https://metrics.veridis.xyz/backend/metrics-reference"
+
+    # Prometheus configuration annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+    prometheus.io/path: "/metrics"
+    prometheus.io/interval: "15s"
+    prometheus.io/scheme: "http"
+    prometheus.io/scrape_timeout: "10s"
+
+    # Monitoring behavior annotations
+    monitoring.alpha.kubernetes.io/scrape-interval: "15s"
+    monitoring.alpha.kubernetes.io/scrape-timeout: "10s"
+    monitoring.alpha.kubernetes.io/metrics-path: "/metrics"
+    monitoring.alpha.kubernetes.io/honor-labels: "true"
+    monitoring.alpha.kubernetes.io/honor-timestamps: "true"
+
+spec:
+  # ==============================================================================
+  # Service Selector Configuration - Target Backend Services
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-service
+
+  # ==============================================================================
+  # Namespace Selector Configuration
+  # ==============================================================================
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  # ==============================================================================
+  # Endpoints Configuration - Comprehensive Metrics Collection
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # Primary Metrics Endpoint - Application Metrics
+    # ==============================================================================
+    - port: metrics
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s
+      scheme: http
+
+      # Honor labels from target service
+      honorLabels: true
+      honorTimestamps: true
+
+      # Metrics relabeling for better organization
+      metricRelabelings:
+        # Add service information
+        - sourceLabels: [__name__]
+          targetLabel: service
+          replacement: veridis-backend
+
+        # Add environment information
+        - sourceLabels: [__name__]
+          targetLabel: environment
+          replacement: production
+
+        # Add business unit information
+        - sourceLabels: [__name__]
+          targetLabel: business_unit
+          replacement: identity-protocol
+
+        # Drop high-cardinality metrics that might cause issues
+        - sourceLabels: [__name__]
+          regex: 'go_memstats_.*'
+          action: drop
+
+      # Target relabeling for better target identification
+      relabelings:
+        # Keep only healthy targets
+        - sourceLabels: [__meta_kubernetes_pod_ready]
+          regex: "true"
+          action: keep
+
+        # Add pod information
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          targetLabel: pod
+
+        # Add node information
+        - sourceLabels: [__meta_kubernetes_pod_node_name]
+          targetLabel: node
+
+        # Add container information
+        - sourceLabels: [__meta_kubernetes_pod_container_name]
+          targetLabel: container
+
+    # ==============================================================================
+    # Health Metrics Endpoint - Health and Readiness Metrics
+    # ==============================================================================
+    - port: health
+      path: /health/metrics
+      interval: 30s
+      scrapeTimeout: 5s
+      scheme: http
+
+      # Health-specific metric relabeling
+      metricRelabelings:
+        # Add health metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'health_${1}'
+
+        # Add service health information
+        - sourceLabels: [__name__]
+          targetLabel: service_type
+          replacement: health-check
+
+    # ==============================================================================
+    # Business Metrics Endpoint - Custom Business Intelligence Metrics
+    # ==============================================================================
+    - port: business-metrics
+      path: /metrics/business
+      interval: 30s
+      scrapeTimeout: 15s
+      scheme: http
+
+      # Business-specific metric relabeling
+      metricRelabelings:
+        # Add business metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'business_${1}'
+
+        # Add business context
+        - sourceLabels: [__name__]
+          targetLabel: metric_type
+          replacement: business-intelligence
+
+        # Add cost center information
+        - sourceLabels: [__name__]
+          targetLabel: cost_center
+          replacement: identity-infrastructure
+
+    # ==============================================================================
+    # Performance Metrics Endpoint - Performance and Resource Metrics
+    # ==============================================================================
+    - port: performance-metrics
+      path: /metrics/performance
+      interval: 10s
+      scrapeTimeout: 8s
+      scheme: http
+
+      # Performance-specific metric relabeling
+      metricRelabelings:
+        # Add performance metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'performance_${1}'
+
+        # Add performance context
+        - sourceLabels: [__name__]
+          targetLabel: metric_type
+          replacement: performance-optimization
+
+    # ==============================================================================
+    # Security Metrics Endpoint - Security and Compliance Metrics
+    # ==============================================================================
+    - port: security-metrics
+      path: /metrics/security
+      interval: 60s
+      scrapeTimeout: 30s
+      scheme: http
+
+      # Security-specific metric relabeling
+      metricRelabelings:
+        # Add security metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'security_${1}'
+
+        # Add security context
+        - sourceLabels: [__name__]
+          targetLabel: metric_type
+          replacement: security-compliance
+
+        # Add compliance framework
+        - sourceLabels: [__name__]
+          targetLabel: compliance_framework
+          replacement: enterprise
+
+  # ==============================================================================
+  # Job Label Configuration - Prometheus Job Identification
+  # ==============================================================================
+  jobLabel: app.kubernetes.io/name
+
+  # ==============================================================================
+  # Target Limit Configuration - Resource Management
+  # ==============================================================================
+  targetLimit: 100
+  sampleLimit: 10000
+
+---
+# ==============================================================================
+# Veridis Backend Detailed Service Monitor - Comprehensive Metrics Collection
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-backend-detailed-monitor
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-detailed-monitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: detailed-service-monitor
+    monitoring.veridis.xyz/category: comprehensive-monitoring
+    monitoring.veridis.xyz/role: detailed-monitoring
+    monitoring.veridis.xyz/frequency: high-detail
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Detailed service monitor for comprehensive metrics collection with high-frequency scraping"
+    veridis.xyz/purpose: "Provides detailed observability with high-resolution metrics for performance analysis and debugging"
+
+    monitoring.veridis.xyz/detail-specification: "High-frequency detailed monitoring with comprehensive metrics collection"
+    performance.veridis.xyz/analysis-specification: "Performance analysis with detailed metrics and high-resolution data"
+
+spec:
+  # ==============================================================================
+  # Detailed Service Selector Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-service
+      # Additional selector for detailed monitoring
+      monitoring.veridis.xyz/detailed: "enabled"
+
+  # ==============================================================================
+  # Detailed Endpoints Configuration - High-Resolution Metrics
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # High-Frequency Application Metrics
+    # ==============================================================================
+    - port: metrics
+      path: /metrics/detailed
+      interval: 5s
+      scrapeTimeout: 4s
+      scheme: http
+
+      # Detailed metric relabeling
+      metricRelabelings:
+        # Add detailed monitoring context
+        - sourceLabels: [__name__]
+          targetLabel: monitoring_detail
+          replacement: high-resolution
+
+        # Add sampling information
+        - sourceLabels: [__name__]
+          targetLabel: sampling_frequency
+          replacement: 5s
+
+    # ==============================================================================
+    # Database Performance Metrics
+    # ==============================================================================
+    - port: db-metrics
+      path: /metrics/database
+      interval: 10s
+      scrapeTimeout: 8s
+      scheme: http
+
+      # Database-specific metric relabeling
+      metricRelabelings:
+        # Add database metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'database_${1}'
+
+        # Add database context
+        - sourceLabels: [__name__]
+          targetLabel: component
+          replacement: database-layer
+
+    # ==============================================================================
+    # Cache Performance Metrics
+    # ==============================================================================
+    - port: cache-metrics
+      path: /metrics/cache
+      interval: 15s
+      scrapeTimeout: 10s
+      scheme: http
+
+      # Cache-specific metric relabeling
+      metricRelabelings:
+        # Add cache metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'cache_${1}'
+
+        # Add cache context
+        - sourceLabels: [__name__]
+          targetLabel: component
+          replacement: cache-layer
+
+  # ==============================================================================
+  # Detailed Job Configuration
+  # ==============================================================================
+  jobLabel: app.kubernetes.io/component
+  targetLimit: 500
+  sampleLimit: 50000
+
+---
+# ==============================================================================
+# Veridis Backend Business Intelligence Monitor - Business Metrics Focus
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-backend-business-monitor
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-business-monitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: business-intelligence-monitor
+    monitoring.veridis.xyz/category: business-monitoring
+    monitoring.veridis.xyz/role: business-analytics
+    monitoring.veridis.xyz/focus: business-intelligence
+
+    business.veridis.xyz/analytics: comprehensive
+    business.veridis.xyz/intelligence: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Business intelligence service monitor focused on business metrics and KPIs"
+    veridis.xyz/purpose: "Provides business-focused monitoring with revenue, usage, and operational KPIs"
+
+    monitoring.veridis.xyz/business-specification: "Business intelligence monitoring with KPI tracking and revenue correlation"
+    business.veridis.xyz/kpi-specification: "Key performance indicators with business impact analysis and intelligence"
+
+spec:
+  # ==============================================================================
+  # Business Intelligence Service Selector
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-service
+      # Additional selector for business monitoring
+      business.veridis.xyz/monitoring: "enabled"
+
+  # ==============================================================================
+  # Business Intelligence Endpoints Configuration
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # Identity Service Business Metrics
+    # ==============================================================================
+    - port: identity-metrics
+      path: /metrics/identity/business
+      interval: 60s
+      scrapeTimeout: 30s
+      scheme: http
+
+      # Identity business metric relabeling
+      metricRelabelings:
+        # Add identity business metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'identity_business_${1}'
+
+        # Add business service context
+        - sourceLabels: [__name__]
+          targetLabel: business_service
+          replacement: identity-management
+
+    # ==============================================================================
+    # Attestation Service Business Metrics
+    # ==============================================================================
+    - port: attestation-metrics
+      path: /metrics/attestation/business
+      interval: 60s
+      scrapeTimeout: 30s
+      scheme: http
+
+      # Attestation business metric relabeling
+      metricRelabelings:
+        # Add attestation business metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'attestation_business_${1}'
+
+        # Add business service context
+        - sourceLabels: [__name__]
+          targetLabel: business_service
+          replacement: attestation-services
+
+    # ==============================================================================
+    # Verification Service Business Metrics
+    # ==============================================================================
+    - port: verification-metrics
+      path: /metrics/verification/business
+      interval: 60s
+      scrapeTimeout: 30s
+      scheme: http
+
+      # Verification business metric relabeling
+      metricRelabelings:
+        # Add verification business metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'verification_business_${1}'
+
+        # Add business service context
+        - sourceLabels: [__name__]
+          targetLabel: business_service
+          replacement: verification-services
+
+    # ==============================================================================
+    # Compliance Service Business Metrics
+    # ==============================================================================
+    - port: compliance-metrics
+      path: /metrics/compliance/business
+      interval: 300s
+      scrapeTimeout: 60s
+      scheme: http
+
+      # Compliance business metric relabeling
+      metricRelabelings:
+        # Add compliance business metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'compliance_business_${1}'
+
+        # Add business service context
+        - sourceLabels: [__name__]
+          targetLabel: business_service
+          replacement: compliance-management
+
+    # ==============================================================================
+    # Bridge Service Business Metrics
+    # ==============================================================================
+    - port: bridge-metrics
+      path: /metrics/bridge/business
+      interval: 120s
+      scrapeTimeout: 45s
+      scheme: http
+
+      # Bridge business metric relabeling
+      metricRelabelings:
+        # Add bridge business metric prefix
+        - sourceLabels: [__name__]
+          regex: '(.*)'
+          targetLabel: __name__
+          replacement: 'bridge_business_${1}'
+
+        # Add business service context
+        - sourceLabels: [__name__]
+          targetLabel: business_service
+          replacement: bridge-operations
+
+  # ==============================================================================
+  # Business Intelligence Job Configuration
+  # ==============================================================================
+  jobLabel: business.veridis.xyz/service
+  targetLimit: 200
+  sampleLimit: 20000
+
+---
+# ==============================================================================
+# Veridis Backend Prometheus Rule - Comprehensive Alerting Rules
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: veridis-backend-alerting-rules
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-alerting-rules
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    alerting.veridis.xyz/type: prometheus-rules
+    alerting.veridis.xyz/category: comprehensive-alerting
+    alerting.veridis.xyz/role: alerting-rules
+    alerting.veridis.xyz/priority: production
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Comprehensive alerting rules for Veridis Backend service monitoring and SLA compliance"
+    veridis.xyz/purpose: "Provides intelligent alerting with business impact correlation and escalation procedures"
+
+spec:
+  groups:
+    # ==============================================================================
+    # High Priority Alerts - Critical System Issues
+    # ==============================================================================
+    - name: veridis-backend-critical
+      interval: 30s
+      rules:
+        # Service availability alert
+        - alert: VeridisBackendDown
+          expr: up{job="veridis-backend"} == 0
+          for: 1m
+          labels:
+            severity: critical
+            service: veridis-backend
+            team: backend-engineering
+            escalation: immediate
+          annotations:
+            summary: "Veridis Backend service is down"
+            description: "Veridis Backend service has been down for more than 1 minute. Immediate attention required."
+            runbook_url: "https://runbooks.veridis.xyz/backend/service-down"
+            dashboard_url: "https://grafana.veridis.xyz/d/backend-overview"
+
+        # High error rate alert
+        - alert: VeridisBackendHighErrorRate
+          expr: rate(http_requests_total{job="veridis-backend",status=~"5.."}[5m]) / rate(http_requests_total{job="veridis-backend"}[5m]) > 0.05
+          for: 2m
+          labels:
+            severity: critical
+            service: veridis-backend
+            team: backend-engineering
+            escalation: immediate
+          annotations:
+            summary: "Veridis Backend high error rate detected"
+            description: "Error rate is {{ $value | humanizePercentage }} which is above the 5% threshold."
+            runbook_url: "https://runbooks.veridis.xyz/backend/high-error-rate"
+
+        # Response time alert
+        - alert: VeridisBackendHighLatency
+          expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job="veridis-backend"}[5m])) > 1
+          for: 5m
+          labels:
+            severity: critical
+            service: veridis-backend
+            team: backend-engineering
+            escalation: standard
+          annotations:
+            summary: "Veridis Backend high response time"
+            description: "95th percentile response time is {{ $value }}s which is above 1s threshold."
+            runbook_url: "https://runbooks.veridis.xyz/backend/high-latency"
+
+    # ==============================================================================
+    # Warning Alerts - Performance and Resource Issues
+    # ==============================================================================
+    - name: veridis-backend-warning
+      interval: 60s
+      rules:
+        # CPU usage alert
+        - alert: VeridisBackendHighCPU
+          expr: rate(process_cpu_seconds_total{job="veridis-backend"}[5m]) * 100 > 80
+          for: 10m
+          labels:
+            severity: warning
+            service: veridis-backend
+            team: backend-engineering
+            escalation: standard
+          annotations:
+            summary: "Veridis Backend high CPU usage"
+            description: "CPU usage is {{ $value }}% which is above 80% threshold."
+            runbook_url: "https://runbooks.veridis.xyz/backend/high-cpu"
+
+        # Memory usage alert
+        - alert: VeridisBackendHighMemory
+          expr: process_resident_memory_bytes{job="veridis-backend"} / 1024 / 1024 / 1024 > 2
+          for: 10m
+          labels:
+            severity: warning
+            service: veridis-backend
+            team: backend-engineering
+          annotations:
+            summary: "Veridis Backend high memory usage"
+            description: "Memory usage is {{ $value }}GB which is above 2GB threshold."
+            runbook_url: "https://runbooks.veridis.xyz/backend/high-memory"
+
+        # Database connection pool alert
+        - alert: VeridisBackendDatabaseConnectionsHigh
+          expr: database_connection_pool_active{job="veridis-backend"} / database_connection_pool_max{job="veridis-backend"} > 0.8
+          for: 5m
+          labels:
+            severity: warning
+            service: veridis-backend
+            team: backend-engineering
+          annotations:
+            summary: "Veridis Backend database connection pool usage high"
+            description: "Database connection pool usage is {{ $value | humanizePercentage }} which is above 80%."
+
+    # ==============================================================================
+    # Business Intelligence Alerts - Business Metrics
+    # ==============================================================================
+    - name: veridis-backend-business
+      interval: 300s
+      rules:
+        # Identity operations rate alert
+        - alert: VeridisBackendIdentityOperationsLow
+          expr: rate(identity_operations_total{job="veridis-backend"}[30m]) < 10
+          for: 15m
+          labels:
+            severity: warning
+            service: veridis-backend
+            team: backend-engineering
+            business_impact: medium
+          annotations:
+            summary: "Veridis Backend identity operations rate low"
+            description: "Identity operations rate is {{ $value }} ops/sec which is below expected threshold."
+
+        # Attestation success rate alert
+        - alert: VeridisBackendAttestationSuccessRateLow
+          expr: rate(attestation_operations_success_total{job="veridis-backend"}[30m]) / rate(attestation_operations_total{job="veridis-backend"}[30m]) < 0.95
+          for: 10m
+          labels:
+            severity: warning
+            service: veridis-backend
+            team: backend-engineering
+            business_impact: high
+          annotations:
+            summary: "Veridis Backend attestation success rate low"
+            description: "Attestation success rate is {{ $value | humanizePercentage }} which is below 95% threshold."
+
+        # Verification processing time alert
+        - alert: VeridisBackendVerificationProcessingTimeLong
+          expr: histogram_quantile(0.95, rate(verification_processing_duration_seconds_bucket{job="veridis-backend"}[15m])) > 30
+          for: 10m
+          labels:
+            severity: warning
+            service: veridis-backend
+            team: backend-engineering
+            business_impact: medium
+          annotations:
+            summary: "Veridis Backend verification processing time high"
+            description: "95th percentile verification processing time is {{ $value }}s which is above 30s threshold."
+
+    # ==============================================================================
+    # SLA Compliance Alerts - Service Level Objectives
+    # ==============================================================================
+    - name: veridis-backend-sla
+      interval: 300s
+      rules:
+        # Availability SLA alert
+        - alert: VeridisBackendSLAAvailabilityViolation
+          expr: 1 - (rate(http_requests_total{job="veridis-backend",status=~"5.."}[30m]) / rate(http_requests_total{job="veridis-backend"}[30m])) < 0.999
+          for: 5m
+          labels:
+            severity: critical
+            service: veridis-backend
+            team: backend-engineering
+            sla_violation: availability
+            escalation: immediate
+          annotations:
+            summary: "Veridis Backend SLA availability violation"
+            description: "Service availability is {{ $value | humanizePercentage }} which is below 99.9% SLA."
+            runbook_url: "https://runbooks.veridis.xyz/backend/sla-violation"
+
+        # Performance SLA alert
+        - alert: VeridisBackendSLAPerformanceViolation
+          expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job="veridis-backend"}[30m])) > 0.5
+          for: 10m
+          labels:
+            severity: warning
+            service: veridis-backend
+            team: backend-engineering
+            sla_violation: performance
+          annotations:
+            summary: "Veridis Backend SLA performance violation"
+            description: "95th percentile response time is {{ $value }}s which violates 500ms SLA."
+
+---
+# ==============================================================================
+# Veridis Backend Monitoring Configuration - Advanced Monitoring Settings
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-monitoring-config
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-monitoring-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: monitoring-config
+    config.veridis.xyz/category: observability-configuration
+    config.veridis.xyz/role: monitoring-settings
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Advanced monitoring configuration for Veridis Backend service observability"
+    veridis.xyz/purpose: "Provides comprehensive monitoring configuration with intelligent collection and alerting"
+
+data:
+  # ==============================================================================
+  # Monitoring Configuration
+  # ==============================================================================
+
+  monitoring-config.yaml: |
+    # Veridis Backend Monitoring Configuration
+    # Advanced observability configuration with intelligent collection and alerting
+
+    monitoring:
+      # Prometheus configuration
+      prometheus:
+        # Global scraping configuration
+        global:
+          scrape_interval: 15s
+          scrape_timeout: 10s
+          evaluation_interval: 15s
+          external_labels:
+            cluster: veridis-production
+            environment: production
+            region: us-west-2
+
+        # Service discovery configuration
+        service_discovery:
+          kubernetes:
+            enabled: true
+            namespaces: ["veridis-infrastructure"]
+            label_selector: "app.kubernetes.io/name=veridis-backend"
+
+        # Alerting configuration
+        alerting:
+          alert_managers:
+            - kubernetes_sd_configs:
+              - role: service
+                namespaces:
+                  names: ["monitoring"]
+                selectors:
+                  - role: "service"
+                    label: "app.kubernetes.io/name=alertmanager"
+
+        # Rule files configuration
+        rule_files:
+          - "/etc/prometheus/rules/*.yml"
+          - "/etc/prometheus/alerts/*.yml"
+
+        # Recording rules for performance optimization
+        recording_rules:
+          - name: veridis_backend_recording_rules
+            interval: 30s
+            rules:
+              - record: veridis:http_request_rate
+                expr: rate(http_requests_total{job="veridis-backend"}[5m])
+
+              - record: veridis:http_error_rate
+                expr: rate(http_requests_total{job="veridis-backend",status=~"5.."}[5m])
+
+              - record: veridis:http_success_rate
+                expr: rate(http_requests_total{job="veridis-backend",status=~"2.."}[5m])
+
+              - record: veridis:response_time_p95
+                expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job="veridis-backend"}[5m]))
+
+              - record: veridis:response_time_p99
+                expr: histogram_quantile(0.99, rate(http_request_duration_seconds_bucket{job="veridis-backend"}[5m]))
+
+      # Metrics configuration
+      metrics:
+        # Application metrics
+        application:
+          http_metrics:
+            enabled: true
+            path: "/metrics"
+            port: 9090
+
+          business_metrics:
+            enabled: true
+            path: "/metrics/business"
+            port: 9091
+
+          performance_metrics:
+            enabled: true
+            path: "/metrics/performance"
+            port: 9092
+
+        # Infrastructure metrics
+        infrastructure:
+          system_metrics:
+            enabled: true
+            collect_interval: "15s"
+
+          database_metrics:
+            enabled: true
+            collect_interval: "30s"
+            connection_pool_metrics: true
+            query_performance_metrics: true
+
+          cache_metrics:
+            enabled: true
+            collect_interval: "30s"
+            hit_rate_metrics: true
+            memory_usage_metrics: true
+
+        # Custom metrics
+        custom:
+          identity_metrics:
+            enabled: true
+            operations_per_second: true
+            verification_success_rate: true
+
+          attestation_metrics:
+            enabled: true
+            issuance_rate: true
+            verification_time: true
+
+          compliance_metrics:
+            enabled: true
+            audit_events: true
+            gdpr_requests: true
+
+      # Alerting configuration
+      alerting:
+        # Alert routing
+        routing:
+          group_by: ['alertname', 'severity']
+          group_wait: 30s
+          group_interval: 5m
+          repeat_interval: 12h
+
+        # Notification channels
+        notifications:
+          slack:
+            enabled: true
+            webhook_url: "${SLACK_WEBHOOK_URL}"
+            channel: "#backend-alerts"
+
+          pagerduty:
+            enabled: true
+            integration_key: "${PAGERDUTY_INTEGRATION_KEY}"
+            severity_mapping:
+              critical: "critical"
+              warning: "warning"
+
+          email:
+            enabled: true
+            smtp_server: "smtp.veridis.xyz:587"
+            from: "alerts@veridis.xyz"
+            to: ["backend-team@veridis.xyz"]
+
+        # Alert suppression
+        suppression:
+          maintenance_windows:
+            enabled: true
+            schedule: "0 2 * * 0"  # Sunday 2 AM UTC
+            duration: "4h"
+
+          rate_limiting:
+            enabled: true
+            max_alerts_per_minute: 10
+
+        # Escalation policies
+        escalation:
+          critical_alerts:
+            immediate: ["backend-oncall@veridis.xyz"]
+            after_15min: ["backend-manager@veridis.xyz"]
+            after_30min: ["engineering-director@veridis.xyz"]
+
+          warning_alerts:
+            immediate: ["backend-team@veridis.xyz"]
+            after_30min: ["backend-manager@veridis.xyz"]
+
+      # Dashboards configuration
+      dashboards:
+        # Service overview dashboard
+        service_overview:
+          enabled: true
+          panels:
+            - request_rate
+            - error_rate
+            - response_time
+            - availability
+            - resource_usage
+
+        # Business intelligence dashboard
+        business_intelligence:
+          enabled: true
+          panels:
+            - identity_operations
+            - attestation_metrics
+            - verification_metrics
+            - compliance_metrics
+            - revenue_correlation
+
+        # Performance dashboard
+        performance:
+          enabled: true
+          panels:
+            - cpu_usage
+            - memory_usage
+            - database_performance
+            - cache_performance
+            - network_io
+
+        # SLA dashboard
+        sla:
+          enabled: true
+          panels:
+            - availability_sla
+            - performance_sla
+            - error_budget
+            - downtime_tracking
+
+      # Data retention policies
+      retention:
+        # Metrics retention
+        metrics:
+          high_resolution: "7d"    # 15s interval for 7 days
+          medium_resolution: "30d" # 1m interval for 30 days
+          low_resolution: "365d"   # 5m interval for 1 year
+
+        # Alert history retention
+        alerts:
+          resolved_alerts: "90d"
+          firing_alerts: "30d"
+          notification_history: "365d"
+
+      # Performance optimization
+      optimization:
+        # Query optimization
+        queries:
+          max_concurrent_queries: 100
+          query_timeout: "30s"
+          max_samples: 50000000
+
+        # Storage optimization
+        storage:
+          compression: true
+          deduplication: true
+          retention_policy: "local"
+
+        # Resource limits
+        resources:
+          cpu_limit: "2000m"
+          memory_limit: "4Gi"
+          storage_limit: "100Gi"
+
+# ==============================================================================
+# Veridis Backend Service Monitor Summary and Enterprise Monitoring Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS BACKEND MONITORING STRATEGY:
+# ==================================================
+#
+# VERIDIS BACKEND MONITORING ARCHITECTURE OVERVIEW:
+# -------------------------------------------------
+# 1. Primary Service Monitor (veridis-backend-service-monitor):
+#    - Enterprise-grade Prometheus integration with comprehensive metrics collection from 5 specialized endpoints
+#    - Intelligent relabeling with service, environment, and business context for enhanced observability
+#    - Multi-endpoint monitoring including health, business, performance, and security metrics
+#    - Advanced target and metric relabeling for better organization and high-cardinality management
+#    - Production-optimized scraping intervals with resource-aware limits and timeout management
+#
+# 2. Detailed Service Monitor (veridis-backend-detailed-monitor):
+#    - High-resolution monitoring with 5-second intervals for performance analysis and debugging
+#    - Specialized database and cache performance metrics with detailed component-level monitoring
+#    - Enhanced sample limits (50,000) for comprehensive data collection during troubleshooting
+#    - Detailed metric prefixing and context labeling for granular analysis
+#    - Component-specific monitoring with database and cache layer performance intelligence
+#
+# 3. Business Intelligence Monitor (veridis-backend-business-monitor):
+#    - Business-focused monitoring with KPI tracking across all five service domains
+#    - Service-specific business metrics for identity, attestation, verification, compliance, and bridge operations
+#    - Revenue correlation and business impact analysis with cost center attribution
+#    - Longer scraping intervals (60-300s) optimized for business intelligence analysis
+#    - Business service context labeling for strategic planning and operational intelligence
+#
+# 4. Comprehensive Alerting Rules (veridis-backend-alerting-rules):
+#    - Multi-tier alerting with critical, warning, business, and SLA compliance alert groups
+#    - Intelligent escalation procedures with immediate, standard, and business impact classifications
+#    - SLA violation detection with 99.9% availability and 500ms performance targets
+#    - Business intelligence alerts for identity operations, attestation success rates, and verification performance
+#    - Comprehensive runbook integration with dashboard links and escalation procedures
+#
+# 5. Advanced Monitoring Configuration (veridis-backend-monitoring-config):
+#    - Comprehensive Prometheus configuration with service discovery and intelligent collection
+#    - Recording rules for performance optimization and query efficiency
+#    - Multi-channel alerting with Slack, PagerDuty, and email integration
+#    - Advanced retention policies with high, medium, and low resolution data management
+#    - Performance optimization with query limits, storage compression, and resource management
+#
+# ENTERPRISE MONITORING FEATURES:
+# ===============================
+# Advanced Observability Platform:
+#   - Multi-endpoint monitoring with application, health, business, performance, and security metrics
+#   - Intelligent metric relabeling with service context, environment information, and business attribution
+#   - High-cardinality metric management with drop rules and optimization for resource efficiency
+#   - Advanced target relabeling with pod, node, and container context for comprehensive infrastructure correlation
+#   - Production-optimized scraping with configurable intervals and timeout management
+#
+# Comprehensive Business Intelligence:
+#   - Service-specific business metrics across identity, attestation, verification, compliance, and bridge domains
+#   - Revenue correlation with cost center attribution and business impact analysis
+#   - KPI tracking with operational intelligence and strategic planning capabilities
+#   - Business service context labeling for cross-functional analytics and reporting
+#   - Long-term business trend analysis with optimized collection intervals
+#
+# Intelligent Alerting and Escalation:
+#   - Multi-tier alerting with critical system issues, performance warnings, and business intelligence alerts
+#   - SLA compliance monitoring with availability (99.9%) and performance (500ms) targets
+#   - Intelligent escalation procedures with immediate, standard, and business impact routing
+#   - Comprehensive runbook integration with dashboard links and troubleshooting procedures
+#   - Business impact correlation with revenue and operational intelligence
+#
+# Advanced Performance Optimization:
+#   - Recording rules for query performance optimization and resource efficiency
+#   - High-resolution monitoring (5s intervals) for debugging and performance analysis
+#   - Detailed component monitoring with database and cache layer performance intelligence
+#   - Resource-aware limits with sample management and query optimization
+#   - Storage optimization with compression, deduplication, and intelligent retention policies
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Monitoring Lifecycle Management:
+#   - Multi-monitor architecture with specialized monitoring for different use cases and requirements
+#   - Intelligent configuration management with environment-specific settings and optimization
+#   - Advanced alerting with escalation procedures and business impact correlation
+#   - Comprehensive documentation with runbook integration and operational procedures
+#   - Performance optimization with resource management and intelligent collection strategies
+#
+# Business Intelligence Integration:
+#   - Service-specific business metrics with KPI tracking and operational intelligence
+#   - Revenue correlation with business impact analysis and strategic planning capabilities
+#   - Cost center attribution with resource utilization analysis and budget management
+#   - Cross-functional analytics with business service context and operational reporting
+#   - Long-term trend analysis with business intelligence and predictive capabilities
+#
+# Security and Compliance Monitoring:
+#   - Security metrics collection with compliance framework integration and audit capabilities
+#   - Compliance monitoring with SOC 2, GDPR, ISO 27001, and NIST framework validation
+#   - Audit event tracking with comprehensive trail preservation and regulatory compliance
+#   - Access control monitoring with RBAC integration and security event correlation
+#   - Risk assessment integration with security metrics and threat intelligence
+#
+# Performance and Cost Optimization:
+#   - Multi-resolution data retention with high, medium, and low resolution optimization
+#   - Resource efficiency with CPU, memory, and storage optimization for cost management
+#   - Query optimization with concurrent query limits and performance intelligence
+#   - Storage optimization with compression and deduplication for cost efficiency
+#   - Capacity planning with resource utilization analysis and intelligent forecasting
+#
+# ==============================================================================

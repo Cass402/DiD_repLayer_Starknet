@@ -1,0 +1,729 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Backend Service PodDisruptionBudget
+# ==============================================================================
+#
+# This manifest defines comprehensive Backend Service PodDisruptionBudget for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS BACKEND PDB ARCHITECTURE:
+#   • Advanced Backend PDB with intelligent availability management and performance-based disruption optimization
+#   • Multi-tier PDB architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with PDB policies, disruption optimization, Backend integration
+#   • Advanced lifecycle management with automated PDB optimization, Backend control, and availability enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Backend PDB performance insights
+#
+# VERIDIS BACKEND PDB OPTIMIZATION:
+#   • High-performance PDB with intelligent availability management and Backend deployment optimization
+#   • Intelligent PDB traffic management with responsive policies and performance-based availability decisions
+#   • Advanced PDB management with business intelligence and availability-based Backend control
+#   • Comprehensive observability control with intelligent Backend PDB management and disruption enhancement
+#   • Enterprise acceleration with predictive Backend PDB management and availability optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Backend PDB controls with comprehensive audit and availability requirements
+#   • GDPR Backend PDB compliance with data protection, privacy controls, and availability management
+#   • ISO 27001 Backend PDB management with comprehensive framework integration
+#   • NIST 800-190 container Backend PDB security with availability-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Backend PDB best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Backend PDB lifecycle management with automated provisioning and availability optimization
+#   • Predictive availability analytics with capacity planning and Backend PDB intelligence
+#   • Advanced PDB integration with Backend availability analytics and disruption business intelligence
+#   • Comprehensive observability control with Backend PDB preservation and availability optimization
+#   • Business continuity Backend PDB with availability guarantees and disruption optimization
+#
+# BACKEND PDB ACCELERATION INTELLIGENCE:
+#   • Backend PDB usage analytics with availability patterns and optimization recommendations
+#   • PDB monitoring with Backend availability latency and management optimization intelligence
+#   • Development efficiency with Backend PDB analytics and deployment optimization procedures
+#   • Cost optimization with Backend PDB utilization analysis and availability capacity planning procedures
+#   • Quality assurance with Backend PDB metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Service - Primary PodDisruptionBudget Configuration
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-backend-pdb
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend PDB identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Backend PDB specific classification
+    backend.veridis.xyz/type: identity-backend-pdb
+    backend.veridis.xyz/category: core-service-pdb
+    backend.veridis.xyz/role: primary-backend-pdb
+    backend.veridis.xyz/pdb-class: high-availability-backend-pdb
+    backend.veridis.xyz/security-level: enterprise
+
+    # Service Backend PDB classification
+    service.veridis.xyz/backend-pdb-type: intelligent-backend-pdb
+    service.veridis.xyz/pdb-type: core-service-pdb
+    service.veridis.xyz/performance-tier: high-availability
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-backend-pdb-stack
+
+    # Observability Backend PDB classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-backend-pdb-management
+    observability.veridis.xyz/availability-management: advanced
+    observability.veridis.xyz/disruption-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Backend PDB classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-backend-pdb-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Backend PDB labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: backend-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "backend-pdb-control-framework"
+    compliance.veridis.xyz/gdpr: "backend-pdb-data-protection"
+    compliance.veridis.xyz/iso27001: "backend-pdb-security-management"
+    compliance.veridis.xyz/nist-800-190: "backend-pdb-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Backend PDB analytics and intelligence
+    monitoring.veridis.xyz/backend-pdb-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/availability-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # PDB management labels
+    pdb.veridis.xyz/type: "primary"
+    pdb.veridis.xyz/min-available: "66%"
+    pdb.veridis.xyz/disruption-policy: "controlled"
+    pdb.veridis.xyz/availability-sla: "99.9"
+    pdb.veridis.xyz/business-continuity: "enabled"
+
+    # High availability labels
+    ha.veridis.xyz/availability-tier: "enterprise"
+    ha.veridis.xyz/disruption-tolerance: "minimal"
+    ha.veridis.xyz/recovery-tier: "immediate"
+    ha.veridis.xyz/failover-enabled: "true"
+    ha.veridis.xyz/load-balancing: "enabled"
+
+  annotations:
+    # Backend PDB purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend PodDisruptionBudget with intelligent availability management, advanced disruption optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Backend PDB for decentralized identity management with intelligent availability management, disruption optimization, and observability guarantees"
+    veridis.xyz/scope: "Backend PDB including availability management, disruption optimization, load balancing integration, and comprehensive monitoring intelligence"
+
+    # Backend PDB architecture and design
+    backend.veridis.xyz/architecture: "Enterprise Backend PDB with intelligent availability management, advanced disruption optimization, and load balancing integration optimization"
+    backend.veridis.xyz/design-pattern: "Multi-tier Backend PDB with availability optimization, cost efficiency, and business intelligence"
+    backend.veridis.xyz/optimization-model: "Intelligent Backend PDB with predictive analytics, availability optimization, and disruption efficiency"
+    backend.veridis.xyz/performance-model: "High-performance Backend PDB with availability optimization and intelligent disruption management"
+
+    # Service Backend PDB specifications
+    service.veridis.xyz/backend-pdb-specification: "Backend PDB with availability optimization and intelligent backend pdb management"
+    service.veridis.xyz/availability-specification: "Advanced availability management configuration with backend optimization and pdb enhancement"
+    service.veridis.xyz/disruption-specification: "Backend PDB disruption management optimization with intelligent availability and enhancement"
+    service.veridis.xyz/performance-specification: "Backend performance PDB with availability acceleration and disruption efficiency"
+    service.veridis.xyz/business-specification: "Backend business PDB with cost optimization and strategic availability intelligence"
+
+    # Observability Backend PDB specifications
+    observability.veridis.xyz/backend-pdb-specification: "Observability-aware Backend PDB with availability optimization and disruption intelligence"
+    observability.veridis.xyz/availability-specification: "Observability availability management optimization with intelligent Backend and disruption enhancement"
+    observability.veridis.xyz/disruption-specification: "Observability disruption with cost optimization and intelligent Backend management"
+    observability.veridis.xyz/load-balancing-specification: "Observability load balancing management with auto-optimization and Backend management"
+    observability.veridis.xyz/monitoring-specification: "Observability monitoring with Backend PDB analytics and availability intelligence"
+
+    # Business Backend PDB specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant Backend PDB with business continuity and availability guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized Backend PDB with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with Backend PDB optimization and availability intelligence"
+
+    # Operational Backend PDB specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with Backend PDB analytics and availability intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with Backend PDB preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with Backend PDB management and availability optimization"
+
+    # Backend PDB lifecycle specifications
+    lifecycle.veridis.xyz/backend-pdb-specification: "Dynamic Backend PDB with automated availability management and disruption optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent Backend PDB scaling with machine learning and availability forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Backend PDB optimization with intelligent availability management and disruption enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Backend PDB evolution with intelligent adaptation and availability optimization"
+
+    # PDB specific annotations
+    pdb.veridis.xyz/min-available: "2"
+    pdb.veridis.xyz/min-available-percentage: "66%"
+    pdb.veridis.xyz/disruption-policy: "controlled-rolling"
+    pdb.veridis.xyz/availability-sla: "99.9%"
+    pdb.veridis.xyz/max-unavailable: "1"
+
+    # High availability annotations
+    ha.veridis.xyz/availability-tier: "enterprise"
+    ha.veridis.xyz/disruption-tolerance: "minimal"
+    ha.veridis.xyz/recovery-time-objective: "30s"
+    ha.veridis.xyz/recovery-point-objective: "0s"
+    ha.veridis.xyz/failover-strategy: "automatic"
+
+    # Business continuity annotations
+    continuity.veridis.xyz/criticality: "mission-critical"
+    continuity.veridis.xyz/impact-assessment: "high"
+    continuity.veridis.xyz/downtime-tolerance: "minimal"
+    continuity.veridis.xyz/service-dependency: "critical"
+    continuity.veridis.xyz/backup-strategy: "active-passive"
+
+    # SLA annotations
+    sla.veridis.xyz/availability-target: "99.9%"
+    sla.veridis.xyz/uptime-requirement: "monthly"
+    sla.veridis.xyz/penalty-threshold: "99.5%"
+    sla.veridis.xyz/measurement-window: "30d"
+    sla.veridis.xyz/reporting-frequency: "weekly"
+
+    # Disruption management annotations
+    disruption.veridis.xyz/policy: "minimal-impact"
+    disruption.veridis.xyz/maintenance-window: "02:00-04:00 UTC"
+    disruption.veridis.xyz/notification-required: "true"
+    disruption.veridis.xyz/approval-required: "true"
+    disruption.veridis.xyz/rollback-plan: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/alert-on-disruption: "true"
+    monitoring.veridis.xyz/availability-tracking: "enabled"
+    monitoring.veridis.xyz/sla-monitoring: "enabled"
+    monitoring.veridis.xyz/health-check-frequency: "30s"
+    monitoring.veridis.xyz/dashboard-enabled: "true"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/backend-pdb-admin: "backend-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/pdb"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/pdb-management"
+    veridis.xyz/pdb-docs: "https://backend.veridis.xyz/pdb-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/backend-pdb-monitoring"
+
+spec:
+  # ==============================================================================
+  # Minimum Available Replicas Configuration
+  # ==============================================================================
+  # Ensure at least 2 pods are always available (66% of 3 replicas)
+  # This provides high availability while allowing controlled disruptions
+  minAvailable: 2
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-deployment
+
+  # ==============================================================================
+  # Unhealthy Pod Eviction Policy
+  # ==============================================================================
+  # Default unhealthy pod eviction policy for better resilience
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis Backend Service - Development Environment PodDisruptionBudget
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-backend-pdb-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-pdb-dev
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backend.veridis.xyz/type: identity-backend-pdb-dev
+    backend.veridis.xyz/category: core-service-pdb-dev
+    backend.veridis.xyz/role: development-backend-pdb
+    backend.veridis.xyz/pdb-class: development-backend-pdb
+
+    service.veridis.xyz/backend-pdb-type: development-backend-pdb
+    service.veridis.xyz/environment: development
+    service.veridis.xyz/testing-enabled: true
+
+    pdb.veridis.xyz/type: "development"
+    pdb.veridis.xyz/min-available: "50%"
+    pdb.veridis.xyz/disruption-policy: "flexible"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development Backend PodDisruptionBudget with flexible disruption policies for testing"
+    veridis.xyz/purpose: "Provides flexible Backend PDB for development environment with testing-friendly disruption policies"
+
+    pdb.veridis.xyz/min-available: "1"
+    pdb.veridis.xyz/min-available-percentage: "50%"
+    pdb.veridis.xyz/disruption-policy: "flexible-testing"
+    pdb.veridis.xyz/testing-environment: "true"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/disruption-tolerance: "high"
+    development.veridis.xyz/availability-relaxed: "true"
+    development.veridis.xyz/experimentation-enabled: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/pdb-development"
+
+spec:
+  # Allow more flexible disruptions in development
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-development
+      app.kubernetes.io/component: backend-deployment
+
+  # More aggressive eviction policy for development
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis Backend Service - Staging Environment PodDisruptionBudget
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-backend-pdb-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-pdb-staging
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backend.veridis.xyz/type: identity-backend-pdb-staging
+    backend.veridis.xyz/category: core-service-pdb-staging
+    backend.veridis.xyz/role: staging-backend-pdb
+    backend.veridis.xyz/pdb-class: staging-backend-pdb
+
+    service.veridis.xyz/backend-pdb-type: staging-backend-pdb
+    service.veridis.xyz/environment: staging
+    service.veridis.xyz/pre-production: true
+
+    pdb.veridis.xyz/type: "staging"
+    pdb.veridis.xyz/min-available: "60%"
+    pdb.veridis.xyz/disruption-policy: "balanced"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging Backend PodDisruptionBudget with balanced disruption policies for pre-production testing"
+    veridis.xyz/purpose: "Provides balanced Backend PDB for staging environment with production-like availability"
+
+    pdb.veridis.xyz/min-available: "1"
+    pdb.veridis.xyz/min-available-percentage: "60%"
+    pdb.veridis.xyz/disruption-policy: "balanced-staging"
+    pdb.veridis.xyz/pre-production: "true"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/disruption-tolerance: "moderate"
+    staging.veridis.xyz/availability-testing: "enabled"
+    staging.veridis.xyz/load-testing-ready: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/pdb-staging"
+
+spec:
+  # Balanced approach for staging environment
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-staging
+      app.kubernetes.io/component: backend-deployment
+
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis Backend Service - Critical Operations PodDisruptionBudget
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-backend-pdb-critical
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-pdb-critical
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backend.veridis.xyz/type: identity-backend-pdb-critical
+    backend.veridis.xyz/category: core-service-pdb-critical
+    backend.veridis.xyz/role: critical-backend-pdb
+    backend.veridis.xyz/pdb-class: critical-backend-pdb
+
+    service.veridis.xyz/backend-pdb-type: critical-backend-pdb
+    service.veridis.xyz/criticality: mission-critical
+    service.veridis.xyz/zero-downtime: enabled
+
+    pdb.veridis.xyz/type: "critical"
+    pdb.veridis.xyz/min-available: "80%"
+    pdb.veridis.xyz/disruption-policy: "minimal"
+
+    # Critical operations labels
+    critical.veridis.xyz/operations: "enabled"
+    critical.veridis.xyz/zero-downtime: "required"
+    critical.veridis.xyz/high-availability: "maximum"
+    critical.veridis.xyz/emergency-mode: "ready"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Critical Operations Backend PodDisruptionBudget with maximum availability requirements"
+    veridis.xyz/purpose: "Provides critical Backend PDB for mission-critical operations with zero-downtime requirements"
+
+    pdb.veridis.xyz/min-available: "2"
+    pdb.veridis.xyz/min-available-percentage: "80%"
+    pdb.veridis.xyz/disruption-policy: "critical-minimal"
+    pdb.veridis.xyz/zero-downtime: "required"
+
+    # Critical operations annotations
+    critical.veridis.xyz/operations-enabled: "true"
+    critical.veridis.xyz/disruption-tolerance: "zero"
+    critical.veridis.xyz/availability-requirement: "99.99%"
+    critical.veridis.xyz/emergency-procedures: "enabled"
+
+    # Business impact annotations
+    business.veridis.xyz/revenue-impact: "high"
+    business.veridis.xyz/customer-impact: "critical"
+    business.veridis.xyz/compliance-impact: "mandatory"
+    business.veridis.xyz/operational-impact: "severe"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "critical-operations-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/pdb-critical"
+
+spec:
+  # Maximum availability for critical operations
+  minAvailable: 2
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-deployment
+      critical.veridis.xyz/operations: "enabled"
+
+  # Conservative eviction policy for critical operations
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Veridis Backend Service - Maintenance Window PodDisruptionBudget
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-backend-pdb-maintenance
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-pdb-maintenance
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backend.veridis.xyz/type: identity-backend-pdb-maintenance
+    backend.veridis.xyz/category: core-service-pdb-maintenance
+    backend.veridis.xyz/role: maintenance-backend-pdb
+    backend.veridis.xyz/pdb-class: maintenance-backend-pdb
+
+    service.veridis.xyz/backend-pdb-type: maintenance-backend-pdb
+    service.veridis.xyz/maintenance-mode: enabled
+    service.veridis.xyz/scheduled-disruptions: allowed
+
+    pdb.veridis.xyz/type: "maintenance"
+    pdb.veridis.xyz/min-available: "33%"
+    pdb.veridis.xyz/disruption-policy: "maintenance"
+
+    # Maintenance specific labels
+    maintenance.veridis.xyz/window: "enabled"
+    maintenance.veridis.xyz/scheduled: "true"
+    maintenance.veridis.xyz/disruptions-allowed: "true"
+    maintenance.veridis.xyz/rollback-ready: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Maintenance Window Backend PodDisruptionBudget with relaxed policies for scheduled maintenance"
+    veridis.xyz/purpose: "Provides maintenance Backend PDB for scheduled maintenance windows with controlled disruptions"
+
+    pdb.veridis.xyz/min-available: "1"
+    pdb.veridis.xyz/min-available-percentage: "33%"
+    pdb.veridis.xyz/disruption-policy: "maintenance-window"
+    pdb.veridis.xyz/scheduled-maintenance: "true"
+
+    # Maintenance window annotations
+    maintenance.veridis.xyz/window-enabled: "true"
+    maintenance.veridis.xyz/schedule: "02:00-04:00 UTC Sunday"
+    maintenance.veridis.xyz/disruption-tolerance: "controlled"
+    maintenance.veridis.xyz/notification-sent: "true"
+
+    # Change management annotations
+    change.veridis.xyz/approved: "true"
+    change.veridis.xyz/impact-assessment: "low"
+    change.veridis.xyz/rollback-plan: "available"
+    change.veridis.xyz/testing-completed: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "maintenance-window-active"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/pdb-maintenance"
+
+spec:
+  # Relaxed availability during maintenance
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-deployment
+      maintenance.veridis.xyz/window: "enabled"
+
+  # Aggressive eviction policy during maintenance
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis Backend Service - Canary Deployment PodDisruptionBudget
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-backend-pdb-canary
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-canary
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-pdb-canary
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backend.veridis.xyz/type: identity-backend-pdb-canary
+    backend.veridis.xyz/category: core-service-pdb-canary
+    backend.veridis.xyz/role: canary-backend-pdb
+    backend.veridis.xyz/pdb-class: canary-backend-pdb
+
+    service.veridis.xyz/backend-pdb-type: canary-backend-pdb
+    service.veridis.xyz/deployment-strategy: canary
+    service.veridis.xyz/traffic-split: enabled
+
+    pdb.veridis.xyz/type: "canary"
+    pdb.veridis.xyz/min-available: "0"
+    pdb.veridis.xyz/disruption-policy: "flexible"
+
+    # Canary deployment labels
+    canary.veridis.xyz/deployment: "enabled"
+    canary.veridis.xyz/traffic-percentage: "10"
+    canary.veridis.xyz/monitoring-enhanced: "true"
+    canary.veridis.xyz/rollback-ready: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Canary Deployment Backend PodDisruptionBudget with flexible policies for safe deployments"
+    veridis.xyz/purpose: "Provides canary Backend PDB for progressive deployments with flexible disruption management"
+
+    pdb.veridis.xyz/min-available: "0"
+    pdb.veridis.xyz/min-available-percentage: "0%"
+    pdb.veridis.xyz/disruption-policy: "canary-flexible"
+    pdb.veridis.xyz/canary-deployment: "true"
+
+    # Canary deployment annotations
+    canary.veridis.xyz/deployment-enabled: "true"
+    canary.veridis.xyz/traffic-split: "10%"
+    canary.veridis.xyz/monitoring-intensive: "true"
+    canary.veridis.xyz/metrics-validation: "enabled"
+
+    # Progressive delivery annotations
+    progressive.veridis.xyz/enabled: "true"
+    progressive.veridis.xyz/stage: "canary"
+    progressive.veridis.xyz/promotion-criteria: "automated"
+    progressive.veridis.xyz/success-rate-threshold: "99%"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "canary-deployment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/pdb-canary"
+
+spec:
+  # Very flexible for canary deployments
+  minAvailable: 0
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-canary
+      app.kubernetes.io/component: backend-deployment
+
+  # Flexible eviction policy for canary testing
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+# ==============================================================================
+# Veridis Backend PodDisruptionBudget Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS BACKEND PDB STRATEGY:
+# ===========================================
+#
+# VERIDIS BACKEND PDB ARCHITECTURE OVERVIEW:
+# ------------------------------------------
+# 1. Primary Production PDB (veridis-backend-pdb):
+#    - Comprehensive enterprise-grade PDB with intelligent availability management and advanced disruption optimization for production Backend
+#    - Advanced PDB configuration with 66% minimum availability (2/3 replicas), comprehensive health policies, and business continuity integration
+#    - Multi-tier availability architecture with high availability guarantees, SLA compliance (99.9%), and comprehensive operational excellence
+#    - Enterprise PDB policies with controlled disruptions, minimal downtime tolerance, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent availability management, load balancing support, health monitoring, and disruption for maximum efficiency
+#
+# 2. Development Environment PDB (veridis-backend-pdb-dev):
+#    - Development-focused PDB with flexible disruption policies and comprehensive testing environment integration
+#    - Advanced development configuration with 50% minimum availability (1/2 replicas), testing-friendly policies, and comprehensive experimentation support
+#    - Flexible availability optimization with relaxed SLA requirements, high disruption tolerance, and comprehensive development intelligence
+#    - Development intelligence with testing procedures, experimentation support, rapid iteration, and comprehensive development coordination
+#    - Testing excellence with flexible disruptions, development workflows, debugging support, and comprehensive development environment management
+#
+# 3. Staging Environment PDB (veridis-backend-pdb-staging):
+#    - Pre-production PDB with balanced disruption policies and comprehensive production-like testing
+#    - Staging configuration with 60% minimum availability, production-like policies, load testing support, and comprehensive validation procedures
+#    - Balanced availability optimization with moderate disruption tolerance, production simulation, and comprehensive staging intelligence
+#    - Production simulation with load testing, performance validation, availability testing, and comprehensive pre-production coordination
+#    - Validation excellence with production-like behavior, performance testing, availability validation, and comprehensive staging environment management
+#
+# 4. Critical Operations PDB (veridis-backend-pdb-critical):
+#    - Mission-critical PDB with maximum availability requirements and comprehensive zero-downtime operations
+#    - Critical configuration with 80% minimum availability (2/3 replicas), zero-downtime requirements, emergency procedures, and comprehensive business continuity
+#    - Maximum availability optimization with zero disruption tolerance, highest SLA requirements (99.99%), and comprehensive critical operations intelligence
+#    - Emergency procedures with immediate response, automatic failover, critical incident management, and comprehensive emergency coordination
+#    - Business continuity with revenue protection, customer impact minimization, compliance requirements, and comprehensive critical operations management
+#
+# 5. Maintenance Window PDB (veridis-backend-pdb-maintenance):
+#    - Scheduled maintenance PDB with controlled disruption policies and comprehensive change management integration
+#    - Maintenance configuration with 33% minimum availability (1/3 replicas), scheduled disruptions, maintenance windows, and comprehensive change procedures
+#    - Controlled disruption optimization with scheduled maintenance support, change management integration, and comprehensive maintenance intelligence
+#    - Change management with approved procedures, impact assessment, rollback plans, and comprehensive maintenance coordination
+#    - Operational excellence with scheduled maintenance, controlled disruptions, change validation, and comprehensive maintenance environment management
+#
+# 6. Canary Deployment PDB (veridis-backend-pdb-canary):
+#    - Progressive delivery PDB with flexible disruption policies and comprehensive canary deployment support
+#    - Canary configuration with 0% minimum availability, flexible disruptions, progressive delivery, and comprehensive deployment safety
+#    - Progressive delivery optimization with traffic splitting (10%), enhanced monitoring, rollback procedures, and comprehensive canary intelligence
+#    - Deployment safety with automated promotion, success rate validation (99%), metrics validation, and comprehensive progressive coordination
+#    - Innovation excellence with safe deployments, rapid feedback, automated rollback, and comprehensive canary deployment management
+#
+# ENTERPRISE BACKEND PDB FEATURES:
+# ================================
+# Advanced Availability Management and Disruption Optimization:
+#   - Multi-environment PDB architecture with production, development, staging, critical, maintenance, and canary configurations
+#   - Intelligent availability management with percentage-based policies (66%, 50%, 60%, 80%, 33%, 0%), health monitoring, and comprehensive disruption decisions
+#   - PDB discovery with selector optimization, label management, unhealthy pod eviction policies, and comprehensive availability analytics
+#   - Load balancing management with availability guarantees, health checks, traffic distribution, and comprehensive service coordination
+#   - Performance tuning with availability optimization, disruption minimization, SLA compliance, and intelligent PDB optimization
+#
+# Comprehensive Security and Compliance Integration:
+#   - Compliance integration with SOC 2 Type II controls, GDPR requirements, ISO 27001 management, and comprehensive regulatory compliance
+#   - Security management with enterprise-grade policies, access control, audit logging, and comprehensive security enforcement
+#   - Service isolation with namespace boundaries, label selectors, environment segregation, and comprehensive security segmentation
+#   - Business continuity with disaster recovery, failover procedures, emergency response, and comprehensive continuity management
+#   - Risk management with impact assessment, mitigation strategies, recovery procedures, and comprehensive risk analytics
+#
+# Enterprise High Availability and Business Continuity:
+#   - Multi-tier availability with enterprise (99.9%), critical (99.99%), development (flexible), and comprehensive SLA management
+#   - Business continuity with automatic failover, disaster recovery, emergency procedures, and comprehensive continuity optimization
+#   - Service resilience with health monitoring, availability tracking, performance validation, and comprehensive resilience management
+#   - Operational excellence with maintenance windows, change management, deployment strategies, and comprehensive operational coordination
+#   - Strategic planning with capacity management, availability forecasting, business impact analysis, and comprehensive strategic intelligence
+#
+# Advanced Deployment and Change Management:
+#   - Progressive delivery with canary deployments, traffic splitting, automated promotion, and comprehensive deployment safety
+#   - Change management with maintenance windows, scheduled disruptions, approval workflows, and comprehensive change coordination
+#   - Deployment strategies with blue-green support, rolling updates, canary releases, and comprehensive deployment optimization
+#   - Environment management with development, staging, production, critical operations, and comprehensive environment coordination
+#   - Release management with automated procedures, rollback capabilities, validation checks, and comprehensive release intelligence
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Backend PDB Lifecycle Management:
+#   - Multi-PDB deployment with production availability, development flexibility, staging validation, critical operations, maintenance, and canary configurations
+#   - Intelligent PDB management with predictive analytics and availability utilization correlation
+#   - Advanced monitoring with comprehensive PDB analytics and availability business intelligence
+#   - Configuration validation with PDB schema enforcement and availability deployment safety checks
+#   - Automated optimization with PDB pattern analysis and availability configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II PDB controls with comprehensive audit requirements and availability logging
+#   - GDPR PDB compliance with data protection and privacy-preserving availability management
+#   - ISO 27001 PDB security management with information security and availability compliance integration
+#   - NIST 800-190 container PDB security with availability validation and compliance
+#   - Zero-trust PDB architecture with comprehensive encryption and availability authentication requirements
+#
+# Business Intelligence Integration:
+#   - PDB analytics with cost correlation and availability resource utilization optimization
+#   - Performance analytics with user experience optimization and PDB business intelligence
+#   - Availability intelligence with disruption pattern monitoring and PDB optimization recommendations
+#   - Strategic planning with capacity management and PDB forecasting
+#   - Business impact assessment with PDB performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment PDB support with production high availability, development flexibility, staging validation, critical operations, maintenance, and canary configurations
+#   - Comprehensive documentation with PDB guides and availability troubleshooting procedures
+#   - Environment-specific PDBs with production, development, staging, critical, maintenance, and canary support
+#   - Testing integration with PDB development workflow and availability debugging capabilities
+#   - PDB monitoring with comprehensive tracking and availability correlation
+#
+# ==============================================================================

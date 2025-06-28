@@ -1,0 +1,1201 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Backend Service Configuration Maps
+# ==============================================================================
+#
+# This manifest defines comprehensive Veridis Backend configuration maps for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS BACKEND CONFIGURATION ARCHITECTURE:
+#   • Advanced configuration management with comprehensive environment-specific settings and feature flags
+#   • Multi-tier configuration architecture with development, testing, staging, and production configurations
+#   • Comprehensive security framework with encryption settings, access controls, and audit capabilities
+#   • Advanced performance tuning with optimization settings, caching configuration, and resource management
+#   • Enterprise-grade intelligence with comprehensive analytics and monitoring configuration
+#
+# VERIDIS BACKEND CONFIGURATION PERFORMANCE OPTIMIZATION:
+#   • High-performance Rust service configuration with Axum framework optimization and async/await tuning
+#   • Intelligent resource management with CPU, memory, and connection pool optimization settings
+#   • Advanced database configuration with PostgreSQL optimization and connection management
+#   • Comprehensive caching strategy with Redis configuration and intelligent cache management
+#   • Enterprise acceleration with performance tuning and resource optimization settings
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II configuration controls with comprehensive audit and compliance settings
+#   • GDPR configuration compliance with data protection, privacy controls, and retention settings
+#   • ISO 27001 configuration security management with comprehensive framework integration
+#   • NIST 800-190 container configuration with security-specific validation and compliance
+#   • Identity protocol compliance with regulatory frameworks and configuration best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent configuration lifecycle management with automated provisioning and optimization
+#   • Predictive configuration analytics with capacity planning and performance intelligence
+#   • Advanced monitoring integration with configuration analytics and business intelligence
+#   • Comprehensive backup and recovery with configuration preservation and disaster preparedness
+#   • Business continuity configuration with failover capabilities and redundancy optimization
+#
+# RUST AXUM CONFIGURATION INTELLIGENCE:
+#   • Configuration usage analytics with performance patterns and optimization recommendations
+#   • Performance monitoring with configuration latency and optimization intelligence
+#   • Development efficiency with configuration analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with configuration metrics and validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Primary Configuration - Core Service Settings
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-config
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend configuration identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Configuration specific classification
+    config.veridis.xyz/type: primary-config
+    config.veridis.xyz/category: service-configuration
+    config.veridis.xyz/role: main-settings
+    config.veridis.xyz/scope: production
+    config.veridis.xyz/security-level: enterprise
+
+    # Service configuration classification
+    service.veridis.xyz/type: backend-api
+    service.veridis.xyz/configuration: comprehensive
+    service.veridis.xyz/performance-tier: high-performance
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-stack
+
+    # Rust service configuration classification
+    rust.veridis.xyz/version: "1.87.0"
+    rust.veridis.xyz/framework: axum
+    rust.veridis.xyz/optimization: release
+    rust.veridis.xyz/configuration: production
+    rust.veridis.xyz/features: comprehensive
+
+    # Performance configuration classification
+    performance.veridis.xyz/tier: high-performance
+    performance.veridis.xyz/optimization: rust-optimized
+    performance.veridis.xyz/async-support: enabled
+    performance.veridis.xyz/connection-pooling: optimized
+    performance.veridis.xyz/caching: redis-enabled
+
+    # Business configuration classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-availability
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational configuration labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "config-control-framework"
+    compliance.veridis.xyz/gdpr: "config-data-protection"
+    compliance.veridis.xyz/iso27001: "config-security-management"
+    compliance.veridis.xyz/nist-800-190: "config-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Configuration monitoring and analytics
+    monitoring.veridis.xyz/config-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/security-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+    monitoring.veridis.xyz/analytics: "enabled"
+
+  annotations:
+    # Configuration purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend primary configuration with comprehensive service settings, performance optimization, and security features"
+    veridis.xyz/purpose: "Provides comprehensive configuration management for identity backend service with performance tuning, security settings, and operational excellence"
+    veridis.xyz/scope: "Backend service configuration including server settings, database configuration, caching, security, and monitoring"
+
+    # Configuration architecture and design
+    config.veridis.xyz/architecture: "Enterprise configuration management with environment-specific settings, feature flags, and comprehensive optimization"
+    config.veridis.xyz/design-pattern: "Layered configuration with base settings, environment overrides, and performance optimization"
+    config.veridis.xyz/security-model: "Secure configuration management with encrypted settings and comprehensive access controls"
+    config.veridis.xyz/performance-model: "High-performance configuration with optimization settings and intelligent resource management"
+
+    # Service configuration specifications
+    service.veridis.xyz/config-specification: "Comprehensive service configuration with Rust Axum optimization and enterprise features"
+    service.veridis.xyz/performance-specification: "High-performance configuration with async optimization and resource management"
+    service.veridis.xyz/security-specification: "Enterprise security configuration with encryption and access controls"
+    service.veridis.xyz/monitoring-specification: "Comprehensive monitoring configuration with metrics and analytics"
+
+    # Configuration lifecycle specifications
+    lifecycle.veridis.xyz/configuration-specification: "Dynamic configuration management with automated updates and validation"
+    lifecycle.veridis.xyz/validation-specification: "Configuration validation with schema checking and compatibility verification"
+    lifecycle.veridis.xyz/optimization-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/maintenance-specification: "Automated maintenance with configuration preservation and optimization"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/config-admin: "backend-config-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/backend/configuration"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/config-management"
+    veridis.xyz/config-docs: "https://config.veridis.xyz/backend/configuration-guide"
+    veridis.xyz/optimization-docs: "https://optimization.veridis.xyz/backend/performance-tuning"
+
+data:
+  # ==============================================================================
+  # Server Configuration - Core Server Settings
+  # ==============================================================================
+
+  # Server runtime configuration
+  server.toml: |
+    # Veridis Backend Server Configuration
+    # Production-grade Axum server settings with comprehensive optimization
+
+    [server]
+    # Core server settings
+    host = "0.0.0.0"
+    port = 8080
+    workers = 4
+    max_connections = 1000
+
+    # Request handling configuration
+    request_timeout = 30
+    keep_alive_timeout = 75
+    max_request_size = 10485760  # 10MB
+    max_header_size = 8192       # 8KB
+
+    # Graceful shutdown configuration
+    shutdown_timeout = 30
+    graceful_shutdown_timeout = 60
+
+    # Performance optimization
+    tcp_nodelay = true
+    tcp_keepalive = true
+    socket_reuse_port = true
+
+    # TLS configuration (if direct termination)
+    [server.tls]
+    enabled = false  # Handled by ingress/load balancer
+    cert_file = "/app/certs/tls.crt"
+    key_file = "/app/certs/tls.key"
+    min_tls_version = "1.2"
+
+    # HTTP/2 configuration
+    [server.http2]
+    enabled = true
+    max_concurrent_streams = 100
+    max_frame_size = 16384
+    initial_window_size = 65535
+
+  # ==============================================================================
+  # Database Configuration - PostgreSQL Settings
+  # ==============================================================================
+
+  database.toml: |
+    # Veridis Backend Database Configuration
+    # Production-grade PostgreSQL configuration with connection pooling
+
+    [database]
+    # Connection settings (URL comes from secret)
+    pool_size = 20
+    max_connections = 100
+    min_connections = 5
+
+    # Connection timeouts
+    connection_timeout = 30
+    idle_timeout = 600
+    max_lifetime = 1800
+
+    # Performance optimization
+    statement_timeout = 30000
+    query_timeout = 15000
+    connection_pool_timeout = 10
+
+    # Health check configuration
+    health_check_interval = 30
+    health_check_timeout = 5
+    max_health_check_failures = 3
+
+    # Migration settings
+    [database.migrations]
+    auto_migrate = false
+    migration_timeout = 300
+    validate_on_connect = true
+
+    # Connection pool behavior
+    [database.pool]
+    test_on_borrow = true
+    test_on_return = false
+    test_while_idle = true
+    validation_query = "SELECT 1"
+
+    # Performance tuning
+    [database.performance]
+    prepared_statements = true
+    statement_cache_size = 1000
+    batch_size = 100
+    fetch_size = 1000
+
+  # ==============================================================================
+  # Redis Configuration - Cache and Session Management
+  # ==============================================================================
+
+  redis.toml: |
+    # Veridis Backend Redis Configuration
+    # Production-grade Redis configuration for caching and sessions
+
+    [redis]
+    # Connection settings (URL comes from secret)
+    pool_size = 10
+    max_connections = 50
+    min_connections = 2
+
+    # Connection timeouts
+    connection_timeout = 5
+    command_timeout = 10
+    idle_timeout = 300
+
+    # Retry configuration
+    max_retries = 3
+    retry_delay = 100
+    exponential_backoff = true
+
+    # Health check configuration
+    health_check_interval = 15
+    health_check_timeout = 3
+
+    # Cache configuration
+    [redis.cache]
+    default_ttl = 3600        # 1 hour
+    max_ttl = 86400          # 24 hours
+    compression_enabled = true
+    compression_threshold = 1024
+
+    # Session configuration
+    [redis.sessions]
+    session_ttl = 3600       # 1 hour
+    refresh_threshold = 1800  # 30 minutes
+    secure_cookies = true
+    same_site = "strict"
+
+    # Performance optimization
+    [redis.performance]
+    pipeline_enabled = true
+    pipeline_size = 100
+    connection_pool_timeout = 5
+    command_batching = true
+
+  # ==============================================================================
+  # API Configuration - REST API Settings
+  # ==============================================================================
+
+  api.toml: |
+    # Veridis Backend API Configuration
+    # RESTful API configuration with comprehensive security and performance
+
+    [api]
+    # Base API configuration
+    version = "v1"
+    base_path = "/api/v1"
+    documentation_enabled = true
+
+    # Rate limiting configuration
+    [api.rate_limiting]
+    enabled = true
+    requests_per_minute = 1000
+    burst_size = 100
+    window_size = 60
+
+    # CORS configuration
+    [api.cors]
+    enabled = true
+    allowed_origins = [
+        "https://app.veridis.xyz",
+        "https://admin.veridis.xyz",
+        "https://dashboard.veridis.xyz"
+    ]
+    allowed_methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    allowed_headers = ["Content-Type", "Authorization", "X-API-Key", "X-Request-ID"]
+    max_age = 3600
+    credentials = true
+
+    # Request/Response configuration
+    [api.request]
+    max_body_size = 10485760  # 10MB
+    max_header_count = 50
+    max_query_params = 100
+
+    [api.response]
+    compression_enabled = true
+    compression_threshold = 1024
+    cache_control_enabled = true
+    default_cache_max_age = 300
+
+    # Security headers
+    [api.security]
+    content_security_policy = "default-src 'self'"
+    x_frame_options = "DENY"
+    x_content_type_options = "nosniff"
+    x_xss_protection = "1; mode=block"
+    strict_transport_security = "max-age=31536000; includeSubDomains"
+
+  # ==============================================================================
+  # Identity Service Configuration - Core Identity Features
+  # ==============================================================================
+
+  identity.toml: |
+    # Veridis Identity Service Configuration
+    # Comprehensive identity management and verification settings
+
+    [identity]
+    # Core identity service settings
+    service_enabled = true
+    verification_required = true
+    multi_factor_auth = true
+
+    # Identity creation settings
+    [identity.creation]
+    auto_verification = false
+    manual_review_required = true
+    identity_expiration = 31536000  # 1 year
+    renewal_window = 2592000        # 30 days
+
+    # Verification settings
+    [identity.verification]
+    max_verification_attempts = 3
+    verification_timeout = 300      # 5 minutes
+    verification_cooldown = 3600    # 1 hour
+    require_document_upload = true
+
+    # Privacy settings
+    [identity.privacy]
+    pii_encryption = true
+    data_minimization = true
+    consent_required = true
+    right_to_erasure = true
+
+    # Compliance settings
+    [identity.compliance]
+    gdpr_compliance = true
+    kyc_required = true
+    aml_checks = true
+    sanctions_screening = true
+
+  # ==============================================================================
+  # Attestation Service Configuration - Attestation and Claims
+  # ==============================================================================
+
+  attestation.toml: |
+    # Veridis Attestation Service Configuration
+    # Comprehensive attestation and claims management settings
+
+    [attestation]
+    # Core attestation service settings
+    service_enabled = true
+    auto_issuance = false
+    batch_processing = true
+
+    # Attestation creation settings
+    [attestation.creation]
+    require_proof = true
+    verification_threshold = 2
+    attestation_expiration = 15552000  # 6 months
+    renewal_window = 1296000           # 15 days
+
+    # Verification settings
+    [attestation.verification]
+    cryptographic_verification = true
+    timestamp_verification = true
+    issuer_verification = true
+    revocation_check = true
+
+    # Performance settings
+    [attestation.performance]
+    batch_size = 50
+    processing_timeout = 30
+    max_concurrent_processing = 10
+
+    # Storage settings
+    [attestation.storage]
+    compression_enabled = true
+    archival_enabled = true
+    archival_threshold = 86400  # 1 day
+    retention_period = 2592000  # 30 days
+
+  # ==============================================================================
+  # Verification Service Configuration - Proof Verification
+  # ==============================================================================
+
+  verification.toml: |
+    # Veridis Verification Service Configuration
+    # Comprehensive proof verification and validation settings
+
+    [verification]
+    # Core verification service settings
+    service_enabled = true
+    strict_verification = true
+    performance_optimization = true
+
+    # Verification engine settings
+    [verification.engine]
+    max_verification_time = 30
+    parallel_verification = true
+    verification_workers = 4
+    cache_verification_results = true
+
+    # Cryptographic settings
+    [verification.crypto]
+    signature_verification = true
+    hash_verification = true
+    timestamp_verification = true
+    merkle_proof_verification = true
+
+    # Zero-knowledge proof settings
+    [verification.zk_proofs]
+    enabled = true
+    proof_system = "plonk"
+    security_level = 128
+    batch_verification = true
+
+    # Performance optimization
+    [verification.performance]
+    result_caching = true
+    cache_ttl = 3600        # 1 hour
+    precomputation = true
+    gpu_acceleration = false  # CPU-based verification
+
+  # ==============================================================================
+  # Compliance Service Configuration - Regulatory Compliance
+  # ==============================================================================
+
+  compliance.toml: |
+    # Veridis Compliance Service Configuration
+    # Comprehensive regulatory compliance and audit settings
+
+    [compliance]
+    # Core compliance service settings
+    service_enabled = true
+    audit_logging = true
+    automated_compliance = true
+
+    # GDPR compliance settings
+    [compliance.gdpr]
+    enabled = true
+    data_protection_impact_assessment = true
+    consent_management = true
+    right_to_portability = true
+    right_to_erasure = true
+    data_minimization = true
+
+    # SOC 2 compliance settings
+    [compliance.soc2]
+    enabled = true
+    security_controls = true
+    availability_controls = true
+    processing_integrity = true
+    confidentiality_controls = true
+
+    # ISO 27001 compliance settings
+    [compliance.iso27001]
+    enabled = true
+    information_security_management = true
+    risk_assessment = true
+    security_incident_management = true
+
+    # Audit settings
+    [compliance.audit]
+    comprehensive_logging = true
+    log_retention_period = 2592000  # 30 days
+    audit_trail_integrity = true
+    automated_reporting = true
+
+  # ==============================================================================
+  # Bridge Service Configuration - Multi-Chain Bridge Operations
+  # ==============================================================================
+
+  bridge.toml: |
+    # Veridis Bridge Service Configuration
+    # Multi-chain bridge operations and cross-chain functionality
+
+    [bridge]
+    # Core bridge service settings
+    service_enabled = true
+    multi_chain_support = true
+    security_threshold = 3
+
+    # Supported networks
+    [bridge.networks]
+    starknet_enabled = true
+    ethereum_enabled = true
+    cosmos_enabled = true
+    polygon_enabled = false
+
+    # Security settings
+    [bridge.security]
+    multi_signature_required = true
+    finality_confirmations = 12
+    fraud_proof_window = 604800  # 7 days
+    emergency_pause = true
+
+    # Performance settings
+    [bridge.performance]
+    batch_processing = true
+    batch_size = 10
+    processing_timeout = 300  # 5 minutes
+    max_concurrent_transfers = 5
+
+    # Fee configuration
+    [bridge.fees]
+    dynamic_fees = true
+    base_fee = 0.001
+    priority_fee_multiplier = 1.5
+    fee_estimation_enabled = true
+
+  # ==============================================================================
+  # Monitoring Configuration - Metrics and Observability
+  # ==============================================================================
+
+  monitoring.toml: |
+    # Veridis Backend Monitoring Configuration
+    # Comprehensive metrics, logging, and observability settings
+
+    [monitoring]
+    # Core monitoring settings
+    metrics_enabled = true
+    tracing_enabled = true
+    logging_enabled = true
+
+    # Metrics configuration
+    [monitoring.metrics]
+    prometheus_enabled = true
+    metrics_port = 9090
+    metrics_path = "/metrics"
+    collection_interval = 15
+
+    # Custom metrics
+    [monitoring.custom_metrics]
+    business_metrics = true
+    performance_metrics = true
+    security_metrics = true
+    compliance_metrics = true
+
+    # Logging configuration
+    [monitoring.logging]
+    log_level = "info"
+    structured_logging = true
+    log_format = "json"
+    log_correlation_id = true
+
+    # Distributed tracing
+    [monitoring.tracing]
+    jaeger_enabled = true
+    sampling_rate = 0.1
+    trace_timeout = 30
+    max_trace_length = 1000
+
+    # Health checks
+    [monitoring.health]
+    startup_probe_enabled = true
+    liveness_probe_enabled = true
+    readiness_probe_enabled = true
+    health_check_timeout = 5
+
+  # ==============================================================================
+  # Security Configuration - Enterprise Security Settings
+  # ==============================================================================
+
+  security.toml: |
+    # Veridis Backend Security Configuration
+    # Enterprise-grade security settings and controls
+
+    [security]
+    # Core security settings
+    encryption_at_rest = true
+    encryption_in_transit = true
+    secure_headers = true
+
+    # Authentication configuration
+    [security.authentication]
+    jwt_enabled = true
+    oauth2_enabled = true
+    multi_factor_auth = true
+    session_timeout = 3600  # 1 hour
+
+    # Authorization configuration
+    [security.authorization]
+    rbac_enabled = true
+    permission_caching = true
+    permission_cache_ttl = 300  # 5 minutes
+    fine_grained_permissions = true
+
+    # Encryption settings
+    [security.encryption]
+    algorithm = "AES-256-GCM"
+    key_rotation_enabled = true
+    key_rotation_interval = 2592000  # 30 days
+
+    # API security
+    [security.api]
+    api_key_required = true
+    request_signing = true
+    timestamp_validation = true
+    nonce_validation = true
+
+    # Audit security
+    [security.audit]
+    security_events_logging = true
+    failed_auth_tracking = true
+    suspicious_activity_detection = true
+    automated_incident_response = true
+
+---
+# ==============================================================================
+# Veridis Backend Feature Flags Configuration - Dynamic Feature Management
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-feature-flags
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-feature-flags
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: feature-flags
+    config.veridis.xyz/category: dynamic-configuration
+    config.veridis.xyz/role: feature-management
+    config.veridis.xyz/scope: production
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Dynamic feature flags for Veridis Backend service configuration and functionality control"
+    veridis.xyz/purpose: "Provides runtime feature toggle capabilities for safe deployment and experimentation"
+
+    config.veridis.xyz/feature-specification: "Dynamic feature flag management with runtime configuration updates"
+    config.veridis.xyz/toggle-specification: "Safe feature toggling with gradual rollout and rollback capabilities"
+
+data:
+  # ==============================================================================
+  # Core Service Feature Flags
+  # ==============================================================================
+
+  # Core identity service features
+  IDENTITY_SERVICE_ENABLED: "true"
+  IDENTITY_AUTO_VERIFICATION: "false"
+  IDENTITY_DOCUMENT_UPLOAD: "true"
+  IDENTITY_BIOMETRIC_VERIFICATION: "false"
+  IDENTITY_SOCIAL_VERIFICATION: "true"
+
+  # Attestation service features
+  ATTESTATION_SERVICE_ENABLED: "true"
+  ATTESTATION_AUTO_ISSUANCE: "false"
+  ATTESTATION_BATCH_PROCESSING: "true"
+  ATTESTATION_CRYPTOGRAPHIC_PROOFS: "true"
+  ATTESTATION_REVOCATION_LISTS: "true"
+
+  # Verification service features
+  VERIFICATION_SERVICE_ENABLED: "true"
+  VERIFICATION_ZK_PROOFS: "true"
+  VERIFICATION_PARALLEL_PROCESSING: "true"
+  VERIFICATION_RESULT_CACHING: "true"
+  VERIFICATION_GPU_ACCELERATION: "false"
+
+  # Compliance service features
+  COMPLIANCE_SERVICE_ENABLED: "true"
+  COMPLIANCE_GDPR_AUTOMATION: "true"
+  COMPLIANCE_SOC2_CONTROLS: "true"
+  COMPLIANCE_ISO27001_MANAGEMENT: "true"
+  COMPLIANCE_AUTOMATED_REPORTING: "true"
+
+  # Bridge service features
+  BRIDGE_SERVICE_ENABLED: "true"
+  BRIDGE_STARKNET_SUPPORT: "true"
+  BRIDGE_ETHEREUM_SUPPORT: "true"
+  BRIDGE_COSMOS_SUPPORT: "true"
+  BRIDGE_BATCH_TRANSFERS: "true"
+
+  # ==============================================================================
+  # Performance and Optimization Features
+  # ==============================================================================
+
+  # Performance optimization
+  PERFORMANCE_OPTIMIZATION_ENABLED: "true"
+  ASYNC_PROCESSING_ENABLED: "true"
+  CONNECTION_POOLING_OPTIMIZED: "true"
+  CACHE_OPTIMIZATION_ENABLED: "true"
+  QUERY_OPTIMIZATION_ENABLED: "true"
+
+  # Caching features
+  REDIS_CACHING_ENABLED: "true"
+  RESULT_CACHING_ENABLED: "true"
+  SESSION_CACHING_ENABLED: "true"
+  QUERY_RESULT_CACHING: "true"
+  COMPRESSION_ENABLED: "true"
+
+  # Database optimization
+  DATABASE_CONNECTION_POOLING: "true"
+  DATABASE_PREPARED_STATEMENTS: "true"
+  DATABASE_BATCH_OPERATIONS: "true"
+  DATABASE_READ_REPLICAS: "false"
+  DATABASE_QUERY_OPTIMIZATION: "true"
+
+  # ==============================================================================
+  # Security and Privacy Features
+  # ==============================================================================
+
+  # Security features
+  SECURITY_ENHANCED_MODE: "true"
+  MULTI_FACTOR_AUTH_REQUIRED: "true"
+  API_RATE_LIMITING_ENABLED: "true"
+  REQUEST_SIGNING_REQUIRED: "true"
+  ENCRYPTION_AT_REST_ENABLED: "true"
+
+  # Privacy features
+  DATA_MINIMIZATION_ENABLED: "true"
+  CONSENT_MANAGEMENT_ENABLED: "true"
+  RIGHT_TO_ERASURE_ENABLED: "true"
+  ANONYMIZATION_ENABLED: "true"
+  PSEUDONYMIZATION_ENABLED: "true"
+
+  # Audit and compliance
+  AUDIT_LOGGING_ENABLED: "true"
+  COMPREHENSIVE_AUDIT_TRAIL: "true"
+  SECURITY_EVENT_MONITORING: "true"
+  COMPLIANCE_VALIDATION: "true"
+  AUTOMATED_COMPLIANCE_CHECKS: "true"
+
+  # ==============================================================================
+  # Monitoring and Observability Features
+  # ==============================================================================
+
+  # Monitoring features
+  PROMETHEUS_METRICS_ENABLED: "true"
+  JAEGER_TRACING_ENABLED: "true"
+  STRUCTURED_LOGGING_ENABLED: "true"
+  HEALTH_CHECKS_ENABLED: "true"
+  PERFORMANCE_MONITORING: "true"
+
+  # Business intelligence
+  BUSINESS_METRICS_ENABLED: "true"
+  USAGE_ANALYTICS_ENABLED: "true"
+  COST_TRACKING_ENABLED: "true"
+  PERFORMANCE_ANALYTICS: "true"
+  PREDICTIVE_ANALYTICS: "false"
+
+  # Alerting features
+  ALERTING_ENABLED: "true"
+  INTELLIGENT_ALERTING: "true"
+  ESCALATION_POLICIES: "true"
+  AUTOMATED_INCIDENT_RESPONSE: "false"
+  NOTIFICATION_WEBHOOKS: "true"
+
+  # ==============================================================================
+  # Development and Testing Features
+  # ==============================================================================
+
+  # Development features
+  DEVELOPMENT_MODE: "false"
+  DEBUG_LOGGING_ENABLED: "false"
+  API_DOCUMENTATION_ENABLED: "true"
+  SWAGGER_UI_ENABLED: "true"
+  API_TESTING_ENDPOINTS: "false"
+
+  # Testing features
+  INTEGRATION_TESTING_ENABLED: "false"
+  LOAD_TESTING_ENDPOINTS: "false"
+  CHAOS_ENGINEERING: "false"
+  FEATURE_TESTING_FRAMEWORK: "false"
+  A_B_TESTING_ENABLED: "false"
+
+  # Experimental features
+  EXPERIMENTAL_FEATURES_ENABLED: "false"
+  BETA_FEATURES_ENABLED: "false"
+  CANARY_DEPLOYMENT_SUPPORT: "true"
+  FEATURE_GRADUAL_ROLLOUT: "true"
+  FEATURE_ROLLBACK_CAPABILITY: "true"
+
+---
+# ==============================================================================
+# Veridis Backend Environment Configuration - Environment-Specific Settings
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-environment
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-environment
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: environment-config
+    config.veridis.xyz/category: environment-specific
+    config.veridis.xyz/role: runtime-settings
+    config.veridis.xyz/scope: production
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Environment-specific configuration for Veridis Backend production deployment"
+    veridis.xyz/purpose: "Provides production-specific runtime settings and environment configuration"
+
+data:
+  # ==============================================================================
+  # Environment Runtime Settings
+  # ==============================================================================
+
+  # Core environment settings
+  ENVIRONMENT: "production"
+  DEPLOYMENT_STAGE: "production"
+  LOG_LEVEL: "info"
+  DEBUG_MODE: "false"
+
+  # Rust runtime settings
+  RUST_LOG: "veridis_backend=info,axum=info,tower=warn,hyper=warn,sqlx=warn"
+  RUST_BACKTRACE: "0"
+  RUST_MIN_STACK: "8388608"
+
+  # Tokio runtime settings
+  TOKIO_WORKER_THREADS: "4"
+  TOKIO_BLOCKING_THREADS: "16"
+  TOKIO_THREAD_STACK_SIZE: "2097152"
+
+  # Service port configuration
+  SERVICE_PORT: "8080"
+  METRICS_PORT: "9090"
+  HEALTH_PORT: "8081"
+  ADMIN_PORT: "9000"
+
+  # Server configuration
+  SERVER_HOST: "0.0.0.0"
+  SERVER_WORKERS: "4"
+  SERVER_MAX_CONNECTIONS: "1000"
+  SERVER_REQUEST_TIMEOUT: "30"
+  SERVER_KEEP_ALIVE_TIMEOUT: "75"
+
+  # ==============================================================================
+  # Database Environment Configuration
+  # ==============================================================================
+
+  # Database pool configuration
+  DATABASE_POOL_SIZE: "20"
+  DATABASE_MAX_CONNECTIONS: "100"
+  DATABASE_MIN_CONNECTIONS: "5"
+  DATABASE_CONNECTION_TIMEOUT: "30"
+  DATABASE_IDLE_TIMEOUT: "600"
+  DATABASE_MAX_LIFETIME: "1800"
+
+  # Database performance settings
+  DATABASE_STATEMENT_TIMEOUT: "30000"
+  DATABASE_QUERY_TIMEOUT: "15000"
+  DATABASE_CONNECTION_POOL_TIMEOUT: "10"
+  DATABASE_PREPARED_STATEMENTS: "true"
+  DATABASE_STATEMENT_CACHE_SIZE: "1000"
+
+  # ==============================================================================
+  # Redis Environment Configuration
+  # ==============================================================================
+
+  # Redis connection configuration
+  REDIS_POOL_SIZE: "10"
+  REDIS_MAX_CONNECTIONS: "50"
+  REDIS_MIN_CONNECTIONS: "2"
+  REDIS_CONNECTION_TIMEOUT: "5"
+  REDIS_COMMAND_TIMEOUT: "10"
+  REDIS_IDLE_TIMEOUT: "300"
+
+  # Redis cache configuration
+  REDIS_DEFAULT_TTL: "3600"
+  REDIS_MAX_TTL: "86400"
+  REDIS_COMPRESSION_ENABLED: "true"
+  REDIS_COMPRESSION_THRESHOLD: "1024"
+
+  # ==============================================================================
+  # API Environment Configuration
+  # ==============================================================================
+
+  # API rate limiting
+  API_RATE_LIMIT_REQUESTS: "1000"
+  API_RATE_LIMIT_WINDOW: "60"
+  API_RATE_LIMIT_BURST: "100"
+
+  # API request configuration
+  API_MAX_REQUEST_SIZE: "10485760"
+  API_MAX_HEADER_SIZE: "8192"
+  API_MAX_QUERY_PARAMS: "100"
+
+  # CORS configuration
+  API_CORS_ORIGINS: "https://app.veridis.xyz,https://admin.veridis.xyz,https://dashboard.veridis.xyz"
+  API_CORS_MAX_AGE: "3600"
+  API_CORS_CREDENTIALS: "true"
+
+  # ==============================================================================
+  # Security Environment Configuration
+  # ==============================================================================
+
+  # JWT configuration
+  JWT_EXPIRATION: "3600"
+  JWT_REFRESH_EXPIRATION: "604800"
+  JWT_ALGORITHM: "HS256"
+  JWT_ISSUER: "veridis-backend"
+  JWT_AUDIENCE: "veridis-clients"
+
+  # Session configuration
+  SESSION_TIMEOUT: "3600"
+  SESSION_REFRESH_THRESHOLD: "1800"
+  SESSION_SECURE_COOKIES: "true"
+  SESSION_SAME_SITE: "strict"
+
+  # ==============================================================================
+  # Monitoring Environment Configuration
+  # ==============================================================================
+
+  # Metrics configuration
+  METRICS_ENABLED: "true"
+  METRICS_COLLECTION_INTERVAL: "15"
+  CUSTOM_METRICS_ENABLED: "true"
+  BUSINESS_METRICS_ENABLED: "true"
+
+  # Tracing configuration
+  TRACING_ENABLED: "true"
+  JAEGER_SAMPLING_RATE: "0.1"
+  JAEGER_MAX_TRACE_LENGTH: "1000"
+  TRACE_TIMEOUT: "30"
+
+  # Health check configuration
+  HEALTH_CHECK_TIMEOUT: "5"
+  STARTUP_PROBE_INITIAL_DELAY: "10"
+  LIVENESS_PROBE_PERIOD: "30"
+  READINESS_PROBE_PERIOD: "10"
+
+  # ==============================================================================
+  # Performance Environment Configuration
+  # ==============================================================================
+
+  # Performance optimization
+  PERFORMANCE_OPTIMIZATION_ENABLED: "true"
+  ASYNC_PROCESSING_ENABLED: "true"
+  PARALLEL_PROCESSING_ENABLED: "true"
+  BATCH_PROCESSING_ENABLED: "true"
+
+  # Resource limits
+  MAX_CONCURRENT_REQUESTS: "1000"
+  MAX_CONCURRENT_CONNECTIONS: "1000"
+  MAX_PROCESSING_TIME: "30"
+  RESOURCE_CLEANUP_INTERVAL: "300"
+
+---
+# ==============================================================================
+# Veridis Backend Logging Configuration - Comprehensive Logging Settings
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-logging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-logging
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: logging-config
+    config.veridis.xyz/category: observability
+    config.veridis.xyz/role: log-management
+    config.veridis.xyz/scope: production
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Comprehensive logging configuration for Veridis Backend service"
+    veridis.xyz/purpose: "Provides structured logging, audit trails, and observability features"
+
+data:
+  # ==============================================================================
+  # Logging Configuration File
+  # ==============================================================================
+
+  logging.toml: |
+    # Veridis Backend Logging Configuration
+    # Production-grade logging with structured output and comprehensive audit trails
+
+    [logging]
+    # Core logging settings
+    level = "info"
+    format = "json"
+    structured = true
+    correlation_id = true
+
+    # Output configuration
+    [logging.output]
+    stdout = true
+    file = true
+    syslog = false
+
+    # File logging configuration
+    [logging.file]
+    path = "/app/logs"
+    filename = "veridis-backend.log"
+    max_size = "100MB"
+    max_files = 10
+    compress = true
+
+    # JSON logging configuration
+    [logging.json]
+    pretty_print = false
+    timestamp_format = "rfc3339"
+    include_caller = true
+    include_stack_trace = false
+
+    # Audit logging configuration
+    [logging.audit]
+    enabled = true
+    separate_file = true
+    filename = "audit.log"
+    retention_days = 90
+
+    # Security logging configuration
+    [logging.security]
+    enabled = true
+    failed_auth_events = true
+    suspicious_activity = true
+    access_control_events = true
+
+    # Performance logging configuration
+    [logging.performance]
+    enabled = true
+    slow_queries = true
+    slow_query_threshold = 1000  # milliseconds
+    request_duration = true
+
+    # Business logging configuration
+    [logging.business]
+    enabled = true
+    user_actions = true
+    transaction_events = true
+    compliance_events = true
+
+# ==============================================================================
+# Veridis Backend ConfigMap Summary and Enterprise Configuration Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS BACKEND CONFIGURATION STRATEGY:
+# =====================================================
+#
+# VERIDIS BACKEND CONFIGURATION ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------
+# 1. Primary Configuration (veridis-backend-config):
+#    - Comprehensive TOML-based configuration with server, database, Redis, API, and service settings
+#    - Enterprise-grade performance optimization with connection pooling and resource management
+#    - Advanced security configuration with encryption, authentication, and authorization settings
+#    - Comprehensive monitoring integration with Prometheus metrics and Jaeger tracing
+#    - Multi-service configuration including identity, attestation, verification, compliance, and bridge services
+#
+# 2. Feature Flags Configuration (veridis-backend-feature-flags):
+#    - Dynamic feature management with runtime toggles and safe deployment capabilities
+#    - Comprehensive service feature flags for identity, attestation, verification, compliance, and bridge
+#    - Performance and optimization feature toggles with caching and database optimization
+#    - Security and privacy feature flags with enhanced security mode and compliance automation
+#    - Development and testing feature flags with experimental capabilities and A/B testing support
+#
+# 3. Environment Configuration (veridis-backend-environment):
+#    - Production-specific runtime settings with Rust and Tokio optimization
+#    - Comprehensive database and Redis environment configuration with connection management
+#    - API environment settings with rate limiting, CORS, and security configuration
+#    - Monitoring environment configuration with metrics, tracing, and health check settings
+#    - Performance environment settings with optimization and resource management
+#
+# 4. Logging Configuration (veridis-backend-logging):
+#    - Structured JSON logging with comprehensive audit trail capabilities
+#    - Separate audit and security logging with retention policies and compliance
+#    - Performance logging with slow query detection and request duration tracking
+#    - Business logging with user actions, transactions, and compliance event tracking
+#    - File-based logging with rotation, compression, and retention management
+#
+# ENTERPRISE CONFIGURATION FEATURES:
+# ==================================
+# Advanced Service Configuration Management:
+#   - TOML-based configuration files with comprehensive service settings and optimization
+#   - Multi-service configuration including identity, attestation, verification, compliance, and bridge
+#   - Performance optimization with connection pooling, caching, and resource management
+#   - Security configuration with encryption, authentication, authorization, and audit controls
+#   - Monitoring integration with Prometheus metrics, Jaeger tracing, and health checks
+#
+# Dynamic Feature Flag Management:
+#   - Runtime feature toggles with safe deployment and rollback capabilities
+#   - Comprehensive service feature flags with granular control over functionality
+#   - Performance optimization flags with caching, database, and query optimization
+#   - Security and privacy feature flags with enhanced security and compliance automation
+#   - Development and testing flags with experimental features and A/B testing support
+#
+# Environment-Specific Configuration:
+#   - Production-optimized runtime settings with Rust and Tokio performance tuning
+#   - Database and Redis environment configuration with connection management and optimization
+#   - API environment settings with rate limiting, CORS, and comprehensive security
+#   - Monitoring environment configuration with metrics collection and observability
+#   - Resource management with performance optimization and intelligent scaling
+#
+# Comprehensive Logging and Observability:
+#   - Structured JSON logging with correlation IDs and comprehensive audit trails
+#   - Separate audit and security logging with compliance-focused retention policies
+#   - Performance logging with slow query detection and optimization intelligence
+#   - Business logging with user actions, compliance events, and transaction tracking
+#   - File management with rotation, compression, and intelligent retention policies
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Configuration Lifecycle Management:
+#   - Dynamic configuration updates with validation and rollback capabilities
+#   - Environment-specific configuration management with inheritance and overrides
+#   - Feature flag management with gradual rollout and safe deployment procedures
+#   - Configuration validation with schema checking and compatibility verification
+#   - Automated configuration backup and recovery with disaster preparedness
+#
+# Performance and Optimization:
+#   - High-performance configuration with Rust and Axum framework optimization
+#   - Database and Redis optimization with connection pooling and intelligent caching
+#   - API performance configuration with rate limiting and resource management
+#   - Monitoring optimization with efficient metrics collection and intelligent filtering
+#   - Resource optimization with intelligent allocation and cost management
+#
+# Security and Compliance Integration:
+#   - Comprehensive security configuration with encryption and access controls
+#   - Compliance framework integration with GDPR, SOC 2, ISO 27001, and NIST validation
+#   - Audit configuration with comprehensive trail preservation and compliance evidence
+#   - Privacy configuration with data minimization and consent management
+#   - Security monitoring with automated threat detection and incident response
+#
+# Business Intelligence and Analytics:
+#   - Business metrics configuration with usage analytics and performance intelligence
+#   - Cost tracking configuration with resource utilization analysis and optimization
+#   - Quality assurance configuration with comprehensive validation and improvement
+#   - Strategic planning configuration with predictive analytics and capacity planning
+#   - Operational intelligence with automated insights and optimization recommendations
+#
+# ==============================================================================
