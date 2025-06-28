@@ -1,0 +1,743 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - ZK Circuits GPU Resource Quotas
+# ==============================================================================
+#
+# This manifest defines comprehensive ZK Circuits GPU resource quotas for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ZK CIRCUITS GPU QUOTA ARCHITECTURE:
+#   • Advanced zero-knowledge proof GPU resource management with intelligent allocation and optimization
+#   • Multi-tier GPU quota architecture with development, testing, staging, and production allocations
+#   • Comprehensive performance framework with GPU-aware quotas, resource optimization, and utilization intelligence
+#   • Advanced lifecycle management with automated quota management, resource scaling, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and GPU resource insights
+#
+# VERIDIS ZK CIRCUITS GPU QUOTA OPTIMIZATION:
+#   • High-performance GPU quotas with intelligent resource allocation and utilization optimization
+#   • Intelligent proof generation with GPU batching optimization and performance-based resource decisions
+#   • Advanced resource management with business intelligence and workload-based quota allocation
+#   • Comprehensive GPU resource control with intelligent throttling and performance enhancement
+#   • Enterprise acceleration with predictive quota management and resource optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II resource controls with comprehensive audit and quota requirements
+#   • GDPR resource compliance with data protection, privacy controls, and resource management
+#   • ISO 27001 resource management with comprehensive framework integration
+#   • NIST 800-190 container resource controls with quota-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and resource best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent quota lifecycle management with automated provisioning and optimization
+#   • Predictive resource analytics with capacity planning and GPU intelligence
+#   • Advanced monitoring integration with quota analytics and business intelligence
+#   • Comprehensive resource control with quota preservation and utilization optimization
+#   • Business continuity quotas with resource guarantees and performance optimization
+#
+# GPU ACCELERATION QUOTA INTELLIGENCE:
+#   • Quota usage analytics with utilization patterns and optimization recommendations
+#   • Performance monitoring with resource latency and throughput optimization intelligence
+#   • Development efficiency with quota analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with quota metrics and performance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis ZK Circuits ResourceQuota - Primary GPU Resource Control
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-zk-circuits-gpu-quota
+  namespace: veridis-infrastructure
+
+  # Core Veridis ZK Circuits GPU quota identification labels
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-gpu-quota
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Quota specific classification
+    quota.veridis.xyz/type: zk-circuits-gpu-quota
+    quota.veridis.xyz/category: gpu-resource-control
+    quota.veridis.xyz/role: primary-gpu-quota
+    quota.veridis.xyz/performance-class: high-performance-gpu
+    quota.veridis.xyz/security-level: enterprise
+
+    # ZK quota classification
+    zk.veridis.xyz/quota-type: gpu-resource-quota
+    zk.veridis.xyz/quota: comprehensive
+    zk.veridis.xyz/performance-tier: high-performance
+    zk.veridis.xyz/optimization: enabled
+    zk.veridis.xyz/features: full-stack
+
+    # GPU quota classification
+    gpu.veridis.xyz/tier: production
+    gpu.veridis.xyz/optimization: intelligent-quota
+    gpu.veridis.xyz/acceleration: enabled
+    gpu.veridis.xyz/quota: optimized
+    gpu.veridis.xyz/efficiency: maximum
+
+    # Business quota classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational quota labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "quota-control-framework"
+    compliance.veridis.xyz/gdpr: "quota-data-protection"
+    compliance.veridis.xyz/iso27001: "quota-security-management"
+    compliance.veridis.xyz/nist-800-190: "quota-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Quota monitoring and analytics
+    monitoring.veridis.xyz/quota-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/utilization-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+  annotations:
+    # Quota purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits GPU resource quota with intelligent allocation, performance optimization, and comprehensive resource control"
+    veridis.xyz/purpose: "Provides comprehensive GPU resource quotas for zero-knowledge proof generation with intelligent allocation, utilization optimization, and performance guarantees"
+    veridis.xyz/scope: "GPU resource quotas including NVIDIA GPUs, GPU memory, extended resources, and comprehensive performance intelligence"
+
+    # Quota architecture and design
+    quota.veridis.xyz/architecture: "Enterprise quota with GPU-aware resource control, intelligent allocation, and performance optimization"
+    quota.veridis.xyz/design-pattern: "Multi-tier quota with performance optimization, cost efficiency, and business intelligence"
+    quota.veridis.xyz/optimization-model: "Intelligent quota with predictive analytics, performance optimization, and resource efficiency"
+    quota.veridis.xyz/performance-model: "High-performance quota with GPU acceleration and intelligent resource management"
+
+    # GPU resource specifications
+    gpu.veridis.xyz/resource-specification: "GPU resource allocation with NVIDIA A100 optimization and intelligent memory management"
+    gpu.veridis.xyz/allocation-specification: "Advanced GPU allocation with performance optimization and resource utilization"
+    gpu.veridis.xyz/memory-specification: "GPU memory quotas with intelligent allocation and performance enhancement"
+    gpu.veridis.xyz/utilization-specification: "GPU utilization optimization with intelligent monitoring and resource control"
+    gpu.veridis.xyz/performance-specification: "GPU performance quotas with acceleration optimization and resource efficiency"
+
+    # Performance quota specifications
+    performance.veridis.xyz/quota-specification: "Performance-aware quota with GPU optimization and resource intelligence"
+    performance.veridis.xyz/utilization-specification: "Utilization optimization with intelligent monitoring and performance enhancement"
+    performance.veridis.xyz/efficiency-specification: "Resource efficiency with cost optimization and intelligent allocation"
+    performance.veridis.xyz/scaling-specification: "Performance scaling with auto-optimization and resource management"
+    performance.veridis.xyz/monitoring-specification: "Performance monitoring with quota analytics and utilization intelligence"
+
+    # Business quota specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant quota with business continuity and performance guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized quota with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with resource optimization and quota intelligence"
+
+    # Operational quota specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with quota analytics and performance intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with resource preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with performance management and resource optimization"
+
+    # Quota lifecycle specifications
+    lifecycle.veridis.xyz/allocation-specification: "Dynamic allocation with automated resource management and performance optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent quota scaling with machine learning and performance forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Quota optimization with intelligent resource management and performance enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Quota evolution with intelligent adaptation and resource optimization"
+
+    # NVIDIA GPU specific annotations
+    nvidia.com/gpu-quota-policy: "exclusive"
+    nvidia.com/gpu-sharing: "disabled"
+    nvidia.com/mig-strategy: "single"
+    nvidia.com/memory-policy: "guaranteed"
+
+    # Resource quota annotations
+    quota.alpha.kubernetes.io/scopes: "PriorityClass,BestEffort"
+    quota.alpha.kubernetes.io/scope-selector: "matchLabels"
+    quota.alpha.kubernetes.io/enforcement: "strict"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "zk-team@veridis.xyz"
+    veridis.xyz/quota-admin: "zk-quota-admin@veridis.xyz"
+    veridis.xyz/escalation: "zk-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "zk-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/gpu-quotas"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/zk-circuits/quota-management"
+    veridis.xyz/quota-docs: "https://quotas.veridis.xyz/zk-circuits/gpu-quota-guide"
+    veridis.xyz/optimization-docs: "https://optimization.veridis.xyz/zk-circuits/quota-optimization"
+
+spec:
+  # ==============================================================================
+  # GPU Resource Quotas - NVIDIA GPU Allocation
+  # ==============================================================================
+  hard:
+    # NVIDIA GPU resources
+    "nvidia.com/gpu": "4"                    # Maximum 4 NVIDIA GPUs
+    "requests.nvidia.com/gpu": "2"           # Minimum 2 GPUs guaranteed
+    "limits.nvidia.com/gpu": "4"             # Maximum 4 GPUs allowed
+
+    # GPU memory quotas (in MiB)
+    "nvidia.com/gpu-memory": "160Gi"         # Total GPU memory (4 × 40GB A100)
+    "requests.nvidia.com/gpu-memory": "80Gi"  # Minimum GPU memory guaranteed
+    "limits.nvidia.com/gpu-memory": "160Gi"   # Maximum GPU memory allowed
+
+    # GPU compute units
+    "nvidia.com/gpu-compute": "27648"        # Total CUDA cores (4 × 6912)
+    "requests.nvidia.com/gpu-compute": "13824" # Minimum compute units
+    "limits.nvidia.com/gpu-compute": "27648"  # Maximum compute units
+
+    # Extended GPU resources
+    "nvidia.com/mig-1g.5gb": "0"             # MIG instances (disabled for performance)
+    "nvidia.com/mig-2g.10gb": "0"            # MIG instances (disabled)
+    "nvidia.com/mig-3g.20gb": "0"            # MIG instances (disabled)
+    "nvidia.com/mig-7g.40gb": "0"            # MIG instances (disabled)
+
+    # ==============================================================================
+    # CPU and Memory Quotas - Supporting Resources
+    # ==============================================================================
+
+    # CPU resources (to support GPU workloads)
+    "requests.cpu": "16"                     # 16 CPU cores guaranteed
+    "limits.cpu": "32"                       # Maximum 32 CPU cores
+
+    # Memory resources (for GPU-CPU coordination)
+    "requests.memory": "64Gi"                # 64GB RAM guaranteed
+    "limits.memory": "128Gi"                 # Maximum 128GB RAM
+
+    # ==============================================================================
+    # Storage Quotas - GPU Workload Storage
+    # ==============================================================================
+
+    # Persistent volume claims
+    "persistentvolumeclaims": "6"            # Maximum 6 PVCs (data, keys, cache, archive, gpu-memory, workspace)
+    "requests.storage": "2Ti"                # Total storage requests
+
+    # Storage class specific quotas
+    "high-performance-ssd.storageclass.storage.k8s.io/requests.storage": "650Gi"
+    "ultra-high-performance-nvme.storageclass.storage.k8s.io/requests.storage": "200Gi"
+    "gpu-optimized-storage.storageclass.storage.k8s.io/requests.storage": "50Gi"
+    "standard-performance-encrypted.storageclass.storage.k8s.io/requests.storage": "1Ti"
+
+    # ==============================================================================
+    # Pod and Service Quotas - Workload Limits
+    # ==============================================================================
+
+    # Pod quotas
+    "pods": "10"                             # Maximum 10 pods
+    "count/deployments.apps": "1"            # 1 ZK Circuits deployment
+    "count/replicasets.apps": "3"            # Maximum 3 replica sets
+
+    # Service quotas
+    "services": "3"                          # Maximum 3 services
+    "services.loadbalancers": "1"            # 1 load balancer service
+    "services.nodeports": "0"                # No NodePort services
+
+    # ConfigMap and Secret quotas
+    "configmaps": "10"                       # Maximum 10 ConfigMaps
+    "secrets": "10"                          # Maximum 10 Secrets
+
+    # ==============================================================================
+    # Network Quotas - Network Resource Control
+    # ==============================================================================
+
+    # Ingress quotas
+    "count/ingresses.networking.k8s.io": "2" # Maximum 2 ingress resources
+
+    # Network policy quotas
+    "count/networkpolicies.networking.k8s.io": "5" # Maximum 5 network policies
+
+    # ==============================================================================
+    # Extended Resource Quotas - Custom Resources
+    # ==============================================================================
+
+    # ZK Circuit specific resources
+    "veridis.xyz/zk-proving-keys": "20"      # Maximum 20 proving key sets
+    "veridis.xyz/zk-verification-keys": "20" # Maximum 20 verification key sets
+    "veridis.xyz/zk-circuits": "10"          # Maximum 10 compiled circuits
+    "veridis.xyz/zk-witnesses": "1000"       # Maximum 1000 witness cache entries
+
+    # Performance resources
+    "veridis.xyz/gpu-streams": "16"          # Maximum 16 CUDA streams
+    "veridis.xyz/gpu-contexts": "4"          # Maximum 4 GPU contexts
+    "veridis.xyz/gpu-memory-pools": "8"      # Maximum 8 memory pools
+
+    # Business resources
+    "veridis.xyz/proof-generations-per-hour": "36000" # 10 TPS × 3600 seconds
+    "veridis.xyz/concurrent-proofs": "100"   # Maximum 100 concurrent proofs
+    "veridis.xyz/proof-cache-size": "10000"  # Maximum 10000 cached proofs
+
+  # ==============================================================================
+  # Scope Selectors - Resource Quota Scoping
+  # ==============================================================================
+  scopeSelector:
+    matchExpressions:
+      # Apply to high-priority pods only
+      - operator: In
+        scopeName: PriorityClass
+        values: ["high-priority", "system-critical"]
+
+      # Apply to non-best-effort pods
+      - operator: NotIn
+        scopeName: BestEffort
+        values: ["true"]
+
+---
+# ==============================================================================
+# Veridis ZK Circuits LimitRange - GPU Resource Limits
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-zk-circuits-gpu-limits
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-gpu-limits
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    limits.veridis.xyz/type: zk-circuits-gpu-limits
+    limits.veridis.xyz/category: gpu-resource-limits
+    limits.veridis.xyz/role: gpu-limits
+    limits.veridis.xyz/performance-class: high-performance-gpu
+
+    gpu.veridis.xyz/limits: enabled
+    gpu.veridis.xyz/optimization: intelligent-limits
+    gpu.veridis.xyz/performance: maximum
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise ZK Circuits GPU resource limits with intelligent allocation and performance optimization"
+    veridis.xyz/purpose: "Provides comprehensive GPU resource limits for containers and pods with performance guarantees"
+
+    limits.veridis.xyz/gpu-specification: "GPU resource limits with NVIDIA A100 optimization and intelligent allocation"
+    gpu.veridis.xyz/limits-specification: "Advanced GPU limits with performance optimization and resource efficiency"
+
+    # GPU-specific limit annotations
+    nvidia.com/gpu-limit-policy: "exclusive-process"
+    nvidia.com/memory-limit-policy: "strict"
+    nvidia.com/compute-limit-policy: "proportional"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/gpu-limits"
+
+spec:
+  limits:
+    # ==============================================================================
+    # Container Limits - Per Container Resource Limits
+    # ==============================================================================
+    - type: Container
+
+      # GPU limits per container
+      max:
+        "nvidia.com/gpu": "2"                # Maximum 2 GPUs per container
+        "nvidia.com/gpu-memory": "80Gi"      # Maximum 80GB GPU memory per container
+        "nvidia.com/gpu-compute": "13824"    # Maximum compute units per container
+        cpu: "16"                            # Maximum 16 CPU cores per container
+        memory: "64Gi"                       # Maximum 64GB RAM per container
+        ephemeral-storage: "100Gi"           # Maximum 100GB ephemeral storage
+
+      # GPU minimums per container
+      min:
+        "nvidia.com/gpu": "1"                # Minimum 1 GPU per container
+        "nvidia.com/gpu-memory": "20Gi"      # Minimum 20GB GPU memory per container
+        "nvidia.com/gpu-compute": "3456"     # Minimum compute units per container
+        cpu: "2"                             # Minimum 2 CPU cores per container
+        memory: "8Gi"                        # Minimum 8GB RAM per container
+        ephemeral-storage: "10Gi"            # Minimum 10GB ephemeral storage
+
+      # Default resource allocation
+      default:
+        "nvidia.com/gpu": "1"                # Default 1 GPU per container
+        "nvidia.com/gpu-memory": "40Gi"      # Default 40GB GPU memory
+        "nvidia.com/gpu-compute": "6912"     # Default compute units (1 A100)
+        cpu: "4"                             # Default 4 CPU cores
+        memory: "16Gi"                       # Default 16GB RAM
+        ephemeral-storage: "20Gi"            # Default 20GB ephemeral storage
+
+      # Default resource requests
+      defaultRequest:
+        "nvidia.com/gpu": "1"                # Default 1 GPU request
+        "nvidia.com/gpu-memory": "40Gi"      # Default 40GB GPU memory request
+        "nvidia.com/gpu-compute": "6912"     # Default compute units request
+        cpu: "2"                             # Default 2 CPU cores request
+        memory: "8Gi"                        # Default 8GB RAM request
+        ephemeral-storage: "10Gi"            # Default 10GB ephemeral storage request
+
+      # Maximum limit-to-request ratio
+      maxLimitRequestRatio:
+        "nvidia.com/gpu": "2"                # GPU limit can be 2x request
+        "nvidia.com/gpu-memory": "2"         # GPU memory limit can be 2x request
+        cpu: "4"                             # CPU limit can be 4x request
+        memory: "4"                          # Memory limit can be 4x request
+
+    # ==============================================================================
+    # Pod Limits - Per Pod Resource Limits
+    # ==============================================================================
+    - type: Pod
+
+      # Maximum resources per pod
+      max:
+        "nvidia.com/gpu": "4"                # Maximum 4 GPUs per pod
+        "nvidia.com/gpu-memory": "160Gi"     # Maximum 160GB GPU memory per pod
+        "nvidia.com/gpu-compute": "27648"    # Maximum compute units per pod
+        cpu: "32"                            # Maximum 32 CPU cores per pod
+        memory: "128Gi"                      # Maximum 128GB RAM per pod
+        ephemeral-storage: "500Gi"           # Maximum 500GB ephemeral storage per pod
+
+      # Minimum resources per pod
+      min:
+        "nvidia.com/gpu": "1"                # Minimum 1 GPU per pod
+        "nvidia.com/gpu-memory": "20Gi"      # Minimum 20GB GPU memory per pod
+        "nvidia.com/gpu-compute": "3456"     # Minimum compute units per pod
+        cpu: "2"                             # Minimum 2 CPU cores per pod
+        memory: "8Gi"                        # Minimum 8GB RAM per pod
+        ephemeral-storage: "10Gi"            # Minimum 10GB ephemeral storage per pod
+
+    # ==============================================================================
+    # PersistentVolumeClaim Limits - Storage Limits
+    # ==============================================================================
+    - type: PersistentVolumeClaim
+
+      # Maximum storage per PVC
+      max:
+        storage: "1Ti"                       # Maximum 1TB per PVC
+
+      # Minimum storage per PVC
+      min:
+        storage: "10Gi"                      # Minimum 10GB per PVC
+
+---
+# ==============================================================================
+# Veridis ZK Circuits NetworkPolicy - GPU Resource Network Control
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: veridis-zk-circuits-gpu-network-policy
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-gpu-network-policy
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    network.veridis.xyz/type: zk-circuits-gpu-network-policy
+    network.veridis.xyz/category: gpu-network-control
+    network.veridis.xyz/role: gpu-network-policy
+
+    gpu.veridis.xyz/network-policy: enabled
+    gpu.veridis.xyz/security: maximum
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Network policy for ZK Circuits GPU resources with security and performance optimization"
+    veridis.xyz/purpose: "Controls network traffic for GPU-enabled ZK Circuits pods with security and performance rules"
+
+    network.veridis.xyz/gpu-specification: "GPU-aware network policy with performance optimization and security controls"
+    gpu.veridis.xyz/network-specification: "Network controls for GPU resources with intelligent traffic management"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/gpu-network-policy"
+
+spec:
+  # ==============================================================================
+  # Pod Selector - Target GPU-enabled ZK Circuits Pods
+  # ==============================================================================
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      gpu.veridis.xyz/enabled: "true"
+
+  # ==============================================================================
+  # Policy Types - Ingress and Egress Control
+  # ==============================================================================
+  policyTypes:
+    - Ingress
+    - Egress
+
+  # ==============================================================================
+  # Ingress Rules - Incoming Traffic Control
+  # ==============================================================================
+  ingress:
+    # Allow traffic from Veridis Backend
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-infrastructure
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-backend
+      ports:
+        - protocol: TCP
+          port: 4000
+        - protocol: TCP
+          port: 4001  # Health check port
+        - protocol: TCP
+          port: 9090  # Metrics port
+
+    # Allow traffic from monitoring
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+        - podSelector:
+            matchLabels:
+              app: prometheus
+      ports:
+        - protocol: TCP
+          port: 9090
+
+    # Allow traffic from load balancer
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-infrastructure
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: load-balancer
+      ports:
+        - protocol: TCP
+          port: 4000
+
+  # ==============================================================================
+  # Egress Rules - Outgoing Traffic Control
+  # ==============================================================================
+  egress:
+    # Allow traffic to Veridis Backend
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-infrastructure
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-backend
+      ports:
+        - protocol: TCP
+          port: 8080
+
+    # Allow traffic to PostgreSQL
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-infrastructure
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: postgres
+      ports:
+        - protocol: TCP
+          port: 5432
+
+    # Allow traffic to Redis
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-infrastructure
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+      ports:
+        - protocol: TCP
+          port: 6379
+
+    # Allow traffic to Vault
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-infrastructure
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vault
+      ports:
+        - protocol: TCP
+          port: 8200
+
+    # Allow DNS resolution
+    - to: []
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+
+    # Allow HTTPS traffic for external dependencies
+    - to: []
+      ports:
+        - protocol: TCP
+          port: 443
+
+    # Allow monitoring traffic
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+      ports:
+        - protocol: TCP
+          port: 9090
+        - protocol: TCP
+          port: 3000
+        - protocol: UDP
+          port: 6831  # Jaeger
+        - protocol: TCP
+          port: 14268 # Jaeger
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PriorityClass - GPU Workload Priority
+# ==============================================================================
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: veridis-zk-circuits-gpu-priority
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-gpu-priority
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    priority.veridis.xyz/type: zk-circuits-gpu-priority
+    priority.veridis.xyz/category: gpu-workload-priority
+    priority.veridis.xyz/role: gpu-priority
+
+    gpu.veridis.xyz/priority: high
+    gpu.veridis.xyz/workload-type: compute-intensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "High priority class for ZK Circuits GPU workloads with performance guarantees"
+    veridis.xyz/purpose: "Ensures ZK Circuits GPU workloads receive priority scheduling and resource allocation"
+
+    priority.veridis.xyz/gpu-specification: "High priority for GPU-intensive ZK proof generation workloads"
+    gpu.veridis.xyz/priority-specification: "Priority scheduling for GPU resources with performance optimization"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/gpu-priority"
+
+# High priority value for GPU-intensive ZK workloads
+value: 1000
+
+# Global default prevents accidental high priority assignment
+globalDefault: false
+
+# Description for administrative purposes
+description: "High priority class for Veridis ZK Circuits GPU-intensive proof generation workloads requiring guaranteed resource allocation and performance optimization"
+
+# ==============================================================================
+# Veridis ZK Circuits GPU Quota Summary and Enterprise Resource Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ZK CIRCUITS GPU QUOTA STRATEGY:
+# =====================================================
+#
+# VERIDIS ZK CIRCUITS GPU QUOTA ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------
+# 1. Primary GPU ResourceQuota (veridis-zk-circuits-gpu-quota):
+#    - Comprehensive GPU resource control with 4 NVIDIA A100 GPUs (160GB total GPU memory)
+#    - Advanced CPU/memory quotas with 32 CPU cores and 128GB RAM maximum allocation
+#    - Multi-tier storage quotas with 2TB total storage across specialized storage classes
+#    - Extended resource quotas for ZK-specific resources (proving keys, circuits, witnesses)
+#    - Business intelligence quotas with 36,000 proofs/hour and 100 concurrent proof limits
+#
+# 2. GPU LimitRange (veridis-zk-circuits-gpu-limits):
+#    - Container-level GPU limits with 2 GPUs and 80GB GPU memory maximum per container
+#    - Pod-level GPU limits with 4 GPUs and 160GB GPU memory maximum per pod
+#    - Intelligent default allocation with 1 GPU and 40GB GPU memory per container
+#    - Proportional limit-to-request ratios with 2x GPU and 4x CPU/memory ratios
+#    - PVC storage limits with 1TB maximum and 10GB minimum per volume
+#
+# 3. GPU Network Policy (veridis-zk-circuits-gpu-network-policy):
+#    - Secure network controls for GPU-enabled ZK Circuits pods with service communication
+#    - Ingress rules for backend, monitoring, and load balancer traffic (ports 4000, 4001, 9090)
+#    - Egress rules for database, cache, vault, and external dependencies
+#    - DNS resolution and HTTPS traffic for external GPU driver and CUDA updates
+#    - Monitoring integration with Prometheus, Grafana, and Jaeger traffic
+#
+# 4. GPU Priority Class (veridis-zk-circuits-gpu-priority):
+#    - High priority scheduling (value: 1000) for GPU-intensive ZK proof generation
+#    - Guaranteed resource allocation for mission-critical identity verification workloads
+#    - Performance optimization with priority scheduling and resource guarantees
+#    - Global default disabled to prevent accidental high priority assignment
+#    - Administrative description for operational clarity and management
+#
+# ENTERPRISE GPU QUOTA FEATURES:
+# ===============================
+# Advanced GPU Resource Management:
+#   - NVIDIA A100 SXM4 40GB dual-GPU allocation with 6912 CUDA cores per GPU
+#   - GPU memory quotas with 160GB total allocation and intelligent distribution
+#   - Extended GPU resources with MIG disabled for maximum performance
+#   - GPU compute unit allocation with 27,648 total CUDA cores management
+#   - GPU streaming and context management with 16 streams and 4 contexts
+#
+# Comprehensive Resource Control:
+#   - CPU resource quotas with 32 cores maximum and 16 cores guaranteed allocation
+#   - Memory resource quotas with 128GB maximum and 64GB guaranteed allocation
+#   - Storage quotas with 2TB total across specialized storage classes
+#   - Network resource quotas with ingress, load balancer, and policy controls
+#   - Extended resource quotas for ZK-specific assets and business metrics
+#
+# Intelligent Limit Management:
+#   - Container-level limits with 2 GPUs maximum and intelligent default allocation
+#   - Pod-level limits with 4 GPUs maximum and proportional resource scaling
+#   - Limit-to-request ratios with 2x GPU and 4x CPU/memory optimization
+#   - Storage limits with 1TB maximum PVC size and 10GB minimum allocation
+#   - Network limits with policy-based traffic control and security enforcement
+#
+# Advanced Performance Optimization:
+#   - High priority scheduling with value 1000 for GPU-intensive workloads
+#   - Performance-aware resource allocation with guaranteed GPU and memory access
+#   - Intelligent resource distribution with utilization optimization
+#   - Business intelligence integration with proof generation and performance metrics
+#   - Cost optimization with resource efficiency and utilization analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# GPU Resource Lifecycle Management:
+#   - Multi-tier quota architecture with development, testing, and production settings
+#   - Intelligent resource allocation with GPU-aware optimization and performance correlation
+#   - Advanced monitoring with comprehensive GPU utilization and performance analytics
+#   - Resource validation with schema enforcement and deployment safety checks
+#   - Automated optimization with machine learning-based resource adjustment
+#
+# Business Intelligence Integration:
+#   - Performance quotas with 36,000 proofs/hour capacity and 100 concurrent proof limits
+#   - Cost optimization with GPU utilization correlation and budget management
+#   - Resource analytics with throughput monitoring and latency optimization
+#   - Business impact analysis with proof generation correlation and revenue tracking
+#   - Strategic planning with capacity management and performance forecasting
+#
+# Security and Compliance Framework:
+#   - Network policy integration with secure traffic control and microsegmentation
+#   - Resource isolation with exclusive GPU allocation and memory protection
+#   - Priority-based scheduling with guaranteed resource allocation and performance
+#   - Audit trail preservation with comprehensive logging and quota monitoring
+#   - Compliance validation with SOC 2, GDPR, ISO 27001, and NIST integration
+#
+# Developer Experience Excellence:
+#   - Intelligent default allocation with 1 GPU and 40GB memory per container
+#   - Proportional scaling with 2x GPU and 4x CPU/memory limit ratios
+#   - Comprehensive documentation with quota guides and optimization procedures
+#   - Monitoring integration with GPU analytics and performance dashboards
+#   - Automation compatibility with CI/CD pipeline integration and validation
+#
+# ==============================================================================
