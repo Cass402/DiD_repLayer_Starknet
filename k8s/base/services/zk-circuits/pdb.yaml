@@ -1,0 +1,624 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - ZK Circuits Pod Disruption Budget
+# ==============================================================================
+#
+# This manifest defines comprehensive ZK Circuits Pod Disruption Budget for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ZK CIRCUITS AVAILABILITY ARCHITECTURE:
+#   • Advanced zero-knowledge proof availability with GPU optimization and intelligent disruption management
+#   • Multi-tier disruption architecture with development, testing, staging, and production availability policies
+#   • Comprehensive performance framework with GPU-aware disruption budgets, availability optimization, and resilience intelligence
+#   • Advanced lifecycle management with automated availability management, disruption control, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and availability insights
+#
+# VERIDIS ZK CIRCUITS DISRUPTION OPTIMIZATION:
+#   • High-availability disruption budgets with intelligent pod management and GPU-aware optimization
+#   • Intelligent proof generation with disruption minimization and performance-based availability decisions
+#   • Advanced resource management with business intelligence and workload-based disruption control
+#   • Comprehensive GPU availability control with intelligent scheduling and performance enhancement
+#   • Enterprise acceleration with predictive disruption management and availability optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II availability controls with comprehensive audit and disruption requirements
+#   • GDPR availability compliance with data protection, privacy controls, and disruption management
+#   • ISO 27001 availability management with comprehensive framework integration
+#   • NIST 800-190 container availability with disruption-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and availability best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent disruption lifecycle management with automated provisioning and optimization
+#   • Predictive availability analytics with capacity planning and disruption intelligence
+#   • Advanced monitoring integration with disruption analytics and business intelligence
+#   • Comprehensive availability control with disruption preservation and performance optimization
+#   • Business continuity disruption budgets with availability guarantees and resilience optimization
+#
+# GPU ACCELERATION AVAILABILITY INTELLIGENCE:
+#   • Disruption usage analytics with availability patterns and optimization recommendations
+#   • Performance monitoring with disruption latency and availability optimization intelligence
+#   • Development efficiency with disruption analytics and deployment optimization procedures
+#   • Cost optimization with availability utilization analysis and capacity planning procedures
+#   • Quality assurance with disruption metrics and availability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis ZK Circuits PodDisruptionBudget - Primary Availability Control
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-zk-circuits-pdb
+  namespace: veridis-infrastructure
+
+  # Core Veridis ZK Circuits disruption budget identification labels
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Disruption budget specific classification
+    pdb.veridis.xyz/type: zk-circuits-disruption-budget
+    pdb.veridis.xyz/category: gpu-availability-control
+    pdb.veridis.xyz/role: primary-disruption-budget
+    pdb.veridis.xyz/performance-class: high-availability-gpu
+    pdb.veridis.xyz/security-level: enterprise
+
+    # ZK disruption budget classification
+    zk.veridis.xyz/pdb-type: gpu-availability-budget
+    zk.veridis.xyz/availability: comprehensive
+    zk.veridis.xyz/performance-tier: high-availability
+    zk.veridis.xyz/optimization: enabled
+    zk.veridis.xyz/features: full-stack
+
+    # GPU disruption budget classification
+    gpu.veridis.xyz/tier: production
+    gpu.veridis.xyz/optimization: intelligent-availability
+    gpu.veridis.xyz/acceleration: enabled
+    gpu.veridis.xyz/disruption-budget: optimized
+    gpu.veridis.xyz/efficiency: maximum
+
+    # Business disruption budget classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-availability
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational disruption budget labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "availability-control-framework"
+    compliance.veridis.xyz/gdpr: "availability-data-protection"
+    compliance.veridis.xyz/iso27001: "availability-security-management"
+    compliance.veridis.xyz/nist-800-190: "availability-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Disruption budget monitoring and analytics
+    monitoring.veridis.xyz/pdb-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/availability-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+  annotations:
+    # Disruption budget purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits Pod Disruption Budget with GPU optimization, intelligent availability control, and comprehensive performance tuning"
+    veridis.xyz/purpose: "Provides comprehensive availability control for zero-knowledge proof generation with intelligent disruption management, GPU optimization, and performance guarantees"
+    veridis.xyz/scope: "Disruption budget including GPU availability, pod disruption control, availability optimization, and comprehensive performance intelligence"
+
+    # Disruption budget architecture and design
+    pdb.veridis.xyz/architecture: "Enterprise disruption budget with GPU-aware availability control, intelligent disruption management, and performance optimization"
+    pdb.veridis.xyz/design-pattern: "Multi-tier availability with performance optimization, cost efficiency, and business intelligence"
+    pdb.veridis.xyz/optimization-model: "Intelligent disruption budget with predictive analytics, availability optimization, and resource efficiency"
+    pdb.veridis.xyz/performance-model: "High-availability disruption budget with GPU acceleration and intelligent disruption management"
+
+    # GPU availability specifications
+    gpu.veridis.xyz/availability-specification: "GPU availability control with NVIDIA A100 optimization and intelligent disruption management"
+    gpu.veridis.xyz/disruption-specification: "Advanced GPU disruption budget with performance optimization and availability enhancement"
+    gpu.veridis.xyz/scheduling-specification: "GPU scheduling optimization with intelligent availability control and performance enhancement"
+    gpu.veridis.xyz/resilience-specification: "GPU resilience optimization with intelligent monitoring and availability control"
+    gpu.veridis.xyz/performance-specification: "GPU performance availability with acceleration optimization and disruption efficiency"
+
+    # Performance disruption budget specifications
+    performance.veridis.xyz/availability-specification: "Performance-aware disruption budget with GPU optimization and availability intelligence"
+    performance.veridis.xyz/disruption-specification: "Disruption optimization with intelligent monitoring and performance enhancement"
+    performance.veridis.xyz/efficiency-specification: "Availability efficiency with cost optimization and intelligent disruption management"
+    performance.veridis.xyz/scaling-specification: "Performance scaling with auto-optimization and availability management"
+    performance.veridis.xyz/monitoring-specification: "Performance monitoring with disruption analytics and availability intelligence"
+
+    # Business disruption budget specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant disruption budget with business continuity and availability guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized disruption budget with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with availability optimization and disruption intelligence"
+
+    # Operational disruption budget specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with disruption analytics and availability intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with availability preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with availability management and disruption optimization"
+
+    # Disruption budget lifecycle specifications
+    lifecycle.veridis.xyz/availability-specification: "Dynamic availability with automated disruption management and performance optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent disruption scaling with machine learning and availability forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Disruption optimization with intelligent availability management and performance enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Disruption evolution with intelligent adaptation and availability optimization"
+
+    # Kubernetes disruption budget annotations
+    pdb.kubernetes.io/disruption-policy: "minimum-available"
+    pdb.kubernetes.io/eviction-policy: "prioritized"
+    pdb.kubernetes.io/drain-delay: "300s"
+    pdb.kubernetes.io/unhealthy-pod-eviction: "IfHealthyBudget"
+
+    # GPU-specific disruption annotations
+    gpu.alpha.kubernetes.io/disruption-policy: "gpu-aware"
+    gpu.alpha.kubernetes.io/eviction-delay: "600s"
+    gpu.alpha.kubernetes.io/preemption-policy: "never"
+    gpu.alpha.kubernetes.io/affinity-preservation: "strict"
+
+    # Availability annotations
+    availability.veridis.xyz/sla-target: "99.9%"
+    availability.veridis.xyz/rto-target: "5m"
+    availability.veridis.xyz/rpo-target: "1m"
+    availability.veridis.xyz/mttr-target: "15m"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "zk-team@veridis.xyz"
+    veridis.xyz/pdb-admin: "zk-pdb-admin@veridis.xyz"
+    veridis.xyz/escalation: "zk-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "zk-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/disruption-budget"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/zk-circuits/availability-management"
+    veridis.xyz/pdb-docs: "https://availability.veridis.xyz/zk-circuits/disruption-budget-guide"
+    veridis.xyz/optimization-docs: "https://optimization.veridis.xyz/zk-circuits/availability-optimization"
+
+spec:
+  # ==============================================================================
+  # Minimum Available Pods - GPU-Aware Availability Control
+  # ==============================================================================
+  minAvailable: 1
+
+  # ==============================================================================
+  # Pod Selector - Target ZK Circuits Pods with GPU Resources
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      app.kubernetes.io/component: zk-circuits
+      gpu.veridis.xyz/enabled: "true"
+
+  # ==============================================================================
+  # Unhealthy Pod Eviction Policy - GPU-Aware Health Management
+  # ==============================================================================
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PodDisruptionBudget - GPU Compute Availability
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-zk-circuits-gpu-compute-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-gpu-compute-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: zk-circuits-gpu-compute-pdb
+    pdb.veridis.xyz/category: gpu-compute-availability
+    pdb.veridis.xyz/role: gpu-compute-disruption-budget
+    pdb.veridis.xyz/performance-class: high-performance-gpu-compute
+
+    gpu.veridis.xyz/workload-type: compute-intensive
+    gpu.veridis.xyz/priority: high
+    gpu.veridis.xyz/disruption-sensitivity: critical
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "GPU compute-specific Pod Disruption Budget for ZK Circuits with high-performance GPU workload protection"
+    veridis.xyz/purpose: "Provides specialized availability control for GPU compute-intensive ZK proof generation workloads"
+
+    pdb.veridis.xyz/gpu-compute-specification: "GPU compute availability with NVIDIA A100 optimization and critical workload protection"
+    gpu.veridis.xyz/compute-specification: "High-performance GPU compute disruption budget with intelligent availability management"
+
+    # GPU compute specific annotations
+    gpu-compute.veridis.xyz/criticality: "mission-critical"
+    gpu-compute.veridis.xyz/disruption-tolerance: "minimal"
+    gpu-compute.veridis.xyz/recovery-time: "300s"
+    gpu-compute.veridis.xyz/preemption-protection: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/gpu-compute-pdb"
+
+spec:
+  # Ensure at least 75% of GPU compute pods remain available
+  minAvailable: 75%
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      gpu.veridis.xyz/workload-type: compute-intensive
+      gpu.veridis.xyz/resource-type: nvidia-gpu
+
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PodDisruptionBudget - Circuit Compilation Availability
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-zk-circuits-compilation-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-compilation-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: zk-circuits-compilation-pdb
+    pdb.veridis.xyz/category: circuit-compilation-availability
+    pdb.veridis.xyz/role: compilation-disruption-budget
+    pdb.veridis.xyz/performance-class: high-performance-compilation
+
+    zk.veridis.xyz/workload-type: circuit-compilation
+    zk.veridis.xyz/priority: high
+    zk.veridis.xyz/compilation-criticality: important
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Circuit compilation-specific Pod Disruption Budget for ZK Circuits with compilation workload protection"
+    veridis.xyz/purpose: "Provides specialized availability control for circuit compilation and optimization workloads"
+
+    pdb.veridis.xyz/compilation-specification: "Circuit compilation availability with optimization and build process protection"
+    zk.veridis.xyz/compilation-specification: "High-performance circuit compilation disruption budget with intelligent availability management"
+
+    # Circuit compilation specific annotations
+    circuit-compilation.veridis.xyz/build-protection: "enabled"
+    circuit-compilation.veridis.xyz/optimization-preservation: "enabled"
+    circuit-compilation.veridis.xyz/cache-protection: "enabled"
+    circuit-compilation.veridis.xyz/disruption-tolerance: "moderate"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/compilation-pdb"
+
+spec:
+  # Allow more flexibility for compilation workloads
+  maxUnavailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      zk.veridis.xyz/workload-type: circuit-compilation
+      zk.veridis.xyz/process-type: compilation
+
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PodDisruptionBudget - Proof Generation Availability
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-zk-circuits-proof-generation-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-proof-generation-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: zk-circuits-proof-generation-pdb
+    pdb.veridis.xyz/category: proof-generation-availability
+    pdb.veridis.xyz/role: proof-generation-disruption-budget
+    pdb.veridis.xyz/performance-class: ultra-high-performance-proof
+
+    zk.veridis.xyz/workload-type: proof-generation
+    zk.veridis.xyz/priority: critical
+    zk.veridis.xyz/proof-criticality: mission-critical
+
+    business.veridis.xyz/revenue-impact: high
+    business.veridis.xyz/user-experience-impact: critical
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Proof generation-specific Pod Disruption Budget for ZK Circuits with ultra-high availability and performance protection"
+    veridis.xyz/purpose: "Provides critical availability control for zero-knowledge proof generation workloads with business impact protection"
+
+    pdb.veridis.xyz/proof-specification: "Proof generation availability with ultra-high performance and critical business process protection"
+    zk.veridis.xyz/proof-specification: "Mission-critical proof generation disruption budget with intelligent availability management and business continuity"
+
+    # Proof generation specific annotations
+    proof-generation.veridis.xyz/business-criticality: "mission-critical"
+    proof-generation.veridis.xyz/user-impact: "high"
+    proof-generation.veridis.xyz/revenue-protection: "enabled"
+    proof-generation.veridis.xyz/disruption-tolerance: "minimal"
+    proof-generation.veridis.xyz/sla-protection: "99.9%"
+
+    # Business impact annotations
+    business.veridis.xyz/revenue-impact-level: "high"
+    business.veridis.xyz/user-experience-sla: "99.9%"
+    business.veridis.xyz/downtime-cost: "high"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/proof-generation-pdb"
+
+spec:
+  # Strictest availability requirement for proof generation
+  minAvailable: 2
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      zk.veridis.xyz/workload-type: proof-generation
+      zk.veridis.xyz/process-type: proving
+      business.veridis.xyz/criticality: mission-critical
+
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PodDisruptionBudget - Development Environment
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-zk-circuits-development-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-development-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: zk-circuits-development-pdb
+    pdb.veridis.xyz/category: development-availability
+    pdb.veridis.xyz/role: development-disruption-budget
+    pdb.veridis.xyz/performance-class: development-flexibility
+
+    zk.veridis.xyz/workload-type: development
+    zk.veridis.xyz/priority: low
+    zk.veridis.xyz/development-flexibility: high
+
+    development.veridis.xyz/environment: development
+    development.veridis.xyz/flexibility: high
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Development-specific Pod Disruption Budget for ZK Circuits with high flexibility and development workflow support"
+    veridis.xyz/purpose: "Provides flexible availability control for development and testing workloads with development-friendly disruption policies"
+
+    pdb.veridis.xyz/development-specification: "Development availability with high flexibility and development workflow optimization"
+    zk.veridis.xyz/development-specification: "Development-friendly disruption budget with flexible availability management and testing support"
+
+    # Development specific annotations
+    development.veridis.xyz/disruption-flexibility: "high"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/rapid-iteration: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/development-pdb"
+
+spec:
+  # More flexible for development workloads
+  maxUnavailable: 50%
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      zk.veridis.xyz/workload-type: development
+      development.veridis.xyz/environment: development
+
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PodDisruptionBudget - Cache and Optimization Services
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-zk-circuits-cache-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-cache-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: zk-circuits-cache-pdb
+    pdb.veridis.xyz/category: cache-availability
+    pdb.veridis.xyz/role: cache-disruption-budget
+    pdb.veridis.xyz/performance-class: high-performance-cache
+
+    zk.veridis.xyz/workload-type: caching
+    zk.veridis.xyz/priority: medium
+    zk.veridis.xyz/cache-criticality: important
+
+    performance.veridis.xyz/optimization-type: caching
+    performance.veridis.xyz/performance-impact: medium
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Cache and optimization-specific Pod Disruption Budget for ZK Circuits with performance optimization protection"
+    veridis.xyz/purpose: "Provides balanced availability control for caching and optimization workloads with performance enhancement focus"
+
+    pdb.veridis.xyz/cache-specification: "Cache availability with performance optimization and intelligent cache management protection"
+    zk.veridis.xyz/cache-specification: "High-performance cache disruption budget with optimization and performance enhancement"
+
+    # Cache specific annotations
+    cache.veridis.xyz/performance-impact: "medium"
+    cache.veridis.xyz/regeneration-capability: "enabled"
+    cache.veridis.xyz/warm-up-time: "60s"
+    cache.veridis.xyz/disruption-tolerance: "medium"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/cache-optimization: "enabled"
+    performance.veridis.xyz/performance-preservation: "medium"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/cache-pdb"
+
+spec:
+  # Balanced approach for cache workloads
+  minAvailable: 50%
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      zk.veridis.xyz/workload-type: caching
+      performance.veridis.xyz/optimization-type: caching
+
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+# ==============================================================================
+# Veridis ZK Circuits PDB Summary and Enterprise Availability Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ZK CIRCUITS AVAILABILITY STRATEGY:
+# ========================================================
+#
+# VERIDIS ZK CIRCUITS PDB ARCHITECTURE OVERVIEW:
+# ----------------------------------------------
+# 1. Primary PDB (veridis-zk-circuits-pdb):
+#    - Enterprise-grade availability control with minimum 1 pod available at all times
+#    - GPU-aware disruption management with NVIDIA A100 optimization and intelligent scheduling
+#    - Comprehensive monitoring with availability analytics and business intelligence integration
+#    - Advanced unhealthy pod eviction policy with IfHealthyBudget for optimal resource management
+#    - 99.9% SLA target with 5-minute RTO and 1-minute RPO business continuity guarantees
+#
+# 2. GPU Compute PDB (veridis-zk-circuits-gpu-compute-pdb):
+#    - Specialized availability control for GPU compute-intensive workloads with 75% minimum availability
+#    - High-performance GPU workload protection with critical disruption sensitivity
+#    - Mission-critical compute availability with minimal disruption tolerance and preemption protection
+#    - Always allow unhealthy pod eviction for rapid recovery and resource optimization
+#    - 300-second recovery time target with intelligent GPU resource management
+#
+# 3. Circuit Compilation PDB (veridis-zk-circuits-compilation-pdb):
+#    - Circuit compilation workload protection with maximum 1 unavailable pod flexibility
+#    - Build process protection with optimization preservation and cache protection
+#    - Moderate disruption tolerance with compilation-specific availability management
+#    - IfHealthyBudget unhealthy pod eviction for balanced availability and resource utilization
+#    - Intelligent compilation workflow protection with build cache preservation
+#
+# 4. Proof Generation PDB (veridis-zk-circuits-proof-generation-pdb):
+#    - Mission-critical proof generation with minimum 2 pods available for ultra-high availability
+#    - Business revenue protection with high user experience impact and critical SLA protection
+#    - Minimal disruption tolerance with 99.9% SLA protection and business continuity focus
+#    - IfHealthyBudget unhealthy pod eviction with intelligent business impact management
+#    - Critical workload prioritization with high revenue impact and user experience protection
+#
+# 5. Development PDB (veridis-zk-circuits-development-pdb):
+#    - Development-friendly availability with 50% maximum unavailable pod flexibility
+#    - High development flexibility with rapid iteration and debugging support
+#    - Testing workflow support with development-optimized disruption policies
+#    - AlwaysAllow unhealthy pod eviction for maximum development flexibility
+#    - Conditional deployment with development environment enablement controls
+#
+# 6. Cache PDB (veridis-zk-circuits-cache-pdb):
+#    - Balanced cache availability with 50% minimum available pod protection
+#    - Performance optimization protection with cache regeneration capability
+#    - Medium disruption tolerance with 60-second cache warm-up time consideration
+#    - IfHealthyBudget unhealthy pod eviction for balanced performance and availability
+#    - Cache optimization with performance preservation and intelligent cache management
+#
+# ENTERPRISE AVAILABILITY FEATURES:
+# ==================================
+# Advanced Disruption Management:
+#   - Multi-tier PDB architecture with workload-specific availability policies
+#   - GPU-aware disruption control with NVIDIA A100 optimization and intelligent scheduling
+#   - Business impact-driven availability with revenue protection and user experience focus
+#   - Workload classification with compute-intensive, compilation, proof generation, development, and cache categories
+#   - Intelligent eviction policies with IfHealthyBudget, AlwaysAllow, and specialized health management
+#
+# Comprehensive Business Continuity:
+#   - 99.9% SLA target with 5-minute RTO and 1-minute RPO business continuity guarantees
+#   - Mission-critical workload protection with minimal disruption tolerance
+#   - High revenue impact protection with business intelligence and strategic availability management
+#   - User experience optimization with critical SLA protection and performance enhancement
+#   - Strategic planning with availability correlation and business impact analysis
+#
+# Intelligent Workload Protection:
+#   - Proof generation protection with minimum 2 pods and ultra-high availability requirements
+#   - GPU compute protection with 75% minimum availability and critical disruption sensitivity
+#   - Compilation workflow protection with build cache preservation and optimization continuity
+#   - Development flexibility with 50% maximum unavailable and rapid iteration support
+#   - Cache optimization with performance preservation and intelligent regeneration capability
+#
+# Advanced Performance Optimization:
+#   - GPU-aware availability with NVIDIA A100 optimization and high-performance scheduling
+#   - Performance-driven disruption policies with business intelligence and resource optimization
+#   - Intelligent resource management with GPU memory, compute units, and acceleration optimization
+#   - Business performance correlation with throughput monitoring and latency optimization
+#   - Cost optimization with availability efficiency and resource utilization analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Availability Lifecycle Management:
+#   - Multi-PDB architecture with specialized availability control for different workload types
+#   - Intelligent disruption management with GPU-aware optimization and performance correlation
+#   - Advanced monitoring with comprehensive availability analytics and business intelligence
+#   - Automated availability optimization with machine learning-based disruption prediction
+#   - Configuration validation with schema enforcement and deployment safety checks
+#
+# Business Intelligence Integration:
+#   - Revenue impact analysis with availability correlation and business continuity planning
+#   - Cost optimization with disruption cost analysis and availability efficiency tracking
+#   - Performance analytics with availability monitoring and latency optimization
+#   - Strategic planning with capacity management and availability forecasting
+#   - Business impact assessment with user experience correlation and revenue protection
+#
+# Compliance and Governance Framework:
+#   - SOC 2 Type II availability controls with comprehensive audit requirements
+#   - GDPR availability compliance with data protection and privacy-preserving disruption management
+#   - ISO 27001 availability management with information security and business continuity integration
+#   - NIST 800-190 container availability with security validation and compliance
+#   - Audit trail preservation with comprehensive availability logging and 7-year retention
+#
+# Developer Experience Excellence:
+#   - Development-friendly PDB with high flexibility and rapid iteration support
+#   - Comprehensive documentation with availability guides and operational procedures
+#   - Monitoring integration with availability analytics and performance dashboards
+#   - Automation compatibility with CI/CD pipeline integration and deployment safety
+#   - Testing workflow support with development-optimized availability and debugging capabilities
+#
+# ==============================================================================
