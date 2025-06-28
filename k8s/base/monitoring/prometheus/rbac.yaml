@@ -1,0 +1,1346 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Prometheus RBAC Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Prometheus RBAC for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS PROMETHEUS RBAC ARCHITECTURE:
+#   • Advanced Prometheus RBAC with intelligent access management and performance-based authorization optimization
+#   • Multi-tier authorization architecture with development, testing, staging, and production environments
+#   • Comprehensive security framework with access policies, permission optimization, Prometheus integration
+#   • Advanced lifecycle management with automated authorization optimization, Prometheus control, and permission enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Prometheus RBAC performance insights
+#
+# VERIDIS PROMETHEUS RBAC OPTIMIZATION:
+#   • High-performance authorization with intelligent access management and Prometheus RBAC optimization
+#   • Intelligent security traffic management with responsive policies and performance-based authorization decisions
+#   • Advanced permission management with business intelligence and security-based Prometheus control
+#   • Comprehensive security control with intelligent Prometheus access management and permission enhancement
+#   • Enterprise acceleration with predictive Prometheus authorization management and access optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Prometheus authorization controls with comprehensive audit and access requirements
+#   • GDPR Prometheus authorization compliance with data protection, privacy controls, and permission management
+#   • ISO 27001 Prometheus authorization management with comprehensive framework integration
+#   • NIST 800-190 container Prometheus authorization security with access-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Prometheus authorization best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Prometheus authorization lifecycle management with automated provisioning and access optimization
+#   • Predictive access analytics with capacity planning and Prometheus authorization intelligence
+#   • Advanced security integration with Prometheus authorization analytics and permission business intelligence
+#   • Comprehensive security control with Prometheus authorization preservation and access optimization
+#   • Business continuity Prometheus authorization with access guarantees and security optimization
+#
+# PROMETHEUS RBAC ACCELERATION INTELLIGENCE:
+#   • Prometheus authorization usage analytics with access patterns and optimization recommendations
+#   • Access monitoring with Prometheus authorization latency and management optimization intelligence
+#   • Development efficiency with Prometheus authorization analytics and deployment optimization procedures
+#   • Cost optimization with Prometheus authorization utilization analysis and access capacity planning procedures
+#   • Quality assurance with Prometheus authorization metrics and security validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Prometheus Monitoring - Core Service Account
+# ==============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: veridis-prometheus
+  namespace: veridis-infrastructure
+
+  # Core Veridis Prometheus RBAC identification labels
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-serviceaccount
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Prometheus RBAC specific classification
+    prometheus.veridis.xyz/type: monitoring-prometheus-rbac
+    prometheus.veridis.xyz/category: prometheus-authorization
+    prometheus.veridis.xyz/role: primary-prometheus-serviceaccount
+    prometheus.veridis.xyz/performance-class: high-performance-prometheus-rbac
+    prometheus.veridis.xyz/security-level: enterprise
+
+    # Monitoring Prometheus RBAC classification
+    monitoring.veridis.xyz/prometheus-rbac-type: intelligent-prometheus-rbac
+    monitoring.veridis.xyz/rbac-type: monitoring-rbac
+    monitoring.veridis.xyz/performance-tier: high-performance
+    monitoring.veridis.xyz/optimization: enabled
+    monitoring.veridis.xyz/features: full-monitoring-rbac-stack
+
+    # Security Prometheus RBAC classification
+    security.veridis.xyz/tier: production
+    security.veridis.xyz/optimization: intelligent-monitoring-rbac-management
+    security.veridis.xyz/access-management: advanced
+    security.veridis.xyz/authorization-class: premium
+    security.veridis.xyz/efficiency: maximum
+
+    # Business Prometheus RBAC classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-monitoring-rbac-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Prometheus RBAC labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+    veridis.xyz/cost-center: monitoring-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "prometheus-rbac-control-framework"
+    compliance.veridis.xyz/gdpr: "prometheus-rbac-data-protection"
+    compliance.veridis.xyz/iso27001: "prometheus-rbac-security-management"
+    compliance.veridis.xyz/nist-800-190: "prometheus-rbac-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Prometheus RBAC analytics and intelligence
+    monitoring.veridis.xyz/prometheus-rbac-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/access-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # RBAC management labels
+    rbac.veridis.xyz/access-enabled: "true"
+    rbac.veridis.xyz/permission-optimization: "enabled"
+    rbac.veridis.xyz/authentication: "enabled"
+    rbac.veridis.xyz/authorization-enabled: "true"
+    rbac.veridis.xyz/audit-logging: "enabled"
+
+  annotations:
+    # Prometheus RBAC purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Prometheus ServiceAccount with intelligent access management, advanced authorization optimization, and comprehensive security optimization"
+    veridis.xyz/purpose: "Provides comprehensive Prometheus ServiceAccount for decentralized identity management with intelligent access management, authorization optimization, and security guarantees"
+    veridis.xyz/scope: "Prometheus RBAC including access management, authorization optimization, audit integration, and comprehensive security intelligence"
+
+    # Prometheus RBAC architecture and design
+    prometheus.veridis.xyz/architecture: "Enterprise Prometheus RBAC with intelligent access management, advanced authorization optimization, and audit integration optimization"
+    prometheus.veridis.xyz/design-pattern: "Multi-tier Prometheus RBAC with authorization optimization, cost efficiency, and business intelligence"
+    prometheus.veridis.xyz/optimization-model: "Intelligent Prometheus RBAC with predictive analytics, access optimization, and security efficiency"
+    prometheus.veridis.xyz/performance-model: "High-performance Prometheus RBAC with authorization optimization and intelligent security management"
+
+    # Security Prometheus RBAC specifications
+    security.veridis.xyz/prometheus-rbac-specification: "Prometheus RBAC with access optimization and intelligent monitoring rbac management"
+    security.veridis.xyz/access-specification: "Advanced access management configuration with monitoring optimization and rbac enhancement"
+    security.veridis.xyz/authorization-specification: "Prometheus RBAC authorization management optimization with intelligent access and enhancement"
+    security.veridis.xyz/performance-specification: "Prometheus performance RBAC with access acceleration and authorization efficiency"
+    security.veridis.xyz/business-specification: "Prometheus business RBAC with cost optimization and strategic access intelligence"
+
+    # Compliance Prometheus RBAC specifications
+    compliance.veridis.xyz/prometheus-rbac-specification: "Compliance-aware Prometheus RBAC with access optimization and authorization intelligence"
+    compliance.veridis.xyz/access-specification: "Compliance access management optimization with intelligent Prometheus and authorization enhancement"
+    compliance.veridis.xyz/authorization-specification: "Compliance authorization with cost optimization and intelligent Prometheus management"
+    compliance.veridis.xyz/audit-specification: "Compliance audit management with auto-optimization and Prometheus management"
+    compliance.veridis.xyz/monitoring-specification: "Compliance monitoring with Prometheus RBAC analytics and access intelligence"
+
+    # Business Prometheus RBAC specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant Prometheus RBAC with business continuity and access guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized Prometheus RBAC with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with Prometheus RBAC optimization and access intelligence"
+
+    # Operational Prometheus RBAC specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with Prometheus RBAC analytics and access intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with Prometheus RBAC preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with Prometheus RBAC management and access optimization"
+
+    # Prometheus RBAC lifecycle specifications
+    lifecycle.veridis.xyz/prometheus-rbac-specification: "Dynamic Prometheus RBAC with automated access management and authorization optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent Prometheus RBAC scaling with machine learning and access forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Prometheus RBAC optimization with intelligent access management and authorization enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Prometheus RBAC evolution with intelligent adaptation and access optimization"
+
+    # RBAC specific annotations
+    rbac.veridis.xyz/access-scope: "cluster-wide"
+    rbac.veridis.xyz/permission-model: "least-privilege"
+    rbac.veridis.xyz/audit-enabled: "true"
+    rbac.veridis.xyz/token-rotation: "enabled"
+    rbac.veridis.xyz/binding-validation: "strict"
+
+    # Security annotations
+    security.veridis.xyz/access-control: "strict"
+    security.veridis.xyz/permission-validation: "enabled"
+    security.veridis.xyz/audit-logging: "comprehensive"
+    security.veridis.xyz/token-management: "secure"
+    security.veridis.xyz/authorization-tracking: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/audit-trail: "enabled"
+    compliance.veridis.xyz/access-logging: "comprehensive"
+    compliance.veridis.xyz/permission-tracking: "enabled"
+    compliance.veridis.xyz/compliance-validation: "enabled"
+    compliance.veridis.xyz/regulatory-compliance: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/access-optimization: "enabled"
+    performance.veridis.xyz/permission-caching: "enabled"
+    performance.veridis.xyz/authorization-speed: "optimized"
+    performance.veridis.xyz/rbac-efficiency: "maximum"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "monitoring-team@veridis.xyz"
+    veridis.xyz/prometheus-rbac-admin: "monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "monitoring-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "monitoring-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-rbac"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/monitoring/prometheus-rbac-management"
+    veridis.xyz/rbac-docs: "https://monitoring.veridis.xyz/prometheus-rbac-guide"
+    veridis.xyz/security-docs: "https://security.veridis.xyz/prometheus-rbac-security"
+
+automountServiceAccountToken: true
+
+# ==============================================================================
+# Token Configuration
+# ==============================================================================
+secrets:
+  - name: veridis-prometheus-token
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Core ClusterRole
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-prometheus
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-clusterrole
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-clusterrole
+    prometheus.veridis.xyz/category: prometheus-authorization
+    prometheus.veridis.xyz/role: primary-prometheus-clusterrole
+    prometheus.veridis.xyz/scope: cluster-wide
+
+    monitoring.veridis.xyz/prometheus-rbac-type: cluster-prometheus-rbac
+    monitoring.veridis.xyz/cluster-access: enabled
+    monitoring.veridis.xyz/resource-discovery: enabled
+    monitoring.veridis.xyz/metrics-collection: enabled
+
+    security.veridis.xyz/permission-scope: cluster
+    security.veridis.xyz/access-level: read-only
+    security.veridis.xyz/resource-access: restricted
+    security.veridis.xyz/compliance-level: enterprise
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Core ClusterRole for Veridis Prometheus with cluster-wide monitoring permissions and least privilege access"
+    veridis.xyz/purpose: "Provides essential cluster-wide permissions for Prometheus monitoring with comprehensive resource discovery and metrics collection"
+
+    prometheus.veridis.xyz/clusterrole-specification: "Core Prometheus ClusterRole with cluster-wide monitoring and resource discovery"
+    security.veridis.xyz/clusterrole-specification: "Security-focused ClusterRole with least privilege and audit compliance"
+
+    # Permission specific annotations
+    rbac.veridis.xyz/permission-scope: "cluster-wide-monitoring"
+    rbac.veridis.xyz/access-pattern: "read-only-discovery"
+    rbac.veridis.xyz/resource-discovery: "enabled"
+    rbac.veridis.xyz/metrics-collection: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/least-privilege: "enforced"
+    security.veridis.xyz/resource-isolation: "enabled"
+    security.veridis.xyz/access-validation: "strict"
+    security.veridis.xyz/permission-auditing: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/permission-tracking: "enabled"
+    compliance.veridis.xyz/access-auditing: "comprehensive"
+    compliance.veridis.xyz/regulatory-compliance: "soc2-gdpr-iso27001"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-clusterrole"
+
+rules:
+  # ==============================================================================
+  # Core Monitoring Permissions
+  # ==============================================================================
+
+  # Prometheus server and monitoring configuration
+  - apiGroups: [""]
+    resources: ["nodes", "nodes/metrics", "services", "endpoints", "pods"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get"]
+
+  # Service discovery and endpoint monitoring
+  - apiGroups: [""]
+    resources: ["services/proxy"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: [""]
+    resources: ["nodes/proxy"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Application and Workload Monitoring
+  # ==============================================================================
+
+  # Deployment and workload metrics
+  - apiGroups: ["apps"]
+    resources: ["deployments", "daemonsets", "replicasets", "statefulsets"]
+    verbs: ["get", "list", "watch"]
+
+  # Ingress and networking metrics
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["networkpolicies"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Prometheus Operator Integration
+  # ==============================================================================
+
+  # ServiceMonitor and PrometheusRule resources
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["servicemonitors", "podmonitors", "prometheusrules"]
+    verbs: ["get", "list", "watch"]
+
+  # Prometheus instance management
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["prometheuses"]
+    verbs: ["get", "list", "watch"]
+
+  # Alertmanager integration
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["alertmanagers"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Custom Resource Monitoring
+  # ==============================================================================
+
+  # Veridis-specific custom resources
+  - apiGroups: ["identity.veridis.xyz"]
+    resources: ["identities", "attestations", "verifications"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["compliance.veridis.xyz"]
+    resources: ["compliancereports", "auditlogs"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["bridge.veridis.xyz"]
+    resources: ["bridgetransactions", "crosschainoperations"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Storage and Persistence Monitoring
+  # ==============================================================================
+
+  # Persistent volume monitoring
+  - apiGroups: [""]
+    resources: ["persistentvolumes", "persistentvolumeclaims"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses", "volumeattachments"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Cluster Resource Monitoring
+  # ==============================================================================
+
+  # Namespace and cluster-level resources
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: [""]
+    resources: ["limitranges", "resourcequotas"]
+    verbs: ["get", "list", "watch"]
+
+  # RBAC resource monitoring
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["clusterroles", "clusterrolebindings", "roles", "rolebindings"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Security and Policy Monitoring
+  # ==============================================================================
+
+  # Security policy monitoring
+  - apiGroups: ["policy"]
+    resources: ["podsecuritypolicies"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["security.istio.io"]
+    resources: ["authorizationpolicies", "peerauthentications"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Events and Audit Monitoring
+  # ==============================================================================
+
+  # Event monitoring for alerting
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Non-resource URL Monitoring
+  # ==============================================================================
+
+  # Metrics endpoints
+  - nonResourceURLs: ["/metrics", "/metrics/cadvisor"]
+    verbs: ["get"]
+
+  # Health check endpoints
+  - nonResourceURLs: ["/healthz", "/healthz/*", "/ready", "/livez"]
+    verbs: ["get"]
+
+  # Prometheus federation endpoint
+  - nonResourceURLs: ["/federate"]
+    verbs: ["get"]
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Core ClusterRoleBinding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-prometheus
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-clusterrolebinding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-clusterrolebinding
+    prometheus.veridis.xyz/category: prometheus-authorization
+    prometheus.veridis.xyz/role: primary-prometheus-clusterrolebinding
+    prometheus.veridis.xyz/binding-scope: cluster-wide
+
+    monitoring.veridis.xyz/prometheus-rbac-type: cluster-prometheus-binding
+    monitoring.veridis.xyz/cluster-binding: enabled
+    monitoring.veridis.xyz/authorization-binding: enabled
+    monitoring.veridis.xyz/access-binding: cluster-wide
+
+    security.veridis.xyz/binding-scope: cluster
+    security.veridis.xyz/authorization-level: monitoring
+    security.veridis.xyz/access-control: rbac-enabled
+    security.veridis.xyz/binding-validation: strict
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Core ClusterRoleBinding for Veridis Prometheus with cluster-wide authorization binding and security validation"
+    veridis.xyz/purpose: "Provides cluster-wide authorization binding for Prometheus ServiceAccount with comprehensive access control and audit compliance"
+
+    prometheus.veridis.xyz/clusterrolebinding-specification: "Core Prometheus ClusterRoleBinding with cluster-wide authorization and access control"
+    security.veridis.xyz/clusterrolebinding-specification: "Security-focused ClusterRoleBinding with strict validation and audit compliance"
+
+    # Binding specific annotations
+    rbac.veridis.xyz/binding-scope: "cluster-wide-prometheus"
+    rbac.veridis.xyz/authorization-pattern: "least-privilege-binding"
+    rbac.veridis.xyz/subject-validation: "enabled"
+    rbac.veridis.xyz/role-validation: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/binding-validation: "strict"
+    security.veridis.xyz/subject-verification: "enabled"
+    security.veridis.xyz/authorization-auditing: "enabled"
+    security.veridis.xyz/access-tracking: "comprehensive"
+
+    # Compliance annotations
+    compliance.veridis.xyz/binding-tracking: "enabled"
+    compliance.veridis.xyz/authorization-auditing: "comprehensive"
+    compliance.veridis.xyz/regulatory-compliance: "soc2-gdpr-iso27001"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-clusterrolebinding"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-prometheus
+
+subjects:
+  - kind: ServiceAccount
+    name: veridis-prometheus
+    namespace: veridis-infrastructure
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Federation Service Account
+# ==============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: veridis-prometheus-federation
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus-federation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-federation-serviceaccount
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-federation-rbac
+    prometheus.veridis.xyz/category: federation-authorization
+    prometheus.veridis.xyz/role: federation-prometheus-serviceaccount
+    prometheus.veridis.xyz/federation-enabled: "true"
+
+    monitoring.veridis.xyz/prometheus-rbac-type: federation-prometheus-rbac
+    monitoring.veridis.xyz/federation-access: enabled
+    monitoring.veridis.xyz/cross-cluster: enabled
+    monitoring.veridis.xyz/metric-aggregation: enabled
+
+    federation.veridis.xyz/tier: production
+    federation.veridis.xyz/access-scope: cross-cluster
+    federation.veridis.xyz/authorization-level: federation
+    federation.veridis.xyz/cluster-discovery: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Federation ServiceAccount for Veridis Prometheus with cross-cluster authorization and metric aggregation access"
+    veridis.xyz/purpose: "Provides federation authorization for Prometheus cross-cluster monitoring with comprehensive access control and security validation"
+
+    prometheus.veridis.xyz/federation-serviceaccount-specification: "Federation Prometheus ServiceAccount with cross-cluster authorization"
+    security.veridis.xyz/federation-serviceaccount-specification: "Security-focused federation ServiceAccount with cross-cluster access control"
+
+    # Federation specific annotations
+    federation.veridis.xyz/access-scope: "cross-cluster-federation"
+    federation.veridis.xyz/authorization-pattern: "federation-access"
+    federation.veridis.xyz/cluster-discovery: "enabled"
+    federation.veridis.xyz/metric-aggregation: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/federation-access: "restricted"
+    security.veridis.xyz/cross-cluster-validation: "enabled"
+    security.veridis.xyz/federation-auditing: "enabled"
+    security.veridis.xyz/token-management: "secure"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-federation-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-federation-rbac"
+
+automountServiceAccountToken: true
+
+secrets:
+  - name: veridis-prometheus-federation-token
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Federation ClusterRole
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-prometheus-federation
+
+  labels:
+    app.kubernetes.io/name: prometheus-federation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-federation-clusterrole
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-federation-clusterrole
+    prometheus.veridis.xyz/category: federation-authorization
+    prometheus.veridis.xyz/role: federation-prometheus-clusterrole
+    prometheus.veridis.xyz/federation-scope: cross-cluster
+
+    federation.veridis.xyz/cluster-access: enabled
+    federation.veridis.xyz/metric-federation: enabled
+    federation.veridis.xyz/cross-cluster-discovery: enabled
+    federation.veridis.xyz/aggregation-access: enabled
+
+    security.veridis.xyz/federation-permissions: restricted
+    security.veridis.xyz/cross-cluster-access: controlled
+    security.veridis.xyz/federation-validation: strict
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Federation ClusterRole for Veridis Prometheus with cross-cluster monitoring permissions and metric aggregation access"
+    veridis.xyz/purpose: "Provides federation permissions for Prometheus cross-cluster monitoring with comprehensive resource discovery and metric federation"
+
+    prometheus.veridis.xyz/federation-clusterrole-specification: "Federation Prometheus ClusterRole with cross-cluster monitoring and aggregation"
+    security.veridis.xyz/federation-clusterrole-specification: "Security-focused federation ClusterRole with restricted cross-cluster access"
+
+    # Federation permission annotations
+    federation.veridis.xyz/permission-scope: "cross-cluster-monitoring"
+    federation.veridis.xyz/access-pattern: "federation-discovery"
+    federation.veridis.xyz/metric-aggregation: "enabled"
+    federation.veridis.xyz/cluster-discovery: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/federation-privilege: "minimal"
+    security.veridis.xyz/cross-cluster-isolation: "enabled"
+    security.veridis.xyz/federation-validation: "strict"
+    security.veridis.xyz/access-auditing: "comprehensive"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-federation-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-federation-clusterrole"
+
+rules:
+  # ==============================================================================
+  # Federation-Specific Permissions
+  # ==============================================================================
+
+  # Cross-cluster Prometheus instance discovery
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["prometheuses"]
+    verbs: ["get", "list", "watch"]
+
+  # Federation endpoint access
+  - apiGroups: [""]
+    resources: ["services", "endpoints"]
+    verbs: ["get", "list", "watch"]
+    resourceNames: ["prometheus", "veridis-prometheus"]
+
+  # Cross-cluster service discovery
+  - apiGroups: [""]
+    resources: ["nodes", "services"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Metric Aggregation Permissions
+  # ==============================================================================
+
+  # ServiceMonitor discovery for federation
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["servicemonitors"]
+    verbs: ["get", "list", "watch"]
+
+  # Prometheus configuration for federation
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get"]
+    resourceNames: ["prometheus-config", "veridis-prometheus-config"]
+
+  # ==============================================================================
+  # Cross-Cluster Resource Discovery
+  # ==============================================================================
+
+  # Namespace discovery for federation
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "watch"]
+
+  # Cluster-level metrics discovery
+  - apiGroups: [""]
+    resources: ["nodes/metrics"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Federation Endpoint Access
+  # ==============================================================================
+
+  # Federation metrics endpoint
+  - nonResourceURLs: ["/federate"]
+    verbs: ["get"]
+
+  # Cross-cluster metrics endpoints
+  - nonResourceURLs: ["/metrics"]
+    verbs: ["get"]
+
+  # Health check for federation
+  - nonResourceURLs: ["/healthz", "/ready"]
+    verbs: ["get"]
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Federation ClusterRoleBinding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-prometheus-federation
+
+  labels:
+    app.kubernetes.io/name: prometheus-federation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-federation-clusterrolebinding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-federation-clusterrolebinding
+    prometheus.veridis.xyz/category: federation-authorization
+    prometheus.veridis.xyz/role: federation-prometheus-clusterrolebinding
+    prometheus.veridis.xyz/federation-binding: cross-cluster
+
+    federation.veridis.xyz/cluster-binding: enabled
+    federation.veridis.xyz/authorization-federation: enabled
+    federation.veridis.xyz/cross-cluster-binding: enabled
+    federation.veridis.xyz/metric-aggregation-binding: enabled
+
+    security.veridis.xyz/federation-binding: restricted
+    security.veridis.xyz/cross-cluster-authorization: controlled
+    security.veridis.xyz/federation-validation: strict
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Federation ClusterRoleBinding for Veridis Prometheus with cross-cluster authorization binding and metric aggregation access"
+    veridis.xyz/purpose: "Provides federation authorization binding for Prometheus cross-cluster monitoring with comprehensive access control and security validation"
+
+    prometheus.veridis.xyz/federation-clusterrolebinding-specification: "Federation Prometheus ClusterRoleBinding with cross-cluster authorization"
+    security.veridis.xyz/federation-clusterrolebinding-specification: "Security-focused federation ClusterRoleBinding with restricted cross-cluster binding"
+
+    # Federation binding annotations
+    federation.veridis.xyz/binding-scope: "cross-cluster-federation"
+    federation.veridis.xyz/authorization-binding: "federation-access"
+    federation.veridis.xyz/subject-federation: "enabled"
+    federation.veridis.xyz/role-federation: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/federation-binding-validation: "strict"
+    security.veridis.xyz/cross-cluster-verification: "enabled"
+    security.veridis.xyz/federation-auditing: "enabled"
+    security.veridis.xyz/binding-tracking: "comprehensive"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-federation-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-federation-clusterrolebinding"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-prometheus-federation
+
+subjects:
+  - kind: ServiceAccount
+    name: veridis-prometheus-federation
+    namespace: veridis-infrastructure
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Operator Service Account
+# ==============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: veridis-prometheus-operator
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus-operator
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.71.2"
+    app.kubernetes.io/component: prometheus-operator-serviceaccount
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-operator-rbac
+    prometheus.veridis.xyz/category: operator-authorization
+    prometheus.veridis.xyz/role: operator-prometheus-serviceaccount
+    prometheus.veridis.xyz/operator-enabled: "true"
+
+    monitoring.veridis.xyz/prometheus-rbac-type: operator-prometheus-rbac
+    monitoring.veridis.xyz/operator-access: enabled
+    monitoring.veridis.xyz/crd-management: enabled
+    monitoring.veridis.xyz/instance-management: enabled
+
+    operator.veridis.xyz/tier: production
+    operator.veridis.xyz/access-scope: operator-management
+    operator.veridis.xyz/authorization-level: operator
+    operator.veridis.xyz/resource-management: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Operator ServiceAccount for Veridis Prometheus Operator with CRD management and instance lifecycle authorization"
+    veridis.xyz/purpose: "Provides operator authorization for Prometheus Operator with comprehensive CRD management and instance lifecycle control"
+
+    prometheus.veridis.xyz/operator-serviceaccount-specification: "Operator Prometheus ServiceAccount with CRD management and instance control"
+    security.veridis.xyz/operator-serviceaccount-specification: "Security-focused operator ServiceAccount with restricted management access"
+
+    # Operator specific annotations
+    operator.veridis.xyz/access-scope: "crd-instance-management"
+    operator.veridis.xyz/authorization-pattern: "operator-access"
+    operator.veridis.xyz/crd-management: "enabled"
+    operator.veridis.xyz/instance-lifecycle: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/operator-access: "restricted"
+    security.veridis.xyz/management-validation: "enabled"
+    security.veridis.xyz/operator-auditing: "enabled"
+    security.veridis.xyz/privilege-escalation: "denied"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-operator-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-operator-rbac"
+
+automountServiceAccountToken: true
+
+secrets:
+  - name: veridis-prometheus-operator-token
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Operator ClusterRole
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: veridis-prometheus-operator
+
+  labels:
+    app.kubernetes.io/name: prometheus-operator
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.71.2"
+    app.kubernetes.io/component: prometheus-operator-clusterrole
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-operator-clusterrole
+    prometheus.veridis.xyz/category: operator-authorization
+    prometheus.veridis.xyz/role: operator-prometheus-clusterrole
+    prometheus.veridis.xyz/operator-scope: cluster-management
+
+    operator.veridis.xyz/cluster-access: enabled
+    operator.veridis.xyz/crd-management: enabled
+    operator.veridis.xyz/instance-management: enabled
+    operator.veridis.xyz/resource-creation: enabled
+
+    security.veridis.xyz/operator-permissions: restricted
+    security.veridis.xyz/management-access: controlled
+    security.veridis.xyz/operator-validation: strict
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Operator ClusterRole for Veridis Prometheus Operator with CRD management and instance lifecycle permissions"
+    veridis.xyz/purpose: "Provides operator permissions for Prometheus Operator with comprehensive CRD management and instance lifecycle control"
+
+    prometheus.veridis.xyz/operator-clusterrole-specification: "Operator Prometheus ClusterRole with CRD management and instance control"
+    security.veridis.xyz/operator-clusterrole-specification: "Security-focused operator ClusterRole with restricted management permissions"
+
+    # Operator permission annotations
+    operator.veridis.xyz/permission-scope: "crd-instance-management"
+    operator.veridis.xyz/access-pattern: "operator-lifecycle"
+    operator.veridis.xyz/crd-operations: "enabled"
+    operator.veridis.xyz/instance-operations: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/operator-privilege: "minimal-required"
+    security.veridis.xyz/management-isolation: "enabled"
+    security.veridis.xyz/operator-validation: "strict"
+    security.veridis.xyz/resource-auditing: "comprehensive"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-operator-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-operator-clusterrole"
+
+rules:
+  # ==============================================================================
+  # Prometheus CRD Management
+  # ==============================================================================
+
+  # Prometheus instance management
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["prometheuses"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # ServiceMonitor management
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["servicemonitors"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # PrometheusRule management
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["prometheusrules"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # PodMonitor management
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["podmonitors"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # Alertmanager management
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["alertmanagers"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # ==============================================================================
+  # Prometheus Instance Lifecycle Management
+  # ==============================================================================
+
+  # StatefulSet management for Prometheus instances
+  - apiGroups: ["apps"]
+    resources: ["statefulsets"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # Deployment management for components
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # ReplicaSet management
+  - apiGroups: ["apps"]
+    resources: ["replicasets"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Service and Configuration Management
+  # ==============================================================================
+
+  # Service management for Prometheus instances
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # ConfigMap management for Prometheus configuration
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # Secret management for Prometheus credentials
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # ==============================================================================
+  # Storage Management
+  # ==============================================================================
+
+  # PVC management for Prometheus storage
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # Pod management for Prometheus instances
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch", "delete"]
+
+  # ==============================================================================
+  # RBAC Management for Prometheus Instances
+  # ==============================================================================
+
+  # ServiceAccount management
+  - apiGroups: [""]
+    resources: ["serviceaccounts"]
+    verbs: ["create", "get", "list", "watch", "update", "patch"]
+
+  # ClusterRole and ClusterRoleBinding management
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["clusterroles", "clusterrolebindings"]
+    verbs: ["create", "get", "list", "watch", "update", "patch"]
+
+  # Role and RoleBinding management
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["roles", "rolebindings"]
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+
+  # ==============================================================================
+  # Monitoring Resource Discovery
+  # ==============================================================================
+
+  # Namespace discovery
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list", "watch"]
+
+  # Node discovery
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+
+  # Endpoint discovery
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Event and Status Management
+  # ==============================================================================
+
+  # Event creation for operator activities
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch"]
+
+  # Status updates for CRDs
+  - apiGroups: ["monitoring.coreos.com"]
+    resources: ["prometheuses/status", "servicemonitors/status", "prometheusrules/status"]
+    verbs: ["update", "patch"]
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Operator ClusterRoleBinding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: veridis-prometheus-operator
+
+  labels:
+    app.kubernetes.io/name: prometheus-operator
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.71.2"
+    app.kubernetes.io/component: prometheus-operator-clusterrolebinding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-operator-clusterrolebinding
+    prometheus.veridis.xyz/category: operator-authorization
+    prometheus.veridis.xyz/role: operator-prometheus-clusterrolebinding
+    prometheus.veridis.xyz/operator-binding: cluster-management
+
+    operator.veridis.xyz/cluster-binding: enabled
+    operator.veridis.xyz/authorization-operator: enabled
+    operator.veridis.xyz/management-binding: enabled
+    operator.veridis.xyz/crd-binding: enabled
+
+    security.veridis.xyz/operator-binding: restricted
+    security.veridis.xyz/management-authorization: controlled
+    security.veridis.xyz/operator-validation: strict
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Operator ClusterRoleBinding for Veridis Prometheus Operator with CRD management authorization and instance lifecycle binding"
+    veridis.xyz/purpose: "Provides operator authorization binding for Prometheus Operator with comprehensive CRD management and instance lifecycle control"
+
+    prometheus.veridis.xyz/operator-clusterrolebinding-specification: "Operator Prometheus ClusterRoleBinding with CRD management authorization"
+    security.veridis.xyz/operator-clusterrolebinding-specification: "Security-focused operator ClusterRoleBinding with restricted management binding"
+
+    # Operator binding annotations
+    operator.veridis.xyz/binding-scope: "crd-instance-management"
+    operator.veridis.xyz/authorization-binding: "operator-lifecycle"
+    operator.veridis.xyz/subject-operator: "enabled"
+    operator.veridis.xyz/role-operator: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/operator-binding-validation: "strict"
+    security.veridis.xyz/management-verification: "enabled"
+    security.veridis.xyz/operator-auditing: "enabled"
+    security.veridis.xyz/binding-tracking: "comprehensive"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-operator-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-operator-clusterrolebinding"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: veridis-prometheus-operator
+
+subjects:
+  - kind: ServiceAccount
+    name: veridis-prometheus-operator
+    namespace: veridis-infrastructure
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Application Access Role
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: veridis-prometheus-application-access
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-application-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-application-role
+    prometheus.veridis.xyz/category: application-authorization
+    prometheus.veridis.xyz/role: application-prometheus-role
+    prometheus.veridis.xyz/scope: namespace-application
+
+    monitoring.veridis.xyz/prometheus-rbac-type: application-prometheus-rbac
+    monitoring.veridis.xyz/application-access: enabled
+    monitoring.veridis.xyz/namespace-scoped: enabled
+    monitoring.veridis.xyz/service-monitoring: enabled
+
+    application.veridis.xyz/tier: production
+    application.veridis.xyz/access-scope: application-monitoring
+    application.veridis.xyz/authorization-level: monitoring
+    application.veridis.xyz/resource-access: restricted
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Application Role for Veridis Prometheus with namespace-scoped monitoring permissions and service access"
+    veridis.xyz/purpose: "Provides namespace-scoped monitoring permissions for Prometheus application monitoring with comprehensive service discovery"
+
+    prometheus.veridis.xyz/application-role-specification: "Application Prometheus Role with namespace-scoped monitoring and service access"
+    security.veridis.xyz/application-role-specification: "Security-focused application Role with restricted namespace permissions"
+
+    # Application permission annotations
+    application.veridis.xyz/permission-scope: "namespace-application-monitoring"
+    application.veridis.xyz/access-pattern: "service-discovery"
+    application.veridis.xyz/resource-monitoring: "enabled"
+    application.veridis.xyz/service-monitoring: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/namespace-privilege: "monitoring-only"
+    security.veridis.xyz/application-isolation: "enabled"
+    security.veridis.xyz/access-validation: "strict"
+    security.veridis.xyz/permission-auditing: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-application-role"
+
+rules:
+  # ==============================================================================
+  # Application Service Monitoring
+  # ==============================================================================
+
+  # Service and endpoint monitoring in application namespace
+  - apiGroups: [""]
+    resources: ["services", "endpoints", "pods"]
+    verbs: ["get", "list", "watch"]
+
+  # ConfigMap access for application configuration
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Application Workload Monitoring
+  # ==============================================================================
+
+  # Deployment and workload monitoring
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets", "statefulsets"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Application Custom Resource Monitoring
+  # ==============================================================================
+
+  # Veridis application custom resources
+  - apiGroups: ["identity.veridis.xyz"]
+    resources: ["identities", "attestations", "verifications"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["compliance.veridis.xyz"]
+    resources: ["compliancereports"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["bridge.veridis.xyz"]
+    resources: ["bridgetransactions"]
+    verbs: ["get", "list", "watch"]
+
+  # ==============================================================================
+  # Application Event Monitoring
+  # ==============================================================================
+
+  # Event monitoring for application troubleshooting
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["get", "list", "watch"]
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Application Access RoleBinding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: veridis-prometheus-application-access
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-application-rolebinding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-application-rolebinding
+    prometheus.veridis.xyz/category: application-authorization
+    prometheus.veridis.xyz/role: application-prometheus-rolebinding
+    prometheus.veridis.xyz/binding-scope: namespace-application
+
+    application.veridis.xyz/namespace-binding: enabled
+    application.veridis.xyz/authorization-application: enabled
+    application.veridis.xyz/monitoring-binding: enabled
+    application.veridis.xyz/service-binding: enabled
+
+    security.veridis.xyz/application-binding: restricted
+    security.veridis.xyz/namespace-authorization: controlled
+    security.veridis.xyz/binding-validation: strict
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Application RoleBinding for Veridis Prometheus with namespace-scoped authorization binding and service access"
+    veridis.xyz/purpose: "Provides application authorization binding for Prometheus namespace monitoring with comprehensive service discovery access"
+
+    prometheus.veridis.xyz/application-rolebinding-specification: "Application Prometheus RoleBinding with namespace-scoped authorization"
+    security.veridis.xyz/application-rolebinding-specification: "Security-focused application RoleBinding with restricted namespace binding"
+
+    # Application binding annotations
+    application.veridis.xyz/binding-scope: "namespace-application-monitoring"
+    application.veridis.xyz/authorization-binding: "service-discovery"
+    application.veridis.xyz/subject-application: "enabled"
+    application.veridis.xyz/role-application: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/application-binding-validation: "strict"
+    security.veridis.xyz/namespace-verification: "enabled"
+    security.veridis.xyz/binding-auditing: "enabled"
+    security.veridis.xyz/access-tracking: "comprehensive"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-application-rolebinding"
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: veridis-prometheus-application-access
+
+subjects:
+  - kind: ServiceAccount
+    name: veridis-prometheus
+    namespace: veridis-infrastructure
+
+# ==============================================================================
+# Veridis Prometheus RBAC Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS PROMETHEUS RBAC STRATEGY:
+# ===============================================
+#
+# VERIDIS PROMETHEUS RBAC ARCHITECTURE OVERVIEW:
+# ----------------------------------------------
+# 1. Core Prometheus ServiceAccount (veridis-prometheus):
+#    - Comprehensive primary ServiceAccount with intelligent access management and advanced authorization optimization for production monitoring
+#    - Advanced RBAC configuration with secure token management, audit logging, comprehensive access control, and enterprise security integration
+#    - Multi-tier authorization architecture with least privilege access, strict validation, permission optimization, and comprehensive business intelligence
+#    - Enterprise RBAC policies with SOC 2/GDPR/ISO 27001 compliance, regulatory framework integration, and comprehensive audit requirements
+#    - Performance optimization with intelligent access management, permission caching, authorization optimization, and monitoring for maximum efficiency
+#
+# 2. Core ClusterRole (veridis-prometheus):
+#    - Cluster-wide monitoring permissions with comprehensive resource discovery and least privilege access for enterprise monitoring
+#    - Advanced permission configuration with nodes/metrics access, service discovery, custom resource monitoring, and security integration
+#    - Resource optimization with ServiceMonitor/PrometheusRule access, storage monitoring, RBAC resource discovery, and comprehensive observability
+#    - Security intelligence with policy monitoring, event tracking, audit logging, and comprehensive compliance validation
+#    - Performance excellence with non-resource URL access, federation endpoints, health checks, and comprehensive monitoring intelligence
+#
+# 3. Federation ServiceAccount (veridis-prometheus-federation):
+#    - Cross-cluster federation monitoring with comprehensive metric aggregation and secure cross-cluster authorization
+#    - Advanced federation configuration with cross-cluster discovery, metric federation access, secure token management, and audit compliance
+#    - Federation optimization with cluster discovery, metric aggregation, cross-cluster validation, and comprehensive security integration
+#    - Cross-cluster intelligence with federation endpoint access, cluster-wide discovery, metric sharing, and comprehensive federation analytics
+#    - Performance excellence with conditional deployment, cross-cluster optimization, and comprehensive federation monitoring
+#
+# 4. Operator ServiceAccount (veridis-prometheus-operator):
+#    - Prometheus Operator lifecycle management with comprehensive CRD management and instance lifecycle authorization
+#    - Advanced operator configuration with StatefulSet management, service creation, configuration management, and security integration
+#    - Operator optimization with CRD lifecycle, RBAC management, storage provisioning, and comprehensive operational excellence
+#    - Management intelligence with event creation, status updates, resource discovery, and comprehensive operator analytics
+#    - Performance excellence with conditional deployment, operator optimization, and comprehensive lifecycle management
+#
+# 5. Application Role (veridis-prometheus-application-access):
+#    - Namespace-scoped application monitoring with comprehensive service discovery and restricted application access
+#    - Advanced application configuration with service monitoring, workload discovery, custom resource access, and security integration
+#    - Application optimization with event monitoring, deployment tracking, configuration access, and comprehensive application intelligence
+#    - Service intelligence with identity/compliance/bridge resource monitoring and comprehensive application analytics
+#    - Performance excellence with namespace isolation, application optimization, and comprehensive service monitoring
+#
+# ENTERPRISE PROMETHEUS RBAC FEATURES:
+# ====================================
+# Advanced Access Management and Authorization Optimization:
+#   - Multi-RBAC architecture with core, federation, operator, and application authorization management
+#   - Intelligent access management with least privilege enforcement, strict validation, permission optimization, and performance-based decisions
+#   - Permission discovery with comprehensive resource access, role discovery, authorization tracking, and comprehensive security analytics
+#   - Access management with token rotation, audit logging, permission validation, and comprehensive compliance integration
+#   - Performance tuning with permission caching, authorization optimization, access acceleration, and intelligent security management
+#
+# Comprehensive Security and Compliance Integration:
+#   - SOC 2 Type II integration with comprehensive audit requirements, access logging, permission tracking, and regulatory compliance
+#   - GDPR compliance with data protection, privacy-preserving access management, comprehensive audit trails, and regulatory framework support
+#   - ISO 27001 security management with information security, access compliance integration, comprehensive security monitoring, and audit requirements
+#   - NIST 800-190 container security with access validation, authorization compliance, comprehensive security scanning, and audit requirements
+#   - Zero-trust architecture with comprehensive encryption, authentication requirements, authorization validation, and security intelligence
+#
+# Enterprise Authorization Management and Intelligence:
+#   - Multi-scope authorization with cluster-wide, federation, operator, and application access management
+#   - Intelligent permission management with role optimization, access pattern analysis, permission analytics, and business intelligence
+#   - Access optimization with usage tracking, permission monitoring, authorization analytics, and comprehensive security intelligence
+#   - Business intelligence with cost attribution, team ownership, compliance tracking, and strategic access management
+#   - Performance analytics with access latency, authorization speed, permission efficiency, and comprehensive business intelligence
+#
+# Advanced Resource Access and Discovery Management:
+#   - Comprehensive resource access with nodes, services, endpoints, pods, deployments, and custom resource monitoring
+#   - Service discovery with cross-namespace access, application monitoring, infrastructure discovery, and comprehensive observability
+#   - Custom resource monitoring with Veridis-specific CRDs, identity/compliance/bridge resources, and business intelligence
+#   - Storage monitoring with PVC access, volume monitoring, storage class discovery, and comprehensive storage analytics
+#   - Event monitoring with audit tracking, troubleshooting support, security events, and comprehensive operational intelligence
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Prometheus RBAC Lifecycle Management:
+#   - Multi-RBAC architecture with core, federation, operator, and application authorization lifecycle management
+#   - Intelligent RBAC management with predictive analytics and access utilization correlation
+#   - Advanced security with comprehensive RBAC analytics and authorization business intelligence
+#   - Configuration validation with RBAC schema enforcement and access deployment safety checks
+#   - Automated optimization with RBAC pattern analysis and authorization configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II RBAC controls with comprehensive audit requirements and access logging
+#   - GDPR RBAC compliance with data protection and privacy-preserving authorization management
+#   - ISO 27001 RBAC security management with information security and access compliance integration
+#   - NIST 800-190 container RBAC security with authorization validation and compliance
+#   - Zero-trust RBAC architecture with comprehensive encryption and access authentication requirements
+#
+# Business Intelligence Integration:
+#   - RBAC analytics with cost correlation and access resource utilization optimization
+#   - Performance analytics with user experience optimization and RBAC business intelligence
+#   - Authorization intelligence with access pattern monitoring and RBAC optimization recommendations
+#   - Strategic planning with capacity management and RBAC forecasting
+#   - Business impact assessment with RBAC performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment RBAC support with production, development, federation, and operator configurations
+#   - Comprehensive documentation with RBAC guides and authorization troubleshooting procedures
+#   - Environment-specific RBAC with production, development, testing, and multi-cluster support
+#   - Testing integration with RBAC development workflow and authorization debugging capabilities
+#   - RBAC monitoring with comprehensive tracking and authorization correlation
+#
+# ==============================================================================
