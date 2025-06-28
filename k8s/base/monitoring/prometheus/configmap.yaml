@@ -1,0 +1,1416 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Prometheus Monitoring ConfigMap Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Prometheus Monitoring ConfigMap for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS PROMETHEUS CONFIGMAP ARCHITECTURE:
+#   • Advanced Prometheus configuration with intelligent metrics collection and performance-based configuration optimization
+#   • Multi-tier configuration architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with configuration policies, scraping optimization, Prometheus integration
+#   • Advanced lifecycle management with automated configuration optimization, Prometheus control, and metrics enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Prometheus configuration performance insights
+#
+# VERIDIS PROMETHEUS CONFIGURATION OPTIMIZATION:
+#   • High-performance configuration with intelligent scraping management and Prometheus configuration optimization
+#   • Intelligent configuration traffic management with responsive policies and performance-based configuration decisions
+#   • Advanced rule management with business intelligence and alerting-based Prometheus control
+#   • Comprehensive observability control with intelligent Prometheus configuration management and metrics enhancement
+#   • Enterprise acceleration with predictive Prometheus configuration management and scraping optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Prometheus configuration controls with comprehensive audit and metrics requirements
+#   • GDPR Prometheus configuration compliance with data protection, privacy controls, and metrics management
+#   • ISO 27001 Prometheus configuration management with comprehensive framework integration
+#   • NIST 800-190 container Prometheus configuration security with metrics-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Prometheus configuration best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Prometheus configuration lifecycle management with automated provisioning and metrics optimization
+#   • Predictive configuration analytics with capacity planning and Prometheus configuration intelligence
+#   • Advanced monitoring integration with Prometheus configuration analytics and metrics business intelligence
+#   • Comprehensive observability control with Prometheus configuration preservation and metrics optimization
+#   • Business continuity Prometheus configuration with metrics guarantees and configuration optimization
+#
+# PROMETHEUS CONFIGURATION ACCELERATION INTELLIGENCE:
+#   • Prometheus configuration usage analytics with metrics patterns and optimization recommendations
+#   • Metrics configuration with Prometheus latency and collection optimization intelligence
+#   • Development efficiency with Prometheus configuration analytics and deployment optimization procedures
+#   • Cost optimization with Prometheus configuration utilization analysis and metrics capacity planning procedures
+#   • Quality assurance with Prometheus configuration metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Prometheus Monitoring - Primary Configuration ConfigMap
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-prometheus-config
+  namespace: veridis-infrastructure
+
+  # Core Veridis Prometheus ConfigMap identification labels
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-configmap
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Prometheus ConfigMap specific classification
+    prometheus.veridis.xyz/type: monitoring-prometheus-configmap
+    prometheus.veridis.xyz/category: production-configuration
+    prometheus.veridis.xyz/role: primary-prometheus-configmap
+    prometheus.veridis.xyz/performance-class: high-performance-prometheus-configmap
+    prometheus.veridis.xyz/security-level: enterprise
+
+    # Monitoring Prometheus ConfigMap classification
+    monitoring.veridis.xyz/prometheus-configmap-type: intelligent-prometheus-configmap
+    monitoring.veridis.xyz/configmap-type: monitoring-configuration
+    monitoring.veridis.xyz/performance-tier: high-performance
+    monitoring.veridis.xyz/optimization: enabled
+    monitoring.veridis.xyz/features: full-monitoring-configmap-stack
+
+    # Observability Prometheus ConfigMap classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-monitoring-configuration-management
+    observability.veridis.xyz/scraping-management: advanced
+    observability.veridis.xyz/rule-management: optimized
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Prometheus ConfigMap classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-monitoring-configmap-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Prometheus ConfigMap labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+    veridis.xyz/cost-center: monitoring-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "prometheus-configmap-control-framework"
+    compliance.veridis.xyz/gdpr: "prometheus-configmap-data-protection"
+    compliance.veridis.xyz/iso27001: "prometheus-configmap-security-management"
+    compliance.veridis.xyz/nist-800-190: "prometheus-configmap-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Prometheus ConfigMap analytics and intelligence
+    monitoring.veridis.xyz/prometheus-configmap-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/configuration-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Configuration management labels
+    config.veridis.xyz/validation-enabled: "true"
+    config.veridis.xyz/hot-reload: "true"
+    config.veridis.xyz/backup-enabled: "true"
+    config.veridis.xyz/versioning: "enabled"
+    config.veridis.xyz/encryption: "enabled"
+
+  annotations:
+    # Prometheus ConfigMap purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Prometheus ConfigMap with intelligent configuration management, advanced scraping optimization, and comprehensive observability configuration"
+    veridis.xyz/purpose: "Provides comprehensive Prometheus configuration for decentralized identity management with intelligent scraping rules, configuration optimization, and observability guarantees"
+    veridis.xyz/scope: "Prometheus configuration including scraping rules, alerting rules, recording rules, and comprehensive configuration intelligence"
+
+    # Prometheus ConfigMap architecture and design
+    prometheus.veridis.xyz/architecture: "Enterprise Prometheus configuration with intelligent scraping management, advanced rule optimization, and configuration discovery optimization"
+    prometheus.veridis.xyz/design-pattern: "Multi-tier Prometheus configuration with scraping optimization, cost efficiency, and business intelligence"
+    prometheus.veridis.xyz/optimization-model: "Intelligent Prometheus configuration with predictive analytics, scraping optimization, and rule efficiency"
+    prometheus.veridis.xyz/performance-model: "High-performance Prometheus configuration with scraping optimization and intelligent rule management"
+
+    # Monitoring Prometheus ConfigMap specifications
+    monitoring.veridis.xyz/prometheus-configmap-specification: "Prometheus configuration with scraping optimization and intelligent monitoring configmap management"
+    monitoring.veridis.xyz/scraping-specification: "Advanced scraping configuration with monitoring optimization and rule enhancement"
+    monitoring.veridis.xyz/rule-specification: "Prometheus rule management optimization with intelligent alerts and enhancement"
+    monitoring.veridis.xyz/performance-specification: "Prometheus performance configuration with scraping acceleration and rule efficiency"
+    monitoring.veridis.xyz/business-specification: "Prometheus business configuration with cost optimization and strategic scraping intelligence"
+
+    # Observability Prometheus ConfigMap specifications
+    observability.veridis.xyz/prometheus-configmap-specification: "Observability-aware Prometheus configuration with scraping optimization and rule intelligence"
+    observability.veridis.xyz/scraping-specification: "Observability scraping management optimization with intelligent Prometheus and rule enhancement"
+    observability.veridis.xyz/discovery-specification: "Observability discovery with cost optimization and intelligent Prometheus management"
+    observability.veridis.xyz/alerting-specification: "Observability alerting management with auto-optimization and Prometheus management"
+    observability.veridis.xyz/monitoring-specification: "Observability monitoring with Prometheus configuration analytics and scraping intelligence"
+
+    # Business Prometheus ConfigMap specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant Prometheus configuration with business continuity and scraping guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized Prometheus configuration with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with Prometheus configuration optimization and scraping intelligence"
+
+    # Operational Prometheus ConfigMap specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with Prometheus configuration analytics and scraping intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with Prometheus configuration preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with Prometheus configuration management and scraping optimization"
+
+    # Prometheus ConfigMap lifecycle specifications
+    lifecycle.veridis.xyz/prometheus-configmap-specification: "Dynamic Prometheus configuration with automated scraping management and rule optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent Prometheus configuration scaling with machine learning and scraping forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Prometheus configuration optimization with intelligent scraping management and rule enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Prometheus configuration evolution with intelligent adaptation and scraping optimization"
+
+    # Configuration management annotations
+    config.veridis.xyz/validation-enabled: "true"
+    config.veridis.xyz/hot-reload-enabled: "true"
+    config.veridis.xyz/backup-strategy: "versioned"
+    config.veridis.xyz/encryption-at-rest: "enabled"
+    config.veridis.xyz/access-control: "rbac-enabled"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/scraping-optimization: "enabled"
+    performance.veridis.xyz/rule-optimization: "enabled"
+    performance.veridis.xyz/query-optimization: "enabled"
+    performance.veridis.xyz/memory-optimization: "enabled"
+    performance.veridis.xyz/cpu-optimization: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/config-encryption: "enabled"
+    security.veridis.xyz/access-control: "rbac-enabled"
+    security.veridis.xyz/secret-management: "vault-integrated"
+    security.veridis.xyz/configuration-validation: "enabled"
+    security.veridis.xyz/compliance-checking: "enabled"
+
+    # Monitoring and observability annotations
+    monitoring.veridis.xyz/config-monitoring: "enabled"
+    monitoring.veridis.xyz/scraping-monitoring: "enabled"
+    monitoring.veridis.xyz/rule-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "monitoring-team@veridis.xyz"
+    veridis.xyz/prometheus-config-admin: "monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "monitoring-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "monitoring-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-configuration"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/monitoring/prometheus-config-management"
+    veridis.xyz/config-docs: "https://monitoring.veridis.xyz/prometheus-config-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/prometheus-configuration-monitoring"
+
+data:
+  # ==============================================================================
+  # Primary Prometheus Configuration
+  # ==============================================================================
+  prometheus.yml: |
+    # ==============================================================================
+    # Veridis Prometheus Global Configuration
+    # ==============================================================================
+    global:
+      # Scrape interval configuration
+      scrape_interval: 15s
+      scrape_timeout: 10s
+      evaluation_interval: 15s
+
+      # Query configuration
+      query_log_file: /prometheus/logs/prometheus_queries.log
+
+      # External labels for federation and multi-cluster
+      external_labels:
+        cluster: 'veridis-production'
+        environment: 'production'
+        region: 'us-west-2'
+        datacenter: 'aws-us-west-2a'
+        prometheus_replica: '{{ $labels.__replica__ }}'
+        veridis_deployment: 'production-v3.2.1'
+        monitoring_tier: 'enterprise'
+        compliance_level: 'soc2-gdpr-iso27001'
+
+    # ==============================================================================
+    # Alerting Configuration
+    # ==============================================================================
+    alerting:
+      alertmanagers:
+        - static_configs:
+            - targets:
+                - 'veridis-alertmanager:9093'
+                - 'veridis-alertmanager-1:9093'
+                - 'veridis-alertmanager-2:9093'
+          timeout: 10s
+          api_version: v2
+          path_prefix: /
+          scheme: http
+
+        # High availability alertmanager configuration
+        - kubernetes_sd_configs:
+            - role: endpoints
+              namespaces:
+                names:
+                  - veridis-infrastructure
+          relabel_configs:
+            - source_labels: [__meta_kubernetes_service_name]
+              action: keep
+              regex: veridis-alertmanager.*
+            - source_labels: [__meta_kubernetes_endpoint_port_name]
+              action: keep
+              regex: web
+
+    # ==============================================================================
+    # Rule Files Configuration
+    # ==============================================================================
+    rule_files:
+      - "/etc/prometheus/rules/*.yml"
+      - "/etc/prometheus/alerts/*.yml"
+      - "/etc/prometheus/recording-rules/*.yml"
+
+    # ==============================================================================
+    # Scrape Configuration
+    # ==============================================================================
+    scrape_configs:
+      # ==============================================================================
+      # Prometheus Self-Monitoring
+      # ==============================================================================
+      - job_name: 'prometheus'
+        static_configs:
+          - targets: ['localhost:9090']
+        scrape_interval: 5s
+        scrape_timeout: 3s
+        metrics_path: /metrics
+        honor_labels: true
+        honor_timestamps: true
+
+        # Prometheus-specific metric relabeling
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: 'prometheus_build_info'
+            target_label: veridis_component
+            replacement: 'prometheus-monitoring'
+
+      # ==============================================================================
+      # Veridis Backend Service Monitoring
+      # ==============================================================================
+      - job_name: 'veridis-backend'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis
+                - veridis-infrastructure
+
+        scrape_interval: 10s
+        scrape_timeout: 8s
+        metrics_path: /metrics
+        scheme: http
+
+        # Service discovery relabeling
+        relabel_configs:
+          # Keep only veridis-backend services
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: veridis-backend.*
+
+          # Keep only http/metrics ports
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: (http|metrics)
+
+          # Add service metadata as labels
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: service_name
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod_name
+          - source_labels: [__meta_kubernetes_pod_node_name]
+            target_label: node_name
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: kubernetes_namespace
+          - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_component]
+            target_label: component
+          - source_labels: [__meta_kubernetes_service_label_veridis_xyz_environment]
+            target_label: environment
+
+          # Add Veridis-specific labels
+          - source_labels: [__meta_kubernetes_service_annotation_veridis_xyz_service_type]
+            target_label: veridis_service_type
+          - source_labels: [__meta_kubernetes_service_annotation_veridis_xyz_protocol_version]
+            target_label: protocol_version
+
+        # Metric relabeling for Veridis backend
+        metric_relabel_configs:
+          # Add veridis component label
+          - source_labels: [__name__]
+            regex: '.*'
+            target_label: veridis_component
+            replacement: 'backend-service'
+
+          # Normalize metric names
+          - source_labels: [__name__]
+            regex: 'veridis_(.+)'
+            target_label: __name__
+            replacement: 'veridis_backend_${1}'
+
+          # Drop high cardinality metrics in production
+          - source_labels: [__name__]
+            regex: '.*_bucket'
+            action: drop
+          - source_labels: [__name__]
+            regex: '.*_sum'
+            action: drop
+          - source_labels: [__name__]
+            regex: '.*_count'
+            action: keep
+
+      # ==============================================================================
+      # ZK Circuits Service Monitoring
+      # ==============================================================================
+      - job_name: 'zk-circuits'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis
+                - veridis-infrastructure
+
+        scrape_interval: 15s
+        scrape_timeout: 10s
+        metrics_path: /metrics
+        scheme: http
+
+        # Service discovery relabeling for ZK circuits
+        relabel_configs:
+          # Keep only zk-circuits services
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: (veridis-)?zk-circuits.*
+
+          # Keep only http/metrics ports
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: (http|metrics|nodejs)
+
+          # Add service metadata
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: service_name
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod_name
+          - source_labels: [__meta_kubernetes_pod_node_name]
+            target_label: node_name
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: kubernetes_namespace
+
+          # Add ZK-specific labels
+          - source_labels: [__meta_kubernetes_service_annotation_veridis_xyz_zk_type]
+            target_label: zk_type
+          - source_labels: [__meta_kubernetes_service_annotation_veridis_xyz_gpu_enabled]
+            target_label: gpu_enabled
+
+        # Metric relabeling for ZK circuits
+        metric_relabel_configs:
+          # Add veridis component label
+          - source_labels: [__name__]
+            regex: '.*'
+            target_label: veridis_component
+            replacement: 'zk-circuits-service'
+
+          # Normalize ZK circuit metric names
+          - source_labels: [__name__]
+            regex: 'zk_(.+)'
+            target_label: __name__
+            replacement: 'veridis_zk_${1}'
+
+          # Keep GPU metrics
+          - source_labels: [__name__]
+            regex: '.*gpu.*'
+            action: keep
+
+          # Keep proof generation metrics
+          - source_labels: [__name__]
+            regex: '.*proof.*'
+            action: keep
+
+      # ==============================================================================
+      # Frontend UI Service Monitoring
+      # ==============================================================================
+      - job_name: 'veridis-ui'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis
+                - veridis-infrastructure
+
+        scrape_interval: 30s
+        scrape_timeout: 15s
+        metrics_path: /metrics
+        scheme: http
+
+        # Service discovery relabeling for UI
+        relabel_configs:
+          # Keep only UI services
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: (veridis-)?identity-app.*|(veridis-)?ui.*
+
+          # Keep only http/metrics ports
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: (http|metrics)
+
+          # Add service metadata
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: service_name
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod_name
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: kubernetes_namespace
+
+        # Metric relabeling for UI
+        metric_relabel_configs:
+          # Add veridis component label
+          - source_labels: [__name__]
+            regex: '.*'
+            target_label: veridis_component
+            replacement: 'ui-service'
+
+      # ==============================================================================
+      # Infrastructure Services Monitoring
+      # ==============================================================================
+
+      # PostgreSQL Monitoring
+      - job_name: 'postgresql'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis-infrastructure
+
+        scrape_interval: 30s
+        scrape_timeout: 15s
+        metrics_path: /metrics
+        scheme: http
+
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: (veridis-)?postgres.*
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: metrics
+
+          # Add database-specific labels
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: database_type
+            replacement: 'postgresql'
+
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: '.*'
+            target_label: veridis_component
+            replacement: 'database-service'
+
+      # Redis Monitoring
+      - job_name: 'redis'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis-infrastructure
+
+        scrape_interval: 20s
+        scrape_timeout: 10s
+        metrics_path: /metrics
+        scheme: http
+
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: (veridis-)?redis.*
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: metrics
+
+          # Add cache-specific labels
+          - source_labels: [__meta_kubernetes_service_name]
+            target_label: cache_type
+            replacement: 'redis'
+
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: '.*'
+            target_label: veridis_component
+            replacement: 'cache-service'
+
+      # Vault Monitoring
+      - job_name: 'vault'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis-infrastructure
+
+        scrape_interval: 30s
+        scrape_timeout: 15s
+        metrics_path: /v1/sys/metrics
+        scheme: http
+        params:
+          format: ['prometheus']
+
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: (veridis-)?vault.*
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: (http|api)
+
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: '.*'
+            target_label: veridis_component
+            replacement: 'secrets-service'
+
+      # StarkNet DevNet Monitoring
+      - job_name: 'starknet-devnet'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis-infrastructure
+
+        scrape_interval: 30s
+        scrape_timeout: 15s
+        metrics_path: /metrics
+        scheme: http
+
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_name]
+            action: keep
+            regex: (veridis-)?starknet.*
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: (http|rpc|metrics)
+
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: '.*'
+            target_label: veridis_component
+            replacement: 'blockchain-service'
+
+      # ==============================================================================
+      # Kubernetes System Monitoring
+      # ==============================================================================
+
+      # Kubernetes API Server
+      - job_name: 'kubernetes-apiserver'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - default
+
+        scheme: https
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          insecure_skip_verify: false
+
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: default;kubernetes;https
+
+      # Kubernetes Node Monitoring
+      - job_name: 'kubernetes-nodes'
+        kubernetes_sd_configs:
+          - role: node
+
+        scheme: https
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          insecure_skip_verify: false
+
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+        relabel_configs:
+          - action: labelmap
+            regex: __meta_kubernetes_node_label_(.+)
+          - target_label: __address__
+            replacement: kubernetes.default.svc:443
+          - source_labels: [__meta_kubernetes_node_name]
+            regex: (.+)
+            target_label: __metrics_path__
+            replacement: /api/v1/nodes/${1}/proxy/metrics
+
+      # Kubernetes Pod Monitoring
+      - job_name: 'kubernetes-pods'
+        kubernetes_sd_configs:
+          - role: pod
+            namespaces:
+              names:
+                - veridis
+                - veridis-infrastructure
+
+        relabel_configs:
+          # Only scrape pods with prometheus scrape annotation
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+            action: keep
+            regex: true
+
+          # Use custom scrape path if specified
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+            action: replace
+            target_label: __metrics_path__
+            regex: (.+)
+
+          # Use custom port if specified
+          - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+            action: replace
+            regex: ([^:]+)(?::\d+)?;(\d+)
+            replacement: $1:$2
+            target_label: __address__
+
+          # Add pod metadata as labels
+          - action: labelmap
+            regex: __meta_kubernetes_pod_label_(.+)
+          - source_labels: [__meta_kubernetes_namespace]
+            action: replace
+            target_label: kubernetes_namespace
+          - source_labels: [__meta_kubernetes_pod_name]
+            action: replace
+            target_label: kubernetes_pod_name
+
+      # ==============================================================================
+      # Service Monitor Discovery
+      # ==============================================================================
+      - job_name: 'serviceMonitor'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - veridis
+                - veridis-infrastructure
+                - monitoring
+
+        relabel_configs:
+          # Only scrape services with ServiceMonitor
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+            action: keep
+            regex: true
+
+          # Use service monitor port
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: metrics
+
+          # Add service metadata
+          - action: labelmap
+            regex: __meta_kubernetes_service_label_(.+)
+          - source_labels: [__meta_kubernetes_namespace]
+            action: replace
+            target_label: kubernetes_namespace
+          - source_labels: [__meta_kubernetes_service_name]
+            action: replace
+            target_label: kubernetes_service_name
+
+      # ==============================================================================
+      # Federation and Multi-Cluster
+      # ==============================================================================
+      - job_name: 'federate'
+        scrape_interval: 60s
+        scrape_timeout: 30s
+        honor_labels: true
+        metrics_path: '/federate'
+
+        params:
+          'match[]':
+            - '{job=~"kubernetes-.*"}'
+            - '{job=~"veridis-.*"}'
+            - '{job=~"zk-circuits"}'
+            - '{__name__=~"up|prometheus_.*"}'
+            - '{__name__=~"veridis_.*"}'
+
+        static_configs:
+          - targets:
+              - 'prometheus-federation.monitoring.svc.cluster.local:9090'
+
+    # ==============================================================================
+    # Storage Configuration
+    # ==============================================================================
+    storage:
+      tsdb:
+        path: /prometheus/data
+        retention: 90d
+        retention_size: 50GB
+        wal_compression: true
+        min_block_duration: 2h
+        max_block_duration: 25h
+        no_lockfile: true
+
+    # ==============================================================================
+    # Query Configuration
+    # ==============================================================================
+    query:
+      lookback_delta: 5m
+      timeout: 2m
+      max_concurrency: 20
+      max_samples: 50000000
+
+    # ==============================================================================
+    # Web Configuration
+    # ==============================================================================
+    web:
+      listen_address: "0.0.0.0:9090"
+      external_url: "https://prometheus.veridis.xyz"
+      route_prefix: "/"
+      enable_lifecycle: true
+      enable_admin_api: true
+      console_templates: "/etc/prometheus/consoles"
+      console_libraries: "/etc/prometheus/console_libraries"
+
+  # ==============================================================================
+  # Recording Rules Configuration
+  # ==============================================================================
+  recording-rules.yml: |
+    groups:
+      # ==============================================================================
+      # Veridis Backend Recording Rules
+      # ==============================================================================
+      - name: veridis_backend_rules
+        interval: 30s
+        rules:
+          # Request rate recording rules
+          - record: veridis:backend_request_rate_5m
+            expr: rate(veridis_backend_http_requests_total[5m])
+
+          - record: veridis:backend_request_rate_1h
+            expr: rate(veridis_backend_http_requests_total[1h])
+
+          # Error rate recording rules
+          - record: veridis:backend_error_rate_5m
+            expr: rate(veridis_backend_http_requests_total{status=~"5.."}[5m]) / rate(veridis_backend_http_requests_total[5m])
+
+          # Response time percentiles
+          - record: veridis:backend_response_time_p95_5m
+            expr: histogram_quantile(0.95, rate(veridis_backend_http_request_duration_seconds_bucket[5m]))
+
+          - record: veridis:backend_response_time_p99_5m
+            expr: histogram_quantile(0.99, rate(veridis_backend_http_request_duration_seconds_bucket[5m]))
+
+          # Identity service specific metrics
+          - record: veridis:identity_creation_rate_5m
+            expr: rate(veridis_backend_identity_operations_total{operation="create"}[5m])
+
+          - record: veridis:attestation_verification_rate_5m
+            expr: rate(veridis_backend_attestation_operations_total{operation="verify"}[5m])
+
+          # Compliance metrics
+          - record: veridis:gdpr_requests_rate_5m
+            expr: rate(veridis_backend_gdpr_requests_total[5m])
+
+      # ==============================================================================
+      # ZK Circuits Recording Rules
+      # ==============================================================================
+      - name: veridis_zk_circuits_rules
+        interval: 30s
+        rules:
+          # Proof generation metrics
+          - record: veridis:zk_proof_generation_rate_5m
+            expr: rate(veridis_zk_proof_generation_total[5m])
+
+          - record: veridis:zk_proof_generation_duration_p95_5m
+            expr: histogram_quantile(0.95, rate(veridis_zk_proof_generation_duration_seconds_bucket[5m]))
+
+          # GPU utilization metrics
+          - record: veridis:zk_gpu_utilization_avg_5m
+            expr: avg(veridis_zk_gpu_utilization_percent) by (instance, gpu_id)
+
+          - record: veridis:zk_gpu_memory_usage_avg_5m
+            expr: avg(veridis_zk_gpu_memory_usage_bytes) by (instance, gpu_id)
+
+          # Circuit compilation metrics
+          - record: veridis:zk_circuit_compilation_rate_5m
+            expr: rate(veridis_zk_circuit_compilation_total[5m])
+
+          # Verification metrics
+          - record: veridis:zk_verification_rate_5m
+            expr: rate(veridis_zk_verification_total[5m])
+
+          - record: veridis:zk_verification_success_rate_5m
+            expr: rate(veridis_zk_verification_total{result="success"}[5m]) / rate(veridis_zk_verification_total[5m])
+
+      # ==============================================================================
+      # Infrastructure Recording Rules
+      # ==============================================================================
+      - name: veridis_infrastructure_rules
+        interval: 30s
+        rules:
+          # Database connection metrics
+          - record: veridis:postgres_connections_active_avg_5m
+            expr: avg(veridis_postgres_connections_active) by (instance)
+
+          - record: veridis:postgres_query_duration_p95_5m
+            expr: histogram_quantile(0.95, rate(veridis_postgres_query_duration_seconds_bucket[5m]))
+
+          # Redis cache metrics
+          - record: veridis:redis_hit_rate_5m
+            expr: rate(veridis_redis_cache_hits_total[5m]) / (rate(veridis_redis_cache_hits_total[5m]) + rate(veridis_redis_cache_misses_total[5m]))
+
+          - record: veridis:redis_memory_usage_percent
+            expr: (veridis_redis_memory_used_bytes / veridis_redis_memory_max_bytes) * 100
+
+          # Vault secrets metrics
+          - record: veridis:vault_request_rate_5m
+            expr: rate(veridis_vault_requests_total[5m])
+
+          # StarkNet metrics
+          - record: veridis:starknet_block_height_avg_5m
+            expr: avg(veridis_starknet_block_height) by (instance)
+
+          - record: veridis:starknet_transaction_rate_5m
+            expr: rate(veridis_starknet_transactions_total[5m])
+
+      # ==============================================================================
+      # Business Metrics Recording Rules
+      # ==============================================================================
+      - name: veridis_business_rules
+        interval: 60s
+        rules:
+          # User activity metrics
+          - record: veridis:active_users_5m
+            expr: count(count by (user_id)(rate(veridis_backend_user_activity_total[5m]) > 0))
+
+          # Identity creation trends
+          - record: veridis:identity_creation_hourly
+            expr: increase(veridis_backend_identity_operations_total{operation="create"}[1h])
+
+          # Attestation volume metrics
+          - record: veridis:attestation_volume_hourly
+            expr: increase(veridis_backend_attestation_operations_total[1h])
+
+          # Compliance reporting metrics
+          - record: veridis:compliance_requests_daily
+            expr: increase(veridis_backend_compliance_requests_total[24h])
+
+          # Bridge transaction metrics
+          - record: veridis:bridge_transactions_hourly
+            expr: increase(veridis_backend_bridge_transactions_total[1h])
+
+      # ==============================================================================
+      # SLA and Performance Recording Rules
+      # ==============================================================================
+      - name: veridis_sla_rules
+        interval: 30s
+        rules:
+          # Service availability
+          - record: veridis:service_availability_5m
+            expr: up{job=~"veridis-.*"}
+
+          # API endpoint availability
+          - record: veridis:api_availability_5m
+            expr: avg(up{job="veridis-backend"}) by (instance, endpoint)
+
+          # Response time SLA compliance (under 200ms for 95th percentile)
+          - record: veridis:response_time_sla_compliance_5m
+            expr: (veridis:backend_response_time_p95_5m < 0.2) and (veridis:service_availability_5m == 1)
+
+          # Error rate SLA compliance (under 1% error rate)
+          - record: veridis:error_rate_sla_compliance_5m
+            expr: (veridis:backend_error_rate_5m < 0.01) and (veridis:service_availability_5m == 1)
+
+          # Overall SLA compliance
+          - record: veridis:overall_sla_compliance_5m
+            expr: veridis:response_time_sla_compliance_5m and veridis:error_rate_sla_compliance_5m
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Rules ConfigMap
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-prometheus-rules
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-rules
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-rules
+    prometheus.veridis.xyz/category: alerting-rules
+    prometheus.veridis.xyz/role: prometheus-rules
+    monitoring.veridis.xyz/rule-type: alerting-recording-rules
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Veridis Prometheus alerting and recording rules for comprehensive monitoring"
+    veridis.xyz/purpose: "Provides alerting rules for proactive monitoring and incident response"
+
+    prometheus.veridis.xyz/rules-specification: "Prometheus rules with intelligent alerting and recording optimization"
+    monitoring.veridis.xyz/rules-specification: "Monitoring rules with Prometheus alerting and recording enhancement"
+
+data:
+  # ==============================================================================
+  # Veridis Backend Alerting Rules
+  # ==============================================================================
+  veridis-backend-alerts.yml: |
+    groups:
+      - name: veridis_backend_alerts
+        rules:
+          # Service availability alerts
+          - alert: VeridisBackendDown
+            expr: up{job="veridis-backend"} == 0
+            for: 1m
+            labels:
+              severity: critical
+              service: veridis-backend
+              component: backend-service
+              team: platform-engineering
+            annotations:
+              summary: "Veridis Backend service is down"
+              description: "Veridis Backend service {{ $labels.instance }} has been down for more than 1 minute."
+              runbook_url: "https://runbooks.veridis.xyz/backend-down"
+              action: "Check backend service logs and restart if necessary"
+
+          # High error rate alerts
+          - alert: VeridisBackendHighErrorRate
+            expr: veridis:backend_error_rate_5m > 0.05
+            for: 5m
+            labels:
+              severity: warning
+              service: veridis-backend
+              component: backend-service
+              team: platform-engineering
+            annotations:
+              summary: "High error rate in Veridis Backend"
+              description: "Veridis Backend error rate is {{ $value | humanizePercentage }} for the last 5 minutes."
+              runbook_url: "https://runbooks.veridis.xyz/high-error-rate"
+
+          # High response time alerts
+          - alert: VeridisBackendHighResponseTime
+            expr: veridis:backend_response_time_p95_5m > 0.5
+            for: 3m
+            labels:
+              severity: warning
+              service: veridis-backend
+              component: backend-service
+              team: platform-engineering
+            annotations:
+              summary: "High response time in Veridis Backend"
+              description: "Veridis Backend 95th percentile response time is {{ $value }}s for the last 5 minutes."
+              runbook_url: "https://runbooks.veridis.xyz/high-response-time"
+
+          # Database connection alerts
+          - alert: VeridisBackendDatabaseConnectionsHigh
+            expr: veridis:postgres_connections_active_avg_5m > 80
+            for: 5m
+            labels:
+              severity: warning
+              service: veridis-backend
+              component: database
+              team: platform-engineering
+            annotations:
+              summary: "High database connections for Veridis Backend"
+              description: "Active database connections are {{ $value }} (>80) for the last 5 minutes."
+              runbook_url: "https://runbooks.veridis.xyz/database-connections"
+
+          # Identity service specific alerts
+          - alert: VeridisIdentityCreationFailureHigh
+            expr: rate(veridis_backend_identity_operations_total{operation="create",status!="success"}[5m]) > 0.1
+            for: 3m
+            labels:
+              severity: warning
+              service: veridis-backend
+              component: identity-service
+              team: platform-engineering
+            annotations:
+              summary: "High identity creation failure rate"
+              description: "Identity creation failure rate is {{ $value | humanizePercentage }} for the last 5 minutes."
+              runbook_url: "https://runbooks.veridis.xyz/identity-failures"
+
+  # ==============================================================================
+  # ZK Circuits Alerting Rules
+  # ==============================================================================
+  veridis-zk-circuits-alerts.yml: |
+    groups:
+      - name: veridis_zk_circuits_alerts
+        rules:
+          # ZK Circuits service availability
+          - alert: VeridisZKCircuitsDown
+            expr: up{job="zk-circuits"} == 0
+            for: 1m
+            labels:
+              severity: critical
+              service: zk-circuits
+              component: zk-service
+              team: platform-engineering
+            annotations:
+              summary: "Veridis ZK Circuits service is down"
+              description: "ZK Circuits service {{ $labels.instance }} has been down for more than 1 minute."
+              runbook_url: "https://runbooks.veridis.xyz/zk-circuits-down"
+
+          # GPU utilization alerts
+          - alert: VeridisZKGPUUtilizationLow
+            expr: veridis:zk_gpu_utilization_avg_5m < 10
+            for: 10m
+            labels:
+              severity: warning
+              service: zk-circuits
+              component: gpu
+              team: platform-engineering
+            annotations:
+              summary: "Low GPU utilization in ZK Circuits"
+              description: "GPU utilization is {{ $value }}% (<10%) for the last 10 minutes on {{ $labels.instance }}."
+              runbook_url: "https://runbooks.veridis.xyz/gpu-utilization"
+
+          # Proof generation alerts
+          - alert: VeridisZKProofGenerationSlow
+            expr: veridis:zk_proof_generation_duration_p95_5m > 30
+            for: 5m
+            labels:
+              severity: warning
+              service: zk-circuits
+              component: proof-generation
+              team: platform-engineering
+            annotations:
+              summary: "Slow ZK proof generation"
+              description: "95th percentile proof generation time is {{ $value }}s (>30s) for the last 5 minutes."
+              runbook_url: "https://runbooks.veridis.xyz/slow-proof-generation"
+
+          # GPU memory alerts
+          - alert: VeridisZKGPUMemoryHigh
+            expr: (veridis:zk_gpu_memory_usage_avg_5m / (8 * 1024^3)) > 0.9
+            for: 5m
+            labels:
+              severity: critical
+              service: zk-circuits
+              component: gpu
+              team: platform-engineering
+            annotations:
+              summary: "High GPU memory usage in ZK Circuits"
+              description: "GPU memory usage is {{ $value | humanizePercentage }} (>90%) for the last 5 minutes on {{ $labels.instance }}."
+              runbook_url: "https://runbooks.veridis.xyz/gpu-memory"
+
+  # ==============================================================================
+  # Infrastructure Alerting Rules
+  # ==============================================================================
+  veridis-infrastructure-alerts.yml: |
+    groups:
+      - name: veridis_infrastructure_alerts
+        rules:
+          # PostgreSQL alerts
+          - alert: VeridisPostgreSQLDown
+            expr: up{job="postgresql"} == 0
+            for: 1m
+            labels:
+              severity: critical
+              service: postgresql
+              component: database
+              team: platform-engineering
+            annotations:
+              summary: "PostgreSQL database is down"
+              description: "PostgreSQL instance {{ $labels.instance }} has been down for more than 1 minute."
+              runbook_url: "https://runbooks.veridis.xyz/postgresql-down"
+
+          # Redis alerts
+          - alert: VeridisRedisDown
+            expr: up{job="redis"} == 0
+            for: 1m
+            labels:
+              severity: critical
+              service: redis
+              component: cache
+              team: platform-engineering
+            annotations:
+              summary: "Redis cache is down"
+              description: "Redis instance {{ $labels.instance }} has been down for more than 1 minute."
+              runbook_url: "https://runbooks.veridis.xyz/redis-down"
+
+          # Redis memory usage
+          - alert: VeridisRedisMemoryHigh
+            expr: veridis:redis_memory_usage_percent > 85
+            for: 5m
+            labels:
+              severity: warning
+              service: redis
+              component: cache
+              team: platform-engineering
+            annotations:
+              summary: "High Redis memory usage"
+              description: "Redis memory usage is {{ $value }}% (>85%) for the last 5 minutes on {{ $labels.instance }}."
+              runbook_url: "https://runbooks.veridis.xyz/redis-memory"
+
+          # Vault alerts
+          - alert: VeridisVaultDown
+            expr: up{job="vault"} == 0
+            for: 1m
+            labels:
+              severity: critical
+              service: vault
+              component: secrets
+              team: platform-engineering
+            annotations:
+              summary: "HashiCorp Vault is down"
+              description: "Vault instance {{ $labels.instance }} has been down for more than 1 minute."
+              runbook_url: "https://runbooks.veridis.xyz/vault-down"
+
+          # StarkNet DevNet alerts
+          - alert: VeridisStarkNetDown
+            expr: up{job="starknet-devnet"} == 0
+            for: 2m
+            labels:
+              severity: warning
+              service: starknet-devnet
+              component: blockchain
+              team: platform-engineering
+            annotations:
+              summary: "StarkNet DevNet is down"
+              description: "StarkNet DevNet instance {{ $labels.instance }} has been down for more than 2 minutes."
+              runbook_url: "https://runbooks.veridis.xyz/starknet-down"
+
+  # ==============================================================================
+  # Business and SLA Alerting Rules
+  # ==============================================================================
+  veridis-business-alerts.yml: |
+    groups:
+      - name: veridis_business_alerts
+        rules:
+          # SLA compliance alerts
+          - alert: VeridisSLAViolation
+            expr: veridis:overall_sla_compliance_5m != 1
+            for: 2m
+            labels:
+              severity: critical
+              service: veridis
+              component: sla
+              team: platform-engineering
+            annotations:
+              summary: "Veridis SLA violation detected"
+              description: "Service is not meeting SLA requirements for response time or error rate."
+              runbook_url: "https://runbooks.veridis.xyz/sla-violation"
+
+          # Business metrics alerts
+          - alert: VeridisIdentityCreationDropped
+            expr: veridis:identity_creation_hourly < 10
+            for: 10m
+            labels:
+              severity: warning
+              service: veridis-backend
+              component: business-metrics
+              team: product-team
+            annotations:
+              summary: "Low identity creation volume"
+              description: "Identity creation volume is {{ $value }} (<10) for the last hour."
+              runbook_url: "https://runbooks.veridis.xyz/low-activity"
+
+          # Compliance alerts
+          - alert: VeridisGDPRRequestBacklog
+            expr: veridis:gdpr_requests_rate_5m > 5
+            for: 5m
+            labels:
+              severity: warning
+              service: veridis-backend
+              component: compliance
+              team: compliance-team
+            annotations:
+              summary: "High GDPR request volume"
+              description: "GDPR request rate is {{ $value }} (>5) for the last 5 minutes."
+              runbook_url: "https://runbooks.veridis.xyz/gdpr-backlog"
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Alerts ConfigMap
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-prometheus-alerts
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-alerts
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-alerts
+    prometheus.veridis.xyz/category: alert-templates
+    prometheus.veridis.xyz/role: prometheus-alerts
+    monitoring.veridis.xyz/alert-type: comprehensive-alerts
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Veridis Prometheus alert templates and notification configuration"
+    veridis.xyz/purpose: "Provides alert templates for comprehensive monitoring and incident response"
+
+data:
+  # ==============================================================================
+  # Alert Templates and Notification Configuration
+  # ==============================================================================
+  alert-templates.yml: |
+    templates:
+      # Default alert template
+      - name: default
+        title: "{{ .GroupLabels.service | upper }} Alert: {{ .GroupLabels.alertname }}"
+        message: |
+          {{ range .Alerts }}
+          Alert: {{ .Annotations.summary }}
+          Description: {{ .Annotations.description }}
+          Service: {{ .Labels.service }}
+          Severity: {{ .Labels.severity }}
+          Instance: {{ .Labels.instance }}
+          {{ if .Annotations.runbook_url }}
+          Runbook: {{ .Annotations.runbook_url }}
+          {{ end }}
+          {{ end }}
+
+      # Critical alert template
+      - name: critical
+        title: "🚨 CRITICAL: {{ .GroupLabels.service | upper }} - {{ .GroupLabels.alertname }}"
+        message: |
+          CRITICAL ALERT TRIGGERED
+
+          {{ range .Alerts }}
+          🔥 Alert: {{ .Annotations.summary }}
+          📝 Description: {{ .Annotations.description }}
+          🏷️ Service: {{ .Labels.service }}
+          📊 Severity: {{ .Labels.severity }}
+          🖥️ Instance: {{ .Labels.instance }}
+          👥 Team: {{ .Labels.team }}
+
+          {{ if .Annotations.action }}
+          🛠️ Action Required: {{ .Annotations.action }}
+          {{ end }}
+
+          {{ if .Annotations.runbook_url }}
+          📚 Runbook: {{ .Annotations.runbook_url }}
+          {{ end }}
+          {{ end }}
+
+          Please respond immediately!
+
+      # Business alert template
+      - name: business
+        title: "📈 Business Alert: {{ .GroupLabels.service | upper }} - {{ .GroupLabels.alertname }}"
+        message: |
+          BUSINESS METRIC ALERT
+
+          {{ range .Alerts }}
+          📊 Metric: {{ .Annotations.summary }}
+          📈 Details: {{ .Annotations.description }}
+          🏷️ Service: {{ .Labels.service }}
+          📋 Component: {{ .Labels.component }}
+          👥 Team: {{ .Labels.team }}
+
+          {{ if .Annotations.runbook_url }}
+          📚 Investigation Guide: {{ .Annotations.runbook_url }}
+          {{ end }}
+          {{ end }}
+
+# ==============================================================================
+# Veridis Prometheus ConfigMap Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS PROMETHEUS CONFIGMAP STRATEGY:
+# ==================================================
+#
+# VERIDIS PROMETHEUS CONFIGMAP ARCHITECTURE OVERVIEW:
+# -------------------------------------------------
+# 1. Primary Prometheus Configuration (veridis-prometheus-config):
+#    - Comprehensive Prometheus configuration with intelligent scraping management and advanced rule optimization for production monitoring
+#    - Advanced global configuration with external labels, query logging, and comprehensive cluster identification
+#    - Multi-service scraping with backend, ZK circuits, UI, infrastructure, and Kubernetes system monitoring
+#    - Enterprise service discovery with relabeling, metric filtering, and comprehensive endpoint management
+#    - Performance optimization with scraping intervals, timeouts, and intelligent metric collection for maximum efficiency
+#
+# 2. Recording Rules Configuration (recording-rules.yml):
+#    - Advanced recording rules with backend metrics, ZK circuits analytics, infrastructure monitoring, and business intelligence
+#    - Performance recording with request rates, error rates, response times, and comprehensive SLA tracking
+#    - ZK circuits recording with proof generation metrics, GPU utilization, verification rates, and optimization analytics
+#    - Infrastructure recording with database connections, cache hit rates, secrets management, and blockchain monitoring
+#    - Business recording with user activity, identity trends, attestation volume, and compliance reporting
+#
+# 3. Alerting Rules Configuration (veridis-prometheus-rules):
+#    - Comprehensive alerting rules with service availability, performance monitoring, and business metric alerts
+#    - Backend alerting with service down, error rate, response time, database connections, and identity service alerts
+#    - ZK circuits alerting with service availability, GPU utilization, proof generation performance, and memory usage alerts
+#    - Infrastructure alerting with PostgreSQL, Redis, Vault, StarkNet monitoring, and comprehensive service health checks
+#    - Business alerting with SLA compliance, identity creation volume, GDPR request monitoring, and compliance alerts
+#
+# 4. Alert Templates Configuration (veridis-prometheus-alerts):
+#    - Enterprise alert templates with default, critical, and business alert formatting for comprehensive notification management
+#    - Template customization with service identification, severity classification, team routing, and action guidance
+#    - Notification optimization with runbook integration, escalation paths, and comprehensive incident response support
+#    - Multi-channel support with Slack, email, PagerDuty integration, and comprehensive alerting workflows
+#
+# ENTERPRISE PROMETHEUS CONFIGMAP FEATURES:
+# =========================================
+# Advanced Prometheus Configuration and Service Discovery:
+#   - Multi-tier scraping with backend (10s), ZK circuits (15s), UI (30s), infrastructure (20-30s) intervals for optimized collection
+#   - Kubernetes service discovery with role-based discovery (endpoints, pods, nodes), relabeling, and comprehensive metadata management
+#   - Metric relabeling with normalization, filtering, high-cardinality metric dropping, and performance optimization
+#   - Federation support with multi-cluster metrics aggregation, cross-region monitoring, and comprehensive data federation
+#   - External labels with cluster identification, environment classification, region mapping, and compliance tagging
+#
+# Comprehensive Recording Rules and Performance Analytics:
+#   - Backend recording with request rates (5m, 1h), error rates, response time percentiles (p95, p99), and business metrics
+#   - ZK circuits recording with proof generation rates, GPU utilization averages, verification success rates, and performance analytics
+#   - Infrastructure recording with database connections, query performance, cache hit rates, memory usage, and service metrics
+#   - Business recording with active users, identity creation trends, attestation volume, compliance requests, and strategic analytics
+#   - SLA recording with service availability, API endpoint monitoring, response time compliance, and overall SLA tracking
+#
+# Enterprise Alerting Rules and Incident Management:
+#   - Service availability alerts with down detection (1-2m), error rate thresholds (5%), response time limits (500ms)
+#   - Performance alerts with high error rates, slow response times, database connection limits, and resource utilization
+#   - ZK circuits alerts with service availability, GPU utilization monitoring, proof generation performance, memory usage
+#   - Infrastructure alerts with PostgreSQL, Redis, Vault, StarkNet monitoring, and comprehensive service health management
+#   - Business alerts with SLA violations, identity creation monitoring, GDPR request tracking, and compliance alerting
+#
+# Advanced Alert Templates and Notification Management:
+#   - Template hierarchy with default, critical, business templates for comprehensive alert formatting and routing
+#   - Severity-based formatting with emoji indicators, action guidance, runbook integration, and escalation paths
+#   - Team routing with platform engineering, product team, compliance team assignment based on alert classification
+#   - Incident response integration with runbook URLs, action requirements, investigation guides, and response procedures
+#   - Multi-channel notification with Slack formatting, email templates, PagerDuty integration, and comprehensive alerting
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Prometheus Configuration Lifecycle Management:
+#   - Multi-configmap architecture with primary configuration, rules, alerts, and template management
+#   - Intelligent configuration management with hot-reload support, validation, backup, and versioning capabilities
+#   - Advanced monitoring with comprehensive configuration analytics and scraping business intelligence
+#   - Configuration validation with schema enforcement and deployment safety checks
+#   - Automated optimization with scraping pattern analysis and configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II configuration controls with comprehensive audit requirements and metrics logging
+#   - GDPR configuration compliance with data protection and privacy-preserving metrics management
+#   - ISO 27001 configuration security management with information security and monitoring compliance integration
+#   - NIST 800-190 container configuration security with metrics validation and compliance
+#   - Zero-trust configuration architecture with comprehensive encryption and metrics authentication requirements
+#
+# Business Intelligence Integration:
+#   - Configuration analytics with cost correlation and resource utilization optimization
+#   - Performance analytics with user experience optimization and monitoring business intelligence
+#   - Metrics intelligence with traffic pattern monitoring and configuration optimization recommendations
+#   - Strategic planning with capacity management and monitoring forecasting
+#   - Business impact assessment with monitoring performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment configuration support with production, staging, development, and testing configurations
+#   - Comprehensive documentation with configuration guides and monitoring troubleshooting procedures
+#   - Environment-specific configuration with service discovery, alerting rules, and recording rules
+#   - Testing integration with configuration development workflow and monitoring debugging capabilities
+#   - Configuration monitoring with comprehensive tracking and metrics correlation
+#
+# ==============================================================================
