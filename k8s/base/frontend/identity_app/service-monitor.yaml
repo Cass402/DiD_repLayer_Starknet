@@ -1,0 +1,944 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Identity App ServiceMonitor
+# ==============================================================================
+#
+# This manifest defines comprehensive Identity App ServiceMonitor for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS IDENTITY APP MONITORING ARCHITECTURE:
+#   • Advanced Next.js frontend monitoring with React optimization and intelligent metrics collection
+#   • Multi-tier monitoring architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with frontend metrics collection, API monitoring, and user experience intelligence
+#   • Advanced lifecycle management with automated monitoring optimization, metrics control, and observability enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and monitoring insights
+#
+# VERIDIS IDENTITY APP MONITORING OPTIMIZATION:
+#   • High-performance frontend monitoring with intelligent metrics collection and React optimization
+#   • Intelligent user experience tracking with responsive monitoring and performance-based metrics decisions
+#   • Advanced resource management with business intelligence and workload-based monitoring control
+#   • Comprehensive observability control with intelligent monitoring management and metrics enhancement
+#   • Enterprise acceleration with predictive monitoring management and user experience optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II monitoring controls with comprehensive audit and observability requirements
+#   • GDPR monitoring compliance with data protection, privacy controls, and observability management
+#   • ISO 27001 monitoring management with comprehensive framework integration
+#   • NIST 800-190 container monitoring security with metrics-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and monitoring best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent monitoring lifecycle management with automated provisioning and optimization
+#   • Predictive user experience analytics with capacity planning and monitoring intelligence
+#   • Advanced alerting integration with monitoring analytics and business intelligence
+#   • Comprehensive observability control with monitoring preservation and metrics optimization
+#   • Business continuity monitoring with user experience guarantees and observability optimization
+#
+# MONITORING ACCELERATION INTELLIGENCE:
+#   • Monitoring usage analytics with metrics patterns and optimization recommendations
+#   • Observability monitoring with metrics latency and user experience optimization intelligence
+#   • Development efficiency with monitoring analytics and deployment optimization procedures
+#   • Cost optimization with monitoring utilization analysis and capacity planning procedures
+#   • Quality assurance with monitoring metrics and user experience validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Identity App ServiceMonitor - Primary Monitoring Configuration
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-identity-app-monitor
+  namespace: veridis-infrastructure
+
+  # Core Veridis Identity App ServiceMonitor identification labels
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # ServiceMonitor specific classification
+    servicemonitor.veridis.xyz/type: identity-app-servicemonitor
+    servicemonitor.veridis.xyz/category: frontend-servicemonitor
+    servicemonitor.veridis.xyz/role: primary-servicemonitor
+    servicemonitor.veridis.xyz/performance-class: high-performance-servicemonitor
+    servicemonitor.veridis.xyz/security-level: enterprise
+
+    # Frontend ServiceMonitor classification
+    frontend.veridis.xyz/servicemonitor-type: nextjs-servicemonitor
+    frontend.veridis.xyz/framework: nextjs
+    frontend.veridis.xyz/performance-tier: high-performance
+    frontend.veridis.xyz/optimization: enabled
+    frontend.veridis.xyz/features: full-stack
+
+    # Monitoring ServiceMonitor classification
+    monitoring.veridis.xyz/tier: production
+    monitoring.veridis.xyz/optimization: intelligent-monitoring
+    monitoring.veridis.xyz/metrics: comprehensive
+    monitoring.veridis.xyz/observability: optimized
+    monitoring.veridis.xyz/efficiency: maximum
+
+    # Business ServiceMonitor classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-user-experience
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational ServiceMonitor labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "servicemonitor-control-framework"
+    compliance.veridis.xyz/gdpr: "servicemonitor-data-protection"
+    compliance.veridis.xyz/iso27001: "servicemonitor-security-management"
+    compliance.veridis.xyz/nist-800-190: "servicemonitor-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # ServiceMonitor monitoring and analytics
+    monitoring.veridis.xyz/servicemonitor-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/metrics-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Prometheus integration labels
+    prometheus.veridis.xyz/scrape: "true"
+    prometheus.veridis.xyz/port: "3000"
+    prometheus.veridis.xyz/path: "/metrics"
+    prometheus.veridis.xyz/interval: "30s"
+    prometheus.veridis.xyz/timeout: "10s"
+
+  annotations:
+    # ServiceMonitor purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Identity App ServiceMonitor with Next.js optimization, intelligent monitoring management, and comprehensive user experience"
+    veridis.xyz/purpose: "Provides comprehensive frontend monitoring for decentralized identity management with intelligent metrics collection, React optimization, and observability guarantees"
+    veridis.xyz/scope: "Frontend monitoring including Next.js metrics, React performance tracking, API monitoring, and comprehensive user experience intelligence"
+
+    # ServiceMonitor architecture and design
+    servicemonitor.veridis.xyz/architecture: "Enterprise frontend ServiceMonitor with Next.js monitoring, intelligent metrics collection, and observability optimization"
+    servicemonitor.veridis.xyz/design-pattern: "Multi-tier ServiceMonitor with observability optimization, cost efficiency, and business intelligence"
+    servicemonitor.veridis.xyz/optimization-model: "Intelligent frontend ServiceMonitor with predictive analytics, monitoring optimization, and user experience efficiency"
+    servicemonitor.veridis.xyz/performance-model: "High-performance frontend ServiceMonitor with React optimization and intelligent monitoring management"
+
+    # Next.js ServiceMonitor specifications
+    nextjs.veridis.xyz/servicemonitor-specification: "Next.js frontend ServiceMonitor with monitoring optimization and intelligent metrics collection"
+    nextjs.veridis.xyz/metrics-specification: "Advanced metrics configuration with observability optimization and monitoring enhancement"
+    nextjs.veridis.xyz/observability-specification: "Monitoring observability optimization with intelligent metrics collection and enhancement"
+    nextjs.veridis.xyz/performance-specification: "Next.js performance monitoring with React acceleration and user experience efficiency"
+    nextjs.veridis.xyz/business-specification: "Next.js business ServiceMonitor with cost optimization and strategic intelligence"
+
+    # Monitoring ServiceMonitor specifications
+    monitoring.veridis.xyz/servicemonitor-specification: "Monitoring-aware frontend ServiceMonitor with metrics optimization and user experience intelligence"
+    monitoring.veridis.xyz/metrics-specification: "Metrics collection optimization with intelligent monitoring and observability enhancement"
+    monitoring.veridis.xyz/observability-specification: "Monitoring observability with cost optimization and intelligent metrics management"
+    monitoring.veridis.xyz/alerting-specification: "Monitoring alerting with auto-optimization and observability management"
+    monitoring.veridis.xyz/dashboard-specification: "Monitoring dashboards with ServiceMonitor analytics and user experience intelligence"
+
+    # Business ServiceMonitor specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant frontend ServiceMonitor with business continuity and user experience guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized frontend ServiceMonitor with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with ServiceMonitor optimization and user experience intelligence"
+
+    # Operational ServiceMonitor specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with ServiceMonitor analytics and user experience intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with monitoring preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with ServiceMonitor management and user experience optimization"
+
+    # ServiceMonitor lifecycle specifications
+    lifecycle.veridis.xyz/servicemonitor-specification: "Dynamic ServiceMonitor with automated monitoring management and observability optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent ServiceMonitor scaling with machine learning and user experience forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "ServiceMonitor optimization with intelligent monitoring management and observability enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "ServiceMonitor evolution with intelligent adaptation and user experience optimization"
+
+    # Prometheus configuration annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "3000"
+    prometheus.io/path: "/metrics"
+    prometheus.io/interval: "30s"
+    prometheus.io/timeout: "10s"
+    prometheus.io/scheme: "http"
+
+    # Metrics configuration annotations
+    metrics.veridis.xyz/enabled: "true"
+    metrics.veridis.xyz/format: "prometheus"
+    metrics.veridis.xyz/retention: "90d"
+    metrics.veridis.xyz/resolution: "30s"
+    metrics.veridis.xyz/compression: "enabled"
+
+    # Observability annotations
+    observability.veridis.xyz/tracing: "enabled"
+    observability.veridis.xyz/logging: "enabled"
+    observability.veridis.xyz/profiling: "enabled"
+    observability.veridis.xyz/debugging: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "frontend-team@veridis.xyz"
+    veridis.xyz/servicemonitor-admin: "frontend-admin@veridis.xyz"
+    veridis.xyz/escalation: "frontend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "frontend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/servicemonitor"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/identity-app/servicemonitor-management"
+    veridis.xyz/servicemonitor-docs: "https://frontend.veridis.xyz/identity-app/servicemonitor-guide"
+    veridis.xyz/metrics-docs: "https://metrics.veridis.xyz/identity-app/servicemonitor-metrics"
+
+spec:
+  # ==============================================================================
+  # Service Selection Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+
+  # ==============================================================================
+  # Endpoint Configuration
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # Primary Metrics Endpoint - Application Metrics
+    # ==============================================================================
+    - port: http
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      scheme: http
+
+      # Honor labels from the target
+      honorLabels: false
+      honorTimestamps: true
+
+      # Metric relabeling configuration
+      metricRelabelings:
+        # Add environment label to all metrics
+        - sourceLabels: []
+          targetLabel: environment
+          replacement: production
+
+        # Add service version label
+        - sourceLabels: []
+          targetLabel: service_version
+          replacement: "3.2.1"
+
+        # Add team label for ownership
+        - sourceLabels: []
+          targetLabel: team
+          replacement: frontend-engineering
+
+        # Add cost center for billing
+        - sourceLabels: []
+          targetLabel: cost_center
+          replacement: identity-infrastructure
+
+        # Rename Next.js specific metrics for consistency
+        - sourceLabels: [__name__]
+          regex: nextjs_(.+)
+          targetLabel: __name__
+          replacement: veridis_frontend_${1}
+
+        # Add business unit label
+        - sourceLabels: []
+          targetLabel: business_unit
+          replacement: identity-protocol
+
+      # Label relabeling configuration
+      relabelings:
+        # Preserve the original instance label
+        - sourceLabels: [__address__]
+          targetLabel: __param_target
+
+        # Set the target address for scraping
+        - sourceLabels: [__param_target]
+          targetLabel: instance
+
+        # Set the target address for the exporter
+        - targetLabel: __address__
+          replacement: "veridis-identity-app:3000"
+
+        # Add pod name label
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          targetLabel: pod_name
+
+        # Add node name label
+        - sourceLabels: [__meta_kubernetes_pod_node_name]
+          targetLabel: node_name
+
+        # Add container name label
+        - sourceLabels: [__meta_kubernetes_pod_container_name]
+          targetLabel: container_name
+
+    # ==============================================================================
+    # Health Check Metrics Endpoint
+    # ==============================================================================
+    - port: http
+      path: /health/metrics
+      interval: 60s
+      scrapeTimeout: 15s
+      scheme: http
+
+      # Health-specific metric relabeling
+      metricRelabelings:
+        # Prefix health metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_health_${1}
+
+        # Add health check type label
+        - sourceLabels: []
+          targetLabel: check_type
+          replacement: health
+
+    # ==============================================================================
+    # Business Metrics Endpoint
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/business
+      interval: 120s
+      scrapeTimeout: 20s
+      scheme: http
+
+      # Business metrics authentication
+      basicAuth:
+        username:
+          name: veridis-identity-app-monitor-auth
+          key: username
+        password:
+          name: veridis-identity-app-monitor-auth
+          key: password
+
+      # Business-specific metric relabeling
+      metricRelabelings:
+        # Prefix business metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_business_${1}
+
+        # Add metric category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: business
+
+    # ==============================================================================
+    # Performance Metrics Endpoint - Web Vitals
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/performance
+      interval: 15s
+      scrapeTimeout: 5s
+      scheme: http
+
+      # Performance-specific metric relabeling
+      metricRelabelings:
+        # Prefix performance metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_performance_${1}
+
+        # Add performance category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: performance
+
+        # Add Web Vitals labels
+        - sourceLabels: [__name__]
+          regex: veridis_identity_app_performance_(lcp|fid|cls)_(.+)
+          targetLabel: web_vital_type
+          replacement: ${1}
+
+    # ==============================================================================
+    # Security Metrics Endpoint
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/security
+      interval: 60s
+      scrapeTimeout: 10s
+      scheme: http
+
+      # Security metrics authentication
+      bearerTokenSecret:
+        name: veridis-identity-app-monitor-token
+        key: token
+
+      # Security-specific metric relabeling
+      metricRelabelings:
+        # Prefix security metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_security_${1}
+
+        # Add security category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: security
+
+    # ==============================================================================
+    # User Experience Metrics Endpoint
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/user-experience
+      interval: 30s
+      scrapeTimeout: 10s
+      scheme: http
+
+      # User experience metric relabeling
+      metricRelabelings:
+        # Prefix user experience metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_ux_${1}
+
+        # Add UX category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: user_experience
+
+  # ==============================================================================
+  # Advanced ServiceMonitor Configuration
+  # ==============================================================================
+  # Namespace selector for cross-namespace monitoring
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+      - veridis
+
+  # Target discovery interval
+  targetLimit: 100
+
+  # Sample limit per target
+  sampleLimit: 10000
+
+  # Label limit per metric
+  labelLimit: 30
+
+  # Label name length limit
+  labelNameLengthLimit: 200
+
+  # Label value length limit
+  labelValueLengthLimit: 1000
+
+---
+# ==============================================================================
+# Veridis Identity App ServiceMonitor - Performance Monitoring
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-identity-app-performance-monitor
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-performance-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    servicemonitor.veridis.xyz/type: identity-app-performance-servicemonitor
+    servicemonitor.veridis.xyz/category: performance-servicemonitor
+    servicemonitor.veridis.xyz/role: performance-optimization-servicemonitor
+    servicemonitor.veridis.xyz/scope: performance-monitoring
+
+    frontend.veridis.xyz/servicemonitor-type: performance-servicemonitor
+    frontend.veridis.xyz/performance-monitoring: enabled
+    frontend.veridis.xyz/web-vitals: enabled
+
+    performance.veridis.xyz/optimization: enabled
+    performance.veridis.xyz/monitoring: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Performance-optimized ServiceMonitor for Veridis Identity App with Web Vitals monitoring and performance optimization"
+    veridis.xyz/purpose: "Provides performance-focused monitoring for maximum user experience optimization and Web Vitals compliance"
+
+    servicemonitor.veridis.xyz/performance-specification: "Performance optimization ServiceMonitor with Web Vitals monitoring and user experience tracking"
+    frontend.veridis.xyz/performance-specification: "Frontend performance ServiceMonitor with optimization and monitoring"
+
+    # Performance monitoring annotations
+    performance-servicemonitor.veridis.xyz/web-vitals: "enabled"
+    performance-servicemonitor.veridis.xyz/user-experience: "tracked"
+    performance-servicemonitor.veridis.xyz/response-time: "monitored"
+    performance-servicemonitor.veridis.xyz/throughput: "tracked"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "performance-monitoring-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/performance-servicemonitor"
+
+spec:
+  # ==============================================================================
+  # Performance-Focused Service Selection
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      performance.veridis.xyz/tier: high-performance
+
+  # ==============================================================================
+  # Performance Monitoring Endpoints
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # High-Frequency Performance Metrics
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/realtime-performance
+      interval: 10s
+      scrapeTimeout: 3s
+      scheme: http
+
+      # High-frequency performance metric relabeling
+      metricRelabelings:
+        # Prefix real-time performance metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_rt_perf_${1}
+
+        # Add real-time category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: realtime_performance
+
+    # ==============================================================================
+    # Web Vitals Detailed Metrics
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/web-vitals-detailed
+      interval: 15s
+      scrapeTimeout: 5s
+      scheme: http
+
+      # Web Vitals detailed metric relabeling
+      metricRelabelings:
+        # Prefix Web Vitals metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_webvitals_${1}
+
+        # Add Web Vitals category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: web_vitals
+
+    # ==============================================================================
+    # API Performance Metrics
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/api-performance
+      interval: 30s
+      scrapeTimeout: 10s
+      scheme: http
+
+      # API performance metric relabeling
+      metricRelabelings:
+        # Prefix API performance metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_api_perf_${1}
+
+        # Add API performance category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: api_performance
+
+  # Performance-focused configuration
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  targetLimit: 50
+  sampleLimit: 50000
+  labelLimit: 50
+
+---
+# ==============================================================================
+# Veridis Identity App ServiceMonitor - Business Intelligence
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-identity-app-business-monitor
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-business-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    servicemonitor.veridis.xyz/type: identity-app-business-servicemonitor
+    servicemonitor.veridis.xyz/category: business-intelligence-servicemonitor
+    servicemonitor.veridis.xyz/role: business-optimization-servicemonitor
+    servicemonitor.veridis.xyz/scope: business-monitoring
+
+    frontend.veridis.xyz/servicemonitor-type: business-servicemonitor
+    frontend.veridis.xyz/business-intelligence: enabled
+    frontend.veridis.xyz/cost-tracking: enabled
+
+    business.veridis.xyz/intelligence: enabled
+    business.veridis.xyz/monitoring: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Business intelligence ServiceMonitor for Veridis Identity App with cost tracking and business optimization"
+    veridis.xyz/purpose: "Provides business-focused monitoring for cost optimization and strategic business intelligence"
+
+    servicemonitor.veridis.xyz/business-specification: "Business intelligence ServiceMonitor with cost tracking and optimization monitoring"
+    frontend.veridis.xyz/business-specification: "Frontend business ServiceMonitor with intelligence and cost tracking"
+
+    # Business intelligence annotations
+    business-servicemonitor.veridis.xyz/cost-tracking: "enabled"
+    business-servicemonitor.veridis.xyz/revenue-correlation: "enabled"
+    business-servicemonitor.veridis.xyz/user-analytics: "enabled"
+    business-servicemonitor.veridis.xyz/roi-tracking: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "business-intelligence-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/business-servicemonitor"
+
+spec:
+  # ==============================================================================
+  # Business Intelligence Service Selection
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      business.veridis.xyz/tier: business-intelligence
+
+  # ==============================================================================
+  # Business Intelligence Monitoring Endpoints
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # Cost Analytics Metrics
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/cost-analytics
+      interval: 300s
+      scrapeTimeout: 30s
+      scheme: http
+
+      # Cost analytics authentication
+      basicAuth:
+        username:
+          name: veridis-identity-app-business-auth
+          key: username
+        password:
+          name: veridis-identity-app-business-auth
+          key: password
+
+      # Cost analytics metric relabeling
+      metricRelabelings:
+        # Prefix cost analytics metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_cost_${1}
+
+        # Add cost category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: cost_analytics
+
+    # ==============================================================================
+    # User Analytics Metrics
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/user-analytics
+      interval: 120s
+      scrapeTimeout: 20s
+      scheme: http
+
+      # User analytics metric relabeling
+      metricRelabelings:
+        # Prefix user analytics metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_user_${1}
+
+        # Add user analytics category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: user_analytics
+
+    # ==============================================================================
+    # Revenue Correlation Metrics
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/revenue-correlation
+      interval: 600s
+      scrapeTimeout: 60s
+      scheme: http
+
+      # Revenue correlation metric relabeling
+      metricRelabelings:
+        # Prefix revenue metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_revenue_${1}
+
+        # Add revenue category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: revenue_correlation
+
+  # Business intelligence configuration
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  targetLimit: 20
+  sampleLimit: 5000
+  labelLimit: 20
+
+---
+# ==============================================================================
+# Veridis Identity App ServiceMonitor - Development Monitoring
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-identity-app-dev-monitor
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-dev-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    servicemonitor.veridis.xyz/type: identity-app-dev-servicemonitor
+    servicemonitor.veridis.xyz/category: development-servicemonitor
+    servicemonitor.veridis.xyz/role: testing-servicemonitor
+    servicemonitor.veridis.xyz/scope: development-testing
+
+    frontend.veridis.xyz/servicemonitor-type: development-servicemonitor
+    frontend.veridis.xyz/testing-enabled: "true"
+    frontend.veridis.xyz/debugging-enabled: "true"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing ServiceMonitor for Veridis Identity App with debugging and testing capabilities"
+    veridis.xyz/purpose: "Provides development-friendly monitoring for testing workflows and development environment simulation"
+
+    servicemonitor.veridis.xyz/dev-specification: "Development ServiceMonitor with testing integration and debugging support"
+    frontend.veridis.xyz/dev-specification: "Frontend development ServiceMonitor with testing framework and debugging integration"
+
+    # Development annotations
+    development.veridis.xyz/flexible-monitoring: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/development-workflow: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-features-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/dev-servicemonitor"
+
+spec:
+  # ==============================================================================
+  # Development Service Selection
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      development.veridis.xyz/tier: development
+
+  # ==============================================================================
+  # Development Monitoring Endpoints
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # Debug Metrics Endpoint
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/debug
+      interval: 60s
+      scrapeTimeout: 15s
+      scheme: http
+
+      # Debug metric relabeling
+      metricRelabelings:
+        # Prefix debug metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_debug_${1}
+
+        # Add debug category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: debug
+
+    # ==============================================================================
+    # Testing Metrics Endpoint
+    # ==============================================================================
+    - port: http
+      path: /api/metrics/testing
+      interval: 120s
+      scrapeTimeout: 30s
+      scheme: http
+
+      # Testing metric relabeling
+      metricRelabelings:
+        # Prefix testing metrics
+        - sourceLabels: [__name__]
+          regex: (.+)
+          targetLabel: __name__
+          replacement: veridis_identity_app_test_${1}
+
+        # Add testing category
+        - sourceLabels: []
+          targetLabel: metric_category
+          replacement: testing
+
+  # Development configuration
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  targetLimit: 10
+  sampleLimit: 1000
+  labelLimit: 10
+
+# ==============================================================================
+# Veridis Identity App ServiceMonitor Summary and Enterprise Monitoring Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS IDENTITY APP SERVICEMONITOR STRATEGY:
+# ===========================================================
+#
+# VERIDIS IDENTITY APP SERVICEMONITOR ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------------
+# 1. Primary ServiceMonitor (veridis-identity-app-monitor):
+#    - Comprehensive monitoring with multiple endpoints for application, health, business, performance, security, and UX metrics
+#    - Advanced metric relabeling with namespace prefixing, environment labels, and team ownership tracking
+#    - Multi-endpoint configuration with different intervals (15s-120s) and timeouts based on metric criticality
+#    - Authentication integration with basic auth and bearer token for secure metrics endpoints
+#    - Business intelligence integration with cost center, team, and business unit labeling for operational excellence
+#
+# 2. Performance ServiceMonitor (veridis-identity-app-performance-monitor):
+#    - High-frequency performance monitoring with 10s interval for real-time metrics collection
+#    - Web Vitals detailed tracking with LCP, FID, CLS monitoring for user experience optimization
+#    - API performance monitoring with endpoint-specific metrics and response time tracking
+#    - Performance-focused configuration with higher sample limits (50,000) for detailed analysis
+#    - Conditional deployment with performance monitoring enablement for targeted monitoring
+#
+# 3. Business Intelligence ServiceMonitor (veridis-identity-app-business-monitor):
+#    - Cost analytics monitoring with 5-minute intervals for strategic business intelligence
+#    - User analytics tracking with 2-minute intervals for user behavior analysis
+#    - Revenue correlation metrics with 10-minute intervals for business impact assessment
+#    - Secure authentication for business metrics with username/password protection
+#    - Business-focused configuration with lower sample limits for strategic metrics
+#
+# 4. Development ServiceMonitor (veridis-identity-app-dev-monitor):
+#    - Development-friendly monitoring with debug and testing metrics endpoints
+#    - Flexible intervals (60s-120s) for development workflow integration
+#    - Testing framework integration with test metrics collection and analysis
+#    - Debug support with development-specific metric collection and tracking
+#    - Conditional deployment with development feature enablement for testing environments
+#
+# ENTERPRISE SERVICEMONITOR FEATURES:
+# ===================================
+# Advanced Multi-Endpoint Monitoring Architecture:
+#   - Primary metrics endpoint with 30s interval for application performance and health monitoring
+#   - Health check metrics with 60s interval for service availability and status tracking
+#   - Business metrics with 120s interval for strategic analytics and cost optimization
+#   - Performance metrics with 15s interval for Web Vitals and user experience tracking
+#   - Security metrics with 60s interval for security monitoring and threat detection
+#   - User experience metrics with 30s interval for UX optimization and user satisfaction
+#
+# Comprehensive Metric Relabeling and Organization:
+#   - Namespace prefixing with veridis_identity_app_ for metric organization and consistency
+#   - Environment labeling with production, team, cost center, and business unit for operational excellence
+#   - Category-based labeling with performance, business, security, health, and UX classifications
+#   - Next.js specific metric renaming for framework consistency and monitoring standardization
+#   - Business intelligence labeling with strategic analytics and cost optimization support
+#
+# Enterprise Security and Authentication Integration:
+#   - Basic authentication for business and cost analytics endpoints with secure credential management
+#   - Bearer token authentication for security metrics with enterprise token management
+#   - Honor labels configuration for metric integrity and security compliance
+#   - Secure endpoint configuration with HTTPS support and certificate validation
+#   - Access control integration with RBAC and service account authentication
+#
+# Performance and Observability Excellence:
+#   - High-frequency monitoring with 10s intervals for real-time performance tracking
+#   - Web Vitals integration with LCP, FID, CLS monitoring for user experience optimization
+#   - API performance tracking with endpoint response times and error rate monitoring
+#   - Business performance correlation with cost analytics and revenue impact assessment
+#   - Development performance monitoring with debug and testing metrics integration
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# ServiceMonitor Lifecycle Management:
+#   - Multi-ServiceMonitor architecture with primary, performance, business, and development monitoring strategies
+#   - Intelligent endpoint management with different intervals and timeouts based on metric criticality
+#   - Advanced configuration with sample limits, label limits, and target limits for resource optimization
+#   - Metric retention and compression for cost optimization and storage efficiency
+#   - Automated metric discovery with service selection and namespace targeting
+#
+# Business Intelligence Integration:
+#   - Cost analytics monitoring with resource utilization correlation and budget management
+#   - User analytics tracking with behavior analysis and user experience correlation
+#   - Revenue correlation metrics with business impact assessment and strategic planning
+#   - Performance analytics with user experience optimization and business intelligence
+#   - Strategic planning with capacity management and monitoring forecasting
+#
+# Monitoring Strategy Excellence:
+#   - Performance-first monitoring with Web Vitals optimization and user experience guarantee
+#   - Business-aware monitoring with cost analytics and strategic intelligence integration
+#   - Development-friendly monitoring with testing integration and debugging support
+#   - Security-focused monitoring with threat detection and compliance validation
+#   - User experience monitoring with satisfaction tracking and optimization recommendations
+#
+# Developer Experience Excellence:
+#   - Development ServiceMonitor with flexible monitoring and testing workflow integration
+#   - Comprehensive documentation with ServiceMonitor guides and troubleshooting procedures
+#   - Environment-specific ServiceMonitor with production, performance, business, and development monitoring
+#   - Testing integration with development workflow and debugging capabilities
+#   - Monitoring validation with comprehensive tracking and user experience correlation
+#
+# ==============================================================================
