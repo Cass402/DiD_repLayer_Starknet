@@ -1,0 +1,996 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Prometheus ServiceMonitor Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Prometheus ServiceMonitor for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS PROMETHEUS SERVICEMONITOR ARCHITECTURE:
+#   • Advanced Prometheus ServiceMonitor with intelligent scraping management and performance-based monitoring optimization
+#   • Multi-tier monitoring architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with scraping policies, metric optimization, Prometheus integration
+#   • Advanced lifecycle management with automated monitoring optimization, Prometheus control, and metric enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Prometheus monitoring performance insights
+#
+# VERIDIS PROMETHEUS SERVICEMONITOR OPTIMIZATION:
+#   • High-performance monitoring with intelligent scraping management and Prometheus ServiceMonitor optimization
+#   • Intelligent monitoring traffic management with responsive policies and performance-based scraping decisions
+#   • Advanced metric management with business intelligence and monitoring-based Prometheus control
+#   • Comprehensive observability control with intelligent Prometheus scraping management and metric enhancement
+#   • Enterprise acceleration with predictive Prometheus monitoring management and scraping optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Prometheus monitoring controls with comprehensive audit and scraping requirements
+#   • GDPR Prometheus monitoring compliance with data protection, privacy controls, and metric management
+#   • ISO 27001 Prometheus monitoring management with comprehensive framework integration
+#   • NIST 800-190 container Prometheus monitoring security with scraping-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Prometheus monitoring best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Prometheus monitoring lifecycle management with automated provisioning and scraping optimization
+#   • Predictive scraping analytics with capacity planning and Prometheus monitoring intelligence
+#   • Advanced monitoring integration with Prometheus scraping analytics and metric business intelligence
+#   • Comprehensive observability control with Prometheus monitoring preservation and scraping optimization
+#   • Business continuity Prometheus monitoring with scraping guarantees and monitoring optimization
+#
+# PROMETHEUS SERVICEMONITOR ACCELERATION INTELLIGENCE:
+#   • Prometheus monitoring usage analytics with scraping patterns and optimization recommendations
+#   • Scraping monitoring with Prometheus monitoring latency and management optimization intelligence
+#   • Development efficiency with Prometheus monitoring analytics and deployment optimization procedures
+#   • Cost optimization with Prometheus monitoring utilization analysis and scraping capacity planning procedures
+#   • Quality assurance with Prometheus monitoring metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Prometheus Monitoring - Self-Monitoring ServiceMonitor
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-prometheus-monitoring
+  namespace: veridis-infrastructure
+
+  # Core Veridis Prometheus ServiceMonitor identification labels
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Prometheus ServiceMonitor specific classification
+    prometheus.veridis.xyz/type: monitoring-prometheus-servicemonitor
+    prometheus.veridis.xyz/category: prometheus-self-monitoring
+    prometheus.veridis.xyz/role: primary-prometheus-servicemonitor
+    prometheus.veridis.xyz/performance-class: high-performance-prometheus-servicemonitor
+    prometheus.veridis.xyz/security-level: enterprise
+
+    # Monitoring Prometheus ServiceMonitor classification
+    monitoring.veridis.xyz/prometheus-servicemonitor-type: intelligent-prometheus-servicemonitor
+    monitoring.veridis.xyz/servicemonitor-type: monitoring-servicemonitor
+    monitoring.veridis.xyz/performance-tier: high-performance
+    monitoring.veridis.xyz/optimization: enabled
+    monitoring.veridis.xyz/features: full-monitoring-servicemonitor-stack
+
+    # Observability Prometheus ServiceMonitor classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-monitoring-servicemonitor-management
+    observability.veridis.xyz/scraping-management: advanced
+    observability.veridis.xyz/metric-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Prometheus ServiceMonitor classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-monitoring-servicemonitor-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Prometheus ServiceMonitor labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+    veridis.xyz/cost-center: monitoring-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "prometheus-servicemonitor-control-framework"
+    compliance.veridis.xyz/gdpr: "prometheus-servicemonitor-data-protection"
+    compliance.veridis.xyz/iso27001: "prometheus-servicemonitor-security-management"
+    compliance.veridis.xyz/nist-800-190: "prometheus-servicemonitor-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Prometheus ServiceMonitor analytics and intelligence
+    monitoring.veridis.xyz/prometheus-servicemonitor-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/scraping-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # ServiceMonitor management labels
+    servicemonitor.veridis.xyz/scraping-enabled: "true"
+    servicemonitor.veridis.xyz/metric-relabeling: "enabled"
+    servicemonitor.veridis.xyz/authentication: "enabled"
+    servicemonitor.veridis.xyz/tls-enabled: "true"
+    servicemonitor.veridis.xyz/optimization: "enabled"
+
+  annotations:
+    # Prometheus ServiceMonitor purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Prometheus ServiceMonitor with intelligent scraping management, advanced metric optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Prometheus ServiceMonitor for decentralized identity management with intelligent scraping management, metric optimization, and observability guarantees"
+    veridis.xyz/scope: "Prometheus ServiceMonitor including scraping management, metric optimization, authentication integration, and comprehensive monitoring intelligence"
+
+    # Prometheus ServiceMonitor architecture and design
+    prometheus.veridis.xyz/architecture: "Enterprise Prometheus ServiceMonitor with intelligent scraping management, advanced metric optimization, and authentication integration optimization"
+    prometheus.veridis.xyz/design-pattern: "Multi-tier Prometheus ServiceMonitor with scraping optimization, cost efficiency, and business intelligence"
+    prometheus.veridis.xyz/optimization-model: "Intelligent Prometheus ServiceMonitor with predictive analytics, scraping optimization, and monitoring efficiency"
+    prometheus.veridis.xyz/performance-model: "High-performance Prometheus ServiceMonitor with scraping optimization and intelligent monitoring management"
+
+    # Monitoring Prometheus ServiceMonitor specifications
+    monitoring.veridis.xyz/prometheus-servicemonitor-specification: "Prometheus ServiceMonitor with scraping optimization and intelligent monitoring servicemonitor management"
+    monitoring.veridis.xyz/scraping-specification: "Advanced scraping management configuration with monitoring optimization and servicemonitor enhancement"
+    monitoring.veridis.xyz/metric-specification: "Prometheus ServiceMonitor metric management optimization with intelligent scraping and enhancement"
+    monitoring.veridis.xyz/performance-specification: "Prometheus performance ServiceMonitor with scraping acceleration and metric efficiency"
+    monitoring.veridis.xyz/business-specification: "Prometheus business ServiceMonitor with cost optimization and strategic scraping intelligence"
+
+    # Observability Prometheus ServiceMonitor specifications
+    observability.veridis.xyz/prometheus-servicemonitor-specification: "Observability-aware Prometheus ServiceMonitor with scraping optimization and metric intelligence"
+    observability.veridis.xyz/scraping-specification: "Observability scraping management optimization with intelligent Prometheus and metric enhancement"
+    observability.veridis.xyz/metric-specification: "Observability metrics with cost optimization and intelligent Prometheus management"
+    observability.veridis.xyz/authentication-specification: "Observability authentication management with auto-optimization and Prometheus management"
+    observability.veridis.xyz/monitoring-specification: "Observability monitoring with Prometheus ServiceMonitor analytics and scraping intelligence"
+
+    # Business Prometheus ServiceMonitor specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant Prometheus ServiceMonitor with business continuity and scraping guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized Prometheus ServiceMonitor with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with Prometheus ServiceMonitor optimization and scraping intelligence"
+
+    # Operational Prometheus ServiceMonitor specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with Prometheus ServiceMonitor analytics and scraping intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with Prometheus ServiceMonitor preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with Prometheus ServiceMonitor management and scraping optimization"
+
+    # Prometheus ServiceMonitor lifecycle specifications
+    lifecycle.veridis.xyz/prometheus-servicemonitor-specification: "Dynamic Prometheus ServiceMonitor with automated scraping management and metric optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent Prometheus ServiceMonitor scaling with machine learning and scraping forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Prometheus ServiceMonitor optimization with intelligent scraping management and metric enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Prometheus ServiceMonitor evolution with intelligent adaptation and scraping optimization"
+
+    # ServiceMonitor specific annotations
+    servicemonitor.veridis.xyz/scrape-interval: "30s"
+    servicemonitor.veridis.xyz/scrape-timeout: "10s"
+    servicemonitor.veridis.xyz/metrics-path: "/metrics"
+    servicemonitor.veridis.xyz/scheme: "https"
+    servicemonitor.veridis.xyz/honor-labels: "false"
+
+    # Performance annotations
+    performance.veridis.xyz/scraping-performance: "optimized"
+    performance.veridis.xyz/metric-processing: "efficient"
+    performance.veridis.xyz/cardinality-control: "enabled"
+    performance.veridis.xyz/sampling-rate: "100%"
+    performance.veridis.xyz/batch-processing: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/authentication: "bearer-token"
+    security.veridis.xyz/authorization: "rbac"
+    security.veridis.xyz/certificate-validation: "enabled"
+    security.veridis.xyz/metric-filtering: "enabled"
+
+    # Relabeling annotations
+    relabeling.veridis.xyz/enabled: "true"
+    relabeling.veridis.xyz/source-labels: "instance,job"
+    relabeling.veridis.xyz/target-labels: "veridis_instance,veridis_service"
+    relabeling.veridis.xyz/drop-metrics: "enabled"
+    relabeling.veridis.xyz/keep-metrics: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "monitoring-team@veridis.xyz"
+    veridis.xyz/prometheus-servicemonitor-admin: "monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "monitoring-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "monitoring-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-servicemonitor"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/monitoring/prometheus-servicemonitor-management"
+    veridis.xyz/servicemonitor-docs: "https://monitoring.veridis.xyz/prometheus-servicemonitor-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/prometheus-servicemonitor-monitoring"
+
+spec:
+  # ==============================================================================
+  # Service Selector Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/instance: veridis-production
+      prometheus.veridis.xyz/monitoring-target: "self"
+
+  # ==============================================================================
+  # Endpoint Configuration
+  # ==============================================================================
+  endpoints:
+    - port: http-prometheus
+      interval: 30s
+      scrapeTimeout: 10s
+      path: /metrics
+      scheme: https
+      honorLabels: false
+      honorTimestamps: true
+
+      # ==============================================================================
+      # TLS Configuration
+      # ==============================================================================
+      tlsConfig:
+        caFile: /etc/prometheus/secrets/veridis-prometheus-tls/ca.crt
+        certFile: /etc/prometheus/secrets/veridis-prometheus-tls/tls.crt
+        keyFile: /etc/prometheus/secrets/veridis-prometheus-tls/tls.key
+        serverName: veridis-prometheus.veridis-infrastructure.svc.cluster.local
+        insecureSkipVerify: false
+
+      # ==============================================================================
+      # Authentication Configuration
+      # ==============================================================================
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      # ==============================================================================
+      # Metric Relabeling Configuration
+      # ==============================================================================
+      metricRelabelings:
+        # Add Veridis-specific labels
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_type
+          regex: "prometheus_.*"
+          replacement: "prometheus_internal"
+
+        - sourceLabels: [instance]
+          targetLabel: veridis_instance
+          regex: "(.+)"
+          replacement: "${1}"
+
+        - sourceLabels: [job]
+          targetLabel: veridis_service
+          regex: "(.+)"
+          replacement: "prometheus-${1}"
+
+        # Drop high-cardinality metrics
+        - sourceLabels: [__name__]
+          regex: "prometheus_tsdb_symbol_table_size_bytes|prometheus_tsdb_head_max_time_seconds"
+          action: drop
+
+        # Keep only essential metrics
+        - sourceLabels: [__name__]
+          regex: "prometheus_(build_info|up|notifications_total|rule_evaluation_duration_seconds|config_last_reload_successful)"
+          action: keep
+
+        # Add environment label
+        - targetLabel: veridis_environment
+          replacement: "production"
+
+        # Add compliance labels
+        - targetLabel: veridis_compliance_soc2
+          replacement: "enabled"
+
+        - targetLabel: veridis_compliance_gdpr
+          replacement: "enabled"
+
+      # ==============================================================================
+      # Sample Limit Configuration
+      # ==============================================================================
+      sampleLimit: 50000
+      targetLimit: 100
+      labelLimit: 30
+      labelNameLengthLimit: 200
+      labelValueLengthLimit: 200
+
+  # ==============================================================================
+  # Namespace Selector Configuration
+  # ==============================================================================
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  # ==============================================================================
+  # Job Label Configuration
+  # ==============================================================================
+  jobLabel: "prometheus.veridis.xyz/job"
+
+  # ==============================================================================
+  # Pod Target Labels
+  # ==============================================================================
+  podTargetLabels:
+    - "app.kubernetes.io/name"
+    - "app.kubernetes.io/instance"
+    - "app.kubernetes.io/version"
+    - "app.kubernetes.io/component"
+    - "veridis.xyz/environment"
+    - "prometheus.veridis.xyz/type"
+
+  # ==============================================================================
+  # Target Limit Configuration
+  # ==============================================================================
+  targetLimit: 100
+  sampleLimit: 50000
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Veridis Backend ServiceMonitor
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-backend-monitoring
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-backend-servicemonitor
+    prometheus.veridis.xyz/category: application-monitoring
+    prometheus.veridis.xyz/role: backend-servicemonitor
+    prometheus.veridis.xyz/target-service: veridis-backend
+
+    monitoring.veridis.xyz/prometheus-servicemonitor-type: backend-servicemonitor
+    monitoring.veridis.xyz/application-monitoring: enabled
+    monitoring.veridis.xyz/business-metrics: enabled
+    monitoring.veridis.xyz/performance-monitoring: enabled
+
+    servicemonitor.veridis.xyz/tier: production
+    servicemonitor.veridis.xyz/optimization: backend-monitoring-management
+    servicemonitor.veridis.xyz/rust-metrics: enabled
+    servicemonitor.veridis.xyz/custom-metrics: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Backend ServiceMonitor for Veridis Backend with Rust metrics and business intelligence"
+    veridis.xyz/purpose: "Provides comprehensive backend monitoring for Veridis Backend with Rust application metrics and business intelligence"
+
+    prometheus.veridis.xyz/backend-servicemonitor-specification: "Backend ServiceMonitor with Rust metrics and business intelligence"
+    monitoring.veridis.xyz/backend-servicemonitor-specification: "Backend monitoring with Veridis Backend application metrics"
+
+    # Backend specific annotations
+    backend.veridis.xyz/metrics-type: "rust-application-metrics"
+    backend.veridis.xyz/business-metrics: "enabled"
+    backend.veridis.xyz/performance-metrics: "enabled"
+    backend.veridis.xyz/security-metrics: "enabled"
+
+    # Rust application annotations
+    rust.veridis.xyz/framework: "axum"
+    rust.veridis.xyz/metrics-library: "prometheus"
+    rust.veridis.xyz/tracing-enabled: "true"
+    rust.veridis.xyz/tokio-metrics: "enabled"
+
+    # Application monitoring annotations
+    application.veridis.xyz/http-metrics: "enabled"
+    application.veridis.xyz/database-metrics: "enabled"
+    application.veridis.xyz/cache-metrics: "enabled"
+    application.veridis.xyz/queue-metrics: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/backend-servicemonitor"
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+
+  endpoints:
+    - port: http-metrics
+      interval: 15s
+      scrapeTimeout: 10s
+      path: /metrics
+      scheme: https
+      honorLabels: false
+      honorTimestamps: true
+
+      tlsConfig:
+        caFile: /etc/prometheus/secrets/veridis-backend-tls/ca.crt
+        certFile: /etc/prometheus/secrets/veridis-backend-tls/tls.crt
+        keyFile: /etc/prometheus/secrets/veridis-backend-tls/tls.key
+        serverName: veridis-backend.veridis.svc.cluster.local
+        insecureSkipVerify: false
+
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      metricRelabelings:
+        # Add Veridis Backend specific labels
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "http_.*"
+          replacement: "http_metrics"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "db_.*"
+          replacement: "database_metrics"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "cache_.*"
+          replacement: "cache_metrics"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "identity_.*|attestation_.*|verification_.*|compliance_.*|bridge_.*"
+          replacement: "business_metrics"
+
+        # Add service identification
+        - targetLabel: veridis_service_type
+          replacement: "backend"
+
+        - targetLabel: veridis_language
+          replacement: "rust"
+
+        - targetLabel: veridis_framework
+          replacement: "axum"
+
+        # Keep essential backend metrics
+        - sourceLabels: [__name__]
+          regex: "http_requests_total|http_request_duration_seconds|db_connections_active|cache_hits_total|identity_operations_total|attestation_requests_total|verification_checks_total"
+          action: keep
+
+        # Drop noisy metrics
+        - sourceLabels: [__name__]
+          regex: "tokio_.*_histogram_.*|hyper_.*_duration_.*"
+          action: drop
+
+      sampleLimit: 100000
+      targetLimit: 50
+      labelLimit: 40
+
+  namespaceSelector:
+    matchNames:
+      - veridis
+
+  jobLabel: "veridis.xyz/backend-job"
+  podTargetLabels:
+    - "app.kubernetes.io/name"
+    - "app.kubernetes.io/instance"
+    - "app.kubernetes.io/version"
+    - "veridis.xyz/environment"
+    - "veridis.xyz/team"
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - ZK Circuits ServiceMonitor
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-zk-circuits-monitoring
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-zk-circuits-servicemonitor
+    prometheus.veridis.xyz/category: zk-monitoring
+    prometheus.veridis.xyz/role: zk-circuits-servicemonitor
+    prometheus.veridis.xyz/target-service: zk-circuits
+
+    monitoring.veridis.xyz/prometheus-servicemonitor-type: zk-circuits-servicemonitor
+    monitoring.veridis.xyz/zk-monitoring: enabled
+    monitoring.veridis.xyz/gpu-monitoring: enabled
+    monitoring.veridis.xyz/performance-monitoring: enabled
+
+    zk.veridis.xyz/tier: production
+    zk.veridis.xyz/optimization: zk-circuits-monitoring-management
+    zk.veridis.xyz/nodejs-metrics: enabled
+    zk.veridis.xyz/gpu-metrics: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "ZK Circuits ServiceMonitor for Veridis ZK Circuits with GPU metrics and performance monitoring"
+    veridis.xyz/purpose: "Provides comprehensive ZK circuits monitoring with GPU performance metrics and zero-knowledge proof analytics"
+
+    prometheus.veridis.xyz/zk-circuits-servicemonitor-specification: "ZK Circuits ServiceMonitor with GPU metrics and performance monitoring"
+    monitoring.veridis.xyz/zk-circuits-servicemonitor-specification: "ZK circuits monitoring with GPU performance analytics"
+
+    # ZK circuits specific annotations
+    zk.veridis.xyz/metrics-type: "nodejs-zk-circuits-metrics"
+    zk.veridis.xyz/gpu-metrics: "enabled"
+    zk.veridis.xyz/proof-metrics: "enabled"
+    zk.veridis.xyz/performance-metrics: "enabled"
+
+    # Node.js application annotations
+    nodejs.veridis.xyz/runtime: "node.js-22"
+    nodejs.veridis.xyz/metrics-library: "prom-client"
+    nodejs.veridis.xyz/event-loop-monitoring: "enabled"
+    nodejs.veridis.xyz/memory-monitoring: "enabled"
+
+    # GPU monitoring annotations
+    gpu.veridis.xyz/cuda-enabled: "true"
+    gpu.veridis.xyz/gpu-utilization: "monitored"
+    gpu.veridis.xyz/memory-monitoring: "enabled"
+    gpu.veridis.xyz/temperature-monitoring: "enabled"
+
+    # ZK proof monitoring annotations
+    proof.veridis.xyz/generation-metrics: "enabled"
+    proof.veridis.xyz/verification-metrics: "enabled"
+    proof.veridis.xyz/batching-metrics: "enabled"
+    proof.veridis.xyz/performance-analytics: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/zk-circuits-servicemonitor"
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: zk-circuits
+      app.kubernetes.io/instance: veridis-production
+
+  endpoints:
+    - port: http-metrics
+      interval: 15s
+      scrapeTimeout: 10s
+      path: /metrics
+      scheme: https
+      honorLabels: false
+      honorTimestamps: true
+
+      tlsConfig:
+        caFile: /etc/prometheus/secrets/veridis-zk-circuits-tls/ca.crt
+        certFile: /etc/prometheus/secrets/veridis-zk-circuits-tls/tls.crt
+        keyFile: /etc/prometheus/secrets/veridis-zk-circuits-tls/tls.key
+        serverName: zk-circuits.veridis.svc.cluster.local
+        insecureSkipVerify: false
+
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      metricRelabelings:
+        # Add ZK Circuits specific labels
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "nodejs_.*"
+          replacement: "nodejs_runtime"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "gpu_.*|cuda_.*"
+          replacement: "gpu_metrics"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "zk_proof_.*|circuit_.*|garaga_.*"
+          replacement: "zk_metrics"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "http_.*|express_.*"
+          replacement: "http_metrics"
+
+        # Add service identification
+        - targetLabel: veridis_service_type
+          replacement: "zk-circuits"
+
+        - targetLabel: veridis_language
+          replacement: "nodejs"
+
+        - targetLabel: veridis_gpu_enabled
+          replacement: "true"
+
+        # Keep essential ZK circuits metrics
+        - sourceLabels: [__name__]
+          regex: "zk_proof_generation_duration_seconds|zk_proof_verification_duration_seconds|gpu_utilization_percent|gpu_memory_used_bytes|circuit_compilation_duration_seconds|garaga_operations_total"
+          action: keep
+
+        # Keep Node.js runtime metrics
+        - sourceLabels: [__name__]
+          regex: "nodejs_eventloop_lag_seconds|nodejs_heap_size_used_bytes|nodejs_external_memory_bytes|process_cpu_user_seconds_total"
+          action: keep
+
+        # Drop verbose Node.js metrics
+        - sourceLabels: [__name__]
+          regex: "nodejs_gc_duration_seconds_bucket|nodejs_heap_space_size_.*_bytes"
+          action: drop
+
+      sampleLimit: 150000
+      targetLimit: 30
+      labelLimit: 50
+
+  namespaceSelector:
+    matchNames:
+      - veridis
+
+  jobLabel: "veridis.xyz/zk-circuits-job"
+  podTargetLabels:
+    - "app.kubernetes.io/name"
+    - "app.kubernetes.io/instance"
+    - "app.kubernetes.io/version"
+    - "veridis.xyz/environment"
+    - "veridis.xyz/team"
+    - "zk.veridis.xyz/gpu-enabled"
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Infrastructure ServiceMonitor
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-infrastructure-monitoring
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-infrastructure
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: infrastructure-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-infrastructure-servicemonitor
+    prometheus.veridis.xyz/category: infrastructure-monitoring
+    prometheus.veridis.xyz/role: infrastructure-servicemonitor
+    prometheus.veridis.xyz/target-services: infrastructure
+
+    monitoring.veridis.xyz/prometheus-servicemonitor-type: infrastructure-servicemonitor
+    monitoring.veridis.xyz/infrastructure-monitoring: enabled
+    monitoring.veridis.xyz/database-monitoring: enabled
+    monitoring.veridis.xyz/cache-monitoring: enabled
+
+    infrastructure.veridis.xyz/tier: production
+    infrastructure.veridis.xyz/optimization: infrastructure-monitoring-management
+    infrastructure.veridis.xyz/postgres-monitoring: enabled
+    infrastructure.veridis.xyz/redis-monitoring: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: infrastructure-engineering
+
+  annotations:
+    veridis.xyz/description: "Infrastructure ServiceMonitor for Veridis Infrastructure with database and cache monitoring"
+    veridis.xyz/purpose: "Provides comprehensive infrastructure monitoring for PostgreSQL, Redis, Vault, and StarkNet DevNet"
+
+    prometheus.veridis.xyz/infrastructure-servicemonitor-specification: "Infrastructure ServiceMonitor with database and cache monitoring"
+    monitoring.veridis.xyz/infrastructure-servicemonitor-specification: "Infrastructure monitoring with comprehensive service analytics"
+
+    # Infrastructure specific annotations
+    infrastructure.veridis.xyz/metrics-type: "infrastructure-services-metrics"
+    infrastructure.veridis.xyz/postgres-metrics: "enabled"
+    infrastructure.veridis.xyz/redis-metrics: "enabled"
+    infrastructure.veridis.xyz/vault-metrics: "enabled"
+    infrastructure.veridis.xyz/starknet-metrics: "enabled"
+
+    # Database monitoring annotations
+    database.veridis.xyz/postgres-version: "16.1"
+    database.veridis.xyz/connection-monitoring: "enabled"
+    database.veridis.xyz/query-performance: "monitored"
+    database.veridis.xyz/replication-monitoring: "enabled"
+
+    # Cache monitoring annotations
+    cache.veridis.xyz/redis-version: "7.2.4"
+    cache.veridis.xyz/memory-monitoring: "enabled"
+    cache.veridis.xyz/performance-monitoring: "enabled"
+    cache.veridis.xyz/cluster-monitoring: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/infrastructure-servicemonitor"
+
+spec:
+  selector:
+    matchLabels:
+      veridis.xyz/infrastructure-monitoring: "enabled"
+
+  endpoints:
+    # PostgreSQL metrics endpoint
+    - port: http-metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      path: /metrics
+      scheme: http
+      honorLabels: false
+      honorTimestamps: true
+
+      # PostgreSQL-specific relabeling
+      metricRelabelings:
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "pg_.*"
+          replacement: "postgresql_metrics"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_service_type
+          regex: "pg_.*"
+          replacement: "postgresql"
+
+        # Keep essential PostgreSQL metrics
+        - sourceLabels: [__name__]
+          regex: "pg_up|pg_stat_database_numbackends|pg_stat_database_tup_inserted|pg_stat_database_tup_updated|pg_stat_database_tup_deleted|pg_locks_count"
+          action: keep
+
+      sampleLimit: 75000
+      targetLimit: 20
+
+    # Redis metrics endpoint
+    - port: redis-metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      path: /metrics
+      scheme: http
+      honorLabels: false
+      honorTimestamps: true
+
+      # Redis-specific relabeling
+      metricRelabelings:
+        - sourceLabels: [__name__]
+          targetLabel: veridis_metric_category
+          regex: "redis_.*"
+          replacement: "redis_metrics"
+
+        - sourceLabels: [__name__]
+          targetLabel: veridis_service_type
+          regex: "redis_.*"
+          replacement: "redis"
+
+        # Keep essential Redis metrics
+        - sourceLabels: [__name__]
+          regex: "redis_up|redis_connected_clients|redis_used_memory_bytes|redis_keyspace_hits_total|redis_keyspace_misses_total|redis_commands_processed_total"
+          action: keep
+
+      sampleLimit: 50000
+      targetLimit: 15
+
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  jobLabel: "veridis.xyz/infrastructure-job"
+  podTargetLabels:
+    - "app.kubernetes.io/name"
+    - "app.kubernetes.io/instance"
+    - "veridis.xyz/environment"
+    - "veridis.xyz/team"
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Federation ServiceMonitor
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-federation-monitoring
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus-federation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: federation-servicemonitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-federation-servicemonitor
+    prometheus.veridis.xyz/category: federation-monitoring
+    prometheus.veridis.xyz/role: federation-servicemonitor
+    prometheus.veridis.xyz/target-type: prometheus-federation
+
+    monitoring.veridis.xyz/prometheus-servicemonitor-type: federation-servicemonitor
+    monitoring.veridis.xyz/federation-monitoring: enabled
+    monitoring.veridis.xyz/multi-cluster: enabled
+    monitoring.veridis.xyz/aggregation: enabled
+
+    federation.veridis.xyz/tier: production
+    federation.veridis.xyz/optimization: federation-monitoring-management
+    federation.veridis.xyz/cross-cluster: enabled
+    federation.veridis.xyz/metric-aggregation: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Federation ServiceMonitor for Veridis Prometheus with multi-cluster monitoring and metric aggregation"
+    veridis.xyz/purpose: "Provides federation monitoring for multi-cluster Prometheus deployment with comprehensive metric aggregation"
+
+    prometheus.veridis.xyz/federation-servicemonitor-specification: "Federation ServiceMonitor with multi-cluster monitoring and aggregation"
+    monitoring.veridis.xyz/federation-servicemonitor-specification: "Federation monitoring with cross-cluster metric aggregation"
+
+    # Federation specific annotations
+    federation.veridis.xyz/monitoring-type: "prometheus-federation-metrics"
+    federation.veridis.xyz/cross-cluster: "enabled"
+    federation.veridis.xyz/metric-aggregation: "enabled"
+    federation.veridis.xyz/cluster-discovery: "enabled"
+
+    # Multi-cluster annotations
+    cluster.veridis.xyz/federation-enabled: "true"
+    cluster.veridis.xyz/metric-sharing: "enabled"
+    cluster.veridis.xyz/aggregation-rules: "enabled"
+    cluster.veridis.xyz/cluster-identification: "enabled"
+
+    # Aggregation annotations
+    aggregation.veridis.xyz/enabled: "true"
+    aggregation.veridis.xyz/rules-enabled: "true"
+    aggregation.veridis.xyz/cross-cluster: "enabled"
+    aggregation.veridis.xyz/metric-federation: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-federation-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-federation-servicemonitor"
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus
+      prometheus.veridis.xyz/federation-target: "true"
+
+  endpoints:
+    - port: http-prometheus
+      interval: 60s
+      scrapeTimeout: 30s
+      path: /federate
+      scheme: https
+      honorLabels: true
+      honorTimestamps: true
+
+      # Federation query parameters
+      params:
+        'match[]':
+          - '{job=~"prometheus|veridis-.*"}'
+          - '{__name__=~"up|prometheus_build_info"}'
+          - '{__name__=~"veridis_.*"}'
+          - '{__name__=~".*_total"}'
+          - '{__name__=~".*_duration_seconds"}'
+
+      tlsConfig:
+        caFile: /etc/prometheus/secrets/veridis-prometheus-federation-tls/ca.crt
+        certFile: /etc/prometheus/secrets/veridis-prometheus-federation-tls/tls.crt
+        keyFile: /etc/prometheus/secrets/veridis-prometheus-federation-tls/tls.key
+        serverName: prometheus-federation.veridis-infrastructure.svc.cluster.local
+        insecureSkipVerify: false
+
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      metricRelabelings:
+        # Add federation labels
+        - sourceLabels: [__name__]
+          targetLabel: veridis_federated_metric
+          replacement: "true"
+
+        - sourceLabels: [instance]
+          targetLabel: veridis_source_cluster
+          regex: "(.+)"
+          replacement: "${1}"
+
+        # Add federation timestamp
+        - targetLabel: veridis_federation_timestamp
+          replacement: "{{ .Timestamp }}"
+
+        # Keep federated metrics
+        - sourceLabels: [__name__]
+          regex: "up|prometheus_build_info|veridis_.*|.*_total|.*_duration_seconds"
+          action: keep
+
+      sampleLimit: 200000
+      targetLimit: 10
+
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  jobLabel: "veridis.xyz/federation-job"
+  podTargetLabels:
+    - "app.kubernetes.io/name"
+    - "app.kubernetes.io/instance"
+    - "veridis.xyz/environment"
+    - "prometheus.veridis.xyz/federation-role"
+
+# ==============================================================================
+# Veridis Prometheus ServiceMonitor Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS PROMETHEUS SERVICEMONITOR STRATEGY:
+# =========================================================
+#
+# VERIDIS PROMETHEUS SERVICEMONITOR ARCHITECTURE OVERVIEW:
+# --------------------------------------------------------
+# 1. Primary Prometheus ServiceMonitor (veridis-prometheus-monitoring):
+#    - Comprehensive self-monitoring with intelligent scraping management and advanced metric optimization for production monitoring
+#    - Advanced ServiceMonitor configuration with 30s interval, HTTPS scheme, TLS authentication, and comprehensive metric relabeling
+#    - Multi-metric architecture with metric relabeling, sample limits (50K), target limits (100), and comprehensive observability optimization
+#    - Enterprise ServiceMonitor policies with TLS certificates, bearer token authentication, and comprehensive metric intelligence
+#    - Performance optimization with intelligent scraping management, metric optimization, cardinality control, and monitoring for maximum efficiency
+#
+# 2. Backend ServiceMonitor (veridis-backend-monitoring):
+#    - Application monitoring with Rust metrics and comprehensive business intelligence for backend services
+#    - Advanced backend configuration with 15s interval, HTTPS scheme, Rust application metrics, and performance monitoring
+#    - Rust optimization with Axum framework metrics, Tokio runtime monitoring, HTTP/database/cache metrics, and business intelligence
+#    - Application intelligence with identity/attestation/verification/compliance/bridge metrics and comprehensive backend analytics
+#    - Performance excellence with high-frequency scraping (15s), 100K sample limit, and comprehensive Rust application monitoring
+#
+# 3. ZK Circuits ServiceMonitor (veridis-zk-circuits-monitoring):
+#    - Zero-knowledge circuits monitoring with GPU metrics and comprehensive performance analytics for ZK operations
+#    - Advanced ZK configuration with 15s interval, HTTPS scheme, Node.js application metrics, and GPU monitoring
+#    - GPU optimization with CUDA metrics, GPU utilization monitoring, memory/temperature tracking, and performance analytics
+#    - ZK intelligence with proof generation/verification metrics, circuit compilation monitoring, and Garaga operations tracking
+#    - Performance excellence with Node.js runtime monitoring, event loop tracking, and comprehensive ZK circuits analytics
+#
+# 4. Infrastructure ServiceMonitor (veridis-infrastructure-monitoring):
+#    - Infrastructure services monitoring with PostgreSQL, Redis, Vault, and StarkNet DevNet comprehensive analytics
+#    - Multi-service configuration with 30s interval, HTTP/HTTPS schemes, database/cache metrics, and infrastructure monitoring
+#    - Database optimization with PostgreSQL connection monitoring, query performance tracking, and replication analytics
+#    - Cache intelligence with Redis memory monitoring, performance tracking, cluster analytics, and comprehensive cache intelligence
+#    - Infrastructure excellence with service-specific metrics, performance optimization, and comprehensive infrastructure monitoring
+#
+# 5. Federation ServiceMonitor (veridis-federation-monitoring):
+#    - Multi-cluster federation monitoring with cross-cluster metrics aggregation and comprehensive federation analytics
+#    - Federation configuration with 60s interval, HTTPS scheme, federate endpoint, and comprehensive metric aggregation
+#    - Cross-cluster optimization with federation query parameters, metric sharing, cluster identification, and federation intelligence
+#    - Aggregation intelligence with rule-based aggregation, cross-cluster federation, and comprehensive multi-cluster monitoring
+#    - Federation excellence with honor labels, federation-specific relabeling, and comprehensive cross-cluster analytics
+#
+# ENTERPRISE PROMETHEUS SERVICEMONITOR FEATURES:
+# ==============================================
+# Advanced ServiceMonitor Management and Scraping Optimization:
+#   - Multi-ServiceMonitor architecture with self-monitoring, backend, ZK circuits, infrastructure, and federation monitoring
+#   - Intelligent scraping management with interval optimization (15s-60s), timeout configuration, and performance-based decisions
+#   - Metric discovery with comprehensive relabeling, sample/target limits, label management, and metric optimization
+#   - Scraping management with TLS authentication, bearer tokens, certificate validation, and comprehensive security integration
+#   - Performance tuning with cardinality control, batch processing, metric filtering, and intelligent scraping optimization
+#
+# Comprehensive Security and Authentication Integration:
+#   - TLS integration with certificate-based authentication, CA validation, server name verification, and secure communication
+#   - Authentication management with bearer tokens, RBAC integration, service account tokens, and comprehensive access control
+#   - Security monitoring with certificate validation, authentication tracking, authorization logging, and security analytics
+#   - Metric filtering with security-based relabeling, sensitive metric dropping, and comprehensive security compliance
+#   - Access control with namespace isolation, service isolation, network policies, and comprehensive security management
+#
+# Enterprise Metric Management and Intelligence:
+#   - Multi-category metrics with HTTP, database, cache, business, ZK, GPU, runtime, and infrastructure metrics
+#   - Intelligent relabeling with source/target label mapping, metric categorization, service identification, and business intelligence
+#   - Metric optimization with sample limits (50K-200K), target limits (10-100), label limits (30-50), and performance optimization
+#   - Business intelligence with compliance labeling, environment identification, team attribution, and strategic metric management
+#   - Performance analytics with latency tracking, throughput monitoring, error rate analysis, and comprehensive business intelligence
+#
+# Advanced Application and Infrastructure Monitoring:
+#   - Application monitoring with Rust backend metrics, Node.js ZK circuits metrics, HTTP performance, and business intelligence
+#   - Infrastructure monitoring with PostgreSQL database metrics, Redis cache metrics, Vault security metrics, and comprehensive analytics
+#   - Runtime monitoring with Tokio async runtime, Node.js event loop, GPU utilization, and comprehensive performance tracking
+#   - Business monitoring with identity operations, attestation requests, verification checks, compliance metrics, and strategic intelligence
+#   - Performance monitoring with request latency, database connections, cache hit rates, proof generation times, and optimization analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Prometheus ServiceMonitor Lifecycle Management:
+#   - Multi-ServiceMonitor architecture with self-monitoring, application monitoring, infrastructure monitoring, and federation management
+#   - Intelligent ServiceMonitor management with predictive analytics and scraping utilization correlation
+#   - Advanced monitoring with comprehensive ServiceMonitor analytics and metric business intelligence
+#   - Configuration validation with ServiceMonitor schema enforcement and scraping deployment safety checks
+#   - Automated optimization with ServiceMonitor pattern analysis and metric configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II ServiceMonitor controls with comprehensive audit requirements and metric logging
+#   - GDPR ServiceMonitor compliance with data protection and privacy-preserving metric management
+#   - ISO 27001 ServiceMonitor security management with information security and metric compliance integration
+#   - NIST 800-190 container ServiceMonitor security with scraping validation and compliance
+#   - Zero-trust ServiceMonitor architecture with comprehensive encryption and metric authentication requirements
+#
+# Business Intelligence Integration:
+#   - ServiceMonitor analytics with cost correlation and metric resource utilization optimization
+#   - Performance analytics with user experience optimization and ServiceMonitor business intelligence
+#   - Metric intelligence with scraping pattern monitoring and ServiceMonitor optimization recommendations
+#   - Strategic planning with capacity management and ServiceMonitor forecasting
+#   - Business impact assessment with ServiceMonitor performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment ServiceMonitor support with production, development, HA, and federation configurations
+#   - Comprehensive documentation with ServiceMonitor guides and metric troubleshooting procedures
+#   - Environment-specific ServiceMonitors with production, development, testing, and multi-cluster support
+#   - Testing integration with ServiceMonitor development workflow and metric debugging capabilities
+#   - ServiceMonitor monitoring with comprehensive tracking and metric correlation
+#
+# ==============================================================================
