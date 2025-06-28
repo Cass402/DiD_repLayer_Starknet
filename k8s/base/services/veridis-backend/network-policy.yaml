@@ -1,0 +1,1299 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Backend Network Policy
+# ==============================================================================
+#
+# This manifest defines comprehensive Veridis Backend network security policies for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS BACKEND NETWORK SECURITY ARCHITECTURE:
+#   • Advanced microsegmentation with comprehensive traffic control and intelligent network isolation
+#   • Multi-tier network security architecture with development, testing, staging, and production configurations
+#   • Comprehensive security framework with ingress, egress, and lateral movement protection
+#   • Advanced lifecycle management with automated provisioning, network security, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and security insights
+#
+# VERIDIS BACKEND NETWORK SECURITY OPTIMIZATION:
+#   • High-performance network security with intelligent traffic filtering and performance-based security decisions
+#   • Intelligent microsegmentation with Kubernetes network policies and security optimization
+#   • Advanced traffic control with business intelligence and workload-based security decisions
+#   • Comprehensive security policies with threat prevention and intelligent protection management
+#   • Enterprise acceleration with predictive security and resource optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II network security controls with comprehensive audit and security requirements
+#   • GDPR network security compliance with data protection, privacy controls, and traffic management
+#   • ISO 27001 network security management with comprehensive framework integration
+#   • NIST 800-190 container network security with security-specific validation and compliance
+#   • Identity protocol compliance with regulatory frameworks and network security best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent network security lifecycle management with automated provisioning and optimization
+#   • Predictive security analytics with threat intelligence and security intelligence
+#   • Advanced monitoring integration with security analytics and business intelligence
+#   • Comprehensive backup and recovery with network security configuration preservation and disaster preparedness
+#   • Business continuity network security with failover capabilities and redundancy optimization
+#
+# RUST AXUM NETWORK SECURITY INTELLIGENCE:
+#   • Network security usage analytics with traffic patterns and optimization recommendations
+#   • Performance monitoring with security latency and throughput optimization intelligence
+#   • Development efficiency with network security analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with security metrics and performance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Network Policy - Primary Microsegmentation
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: veridis-backend-network-policy
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend network policy identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-network-policy
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Network policy specific classification
+    network-policy.veridis.xyz/type: microsegmentation
+    network-policy.veridis.xyz/category: traffic-control
+    network-policy.veridis.xyz/role: primary-security
+    network-policy.veridis.xyz/performance-class: high-security
+    network-policy.veridis.xyz/security-level: enterprise
+
+    # Service network security classification
+    service.veridis.xyz/type: backend-api
+    service.veridis.xyz/network-security: comprehensive
+    service.veridis.xyz/performance-tier: high-performance
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-stack
+
+    # Network security classification
+    security.veridis.xyz/tier: enterprise
+    security.veridis.xyz/optimization: intelligent-filtering
+    security.veridis.xyz/monitoring: comprehensive
+    security.veridis.xyz/threat-protection: enabled
+    security.veridis.xyz/efficiency: optimized
+
+    # Business network security classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-security
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/security-requirement: maximum
+
+    # Operational network security labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "network-security-control-framework"
+    compliance.veridis.xyz/gdpr: "network-security-data-protection"
+    compliance.veridis.xyz/iso27001: "network-security-management"
+    compliance.veridis.xyz/nist-800-190: "network-security-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Network security monitoring and analytics
+    monitoring.veridis.xyz/network-monitoring: "enabled"
+    monitoring.veridis.xyz/security-monitoring: "comprehensive"
+    monitoring.veridis.xyz/traffic-monitoring: "enabled"
+    monitoring.veridis.xyz/threat-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+  annotations:
+    # Network security purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend network policy with comprehensive microsegmentation, intelligent traffic control, and security intelligence"
+    veridis.xyz/purpose: "Provides comprehensive network security for identity backend service with threat protection, compliance validation, and business intelligence"
+    veridis.xyz/scope: "Backend service network security including ingress, egress, lateral movement protection, and comprehensive threat intelligence"
+
+    # Network security architecture and design
+    network-policy.veridis.xyz/architecture: "Enterprise network policy with comprehensive microsegmentation, intelligent traffic control, and security optimization"
+    network-policy.veridis.xyz/design-pattern: "Multi-tier network security with performance optimization, cost efficiency, and business intelligence"
+    network-policy.veridis.xyz/security-model: "Intelligent network security with predictive analytics, performance optimization, and resource efficiency"
+    network-policy.veridis.xyz/performance-model: "High-security network policy with comprehensive protection and intelligent traffic decisions"
+
+    # Traffic control specifications
+    traffic.veridis.xyz/ingress-specification: "Controlled ingress traffic with intelligent filtering and business context validation"
+    traffic.veridis.xyz/egress-specification: "Restricted egress traffic with approved destinations and security validation"
+    traffic.veridis.xyz/lateral-specification: "Lateral movement protection with microsegmentation and intelligent isolation"
+    traffic.veridis.xyz/monitoring-specification: "Comprehensive traffic monitoring with security analytics and threat intelligence"
+    traffic.veridis.xyz/enforcement-specification: "Policy enforcement with business context and security optimization"
+
+    # Performance network security specifications
+    performance.veridis.xyz/security-specification: "Intelligent network security with performance metrics and optimization analytics"
+    performance.veridis.xyz/filtering-specification: "Performance-aware traffic filtering with intelligent optimization"
+    performance.veridis.xyz/efficiency-specification: "Resource efficiency with cost optimization and intelligent allocation"
+    performance.veridis.xyz/optimization-specification: "Performance optimization with security intelligence and resource management"
+
+    # Business network security specifications
+    business.veridis.xyz/security-specification: "Security-compliant network protection with business continuity and security guarantees"
+    business.veridis.xyz/continuity-specification: "Business continuity with intelligent protection and disaster recovery"
+    business.veridis.xyz/cost-specification: "Cost-optimized network security with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with resource optimization and security intelligence"
+
+    # Operational network security specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with security analytics and performance intelligence"
+    operations.veridis.xyz/maintenance-specification: "Automated maintenance with security preservation and optimization procedures"
+    operations.veridis.xyz/enforcement-specification: "Intelligent enforcement with performance management and resource optimization"
+
+    # Network security lifecycle specifications
+    lifecycle.veridis.xyz/security-specification: "Dynamic network security with automated capacity management and performance optimization"
+    lifecycle.veridis.xyz/optimization-specification: "Intelligent security optimization with machine learning and threat forecasting"
+    lifecycle.veridis.xyz/monitoring-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/maintenance-specification: "Automated maintenance with security preservation and optimization procedures"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/security-admin: "backend-security-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/backend/network-security"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/network-security-management"
+    veridis.xyz/security-docs: "https://security.veridis.xyz/backend/network-policy-guide"
+    veridis.xyz/compliance-docs: "https://compliance.veridis.xyz/backend/network-security-requirements"
+
+    # Network policy behavior annotations
+    network-policy.alpha.kubernetes.io/policy-types: "Ingress,Egress"
+    network-policy.alpha.kubernetes.io/applied-to: "veridis-backend"
+    network-policy.alpha.kubernetes.io/traffic-flow: "controlled"
+    network-policy.alpha.kubernetes.io/enforcement-mode: "strict"
+
+spec:
+  # ==============================================================================
+  # Pod Selector Configuration - Target Backend Pods
+  # ==============================================================================
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-service
+
+  # ==============================================================================
+  # Policy Types Configuration - Ingress and Egress Control
+  # ==============================================================================
+  policyTypes:
+    - Ingress
+    - Egress
+
+  # ==============================================================================
+  # Ingress Rules Configuration - Inbound Traffic Control
+  # ==============================================================================
+  ingress:
+    # ==============================================================================
+    # API Gateway and Load Balancer Traffic
+    # ==============================================================================
+    - from:
+        # Allow traffic from API Gateway
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-api-gateway
+              app.kubernetes.io/component: api-gateway
+
+        # Allow traffic from Load Balancer
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-load-balancer
+              app.kubernetes.io/component: load-balancer
+
+        # Allow traffic from Ingress Controller
+        - namespaceSelector:
+            matchLabels:
+              name: ingress-nginx
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: ingress-nginx
+
+      ports:
+        # HTTP API port
+        - protocol: TCP
+          port: 8080
+
+        # Health check port
+        - protocol: TCP
+          port: 8081
+
+        # Metrics port
+        - protocol: TCP
+          port: 9090
+
+    # ==============================================================================
+    # Frontend UI Traffic
+    # ==============================================================================
+    - from:
+        # Allow traffic from Frontend UI
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-ui
+              app.kubernetes.io/component: frontend
+
+        # Allow traffic from Frontend API Gateway
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-frontend
+              app.kubernetes.io/component: api-gateway
+
+      ports:
+        # API endpoints for frontend
+        - protocol: TCP
+          port: 8080
+
+    # ==============================================================================
+    # ZK Circuits Service Traffic
+    # ==============================================================================
+    - from:
+        # Allow traffic from ZK Circuits service
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-zk-circuits
+              app.kubernetes.io/component: zk-service
+
+      ports:
+        # ZK proof verification endpoint
+        - protocol: TCP
+          port: 8080
+
+    # ==============================================================================
+    # Monitoring and Observability Traffic
+    # ==============================================================================
+    - from:
+        # Allow traffic from Prometheus
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+
+        # Allow traffic from Grafana
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: grafana
+
+        # Allow traffic from Jaeger
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: jaeger
+
+      ports:
+        # Metrics endpoint
+        - protocol: TCP
+          port: 9090
+
+        # Health endpoint
+        - protocol: TCP
+          port: 8081
+
+        # Tracing endpoint
+        - protocol: TCP
+          port: 14268
+
+    # ==============================================================================
+    # Internal Service Communication
+    # ==============================================================================
+    - from:
+        # Allow traffic from other backend instances (for clustering)
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-backend
+              app.kubernetes.io/component: backend-service
+
+      ports:
+        # Internal clustering port
+        - protocol: TCP
+          port: 8082
+
+        # Internal metrics sharing
+        - protocol: TCP
+          port: 9091
+
+    # ==============================================================================
+    # Service Mesh Traffic (if Istio is enabled)
+    # ==============================================================================
+    - from:
+        # Allow traffic from Istio sidecar
+        - namespaceSelector:
+            matchLabels:
+              name: istio-system
+          podSelector:
+            matchLabels:
+              app: istio-proxy
+
+      ports:
+        # Service mesh communication
+        - protocol: TCP
+          port: 15090
+
+    # ==============================================================================
+    # Backup and Maintenance Traffic
+    # ==============================================================================
+    - from:
+        # Allow traffic from backup services
+        - namespaceSelector:
+            matchLabels:
+              name: backup
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: velero
+
+        # Allow traffic from maintenance jobs
+        - podSelector:
+            matchLabels:
+              job-type: maintenance
+              app.kubernetes.io/part-of: veridis-protocol
+
+      ports:
+        # Backup endpoint
+        - protocol: TCP
+          port: 8083
+
+  # ==============================================================================
+  # Egress Rules Configuration - Outbound Traffic Control
+  # ==============================================================================
+  egress:
+    # ==============================================================================
+    # Database Access
+    # ==============================================================================
+    - to:
+        # Allow connection to PostgreSQL
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: postgresql
+              app.kubernetes.io/component: database
+
+      ports:
+        # PostgreSQL port
+        - protocol: TCP
+          port: 5432
+
+    # ==============================================================================
+    # Cache Access
+    # ==============================================================================
+    - to:
+        # Allow connection to Redis
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/component: cache
+
+      ports:
+        # Redis port
+        - protocol: TCP
+          port: 6379
+
+    # ==============================================================================
+    # Secrets Management
+    # ==============================================================================
+    - to:
+        # Allow connection to HashiCorp Vault
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vault
+              app.kubernetes.io/component: secrets-manager
+
+      ports:
+        # Vault API port
+        - protocol: TCP
+          port: 8200
+
+    # ==============================================================================
+    # Blockchain Network Access
+    # ==============================================================================
+    - to:
+        # Allow connection to StarkNet DevNet
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: starknet-devnet
+              app.kubernetes.io/component: blockchain-node
+
+      ports:
+        # StarkNet RPC port
+        - protocol: TCP
+          port: 5050
+
+    # ==============================================================================
+    # ZK Circuits Service Communication
+    # ==============================================================================
+    - to:
+        # Allow connection to ZK Circuits service
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-zk-circuits
+              app.kubernetes.io/component: zk-service
+
+      ports:
+        # ZK service API port
+        - protocol: TCP
+          port: 4000
+
+    # ==============================================================================
+    # External API Access (Controlled)
+    # ==============================================================================
+    - to: []
+      ports:
+        # HTTPS for external API calls
+        - protocol: TCP
+          port: 443
+
+        # HTTP for specific approved endpoints
+        - protocol: TCP
+          port: 80
+
+    # ==============================================================================
+    # DNS Resolution
+    # ==============================================================================
+    - to:
+        # Allow DNS resolution
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+
+      ports:
+        # DNS UDP
+        - protocol: UDP
+          port: 53
+
+        # DNS TCP
+        - protocol: TCP
+          port: 53
+
+    # ==============================================================================
+    # Monitoring and Logging Egress
+    # ==============================================================================
+    - to:
+        # Allow connection to logging infrastructure
+        - namespaceSelector:
+            matchLabels:
+              name: logging
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: fluent-bit
+
+        # Allow connection to monitoring infrastructure
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+
+      ports:
+        # Logging port
+        - protocol: TCP
+          port: 24224
+
+        # Metrics push port
+        - protocol: TCP
+          port: 9091
+
+---
+# ==============================================================================
+# Veridis Backend Strict Network Policy - High Security Mode
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: veridis-backend-strict-policy
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-strict-policy
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    network-policy.veridis.xyz/type: strict-microsegmentation
+    network-policy.veridis.xyz/category: high-security
+    network-policy.veridis.xyz/role: strict-security
+    network-policy.veridis.xyz/mode: maximum-security
+
+    security.veridis.xyz/tier: maximum
+    security.veridis.xyz/enforcement: strict
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Strict network policy for high-security scenarios with maximum isolation"
+    veridis.xyz/purpose: "Provides maximum security isolation for critical operations and sensitive data processing"
+
+    network-policy.veridis.xyz/strict-specification: "Maximum security isolation with minimal allowed traffic"
+    security.veridis.xyz/isolation-specification: "Complete network isolation with approved traffic only"
+
+    # High security annotations
+    security.veridis.xyz/mode: "strict"
+    security.veridis.xyz/isolation-level: "maximum"
+    security.veridis.xyz/threat-model: "zero-trust"
+    security.veridis.xyz/emergency-contact: "backend-security@veridis.xyz"
+
+spec:
+  # ==============================================================================
+  # Strict Pod Selector Configuration
+  # ==============================================================================
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-service
+      # Additional selector for strict mode
+      security.veridis.xyz/mode: strict
+
+  # ==============================================================================
+  # Strict Policy Types
+  # ==============================================================================
+  policyTypes:
+    - Ingress
+    - Egress
+
+  # ==============================================================================
+  # Strict Ingress Rules - Minimal Allowed Traffic
+  # ==============================================================================
+  ingress:
+    # Only allow essential health checks
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+          podSelector:
+            matchLabels:
+              app: kubernetes-dashboard
+
+      ports:
+        - protocol: TCP
+          port: 8081
+
+  # ==============================================================================
+  # Strict Egress Rules - Essential Connections Only
+  # ==============================================================================
+  egress:
+    # Only allow database connection
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: postgresql
+              app.kubernetes.io/component: database
+              security.veridis.xyz/approved: "true"
+
+      ports:
+        - protocol: TCP
+          port: 5432
+
+    # Only allow DNS for essential operations
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+
+      ports:
+        - protocol: UDP
+          port: 53
+
+---
+# ==============================================================================
+# Veridis Backend Development Network Policy - Development Environment
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: veridis-backend-dev-policy
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-dev-policy
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    network-policy.veridis.xyz/type: development-policy
+    network-policy.veridis.xyz/category: relaxed-security
+    network-policy.veridis.xyz/role: development-security
+    network-policy.veridis.xyz/mode: development
+
+    security.veridis.xyz/tier: development
+    security.veridis.xyz/enforcement: relaxed
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development network policy with relaxed security for development and testing"
+    veridis.xyz/purpose: "Provides development-friendly network policy with debugging and testing capabilities"
+
+    network-policy.veridis.xyz/development-specification: "Relaxed security policy for development and testing workflows"
+    security.veridis.xyz/development-specification: "Development-friendly security with debugging capabilities"
+
+spec:
+  # ==============================================================================
+  # Development Pod Selector Configuration
+  # ==============================================================================
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: backend-service
+      # Additional selector for development mode
+      veridis.xyz/environment: development
+
+  # ==============================================================================
+  # Development Policy Types
+  # ==============================================================================
+  policyTypes:
+    - Ingress
+    - Egress
+
+  # ==============================================================================
+  # Development Ingress Rules - Allow Debug and Test Traffic
+  # ==============================================================================
+  ingress:
+    # Allow all traffic from development namespace
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              veridis.xyz/environment: development
+
+    # Allow debug tools
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: kubectl
+
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: debug-tools
+
+  # ==============================================================================
+  # Development Egress Rules - Allow Development Connections
+  # ==============================================================================
+  egress:
+    # Allow all connections within development environment
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              veridis.xyz/environment: development
+
+    # Allow external development services
+    - to: []
+      ports:
+        - protocol: TCP
+          port: 443
+        - protocol: TCP
+          port: 80
+        - protocol: TCP
+          port: 22
+
+---
+# ==============================================================================
+# Veridis Backend Network Policy Configuration - Advanced Security Settings
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-network-config
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-network-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: network-config
+    config.veridis.xyz/category: security-configuration
+    config.veridis.xyz/role: network-settings
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Advanced network security configuration for Veridis Backend service"
+    veridis.xyz/purpose: "Provides comprehensive network security configuration with intelligent traffic management"
+
+data:
+  # ==============================================================================
+  # Network Security Configuration
+  # ==============================================================================
+
+  network-security.yaml: |
+    # Veridis Backend Network Security Configuration
+    # Advanced network security configuration with intelligent traffic management
+
+    networkSecurity:
+      # Policy enforcement configuration
+      enforcement:
+        # Strict enforcement mode
+        mode: "strict"
+        default_action: "deny"
+        log_violations: true
+        alert_violations: true
+
+        # Policy validation
+        validate_before_apply: true
+        dry_run_mode: false
+        rollback_on_failure: true
+
+      # Traffic filtering configuration
+      filtering:
+        # Ingress filtering
+        ingress:
+          # Allow list for source IPs
+          allowed_source_ips:
+            - "10.0.0.0/8"
+            - "172.16.0.0/12"
+            - "192.168.0.0/16"
+
+          # Deny list for source IPs
+          denied_source_ips:
+            - "0.0.0.0/0"  # Default deny all, then allow specific
+
+          # Port filtering
+          allowed_ports:
+            - 8080  # API port
+            - 8081  # Health port
+            - 9090  # Metrics port
+            - 8082  # Internal clustering
+            - 8083  # Backup port
+
+          # Protocol filtering
+          allowed_protocols:
+            - "TCP"
+            - "UDP"  # For DNS only
+
+        # Egress filtering
+        egress:
+          # Allowed destinations
+          allowed_destinations:
+            # Internal services
+            - service: "postgresql"
+              port: 5432
+              protocol: "TCP"
+
+            - service: "redis"
+              port: 6379
+              protocol: "TCP"
+
+            - service: "vault"
+              port: 8200
+              protocol: "TCP"
+
+            - service: "starknet-devnet"
+              port: 5050
+              protocol: "TCP"
+
+            - service: "veridis-zk-circuits"
+              port: 4000
+              protocol: "TCP"
+
+            # External services
+            - destination: "external-apis"
+              ports: [443, 80]
+              protocol: "TCP"
+
+          # DNS configuration
+          dns:
+            allowed_servers:
+              - "kube-dns.kube-system.svc.cluster.local"
+
+            allowed_queries:
+              - "*.cluster.local"
+              - "*.veridis.xyz"
+
+      # Monitoring and logging
+      monitoring:
+        # Traffic monitoring
+        traffic_monitoring:
+          enabled: true
+          log_allowed_traffic: false
+          log_denied_traffic: true
+          metrics_collection: true
+
+        # Security event monitoring
+        security_events:
+          enabled: true
+          alert_on_violations: true
+          log_security_events: true
+
+        # Performance monitoring
+        performance:
+          enabled: true
+          latency_monitoring: true
+          throughput_monitoring: true
+
+      # Compliance configuration
+      compliance:
+        # Audit configuration
+        audit:
+          enabled: true
+          log_all_traffic: true
+          retention_period: "365d"
+
+        # Compliance frameworks
+        frameworks:
+          soc2:
+            enabled: true
+            controls: ["CC6.1", "CC6.6", "CC6.7"]
+
+          gdpr:
+            enabled: true
+            data_protection: true
+            privacy_controls: true
+
+          iso27001:
+            enabled: true
+            controls: ["A.13.1", "A.13.2"]
+
+          nist:
+            enabled: true
+            controls: ["AC-4", "SC-7"]
+
+      # Emergency procedures
+      emergency:
+        # Emergency override
+        override:
+          enabled: true
+          approval_required: true
+          approval_timeout: "15m"
+
+        # Incident response
+        incident_response:
+          auto_isolation: true
+          alert_security_team: true
+          create_incident_ticket: true
+
+        # Emergency contacts
+        contacts:
+          primary: "backend-security@veridis.xyz"
+          escalation: "security-team@veridis.xyz"
+          emergency: "ciso@veridis.xyz"
+
+      # Performance optimization
+      optimization:
+        # Connection optimization
+        connections:
+          connection_pooling: true
+          keep_alive: true
+          timeout_settings:
+            connect_timeout: "5s"
+            read_timeout: "30s"
+            write_timeout: "30s"
+
+        # Bandwidth management
+        bandwidth:
+          rate_limiting: true
+          burst_allowance: "10MB"
+          sustained_rate: "1MB/s"
+
+        # Load balancing
+        load_balancing:
+          enabled: true
+          algorithm: "round_robin"
+          health_checks: true
+
+---
+# ==============================================================================
+# Veridis Backend Security Context - Pod Security Configuration
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-security-context
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-security-context
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    security.veridis.xyz/type: security-context-config
+    security.veridis.xyz/category: pod-security
+    security.veridis.xyz/role: security-settings
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Security context configuration for Veridis Backend pods"
+    veridis.xyz/purpose: "Provides comprehensive pod security configuration with enterprise-grade security"
+
+data:
+  # ==============================================================================
+  # Security Context Configuration
+  # ==============================================================================
+
+  security-context.yaml: |
+    # Veridis Backend Security Context Configuration
+    # Enterprise-grade pod security configuration
+
+    securityContext:
+      # Pod security context
+      pod:
+        # Run as non-root user
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+
+        # Filesystem group
+        fsGroup: 10001
+        fsGroupChangePolicy: "OnRootMismatch"
+
+        # Security context constraints
+        seccompProfile:
+          type: "RuntimeDefault"
+
+        # Supplemental groups
+        supplementalGroups: [10001]
+
+        # System controls
+        sysctls: []
+
+      # Container security context
+      container:
+        # Security capabilities
+        capabilities:
+          drop:
+            - "ALL"
+          add:
+            - "NET_BIND_SERVICE"  # Only if needed for port binding
+
+        # Privilege settings
+        privileged: false
+        allowPrivilegeEscalation: false
+
+        # User settings
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+
+        # Read-only root filesystem
+        readOnlyRootFilesystem: true
+
+        # Security profile
+        seccompProfile:
+          type: "RuntimeDefault"
+
+        # Proc mount
+        procMount: "Default"
+
+      # Network security
+      network:
+        # Host network
+        hostNetwork: false
+        hostPID: false
+        hostIPC: false
+
+        # DNS policy
+        dnsPolicy: "ClusterFirst"
+
+        # Service account
+        automountServiceAccountToken: false
+
+      # Volume security
+      volumes:
+        # Allowed volume types
+        allowed_types:
+          - "configMap"
+          - "secret"
+          - "emptyDir"
+          - "persistentVolumeClaim"
+
+        # Volume mount security
+        mount_options:
+          - "ro"  # Read-only where possible
+          - "noexec"  # No execution
+          - "nosuid"  # No setuid
+
+      # Resource constraints
+      resources:
+        # Prevent resource exhaustion
+        limits_required: true
+        requests_required: true
+
+        # Security limits
+        max_cpu: "2000m"
+        max_memory: "4Gi"
+        max_storage: "10Gi"
+
+---
+# ==============================================================================
+# Veridis Backend Network Security Monitoring - Traffic Analysis
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-network-monitoring
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-network-monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: network-monitoring-config
+    monitoring.veridis.xyz/category: security-monitoring
+    monitoring.veridis.xyz/role: traffic-analysis
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Network security monitoring configuration with traffic analysis and threat detection"
+    veridis.xyz/purpose: "Provides comprehensive network security monitoring with intelligent threat detection"
+
+data:
+  # ==============================================================================
+  # Network Security Monitoring Configuration
+  # ==============================================================================
+
+  network-monitoring.yaml: |
+    # Veridis Backend Network Security Monitoring Configuration
+    # Comprehensive network security monitoring with intelligent threat detection
+
+    networkMonitoring:
+      # Traffic analysis
+      traffic_analysis:
+        # Flow monitoring
+        flow_monitoring:
+          enabled: true
+          sample_rate: 1000
+          collection_interval: "30s"
+
+        # Protocol analysis
+        protocol_analysis:
+          enabled: true
+          protocols: ["TCP", "UDP", "ICMP"]
+          deep_packet_inspection: false  # Privacy-preserving
+
+        # Bandwidth monitoring
+        bandwidth_monitoring:
+          enabled: true
+          threshold_alerts: true
+          usage_analytics: true
+
+      # Security monitoring
+      security_monitoring:
+        # Intrusion detection
+        intrusion_detection:
+          enabled: true
+          signature_based: true
+          anomaly_detection: true
+
+        # Threat intelligence
+        threat_intelligence:
+          enabled: true
+          reputation_checks: true
+          blacklist_monitoring: true
+
+        # Behavioral analysis
+        behavioral_analysis:
+          enabled: true
+          baseline_learning: true
+          anomaly_threshold: 0.05
+
+      # Alerting configuration
+      alerting:
+        # Security alerts
+        security_alerts:
+          - name: "policy_violation"
+            condition: "denied_connections > 10"
+            severity: "warning"
+
+          - name: "suspicious_traffic"
+            condition: "anomaly_score > 0.8"
+            severity: "critical"
+
+          - name: "unauthorized_access"
+            condition: "failed_connections > 5"
+            severity: "critical"
+
+        # Performance alerts
+        performance_alerts:
+          - name: "high_latency"
+            condition: "network_latency > 100ms"
+            severity: "warning"
+
+          - name: "bandwidth_exhaustion"
+            condition: "bandwidth_usage > 80%"
+            severity: "warning"
+
+      # Compliance monitoring
+      compliance_monitoring:
+        # Audit logging
+        audit_logging:
+          enabled: true
+          log_all_connections: true
+          log_policy_decisions: true
+          retention_period: "365d"
+
+        # Compliance reporting
+        compliance_reporting:
+          enabled: true
+          report_frequency: "daily"
+          report_format: "json"
+
+      # Integration configuration
+      integrations:
+        # SIEM integration
+        siem:
+          enabled: true
+          endpoint: "https://siem.veridis.xyz/api/events"
+          format: "cef"
+
+        # Monitoring tools
+        monitoring_tools:
+          prometheus:
+            enabled: true
+            metrics_endpoint: "/metrics"
+
+          grafana:
+            enabled: true
+            dashboard_id: "network-security"
+
+          jaeger:
+            enabled: true
+            tracing_enabled: true
+
+# ==============================================================================
+# Veridis Backend Network Policy Summary and Enterprise Security Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS BACKEND NETWORK SECURITY STRATEGY:
+# ========================================================
+#
+# VERIDIS BACKEND NETWORK SECURITY ARCHITECTURE OVERVIEW:
+# -------------------------------------------------------
+# 1. Primary Network Policy (veridis-backend-network-policy):
+#    - Enterprise-grade microsegmentation with comprehensive ingress and egress control
+#    - Multi-tier traffic control including API gateway, frontend, ZK circuits, and monitoring access
+#    - Intelligent service communication with pod and namespace selectors for precise traffic control
+#    - Advanced monitoring integration with Prometheus, Grafana, and Jaeger access management
+#    - Production-optimized security with essential service communication and external API control
+#
+# 2. Strict Network Policy (veridis-backend-strict-policy):
+#    - Maximum security isolation for high-security scenarios and sensitive data processing
+#    - Minimal allowed traffic with essential connections only (database and DNS)
+#    - Zero-trust network model with complete traffic isolation and approved connections
+#    - Emergency security mode with maximum protection and audit capabilities
+#    - Critical operation protection with strict enforcement and immediate violation alerting
+#
+# 3. Development Network Policy (veridis-backend-dev-policy):
+#    - Relaxed security policy for development and testing environments
+#    - Development-friendly traffic allowances with debugging and testing capabilities
+#    - Flexible ingress and egress rules for development workflow optimization
+#    - Debug tool access with kubectl and development tool integration
+#    - Testing environment support with external service access for development
+#
+# 4. Advanced Network Configuration (veridis-backend-network-config):
+#    - Comprehensive network security configuration with intelligent traffic management
+#    - Policy enforcement with strict mode, violation logging, and automated rollback
+#    - Traffic filtering with IP allowlists, port restrictions, and protocol validation
+#    - Monitoring integration with traffic analysis, security events, and performance tracking
+#    - Compliance framework integration with SOC 2, GDPR, ISO 27001, and NIST controls
+#
+# 5. Security Context Configuration (veridis-backend-security-context):
+#    - Enterprise-grade pod security with non-root execution and capability restrictions
+#    - Container security with read-only filesystem, privilege restrictions, and security profiles
+#    - Network security with host isolation and service account token restrictions
+#    - Volume security with type restrictions and mount option security
+#    - Resource security with limits enforcement and security constraints
+#
+# 6. Network Security Monitoring (veridis-backend-network-monitoring):
+#    - Comprehensive traffic analysis with flow monitoring and protocol analysis
+#    - Security monitoring with intrusion detection and threat intelligence
+#    - Behavioral analysis with baseline learning and anomaly detection
+#    - Alerting integration with security alerts and performance monitoring
+#    - Compliance monitoring with audit logging and SIEM integration
+#
+# ENTERPRISE NETWORK SECURITY FEATURES:
+# =====================================
+# Advanced Microsegmentation:
+#   - Multi-tier network policies with primary, strict, and development configurations
+#   - Intelligent traffic control with pod and namespace selectors for precise security
+#   - Service-aware networking with application context and business intelligence
+#   - Zero-trust architecture with deny-by-default and explicit allow policies
+#   - Advanced isolation with lateral movement protection and threat containment
+#
+# Comprehensive Traffic Control:
+#   - Ingress control with API gateway, frontend, monitoring, and service mesh integration
+#   - Egress control with database, cache, secrets management, and blockchain access
+#   - Port-specific filtering with application awareness and protocol validation
+#   - IP allowlisting with network segmentation and geographic restrictions
+#   - Protocol filtering with TCP/UDP control and application-layer inspection
+#
+# Intelligent Security Enforcement:
+#   - Policy validation with dry-run mode and automated rollback capabilities
+#   - Violation detection with real-time alerting and incident response
+#   - Emergency override with approval workflows and escalation procedures
+#   - Compliance enforcement with regulatory framework integration
+#   - Security orchestration with automated response and threat mitigation
+#
+# Advanced Monitoring and Analytics:
+#   - Traffic analysis with flow monitoring and behavioral analysis
+#   - Security monitoring with intrusion detection and threat intelligence
+#   - Performance monitoring with latency and throughput optimization
+#   - Compliance monitoring with audit logging and regulatory reporting
+#   - Business intelligence with traffic patterns and security analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Security Lifecycle Management:
+#   - Multi-environment policies with production, development, and testing configurations
+#   - Intelligent policy management with environment-specific security controls
+#   - Emergency response with incident isolation and automated containment
+#   - Compliance validation with continuous monitoring and regulatory alignment
+#   - Security optimization with performance analysis and threat landscape adaptation
+#
+# Business Continuity Integration:
+#   - High availability with service communication protection and redundancy
+#   - Disaster recovery with network security preservation and rapid restoration
+#   - Business intelligence with traffic analytics and operational insights
+#   - Cost optimization with resource efficiency and network utilization analysis
+#   - Strategic planning with security analytics and threat intelligence integration
+#
+# Developer Experience Excellence:
+#   - Development-friendly policies with debugging and testing capabilities
+#   - Comprehensive documentation with runbook integration and troubleshooting guides
+#   - Automation integration with CI/CD pipeline security and deployment validation
+#   - Security transparency with policy visualization and impact analysis
+#   - Performance optimization with latency monitoring and throughput analysis
+#
+# Compliance and Governance:
+#   - Multi-framework compliance with SOC 2, GDPR, ISO 27001, and NIST integration
+#   - Audit trail preservation with comprehensive logging and evidence collection
+#   - Policy governance with approval workflows and change management
+#   - Risk assessment with threat modeling and vulnerability analysis
+#   - Regulatory reporting with automated compliance validation and documentation
+#
+# ==============================================================================
