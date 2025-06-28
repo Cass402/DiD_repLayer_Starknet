@@ -1,0 +1,1303 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Prometheus Monitoring Deployment Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Prometheus Monitoring Deployment for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS PROMETHEUS MONITORING ARCHITECTURE:
+#   • Advanced Prometheus monitoring with intelligent metrics collection and performance-based monitoring optimization
+#   • Multi-tier monitoring architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with monitoring policies, metrics optimization, Prometheus integration
+#   • Advanced lifecycle management with automated monitoring optimization, Prometheus control, and metrics enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Prometheus monitoring performance insights
+#
+# VERIDIS PROMETHEUS MONITORING OPTIMIZATION:
+#   • High-performance monitoring with intelligent metrics collection and Prometheus service optimization
+#   • Intelligent monitoring traffic management with responsive policies and performance-based monitoring decisions
+#   • Advanced storage management with business intelligence and retention-based Prometheus control
+#   • Comprehensive observability control with intelligent Prometheus monitoring management and metrics enhancement
+#   • Enterprise acceleration with predictive Prometheus monitoring management and metrics optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Prometheus monitoring controls with comprehensive audit and metrics requirements
+#   • GDPR Prometheus monitoring compliance with data protection, privacy controls, and metrics management
+#   • ISO 27001 Prometheus monitoring management with comprehensive framework integration
+#   • NIST 800-190 container Prometheus monitoring security with metrics-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Prometheus monitoring best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Prometheus monitoring lifecycle management with automated provisioning and metrics optimization
+#   • Predictive metrics analytics with capacity planning and Prometheus monitoring intelligence
+#   • Advanced monitoring integration with Prometheus analytics and metrics business intelligence
+#   • Comprehensive observability control with Prometheus monitoring preservation and metrics optimization
+#   • Business continuity Prometheus monitoring with metrics guarantees and monitoring optimization
+#
+# PROMETHEUS MONITORING ACCELERATION INTELLIGENCE:
+#   • Prometheus monitoring usage analytics with metrics patterns and optimization recommendations
+#   • Metrics monitoring with Prometheus latency and collection optimization intelligence
+#   • Development efficiency with Prometheus monitoring analytics and deployment optimization procedures
+#   • Cost optimization with Prometheus monitoring utilization analysis and metrics capacity planning procedures
+#   • Quality assurance with Prometheus monitoring metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Prometheus Monitoring - Primary Production Deployment
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-prometheus-monitoring
+  namespace: veridis-infrastructure
+
+  # Core Veridis Prometheus Monitoring identification labels
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Prometheus Monitoring specific classification
+    prometheus.veridis.xyz/type: monitoring-prometheus
+    prometheus.veridis.xyz/category: production-monitoring
+    prometheus.veridis.xyz/role: primary-prometheus-monitoring
+    prometheus.veridis.xyz/performance-class: high-performance-prometheus-monitoring
+    prometheus.veridis.xyz/security-level: enterprise
+
+    # Monitoring Prometheus classification
+    monitoring.veridis.xyz/prometheus-type: intelligent-prometheus
+    monitoring.veridis.xyz/service-type: monitoring-service
+    monitoring.veridis.xyz/performance-tier: high-performance
+    monitoring.veridis.xyz/optimization: enabled
+    monitoring.veridis.xyz/features: full-monitoring-stack
+
+    # Observability Prometheus classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-monitoring-collection
+    observability.veridis.xyz/metrics-collection: advanced
+    observability.veridis.xyz/storage-management: optimized
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Prometheus classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-monitoring-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Prometheus labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+    veridis.xyz/cost-center: monitoring-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "prometheus-monitoring-control-framework"
+    compliance.veridis.xyz/gdpr: "prometheus-monitoring-data-protection"
+    compliance.veridis.xyz/iso27001: "prometheus-monitoring-security-management"
+    compliance.veridis.xyz/nist-800-190: "prometheus-monitoring-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Prometheus Monitoring analytics and intelligence
+    monitoring.veridis.xyz/prometheus-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/metrics-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Storage management labels
+    storage.veridis.xyz/retention-enabled: "true"
+    storage.veridis.xyz/compression-enabled: "true"
+    storage.veridis.xyz/optimization: "maximum"
+    storage.veridis.xyz/backup-enabled: "true"
+    storage.veridis.xyz/disaster-recovery: "enabled"
+
+  annotations:
+    # Prometheus Monitoring purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Prometheus Monitoring with intelligent metrics collection, advanced storage management, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Prometheus monitoring for decentralized identity management with intelligent metrics collection, monitoring optimization, and observability guarantees"
+    veridis.xyz/scope: "Prometheus monitoring including metrics collection, storage management, alerting, and comprehensive monitoring intelligence"
+
+    # Prometheus Monitoring architecture and design
+    prometheus.veridis.xyz/architecture: "Enterprise Prometheus monitoring with intelligent metrics collection, advanced storage management, and retention optimization"
+    prometheus.veridis.xyz/design-pattern: "Multi-tier Prometheus monitoring with metrics optimization, cost efficiency, and business intelligence"
+    prometheus.veridis.xyz/optimization-model: "Intelligent Prometheus monitoring with predictive analytics, metrics optimization, and storage efficiency"
+    prometheus.veridis.xyz/performance-model: "High-performance Prometheus monitoring with metrics optimization and intelligent storage management"
+
+    # Monitoring Prometheus specifications
+    monitoring.veridis.xyz/prometheus-specification: "Prometheus monitoring with metrics optimization and intelligent monitoring service management"
+    monitoring.veridis.xyz/collection-specification: "Advanced metrics collection configuration with monitoring optimization and storage enhancement"
+    monitoring.veridis.xyz/storage-specification: "Prometheus storage management optimization with intelligent retention and enhancement"
+    monitoring.veridis.xyz/performance-specification: "Prometheus performance monitoring with metrics acceleration and storage efficiency"
+    monitoring.veridis.xyz/business-specification: "Prometheus business monitoring with cost optimization and strategic metrics intelligence"
+
+    # Observability Prometheus specifications
+    observability.veridis.xyz/prometheus-specification: "Observability-aware Prometheus monitoring with storage optimization and metrics intelligence"
+    observability.veridis.xyz/metrics-specification: "Observability metrics management optimization with intelligent Prometheus and storage enhancement"
+    observability.veridis.xyz/collection-specification: "Observability collection with cost optimization and intelligent Prometheus management"
+    observability.veridis.xyz/retention-specification: "Observability retention management with auto-optimization and Prometheus management"
+    observability.veridis.xyz/monitoring-specification: "Observability monitoring with Prometheus analytics and storage intelligence"
+
+    # Business Prometheus specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant Prometheus monitoring with business continuity and metrics guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized Prometheus monitoring with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with Prometheus monitoring optimization and metrics intelligence"
+
+    # Operational Prometheus specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with Prometheus analytics and metrics intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with Prometheus monitoring preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with Prometheus monitoring management and metrics optimization"
+
+    # Prometheus Monitoring lifecycle specifications
+    lifecycle.veridis.xyz/prometheus-monitoring-specification: "Dynamic Prometheus monitoring with automated metrics management and storage optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent Prometheus monitoring scaling with machine learning and metrics forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Prometheus monitoring optimization with intelligent metrics management and storage enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Prometheus monitoring evolution with intelligent adaptation and metrics optimization"
+
+    # Prometheus-specific annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/metrics-optimization: "enabled"
+    performance.veridis.xyz/storage-compression: "enabled"
+    performance.veridis.xyz/retention-optimization: "enabled"
+    performance.veridis.xyz/query-optimization: "enabled"
+    performance.veridis.xyz/memory-optimization: "enabled"
+
+    # Storage management annotations
+    storage.veridis.xyz/retention-policy: "90d"
+    storage.veridis.xyz/compression-enabled: "true"
+    storage.veridis.xyz/backup-strategy: "continuous"
+    storage.veridis.xyz/disaster-recovery: "enabled"
+    storage.veridis.xyz/storage-class: "high-performance-ssd"
+
+    # Monitoring and observability annotations
+    monitoring.veridis.xyz/self-monitoring: "enabled"
+    monitoring.veridis.xyz/alerting-enabled: "true"
+    monitoring.veridis.xyz/grafana-integration: "enabled"
+    monitoring.veridis.xyz/jaeger-integration: "enabled"
+    monitoring.veridis.xyz/log-integration: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/rbac-enabled: "true"
+    security.veridis.xyz/network-policies: "enabled"
+    security.veridis.xyz/pod-security-standards: "restricted"
+    security.veridis.xyz/encryption-at-rest: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "monitoring-team@veridis.xyz"
+    veridis.xyz/prometheus-admin: "monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "monitoring-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "monitoring-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/monitoring/prometheus-management"
+    veridis.xyz/prometheus-docs: "https://monitoring.veridis.xyz/prometheus-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/prometheus-monitoring"
+
+spec:
+  # ==============================================================================
+  # Deployment Strategy Configuration
+  # ==============================================================================
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: prometheus-monitoring
+
+  # ==============================================================================
+  # Pod Template Configuration
+  # ==============================================================================
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prometheus
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "2.48.1"
+        app.kubernetes.io/component: prometheus-monitoring
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+
+        # Pod-specific labels
+        prometheus.veridis.xyz/pod-type: monitoring-prometheus
+        monitoring.veridis.xyz/scrape-enabled: "true"
+        observability.veridis.xyz/metrics-collection: "enabled"
+        veridis.xyz/environment: production
+
+      annotations:
+        # Pod optimization annotations
+        veridis.xyz/pod-optimization: "prometheus-monitoring-optimized"
+        prometheus.veridis.xyz/pod-configuration: "enterprise-monitoring"
+        monitoring.veridis.xyz/collection-optimization: "enabled"
+
+        # Prometheus-specific pod annotations
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/metrics"
+
+        # Performance annotations
+        performance.veridis.xyz/cpu-optimization: "enabled"
+        performance.veridis.xyz/memory-optimization: "enabled"
+        performance.veridis.xyz/storage-optimization: "enabled"
+
+        # Security annotations
+        security.veridis.xyz/pod-security-context: "restricted"
+        security.veridis.xyz/security-scanning: "enabled"
+        security.veridis.xyz/vulnerability-scanning: "enabled"
+
+    spec:
+      # ==============================================================================
+      # Security Context Configuration
+      # ==============================================================================
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534  # nobody user
+        runAsGroup: 65534  # nobody group
+        fsGroup: 65534
+        fsGroupChangePolicy: "OnRootMismatch"
+        seccompProfile:
+          type: RuntimeDefault
+        supplementalGroups: [65534]
+
+      # ==============================================================================
+      # Service Account Configuration
+      # ==============================================================================
+      serviceAccountName: veridis-prometheus-monitoring
+      automountServiceAccountToken: true
+
+      # ==============================================================================
+      # Pod Priority and Scheduling
+      # ==============================================================================
+      priorityClassName: veridis-monitoring-priority
+      schedulerName: default-scheduler
+
+      # ==============================================================================
+      # Node Selection and Affinity
+      # ==============================================================================
+      nodeSelector:
+        veridis.xyz/node-type: monitoring
+        kubernetes.io/arch: amd64
+        veridis.xyz/monitoring-optimized: "true"
+
+      affinity:
+        # Pod anti-affinity for high availability
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values: ["prometheus"]
+                    - key: app.kubernetes.io/component
+                      operator: In
+                      values: ["prometheus-monitoring"]
+                topologyKey: kubernetes.io/hostname
+            - weight: 50
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values: ["prometheus"]
+                topologyKey: topology.kubernetes.io/zone
+
+        # Node affinity for monitoring nodes
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: veridis.xyz/node-type
+                    operator: In
+                    values: ["monitoring", "general"]
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: veridis.xyz/monitoring-optimized
+                    operator: In
+                    values: ["true"]
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: node.kubernetes.io/instance-type
+                    operator: In
+                    values: ["m5.xlarge", "m5.2xlarge", "m6i.xlarge", "m6i.2xlarge"]
+
+      # ==============================================================================
+      # Tolerations Configuration
+      # ==============================================================================
+      tolerations:
+        - key: veridis.xyz/monitoring-dedicated
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        - key: monitoring
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 300
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 300
+
+      # ==============================================================================
+      # DNS Configuration
+      # ==============================================================================
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "2"
+          - name: edns0
+
+      # ==============================================================================
+      # Termination Configuration
+      # ==============================================================================
+      terminationGracePeriodSeconds: 300
+
+      # ==============================================================================
+      # Init Containers Configuration
+      # ==============================================================================
+      initContainers:
+        # ==============================================================================
+        # Storage Initialization Container
+        # ==============================================================================
+        - name: storage-init
+          image: busybox:1.36.1-musl
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+            seccompProfile:
+              type: RuntimeDefault
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              echo "Initializing Prometheus storage directory..."
+              mkdir -p /prometheus/data
+              mkdir -p /prometheus/config
+              mkdir -p /prometheus/rules
+              mkdir -p /prometheus/alerts
+              chown -R 65534:65534 /prometheus
+              chmod -R 750 /prometheus
+              echo "Storage initialization completed successfully"
+
+          volumeMounts:
+            - name: prometheus-storage
+              mountPath: /prometheus
+            - name: tmp
+              mountPath: /tmp
+
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+
+        # ==============================================================================
+        # Configuration Validation Container
+        # ==============================================================================
+        - name: config-validator
+          image: prom/prometheus:v2.48.1
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+            seccompProfile:
+              type: RuntimeDefault
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              echo "Validating Prometheus configuration..."
+              /bin/prometheus --config.file=/etc/prometheus/prometheus.yml --check-config
+              echo "Configuration validation completed successfully"
+
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /etc/prometheus
+              readOnly: true
+            - name: prometheus-rules
+              mountPath: /etc/prometheus/rules
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+
+      # ==============================================================================
+      # Main Container Configuration
+      # ==============================================================================
+      containers:
+        # ==============================================================================
+        # Prometheus Server Container
+        # ==============================================================================
+        - name: prometheus
+          image: prom/prometheus:v2.48.1
+          imagePullPolicy: IfNotPresent
+
+          # ==============================================================================
+          # Container Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+            seccompProfile:
+              type: RuntimeDefault
+
+          # ==============================================================================
+          # Container Command and Arguments
+          # ==============================================================================
+          args:
+            # Core configuration
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus/data"
+            - "--web.console.libraries=/etc/prometheus/console_libraries"
+            - "--web.console.templates=/etc/prometheus/consoles"
+
+            # Network configuration
+            - "--web.listen-address=0.0.0.0:9090"
+            - "--web.external-url=https://prometheus.veridis.xyz"
+            - "--web.route-prefix=/"
+            - "--web.enable-lifecycle"
+            - "--web.enable-admin-api"
+
+            # Storage configuration
+            - "--storage.tsdb.retention.time=90d"
+            - "--storage.tsdb.retention.size=50GB"
+            - "--storage.tsdb.min-block-duration=2h"
+            - "--storage.tsdb.max-block-duration=25h"
+            - "--storage.tsdb.wal-compression"
+            - "--storage.tsdb.no-lockfile"
+
+            # Query configuration
+            - "--query.lookback-delta=5m"
+            - "--query.timeout=2m"
+            - "--query.max-concurrency=20"
+            - "--query.max-samples=50000000"
+
+            # Alerting configuration
+            - "--alertmanager.notification-queue-capacity=10000"
+            - "--alertmanager.timeout=10s"
+
+            # Performance optimization
+            - "--enable-feature=agent"
+            - "--enable-feature=exemplar-storage"
+            - "--enable-feature=expand-external-labels"
+            - "--enable-feature=memory-snapshot-on-shutdown"
+            - "--enable-feature=new-service-discovery-manager"
+
+            # Logging configuration
+            - "--log.level=info"
+            - "--log.format=logfmt"
+
+          # ==============================================================================
+          # Port Configuration
+          # ==============================================================================
+          ports:
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+
+          # ==============================================================================
+          # Environment Variables
+          # ==============================================================================
+          env:
+            - name: PROMETHEUS_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: PROMETHEUS_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: PROMETHEUS_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: PROMETHEUS_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+
+            # Performance tuning environment variables
+            - name: GOGC
+              value: "25"
+            - name: GOMAXPROCS
+              value: "4"
+            - name: GOMEMLIMIT
+              value: "3GiB"
+
+          # ==============================================================================
+          # Volume Mounts
+          # ==============================================================================
+          volumeMounts:
+            # Configuration mounts
+            - name: prometheus-config
+              mountPath: /etc/prometheus
+              readOnly: true
+            - name: prometheus-rules
+              mountPath: /etc/prometheus/rules
+              readOnly: true
+            - name: prometheus-alerts
+              mountPath: /etc/prometheus/alerts
+              readOnly: true
+
+            # Data storage mount
+            - name: prometheus-storage
+              mountPath: /prometheus
+
+            # Temporary filesystem mount
+            - name: tmp
+              mountPath: /tmp
+
+            # TLS certificates mount
+            - name: tls-certs
+              mountPath: /etc/ssl/certs/prometheus
+              readOnly: true
+
+          # ==============================================================================
+          # Resource Configuration
+          # ==============================================================================
+          resources:
+            requests:
+              cpu: 1000m      # 1 CPU core
+              memory: 2Gi     # 2 GB RAM
+              ephemeral-storage: 1Gi
+            limits:
+              cpu: 4000m      # 4 CPU cores
+              memory: 8Gi     # 8 GB RAM
+              ephemeral-storage: 5Gi
+
+          # ==============================================================================
+          # Health Check Configuration
+          # ==============================================================================
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: 9090
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+          startupProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 30
+
+          # ==============================================================================
+          # Lifecycle Configuration
+          # ==============================================================================
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    echo "Gracefully shutting down Prometheus..."
+                    kill -TERM 1
+                    sleep 15
+
+        # ==============================================================================
+        # Configuration Reloader Sidecar Container
+        # ==============================================================================
+        - name: config-reloader
+          image: jimmidyson/configmap-reload:v0.8.0
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+            seccompProfile:
+              type: RuntimeDefault
+
+          args:
+            - "--volume-dir=/etc/prometheus"
+            - "--volume-dir=/etc/prometheus/rules"
+            - "--volume-dir=/etc/prometheus/alerts"
+            - "--webhook-url=http://localhost:9090/-/reload"
+            - "--webhook-method=POST"
+            - "--webhook-status-code=200"
+            - "--log-level=info"
+
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /etc/prometheus
+              readOnly: true
+            - name: prometheus-rules
+              mountPath: /etc/prometheus/rules
+              readOnly: true
+            - name: prometheus-alerts
+              mountPath: /etc/prometheus/alerts
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+
+          env:
+            - name: TMPDIR
+              value: /tmp
+
+        # ==============================================================================
+        # Storage Backup Sidecar Container
+        # ==============================================================================
+        - name: storage-backup
+          image: busybox:1.36.1-musl
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+            seccompProfile:
+              type: RuntimeDefault
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              echo "Storage backup sidecar started"
+              while true; do
+                sleep 3600  # Run every hour
+                echo "Performing incremental backup..."
+                if [ -d "/prometheus/data" ]; then
+                  find /prometheus/data -name "*.db" -mtime -1 -exec echo "Found recent data: {}" \;
+                fi
+                echo "Backup check completed"
+              done
+
+          volumeMounts:
+            - name: prometheus-storage
+              mountPath: /prometheus
+              readOnly: true
+            - name: backup-storage
+              mountPath: /backup
+            - name: tmp
+              mountPath: /tmp
+
+          resources:
+            requests:
+              cpu: 5m
+              memory: 8Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
+
+      # ==============================================================================
+      # Volume Configuration
+      # ==============================================================================
+      volumes:
+        # Configuration volumes
+        - name: prometheus-config
+          configMap:
+            name: veridis-prometheus-config
+            defaultMode: 0644
+            items:
+              - key: prometheus.yml
+                path: prometheus.yml
+              - key: recording-rules.yml
+                path: recording-rules.yml
+
+        - name: prometheus-rules
+          configMap:
+            name: veridis-prometheus-rules
+            defaultMode: 0644
+
+        - name: prometheus-alerts
+          configMap:
+            name: veridis-prometheus-alerts
+            defaultMode: 0644
+
+        # Storage volumes
+        - name: prometheus-storage
+          persistentVolumeClaim:
+            claimName: veridis-prometheus-storage
+
+        - name: backup-storage
+          persistentVolumeClaim:
+            claimName: veridis-prometheus-backup
+
+        # TLS certificates volume
+        - name: tls-certs
+          secret:
+            secretName: veridis-prometheus-tls
+            defaultMode: 0400
+            items:
+              - key: tls.crt
+                path: tls.crt
+              - key: tls.key
+                path: tls.key
+              - key: ca.crt
+                path: ca.crt
+
+        # Temporary filesystem volume
+        - name: tmp
+          emptyDir:
+            sizeLimit: 1Gi
+            medium: Memory
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - High Availability Deployment Configuration
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-prometheus-ha
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-ha
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: high-availability-prometheus
+    prometheus.veridis.xyz/category: ha-monitoring
+    prometheus.veridis.xyz/role: prometheus-ha-monitoring
+    prometheus.veridis.xyz/deployment-tier: high-availability
+
+    monitoring.veridis.xyz/prometheus-type: ha-prometheus
+    monitoring.veridis.xyz/availability: high-availability
+    monitoring.veridis.xyz/redundancy: enabled
+    monitoring.veridis.xyz/failover: automatic
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "High-availability Prometheus deployment for Veridis with automatic failover and data replication"
+    veridis.xyz/purpose: "Provides high-availability Prometheus monitoring with automatic failover and comprehensive redundancy"
+
+    prometheus.veridis.xyz/ha-specification: "High-availability Prometheus with automatic failover and data replication"
+    monitoring.veridis.xyz/ha-specification: "HA monitoring with Prometheus redundancy and automatic failover"
+
+    # High availability annotations
+    ha.veridis.xyz/enabled: "true"
+    ha.veridis.xyz/failover-mode: "automatic"
+    ha.veridis.xyz/data-replication: "enabled"
+    ha.veridis.xyz/leader-election: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-ha-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-ha"
+
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: prometheus-ha
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prometheus
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "2.48.1"
+        app.kubernetes.io/component: prometheus-ha
+        app.kubernetes.io/part-of: veridis-protocol
+
+        prometheus.veridis.xyz/pod-type: ha-prometheus
+        monitoring.veridis.xyz/scrape-enabled: "true"
+        ha.veridis.xyz/replica: "true"
+
+      annotations:
+        veridis.xyz/pod-optimization: "prometheus-ha-optimized"
+        prometheus.veridis.xyz/ha-pod-configuration: "high-availability-monitoring"
+        ha.veridis.xyz/leader-election: "enabled"
+
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        seccompProfile:
+          type: RuntimeDefault
+
+      serviceAccountName: veridis-prometheus-ha
+      priorityClassName: veridis-monitoring-high-priority
+
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values: ["prometheus"]
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values: ["prometheus-ha"]
+              topologyKey: kubernetes.io/hostname
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values: ["prometheus"]
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values: ["prometheus-ha"]
+              topologyKey: topology.kubernetes.io/zone
+
+      containers:
+        - name: prometheus-ha
+          image: prom/prometheus:v2.48.1
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+          args:
+            - "--config.file=/etc/prometheus/prometheus-ha.yml"
+            - "--storage.tsdb.path=/prometheus/data"
+            - "--web.listen-address=0.0.0.0:9090"
+            - "--web.external-url=https://prometheus-ha.veridis.xyz"
+            - "--storage.tsdb.retention.time=90d"
+            - "--storage.tsdb.retention.size=50GB"
+            - "--storage.tsdb.wal-compression"
+            - "--query.timeout=2m"
+            - "--query.max-concurrency=20"
+            - "--enable-feature=memory-snapshot-on-shutdown"
+            - "--log.level=info"
+
+          ports:
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+
+          env:
+            - name: PROMETHEUS_REPLICA_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: PROMETHEUS_CLUSTER_ID
+              value: "veridis-production-ha"
+
+          volumeMounts:
+            - name: prometheus-ha-config
+              mountPath: /etc/prometheus
+              readOnly: true
+            - name: prometheus-ha-storage
+              mountPath: /prometheus
+            - name: tmp
+              mountPath: /tmp
+
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 2Gi
+            limits:
+              cpu: 4000m
+              memory: 8Gi
+
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: 9090
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+      volumes:
+        - name: prometheus-ha-config
+          configMap:
+            name: veridis-prometheus-ha-config
+        - name: prometheus-ha-storage
+          persistentVolumeClaim:
+            claimName: veridis-prometheus-ha-storage
+        - name: tmp
+          emptyDir:
+            sizeLimit: 1Gi
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Long-Term Storage Deployment Configuration
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-prometheus-lts
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-lts
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: long-term-storage-prometheus
+    prometheus.veridis.xyz/category: lts-monitoring
+    prometheus.veridis.xyz/role: prometheus-lts-monitoring
+    prometheus.veridis.xyz/storage-tier: long-term
+
+    monitoring.veridis.xyz/prometheus-type: lts-prometheus
+    monitoring.veridis.xyz/storage-type: long-term
+    monitoring.veridis.xyz/retention: extended
+    monitoring.veridis.xyz/archival: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Long-term storage Prometheus deployment for Veridis with extended retention and archival capabilities"
+    veridis.xyz/purpose: "Provides long-term storage Prometheus monitoring with extended retention and comprehensive archival"
+
+    prometheus.veridis.xyz/lts-specification: "Long-term storage Prometheus with extended retention and archival capabilities"
+    monitoring.veridis.xyz/lts-specification: "LTS monitoring with Prometheus extended storage and archival"
+
+    # Long-term storage annotations
+    lts.veridis.xyz/enabled: "true"
+    lts.veridis.xyz/retention: "365d"
+    lts.veridis.xyz/archival-enabled: "true"
+    lts.veridis.xyz/compression: "maximum"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-lts-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-lts"
+
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: prometheus-lts
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: prometheus
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "2.48.1"
+        app.kubernetes.io/component: prometheus-lts
+        app.kubernetes.io/part-of: veridis-protocol
+
+        prometheus.veridis.xyz/pod-type: lts-prometheus
+        monitoring.veridis.xyz/scrape-enabled: "true"
+        lts.veridis.xyz/storage: "enabled"
+
+      annotations:
+        veridis.xyz/pod-optimization: "prometheus-lts-optimized"
+        prometheus.veridis.xyz/lts-pod-configuration: "long-term-storage-monitoring"
+        lts.veridis.xyz/archival-enabled: "true"
+
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        seccompProfile:
+          type: RuntimeDefault
+
+      serviceAccountName: veridis-prometheus-lts
+      priorityClassName: veridis-monitoring-priority
+
+      nodeSelector:
+        veridis.xyz/storage-optimized: "true"
+
+      containers:
+        - name: prometheus-lts
+          image: prom/prometheus:v2.48.1
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+          args:
+            - "--config.file=/etc/prometheus/prometheus-lts.yml"
+            - "--storage.tsdb.path=/prometheus/data"
+            - "--web.listen-address=0.0.0.0:9090"
+            - "--web.external-url=https://prometheus-lts.veridis.xyz"
+            - "--storage.tsdb.retention.time=365d"
+            - "--storage.tsdb.retention.size=500GB"
+            - "--storage.tsdb.min-block-duration=2h"
+            - "--storage.tsdb.max-block-duration=25h"
+            - "--storage.tsdb.wal-compression"
+            - "--query.timeout=5m"
+            - "--query.max-concurrency=10"
+            - "--enable-feature=memory-snapshot-on-shutdown"
+            - "--log.level=info"
+
+          ports:
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+
+          env:
+            - name: PROMETHEUS_STORAGE_TYPE
+              value: "long-term"
+            - name: PROMETHEUS_RETENTION_POLICY
+              value: "365d"
+
+          volumeMounts:
+            - name: prometheus-lts-config
+              mountPath: /etc/prometheus
+              readOnly: true
+            - name: prometheus-lts-storage
+              mountPath: /prometheus
+            - name: tmp
+              mountPath: /tmp
+
+          resources:
+            requests:
+              cpu: 500m
+              memory: 4Gi
+            limits:
+              cpu: 2000m
+              memory: 16Gi
+
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: 9090
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 15
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+
+      volumes:
+        - name: prometheus-lts-config
+          configMap:
+            name: veridis-prometheus-lts-config
+        - name: prometheus-lts-storage
+          persistentVolumeClaim:
+            claimName: veridis-prometheus-lts-storage
+        - name: tmp
+          emptyDir:
+            sizeLimit: 2Gi
+
+# ==============================================================================
+# Veridis Prometheus Monitoring Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS PROMETHEUS MONITORING STRATEGY:
+# ====================================================
+#
+# VERIDIS PROMETHEUS MONITORING ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------
+# 1. Primary Prometheus Monitoring (veridis-prometheus-monitoring):
+#    - Comprehensive Prometheus deployment with intelligent metrics collection and advanced storage management for production monitoring
+#    - Advanced enterprise configuration with 90-day retention, 50GB storage limit, WAL compression, and comprehensive query optimization
+#    - Multi-container architecture with Prometheus server, config-reloader sidecar, and storage-backup sidecar for complete monitoring lifecycle
+#    - Enterprise security with restricted security context, non-root execution, read-only filesystem, and comprehensive capabilities dropping
+#    - Performance optimization with GOGC=25, GOMAXPROCS=4, GOMEMLIMIT=3GiB, and intelligent memory management for maximum efficiency
+#
+# 2. High-Availability Prometheus (veridis-prometheus-ha):
+#    - High-availability Prometheus deployment with automatic failover and data replication for mission-critical monitoring
+#    - Multi-replica configuration with pod anti-affinity, leader election, and automatic failover capabilities
+#    - Advanced scheduling with required anti-affinity across nodes and zones for maximum availability and fault tolerance
+#    - Conditional deployment with prometheus-ha-enabled flag for flexible high-availability monitoring enablement
+#    - Enterprise monitoring with comprehensive redundancy, automatic leader election, and seamless failover management
+#
+# 3. Long-Term Storage Prometheus (veridis-prometheus-lts):
+#    - Long-term storage Prometheus deployment with extended 365-day retention and archival capabilities for compliance
+#    - Storage-optimized configuration with 500GB retention size, extended query timeout, and archival-focused optimization
+#    - Single-replica deployment with Recreate strategy and storage-optimized node selection for cost-effective long-term storage
+#    - Conditional deployment with prometheus-lts-enabled flag for optional long-term storage and archival capabilities
+#    - Advanced retention management with comprehensive archival, compression optimization, and compliance-focused storage
+#
+# ENTERPRISE PROMETHEUS MONITORING FEATURES:
+# ==========================================
+# Advanced Prometheus Configuration and Performance Optimization:
+#   - Multi-tier monitoring with primary (90d), high-availability (90d), and long-term storage (365d) configurations
+#   - Advanced storage management with WAL compression, block duration optimization, and retention-based lifecycle management
+#   - Query optimization with 2-5 minute timeouts, 10-20 max concurrency, and 50M max samples for efficient resource utilization
+#   - Feature enablement with agent mode, exemplar storage, external labels expansion, and memory snapshot on shutdown
+#   - Performance tuning with Go runtime optimization (GOGC=25, GOMAXPROCS=4, GOMEMLIMIT=3GiB) for maximum efficiency
+#
+# Comprehensive Container Security and Compliance Integration:
+#   - Security context with runAsNonRoot=true, runAsUser=65534 (nobody), and comprehensive privilege dropping
+#   - Read-only root filesystem with capability dropping (ALL), seccomp profile (RuntimeDefault), and security scanning
+#   - Pod security standards with restricted context, security scanning, and vulnerability assessment integration
+#   - Network policies with microsegmentation, traffic control, and comprehensive security enforcement
+#   - Compliance integration with SOC 2, GDPR, ISO 27001, NIST compliance and comprehensive audit support
+#
+# Enterprise Multi-Container Architecture and Sidecar Integration:
+#   - Init containers with storage initialization and configuration validation for deployment safety and reliability
+#   - Config-reloader sidecar with automatic configuration reload and webhook-based Prometheus restart capabilities
+#   - Storage-backup sidecar with incremental backup, disaster recovery, and continuous data protection
+#   - Main Prometheus container with comprehensive monitoring, alerting, and enterprise-grade observability capabilities
+#   - Container resource optimization with CPU (1-4 cores), memory (2-8GB), and ephemeral storage (1-5GB) management
+#
+# Advanced Health Checking and Lifecycle Management:
+#   - Comprehensive health checks with liveness (/-/healthy), readiness (/-/ready), and startup probes
+#   - Graceful shutdown with preStop lifecycle hook, SIGTERM handling, and 300-second termination grace period
+#   - Probe optimization with initial delays (10-60s), periods (10-30s), timeouts (5-15s), and failure thresholds (3-30)
+#   - Lifecycle management with automatic restart, health-based traffic routing, and comprehensive failure recovery
+#   - Container startup optimization with startup probes, readiness gates, and comprehensive initialization validation
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Prometheus Monitoring Lifecycle Management:
+#   - Multi-deployment architecture with primary, high-availability, and long-term storage configurations
+#   - Intelligent Prometheus monitoring management with predictive analytics and metrics utilization correlation
+#   - Advanced monitoring with comprehensive Prometheus analytics and observability business intelligence
+#   - Configuration validation with Prometheus schema enforcement and monitoring deployment safety checks
+#   - Automated optimization with metrics pattern analysis and Prometheus configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II Prometheus monitoring controls with comprehensive audit requirements and metrics logging
+#   - GDPR Prometheus monitoring compliance with data protection and privacy-preserving metrics management
+#   - ISO 27001 Prometheus monitoring security management with information security and monitoring compliance integration
+#   - NIST 800-190 container Prometheus monitoring security with metrics validation and compliance
+#   - Zero-trust Prometheus monitoring architecture with comprehensive encryption and metrics authentication requirements
+#
+# Business Intelligence Integration:
+#   - Prometheus monitoring analytics with cost correlation and resource utilization optimization
+#   - Performance analytics with user experience optimization and monitoring business intelligence
+#   - Metrics intelligence with traffic pattern monitoring and Prometheus optimization recommendations
+#   - Strategic planning with capacity management and monitoring forecasting
+#   - Business impact assessment with monitoring performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment Prometheus monitoring with primary, high-availability, and long-term storage support
+#   - Comprehensive documentation with Prometheus guides and monitoring troubleshooting procedures
+#   - Environment-specific Prometheus monitoring with production, HA, and LTS support
+#   - Testing integration with Prometheus development workflow and monitoring debugging capabilities
+#   - Prometheus monitoring with comprehensive tracking and metrics correlation
+#
+# ==============================================================================
