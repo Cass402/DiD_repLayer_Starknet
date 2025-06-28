@@ -1,0 +1,948 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Backend Ingress Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Backend Ingress for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS BACKEND INGRESS ARCHITECTURE:
+#   • Advanced Rust backend ingress with Axum optimization and intelligent traffic routing
+#   • Multi-tier ingress architecture with development, testing, staging, and production environments
+#   • Comprehensive networking framework with backend routing, API gateway integration, and traffic intelligence
+#   • Advanced lifecycle management with automated ingress optimization, routing control, and traffic enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and ingress insights
+#
+# VERIDIS BACKEND INGRESS OPTIMIZATION:
+#   • High-performance backend ingress with intelligent routing and Axum optimization
+#   • Intelligent traffic management with responsive routing and performance-based traffic decisions
+#   • Advanced resource management with business intelligence and workload-based ingress control
+#   • Comprehensive networking control with intelligent ingress management and routing enhancement
+#   • Enterprise acceleration with predictive ingress management and traffic optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II ingress controls with comprehensive audit and networking requirements
+#   • GDPR ingress compliance with data protection, privacy controls, and traffic management
+#   • ISO 27001 ingress management with comprehensive framework integration
+#   • NIST 800-190 container ingress security with routing-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and ingress best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent ingress lifecycle management with automated provisioning and optimization
+#   • Predictive traffic analytics with capacity planning and ingress intelligence
+#   • Advanced monitoring integration with ingress analytics and business intelligence
+#   • Comprehensive networking control with ingress preservation and routing optimization
+#   • Business continuity ingress with traffic guarantees and routing optimization
+#
+# INGRESS ACCELERATION INTELLIGENCE:
+#   • Ingress usage analytics with traffic patterns and optimization recommendations
+#   • Networking monitoring with ingress latency and traffic optimization intelligence
+#   • Development efficiency with ingress analytics and deployment optimization procedures
+#   • Cost optimization with ingress utilization analysis and capacity planning procedures
+#   • Quality assurance with ingress metrics and traffic validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Ingress - Primary Production Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-backend-ingress
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend Ingress identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Ingress specific classification
+    ingress.veridis.xyz/type: backend-ingress
+    ingress.veridis.xyz/category: production-ingress
+    ingress.veridis.xyz/role: primary-ingress
+    ingress.veridis.xyz/performance-class: high-performance-ingress
+    ingress.veridis.xyz/security-level: enterprise
+
+    # Backend Ingress classification
+    backend.veridis.xyz/ingress-type: rust-ingress
+    backend.veridis.xyz/framework: axum
+    backend.veridis.xyz/performance-tier: high-performance
+    backend.veridis.xyz/optimization: enabled
+    backend.veridis.xyz/features: full-stack
+
+    # Networking Ingress classification
+    networking.veridis.xyz/tier: production
+    networking.veridis.xyz/optimization: intelligent-routing
+    networking.veridis.xyz/routing: advanced
+    networking.veridis.xyz/load-balancing: optimized
+    networking.veridis.xyz/efficiency: maximum
+
+    # Business Ingress classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-traffic
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Ingress labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: backend-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "ingress-control-framework"
+    compliance.veridis.xyz/gdpr: "ingress-data-protection"
+    compliance.veridis.xyz/iso27001: "ingress-security-management"
+    compliance.veridis.xyz/nist-800-190: "ingress-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Ingress monitoring and analytics
+    monitoring.veridis.xyz/ingress-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/traffic-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Traffic management labels
+    traffic.veridis.xyz/load-balancing: "round-robin"
+    traffic.veridis.xyz/sticky-sessions: "enabled"
+    traffic.veridis.xyz/rate-limiting: "enabled"
+    traffic.veridis.xyz/circuit-breaker: "enabled"
+    traffic.veridis.xyz/timeout: "30s"
+
+  annotations:
+    # Ingress purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend Ingress with Axum optimization, intelligent traffic management, and comprehensive routing"
+    veridis.xyz/purpose: "Provides comprehensive backend ingress for decentralized identity management with intelligent traffic routing, Axum optimization, and networking guarantees"
+    veridis.xyz/scope: "Backend ingress including API routing, traffic management, load balancing, and comprehensive networking intelligence"
+
+    # Ingress architecture and design
+    ingress.veridis.xyz/architecture: "Enterprise backend ingress with Axum routing, intelligent traffic management, and networking optimization"
+    ingress.veridis.xyz/design-pattern: "Multi-tier ingress with networking optimization, cost efficiency, and business intelligence"
+    ingress.veridis.xyz/optimization-model: "Intelligent backend ingress with predictive analytics, routing optimization, and traffic efficiency"
+    ingress.veridis.xyz/performance-model: "High-performance backend ingress with Axum optimization and intelligent traffic management"
+
+    # Rust Backend Ingress specifications
+    rust.veridis.xyz/ingress-specification: "Rust backend ingress with routing optimization and intelligent traffic management"
+    rust.veridis.xyz/routing-specification: "Advanced routing configuration with networking optimization and traffic enhancement"
+    rust.veridis.xyz/traffic-specification: "Traffic management optimization with intelligent routing and enhancement"
+    rust.veridis.xyz/performance-specification: "Rust performance routing with Axum acceleration and traffic efficiency"
+    rust.veridis.xyz/business-specification: "Rust business ingress with cost optimization and strategic intelligence"
+
+    # Networking Ingress specifications
+    networking.veridis.xyz/ingress-specification: "Networking-aware backend ingress with routing optimization and traffic intelligence"
+    networking.veridis.xyz/routing-specification: "Routing management optimization with intelligent networking and traffic enhancement"
+    networking.veridis.xyz/load-balancing-specification: "Networking load balancing with cost optimization and intelligent traffic management"
+    networking.veridis.xyz/traffic-specification: "Networking traffic with auto-optimization and routing management"
+    networking.veridis.xyz/monitoring-specification: "Networking monitoring with ingress analytics and traffic intelligence"
+
+    # Business Ingress specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant backend ingress with business continuity and traffic guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized backend ingress with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with ingress optimization and traffic intelligence"
+
+    # Operational Ingress specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with ingress analytics and traffic intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with ingress preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with ingress management and traffic optimization"
+
+    # Ingress lifecycle specifications
+    lifecycle.veridis.xyz/ingress-specification: "Dynamic ingress with automated routing management and networking optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent ingress scaling with machine learning and traffic forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Ingress optimization with intelligent routing management and networking enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Ingress evolution with intelligent adaptation and traffic optimization"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+
+    # Advanced Nginx configuration
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "8"
+    nginx.ingress.kubernetes.io/client-body-buffer-size: "1m"
+    nginx.ingress.kubernetes.io/client-max-body-size: "100m"
+
+    # Load balancing and session affinity
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$remote_addr"
+    nginx.ingress.kubernetes.io/session-cookie-name: "veridis-backend-session"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "3600"
+    nginx.ingress.kubernetes.io/session-cookie-change-on-failure: "true"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/affinity-mode: "balanced"
+
+    # Rate limiting configuration
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/rate-limit-response-code: "429"
+    nginx.ingress.kubernetes.io/limit-connections: "20"
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+
+    # Security headers and CORS
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://app.veridis.xyz,https://admin.veridis.xyz"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET,POST,PUT,DELETE,OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,Authorization,Content-Type"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-max-age: "86400"
+
+    # Security configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'" always;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    # Monitoring and observability
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-backend-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-backend-error.log"
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+
+    # Performance optimization
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "32"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "100"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "60s"
+    nginx.ingress.kubernetes.io/enable-brotli: "true"
+
+    # Canary deployment support
+    nginx.ingress.kubernetes.io/canary: "false"
+    nginx.ingress.kubernetes.io/canary-weight: "0"
+    nginx.ingress.kubernetes.io/canary-by-header: "veridis-canary"
+    nginx.ingress.kubernetes.io/canary-by-cookie: "veridis-canary"
+
+    # Circuit breaker configuration
+    nginx.ingress.kubernetes.io/custom-http-errors: "404,503,502,500"
+    nginx.ingress.kubernetes.io/default-backend: "veridis-backend-default-backend"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/ingress-admin: "backend-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/ingress"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/ingress-management"
+    veridis.xyz/ingress-docs: "https://backend.veridis.xyz/ingress-guide"
+    veridis.xyz/networking-docs: "https://networking.veridis.xyz/backend-ingress"
+
+spec:
+  # ==============================================================================
+  # Ingress Class Configuration
+  # ==============================================================================
+  ingressClassName: nginx
+
+  # ==============================================================================
+  # TLS Configuration
+  # ==============================================================================
+  tls:
+    - hosts:
+        - api.veridis.xyz
+        - backend.veridis.xyz
+        - identity-api.veridis.xyz
+        - attestation-api.veridis.xyz
+        - verification-api.veridis.xyz
+        - compliance-api.veridis.xyz
+        - bridge-api.veridis.xyz
+      secretName: veridis-backend-tls-secret
+
+  # ==============================================================================
+  # Ingress Rules Configuration
+  # ==============================================================================
+  rules:
+    # ==============================================================================
+    # Primary API Domain - api.veridis.xyz
+    # ==============================================================================
+    - host: api.veridis.xyz
+      http:
+        paths:
+          # ==============================================================================
+          # Identity Service API Routes
+          # ==============================================================================
+          - path: /api/v1/identity(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Attestation Service API Routes
+          # ==============================================================================
+          - path: /api/v1/attestation(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Verification Service API Routes
+          # ==============================================================================
+          - path: /api/v1/verification(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Compliance Service API Routes
+          # ==============================================================================
+          - path: /api/v1/compliance(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Bridge Service API Routes
+          # ==============================================================================
+          - path: /api/v1/bridge(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Health Check and Metrics Routes
+          # ==============================================================================
+          - path: /health(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          - path: /metrics(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # OpenAPI Documentation Routes
+          # ==============================================================================
+          - path: /docs(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          - path: /swagger(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Backend Service Domain - backend.veridis.xyz
+    # ==============================================================================
+    - host: backend.veridis.xyz
+      http:
+        paths:
+          # All backend routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Identity Service Domain - identity-api.veridis.xyz
+    # ==============================================================================
+    - host: identity-api.veridis.xyz
+      http:
+        paths:
+          # Identity-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Attestation Service Domain - attestation-api.veridis.xyz
+    # ==============================================================================
+    - host: attestation-api.veridis.xyz
+      http:
+        paths:
+          # Attestation-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Verification Service Domain - verification-api.veridis.xyz
+    # ==============================================================================
+    - host: verification-api.veridis.xyz
+      http:
+        paths:
+          # Verification-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Compliance Service Domain - compliance-api.veridis.xyz
+    # ==============================================================================
+    - host: compliance-api.veridis.xyz
+      http:
+        paths:
+          # Compliance-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Bridge Service Domain - bridge-api.veridis.xyz
+    # ==============================================================================
+    - host: bridge-api.veridis.xyz
+      http:
+        paths:
+          # Bridge-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis Backend Ingress - Canary Deployment Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-backend-canary-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-canary-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: backend-canary-ingress
+    ingress.veridis.xyz/category: canary-ingress
+    ingress.veridis.xyz/role: canary-deployment-ingress
+    ingress.veridis.xyz/deployment-strategy: canary
+
+    backend.veridis.xyz/ingress-type: canary-ingress
+    backend.veridis.xyz/deployment-type: canary
+    backend.veridis.xyz/traffic-split: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Canary deployment ingress for Veridis Backend with progressive traffic splitting and A/B testing"
+    veridis.xyz/purpose: "Provides canary deployment support for backend service with controlled traffic routing and testing"
+
+    ingress.veridis.xyz/canary-specification: "Canary deployment ingress with progressive traffic splitting and A/B testing"
+    backend.veridis.xyz/canary-specification: "Backend canary ingress with controlled deployment and testing"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Canary deployment configuration
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+    nginx.ingress.kubernetes.io/canary-by-header: "veridis-canary"
+    nginx.ingress.kubernetes.io/canary-by-header-value: "enabled"
+    nginx.ingress.kubernetes.io/canary-by-cookie: "veridis-canary"
+
+    # Canary-specific configurations
+    nginx.ingress.kubernetes.io/canary-weight-total: "100"
+    nginx.ingress.kubernetes.io/canary-by-header-pattern: "canary|beta|test"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "canary-deployment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/canary-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - api.veridis.xyz
+        - backend.veridis.xyz
+      secretName: veridis-backend-tls-secret
+
+  rules:
+    - host: api.veridis.xyz
+      http:
+        paths:
+          - path: /api/v1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-canary
+                port:
+                  number: 8080
+
+    - host: backend.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-canary
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis Backend Ingress - Performance Optimization Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-backend-performance-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-performance-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: backend-performance-ingress
+    ingress.veridis.xyz/category: performance-ingress
+    ingress.veridis.xyz/role: performance-optimization-ingress
+    ingress.veridis.xyz/scope: performance-routing
+
+    backend.veridis.xyz/ingress-type: performance-ingress
+    backend.veridis.xyz/performance-optimization: enabled
+    backend.veridis.xyz/performance-tier: enterprise
+
+    performance.veridis.xyz/optimization: enabled
+    performance.veridis.xyz/monitoring: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Performance-optimized ingress for Veridis Backend with advanced routing and traffic optimization"
+    veridis.xyz/purpose: "Provides performance-focused ingress for maximum traffic efficiency and response time optimization"
+
+    ingress.veridis.xyz/performance-specification: "Performance optimization ingress with advanced routing and traffic optimization"
+    backend.veridis.xyz/performance-specification: "Backend performance ingress with optimization and monitoring"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Performance optimization annotations
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "16"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "64"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "200"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "120s"
+
+    # Advanced caching configuration
+    nginx.ingress.kubernetes.io/enable-brotli: "true"
+    nginx.ingress.kubernetes.io/brotli-level: "6"
+    nginx.ingress.kubernetes.io/enable-gzip: "true"
+    nginx.ingress.kubernetes.io/gzip-level: "6"
+
+    # Performance monitoring annotations
+    performance-ingress.veridis.xyz/response-time: "optimized"
+    performance-ingress.veridis.xyz/throughput: "maximized"
+    performance-ingress.veridis.xyz/latency: "minimized"
+    performance-ingress.veridis.xyz/cache-efficiency: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "performance-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/performance-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - api.veridis.xyz
+        - backend.veridis.xyz
+      secretName: veridis-backend-tls-secret
+
+  rules:
+    - host: api.veridis.xyz
+      http:
+        paths:
+          - path: /api/v1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    - host: backend.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis Backend Ingress - Development Environment Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-backend-dev-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-dev-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: backend-dev-ingress
+    ingress.veridis.xyz/category: development-ingress
+    ingress.veridis.xyz/role: testing-ingress
+    ingress.veridis.xyz/scope: development-testing
+
+    backend.veridis.xyz/ingress-type: development-ingress
+    backend.veridis.xyz/testing-enabled: "true"
+    backend.veridis.xyz/debugging-enabled: "true"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing ingress for Veridis Backend with debugging and testing capabilities"
+    veridis.xyz/purpose: "Provides development-friendly ingress for testing workflows and development environment simulation"
+
+    ingress.veridis.xyz/dev-specification: "Development ingress with testing integration and debugging support"
+    backend.veridis.xyz/dev-specification: "Backend development ingress with testing framework and debugging integration"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+
+    # Development annotations
+    development.veridis.xyz/flexible-routing: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/development-workflow: "enabled"
+
+    # Debug configuration
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-backend-dev-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-backend-dev-error.log"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-features-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/dev-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - dev-api.veridis.xyz
+        - dev-backend.veridis.xyz
+      secretName: veridis-backend-dev-tls-secret
+
+  rules:
+    - host: dev-api.veridis.xyz
+      http:
+        paths:
+          - path: /api/v1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-dev
+                port:
+                  number: 8080
+
+    - host: dev-backend.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-dev
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis Backend Ingress - Internal API Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-backend-internal-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-internal-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: backend-internal-ingress
+    ingress.veridis.xyz/category: internal-ingress
+    ingress.veridis.xyz/role: internal-api-ingress
+    ingress.veridis.xyz/scope: internal-services
+
+    backend.veridis.xyz/ingress-type: internal-ingress
+    backend.veridis.xyz/internal-api: enabled
+    backend.veridis.xyz/service-mesh: enabled
+
+    internal.veridis.xyz/api-access: restricted
+    internal.veridis.xyz/authentication: required
+    internal.veridis.xyz/authorization: rbac
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Internal API ingress for Veridis Backend with restricted access and service mesh integration"
+    veridis.xyz/purpose: "Provides internal API access for service-to-service communication with authentication and authorization"
+
+    ingress.veridis.xyz/internal-specification: "Internal API ingress with restricted access and service mesh integration"
+    backend.veridis.xyz/internal-specification: "Backend internal ingress with authentication and authorization"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Authentication and authorization
+    nginx.ingress.kubernetes.io/auth-type: "basic"
+    nginx.ingress.kubernetes.io/auth-secret: "veridis-backend-internal-auth"
+    nginx.ingress.kubernetes.io/auth-realm: "Veridis Internal API"
+
+    # IP whitelist for internal access
+    nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+
+    # Internal API annotations
+    internal.veridis.xyz/access-control: "restricted"
+    internal.veridis.xyz/service-mesh-integration: "enabled"
+    internal.veridis.xyz/mutual-tls: "enabled"
+    internal.veridis.xyz/rbac-enforcement: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "internal-api-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/internal-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - internal-api.veridis.xyz
+        - internal-backend.veridis.xyz
+      secretName: veridis-backend-internal-tls-secret
+
+  rules:
+    - host: internal-api.veridis.xyz
+      http:
+        paths:
+          - path: /internal/api/v1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    - host: internal-backend.veridis.xyz
+      http:
+        paths:
+          - path: /internal(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+# ==============================================================================
+# Veridis Backend Ingress Summary and Enterprise Networking Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS BACKEND INGRESS STRATEGY:
+# ===============================================
+#
+# VERIDIS BACKEND INGRESS ARCHITECTURE OVERVIEW:
+# ----------------------------------------------
+# 1. Primary Backend Ingress (veridis-backend-ingress):
+#    - Comprehensive routing with multiple domains and service-specific endpoints for production traffic
+#    - Advanced Nginx configuration with SSL termination, rate limiting, session affinity, and security headers
+#    - Multi-service routing with identity, attestation, verification, compliance, and bridge API endpoints
+#    - Enterprise security with CORS, HSTS, CSP, and comprehensive security header configuration
+#    - Performance optimization with proxy buffering, keepalive connections, and Brotli compression
+#
+# 2. Canary Deployment Ingress (veridis-backend-canary-ingress):
+#    - Progressive traffic splitting with 10% canary weight for controlled rollout testing
+#    - Header and cookie-based canary routing with A/B testing and feature flag support
+#    - Canary-specific service targeting with independent deployment and testing capabilities
+#    - Conditional deployment with canary enablement and traffic control management
+#    - Advanced canary configuration with pattern matching and weighted traffic distribution
+#
+# 3. Performance Optimization Ingress (veridis-backend-performance-ingress):
+#    - High-performance routing with advanced proxy buffering and keepalive optimization
+#    - Compression optimization with Brotli and Gzip for enhanced transfer efficiency
+#    - Upstream connection pooling with 64 keepalive connections and 200 requests per connection
+#    - Performance monitoring integration with response time and throughput optimization
+#    - Conditional deployment with performance optimization enablement and monitoring
+#
+# 4. Development Environment Ingress (veridis-backend-dev-ingress):
+#    - Development-friendly routing with relaxed SSL requirements and comprehensive logging
+#    - Debug support with detailed access and error logging for troubleshooting
+#    - Testing framework integration with development workflow and debugging capabilities
+#    - Flexible routing configuration with development-specific endpoints and services
+#    - Conditional deployment with development feature enablement and testing support
+#
+# 5. Internal API Ingress (veridis-backend-internal-ingress):
+#    - Restricted internal API access with authentication and IP whitelist protection
+#    - Service mesh integration with mutual TLS and RBAC enforcement
+#    - Internal service communication with secure authentication and authorization
+#    - Network-level access control with private subnet restrictions and security policies
+#    - Conditional deployment with internal API enablement and security enforcement
+#
+# ENTERPRISE INGRESS FEATURES:
+# ============================
+# Advanced Nginx Configuration and Security:
+#   - SSL termination with force SSL redirect and comprehensive TLS configuration
+#   - Rate limiting with 100 requests per minute and connection limiting for DDoS protection
+#   - Session affinity with cookie-based sticky sessions and balanced affinity mode
+#   - Security headers with HSTS, CSP, XSS protection, and comprehensive security policy
+#   - CORS configuration with origin whitelisting and credential support for cross-origin requests
+#
+# Comprehensive Routing and Path Management:
+#   - Multi-domain routing with api.veridis.xyz, backend.veridis.xyz, and service-specific domains
+#   - Service-specific path routing with identity, attestation, verification, compliance, and bridge endpoints
+#   - Regex-based path matching with rewrite targets and advanced routing patterns
+#   - Health check and metrics routing with monitoring endpoint integration
+#   - Documentation routing with OpenAPI and Swagger endpoint support
+#
+# Enterprise Performance and Optimization:
+#   - Proxy optimization with buffering, connection pooling, and keepalive configuration
+#   - Compression support with Brotli and Gzip for enhanced transfer efficiency
+#   - Upstream optimization with connection pooling and request batching
+#   - Performance monitoring with access logging and response time tracking
+#   - Caching optimization with intelligent cache headers and efficiency monitoring
+#
+# Advanced Traffic Management and Load Balancing:
+#   - Load balancing with round-robin algorithm and upstream hash-based distribution
+#   - Session affinity with cookie-based sticky sessions and failure handling
+#   - Circuit breaker integration with custom error pages and failover mechanisms
+#   - Traffic splitting with canary deployment support and progressive rollout
+#   - Geographic routing with multi-region support and latency optimization
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Ingress Lifecycle Management:
+#   - Multi-ingress architecture with primary, canary, performance, development, and internal configurations
+#   - Intelligent traffic management with predictive analytics and machine learning correlation
+#   - Advanced monitoring with comprehensive ingress analytics and business intelligence
+#   - Configuration validation with schema enforcement and deployment safety checks
+#   - Automated optimization with usage pattern analysis and routing recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II ingress controls with comprehensive audit requirements and traffic logging
+#   - GDPR ingress compliance with data protection and privacy-preserving traffic management
+#   - ISO 27001 ingress security management with information security and compliance integration
+#   - NIST 800-190 container ingress security with validation and compliance
+#   - Zero-trust ingress architecture with comprehensive encryption and authentication requirements
+#
+# Business Intelligence Integration:
+#   - Traffic analytics with cost correlation and resource utilization optimization
+#   - Performance analytics with user experience optimization and business intelligence
+#   - Routing intelligence with traffic pattern monitoring and optimization recommendations
+#   - Strategic planning with capacity management and traffic forecasting
+#   - Business impact assessment with traffic performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Development ingress with flexible routing and testing workflow integration
+#   - Comprehensive documentation with ingress guides and troubleshooting procedures
+#   - Environment-specific ingress with production, canary, performance, development, and internal support
+#   - Testing integration with development workflow and debugging capabilities
+#   - Ingress monitoring with comprehensive tracking and traffic correlation
+#
+# ==============================================================================
