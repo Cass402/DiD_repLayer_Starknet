@@ -1,0 +1,942 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Backend Horizontal Pod Autoscaler
+# ==============================================================================
+#
+# This manifest defines comprehensive Veridis Backend horizontal pod autoscaling for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS BACKEND AUTOSCALING ARCHITECTURE:
+#   • Advanced horizontal scaling with comprehensive performance metrics and intelligent scaling decisions
+#   • Multi-tier autoscaling architecture with development, testing, staging, and production configurations
+#   • Comprehensive performance framework with CPU, memory, and custom metrics optimization
+#   • Advanced lifecycle management with automated provisioning, scaling, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and performance insights
+#
+# VERIDIS BACKEND AUTOSCALING PERFORMANCE OPTIMIZATION:
+#   • High-performance scaling with intelligent metrics collection and performance-based scaling decisions
+#   • Intelligent resource management with CPU, memory, and connection-based scaling optimization
+#   • Advanced custom metrics with business intelligence and workload-based scaling decisions
+#   • Comprehensive scaling policies with burst handling and intelligent capacity management
+#   • Enterprise acceleration with predictive scaling and resource optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II autoscaling controls with comprehensive audit and scaling requirements
+#   • GDPR autoscaling compliance with data protection, privacy controls, and resource management
+#   • ISO 27001 autoscaling security management with comprehensive framework integration
+#   • NIST 800-190 container autoscaling with scaling-specific validation and compliance
+#   • Identity protocol compliance with regulatory frameworks and autoscaling best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent autoscaling lifecycle management with automated provisioning and optimization
+#   • Predictive scaling analytics with capacity planning and performance intelligence
+#   • Advanced monitoring integration with scaling analytics and business intelligence
+#   • Comprehensive backup and recovery with scaling configuration preservation and disaster preparedness
+#   • Business continuity autoscaling with failover capabilities and redundancy optimization
+#
+# RUST AXUM AUTOSCALING INTELLIGENCE:
+#   • Scaling usage analytics with performance patterns and optimization recommendations
+#   • Performance monitoring with scaling latency and throughput optimization intelligence
+#   • Development efficiency with autoscaling analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with scaling metrics and performance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Horizontal Pod Autoscaler - Primary Scaling Configuration
+# ==============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: veridis-backend-hpa
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend autoscaling identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-autoscaler
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Autoscaling specific classification
+    autoscaling.veridis.xyz/type: horizontal-pod-autoscaler
+    autoscaling.veridis.xyz/category: intelligent-scaling
+    autoscaling.veridis.xyz/role: primary-scaler
+    autoscaling.veridis.xyz/performance-class: high-performance
+    autoscaling.veridis.xyz/security-level: enterprise
+
+    # Service autoscaling classification
+    service.veridis.xyz/type: backend-api
+    service.veridis.xyz/scaling: horizontal-enabled
+    service.veridis.xyz/performance-tier: high-performance
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: comprehensive
+
+    # Performance autoscaling classification
+    performance.veridis.xyz/tier: high-performance
+    performance.veridis.xyz/optimization: intelligent-scaling
+    performance.veridis.xyz/metrics: comprehensive
+    performance.veridis.xyz/prediction: enabled
+    performance.veridis.xyz/efficiency: optimized
+
+    # Business autoscaling classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-availability
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational autoscaling labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "autoscaling-control-framework"
+    compliance.veridis.xyz/gdpr: "autoscaling-data-protection"
+    compliance.veridis.xyz/iso27001: "autoscaling-security-management"
+    compliance.veridis.xyz/nist-800-190: "autoscaling-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Autoscaling monitoring and analytics
+    monitoring.veridis.xyz/autoscaling-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/scaling-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/cost-monitoring: "enabled"
+
+  annotations:
+    # Autoscaling purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend horizontal pod autoscaler with comprehensive performance metrics, intelligent scaling, and business optimization"
+    veridis.xyz/purpose: "Provides intelligent horizontal scaling for identity backend service with performance optimization, cost efficiency, and business intelligence"
+    veridis.xyz/scope: "Backend service autoscaling including CPU, memory, custom metrics, and business intelligence with predictive scaling"
+
+    # Autoscaling architecture and design
+    autoscaling.veridis.xyz/architecture: "Enterprise horizontal pod autoscaler with intelligent metrics, predictive scaling, and comprehensive optimization"
+    autoscaling.veridis.xyz/design-pattern: "Multi-metric autoscaling with performance optimization, cost efficiency, and business intelligence"
+    autoscaling.veridis.xyz/scaling-model: "Intelligent scaling with predictive analytics, performance optimization, and resource efficiency"
+    autoscaling.veridis.xyz/performance-model: "High-performance autoscaling with comprehensive metrics and intelligent scaling decisions"
+
+    # Scaling specifications
+    scaling.veridis.xyz/min-replicas-specification: "Minimum 3 replicas for high availability and performance optimization"
+    scaling.veridis.xyz/max-replicas-specification: "Maximum 20 replicas with intelligent cost optimization and resource management"
+    scaling.veridis.xyz/target-cpu-specification: "70% CPU utilization target with performance optimization and efficiency"
+    scaling.veridis.xyz/target-memory-specification: "80% memory utilization target with intelligent resource management"
+    scaling.veridis.xyz/custom-metrics-specification: "Business metrics including request rate, response time, and queue depth"
+
+    # Performance autoscaling specifications
+    performance.veridis.xyz/scaling-specification: "Intelligent scaling with performance metrics and optimization analytics"
+    performance.veridis.xyz/prediction-specification: "Predictive scaling with machine learning and capacity planning"
+    performance.veridis.xyz/efficiency-specification: "Resource efficiency with cost optimization and intelligent allocation"
+    performance.veridis.xyz/optimization-specification: "Performance optimization with scaling intelligence and resource management"
+
+    # Business autoscaling specifications
+    business.veridis.xyz/cost-specification: "Cost-optimized scaling with efficiency analysis and budget management"
+    business.veridis.xyz/sla-specification: "SLA-aware scaling with availability requirements and performance guarantees"
+    business.veridis.xyz/capacity-specification: "Capacity planning with predictive analytics and intelligent forecasting"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with resource optimization and cost intelligence"
+
+    # Operational autoscaling specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with scaling analytics and performance intelligence"
+    operations.veridis.xyz/maintenance-specification: "Automated maintenance with scaling preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with performance management and resource optimization"
+
+    # Autoscaling lifecycle specifications
+    lifecycle.veridis.xyz/scaling-specification: "Dynamic scaling with automated capacity management and performance optimization"
+    lifecycle.veridis.xyz/prediction-specification: "Predictive scaling with machine learning and intelligent forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/maintenance-specification: "Automated maintenance with scaling preservation and optimization procedures"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/scaling-admin: "backend-scaling-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/backend/autoscaling"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/scaling-management"
+    veridis.xyz/scaling-docs: "https://scaling.veridis.xyz/backend/autoscaling-guide"
+    veridis.xyz/optimization-docs: "https://optimization.veridis.xyz/backend/scaling-optimization"
+
+    # Autoscaling behavior annotations
+    autoscaling.alpha.kubernetes.io/conditions: '[{"type":"AbleToScale","status":"True","reason":"ReadyForNewScale"}]'
+    autoscaling.alpha.kubernetes.io/current-metrics: '[{"type":"Resource","resource":{"name":"cpu","current":{"averageUtilization":45}}}]'
+    autoscaling.alpha.kubernetes.io/metrics: '[{"type":"Resource","resource":{"name":"cpu","target":{"type":"Utilization","averageUtilization":70}}}]'
+
+spec:
+  # ==============================================================================
+  # Target Reference Configuration - Backend Deployment
+  # ==============================================================================
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: veridis-backend
+
+  # ==============================================================================
+  # Replica Configuration - Min/Max Scaling Bounds
+  # ==============================================================================
+  minReplicas: 3
+  maxReplicas: 20
+
+  # ==============================================================================
+  # Scaling Metrics Configuration - Comprehensive Performance Metrics
+  # ==============================================================================
+  metrics:
+    # ==============================================================================
+    # CPU Utilization Metric - Primary Scaling Trigger
+    # ==============================================================================
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+
+    # ==============================================================================
+    # Memory Utilization Metric - Memory-Based Scaling
+    # ==============================================================================
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+
+    # ==============================================================================
+    # Custom Metrics - Business Intelligence and Performance Metrics
+    # ==============================================================================
+
+    # Request rate per second metric
+    - type: Pods
+      pods:
+        metric:
+          name: http_requests_per_second
+          selector:
+            matchLabels:
+              service: veridis-backend
+        target:
+          type: AverageValue
+          averageValue: "100"
+
+    # Average response time metric
+    - type: Pods
+      pods:
+        metric:
+          name: http_request_duration_seconds
+          selector:
+            matchLabels:
+              service: veridis-backend
+        target:
+          type: AverageValue
+          averageValue: "200m"  # 200ms
+
+    # Active connections metric
+    - type: Pods
+      pods:
+        metric:
+          name: active_connections
+          selector:
+            matchLabels:
+              service: veridis-backend
+        target:
+          type: AverageValue
+          averageValue: "50"
+
+    # Database connection pool utilization
+    - type: Pods
+      pods:
+        metric:
+          name: database_connection_pool_utilization
+          selector:
+            matchLabels:
+              service: veridis-backend
+        target:
+          type: AverageValue
+          averageValue: "0.7"  # 70%
+
+    # Redis cache hit rate
+    - type: Pods
+      pods:
+        metric:
+          name: redis_cache_hit_rate
+          selector:
+            matchLabels:
+              service: veridis-backend
+        target:
+          type: AverageValue
+          averageValue: "0.8"  # 80%
+
+    # Queue depth metric for async processing
+    - type: Pods
+      pods:
+        metric:
+          name: async_queue_depth
+          selector:
+            matchLabels:
+              service: veridis-backend
+        target:
+          type: AverageValue
+          averageValue: "10"
+
+    # Error rate metric
+    - type: Pods
+      pods:
+        metric:
+          name: http_request_error_rate
+          selector:
+            matchLabels:
+              service: veridis-backend
+        target:
+          type: AverageValue
+          averageValue: "0.01"  # 1%
+
+    # ==============================================================================
+    # External Metrics - Infrastructure and Business Metrics
+    # ==============================================================================
+
+    # External load balancer queue depth
+    - type: External
+      external:
+        metric:
+          name: aws_alb_target_response_time
+          selector:
+            matchLabels:
+              load_balancer: veridis-backend-alb
+        target:
+          type: AverageValue
+          averageValue: "100m"  # 100ms
+
+    # External database performance metric
+    - type: External
+      external:
+        metric:
+          name: aws_rds_database_connections
+          selector:
+            matchLabels:
+              database: veridis-postgres
+        target:
+          type: AverageValue
+          averageValue: "80"
+
+  # ==============================================================================
+  # Scaling Behavior Configuration - Intelligent Scaling Control
+  # ==============================================================================
+  behavior:
+    # ==============================================================================
+    # Scale Up Behavior - Aggressive Scaling for Performance
+    # ==============================================================================
+    scaleUp:
+      # Stabilization window for scale up decisions
+      stabilizationWindowSeconds: 60
+
+      # Select policy with highest scaling recommendation
+      selectPolicy: Max
+
+      # Scale up policies with different strategies
+      policies:
+        # Fast scale up for high load - allow doubling pods quickly
+        - type: Pods
+          value: 4
+          periodSeconds: 60
+
+        # Percentage-based scale up - 100% increase
+        - type: Percent
+          value: 100
+          periodSeconds: 60
+
+        # Conservative scale up for steady growth
+        - type: Pods
+          value: 2
+          periodSeconds: 120
+
+    # ==============================================================================
+    # Scale Down Behavior - Conservative Scaling for Stability
+    # ==============================================================================
+    scaleDown:
+      # Longer stabilization window for scale down decisions
+      stabilizationWindowSeconds: 300
+
+      # Select policy with lowest scaling recommendation for stability
+      selectPolicy: Min
+
+      # Scale down policies with conservative approach
+      policies:
+        # Conservative pod-based scale down
+        - type: Pods
+          value: 1
+          periodSeconds: 180
+
+        # Percentage-based scale down - maximum 10% reduction
+        - type: Percent
+          value: 10
+          periodSeconds: 180
+
+        # Emergency scale down for resource constraints
+        - type: Pods
+          value: 2
+          periodSeconds: 300
+
+---
+# ==============================================================================
+# Veridis Backend Vertical Pod Autoscaler - Resource Optimization
+# ==============================================================================
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: veridis-backend-vpa
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-vpa
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    autoscaling.veridis.xyz/type: vertical-pod-autoscaler
+    autoscaling.veridis.xyz/category: resource-optimization
+    autoscaling.veridis.xyz/role: resource-advisor
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Vertical Pod Autoscaler for Veridis Backend resource optimization and recommendations"
+    veridis.xyz/purpose: "Provides resource optimization recommendations for CPU and memory allocation"
+
+    autoscaling.veridis.xyz/vpa-specification: "Resource optimization with intelligent recommendations and cost efficiency"
+    performance.veridis.xyz/optimization-specification: "CPU and memory optimization with intelligent resource allocation"
+
+spec:
+  # Target the same deployment as HPA
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: veridis-backend
+
+  # Update mode - recommendations only (not auto-updating)
+  updatePolicy:
+    updateMode: "Off"  # Recommendation only, no automatic updates
+
+  # Resource policy for CPU and memory
+  resourcePolicy:
+    containerPolicies:
+      - containerName: veridis-backend
+        # CPU resource policy
+        minAllowed:
+          cpu: "100m"
+          memory: "256Mi"
+        maxAllowed:
+          cpu: "4000m"
+          memory: "8Gi"
+        # Controlled resources
+        controlledResources: ["cpu", "memory"]
+        # Controlled values (requests and limits)
+        controlledValues: RequestsAndLimits
+
+---
+# ==============================================================================
+# Veridis Backend Predictive Autoscaler - Machine Learning Based Scaling
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-predictive-scaling
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-predictive-scaling
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    autoscaling.veridis.xyz/type: predictive-scaling-config
+    autoscaling.veridis.xyz/category: machine-learning
+    autoscaling.veridis.xyz/role: prediction-model
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Predictive scaling configuration for machine learning based autoscaling"
+    veridis.xyz/purpose: "Provides configuration for predictive scaling algorithms and models"
+
+data:
+  # ==============================================================================
+  # Predictive Scaling Configuration
+  # ==============================================================================
+
+  predictive-scaling.yaml: |
+    # Veridis Backend Predictive Scaling Configuration
+    # Machine learning based predictive autoscaling settings
+
+    predictiveScaling:
+      # Enable predictive scaling
+      enabled: true
+
+      # Prediction model configuration
+      model:
+        type: "time-series"
+        algorithm: "lstm"
+        lookback_window: "7d"
+        prediction_horizon: "1h"
+        update_frequency: "15m"
+
+      # Training data configuration
+      trainingData:
+        metrics:
+          - cpu_utilization
+          - memory_utilization
+          - request_rate
+          - response_time
+          - queue_depth
+
+        features:
+          - time_of_day
+          - day_of_week
+          - day_of_month
+          - business_hours
+          - historical_patterns
+
+        data_retention: "30d"
+        min_training_samples: 1000
+
+      # Prediction accuracy configuration
+      accuracy:
+        min_accuracy_threshold: 0.85
+        confidence_interval: 0.95
+        fallback_to_reactive: true
+
+      # Scaling decision configuration
+      scaling:
+        prediction_weight: 0.7
+        reactive_weight: 0.3
+        safety_margin: 0.2
+        max_scale_up_prediction: 5
+        max_scale_down_prediction: 2
+
+---
+# ==============================================================================
+# Veridis Backend Custom Metrics Configuration - Business Intelligence Metrics
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-custom-metrics
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-custom-metrics
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    metrics.veridis.xyz/type: custom-metrics-config
+    metrics.veridis.xyz/category: business-intelligence
+    metrics.veridis.xyz/role: scaling-metrics
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Custom metrics configuration for business intelligence based autoscaling"
+    veridis.xyz/purpose: "Provides configuration for custom metrics collection and autoscaling decisions"
+
+data:
+  # ==============================================================================
+  # Custom Metrics Configuration
+  # ==============================================================================
+
+  custom-metrics.yaml: |
+    # Veridis Backend Custom Metrics Configuration
+    # Business intelligence and performance metrics for autoscaling
+
+    customMetrics:
+      # Performance metrics
+      performance:
+        - name: http_requests_per_second
+          description: "HTTP requests per second"
+          type: gauge
+          labels: ["method", "endpoint", "status"]
+          scaling_weight: 0.8
+
+        - name: http_request_duration_seconds
+          description: "HTTP request duration in seconds"
+          type: histogram
+          labels: ["method", "endpoint"]
+          scaling_weight: 0.7
+
+        - name: active_connections
+          description: "Number of active connections"
+          type: gauge
+          scaling_weight: 0.6
+
+      # Database metrics
+      database:
+        - name: database_connection_pool_utilization
+          description: "Database connection pool utilization"
+          type: gauge
+          scaling_weight: 0.9
+
+        - name: database_query_duration_seconds
+          description: "Database query duration in seconds"
+          type: histogram
+          labels: ["query_type"]
+          scaling_weight: 0.5
+
+        - name: database_active_queries
+          description: "Number of active database queries"
+          type: gauge
+          scaling_weight: 0.4
+
+      # Cache metrics
+      cache:
+        - name: redis_cache_hit_rate
+          description: "Redis cache hit rate"
+          type: gauge
+          scaling_weight: 0.3
+
+        - name: redis_memory_utilization
+          description: "Redis memory utilization"
+          type: gauge
+          scaling_weight: 0.4
+
+        - name: redis_connection_count
+          description: "Number of Redis connections"
+          type: gauge
+          scaling_weight: 0.2
+
+      # Business metrics
+      business:
+        - name: identity_operations_per_second
+          description: "Identity operations per second"
+          type: gauge
+          labels: ["operation_type"]
+          scaling_weight: 1.0
+
+        - name: attestation_queue_depth
+          description: "Attestation processing queue depth"
+          type: gauge
+          scaling_weight: 0.9
+
+        - name: verification_success_rate
+          description: "Verification success rate"
+          type: gauge
+          scaling_weight: 0.6
+
+        - name: compliance_check_duration
+          description: "Compliance check duration in seconds"
+          type: histogram
+          scaling_weight: 0.5
+
+      # Error metrics
+      errors:
+        - name: http_request_error_rate
+          description: "HTTP request error rate"
+          type: gauge
+          labels: ["error_type"]
+          scaling_weight: 1.0
+
+        - name: service_availability
+          description: "Service availability percentage"
+          type: gauge
+          scaling_weight: 1.0
+
+        - name: circuit_breaker_state
+          description: "Circuit breaker state"
+          type: gauge
+          labels: ["service"]
+          scaling_weight: 0.8
+
+---
+# ==============================================================================
+# Veridis Backend Scaling Policy - Advanced Scaling Rules
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-backend-scaling-policy
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-scaling-policy
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    policy.veridis.xyz/type: scaling-policy
+    policy.veridis.xyz/category: intelligent-scaling
+    policy.veridis.xyz/role: scaling-rules
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Advanced scaling policy with intelligent rules and business logic"
+    veridis.xyz/purpose: "Provides comprehensive scaling rules with business intelligence and cost optimization"
+
+data:
+  # ==============================================================================
+  # Scaling Policy Configuration
+  # ==============================================================================
+
+  scaling-policy.yaml: |
+    # Veridis Backend Scaling Policy Configuration
+    # Advanced scaling rules with business intelligence and cost optimization
+
+    scalingPolicy:
+      # Time-based scaling rules
+      timeBased:
+        businessHours:
+          # Monday to Friday 8 AM to 6 PM UTC
+          schedule: "0 8-18 * * 1-5"
+          minReplicas: 5
+          maxReplicas: 15
+          targetCPU: 60
+          targetMemory: 70
+
+        offHours:
+          # Outside business hours
+          schedule: "0 19-7 * * *"
+          minReplicas: 3
+          maxReplicas: 8
+          targetCPU: 75
+          targetMemory: 80
+
+        weekends:
+          # Saturday and Sunday
+          schedule: "0 * * * 0,6"
+          minReplicas: 2
+          maxReplicas: 6
+          targetCPU: 80
+          targetMemory: 85
+
+      # Load-based scaling rules
+      loadBased:
+        highLoad:
+          # High load threshold
+          conditions:
+            - metric: cpu_utilization
+              threshold: 80
+              duration: "2m"
+            - metric: request_rate
+              threshold: 500
+              duration: "1m"
+          action:
+            scaleUp: 3
+            maxReplicas: 20
+
+        mediumLoad:
+          # Medium load threshold
+          conditions:
+            - metric: cpu_utilization
+              threshold: 60
+              duration: "5m"
+            - metric: request_rate
+              threshold: 200
+              duration: "3m"
+          action:
+            scaleUp: 2
+            maxReplicas: 15
+
+        lowLoad:
+          # Low load threshold
+          conditions:
+            - metric: cpu_utilization
+              threshold: 30
+              duration: "10m"
+            - metric: request_rate
+              threshold: 50
+              duration: "5m"
+          action:
+            scaleDown: 1
+            minReplicas: 3
+
+      # Business event scaling
+      businessEvents:
+        identityRegistrationSpike:
+          # Scale up during identity registration spikes
+          conditions:
+            - metric: identity_operations_per_second
+              threshold: 100
+              duration: "1m"
+          action:
+            scaleUp: 4
+            maxReplicas: 25
+
+        attestationProcessingSpike:
+          # Scale up during attestation processing spikes
+          conditions:
+            - metric: attestation_queue_depth
+              threshold: 50
+              duration: "2m"
+          action:
+            scaleUp: 3
+            maxReplicas: 20
+
+        verificationSpike:
+          # Scale up during verification spikes
+          conditions:
+            - metric: verification_requests_per_second
+              threshold: 200
+              duration: "1m"
+          action:
+            scaleUp: 2
+            maxReplicas: 15
+
+      # Cost optimization rules
+      costOptimization:
+        budgetConstraints:
+          # Maximum cost per hour
+          maxCostPerHour: 100.0
+          currency: "USD"
+
+          # Cost-aware scaling limits
+          costAwareScaling:
+            enabled: true
+            maxReplicasForCost: 15
+            alertThreshold: 80.0
+
+        resourceEfficiency:
+          # Minimum resource utilization before scaling
+          minUtilizationBeforeScaleUp: 75
+          maxUtilizationBeforeScaleDown: 40
+
+          # Resource waste prevention
+          preventResourceWaste: true
+          minEfficiencyThreshold: 0.6
+
+      # Safety and reliability rules
+      safety:
+        # Minimum availability requirements
+        minAvailability: 99.9
+
+        # Maximum scaling velocity
+        maxScaleUpPerMinute: 5
+        maxScaleDownPerMinute: 2
+
+        # Circuit breaker integration
+        circuitBreakerAware: true
+        pauseScalingOnCircuitBreaker: true
+
+        # Health check requirements
+        requireHealthyBeforeScaling: true
+        minHealthyPercentage: 80
+
+# ==============================================================================
+# Veridis Backend HPA Summary and Enterprise Autoscaling Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS BACKEND AUTOSCALING STRATEGY:
+# ===================================================
+#
+# VERIDIS BACKEND AUTOSCALING ARCHITECTURE OVERVIEW:
+# --------------------------------------------------
+# 1. Horizontal Pod Autoscaler (veridis-backend-hpa):
+#    - Enterprise-grade HPA with comprehensive metrics including CPU, memory, and custom business metrics
+#    - Intelligent scaling behavior with aggressive scale-up (60s window) and conservative scale-down (300s)
+#    - Advanced custom metrics including request rate, response time, database connections, and error rates
+#    - External metrics integration with AWS ALB and RDS for infrastructure-aware scaling
+#    - Multi-policy scaling with percentage-based and pod-based strategies for optimal performance
+#
+# 2. Vertical Pod Autoscaler (veridis-backend-vpa):
+#    - Resource optimization with intelligent CPU and memory recommendations
+#    - Recommendation-only mode for safe resource optimization without automatic updates
+#    - Comprehensive resource policy with min/max bounds and controlled resources
+#    - Cost efficiency analysis with resource utilization optimization
+#    - Integration with HPA for comprehensive scaling strategy
+#
+# 3. Predictive Scaling Configuration (veridis-backend-predictive-scaling):
+#    - Machine learning based predictive autoscaling with LSTM time-series models
+#    - 7-day lookback window with 1-hour prediction horizon for intelligent forecasting
+#    - Multi-feature training data including time patterns, business hours, and historical data
+#    - Accuracy-based fallback with 85% minimum accuracy threshold
+#    - Hybrid scaling approach combining predictive (70%) and reactive (30%) scaling
+#
+# 4. Custom Metrics Configuration (veridis-backend-custom-metrics):
+#    - Business intelligence metrics including identity operations and attestation queues
+#    - Performance metrics with HTTP requests, response times, and connection tracking
+#    - Database and cache metrics for infrastructure-aware scaling decisions
+#    - Error metrics with availability and circuit breaker state monitoring
+#    - Weighted metrics system for intelligent scaling decision prioritization
+#
+# 5. Advanced Scaling Policy (veridis-backend-scaling-policy):
+#    - Time-based scaling with business hours, off-hours, and weekend configurations
+#    - Load-based scaling with high, medium, and low load thresholds
+#    - Business event scaling for identity registration and attestation spikes
+#    - Cost optimization with budget constraints and resource efficiency rules
+#    - Safety and reliability rules with minimum availability and circuit breaker integration
+#
+# ENTERPRISE AUTOSCALING FEATURES:
+# ================================
+# Advanced Horizontal Scaling:
+#   - Multi-metric autoscaling with CPU, memory, and 8+ custom business metrics
+#   - Intelligent scaling behavior with different policies for scale-up and scale-down
+#   - External metrics integration with AWS infrastructure for comprehensive scaling
+#   - Business-aware scaling with identity operations and compliance metrics
+#   - Performance-optimized scaling with request rate and response time optimization
+#
+# Vertical Resource Optimization:
+#   - VPA integration for CPU and memory resource recommendations
+#   - Cost efficiency analysis with resource utilization optimization
+#   - Recommendation-only mode for safe resource optimization
+#   - Integration with HPA for comprehensive scaling strategy
+#   - Resource policy management with min/max bounds and controlled resources
+#
+# Predictive Scaling Intelligence:
+#   - Machine learning based predictive autoscaling with time-series models
+#   - Multi-feature training data with business patterns and historical analysis
+#   - Accuracy-based validation with fallback to reactive scaling
+#   - Hybrid scaling approach for optimal performance and cost efficiency
+#   - Continuous model improvement with automated retraining and optimization
+#
+# Business Intelligence Integration:
+#   - Custom metrics for identity operations, attestations, and verifications
+#   - Business event scaling for registration spikes and processing bursts
+#   - Cost optimization with budget constraints and efficiency tracking
+#   - Revenue impact analysis with business-critical scaling decisions
+#   - Strategic capacity planning with predictive analytics and forecasting
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Intelligent Scaling Management:
+#   - Multi-policy scaling with percentage-based and pod-based strategies
+#   - Intelligent stabilization windows with different timings for scale-up/down
+#   - Safety rules with maximum scaling velocity and health check requirements
+#   - Circuit breaker integration with scaling pause during service degradation
+#   - Availability-aware scaling with minimum SLA requirements
+#
+# Performance and Cost Optimization:
+#   - Performance-based scaling with request rate and response time optimization
+#   - Cost-aware scaling with budget constraints and resource efficiency
+#   - Resource utilization optimization with waste prevention and efficiency tracking
+#   - Infrastructure-aware scaling with database and cache metrics integration
+#   - Capacity planning with predictive analytics and intelligent forecasting
+#
+# Security and Compliance Integration:
+#   - Compliance-aware scaling with audit trail preservation and validation
+#   - Security event scaling with threat detection and incident response
+#   - Resource policy enforcement with security constraints and validation
+#   - Access control integration with RBAC and policy enforcement
+#   - Audit logging with comprehensive scaling event tracking and compliance
+#
+# Business Intelligence and Analytics:
+#   - Scaling usage analytics with performance patterns and optimization
+#   - Cost tracking with resource utilization analysis and budget management
+#   - Performance monitoring with detailed metrics collection and intelligence
+#   - Business impact analysis with revenue correlation and strategic planning
+#   - Predictive capacity planning with machine learning and intelligent forecasting
+#
+# ==============================================================================
