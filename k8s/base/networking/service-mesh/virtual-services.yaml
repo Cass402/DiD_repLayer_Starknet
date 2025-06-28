@@ -1,0 +1,1350 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Service Mesh Virtual Services Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Service Mesh Virtual Services for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS SERVICE MESH VIRTUAL SERVICES ARCHITECTURE:
+#   • Advanced Service mesh routing with intelligent traffic distribution and service-based virtual service routing
+#   • Multi-tier virtual services architecture with development, testing, staging, and production environments
+#   • Comprehensive networking framework with service mesh routing, traffic optimization, virtual service integration
+#   • Advanced lifecycle management with automated virtual service optimization, service mesh routing control, and traffic enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and service mesh virtual service performance insights
+#
+# VERIDIS SERVICE MESH VIRTUAL SERVICES OPTIMIZATION:
+#   • High-performance service mesh routing with intelligent traffic distribution and virtual service optimization
+#   • Intelligent service mesh traffic management with responsive routing and performance-based service decisions
+#   • Advanced request management with business intelligence and canary deployment-based virtual service control
+#   • Comprehensive networking control with intelligent service mesh virtual service management and traffic enhancement
+#   • Enterprise acceleration with predictive service mesh virtual service management and traffic optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II service mesh virtual service controls with comprehensive audit and traffic requirements
+#   • GDPR service mesh virtual service compliance with data protection, privacy controls, and traffic management
+#   • ISO 27001 service mesh virtual service management with comprehensive framework integration
+#   • NIST 800-190 container service mesh virtual service security with traffic-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and service mesh virtual service best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent service mesh virtual service lifecycle management with automated provisioning and traffic optimization
+#   • Predictive traffic analytics with capacity planning and service mesh virtual service intelligence
+#   • Advanced monitoring integration with service mesh virtual service analytics and traffic business intelligence
+#   • Comprehensive networking control with service mesh virtual service preservation and traffic optimization
+#   • Business continuity service mesh virtual service with traffic guarantees and service mesh optimization
+#
+# VIRTUAL SERVICE ACCELERATION INTELLIGENCE:
+#   • Service mesh virtual service usage analytics with traffic patterns and optimization recommendations
+#   • Traffic monitoring with service mesh virtual service latency and routing optimization intelligence
+#   • Development efficiency with service mesh virtual service analytics and deployment optimization procedures
+#   • Cost optimization with service mesh virtual service utilization analysis and traffic capacity planning procedures
+#   • Quality assurance with service mesh virtual service metrics and traffic validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Virtual Service - Primary Production Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: veridis-backend-virtual-service
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend Virtual Service identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-virtual-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Virtual Service specific classification
+    virtualservice.veridis.xyz/type: backend-virtual-service
+    virtualservice.veridis.xyz/category: production-virtual-service
+    virtualservice.veridis.xyz/role: primary-backend-virtual-service
+    virtualservice.veridis.xyz/performance-class: high-performance-backend-virtual-service
+    virtualservice.veridis.xyz/security-level: enterprise
+
+    # Backend Virtual Service classification
+    backend.veridis.xyz/virtual-service-type: intelligent-virtual-service
+    backend.veridis.xyz/service-type: backend-service
+    backend.veridis.xyz/performance-tier: high-performance
+    backend.veridis.xyz/optimization: enabled
+    backend.veridis.xyz/features: full-backend-stack
+
+    # Service Mesh Virtual Service classification
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-backend-routing
+    servicemesh.veridis.xyz/routing: advanced
+    servicemesh.veridis.xyz/load-balancing: weighted
+    servicemesh.veridis.xyz/efficiency: maximum
+
+    # Business Virtual Service classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-backend-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Virtual Service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: backend-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "backend-virtual-service-control-framework"
+    compliance.veridis.xyz/gdpr: "backend-virtual-service-data-protection"
+    compliance.veridis.xyz/iso27001: "backend-virtual-service-security-management"
+    compliance.veridis.xyz/nist-800-190: "backend-virtual-service-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Backend Virtual Service monitoring and analytics
+    monitoring.veridis.xyz/backend-virtual-service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/traffic-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Traffic management labels
+    traffic.veridis.xyz/canary-enabled: "true"
+    traffic.veridis.xyz/circuit-breaker: "enabled"
+    traffic.veridis.xyz/retry-policy: "enabled"
+    traffic.veridis.xyz/timeout-policy: "enabled"
+    traffic.veridis.xyz/fault-injection: "conditional"
+
+  annotations:
+    # Virtual Service purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend Virtual Service with intelligent traffic routing, canary deployment, and comprehensive backend service management"
+    veridis.xyz/purpose: "Provides comprehensive backend virtual service for decentralized identity management with intelligent traffic routing, backend optimization, and networking guarantees"
+    veridis.xyz/scope: "Backend virtual service including traffic routing, canary deployment, circuit breaking, and comprehensive backend intelligence"
+
+    # Virtual Service architecture and design
+    virtualservice.veridis.xyz/architecture: "Enterprise backend virtual service with intelligent traffic routing, weighted distribution, and canary management optimization"
+    virtualservice.veridis.xyz/design-pattern: "Multi-tier backend virtual service with traffic optimization, cost efficiency, and business intelligence"
+    virtualservice.veridis.xyz/optimization-model: "Intelligent backend virtual service with predictive analytics, traffic optimization, and canary efficiency"
+    virtualservice.veridis.xyz/performance-model: "High-performance backend virtual service with traffic optimization and intelligent canary management"
+
+    # Backend Virtual Service specifications
+    backend.veridis.xyz/virtual-service-specification: "Backend virtual service with traffic optimization and intelligent backend service management"
+    backend.veridis.xyz/routing-specification: "Advanced backend routing configuration with traffic optimization and canary enhancement"
+    backend.veridis.xyz/traffic-specification: "Backend traffic management optimization with intelligent routing and enhancement"
+    backend.veridis.xyz/performance-specification: "Backend performance routing with traffic acceleration and canary efficiency"
+    backend.veridis.xyz/business-specification: "Backend business virtual service with cost optimization and strategic traffic intelligence"
+
+    # Service Mesh Virtual Service specifications
+    servicemesh.veridis.xyz/virtual-service-specification: "Service mesh-aware backend virtual service with canary optimization and traffic intelligence"
+    servicemesh.veridis.xyz/routing-specification: "Service mesh routing management optimization with intelligent backend and canary enhancement"
+    servicemesh.veridis.xyz/mesh-specification: "Service mesh integration with cost optimization and intelligent backend management"
+    servicemesh.veridis.xyz/canary-specification: "Service mesh canary deployment with auto-optimization and backend management"
+    servicemesh.veridis.xyz/monitoring-specification: "Service mesh monitoring with backend virtual service analytics and canary intelligence"
+
+    # Business Virtual Service specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant backend virtual service with business continuity and traffic guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized backend virtual service with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with backend virtual service optimization and traffic intelligence"
+
+    # Operational Virtual Service specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with backend virtual service analytics and traffic intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with backend virtual service preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with backend virtual service management and traffic optimization"
+
+    # Backend Virtual Service lifecycle specifications
+    lifecycle.veridis.xyz/backend-virtual-service-specification: "Dynamic backend virtual service with automated traffic management and canary optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent backend virtual service scaling with machine learning and traffic forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Backend virtual service optimization with intelligent traffic management and canary enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Backend virtual service evolution with intelligent adaptation and traffic optimization"
+
+    # Istio Virtual Service annotations
+    istio.veridis.xyz/virtual-service-type: "backend-service"
+    istio.veridis.xyz/canary-deployment: "enabled"
+    istio.veridis.xyz/traffic-splitting: "weighted"
+    istio.veridis.xyz/fault-injection: "conditional"
+    istio.veridis.xyz/circuit-breaker: "enabled"
+
+    # Traffic management annotations
+    traffic.veridis.xyz/canary-weight: "10"
+    traffic.veridis.xyz/stable-weight: "90"
+    traffic.veridis.xyz/timeout: "30s"
+    traffic.veridis.xyz/retry-attempts: "3"
+    traffic.veridis.xyz/circuit-breaker-threshold: "50"
+
+    # Monitoring and observability annotations
+    monitoring.veridis.xyz/prometheus-scrape: "true"
+    monitoring.veridis.xyz/jaeger-tracing: "enabled"
+    monitoring.veridis.xyz/kiali-visualization: "enabled"
+    monitoring.veridis.xyz/grafana-dashboard: "backend-virtual-service"
+    monitoring.veridis.xyz/alerting-enabled: "true"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/virtual-service-admin: "backend-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/virtual-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/virtual-service-management"
+    veridis.xyz/virtual-service-docs: "https://backend.veridis.xyz/virtual-service-guide"
+    veridis.xyz/service-mesh-docs: "https://servicemesh.veridis.xyz/backend-virtual-service"
+
+spec:
+  # ==============================================================================
+  # Host Configuration
+  # ==============================================================================
+  hosts:
+    - api.veridis.xyz
+    - backend.veridis.xyz
+    - identity.veridis.xyz
+    - attestation.veridis.xyz
+    - verification.veridis.xyz
+    - compliance.veridis.xyz
+    - bridge.veridis.xyz
+
+  # ==============================================================================
+  # Gateway Configuration
+  # ==============================================================================
+  gateways:
+    - veridis-gateway
+    - mesh
+
+  # ==============================================================================
+  # HTTP Route Configuration
+  # ==============================================================================
+  http:
+    # ==============================================================================
+    # Identity Service Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/identity
+        - headers:
+            user-type:
+              exact: premium
+      fault:
+        delay:
+          percentage:
+            value: 0.1
+          fixedDelay: 5s
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+          weight: 90
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 10
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx,reset,connect-failure,refused-stream
+      timeout: 30s
+
+    # ==============================================================================
+    # Attestation Service Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/attestation
+      corsPolicy:
+        allowOrigins:
+          - exact: https://app.veridis.xyz
+          - exact: https://admin.veridis.xyz
+        allowMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+        allowHeaders:
+          - authorization
+          - content-type
+          - x-requested-with
+        allowCredentials: true
+        maxAge: 86400s
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+          weight: 85
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 15
+      retries:
+        attempts: 2
+        perTryTimeout: 15s
+        retryOn: 5xx,reset,connect-failure
+
+    # ==============================================================================
+    # Verification Service Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/verification
+      headers:
+        request:
+          set:
+            x-service-type: "verification"
+            x-version: "v3.2.1"
+        response:
+          set:
+            x-backend-service: "veridis-backend"
+            x-response-time: "%RESP(x-envoy-upstream-service-time)%"
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+          weight: 100
+      retries:
+        attempts: 3
+        perTryTimeout: 20s
+        retryOn: 5xx,reset,connect-failure,refused-stream
+      timeout: 45s
+
+    # ==============================================================================
+    # Compliance Service Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/compliance
+        - headers:
+            compliance-level:
+              regex: "^(enterprise|professional)$"
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+          weight: 95
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 5
+      retries:
+        attempts: 2
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+    # ==============================================================================
+    # Bridge Service Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/bridge
+      fault:
+        abort:
+          percentage:
+            value: 0.01
+          httpStatus: 503
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+          weight: 80
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 20
+      retries:
+        attempts: 5
+        perTryTimeout: 45s
+        retryOn: 5xx,reset,connect-failure,refused-stream
+        retryRemoteLocalities: true
+      timeout: 120s
+
+    # ==============================================================================
+    # Health Check Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            exact: /health
+        - uri:
+            exact: /ready
+        - uri:
+            exact: /live
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8888
+            subset: health
+      timeout: 5s
+
+    # ==============================================================================
+    # Metrics Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            exact: /metrics
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 9090
+            subset: metrics
+      timeout: 10s
+
+    # ==============================================================================
+    # WebSocket Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /ws
+        - headers:
+            upgrade:
+              exact: websocket
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8081
+            subset: websocket
+      timeout: 3600s
+
+    # ==============================================================================
+    # Default Fallback Route
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Virtual Service - Production Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: veridis-zk-circuits-virtual-service
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-virtual-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    virtualservice.veridis.xyz/type: zk-circuits-virtual-service
+    virtualservice.veridis.xyz/category: production-virtual-service
+    virtualservice.veridis.xyz/role: zk-circuits-virtual-service
+    virtualservice.veridis.xyz/performance-class: high-performance-zk-virtual-service
+
+    zkCircuits.veridis.xyz/virtual-service-type: gpu-accelerated-virtual-service
+    zkCircuits.veridis.xyz/performance-tier: high-performance
+    zkCircuits.veridis.xyz/gpu-enabled: "true"
+    zkCircuits.veridis.xyz/optimization: enabled
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-zk-routing
+    servicemesh.veridis.xyz/routing: advanced
+    servicemesh.veridis.xyz/load-balancing: least-connections
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits Virtual Service with GPU-accelerated proof generation and intelligent traffic routing"
+    veridis.xyz/purpose: "Provides comprehensive ZK circuits virtual service for zero-knowledge proof generation with GPU optimization and intelligent routing"
+
+    virtualservice.veridis.xyz/architecture: "Enterprise ZK circuits virtual service with GPU acceleration, proof generation optimization, and intelligent traffic management"
+    zkCircuits.veridis.xyz/virtual-service-specification: "ZK circuits virtual service with GPU optimization and intelligent proof generation management"
+
+    # ZK-specific annotations
+    zkCircuits.veridis.xyz/proof-generation: "gpu-accelerated"
+    zkCircuits.veridis.xyz/circuit-optimization: "enabled"
+    zkCircuits.veridis.xyz/batch-processing: "enabled"
+    zkCircuits.veridis.xyz/timeout-extended: "enabled"
+
+    # GPU annotations
+    gpu.veridis.xyz/acceleration: "enabled"
+    gpu.veridis.xyz/memory-optimization: "enabled"
+    gpu.veridis.xyz/cuda-support: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/zk-circuits/virtual-service"
+
+spec:
+  hosts:
+    - zk.veridis.xyz
+    - circuits.veridis.xyz
+    - proofs.veridis.xyz
+    - garaga.veridis.xyz
+
+  gateways:
+    - veridis-gateway
+    - mesh
+
+  http:
+    # ==============================================================================
+    # ZK Proof Generation Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/zk/generate
+      route:
+        - destination:
+            host: veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 4000
+            subset: gpu-enabled
+          weight: 90
+        - destination:
+            host: veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 4000
+            subset: canary
+          weight: 10
+      retries:
+        attempts: 2
+        perTryTimeout: 300s  # Extended timeout for ZK proof generation
+        retryOn: 5xx,reset,connect-failure
+      timeout: 600s  # 10 minutes for complex proof generation
+
+    # ==============================================================================
+    # ZK Proof Verification Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/zk/verify
+      route:
+        - destination:
+            host: veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 4000
+            subset: gpu-enabled
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+    # ==============================================================================
+    # Circuit Status Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/zk/status
+      route:
+        - destination:
+            host: veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 4000
+            subset: gpu-enabled
+      timeout: 15s
+
+    # ==============================================================================
+    # Batch Processing Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/v1/zk/batch
+      headers:
+        request:
+          set:
+            x-batch-processing: "enabled"
+            x-gpu-optimization: "true"
+      route:
+        - destination:
+            host: veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 4000
+            subset: gpu-enabled
+      retries:
+        attempts: 1  # Limited retries for batch operations
+        perTryTimeout: 1800s  # 30 minutes for batch processing
+        retryOn: 5xx,reset,connect-failure
+      timeout: 3600s  # 1 hour for large batch operations
+
+    # ==============================================================================
+    # Health Check Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            exact: /health
+        - uri:
+            exact: /gpu-health
+      route:
+        - destination:
+            host: veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 4000
+            subset: health
+      timeout: 10s
+
+---
+# ==============================================================================
+# Veridis Frontend UI Virtual Service - Production Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: veridis-ui-virtual-service
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-ui
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: ui-virtual-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    virtualservice.veridis.xyz/type: ui-virtual-service
+    virtualservice.veridis.xyz/category: frontend-virtual-service
+    virtualservice.veridis.xyz/role: ui-virtual-service
+    virtualservice.veridis.xyz/performance-class: high-performance-ui-virtual-service
+
+    frontend.veridis.xyz/virtual-service-type: spa-virtual-service
+    frontend.veridis.xyz/framework: react
+    frontend.veridis.xyz/optimization: enabled
+    frontend.veridis.xyz/caching: enabled
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: intelligent-ui-routing
+    servicemesh.veridis.xyz/routing: advanced
+    servicemesh.veridis.xyz/caching: aggressive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis UI Virtual Service with SPA optimization, caching, and intelligent frontend routing"
+    veridis.xyz/purpose: "Provides comprehensive UI virtual service for frontend application with SPA optimization and intelligent routing"
+
+    virtualservice.veridis.xyz/architecture: "Enterprise UI virtual service with SPA routing, caching optimization, and intelligent frontend management"
+    frontend.veridis.xyz/virtual-service-specification: "UI virtual service with SPA optimization and intelligent frontend management"
+
+    # Frontend-specific annotations
+    frontend.veridis.xyz/spa-routing: "enabled"
+    frontend.veridis.xyz/static-assets: "cached"
+    frontend.veridis.xyz/compression: "enabled"
+    frontend.veridis.xyz/cdn-integration: "enabled"
+
+    # Caching annotations
+    caching.veridis.xyz/static-assets: "aggressive"
+    caching.veridis.xyz/api-responses: "conditional"
+    caching.veridis.xyz/compression: "gzip-brotli"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/ui/virtual-service"
+
+spec:
+  hosts:
+    - app.veridis.xyz
+    - identity.veridis.xyz
+    - dashboard.veridis.xyz
+    - admin.veridis.xyz
+
+  gateways:
+    - veridis-gateway
+
+  http:
+    # ==============================================================================
+    # Static Assets Routes (with aggressive caching)
+    # ==============================================================================
+    - match:
+        - uri:
+            regex: "^/static/.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$"
+      headers:
+        response:
+          set:
+            cache-control: "public, max-age=31536000, immutable"
+            x-content-type-options: "nosniff"
+            x-frame-options: "DENY"
+      route:
+        - destination:
+            host: veridis-ui.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 3000
+            subset: static
+      timeout: 30s
+
+    # ==============================================================================
+    # API Proxy Routes (proxy to backend)
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /api/
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+    # ==============================================================================
+    # SPA Routes (fallback to index.html)
+    # ==============================================================================
+    - match:
+        - uri:
+            regex: "^/(?!api|static|health|metrics).*$"
+      headers:
+        response:
+          set:
+            cache-control: "no-cache, no-store, must-revalidate"
+            x-content-type-options: "nosniff"
+            x-frame-options: "SAMEORIGIN"
+            x-xss-protection: "1; mode=block"
+      route:
+        - destination:
+            host: veridis-ui.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 3000
+            subset: spa
+      timeout: 30s
+
+    # ==============================================================================
+    # Health Check Routes
+    # ==============================================================================
+    - match:
+        - uri:
+            exact: /health
+      route:
+        - destination:
+            host: veridis-ui.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 3000
+            subset: health
+      timeout: 10s
+
+---
+# ==============================================================================
+# Veridis Internal Services Virtual Service - Production Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: veridis-internal-virtual-service
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-internal
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: internal-virtual-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    virtualservice.veridis.xyz/type: internal-virtual-service
+    virtualservice.veridis.xyz/category: internal-virtual-service
+    virtualservice.veridis.xyz/role: service-mesh-internal-virtual-service
+    virtualservice.veridis.xyz/scope: internal-communication
+
+    internal.veridis.xyz/virtual-service-type: service-mesh-virtual-service
+    internal.veridis.xyz/communication: secure
+    internal.veridis.xyz/authentication: required
+    internal.veridis.xyz/authorization: rbac
+
+    servicemesh.veridis.xyz/tier: production
+    servicemesh.veridis.xyz/optimization: internal-routing
+    servicemesh.veridis.xyz/security: maximum
+    servicemesh.veridis.xyz/encryption: mtls
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+
+  annotations:
+    veridis.xyz/description: "Internal service mesh virtual service for secure inter-service communication with mTLS and RBAC"
+    veridis.xyz/purpose: "Provides secure internal virtual service for service-to-service communication within the mesh"
+
+    virtualservice.veridis.xyz/internal-specification: "Internal virtual service with mTLS encryption and RBAC authorization"
+    internal.veridis.xyz/virtual-service-specification: "Service mesh internal virtual service with secure communication"
+
+    # Internal security annotations
+    internal.veridis.xyz/mtls-required: "true"
+    internal.veridis.xyz/rbac-enabled: "true"
+    internal.veridis.xyz/service-mesh-only: "true"
+    internal.veridis.xyz/external-access: "denied"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "internal-service-mesh-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/internal/virtual-service"
+
+spec:
+  hosts:
+    - veridis-backend.veridis-infrastructure.svc.cluster.local
+    - veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+    - postgres.veridis-infrastructure.svc.cluster.local
+    - redis.veridis-infrastructure.svc.cluster.local
+    - vault.veridis-infrastructure.svc.cluster.local
+
+  http:
+    # ==============================================================================
+    # Backend to ZK Circuits Communication
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /internal/zk
+        - headers:
+            x-service-auth:
+              exact: "backend-to-zk"
+      route:
+        - destination:
+            host: veridis-zk-circuits.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 4000
+            subset: internal
+      retries:
+        attempts: 2
+        perTryTimeout: 60s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 300s
+
+    # ==============================================================================
+    # Backend to Database Communication
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /internal/db
+        - headers:
+            x-service-auth:
+              exact: "backend-to-db"
+      route:
+        - destination:
+            host: postgres.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 5432
+            subset: internal
+      timeout: 30s
+
+    # ==============================================================================
+    # Backend to Cache Communication
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /internal/cache
+        - headers:
+            x-service-auth:
+              exact: "backend-to-cache"
+      route:
+        - destination:
+            host: redis.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 6379
+            subset: internal
+      timeout: 15s
+
+    # ==============================================================================
+    # Backend to Vault Communication
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /internal/vault
+        - headers:
+            x-service-auth:
+              exact: "backend-to-vault"
+      route:
+        - destination:
+            host: vault.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8200
+            subset: internal
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 30s
+
+---
+# ==============================================================================
+# Veridis Canary Deployment Virtual Service - Blue/Green Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: veridis-canary-virtual-service
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-canary
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: canary-virtual-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    virtualservice.veridis.xyz/type: canary-virtual-service
+    virtualservice.veridis.xyz/category: deployment-virtual-service
+    virtualservice.veridis.xyz/role: canary-deployment-virtual-service
+    virtualservice.veridis.xyz/scope: blue-green-deployment
+
+    canary.veridis.xyz/virtual-service-type: blue-green-virtual-service
+    canary.veridis.xyz/deployment-strategy: blue-green
+    canary.veridis.xyz/traffic-splitting: enabled
+    canary.veridis.xyz/automated-rollback: enabled
+
+    deployment.veridis.xyz/strategy: blue-green
+    deployment.veridis.xyz/automation: enabled
+    deployment.veridis.xyz/monitoring: comprehensive
+    deployment.veridis.xyz/safety: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: deployment-engineering
+
+  annotations:
+    veridis.xyz/description: "Canary deployment virtual service for Veridis with blue/green deployment strategy and automated rollback"
+    veridis.xyz/purpose: "Provides canary deployment virtual service for safe production deployments with traffic splitting and monitoring"
+
+    virtualservice.veridis.xyz/canary-specification: "Canary virtual service with blue/green deployment and automated traffic management"
+    canary.veridis.xyz/virtual-service-specification: "Blue/green virtual service with automated rollback and monitoring"
+
+    # Canary deployment annotations
+    canary.veridis.xyz/blue-weight: "90"
+    canary.veridis.xyz/green-weight: "10"
+    canary.veridis.xyz/success-rate-threshold: "99.5"
+    canary.veridis.xyz/error-rate-threshold: "0.5"
+    canary.veridis.xyz/latency-threshold: "500ms"
+
+    # Automated rollback annotations
+    rollback.veridis.xyz/enabled: "true"
+    rollback.veridis.xyz/error-threshold: "5"
+    rollback.veridis.xyz/latency-threshold: "1000ms"
+    rollback.veridis.xyz/success-rate-minimum: "95"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "canary-deployment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/canary/virtual-service"
+
+spec:
+  hosts:
+    - canary.veridis.xyz
+    - staging.veridis.xyz
+    - beta.veridis.xyz
+
+  gateways:
+    - veridis-gateway
+
+  http:
+    # ==============================================================================
+    # Canary User Routes (header-based routing)
+    # ==============================================================================
+    - match:
+        - headers:
+            canary-user:
+              exact: "true"
+        - headers:
+            x-canary-deployment:
+              exact: "enabled"
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 100
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+    # ==============================================================================
+    # Beta User Routes (percentage-based routing)
+    # ==============================================================================
+    - match:
+        - headers:
+            user-segment:
+              exact: "beta"
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 50
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+          weight: 50
+      retries:
+        attempts: 2
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+    # ==============================================================================
+    # A/B Testing Routes (cookie-based routing)
+    # ==============================================================================
+    - match:
+        - headers:
+            cookie:
+              regex: ".*ab-test=variant-b.*"
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 100
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+    # ==============================================================================
+    # Default Production Routes (stable version)
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: v3-2-1
+          weight: 90
+        - destination:
+            host: veridis-backend.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: canary
+          weight: 10
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure
+      timeout: 60s
+
+---
+# ==============================================================================
+# Veridis Multi-Region Virtual Service - Global Configuration
+# ==============================================================================
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: veridis-global-virtual-service
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-global
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: global-virtual-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    virtualservice.veridis.xyz/type: global-virtual-service
+    virtualservice.veridis.xyz/category: multi-region-virtual-service
+    virtualservice.veridis.xyz/role: global-routing-virtual-service
+    virtualservice.veridis.xyz/scope: multi-region-deployment
+
+    global.veridis.xyz/virtual-service-type: multi-region-virtual-service
+    global.veridis.xyz/deployment: worldwide
+    global.veridis.xyz/failover: enabled
+    global.veridis.xyz/load-balancing: geo-distributed
+
+    multiregion.veridis.xyz/deployment: global
+    multiregion.veridis.xyz/failover: automatic
+    multiregion.veridis.xyz/latency-optimization: enabled
+    multiregion.veridis.xyz/disaster-recovery: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: global-engineering
+
+  annotations:
+    veridis.xyz/description: "Global multi-region virtual service for Veridis with geo-distributed routing and automatic failover"
+    veridis.xyz/purpose: "Provides global virtual service for worldwide deployment with regional failover and latency optimization"
+
+    virtualservice.veridis.xyz/global-specification: "Global virtual service with multi-region deployment and geo-distributed routing"
+    global.veridis.xyz/virtual-service-specification: "Multi-region virtual service with automatic failover and disaster recovery"
+
+    # Global routing annotations
+    global.veridis.xyz/primary-region: "us-west-2"
+    global.veridis.xyz/secondary-region: "eu-west-1"
+    global.veridis.xyz/tertiary-region: "ap-southeast-1"
+    global.veridis.xyz/failover-threshold: "3"
+
+    # Geographic routing annotations
+    geo.veridis.xyz/routing-enabled: "true"
+    geo.veridis.xyz/latency-based: "true"
+    geo.veridis.xyz/region-affinity: "preferred"
+    geo.veridis.xyz/cross-region-failover: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "global-deployment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/global/virtual-service"
+
+spec:
+  hosts:
+    - global.veridis.xyz
+    - worldwide.veridis.xyz
+    - api-global.veridis.xyz
+
+  gateways:
+    - veridis-global-gateway
+
+  http:
+    # ==============================================================================
+    # US Region Routes (primary)
+    # ==============================================================================
+    - match:
+        - headers:
+            x-user-region:
+              exact: "us"
+        - headers:
+            cloudfront-viewer-country:
+              exact: "US"
+      route:
+        - destination:
+            host: veridis-backend-us.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: us-west-2
+          weight: 100
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure,refused-stream
+        retryRemoteLocalities: true
+      timeout: 60s
+
+    # ==============================================================================
+    # Europe Region Routes (secondary)
+    # ==============================================================================
+    - match:
+        - headers:
+            x-user-region:
+              exact: "eu"
+        - headers:
+            cloudfront-viewer-country:
+              regex: "^(GB|DE|FR|IT|ES|NL|BE|CH|AT|SE|NO|DK|FI)$"
+      route:
+        - destination:
+            host: veridis-backend-eu.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: eu-west-1
+          weight: 80
+        - destination:
+            host: veridis-backend-us.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: us-west-2
+          weight: 20
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure,refused-stream
+        retryRemoteLocalities: true
+      timeout: 60s
+
+    # ==============================================================================
+    # Asia Pacific Region Routes (tertiary)
+    # ==============================================================================
+    - match:
+        - headers:
+            x-user-region:
+              exact: "ap"
+        - headers:
+            cloudfront-viewer-country:
+              regex: "^(JP|KR|SG|AU|IN|TH|MY|ID|PH|VN)$"
+      route:
+        - destination:
+            host: veridis-backend-ap.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: ap-southeast-1
+          weight: 70
+        - destination:
+            host: veridis-backend-us.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: us-west-2
+          weight: 30
+      retries:
+        attempts: 3
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure,refused-stream
+        retryRemoteLocalities: true
+      timeout: 60s
+
+    # ==============================================================================
+    # Global Failover Routes (fallback to primary)
+    # ==============================================================================
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: veridis-backend-us.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: us-west-2
+          weight: 60
+        - destination:
+            host: veridis-backend-eu.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: eu-west-1
+          weight: 25
+        - destination:
+            host: veridis-backend-ap.veridis-infrastructure.svc.cluster.local
+            port:
+              number: 8080
+            subset: ap-southeast-1
+          weight: 15
+      retries:
+        attempts: 5
+        perTryTimeout: 30s
+        retryOn: 5xx,reset,connect-failure,refused-stream
+        retryRemoteLocalities: true
+      timeout: 60s
+
+# ==============================================================================
+# Veridis Service Mesh Virtual Services Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS SERVICE MESH VIRTUAL SERVICES STRATEGY:
+# =============================================================
+#
+# VERIDIS SERVICE MESH VIRTUAL SERVICES ARCHITECTURE OVERVIEW:
+# -----------------------------------------------------------
+# 1. Backend Virtual Service (veridis-backend-virtual-service):
+#    - Comprehensive backend traffic routing with multiple service endpoints and canary deployment for production traffic
+#    - Advanced Istio configuration with CORS policies, fault injection, retry policies, and comprehensive traffic management
+#    - Multi-service routing with identity, attestation, verification, compliance, bridge services, health checks, metrics, and WebSocket support
+#    - Enterprise security with header management, timeout policies, circuit breaking, and comprehensive traffic security controls
+#    - Performance optimization with weighted routing, canary deployment, fault tolerance, and intelligent traffic distribution
+#
+# 2. ZK Circuits Virtual Service (veridis-zk-circuits-virtual-service):
+#    - GPU-accelerated ZK proof generation with extended timeouts and batch processing support for complex computations
+#    - Performance-specific configuration with proof generation optimization, circuit management, and GPU resource utilization
+#    - Extended timeout configuration with 10-minute proof generation and 1-hour batch processing for complex operations
+#    - Conditional deployment with ZK circuits optimization enablement and GPU acceleration management
+#    - Advanced performance monitoring with GPU utilization tracking and proof generation optimization intelligence
+#
+# 3. Frontend UI Virtual Service (veridis-ui-virtual-service):
+#    - SPA-optimized frontend routing with static asset caching and intelligent frontend traffic management
+#    - Static asset optimization with aggressive caching, compression, and CDN integration for maximum performance
+#    - API proxy routing with backend integration and comprehensive frontend-to-backend communication
+#    - SPA routing with fallback to index.html and comprehensive single-page application support
+#    - Conditional deployment with frontend optimization enablement and static asset management
+#
+# 4. Internal Services Virtual Service (veridis-internal-virtual-service):
+#    - Secure internal service communication with mTLS encryption and RBAC authorization for service mesh security
+#    - Service mesh integration with mutual TLS, secure authentication, and comprehensive internal communication
+#    - Internal service routing with backend-to-ZK, backend-to-database, backend-to-cache, backend-to-vault communication
+#    - Network-level security with service mesh only access and external access denial
+#    - Conditional deployment with internal service mesh enablement and secure communication enforcement
+#
+# 5. Canary Deployment Virtual Service (veridis-canary-virtual-service):
+#    - Blue/green deployment strategy with automated rollback and comprehensive deployment safety mechanisms
+#    - Traffic splitting with header-based routing, percentage-based routing, and cookie-based A/B testing
+#    - Automated rollback with error threshold monitoring, latency threshold enforcement, and success rate validation
+#    - Canary user routing with beta user segments and comprehensive testing user management
+#    - Conditional deployment with canary deployment enablement and automated safety controls
+#
+# 6. Global Multi-Region Virtual Service (veridis-global-virtual-service):
+#    - Worldwide deployment with geo-distributed routing and automatic regional failover for global accessibility
+#    - Multi-region configuration with US (primary), Europe (secondary), Asia Pacific (tertiary) regions
+#    - Geographic routing with country-based routing, latency optimization, and cross-region failover
+#    - Global failover with weighted distribution across regions and comprehensive disaster recovery
+#    - Conditional deployment with global deployment enablement and multi-region management
+#
+# ENTERPRISE SERVICE MESH VIRTUAL SERVICES FEATURES:
+# ==================================================
+# Advanced Istio Virtual Service Configuration and Traffic Management:
+#   - Host configuration with multiple domain support and comprehensive service mesh gateway integration
+#   - HTTP route configuration with URI matching, header matching, fault injection, and comprehensive traffic rules
+#   - Retry policies with configurable attempts, timeouts, and retry conditions for fault tolerance and resilience
+#   - Timeout policies with service-specific timeouts ranging from 5 seconds (health checks) to 3600 seconds (WebSocket)
+#   - CORS policies with origin whitelisting, method restrictions, and credential support for secure cross-origin requests
+#
+# Comprehensive Service Mesh Routing and Traffic Distribution:
+#   - Weighted routing with canary deployment support (90% stable, 10% canary) for safe production deployments
+#   - Header-based routing with user segmentation, service authentication, and comprehensive request classification
+#   • URI-based routing with service-specific endpoints, static asset optimization, and API proxy configuration
+#   - Subset routing with version-specific traffic distribution and environment-based service targeting
+#   - Fault injection with delay injection, abort injection, and comprehensive chaos engineering support
+#
+# Enterprise Service Mesh Performance and Optimization:
+#   - Extended timeouts for ZK proof generation (600 seconds) and batch processing (3600 seconds) for complex operations
+#   - Static asset caching with aggressive caching policies, compression, and CDN integration for frontend optimization
+#   - Connection pooling with persistent connections for WebSocket traffic and real-time communication
+#   - Geographic routing with latency-based routing, region affinity, and cross-region failover for global performance
+#   - Performance monitoring with request tracking, latency measurement, and comprehensive service mesh analytics
+#
+# Advanced Service Mesh Security and Compliance Integration:
+#   - mTLS enforcement for internal service communication with mutual authentication and encryption
+#   - RBAC authorization with service-to-service authentication and comprehensive access control
+#   - Header security with security headers injection, XSS protection, and comprehensive web security controls
+#   - Network isolation with service mesh only access and external traffic denial for internal services
+#   - Compliance integration with SOC 2, GDPR, ISO 27001, NIST compliance and comprehensive audit support
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Service Mesh Virtual Service Lifecycle Management:
+#   - Multi-virtual service architecture with backend, ZK circuits, UI, internal, canary, and global configurations
+#   - Intelligent service mesh traffic management with predictive analytics and traffic pattern correlation
+#   - Advanced monitoring with comprehensive virtual service analytics and traffic business intelligence
+#   - Configuration validation with virtual service schema enforcement and traffic deployment safety checks
+#   - Automated optimization with traffic pattern analysis and virtual service routing recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II virtual service controls with comprehensive audit requirements and traffic logging
+#   - GDPR virtual service compliance with data protection and privacy-preserving traffic management
+#   - ISO 27001 virtual service security management with information security and traffic compliance integration
+#   - NIST 800-190 container virtual service security with traffic validation and compliance
+#   - Zero-trust virtual service architecture with comprehensive encryption and traffic authentication requirements
+#
+# Business Intelligence Integration:
+#   - Service mesh traffic analytics with virtual service cost correlation and traffic resource utilization optimization
+#   - Performance analytics with virtual service user experience optimization and traffic business intelligence
+#   - Routing intelligence with virtual service traffic pattern monitoring and service mesh optimization recommendations
+#   - Strategic planning with virtual service capacity management and traffic forecasting
+#   - Business impact assessment with virtual service traffic performance correlation and service mesh availability tracking
+#
+# Developer Experience Excellence:
+#   - Canary deployment virtual service with flexible routing and traffic debugging workflow integration
+#   - Comprehensive documentation with virtual service guides and traffic troubleshooting procedures
+#   - Environment-specific virtual service with production, internal, canary, and global support
+#   - Testing integration with virtual service development workflow and traffic debugging capabilities
+#   - Virtual service monitoring with comprehensive tracking and traffic correlation
+#
+# ==============================================================================

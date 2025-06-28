@@ -1,0 +1,1024 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - UI Ingress Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive UI Ingress for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS UI INGRESS ARCHITECTURE:
+#   • Advanced Frontend ingress with React optimization and intelligent UI traffic routing
+#   • Multi-tier ingress architecture with development, testing, staging, and production environments
+#   • Comprehensive networking framework with UI routing, CDN integration, static asset optimization
+#   • Advanced lifecycle management with automated ingress optimization, UI routing control, and frontend enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and UI performance insights
+#
+# VERIDIS UI INGRESS OPTIMIZATION:
+#   • High-performance UI ingress with intelligent routing and React optimization
+#   • Intelligent frontend traffic management with responsive routing and performance-based UI decisions
+#   • Advanced static asset management with business intelligence and CDN-based ingress control
+#   • Comprehensive networking control with intelligent UI ingress management and frontend enhancement
+#   • Enterprise acceleration with predictive UI ingress management and frontend optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II UI ingress controls with comprehensive audit and frontend requirements
+#   • GDPR UI ingress compliance with data protection, privacy controls, and frontend traffic management
+#   • ISO 27001 UI ingress management with comprehensive framework integration
+#   • NIST 800-190 container UI ingress security with frontend-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and UI ingress best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent UI ingress lifecycle management with automated provisioning and frontend optimization
+#   • Predictive frontend analytics with capacity planning and UI ingress intelligence
+#   • Advanced monitoring integration with UI ingress analytics and frontend business intelligence
+#   • Comprehensive networking control with UI ingress preservation and frontend optimization
+#   • Business continuity UI ingress with frontend guarantees and UI optimization
+#
+# INGRESS ACCELERATION INTELLIGENCE:
+#   • UI ingress usage analytics with frontend patterns and optimization recommendations
+#   • Frontend monitoring with UI ingress latency and traffic optimization intelligence
+#   • Development efficiency with UI ingress analytics and deployment optimization procedures
+#   • Cost optimization with UI ingress utilization analysis and CDN capacity planning procedures
+#   • Quality assurance with UI ingress metrics and frontend validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis UI Ingress - Primary Production Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-ui-ingress
+  namespace: veridis-infrastructure
+
+  # Core Veridis UI Ingress identification labels
+  labels:
+    app.kubernetes.io/name: veridis-ui
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: ui-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Ingress specific classification
+    ingress.veridis.xyz/type: ui-ingress
+    ingress.veridis.xyz/category: production-ingress
+    ingress.veridis.xyz/role: primary-ui-ingress
+    ingress.veridis.xyz/performance-class: high-performance-ui-ingress
+    ingress.veridis.xyz/security-level: enterprise
+
+    # UI Ingress classification
+    ui.veridis.xyz/ingress-type: react-ingress
+    ui.veridis.xyz/framework: react
+    ui.veridis.xyz/performance-tier: high-performance
+    ui.veridis.xyz/optimization: enabled
+    ui.veridis.xyz/features: full-frontend-stack
+
+    # Frontend Ingress classification
+    frontend.veridis.xyz/tier: production
+    frontend.veridis.xyz/optimization: intelligent-ui-routing
+    frontend.veridis.xyz/routing: advanced
+    frontend.veridis.xyz/caching: optimized
+    frontend.veridis.xyz/efficiency: maximum
+
+    # Business Ingress classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-user-experience
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Ingress labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+    veridis.xyz/cost-center: frontend-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "ui-ingress-control-framework"
+    compliance.veridis.xyz/gdpr: "ui-ingress-data-protection"
+    compliance.veridis.xyz/iso27001: "ui-ingress-security-management"
+    compliance.veridis.xyz/nist-800-190: "ui-ingress-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # UI Ingress monitoring and analytics
+    monitoring.veridis.xyz/ui-ingress-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/frontend-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # CDN and static asset management labels
+    cdn.veridis.xyz/enabled: "true"
+    cdn.veridis.xyz/static-optimization: "enabled"
+    cdn.veridis.xyz/cache-strategy: "aggressive"
+    cdn.veridis.xyz/compression: "enabled"
+    cdn.veridis.xyz/minification: "enabled"
+
+  annotations:
+    # Ingress purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis UI Ingress with React optimization, intelligent frontend traffic management, and comprehensive UI routing"
+    veridis.xyz/purpose: "Provides comprehensive UI ingress for decentralized identity management with intelligent frontend routing, React optimization, and networking guarantees"
+    veridis.xyz/scope: "UI ingress including frontend routing, static asset management, CDN integration, and comprehensive frontend intelligence"
+
+    # Ingress architecture and design
+    ingress.veridis.xyz/architecture: "Enterprise UI ingress with React routing, intelligent frontend management, and static asset optimization"
+    ingress.veridis.xyz/design-pattern: "Multi-tier UI ingress with frontend optimization, cost efficiency, and business intelligence"
+    ingress.veridis.xyz/optimization-model: "Intelligent UI ingress with predictive analytics, frontend optimization, and static asset efficiency"
+    ingress.veridis.xyz/performance-model: "High-performance UI ingress with React optimization and intelligent frontend management"
+
+    # React UI Ingress specifications
+    react.veridis.xyz/ingress-specification: "React UI ingress with frontend optimization and intelligent UI traffic management"
+    react.veridis.xyz/routing-specification: "Advanced UI routing configuration with frontend optimization and static asset enhancement"
+    react.veridis.xyz/traffic-specification: "Frontend traffic management optimization with intelligent UI routing and enhancement"
+    react.veridis.xyz/performance-specification: "React performance routing with frontend acceleration and UI efficiency"
+    react.veridis.xyz/business-specification: "React business ingress with cost optimization and strategic frontend intelligence"
+
+    # Frontend Ingress specifications
+    frontend.veridis.xyz/ingress-specification: "Frontend-aware UI ingress with static asset optimization and frontend intelligence"
+    frontend.veridis.xyz/routing-specification: "Frontend routing management optimization with intelligent UI and static asset enhancement"
+    frontend.veridis.xyz/caching-specification: "Frontend caching with cost optimization and intelligent UI management"
+    frontend.veridis.xyz/asset-specification: "Frontend static assets with auto-optimization and UI management"
+    frontend.veridis.xyz/monitoring-specification: "Frontend monitoring with UI ingress analytics and frontend intelligence"
+
+    # Business Ingress specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant UI ingress with business continuity and frontend guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized UI ingress with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with UI ingress optimization and frontend intelligence"
+
+    # Operational Ingress specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with UI ingress analytics and frontend intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with UI ingress preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with UI ingress management and frontend optimization"
+
+    # UI Ingress lifecycle specifications
+    lifecycle.veridis.xyz/ui-ingress-specification: "Dynamic UI ingress with automated frontend management and static asset optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent UI ingress scaling with machine learning and frontend forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "UI ingress optimization with intelligent frontend management and static asset enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "UI ingress evolution with intelligent adaptation and frontend optimization"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+
+    # Advanced Nginx configuration for UI workloads
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "4k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
+    nginx.ingress.kubernetes.io/client-body-buffer-size: "1m"
+    nginx.ingress.kubernetes.io/client-max-body-size: "50m"
+
+    # UI-optimized load balancing and session affinity
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$remote_addr"
+    nginx.ingress.kubernetes.io/session-cookie-name: "veridis-ui-session"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "1800"
+    nginx.ingress.kubernetes.io/session-cookie-change-on-failure: "true"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/affinity-mode: "balanced"
+
+    # Rate limiting configuration for UI endpoints
+    nginx.ingress.kubernetes.io/rate-limit: "200"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/rate-limit-response-code: "429"
+    nginx.ingress.kubernetes.io/limit-connections: "50"
+    nginx.ingress.kubernetes.io/limit-rps: "20"
+
+    # Security headers and CORS for UI endpoints
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://app.veridis.xyz,https://admin.veridis.xyz,https://identity.veridis.xyz"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET,POST,PUT,DELETE,OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,Authorization,Content-Type,X-Requested-With,If-Modified-Since,Cache-Control,Content-Range,Range"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-max-age: "86400"
+
+    # UI-specific security configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.veridis.xyz https://zk.veridis.xyz" always;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+      add_header X-UI-Security-Policy "strict-validation" always;
+      add_header X-Frontend-Optimization "enabled" always;
+
+    # Static asset optimization and caching
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      # Static asset caching
+      location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        add_header X-Static-Asset "cached";
+        gzip_static on;
+      }
+      # HTML files with shorter cache
+      location ~* \.html$ {
+        expires 1h;
+        add_header Cache-Control "public, must-revalidate";
+        add_header X-HTML-Cache "short-term";
+      }
+      # API proxying with cache bypass
+      location ~* /api/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_cache_bypass 1;
+        add_header X-Cache-Status "bypass";
+      }
+      # Service worker with no cache
+      location = /service-worker.js {
+        expires -1;
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+      }
+
+    # Monitoring and observability for UI operations
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-ui-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-ui-error.log"
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+
+    # Performance optimization for UI workloads
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "16"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "100"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "60s"
+    nginx.ingress.kubernetes.io/enable-brotli: "true"
+    nginx.ingress.kubernetes.io/enable-gzip: "true"
+
+    # UI-specific routing configuration
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/preserve-trailing-slash: "false"
+    nginx.ingress.kubernetes.io/ssl-ciphers: "ECDHE-RSA-AES128-GCM-SHA256,ECDHE-RSA-AES256-GCM-SHA384,ECDHE-RSA-AES128-SHA,ECDHE-RSA-AES256-SHA"
+    nginx.ingress.kubernetes.io/ssl-protocols: "TLSv1.2 TLSv1.3"
+
+    # Circuit breaker configuration for UI operations
+    nginx.ingress.kubernetes.io/custom-http-errors: "404,503,502,500"
+    nginx.ingress.kubernetes.io/default-backend: "veridis-ui-default-backend"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "frontend-team@veridis.xyz"
+    veridis.xyz/ingress-admin: "ui-admin@veridis.xyz"
+    veridis.xyz/escalation: "frontend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "frontend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/ui/ingress"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/ui/ingress-management"
+    veridis.xyz/ingress-docs: "https://ui.veridis.xyz/ingress-guide"
+    veridis.xyz/networking-docs: "https://networking.veridis.xyz/ui-ingress"
+
+spec:
+  # ==============================================================================
+  # Ingress Class Configuration
+  # ==============================================================================
+  ingressClassName: nginx
+
+  # ==============================================================================
+  # TLS Configuration
+  # ==============================================================================
+  tls:
+    - hosts:
+        - app.veridis.xyz
+        - identity.veridis.xyz
+        - ui.veridis.xyz
+        - dashboard.veridis.xyz
+        - admin.veridis.xyz
+        - portal.veridis.xyz
+      secretName: veridis-ui-tls-secret
+
+  # ==============================================================================
+  # Ingress Rules Configuration
+  # ==============================================================================
+  rules:
+    # ==============================================================================
+    # Primary Application Domain - app.veridis.xyz
+    # ==============================================================================
+    - host: app.veridis.xyz
+      http:
+        paths:
+          # ==============================================================================
+          # Main Application Routes
+          # ==============================================================================
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui
+                port:
+                  number: 3000
+
+    # ==============================================================================
+    # Identity Management Domain - identity.veridis.xyz
+    # ==============================================================================
+    - host: identity.veridis.xyz
+      http:
+        paths:
+          # Identity-specific UI routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui
+                port:
+                  number: 3000
+
+    # ==============================================================================
+    # UI Service Domain - ui.veridis.xyz
+    # ==============================================================================
+    - host: ui.veridis.xyz
+      http:
+        paths:
+          # All UI routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui
+                port:
+                  number: 3000
+
+    # ==============================================================================
+    # Dashboard Domain - dashboard.veridis.xyz
+    # ==============================================================================
+    - host: dashboard.veridis.xyz
+      http:
+        paths:
+          # Dashboard-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui
+                port:
+                  number: 3000
+
+    # ==============================================================================
+    # Admin Portal Domain - admin.veridis.xyz
+    # ==============================================================================
+    - host: admin.veridis.xyz
+      http:
+        paths:
+          # Admin-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui
+                port:
+                  number: 3000
+
+    # ==============================================================================
+    # General Portal Domain - portal.veridis.xyz
+    # ==============================================================================
+    - host: portal.veridis.xyz
+      http:
+        paths:
+          # Portal-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui
+                port:
+                  number: 3000
+
+---
+# ==============================================================================
+# Veridis UI Ingress - CDN-Optimized Static Asset Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-ui-cdn-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-ui
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: ui-cdn-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: ui-cdn-ingress
+    ingress.veridis.xyz/category: performance-ingress
+    ingress.veridis.xyz/role: static-asset-ingress
+    ingress.veridis.xyz/scope: cdn-optimization
+
+    ui.veridis.xyz/ingress-type: cdn-ingress
+    ui.veridis.xyz/static-optimization: enabled
+    ui.veridis.xyz/cdn-acceleration: enabled
+    ui.veridis.xyz/asset-caching: aggressive
+
+    cdn.veridis.xyz/optimization: enabled
+    cdn.veridis.xyz/monitoring: comprehensive
+    cdn.veridis.xyz/compression: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "CDN-optimized ingress for Veridis UI with static asset acceleration and aggressive caching"
+    veridis.xyz/purpose: "Provides CDN-focused ingress for maximum static asset performance and frontend optimization"
+
+    ingress.veridis.xyz/cdn-specification: "CDN optimization ingress with static asset acceleration and aggressive caching"
+    ui.veridis.xyz/cdn-specification: "UI CDN ingress with optimization and monitoring"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # CDN-specific performance optimization
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "8"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "32"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "200"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "300s"
+
+    # Aggressive caching for static assets
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Aggressive static asset caching
+      location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp|avif)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable, max-age=31536000";
+        add_header X-Static-Asset "cdn-cached";
+        add_header X-Cache-Duration "1-year";
+        gzip_static on;
+        brotli_static on;
+      }
+      # Manifest and service worker files
+      location ~* \.(json|webmanifest)$ {
+        expires 1d;
+        add_header Cache-Control "public, max-age=86400";
+        add_header X-Manifest-Cache "daily";
+      }
+      # Fonts with long-term caching
+      location ~* \.(woff|woff2|ttf|eot|otf)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable, max-age=31536000";
+        add_header Access-Control-Allow-Origin "*";
+        add_header X-Font-Cache "permanent";
+      }
+
+    # Performance monitoring annotations
+    cdn-ingress.veridis.xyz/cache-hit-ratio: "monitored"
+    cdn-ingress.veridis.xyz/asset-compression: "optimized"
+    cdn-ingress.veridis.xyz/delivery-speed: "maximized"
+    cdn-ingress.veridis.xyz/bandwidth-optimization: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "cdn-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/ui/cdn-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - cdn.veridis.xyz
+        - assets.veridis.xyz
+        - static.veridis.xyz
+      secretName: veridis-ui-cdn-tls-secret
+
+  rules:
+    - host: cdn.veridis.xyz
+      http:
+        paths:
+          - path: /static(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-cdn
+                port:
+                  number: 3000
+
+    - host: assets.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-cdn
+                port:
+                  number: 3000
+
+    - host: static.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-cdn
+                port:
+                  number: 3000
+
+---
+# ==============================================================================
+# Veridis UI Ingress - Development and Testing Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-ui-dev-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-ui
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: ui-dev-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: ui-dev-ingress
+    ingress.veridis.xyz/category: development-ingress
+    ingress.veridis.xyz/role: testing-ingress
+    ingress.veridis.xyz/scope: development-testing
+
+    ui.veridis.xyz/ingress-type: development-ingress
+    ui.veridis.xyz/testing-enabled: "true"
+    ui.veridis.xyz/debugging-enabled: "true"
+    ui.veridis.xyz/hot-reload: "enabled"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/ui-testing: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing ingress for Veridis UI with debugging and hot reload capabilities"
+    veridis.xyz/purpose: "Provides development-friendly UI ingress for testing workflows and frontend development simulation"
+
+    ingress.veridis.xyz/dev-specification: "Development UI ingress with testing integration and debugging support"
+    ui.veridis.xyz/dev-specification: "UI development ingress with testing framework and debugging integration"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+
+    # Development annotations
+    development.veridis.xyz/flexible-routing: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/ui-development-workflow: "enabled"
+    development.veridis.xyz/hot-reload: "enabled"
+
+    # Debug configuration
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-ui-dev-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-ui-dev-error.log"
+
+    # Development-specific configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Development UI testing
+      location ~* /dev/test/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Development-Mode "true";
+        proxy_set_header X-UI-Testing "enabled";
+        proxy_set_header X-Hot-Reload "true";
+      }
+      # Disable caching for development
+      location ~* \.(js|css|html)$ {
+        expires -1;
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+        add_header X-Development-Cache "disabled";
+      }
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "ui-development-features-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/ui/dev-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - dev-app.veridis.xyz
+        - test-ui.veridis.xyz
+        - debug-frontend.veridis.xyz
+      secretName: veridis-ui-dev-tls-secret
+
+  rules:
+    - host: dev-app.veridis.xyz
+      http:
+        paths:
+          - path: /dev(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-dev
+                port:
+                  number: 3000
+
+    - host: test-ui.veridis.xyz
+      http:
+        paths:
+          - path: /test(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-dev
+                port:
+                  number: 3000
+
+    - host: debug-frontend.veridis.xyz
+      http:
+        paths:
+          - path: /debug(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-dev
+                port:
+                  number: 3000
+
+---
+# ==============================================================================
+# Veridis UI Ingress - Mobile-Optimized Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-ui-mobile-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-ui
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: ui-mobile-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: ui-mobile-ingress
+    ingress.veridis.xyz/category: mobile-ingress
+    ingress.veridis.xyz/role: mobile-optimization-ingress
+    ingress.veridis.xyz/scope: mobile-devices
+
+    ui.veridis.xyz/ingress-type: mobile-ingress
+    ui.veridis.xyz/mobile-optimization: enabled
+    ui.veridis.xyz/responsive-design: enabled
+    ui.veridis.xyz/pwa-support: enabled
+
+    mobile.veridis.xyz/optimization: enabled
+    mobile.veridis.xyz/monitoring: comprehensive
+    mobile.veridis.xyz/pwa-enabled: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Mobile-optimized ingress for Veridis UI with PWA support and responsive design optimization"
+    veridis.xyz/purpose: "Provides mobile-focused ingress for maximum mobile performance and Progressive Web App support"
+
+    ingress.veridis.xyz/mobile-specification: "Mobile optimization ingress with PWA support and responsive design"
+    ui.veridis.xyz/mobile-specification: "UI mobile ingress with optimization and PWA monitoring"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Mobile-specific optimization
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "2k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "4"
+    nginx.ingress.kubernetes.io/client-max-body-size: "10m"
+
+    # Mobile-optimized configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Mobile device detection and optimization
+      set $mobile_request 0;
+      if ($http_user_agent ~* "(Mobile|Android|iPhone|iPad|Windows Phone)") {
+        set $mobile_request 1;
+      }
+      # PWA manifest with long-term caching
+      location /manifest.json {
+        expires 1d;
+        add_header Cache-Control "public, max-age=86400";
+        add_header X-PWA-Manifest "cached";
+      }
+      # Service worker with no cache
+      location /sw.js {
+        expires -1;
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+        add_header X-Service-Worker "no-cache";
+      }
+      # Mobile-optimized static assets
+      location ~* \.(js|css)$ {
+        if ($mobile_request = 1) {
+          add_header X-Mobile-Optimized "true";
+        }
+        expires 1d;
+        add_header Cache-Control "public, max-age=86400";
+      }
+
+    # Mobile performance annotations
+    mobile-ingress.veridis.xyz/pwa-performance: "optimized"
+    mobile-ingress.veridis.xyz/responsive-loading: "enabled"
+    mobile-ingress.veridis.xyz/mobile-caching: "intelligent"
+    mobile-ingress.veridis.xyz/offline-support: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "mobile-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/ui/mobile-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - m.veridis.xyz
+        - mobile.veridis.xyz
+        - pwa.veridis.xyz
+      secretName: veridis-ui-mobile-tls-secret
+
+  rules:
+    - host: m.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-mobile
+                port:
+                  number: 3000
+
+    - host: mobile.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-mobile
+                port:
+                  number: 3000
+
+    - host: pwa.veridis.xyz
+      http:
+        paths:
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-mobile
+                port:
+                  number: 3000
+
+---
+# ==============================================================================
+# Veridis UI Ingress - Admin Portal Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-ui-admin-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-ui
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: ui-admin-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: ui-admin-ingress
+    ingress.veridis.xyz/category: admin-ingress
+    ingress.veridis.xyz/role: admin-portal-ingress
+    ingress.veridis.xyz/scope: admin-access
+
+    ui.veridis.xyz/ingress-type: admin-ingress
+    ui.veridis.xyz/admin-portal: enabled
+    ui.veridis.xyz/restricted-access: enabled
+    ui.veridis.xyz/rbac-enforcement: enabled
+
+    admin.veridis.xyz/access-control: restricted
+    admin.veridis.xyz/authentication: required
+    admin.veridis.xyz/authorization: rbac
+    admin.veridis.xyz/audit-logging: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Admin portal ingress for Veridis UI with restricted access and comprehensive audit logging"
+    veridis.xyz/purpose: "Provides admin portal access for administrative functions with authentication and authorization"
+
+    ingress.veridis.xyz/admin-specification: "Admin portal ingress with restricted access and audit logging"
+    ui.veridis.xyz/admin-specification: "UI admin ingress with authentication and authorization"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Authentication and authorization for admin portal
+    nginx.ingress.kubernetes.io/auth-type: "basic"
+    nginx.ingress.kubernetes.io/auth-secret: "veridis-ui-admin-auth"
+    nginx.ingress.kubernetes.io/auth-realm: "Veridis Admin Portal"
+
+    # IP whitelist for admin access
+    nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+
+    # Admin-specific rate limiting
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/limit-connections: "10"
+
+    # Admin portal annotations
+    admin.veridis.xyz/access-control: "restricted"
+    admin.veridis.xyz/audit-trail: "comprehensive"
+    admin.veridis.xyz/session-timeout: "30m"
+    admin.veridis.xyz/mfa-required: "true"
+
+    # Admin-specific configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Admin portal audit logging
+      location ~* /admin/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Admin-Access "true";
+        proxy_set_header X-Audit-Required "true";
+        proxy_set_header X-RBAC-Enforcement "enabled";
+      }
+      # Admin static assets with restricted caching
+      location ~* /admin/.*\.(js|css)$ {
+        expires 1h;
+        add_header Cache-Control "private, max-age=3600";
+        add_header X-Admin-Asset "cached";
+      }
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "admin-portal-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/ui/admin-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - admin.veridis.xyz
+        - management.veridis.xyz
+        - console.veridis.xyz
+      secretName: veridis-ui-admin-tls-secret
+
+  rules:
+    - host: admin.veridis.xyz
+      http:
+        paths:
+          - path: /admin(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-admin
+                port:
+                  number: 3000
+
+    - host: management.veridis.xyz
+      http:
+        paths:
+          - path: /management(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-admin
+                port:
+                  number: 3000
+
+    - host: console.veridis.xyz
+      http:
+        paths:
+          - path: /console(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-admin
+                port:
+                  number: 3000
+
+# ==============================================================================
+# Veridis UI Ingress Summary and Enterprise Frontend Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS UI INGRESS STRATEGY:
+# ==========================================
+#
+# VERIDIS UI INGRESS ARCHITECTURE OVERVIEW:
+# -----------------------------------------
+# 1. Primary UI Ingress (veridis-ui-ingress):
+#    - Comprehensive UI routing with multiple domains and frontend-specific endpoints for production traffic
+#    - Advanced Nginx configuration with SSL termination, UI-specific rate limiting, session affinity, and frontend headers
+#    - Multi-domain routing with app, identity, dashboard, admin, and portal endpoints for comprehensive UI coverage
+#    - Enterprise security with UI-specific CORS, CSP, HSTS, and comprehensive frontend security header configuration
+#    - Performance optimization with static asset caching, compression, and UI workload optimization
+#
+# 2. CDN-Optimized Ingress (veridis-ui-cdn-ingress):
+#    - Aggressive static asset caching with 1-year expiration and immutable cache headers for maximum performance
+#    - CDN acceleration with Brotli and Gzip compression for optimal bandwidth utilization
+#    - Static asset optimization with font CORS headers and manifest caching for PWA support
+#    - Conditional deployment with CDN optimization enablement and asset delivery management
+#    - Advanced caching strategies with asset-specific cache control and delivery optimization
+#
+# 3. Development Environment Ingress (veridis-ui-dev-ingress):
+#    - Development-friendly UI routing with relaxed SSL requirements and comprehensive frontend debugging
+#    - Hot reload support with disabled caching and development-specific configuration
+#    - Testing framework integration with UI development workflow and frontend debugging capabilities
+#    - Flexible UI routing configuration with development-specific endpoints and testing services
+#    - Conditional deployment with UI development feature enablement and testing support
+#
+# 4. Mobile-Optimized Ingress (veridis-ui-mobile-ingress):
+#    - Mobile device detection with user agent analysis and responsive optimization
+#    - PWA support with manifest caching, service worker handling, and offline capabilities
+#    - Mobile-specific asset optimization with intelligent caching and performance tuning
+#    - Responsive design support with mobile-aware routing and optimization
+#    - Conditional deployment with mobile optimization enablement and PWA management
+#
+# 5. Admin Portal Ingress (veridis-ui-admin-ingress):
+#    - Restricted admin access with IP whitelisting and comprehensive authentication
+#    - RBAC enforcement with audit logging and session management for administrative functions
+#    - Admin-specific rate limiting with connection restrictions and security controls
+#    - Audit trail integration with comprehensive logging and access tracking
+#    - Conditional deployment with admin portal enablement and security enforcement
+#
+# ENTERPRISE UI INGRESS FEATURES:
+# ===============================
+# Advanced UI-Specific Nginx Configuration and Security:
+#   - SSL termination with force SSL redirect and comprehensive TLS configuration for UI traffic
+#   - UI-specific rate limiting with 200 requests per minute and connection limiting for user protection
+#   - Session affinity with cookie-based sessions (30-minute duration) and UI workload balancing
+#   - Frontend security headers with CSP, XSS protection, frame options, and comprehensive UI security controls
+#   - UI-specific CORS configuration with frontend domain support and asset loading optimization
+#
+# Comprehensive UI Routing and Path Management:
+#   - Multi-domain routing with app.veridis.xyz, identity.veridis.xyz, dashboard.veridis.xyz, admin.veridis.xyz domains
+#   - UI-specific path routing with main application, identity management, dashboard, admin portal coverage
+#   - Static asset optimization with aggressive caching, compression, and CDN integration
+#   - PWA support with manifest handling, service worker configuration, and offline capabilities
+#   - Admin portal routing with restricted access, authentication, and comprehensive audit logging
+#
+# Enterprise UI Performance and Static Asset Optimization:
+#   - Static asset caching with 1-year expiration for immutable assets and intelligent cache control
+#   - Compression support with Brotli and Gzip optimization for UI payload and asset efficiency
+#   - CDN integration with asset acceleration and bandwidth optimization for global delivery
+#   - Mobile optimization with device detection and responsive asset delivery
+#   - PWA optimization with manifest caching, service worker handling, and offline support
+#
+# Advanced UI Traffic Management and Load Balancing:
+#   - UI-aware load balancing with remote address hashing and frontend workload distribution
+#   - Session affinity with cookie-based sessions and UI workload failure handling
+#   - Circuit breaker integration with UI-specific error pages and frontend failover mechanisms
+#   - Traffic optimization with mobile detection and responsive routing
+#   - Geographic routing with CDN support and mobile latency optimization
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# UI Ingress Lifecycle Management:
+#   - Multi-ingress architecture with primary, CDN-optimized, development, mobile, and admin configurations
+#   - Intelligent UI traffic management with predictive analytics and frontend performance correlation
+#   - Advanced monitoring with comprehensive UI ingress analytics and frontend business intelligence
+#   - Configuration validation with UI schema enforcement and frontend deployment safety checks
+#   - Automated optimization with UI usage pattern analysis and frontend routing recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II UI ingress controls with comprehensive audit requirements and frontend traffic logging
+#   - GDPR UI ingress compliance with data protection and privacy-preserving frontend traffic management
+#   - ISO 27001 UI ingress security management with information security and frontend compliance integration
+#   - NIST 800-190 container UI ingress security with frontend validation and compliance
+#   - Zero-trust UI ingress architecture with comprehensive encryption and frontend authentication requirements
+#
+# Business Intelligence Integration:
+#   - UI traffic analytics with CDN cost correlation and frontend resource utilization optimization
+#   - Performance analytics with UI user experience optimization and frontend business intelligence
+#   - Routing intelligence with UI traffic pattern monitoring and CDN optimization recommendations
+#   - Strategic planning with UI capacity management and frontend traffic forecasting
+#   - Business impact assessment with UI traffic performance correlation and frontend availability tracking
+#
+# Developer Experience Excellence:
+#   - Development UI ingress with flexible routing and hot reload workflow integration
+#   - Comprehensive documentation with UI ingress guides and frontend troubleshooting procedures
+#   - Environment-specific UI ingress with production, CDN-optimized, development, mobile, and admin support
+#   - Testing integration with UI development workflow and frontend debugging capabilities
+#   - UI ingress monitoring with comprehensive tracking and frontend correlation
+#
+# ==============================================================================

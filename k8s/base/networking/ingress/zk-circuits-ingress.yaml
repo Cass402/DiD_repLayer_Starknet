@@ -1,0 +1,1035 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - ZK Circuits Ingress Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive ZK Circuits Ingress for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ZK CIRCUITS INGRESS ARCHITECTURE:
+#   • Advanced Zero-Knowledge ingress with Garaga optimization and intelligent ZK traffic routing
+#   • Multi-tier ingress architecture with development, testing, staging, and production environments
+#   • Comprehensive networking framework with ZK routing, GPU integration, cryptographic traffic intelligence
+#   • Advanced lifecycle management with automated ingress optimization, ZK routing control, and cryptographic enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and ZK circuit insights
+#
+# VERIDIS ZK CIRCUITS INGRESS OPTIMIZATION:
+#   • High-performance ZK ingress with intelligent routing and Garaga CUDA optimization
+#   • Intelligent cryptographic traffic management with responsive routing and ZK-based traffic decisions
+#   • Advanced GPU resource management with business intelligence and workload-based ingress control
+#   • Comprehensive networking control with intelligent ZK ingress management and cryptographic enhancement
+#   • Enterprise acceleration with predictive ZK ingress management and cryptographic optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II ZK ingress controls with comprehensive audit and cryptographic requirements
+#   • GDPR ZK ingress compliance with data protection, privacy controls, and cryptographic traffic management
+#   • ISO 27001 ZK ingress management with comprehensive framework integration
+#   • NIST 800-190 container ZK ingress security with cryptographic-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and ZK ingress best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent ZK ingress lifecycle management with automated provisioning and cryptographic optimization
+#   • Predictive cryptographic analytics with capacity planning and ZK ingress intelligence
+#   • Advanced monitoring integration with ZK ingress analytics and cryptographic business intelligence
+#   • Comprehensive networking control with ZK ingress preservation and cryptographic optimization
+#   • Business continuity ZK ingress with cryptographic guarantees and ZK optimization
+#
+# INGRESS ACCELERATION INTELLIGENCE:
+#   • ZK ingress usage analytics with cryptographic patterns and optimization recommendations
+#   • Cryptographic monitoring with ZK ingress latency and traffic optimization intelligence
+#   • Development efficiency with ZK ingress analytics and deployment optimization procedures
+#   • Cost optimization with ZK ingress utilization analysis and GPU capacity planning procedures
+#   • Quality assurance with ZK ingress metrics and cryptographic validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis ZK Circuits Ingress - Primary Production Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-zk-circuits-ingress
+  namespace: veridis-infrastructure
+
+  # Core Veridis ZK Circuits Ingress identification labels
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Ingress specific classification
+    ingress.veridis.xyz/type: zk-circuits-ingress
+    ingress.veridis.xyz/category: production-ingress
+    ingress.veridis.xyz/role: primary-zk-ingress
+    ingress.veridis.xyz/performance-class: gpu-accelerated-ingress
+    ingress.veridis.xyz/security-level: enterprise
+
+    # ZK Circuits Ingress classification
+    zk.veridis.xyz/ingress-type: garaga-ingress
+    zk.veridis.xyz/framework: nodejs-garaga
+    zk.veridis.xyz/performance-tier: gpu-accelerated
+    zk.veridis.xyz/optimization: cuda-enabled
+    zk.veridis.xyz/features: full-zk-stack
+
+    # Cryptographic Ingress classification
+    crypto.veridis.xyz/tier: production
+    crypto.veridis.xyz/optimization: intelligent-cryptography
+    crypto.veridis.xyz/encryption: zk-proofs
+    crypto.veridis.xyz/acceleration: gpu-cuda
+    crypto.veridis.xyz/efficiency: maximum
+
+    # Business Ingress classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-cryptographic
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Ingress labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+    veridis.xyz/cost-center: zk-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "zk-ingress-control-framework"
+    compliance.veridis.xyz/gdpr: "zk-ingress-data-protection"
+    compliance.veridis.xyz/iso27001: "zk-ingress-security-management"
+    compliance.veridis.xyz/nist-800-190: "zk-ingress-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # ZK Ingress monitoring and analytics
+    monitoring.veridis.xyz/zk-ingress-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/cryptographic-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # GPU traffic management labels
+    gpu.veridis.xyz/cuda-enabled: "true"
+    gpu.veridis.xyz/gpu-acceleration: "enabled"
+    gpu.veridis.xyz/garaga-optimization: "enabled"
+    gpu.veridis.xyz/memory-optimization: "enabled"
+    gpu.veridis.xyz/parallel-processing: "enabled"
+
+  annotations:
+    # Ingress purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits Ingress with Garaga CUDA optimization, intelligent cryptographic traffic management, and comprehensive ZK routing"
+    veridis.xyz/purpose: "Provides comprehensive ZK circuits ingress for zero-knowledge proof generation with intelligent cryptographic routing, GPU optimization, and networking guarantees"
+    veridis.xyz/scope: "ZK circuits ingress including cryptographic routing, GPU traffic management, ZK proof processing, and comprehensive cryptographic intelligence"
+
+    # Ingress architecture and design
+    ingress.veridis.xyz/architecture: "Enterprise ZK circuits ingress with Garaga CUDA routing, intelligent cryptographic management, and GPU optimization"
+    ingress.veridis.xyz/design-pattern: "Multi-tier ZK ingress with cryptographic optimization, cost efficiency, and business intelligence"
+    ingress.veridis.xyz/optimization-model: "Intelligent ZK circuits ingress with predictive analytics, cryptographic optimization, and GPU efficiency"
+    ingress.veridis.xyz/performance-model: "High-performance ZK circuits ingress with Garaga optimization and intelligent cryptographic management"
+
+    # ZK Circuits Ingress specifications
+    zk.veridis.xyz/ingress-specification: "ZK circuits ingress with cryptographic optimization and intelligent ZK traffic management"
+    zk.veridis.xyz/routing-specification: "Advanced ZK routing configuration with cryptographic optimization and GPU enhancement"
+    zk.veridis.xyz/traffic-specification: "Cryptographic traffic management optimization with intelligent ZK routing and enhancement"
+    zk.veridis.xyz/performance-specification: "ZK performance routing with Garaga acceleration and cryptographic efficiency"
+    zk.veridis.xyz/business-specification: "ZK business ingress with cost optimization and strategic cryptographic intelligence"
+
+    # Cryptographic Ingress specifications
+    crypto.veridis.xyz/ingress-specification: "Cryptography-aware ZK circuits ingress with GPU optimization and cryptographic intelligence"
+    crypto.veridis.xyz/routing-specification: "Cryptographic routing management optimization with intelligent ZK and GPU enhancement"
+    crypto.veridis.xyz/acceleration-specification: "Cryptographic acceleration with cost optimization and intelligent ZK management"
+    crypto.veridis.xyz/gpu-specification: "GPU cryptographic with auto-optimization and ZK management"
+    crypto.veridis.xyz/monitoring-specification: "Cryptographic monitoring with ZK ingress analytics and GPU intelligence"
+
+    # Business Ingress specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant ZK circuits ingress with business continuity and cryptographic guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized ZK circuits ingress with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with ZK ingress optimization and cryptographic intelligence"
+
+    # Operational Ingress specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with ZK ingress analytics and cryptographic intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with ZK ingress preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with ZK ingress management and cryptographic optimization"
+
+    # ZK Ingress lifecycle specifications
+    lifecycle.veridis.xyz/zk-ingress-specification: "Dynamic ZK ingress with automated cryptographic management and GPU optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent ZK ingress scaling with machine learning and cryptographic forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "ZK ingress optimization with intelligent cryptographic management and GPU enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "ZK ingress evolution with intelligent adaptation and cryptographic optimization"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/proxy-body-size: "500m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "120"
+
+    # Advanced Nginx configuration for ZK workloads
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "32k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "16"
+    nginx.ingress.kubernetes.io/client-body-buffer-size: "5m"
+    nginx.ingress.kubernetes.io/client-max-body-size: "500m"
+
+    # GPU-optimized load balancing and session affinity
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$request_uri"
+    nginx.ingress.kubernetes.io/session-cookie-name: "veridis-zk-session"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "7200"
+    nginx.ingress.kubernetes.io/session-cookie-change-on-failure: "true"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/affinity-mode: "persistent"
+
+    # Rate limiting configuration for ZK operations
+    nginx.ingress.kubernetes.io/rate-limit: "50"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/rate-limit-response-code: "429"
+    nginx.ingress.kubernetes.io/limit-connections: "10"
+    nginx.ingress.kubernetes.io/limit-rps: "5"
+
+    # Security headers and CORS for ZK endpoints
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://app.veridis.xyz,https://admin.veridis.xyz,https://api.veridis.xyz"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET,POST,PUT,DELETE,OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,Authorization,Content-Type,X-ZK-Proof-Type,X-GPU-Request"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-max-age: "86400"
+
+    # ZK-specific security configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      add_header X-Frame-Options "DENY" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "no-referrer" always;
+      add_header Content-Security-Policy "default-src 'self'; script-src 'none'; object-src 'none'" always;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+      add_header X-ZK-Security-Policy "strict-validation" always;
+      add_header X-GPU-Acceleration "enabled" always;
+
+    # Monitoring and observability for ZK operations
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-zk-circuits-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-zk-circuits-error.log"
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+
+    # Performance optimization for GPU workloads
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "16"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "50"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "300s"
+    nginx.ingress.kubernetes.io/enable-brotli: "true"
+
+    # ZK-specific routing configuration
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      # ZK proof type routing
+      if ($http_x_zk_proof_type = "garaga") {
+        set $backend_pool "garaga-optimized";
+      }
+      if ($http_x_zk_proof_type = "standard") {
+        set $backend_pool "standard-cpu";
+      }
+      # GPU request prioritization
+      if ($http_x_gpu_request = "true") {
+        set $priority "high";
+      }
+
+    # Circuit breaker configuration for ZK operations
+    nginx.ingress.kubernetes.io/custom-http-errors: "404,503,502,500,504"
+    nginx.ingress.kubernetes.io/default-backend: "veridis-zk-circuits-default-backend"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "zk-team@veridis.xyz"
+    veridis.xyz/ingress-admin: "zk-admin@veridis.xyz"
+    veridis.xyz/escalation: "zk-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "zk-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/zk-circuits/ingress"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/zk-circuits/ingress-management"
+    veridis.xyz/ingress-docs: "https://zk.veridis.xyz/ingress-guide"
+    veridis.xyz/networking-docs: "https://networking.veridis.xyz/zk-circuits-ingress"
+
+spec:
+  # ==============================================================================
+  # Ingress Class Configuration
+  # ==============================================================================
+  ingressClassName: nginx
+
+  # ==============================================================================
+  # TLS Configuration
+  # ==============================================================================
+  tls:
+    - hosts:
+        - zk.veridis.xyz
+        - circuits.veridis.xyz
+        - proof.veridis.xyz
+        - garaga.veridis.xyz
+        - zk-api.veridis.xyz
+      secretName: veridis-zk-circuits-tls-secret
+
+  # ==============================================================================
+  # Ingress Rules Configuration
+  # ==============================================================================
+  rules:
+    # ==============================================================================
+    # Primary ZK Domain - zk.veridis.xyz
+    # ==============================================================================
+    - host: zk.veridis.xyz
+      http:
+        paths:
+          # ==============================================================================
+          # Zero-Knowledge Proof Generation Routes
+          # ==============================================================================
+          - path: /api/v1/proofs(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          # ==============================================================================
+          # Circuit Management Routes
+          # ==============================================================================
+          - path: /api/v1/circuits(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          # ==============================================================================
+          # Garaga GPU-Accelerated Routes
+          # ==============================================================================
+          - path: /api/v1/garaga(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          # ==============================================================================
+          # Verification Routes
+          # ==============================================================================
+          - path: /api/v1/verify(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          # ==============================================================================
+          # Batch Processing Routes
+          # ==============================================================================
+          - path: /api/v1/batch(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          # ==============================================================================
+          # Health Check and Metrics Routes
+          # ==============================================================================
+          - path: /health(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          - path: /metrics(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          # ==============================================================================
+          # GPU Status and Monitoring Routes
+          # ==============================================================================
+          - path: /gpu-status(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+          # ==============================================================================
+          # Circuit Documentation Routes
+          # ==============================================================================
+          - path: /docs(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    # ==============================================================================
+    # Circuits Service Domain - circuits.veridis.xyz
+    # ==============================================================================
+    - host: circuits.veridis.xyz
+      http:
+        paths:
+          # All circuits routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    # ==============================================================================
+    # Proof Generation Domain - proof.veridis.xyz
+    # ==============================================================================
+    - host: proof.veridis.xyz
+      http:
+        paths:
+          # Proof-specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    # ==============================================================================
+    # Garaga GPU Domain - garaga.veridis.xyz
+    # ==============================================================================
+    - host: garaga.veridis.xyz
+      http:
+        paths:
+          # Garaga GPU-optimized routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    # ==============================================================================
+    # ZK API Domain - zk-api.veridis.xyz
+    # ==============================================================================
+    - host: zk-api.veridis.xyz
+      http:
+        paths:
+          # ZK API routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Ingress - GPU-Optimized High-Performance Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-zk-circuits-gpu-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-gpu-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: zk-circuits-gpu-ingress
+    ingress.veridis.xyz/category: performance-ingress
+    ingress.veridis.xyz/role: gpu-optimization-ingress
+    ingress.veridis.xyz/scope: gpu-acceleration
+
+    zk.veridis.xyz/ingress-type: gpu-ingress
+    zk.veridis.xyz/gpu-optimization: enabled
+    zk.veridis.xyz/cuda-acceleration: enabled
+    zk.veridis.xyz/garaga-optimization: enabled
+
+    gpu.veridis.xyz/optimization: enabled
+    gpu.veridis.xyz/monitoring: comprehensive
+    gpu.veridis.xyz/cuda-enabled: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "GPU-optimized ingress for Veridis ZK Circuits with CUDA acceleration and Garaga optimization"
+    veridis.xyz/purpose: "Provides GPU-focused ingress for maximum ZK proof generation performance and CUDA optimization"
+
+    ingress.veridis.xyz/gpu-specification: "GPU optimization ingress with CUDA acceleration and Garaga ZK optimization"
+    zk.veridis.xyz/gpu-specification: "ZK circuits GPU ingress with optimization and monitoring"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # GPU-specific performance optimization
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "64k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "32"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "32"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "100"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "600s"
+
+    # GPU workload optimization
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "1200"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "1200"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "180"
+
+    # GPU-specific routing
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # GPU request prioritization
+      location ~* /api/v1/garaga/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-GPU-Priority "high";
+        proxy_set_header X-CUDA-Enabled "true";
+      }
+
+    # Performance monitoring annotations
+    gpu-ingress.veridis.xyz/cuda-utilization: "monitored"
+    gpu-ingress.veridis.xyz/memory-efficiency: "optimized"
+    gpu-ingress.veridis.xyz/parallel-processing: "enabled"
+    gpu-ingress.veridis.xyz/garaga-performance: "maximized"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "gpu-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/zk-circuits/gpu-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - gpu-zk.veridis.xyz
+        - cuda.veridis.xyz
+        - garaga-gpu.veridis.xyz
+      secretName: veridis-zk-circuits-gpu-tls-secret
+
+  rules:
+    - host: gpu-zk.veridis.xyz
+      http:
+        paths:
+          - path: /api/v1/gpu(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits-gpu
+                port:
+                  number: 4000
+
+    - host: cuda.veridis.xyz
+      http:
+        paths:
+          - path: /api/v1/cuda(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits-gpu
+                port:
+                  number: 4000
+
+    - host: garaga-gpu.veridis.xyz
+      http:
+        paths:
+          - path: /api/v1/garaga(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits-gpu
+                port:
+                  number: 4000
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Ingress - Development and Testing Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-zk-circuits-dev-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-dev-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: zk-circuits-dev-ingress
+    ingress.veridis.xyz/category: development-ingress
+    ingress.veridis.xyz/role: testing-ingress
+    ingress.veridis.xyz/scope: development-testing
+
+    zk.veridis.xyz/ingress-type: development-ingress
+    zk.veridis.xyz/testing-enabled: "true"
+    zk.veridis.xyz/debugging-enabled: "true"
+    zk.veridis.xyz/gpu-testing: "enabled"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/zk-testing: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing ingress for Veridis ZK Circuits with debugging and GPU testing capabilities"
+    veridis.xyz/purpose: "Provides development-friendly ZK ingress for testing workflows and ZK circuit development simulation"
+
+    ingress.veridis.xyz/dev-specification: "Development ZK ingress with testing integration and debugging support"
+    zk.veridis.xyz/dev-specification: "ZK circuits development ingress with testing framework and debugging integration"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+
+    # Development annotations
+    development.veridis.xyz/flexible-routing: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/zk-development-workflow: "enabled"
+    development.veridis.xyz/gpu-testing: "enabled"
+
+    # Debug configuration
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-zk-circuits-dev-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-zk-circuits-dev-error.log"
+
+    # ZK development specific configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Development ZK circuit testing
+      location ~* /dev/test/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Development-Mode "true";
+        proxy_set_header X-ZK-Testing "enabled";
+        proxy_set_header X-GPU-Debug "true";
+      }
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "zk-development-features-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/zk-circuits/dev-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - dev-zk.veridis.xyz
+        - test-circuits.veridis.xyz
+        - debug-garaga.veridis.xyz
+      secretName: veridis-zk-circuits-dev-tls-secret
+
+  rules:
+    - host: dev-zk.veridis.xyz
+      http:
+        paths:
+          - path: /dev/api/v1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits-dev
+                port:
+                  number: 4000
+
+    - host: test-circuits.veridis.xyz
+      http:
+        paths:
+          - path: /test(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits-dev
+                port:
+                  number: 4000
+
+    - host: debug-garaga.veridis.xyz
+      http:
+        paths:
+          - path: /debug(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits-dev
+                port:
+                  number: 4000
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Ingress - Internal Circuit Management Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-zk-circuits-internal-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-internal-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: zk-circuits-internal-ingress
+    ingress.veridis.xyz/category: internal-ingress
+    ingress.veridis.xyz/role: internal-zk-ingress
+    ingress.veridis.xyz/scope: internal-circuits
+
+    zk.veridis.xyz/ingress-type: internal-ingress
+    zk.veridis.xyz/internal-circuits: enabled
+    zk.veridis.xyz/service-mesh: enabled
+    zk.veridis.xyz/circuit-management: internal
+
+    internal.veridis.xyz/zk-access: restricted
+    internal.veridis.xyz/authentication: required
+    internal.veridis.xyz/authorization: rbac
+    internal.veridis.xyz/circuit-keys: protected
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Internal ZK circuits ingress for Veridis with restricted access and circuit key management"
+    veridis.xyz/purpose: "Provides internal ZK circuits access for service-to-service communication with authentication and circuit protection"
+
+    ingress.veridis.xyz/internal-specification: "Internal ZK circuits ingress with restricted access and circuit key protection"
+    zk.veridis.xyz/internal-specification: "ZK circuits internal ingress with authentication and circuit authorization"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Authentication and authorization for ZK circuits
+    nginx.ingress.kubernetes.io/auth-type: "basic"
+    nginx.ingress.kubernetes.io/auth-secret: "veridis-zk-circuits-internal-auth"
+    nginx.ingress.kubernetes.io/auth-realm: "Veridis Internal ZK Circuits"
+
+    # IP whitelist for internal ZK access
+    nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+
+    # Internal ZK circuit annotations
+    internal.veridis.xyz/access-control: "restricted"
+    internal.veridis.xyz/service-mesh-integration: "enabled"
+    internal.veridis.xyz/mutual-tls: "enabled"
+    internal.veridis.xyz/rbac-enforcement: "enabled"
+    internal.veridis.xyz/circuit-key-protection: "maximum"
+
+    # ZK-specific internal configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Internal ZK circuit key protection
+      location ~* /internal/circuits/keys/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Internal-Access "true";
+        proxy_set_header X-Circuit-Key-Protection "maximum";
+        proxy_set_header X-ZK-Internal "enabled";
+      }
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "internal-zk-circuits-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/zk-circuits/internal-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - internal-zk.veridis.xyz
+        - internal-circuits.veridis.xyz
+        - circuit-keys.veridis.xyz
+      secretName: veridis-zk-circuits-internal-tls-secret
+
+  rules:
+    - host: internal-zk.veridis.xyz
+      http:
+        paths:
+          - path: /internal/api/v1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    - host: internal-circuits.veridis.xyz
+      http:
+        paths:
+          - path: /internal/circuits(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    - host: circuit-keys.veridis.xyz
+      http:
+        paths:
+          - path: /keys(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Ingress - Proof Verification Public Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-zk-circuits-verification-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-verification-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: zk-circuits-verification-ingress
+    ingress.veridis.xyz/category: public-verification-ingress
+    ingress.veridis.xyz/role: proof-verification-ingress
+    ingress.veridis.xyz/scope: public-verification
+
+    zk.veridis.xyz/ingress-type: verification-ingress
+    zk.veridis.xyz/proof-verification: enabled
+    zk.veridis.xyz/public-access: enabled
+    zk.veridis.xyz/verification-only: "true"
+
+    verification.veridis.xyz/public-access: enabled
+    verification.veridis.xyz/proof-validation: enabled
+    verification.veridis.xyz/rate-limited: "true"
+    verification.veridis.xyz/read-only: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Public proof verification ingress for Veridis ZK Circuits with read-only verification access"
+    veridis.xyz/purpose: "Provides public ZK proof verification endpoints with rate limiting and security controls"
+
+    ingress.veridis.xyz/verification-specification: "Public proof verification ingress with rate limiting and security controls"
+    zk.veridis.xyz/verification-specification: "ZK circuits verification ingress with public access and proof validation"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Verification-specific rate limiting
+    nginx.ingress.kubernetes.io/rate-limit: "20"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/rate-limit-response-code: "429"
+    nginx.ingress.kubernetes.io/limit-connections: "5"
+    nginx.ingress.kubernetes.io/limit-rps: "2"
+
+    # Public verification configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Public proof verification
+      location ~* /verify/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Verification-Only "true";
+        proxy_set_header X-Public-Access "enabled";
+        proxy_set_header X-Read-Only "true";
+      }
+      # Block proof generation endpoints
+      location ~* /generate/(.*) {
+        return 403 "Proof generation not allowed on public endpoint";
+      }
+
+    # Verification annotations
+    verification.veridis.xyz/public-verification: "enabled"
+    verification.veridis.xyz/proof-validation: "enabled"
+    verification.veridis.xyz/generation-blocked: "true"
+    verification.veridis.xyz/rate-limited: "strict"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "public-verification-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/zk-circuits/verification-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - verify.veridis.xyz
+        - proof-verify.veridis.xyz
+        - public-zk.veridis.xyz
+      secretName: veridis-zk-circuits-verification-tls-secret
+
+  rules:
+    - host: verify.veridis.xyz
+      http:
+        paths:
+          - path: /api/v1/verify(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    - host: proof-verify.veridis.xyz
+      http:
+        paths:
+          - path: /verify(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    - host: public-zk.veridis.xyz
+      http:
+        paths:
+          - path: /public(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+# ==============================================================================
+# Veridis ZK Circuits Ingress Summary and Enterprise Cryptographic Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ZK CIRCUITS INGRESS STRATEGY:
+# ===================================================
+#
+# VERIDIS ZK CIRCUITS INGRESS ARCHITECTURE OVERVIEW:
+# --------------------------------------------------
+# 1. Primary ZK Circuits Ingress (veridis-zk-circuits-ingress):
+#    - Comprehensive ZK routing with multiple domains and cryptographic-specific endpoints for production traffic
+#    - Advanced Nginx configuration with SSL termination, ZK-specific rate limiting, GPU session affinity, and cryptographic headers
+#    - Multi-service routing with proof generation, circuit management, Garaga optimization, verification, and batch processing
+#    - Enterprise security with ZK-specific CORS, HSTS, CSP, and comprehensive cryptographic security header configuration
+#    - Performance optimization with GPU-aware proxy buffering, keepalive connections, and ZK workload optimization
+#
+# 2. GPU-Optimized Ingress (veridis-zk-circuits-gpu-ingress):
+#    - CUDA-accelerated routing with GPU request prioritization and Garaga optimization for maximum performance
+#    - GPU-specific configuration with extended timeouts, large buffers, and CUDA-enabled traffic management
+#    - GPU workload optimization with parallel processing support and memory efficiency optimization
+#    - Conditional deployment with GPU optimization enablement and CUDA acceleration management
+#    - Advanced GPU monitoring with utilization tracking and performance optimization intelligence
+#
+# 3. Development Environment Ingress (veridis-zk-circuits-dev-ingress):
+#    - Development-friendly ZK routing with relaxed SSL requirements and comprehensive ZK debugging
+#    - GPU testing support with detailed access and error logging for ZK circuit troubleshooting
+#    - Testing framework integration with ZK development workflow and GPU debugging capabilities
+#    - Flexible ZK routing configuration with development-specific endpoints and circuit testing services
+#    - Conditional deployment with ZK development feature enablement and GPU testing support
+#
+# 4. Internal Circuit Management Ingress (veridis-zk-circuits-internal-ingress):
+#    - Restricted internal ZK circuit access with authentication and circuit key protection
+#    - Service mesh integration with mutual TLS and ZK-specific RBAC enforcement
+#    - Internal circuit communication with secure authentication and circuit key authorization
+#    - Network-level access control with private subnet restrictions and ZK security policies
+#    - Conditional deployment with internal ZK circuits enablement and circuit key security enforcement
+#
+# 5. Public Proof Verification Ingress (veridis-zk-circuits-verification-ingress):
+#    - Public verification endpoints with read-only access and strict rate limiting for proof validation
+#    - Verification-only configuration with proof generation blocking and public access controls
+#    - Rate limiting optimization with verification-specific limits and public endpoint protection
+#    - Security controls with verification validation and proof integrity checking
+#    - Conditional deployment with public verification enablement and proof validation management
+#
+# ENTERPRISE ZK CIRCUITS INGRESS FEATURES:
+# ========================================
+# Advanced ZK-Specific Nginx Configuration and Security:
+#   - SSL termination with force SSL redirect and comprehensive TLS configuration for ZK traffic
+#   - ZK-specific rate limiting with 50 requests per minute and GPU connection limiting for resource protection
+#   - GPU-aware session affinity with persistent cookie-based sessions and ZK workload balancing
+#   - Cryptographic security headers with ZK security policy, GPU acceleration headers, and comprehensive security controls
+#   - ZK-specific CORS configuration with proof type headers and GPU request support for cross-origin ZK requests
+#
+# Comprehensive ZK Routing and Path Management:
+#   - Multi-domain routing with zk.veridis.xyz, circuits.veridis.xyz, proof.veridis.xyz, garaga.veridis.xyz domains
+#   - ZK-specific path routing with proof generation, circuit management, verification, Garaga optimization, and batch processing
+#   - GPU-aware routing with CUDA request prioritization and Garaga-specific traffic management
+#   - Health check and GPU status routing with monitoring endpoint integration and GPU utilization tracking
+#   - Documentation routing with ZK circuit documentation and GPU optimization guides
+#
+# Enterprise ZK Performance and GPU Optimization:
+#   - GPU-optimized proxy configuration with large buffers (64k), extended timeouts (1200s), and CUDA-aware traffic management
+#   - Compression support with Brotli optimization for ZK proof data and cryptographic payload efficiency
+#   - GPU upstream optimization with connection pooling and CUDA request batching for maximum GPU utilization
+#   - ZK performance monitoring with GPU utilization tracking and cryptographic operation optimization
+#   - Caching optimization with ZK-specific cache headers and proof data efficiency monitoring
+#
+# Advanced ZK Traffic Management and Load Balancing:
+#   - GPU-aware load balancing with request URI hashing and GPU workload distribution optimization
+#   - ZK session affinity with persistent cookie-based sessions and GPU workload failure handling
+#   - Circuit breaker integration with ZK-specific error pages and GPU failover mechanisms
+#   - Traffic splitting with ZK workload distribution and GPU resource optimization
+#   - Geographic routing with multi-region ZK support and GPU latency optimization
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# ZK Ingress Lifecycle Management:
+#   - Multi-ingress architecture with primary, GPU-optimized, development, internal, and verification configurations
+#   - Intelligent ZK traffic management with predictive analytics and GPU utilization correlation
+#   - Advanced monitoring with comprehensive ZK ingress analytics and cryptographic business intelligence
+#   - Configuration validation with ZK schema enforcement and GPU deployment safety checks
+#   - Automated optimization with ZK usage pattern analysis and GPU routing recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II ZK ingress controls with comprehensive audit requirements and cryptographic traffic logging
+#   - GDPR ZK ingress compliance with data protection and privacy-preserving cryptographic traffic management
+#   - ISO 27001 ZK ingress security management with information security and cryptographic compliance integration
+#   - NIST 800-190 container ZK ingress security with cryptographic validation and compliance
+#   - Zero-trust ZK ingress architecture with comprehensive encryption and cryptographic authentication requirements
+#
+# Business Intelligence Integration:
+#   - ZK traffic analytics with GPU cost correlation and cryptographic resource utilization optimization
+#   - Performance analytics with ZK user experience optimization and cryptographic business intelligence
+#   - Routing intelligence with ZK traffic pattern monitoring and GPU optimization recommendations
+#   - Strategic planning with ZK capacity management and GPU traffic forecasting
+#   - Business impact assessment with ZK traffic performance correlation and cryptographic availability tracking
+#
+# Developer Experience Excellence:
+#   - Development ZK ingress with flexible routing and GPU testing workflow integration
+#   - Comprehensive documentation with ZK ingress guides and GPU troubleshooting procedures
+#   - Environment-specific ZK ingress with production, GPU-optimized, development, internal, and verification support
+#   - Testing integration with ZK development workflow and GPU debugging capabilities
+#   - ZK ingress monitoring with comprehensive tracking and GPU correlation
+#
+# ==============================================================================

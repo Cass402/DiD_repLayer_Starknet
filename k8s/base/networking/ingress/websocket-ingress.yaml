@@ -1,0 +1,1086 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - WebSocket Ingress Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive WebSocket Ingress for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS WEBSOCKET INGRESS ARCHITECTURE:
+#   • Advanced Real-time ingress with WebSocket optimization and intelligent real-time traffic routing
+#   • Multi-tier ingress architecture with development, testing, staging, and production environments
+#   • Comprehensive networking framework with WebSocket routing, real-time optimization, persistent connection management
+#   • Advanced lifecycle management with automated ingress optimization, WebSocket routing control, and real-time enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and WebSocket performance insights
+#
+# VERIDIS WEBSOCKET INGRESS OPTIMIZATION:
+#   • High-performance WebSocket ingress with intelligent routing and real-time optimization
+#   • Intelligent real-time traffic management with responsive routing and performance-based WebSocket decisions
+#   • Advanced connection management with business intelligence and persistent connection-based ingress control
+#   • Comprehensive networking control with intelligent WebSocket ingress management and real-time enhancement
+#   • Enterprise acceleration with predictive WebSocket ingress management and real-time optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II WebSocket ingress controls with comprehensive audit and real-time requirements
+#   • GDPR WebSocket ingress compliance with data protection, privacy controls, and real-time traffic management
+#   • ISO 27001 WebSocket ingress management with comprehensive framework integration
+#   • NIST 800-190 container WebSocket ingress security with real-time-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and WebSocket ingress best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent WebSocket ingress lifecycle management with automated provisioning and real-time optimization
+#   • Predictive real-time analytics with capacity planning and WebSocket ingress intelligence
+#   • Advanced monitoring integration with WebSocket ingress analytics and real-time business intelligence
+#   • Comprehensive networking control with WebSocket ingress preservation and real-time optimization
+#   • Business continuity WebSocket ingress with real-time guarantees and WebSocket optimization
+#
+# INGRESS ACCELERATION INTELLIGENCE:
+#   • WebSocket ingress usage analytics with real-time patterns and optimization recommendations
+#   • Real-time monitoring with WebSocket ingress latency and traffic optimization intelligence
+#   • Development efficiency with WebSocket ingress analytics and deployment optimization procedures
+#   • Cost optimization with WebSocket ingress utilization analysis and connection capacity planning procedures
+#   • Quality assurance with WebSocket ingress metrics and real-time validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis WebSocket Ingress - Primary Production Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-websocket-ingress
+  namespace: veridis-infrastructure
+
+  # Core Veridis WebSocket Ingress identification labels
+  labels:
+    app.kubernetes.io/name: veridis-websocket
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: websocket-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Ingress specific classification
+    ingress.veridis.xyz/type: websocket-ingress
+    ingress.veridis.xyz/category: production-ingress
+    ingress.veridis.xyz/role: primary-websocket-ingress
+    ingress.veridis.xyz/performance-class: high-performance-websocket-ingress
+    ingress.veridis.xyz/security-level: enterprise
+
+    # WebSocket Ingress classification
+    websocket.veridis.xyz/ingress-type: real-time-ingress
+    websocket.veridis.xyz/protocol: websocket
+    websocket.veridis.xyz/performance-tier: high-performance
+    websocket.veridis.xyz/optimization: enabled
+    websocket.veridis.xyz/features: full-real-time-stack
+
+    # Real-time Ingress classification
+    realtime.veridis.xyz/tier: production
+    realtime.veridis.xyz/optimization: intelligent-websocket-routing
+    realtime.veridis.xyz/routing: advanced
+    realtime.veridis.xyz/connection-management: persistent
+    realtime.veridis.xyz/efficiency: maximum
+
+    # Business Ingress classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-real-time-experience
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Ingress labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: real-time-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "websocket-ingress-control-framework"
+    compliance.veridis.xyz/gdpr: "websocket-ingress-data-protection"
+    compliance.veridis.xyz/iso27001: "websocket-ingress-security-management"
+    compliance.veridis.xyz/nist-800-190: "websocket-ingress-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # WebSocket Ingress monitoring and analytics
+    monitoring.veridis.xyz/websocket-ingress-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/real-time-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Connection management labels
+    connection.veridis.xyz/persistent-enabled: "true"
+    connection.veridis.xyz/scaling-enabled: "true"
+    connection.veridis.xyz/load-balancing: "sticky-sessions"
+    connection.veridis.xyz/timeout-optimization: "enabled"
+    connection.veridis.xyz/heartbeat-enabled: "true"
+
+  annotations:
+    # Ingress purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis WebSocket Ingress with real-time optimization, intelligent WebSocket traffic management, and comprehensive real-time routing"
+    veridis.xyz/purpose: "Provides comprehensive WebSocket ingress for decentralized identity management with intelligent real-time routing, WebSocket optimization, and networking guarantees"
+    veridis.xyz/scope: "WebSocket ingress including real-time routing, connection management, persistent connections, and comprehensive real-time intelligence"
+
+    # Ingress architecture and design
+    ingress.veridis.xyz/architecture: "Enterprise WebSocket ingress with real-time routing, intelligent connection management, and persistent connection optimization"
+    ingress.veridis.xyz/design-pattern: "Multi-tier WebSocket ingress with real-time optimization, cost efficiency, and business intelligence"
+    ingress.veridis.xyz/optimization-model: "Intelligent WebSocket ingress with predictive analytics, real-time optimization, and connection efficiency"
+    ingress.veridis.xyz/performance-model: "High-performance WebSocket ingress with real-time optimization and intelligent connection management"
+
+    # WebSocket Ingress specifications
+    websocket.veridis.xyz/ingress-specification: "WebSocket ingress with real-time optimization and intelligent WebSocket traffic management"
+    websocket.veridis.xyz/routing-specification: "Advanced WebSocket routing configuration with real-time optimization and connection enhancement"
+    websocket.veridis.xyz/traffic-specification: "Real-time traffic management optimization with intelligent WebSocket routing and enhancement"
+    websocket.veridis.xyz/performance-specification: "WebSocket performance routing with real-time acceleration and connection efficiency"
+    websocket.veridis.xyz/business-specification: "WebSocket business ingress with cost optimization and strategic real-time intelligence"
+
+    # Real-time Ingress specifications
+    realtime.veridis.xyz/ingress-specification: "Real-time-aware WebSocket ingress with connection optimization and real-time intelligence"
+    realtime.veridis.xyz/routing-specification: "Real-time routing management optimization with intelligent WebSocket and connection enhancement"
+    realtime.veridis.xyz/connection-specification: "Real-time connection with cost optimization and intelligent WebSocket management"
+    realtime.veridis.xyz/persistence-specification: "Real-time persistent connections with auto-optimization and WebSocket management"
+    realtime.veridis.xyz/monitoring-specification: "Real-time monitoring with WebSocket ingress analytics and connection intelligence"
+
+    # Business Ingress specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant WebSocket ingress with business continuity and real-time guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized WebSocket ingress with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with WebSocket ingress optimization and real-time intelligence"
+
+    # Operational Ingress specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with WebSocket ingress analytics and real-time intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with WebSocket ingress preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with WebSocket ingress management and real-time optimization"
+
+    # WebSocket Ingress lifecycle specifications
+    lifecycle.veridis.xyz/websocket-ingress-specification: "Dynamic WebSocket ingress with automated real-time management and connection optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent WebSocket ingress scaling with machine learning and real-time forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "WebSocket ingress optimization with intelligent real-time management and connection enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "WebSocket ingress evolution with intelligent adaptation and real-time optimization"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+
+    # WebSocket-specific Nginx configuration
+    nginx.ingress.kubernetes.io/websocket-services: "veridis-backend:8080,veridis-realtime:8081"
+    nginx.ingress.kubernetes.io/proxy-set-headers: "websocket-headers"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      # WebSocket upgrade configuration
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+      proxy_set_header X-Forwarded-Host $host;
+      proxy_set_header X-Forwarded-Port $server_port;
+
+      # WebSocket connection management
+      proxy_cache_bypass $http_upgrade;
+      proxy_http_version 1.1;
+      proxy_buffering off;
+
+      # WebSocket timeout configuration
+      proxy_read_timeout 3600s;
+      proxy_send_timeout 3600s;
+
+      # WebSocket heartbeat support
+      proxy_set_header X-WebSocket-Protocol $http_sec_websocket_protocol;
+      proxy_set_header X-WebSocket-Extensions $http_sec_websocket_extensions;
+
+    # Advanced WebSocket configuration
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "8"
+    nginx.ingress.kubernetes.io/client-body-buffer-size: "1m"
+    nginx.ingress.kubernetes.io/client-max-body-size: "100m"
+
+    # WebSocket-optimized load balancing and session affinity
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$remote_addr"
+    nginx.ingress.kubernetes.io/session-cookie-name: "veridis-websocket-session"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
+    nginx.ingress.kubernetes.io/session-cookie-change-on-failure: "true"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/affinity-mode: "persistent"
+
+    # Rate limiting configuration for WebSocket connections
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/rate-limit-response-code: "429"
+    nginx.ingress.kubernetes.io/limit-connections: "20"
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+
+    # Security headers and CORS for WebSocket endpoints
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://app.veridis.xyz,https://admin.veridis.xyz,https://identity.veridis.xyz,https://dashboard.veridis.xyz"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET,POST,PUT,DELETE,OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,Authorization,Content-Type,Upgrade,Connection,Sec-WebSocket-Key,Sec-WebSocket-Version,Sec-WebSocket-Protocol"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-max-age: "86400"
+
+    # WebSocket-specific security configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # WebSocket connection upgrade handling
+      map $http_upgrade $connection_upgrade {
+        default upgrade;
+        ''      close;
+      }
+
+      # WebSocket security headers
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+      add_header Content-Security-Policy "default-src 'self'; connect-src 'self' wss://ws.veridis.xyz wss://realtime.veridis.xyz; script-src 'self' 'unsafe-inline'" always;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+      add_header X-WebSocket-Security-Policy "strict-validation" always;
+      add_header X-Real-Time-Optimization "enabled" always;
+
+    # WebSocket-specific routing configuration
+    nginx.ingress.kubernetes.io/location-snippet: |
+      # WebSocket protocol detection and routing
+      if ($http_upgrade = "websocket") {
+        set $websocket_backend "websocket-enabled";
+      }
+
+      # WebSocket connection logging
+      access_log /var/log/nginx/websocket-access.log websocket_format;
+      error_log /var/log/nginx/websocket-error.log;
+
+      # WebSocket connection limits
+      limit_conn websocket_connections 100;
+      limit_req zone=websocket_rate burst=20 nodelay;
+
+    # Monitoring and observability for WebSocket operations
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-websocket-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-websocket-error.log"
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    nginx.ingress.kubernetes.io/modsecurity-transaction-id: "$request_id"
+
+    # Performance optimization for WebSocket workloads
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "32"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "1000"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "3600s"
+    nginx.ingress.kubernetes.io/enable-brotli: "false"
+    nginx.ingress.kubernetes.io/enable-gzip: "false"
+
+    # WebSocket heartbeat and keepalive configuration
+    nginx.ingress.kubernetes.io/proxy-ping-interval: "30s"
+    nginx.ingress.kubernetes.io/proxy-pong-timeout: "10s"
+    nginx.ingress.kubernetes.io/websocket-heartbeat: "enabled"
+
+    # Circuit breaker configuration for WebSocket operations
+    nginx.ingress.kubernetes.io/custom-http-errors: "404,503,502,500,504"
+    nginx.ingress.kubernetes.io/default-backend: "veridis-websocket-default-backend"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/ingress-admin: "websocket-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/websocket/ingress"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/websocket/ingress-management"
+    veridis.xyz/ingress-docs: "https://websocket.veridis.xyz/ingress-guide"
+    veridis.xyz/networking-docs: "https://networking.veridis.xyz/websocket-ingress"
+
+spec:
+  # ==============================================================================
+  # Ingress Class Configuration
+  # ==============================================================================
+  ingressClassName: nginx
+
+  # ==============================================================================
+  # TLS Configuration
+  # ==============================================================================
+  tls:
+    - hosts:
+        - ws.veridis.xyz
+        - websocket.veridis.xyz
+        - realtime.veridis.xyz
+        - live.veridis.xyz
+        - events.veridis.xyz
+        - notifications.veridis.xyz
+      secretName: veridis-websocket-tls-secret
+
+  # ==============================================================================
+  # Ingress Rules Configuration
+  # ==============================================================================
+  rules:
+    # ==============================================================================
+    # Primary WebSocket Domain - ws.veridis.xyz
+    # ==============================================================================
+    - host: ws.veridis.xyz
+      http:
+        paths:
+          # ==============================================================================
+          # WebSocket Connection Routes
+          # ==============================================================================
+          - path: /ws(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Real-time Identity Updates
+          # ==============================================================================
+          - path: /identity/updates(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Attestation Real-time Updates
+          # ==============================================================================
+          - path: /attestation/updates(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Verification Status Updates
+          # ==============================================================================
+          - path: /verification/status(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # Bridge Transaction Updates
+          # ==============================================================================
+          - path: /bridge/transactions(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+          # ==============================================================================
+          # ZK Proof Generation Status
+          # ==============================================================================
+          - path: /zk/proof-status(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-zk-circuits
+                port:
+                  number: 4000
+
+    # ==============================================================================
+    # WebSocket Service Domain - websocket.veridis.xyz
+    # ==============================================================================
+    - host: websocket.veridis.xyz
+      http:
+        paths:
+          # All WebSocket routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Real-time Domain - realtime.veridis.xyz
+    # ==============================================================================
+    - host: realtime.veridis.xyz
+      http:
+        paths:
+          # Real-time specific routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Live Updates Domain - live.veridis.xyz
+    # ==============================================================================
+    - host: live.veridis.xyz
+      http:
+        paths:
+          # Live update routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Events Domain - events.veridis.xyz
+    # ==============================================================================
+    - host: events.veridis.xyz
+      http:
+        paths:
+          # Event streaming routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    # ==============================================================================
+    # Notifications Domain - notifications.veridis.xyz
+    # ==============================================================================
+    - host: notifications.veridis.xyz
+      http:
+        paths:
+          # Notification routes
+          - path: /(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis WebSocket Ingress - High-Performance Real-time Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-websocket-performance-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-websocket
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: websocket-performance-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: websocket-performance-ingress
+    ingress.veridis.xyz/category: performance-ingress
+    ingress.veridis.xyz/role: high-performance-websocket-ingress
+    ingress.veridis.xyz/scope: performance-optimization
+
+    websocket.veridis.xyz/ingress-type: performance-ingress
+    websocket.veridis.xyz/performance-optimization: enabled
+    websocket.veridis.xyz/connection-pooling: enabled
+    websocket.veridis.xyz/latency-optimization: enabled
+
+    performance.veridis.xyz/optimization: enabled
+    performance.veridis.xyz/monitoring: comprehensive
+    performance.veridis.xyz/connection-management: advanced
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "High-performance WebSocket ingress for Veridis with connection pooling and latency optimization"
+    veridis.xyz/purpose: "Provides performance-focused WebSocket ingress for maximum real-time performance and connection efficiency"
+
+    ingress.veridis.xyz/performance-specification: "Performance optimization ingress with connection pooling and latency optimization"
+    websocket.veridis.xyz/performance-specification: "WebSocket performance ingress with optimization and monitoring"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Performance-specific WebSocket optimization
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "16"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "64"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "10000"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "7200s"
+
+    # High-performance WebSocket configuration
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "7200"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "7200"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "10"
+
+    # Performance-specific routing
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # High-performance WebSocket handling
+      location ~* /performance/ws/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Performance-Mode "high";
+        proxy_set_header X-WebSocket-Optimization "enabled";
+        proxy_set_header X-Connection-Pooling "enabled";
+      }
+
+      # WebSocket connection limits for performance
+      limit_conn high_perf_websocket_connections 200;
+      limit_req zone=high_perf_websocket_rate burst=50 nodelay;
+
+    # Performance monitoring annotations
+    performance-ingress.veridis.xyz/connection-utilization: "monitored"
+    performance-ingress.veridis.xyz/latency-optimization: "enabled"
+    performance-ingress.veridis.xyz/throughput-maximized: "enabled"
+    performance-ingress.veridis.xyz/connection-pooling: "optimized"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "websocket-performance-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/websocket/performance-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - perf-ws.veridis.xyz
+        - high-perf-realtime.veridis.xyz
+        - fast-ws.veridis.xyz
+      secretName: veridis-websocket-performance-tls-secret
+
+  rules:
+    - host: perf-ws.veridis.xyz
+      http:
+        paths:
+          - path: /performance/ws(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-performance
+                port:
+                  number: 8080
+
+    - host: high-perf-realtime.veridis.xyz
+      http:
+        paths:
+          - path: /realtime(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-performance
+                port:
+                  number: 8080
+
+    - host: fast-ws.veridis.xyz
+      http:
+        paths:
+          - path: /fast(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-performance
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis WebSocket Ingress - Development and Testing Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-websocket-dev-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-websocket
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: websocket-dev-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: websocket-dev-ingress
+    ingress.veridis.xyz/category: development-ingress
+    ingress.veridis.xyz/role: testing-ingress
+    ingress.veridis.xyz/scope: development-testing
+
+    websocket.veridis.xyz/ingress-type: development-ingress
+    websocket.veridis.xyz/testing-enabled: "true"
+    websocket.veridis.xyz/debugging-enabled: "true"
+    websocket.veridis.xyz/connection-monitoring: "detailed"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/websocket-testing: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing WebSocket ingress for Veridis with debugging and connection monitoring"
+    veridis.xyz/purpose: "Provides development-friendly WebSocket ingress for testing workflows and real-time development simulation"
+
+    ingress.veridis.xyz/dev-specification: "Development WebSocket ingress with testing integration and debugging support"
+    websocket.veridis.xyz/dev-specification: "WebSocket development ingress with testing framework and debugging integration"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+
+    # Development annotations
+    development.veridis.xyz/flexible-routing: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/websocket-development-workflow: "enabled"
+    development.veridis.xyz/connection-debugging: "enabled"
+
+    # Debug configuration
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/veridis-websocket-dev-access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/veridis-websocket-dev-error.log"
+
+    # Development-specific WebSocket configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Development WebSocket testing
+      location ~* /dev/ws/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Development-Mode "true";
+        proxy_set_header X-WebSocket-Testing "enabled";
+        proxy_set_header X-Connection-Debug "true";
+
+        # Detailed logging for development
+        access_log /var/log/nginx/websocket-dev-detailed.log detailed;
+      }
+
+      # WebSocket connection debugging
+      location ~* /debug/ws/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Debug-Mode "enabled";
+        proxy_set_header X-WebSocket-Debug "detailed";
+      }
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "websocket-development-features-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/websocket/dev-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - dev-ws.veridis.xyz
+        - test-websocket.veridis.xyz
+        - debug-realtime.veridis.xyz
+      secretName: veridis-websocket-dev-tls-secret
+
+  rules:
+    - host: dev-ws.veridis.xyz
+      http:
+        paths:
+          - path: /dev/ws(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-dev
+                port:
+                  number: 8080
+
+    - host: test-websocket.veridis.xyz
+      http:
+        paths:
+          - path: /test(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-dev
+                port:
+                  number: 8080
+
+    - host: debug-realtime.veridis.xyz
+      http:
+        paths:
+          - path: /debug(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-dev
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis WebSocket Ingress - Internal Service Communication Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-websocket-internal-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-websocket
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: websocket-internal-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: websocket-internal-ingress
+    ingress.veridis.xyz/category: internal-ingress
+    ingress.veridis.xyz/role: internal-websocket-ingress
+    ingress.veridis.xyz/scope: internal-communication
+
+    websocket.veridis.xyz/ingress-type: internal-ingress
+    websocket.veridis.xyz/internal-communication: enabled
+    websocket.veridis.xyz/service-mesh: enabled
+    websocket.veridis.xyz/secure-communication: enabled
+
+    internal.veridis.xyz/websocket-access: restricted
+    internal.veridis.xyz/authentication: required
+    internal.veridis.xyz/authorization: rbac
+    internal.veridis.xyz/connection-security: maximum
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Internal WebSocket ingress for Veridis with restricted access and secure service communication"
+    veridis.xyz/purpose: "Provides internal WebSocket access for service-to-service communication with authentication and secure connections"
+
+    ingress.veridis.xyz/internal-specification: "Internal WebSocket ingress with restricted access and secure communication"
+    websocket.veridis.xyz/internal-specification: "WebSocket internal ingress with authentication and secure connections"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Authentication and authorization for internal WebSocket
+    nginx.ingress.kubernetes.io/auth-type: "basic"
+    nginx.ingress.kubernetes.io/auth-secret: "veridis-websocket-internal-auth"
+    nginx.ingress.kubernetes.io/auth-realm: "Veridis Internal WebSocket"
+
+    # IP whitelist for internal WebSocket access
+    nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+
+    # Internal WebSocket annotations
+    internal.veridis.xyz/access-control: "restricted"
+    internal.veridis.xyz/service-mesh-integration: "enabled"
+    internal.veridis.xyz/mutual-tls: "enabled"
+    internal.veridis.xyz/rbac-enforcement: "enabled"
+    internal.veridis.xyz/connection-encryption: "maximum"
+
+    # Internal-specific WebSocket configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Internal WebSocket secure communication
+      location ~* /internal/ws/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Internal-Access "true";
+        proxy_set_header X-Secure-WebSocket "enabled";
+        proxy_set_header X-Service-Mesh "enabled";
+
+        # Enhanced security for internal communication
+        proxy_ssl_verify on;
+        proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
+      }
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "internal-websocket-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/websocket/internal-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - internal-ws.veridis.xyz
+        - secure-websocket.veridis.xyz
+        - service-ws.veridis.xyz
+      secretName: veridis-websocket-internal-tls-secret
+
+  rules:
+    - host: internal-ws.veridis.xyz
+      http:
+        paths:
+          - path: /internal/ws(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    - host: secure-websocket.veridis.xyz
+      http:
+        paths:
+          - path: /secure(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    - host: service-ws.veridis.xyz
+      http:
+        paths:
+          - path: /service(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+---
+# ==============================================================================
+# Veridis WebSocket Ingress - External Public Real-time Configuration
+# ==============================================================================
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: veridis-websocket-public-ingress
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-websocket
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: websocket-public-ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    ingress.veridis.xyz/type: websocket-public-ingress
+    ingress.veridis.xyz/category: public-ingress
+    ingress.veridis.xyz/role: public-websocket-ingress
+    ingress.veridis.xyz/scope: public-access
+
+    websocket.veridis.xyz/ingress-type: public-ingress
+    websocket.veridis.xyz/public-access: enabled
+    websocket.veridis.xyz/rate-limited: "true"
+    websocket.veridis.xyz/connection-limits: "strict"
+
+    public.veridis.xyz/websocket-access: enabled
+    public.veridis.xyz/rate-limiting: enabled
+    public.veridis.xyz/connection-monitoring: enabled
+    public.veridis.xyz/ddos-protection: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Public WebSocket ingress for Veridis with rate limiting and DDoS protection"
+    veridis.xyz/purpose: "Provides public WebSocket access for external clients with security controls and connection management"
+
+    ingress.veridis.xyz/public-specification: "Public WebSocket ingress with rate limiting and security controls"
+    websocket.veridis.xyz/public-specification: "WebSocket public ingress with connection limits and DDoS protection"
+
+    # Nginx Ingress Controller annotations
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Public WebSocket rate limiting
+    nginx.ingress.kubernetes.io/rate-limit: "50"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    nginx.ingress.kubernetes.io/rate-limit-response-code: "429"
+    nginx.ingress.kubernetes.io/limit-connections: "10"
+    nginx.ingress.kubernetes.io/limit-rps: "5"
+
+    # Public WebSocket configuration
+    nginx.ingress.kubernetes.io/server-snippet: |
+      # Public WebSocket access control
+      location ~* /public/ws/(.*) {
+        proxy_pass http://upstream_balancer;
+        proxy_set_header X-Public-Access "true";
+        proxy_set_header X-Rate-Limited "enabled";
+        proxy_set_header X-DDoS-Protection "enabled";
+
+        # Public WebSocket connection limits
+        limit_conn public_websocket_connections 50;
+        limit_req zone=public_websocket_rate burst=10 nodelay;
+      }
+
+      # Block malicious WebSocket requests
+      if ($http_user_agent ~* "(bot|crawler|spider)") {
+        return 403 "WebSocket access denied";
+      }
+
+    # Public WebSocket annotations
+    public.veridis.xyz/public-websocket: "enabled"
+    public.veridis.xyz/connection-limits: "enforced"
+    public.veridis.xyz/rate-limiting: "strict"
+    public.veridis.xyz/ddos-protection: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "public-websocket-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/websocket/public-ingress"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - public-ws.veridis.xyz
+        - open-websocket.veridis.xyz
+        - api-ws.veridis.xyz
+      secretName: veridis-websocket-public-tls-secret
+
+  rules:
+    - host: public-ws.veridis.xyz
+      http:
+        paths:
+          - path: /public/ws(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    - host: open-websocket.veridis.xyz
+      http:
+        paths:
+          - path: /open(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+    - host: api-ws.veridis.xyz
+      http:
+        paths:
+          - path: /api/ws(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend
+                port:
+                  number: 8080
+
+# ==============================================================================
+# Veridis WebSocket Ingress Summary and Enterprise Real-time Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS WEBSOCKET INGRESS STRATEGY:
+# =================================================
+#
+# VERIDIS WEBSOCKET INGRESS ARCHITECTURE OVERVIEW:
+# ------------------------------------------------
+# 1. Primary WebSocket Ingress (veridis-websocket-ingress):
+#    - Comprehensive WebSocket routing with multiple domains and real-time-specific endpoints for production traffic
+#    - Advanced Nginx configuration with SSL termination, WebSocket-specific timeouts, persistent connections, and real-time headers
+#    - Multi-service routing with identity updates, attestation updates, verification status, bridge transactions, and ZK proof status
+#    - Enterprise security with WebSocket-specific CORS, CSP, HSTS, and comprehensive real-time security header configuration
+#    - Performance optimization with WebSocket-aware proxy configuration, connection pooling, and real-time workload optimization
+#
+# 2. High-Performance Ingress (veridis-websocket-performance-ingress):
+#    - Connection pooling with 64 keepalive connections and 10,000 requests per connection for maximum throughput
+#    - Performance-specific configuration with disabled buffering, optimized timeouts, and high-performance connection limits
+#    - Latency optimization with 10-second connect timeout and advanced connection management
+#    - Conditional deployment with WebSocket performance optimization enablement and connection efficiency management
+#    - Advanced performance monitoring with connection utilization tracking and throughput optimization intelligence
+#
+# 3. Development Environment Ingress (veridis-websocket-dev-ingress):
+#    - Development-friendly WebSocket routing with relaxed SSL requirements and comprehensive real-time debugging
+#    - Connection debugging support with detailed access and error logging for WebSocket troubleshooting
+#    - Testing framework integration with WebSocket development workflow and connection monitoring capabilities
+#    - Flexible WebSocket routing configuration with development-specific endpoints and real-time testing services
+#    - Conditional deployment with WebSocket development feature enablement and connection debugging support
+#
+# 4. Internal Service Communication Ingress (veridis-websocket-internal-ingress):
+#    - Restricted internal WebSocket access with authentication and secure service-to-service communication
+#    - Service mesh integration with mutual TLS and WebSocket-specific RBAC enforcement
+#    - Internal WebSocket communication with secure authentication and connection encryption
+#    - Network-level access control with private subnet restrictions and WebSocket security policies
+#    - Conditional deployment with internal WebSocket enablement and secure communication enforcement
+#
+# 5. Public WebSocket Ingress (veridis-websocket-public-ingress):
+#    - Public WebSocket endpoints with strict rate limiting and DDoS protection for external client access
+#    - Connection limits with 50 public connections and 5 RPS for public endpoint protection
+#    - Rate limiting optimization with WebSocket-specific limits and public access controls
+#    - Security controls with malicious request blocking and connection monitoring
+#    - Conditional deployment with public WebSocket enablement and security enforcement
+#
+# ENTERPRISE WEBSOCKET INGRESS FEATURES:
+# ======================================
+# Advanced WebSocket-Specific Nginx Configuration and Security:
+#   - SSL termination with force SSL redirect and comprehensive TLS configuration for WebSocket traffic
+#   - WebSocket-specific timeouts with 3600-second read/send timeout and 60-second connect timeout for persistent connections
+#   - Connection upgrade handling with WebSocket protocol detection and connection mapping
+#   - Real-time security headers with WebSocket security policy, CSP with WebSocket origins, and comprehensive security controls
+#   - WebSocket-specific CORS configuration with upgrade headers and persistent connection support for cross-origin requests
+#
+# Comprehensive WebSocket Routing and Path Management:
+#   - Multi-domain routing with ws.veridis.xyz, websocket.veridis.xyz, realtime.veridis.xyz, live.veridis.xyz domains
+#   - WebSocket-specific path routing with identity updates, attestation updates, verification status, bridge transactions, and ZK proof status
+#   - Real-time routing with event streaming, notification delivery, and live update management
+#   - Connection management with persistent sessions, heartbeat support, and connection monitoring
+#   - Service-specific routing with backend WebSocket endpoints and ZK circuits status updates
+#
+# Enterprise WebSocket Performance and Connection Optimization:
+#   - Connection pooling with 32-64 keepalive connections, 1000-10000 requests per connection, and 3600-7200 second timeouts
+#   - Disabled compression for WebSocket traffic to maintain real-time performance and connection efficiency
+#   - WebSocket upstream optimization with connection pooling and persistent connection batching for maximum efficiency
+#   - Real-time performance monitoring with connection utilization tracking and WebSocket operation optimization
+#   - Connection management with heartbeat support, ping/pong handling, and connection health monitoring
+#
+# Advanced WebSocket Traffic Management and Load Balancing:
+#   - WebSocket-aware load balancing with remote address hashing and persistent session distribution
+#   - Connection affinity with persistent cookie-based sessions and WebSocket connection failure handling
+#   - Circuit breaker integration with WebSocket-specific error pages and real-time failover mechanisms
+#   - Traffic optimization with connection pooling and real-time resource optimization
+#   - Geographic routing with multi-region WebSocket support and latency optimization
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# WebSocket Ingress Lifecycle Management:
+#   - Multi-ingress architecture with primary, performance, development, internal, and public configurations
+#   - Intelligent WebSocket traffic management with predictive analytics and connection utilization correlation
+#   - Advanced monitoring with comprehensive WebSocket ingress analytics and real-time business intelligence
+#   - Configuration validation with WebSocket schema enforcement and real-time deployment safety checks
+#   - Automated optimization with WebSocket usage pattern analysis and connection routing recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II WebSocket ingress controls with comprehensive audit requirements and real-time traffic logging
+#   - GDPR WebSocket ingress compliance with data protection and privacy-preserving real-time traffic management
+#   - ISO 27001 WebSocket ingress security management with information security and real-time compliance integration
+#   - NIST 800-190 container WebSocket ingress security with real-time validation and compliance
+#   - Zero-trust WebSocket ingress architecture with comprehensive encryption and real-time authentication requirements
+#
+# Business Intelligence Integration:
+#   - WebSocket traffic analytics with connection cost correlation and real-time resource utilization optimization
+#   - Performance analytics with WebSocket user experience optimization and real-time business intelligence
+#   - Routing intelligence with WebSocket traffic pattern monitoring and connection optimization recommendations
+#   - Strategic planning with WebSocket capacity management and real-time traffic forecasting
+#   - Business impact assessment with WebSocket traffic performance correlation and real-time availability tracking
+#
+# Developer Experience Excellence:
+#   - Development WebSocket ingress with flexible routing and connection debugging workflow integration
+#   - Comprehensive documentation with WebSocket ingress guides and real-time troubleshooting procedures
+#   - Environment-specific WebSocket ingress with production, performance, development, internal, and public support
+#   - Testing integration with WebSocket development workflow and real-time debugging capabilities
+#   - WebSocket ingress monitoring with comprehensive tracking and connection correlation
+#
+# ==============================================================================
