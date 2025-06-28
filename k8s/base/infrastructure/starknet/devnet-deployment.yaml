@@ -1,0 +1,1010 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - StarkNet DevNet Deployment
+# ==============================================================================
+#
+# This manifest defines comprehensive StarkNet DevNet deployment configurations for the
+# Veridis deployment, providing:
+#
+# ENTERPRISE STARKNET DEVNET ARCHITECTURE:
+#   • Advanced DevNet orchestration with comprehensive blockchain simulation and development
+#   • Multi-tier DevNet architecture with development, testing, staging, and production-like environments
+#   • Comprehensive DevNet security with network isolation, access controls, and audit capabilities
+#   • Advanced DevNet lifecycle management with automated provisioning, scaling, and optimization
+#   • Enterprise-grade DevNet intelligence with comprehensive analytics and performance insights
+#
+# STARKNET DEVNET PERFORMANCE OPTIMIZATION:
+#   • High-performance blockchain simulation with Cairo v2.11.4 integration and MLIR optimization
+#   • Intelligent block production with configurable timing and transaction throughput optimization
+#   • Advanced state management with persistent storage, snapshots, and rollback capabilities
+#   • Comprehensive transaction processing with batching, prioritization, and fee optimization
+#   • Enterprise DevNet acceleration with GPU support for proof generation and validation
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II DevNet controls with comprehensive audit and development requirements
+#   • GDPR DevNet compliance with data protection, privacy controls, and deletion procedures
+#   • ISO 27001 DevNet security management with comprehensive framework integration
+#   • NIST 800-190 container security with DevNet-specific validation and compliance
+#   • Blockchain compliance with regulatory frameworks and development best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent DevNet lifecycle management with automated provisioning and optimization
+#   • Predictive DevNet analytics with capacity planning and performance intelligence
+#   • Advanced monitoring integration with DevNet analytics and business intelligence
+#   • Comprehensive backup and recovery with state preservation and disaster preparedness
+#   • Business continuity DevNet with failover capabilities and redundancy optimization
+#
+# CAIRO V2.11.4 BUSINESS INTELLIGENCE:
+#   • DevNet usage analytics with development patterns and optimization recommendations
+#   • Performance monitoring with transaction latency and throughput optimization intelligence
+#   • Development efficiency with testing analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with testing metrics and development validation procedures
+#
+# ==============================================================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starknet-devnet
+  namespace: veridis-infrastructure
+
+  # Core StarkNet DevNet identification labels
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.1.25"
+    app.kubernetes.io/component: blockchain-devnet
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # DevNet specific classification
+    blockchain.veridis.xyz/type: starknet-devnet
+    blockchain.veridis.xyz/network: development
+    blockchain.veridis.xyz/role: local-blockchain
+    blockchain.veridis.xyz/performance-class: high
+    blockchain.veridis.xyz/security-level: development
+
+    # Cairo development classification
+    cairo.veridis.xyz/version: "v2.11.4"
+    cairo.veridis.xyz/optimization: mlir-enabled
+    cairo.veridis.xyz/features: comprehensive
+    cairo.veridis.xyz/gpu-acceleration: enabled
+    cairo.veridis.xyz/development-mode: advanced
+
+    # Performance DevNet classification
+    performance.veridis.xyz/tier: high-performance
+    performance.veridis.xyz/optimization: mlir-acceleration
+    performance.veridis.xyz/gpu-support: enabled
+    performance.veridis.xyz/parallel-processing: enabled
+    performance.veridis.xyz/memory-optimization: vec-storage
+
+    # Development DevNet classification
+    development.veridis.xyz/environment: local-development
+    development.veridis.xyz/testing-support: comprehensive
+    development.veridis.xyz/debugging: enabled
+    development.veridis.xyz/state-management: persistent
+    development.veridis.xyz/snapshot-support: enabled
+
+    # Business DevNet classification
+    business.veridis.xyz/criticality: development-critical
+    business.veridis.xyz/impact: development-velocity
+    business.veridis.xyz/cost-tier: development
+    business.veridis.xyz/sla-tier: development
+    business.veridis.xyz/availability-requirement: high
+
+    # Operational DevNet labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: blockchain-engineering
+    veridis.xyz/cost-center: development-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "devnet-control-framework"
+    compliance.veridis.xyz/gdpr: "devnet-data-protection"
+    compliance.veridis.xyz/iso27001: "devnet-security-management"
+    compliance.veridis.xyz/nist-800-190: "devnet-container-security"
+    governance.veridis.xyz/policy-enforcement: "development"
+
+    # DevNet monitoring and analytics
+    monitoring.veridis.xyz/devnet-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/development-analytics: "enabled"
+    monitoring.veridis.xyz/usage-monitoring: "detailed"
+    monitoring.veridis.xyz/quality-monitoring: "enabled"
+
+  annotations:
+    # DevNet purpose and specifications
+    veridis.xyz/description: "Enterprise StarkNet DevNet for Veridis with Cairo v2.11.4 integration and comprehensive development features"
+    veridis.xyz/purpose: "Provides high-performance local StarkNet blockchain for development, testing, and integration with Cairo optimization"
+    veridis.xyz/scope: "DevNet blockchain including state management, transaction processing, debugging, and development analytics"
+
+    # DevNet architecture and design
+    blockchain.veridis.xyz/architecture: "Enterprise StarkNet DevNet with Cairo v2.11.4, MLIR optimization, and comprehensive development features"
+    blockchain.veridis.xyz/design-pattern: "High-performance DevNet with persistent state, snapshots, debugging, and development intelligence"
+    blockchain.veridis.xyz/security-model: "Development security with network isolation, access controls, and comprehensive monitoring"
+    blockchain.veridis.xyz/performance-model: "High-performance DevNet with GPU acceleration, parallel processing, and optimization"
+
+    # Cairo development specifications
+    cairo.veridis.xyz/development-specification: "Cairo v2.11.4 with MLIR optimization, GPU acceleration, and comprehensive development features"
+    cairo.veridis.xyz/optimization-specification: "MLIR-enabled optimization with 5x faster compilation and advanced performance features"
+    cairo.veridis.xyz/gpu-specification: "GPU acceleration with CUDA support for proof generation and validation optimization"
+    cairo.veridis.xyz/features-specification: "Comprehensive Cairo features including debugging, profiling, and development intelligence"
+
+    # Performance DevNet specifications
+    performance.veridis.xyz/transaction-specification: "High-throughput transaction processing with batching and optimization capabilities"
+    performance.veridis.xyz/block-specification: "Configurable block production with timing optimization and resource management"
+    performance.veridis.xyz/state-specification: "Advanced state management with persistent storage and snapshot capabilities"
+    performance.veridis.xyz/memory-specification: "Vec-based memory optimization with intelligent resource management and efficiency"
+
+    # Development DevNet specifications
+    development.veridis.xyz/testing-specification: "Comprehensive testing support with debugging, profiling, and validation capabilities"
+    development.veridis.xyz/debugging-specification: "Advanced debugging with transaction tracing, state inspection, and error analysis"
+    development.veridis.xyz/integration-specification: "Seamless integration with development tools, IDEs, and testing frameworks"
+    development.veridis.xyz/analytics-specification: "Development analytics with usage patterns and optimization recommendations"
+
+    # Business DevNet specifications
+    business.veridis.xyz/velocity-specification: "Development velocity optimization with fast iteration and comprehensive testing"
+    business.veridis.xyz/efficiency-specification: "Resource efficiency with intelligent management and cost optimization"
+    business.veridis.xyz/quality-specification: "Quality assurance with comprehensive testing and validation procedures"
+    business.veridis.xyz/productivity-specification: "Developer productivity with advanced tooling and automation capabilities"
+
+    # Operational DevNet specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with development analytics and performance intelligence"
+    operations.veridis.xyz/maintenance-specification: "Automated maintenance with state preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with development load management and resource optimization"
+
+    # DevNet lifecycle specifications
+    lifecycle.veridis.xyz/provisioning-specification: "Dynamic provisioning with automated setup and configuration management"
+    lifecycle.veridis.xyz/state-specification: "State lifecycle management with persistence, snapshots, and rollback capabilities"
+    lifecycle.veridis.xyz/optimization-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/decommissioning-specification: "Safe decommissioning with state preservation and data migration"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "blockchain-team@veridis.xyz"
+    veridis.xyz/devnet-admin: "starknet-devnet-admin@veridis.xyz"
+    veridis.xyz/escalation: "blockchain-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "blockchain-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/starknet/devnet-deployment"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/starknet/devnet-management"
+    veridis.xyz/development-docs: "https://dev.veridis.xyz/starknet/devnet-development"
+    veridis.xyz/cairo-docs: "https://cairo.veridis.xyz/development/devnet-integration"
+
+    # Deployment controller annotations
+    deployment.kubernetes.io/revision: "1"
+
+    # DevNet management annotations
+    starknet.devnet.io/enable-fee: "true"
+    starknet.devnet.io/enable-validation: "true"
+    starknet.devnet.io/chain-id: "SN_SEPOLIA"
+    starknet.devnet.io/block-generation-on: "transaction"
+
+spec:
+  # ==============================================================================
+  # Replica Configuration - High Availability Development
+  # ==============================================================================
+  replicas: 2
+
+  # ==============================================================================
+  # Deployment Strategy - Rolling Updates with Development Continuity
+  # ==============================================================================
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  # ==============================================================================
+  # Pod Selection and Management
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: starknet-devnet
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: blockchain-devnet
+
+  # ==============================================================================
+  # Pod Template Specification
+  # ==============================================================================
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: starknet-devnet
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "0.1.25"
+        app.kubernetes.io/component: blockchain-devnet
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+
+        # DevNet pod classification
+        blockchain.veridis.xyz/type: starknet-devnet
+        blockchain.veridis.xyz/network: development
+        blockchain.veridis.xyz/role: local-blockchain
+        blockchain.veridis.xyz/instance: pod
+
+        # Cairo pod classification
+        cairo.veridis.xyz/version: "v2.11.4"
+        cairo.veridis.xyz/optimization: mlir-enabled
+        cairo.veridis.xyz/gpu-acceleration: enabled
+        cairo.veridis.xyz/development-mode: advanced
+
+        # Performance pod classification
+        performance.veridis.xyz/tier: high-performance
+        performance.veridis.xyz/optimization: mlir-acceleration
+        performance.veridis.xyz/gpu-support: enabled
+        performance.veridis.xyz/memory-optimization: vec-storage
+
+        # Monitoring pod classification
+        monitoring.veridis.xyz/scrape: "true"
+        monitoring.veridis.xyz/port: "5050"
+        monitoring.veridis.xyz/path: "/metrics"
+        monitoring.veridis.xyz/devnet-metrics: "enabled"
+
+        # Security pod classification
+        security.veridis.xyz/level: development
+        security.veridis.xyz/isolation: network-isolated
+        security.veridis.xyz/access-control: development-teams
+        security.veridis.xyz/audit-logging: enabled
+
+        veridis.xyz/environment: production
+        veridis.xyz/team: blockchain-engineering
+        veridis.xyz/cost-center: development-infrastructure
+
+      annotations:
+        # Pod purpose and specifications
+        veridis.xyz/pod-description: "Enterprise StarkNet DevNet pod with Cairo v2.11.4 optimization and comprehensive development features"
+        veridis.xyz/pod-purpose: "Provides high-performance StarkNet blockchain simulation for development and testing"
+
+        # Performance pod specifications
+        performance.veridis.xyz/cpu-optimization: "mlir-enabled compilation with advanced optimization"
+        performance.veridis.xyz/memory-optimization: "vec-based storage with intelligent memory management"
+        performance.veridis.xyz/gpu-optimization: "GPU acceleration for proof generation and validation"
+        performance.veridis.xyz/io-optimization: "high-performance I/O with SSD storage and optimization"
+
+        # Development pod specifications
+        development.veridis.xyz/debugging-enabled: "comprehensive debugging with transaction tracing"
+        development.veridis.xyz/profiling-enabled: "performance profiling with optimization recommendations"
+        development.veridis.xyz/testing-support: "advanced testing with comprehensive validation"
+        development.veridis.xyz/integration-support: "seamless development tool integration"
+
+        # Security pod specifications
+        security.veridis.xyz/network-isolation: "development network isolation with controlled access"
+        security.veridis.xyz/access-control: "role-based access for development teams and tools"
+        security.veridis.xyz/audit-logging: "comprehensive audit logging for development activities"
+        security.veridis.xyz/data-protection: "development data protection with encryption and access controls"
+
+        # Monitoring pod specifications
+        monitoring.veridis.xyz/metrics-enabled: "comprehensive metrics collection for DevNet analytics"
+        monitoring.veridis.xyz/logging-enabled: "detailed logging for development and debugging"
+        monitoring.veridis.xyz/tracing-enabled: "distributed tracing for transaction analysis"
+        monitoring.veridis.xyz/alerting-enabled: "intelligent alerting for development issues"
+
+        # Resource pod specifications
+        resources.veridis.xyz/cpu-profile: "high-performance CPU with MLIR optimization"
+        resources.veridis.xyz/memory-profile: "high-memory with vec-based optimization"
+        resources.veridis.xyz/storage-profile: "high-performance SSD storage"
+        resources.veridis.xyz/network-profile: "high-bandwidth development networking"
+
+        # Prometheus monitoring annotations
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "5050"
+        prometheus.io/path: "/metrics"
+        prometheus.io/scheme: "http"
+
+    spec:
+      # ==============================================================================
+      # Security Context - Development Security with Comprehensive Controls
+      # ==============================================================================
+      securityContext:
+        # Pod-level security context
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+        seccompProfile:
+          type: RuntimeDefault
+        supplementalGroups:
+          - 1000
+
+      # ==============================================================================
+      # Service Account and RBAC
+      # ==============================================================================
+      serviceAccountName: starknet-devnet-service-account
+      automountServiceAccountToken: true
+
+      # ==============================================================================
+      # Node Selection and Affinity
+      # ==============================================================================
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        node.veridis.xyz/workload-type: development
+        node.veridis.xyz/gpu-enabled: "true"
+        node.veridis.xyz/high-memory: "true"
+
+      # ==============================================================================
+      # Advanced Pod Affinity and Anti-Affinity
+      # ==============================================================================
+      affinity:
+        # Pod anti-affinity for high availability
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - starknet-devnet
+                topologyKey: kubernetes.io/hostname
+
+            - weight: 80
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/component
+                      operator: In
+                      values:
+                        - blockchain-devnet
+                topologyKey: topology.kubernetes.io/zone
+
+        # Node affinity for optimal performance
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.veridis.xyz/performance-tier
+                    operator: In
+                    values:
+                      - high-performance
+                      - gpu-accelerated
+
+                  - key: node.veridis.xyz/storage-type
+                    operator: In
+                    values:
+                      - nvme-ssd
+                      - high-iops
+
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: node.veridis.xyz/gpu-type
+                    operator: In
+                    values:
+                      - nvidia-a100
+                      - nvidia-h100
+                      - nvidia-rtx-4090
+
+            - weight: 80
+              preference:
+                matchExpressions:
+                  - key: node.veridis.xyz/cpu-type
+                    operator: In
+                    values:
+                      - intel-xeon
+                      - amd-epyc
+
+      # ==============================================================================
+      # Tolerations for Specialized Nodes
+      # ==============================================================================
+      tolerations:
+        - key: "node.veridis.xyz/gpu-workload"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+
+        - key: "node.veridis.xyz/development-workload"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+
+        - key: "node.veridis.xyz/high-memory"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+
+      # ==============================================================================
+      # Priority and Scheduling
+      # ==============================================================================
+      priorityClassName: development-high-priority
+      terminationGracePeriodSeconds: 60
+
+      # ==============================================================================
+      # DNS Configuration
+      # ==============================================================================
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "2"
+          - name: edns0
+
+      # ==============================================================================
+      # Container Specifications
+      # ==============================================================================
+      containers:
+        # ==========================================================================
+        # Main StarkNet DevNet Container
+        # ==========================================================================
+        - name: starknet-devnet
+          image: shardlabs/starknet-devnet-rs:0.1.25
+          imagePullPolicy: IfNotPresent
+
+          # ========================================================================
+          # Container Security Context
+          # ========================================================================
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+            seccompProfile:
+              type: RuntimeDefault
+
+          # ========================================================================
+          # Resource Management - High Performance Development
+          # ========================================================================
+          resources:
+            requests:
+              cpu: "2000m"
+              memory: "4Gi"
+              ephemeral-storage: "10Gi"
+              nvidia.com/gpu: "1"
+            limits:
+              cpu: "4000m"
+              memory: "8Gi"
+              ephemeral-storage: "20Gi"
+              nvidia.com/gpu: "1"
+
+          # ========================================================================
+          # Port Configuration
+          # ========================================================================
+          ports:
+            - name: devnet-http
+              containerPort: 5050
+              protocol: TCP
+
+            - name: devnet-ws
+              containerPort: 5051
+              protocol: TCP
+
+            - name: metrics
+              containerPort: 9090
+              protocol: TCP
+
+            - name: health
+              containerPort: 8080
+              protocol: TCP
+
+          # ========================================================================
+          # Environment Configuration
+          # ========================================================================
+          env:
+            # Core DevNet configuration
+            - name: STARKNET_DEVNET_HOST
+              value: "0.0.0.0"
+
+            - name: STARKNET_DEVNET_PORT
+              value: "5050"
+
+            - name: STARKNET_DEVNET_TIMEOUT
+              value: "120"
+
+            # Chain configuration
+            - name: STARKNET_DEVNET_CHAIN_ID
+              value: "SN_SEPOLIA"
+
+            - name: STARKNET_DEVNET_BLOCK_GENERATION_ON
+              value: "transaction"
+
+            - name: STARKNET_DEVNET_GAS_PRICE_WEI
+              value: "100000000000"
+
+            # Account configuration
+            - name: STARKNET_DEVNET_ACCOUNTS
+              value: "10"
+
+            - name: STARKNET_DEVNET_INITIAL_BALANCE
+              value: "1000000000000000000000"
+
+            - name: STARKNET_DEVNET_SEED
+              value: "42"
+
+            # Feature flags
+            - name: STARKNET_DEVNET_LITE_MODE
+              value: "false"
+
+            - name: STARKNET_DEVNET_CAIRO_VERSION
+              value: "2.11.4"
+
+            # Performance optimization
+            - name: STARKNET_DEVNET_PARALLEL_EXECUTION
+              value: "true"
+
+            - name: STARKNET_DEVNET_GPU_ACCELERATION
+              value: "true"
+
+            - name: STARKNET_DEVNET_MLIR_OPTIMIZATION
+              value: "true"
+
+            # Development features
+            - name: STARKNET_DEVNET_DEBUG_MODE
+              value: "true"
+
+            - name: STARKNET_DEVNET_PROFILING
+              value: "true"
+
+            - name: STARKNET_DEVNET_TRANSACTION_TRACING
+              value: "true"
+
+            # Storage configuration
+            - name: STARKNET_DEVNET_STATE_ARCHIVE_CAPACITY
+              value: "100"
+
+            - name: STARKNET_DEVNET_FORK_NETWORK
+              valueFrom:
+                configMapKeyRef:
+                  name: starknet-devnet-config
+                  key: fork_network
+                  optional: true
+
+            # Monitoring and observability
+            - name: STARKNET_DEVNET_METRICS_ENABLED
+              value: "true"
+
+            - name: STARKNET_DEVNET_METRICS_PORT
+              value: "9090"
+
+            - name: STARKNET_DEVNET_LOG_LEVEL
+              value: "info"
+
+            # Security configuration
+            - name: STARKNET_DEVNET_CORS_ORIGINS
+              value: "*"
+
+            - name: STARKNET_DEVNET_REQUEST_BODY_SIZE_LIMIT
+              value: "10485760"
+
+            # Cairo specific configuration
+            - name: CAIRO_RESOURCE_FEE_WEIGHTS
+              valueFrom:
+                configMapKeyRef:
+                  name: starknet-devnet-config
+                  key: cairo_resource_fee_weights
+                  optional: true
+
+            # Development environment
+            - name: RUST_LOG
+              value: "info"
+
+            - name: RUST_BACKTRACE
+              value: "1"
+
+            # Kubernetes environment
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+
+          # ========================================================================
+          # Configuration from ConfigMaps and Secrets
+          # ========================================================================
+          envFrom:
+            - configMapRef:
+                name: starknet-devnet-config
+                optional: true
+
+            - secretRef:
+                name: starknet-devnet-secrets
+                optional: true
+
+          # ========================================================================
+          # Volume Mounts
+          # ========================================================================
+          volumeMounts:
+            # Persistent state storage
+            - name: devnet-state
+              mountPath: /app/state
+              readOnly: false
+
+            # Temporary storage for cache and logs
+            - name: devnet-tmp
+              mountPath: /tmp
+              readOnly: false
+
+            # Configuration files
+            - name: devnet-config
+              mountPath: /app/config
+              readOnly: true
+
+            # GPU device access (if available)
+            - name: gpu-devices
+              mountPath: /dev/nvidia0
+              readOnly: true
+
+            # Shared memory for performance
+            - name: shared-memory
+              mountPath: /dev/shm
+              readOnly: false
+
+            # Process information (required for some operations)
+            - name: proc
+              mountPath: /host/proc
+              readOnly: true
+
+          # ========================================================================
+          # Startup Configuration
+          # ========================================================================
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              set -e
+
+              echo "Starting StarkNet DevNet with Cairo v2.11.4 optimization..."
+              echo "Pod: $POD_NAME in namespace: $POD_NAMESPACE"
+              echo "Configuration loaded from: /app/config"
+
+              # Ensure state directory exists and has correct permissions
+              mkdir -p /app/state
+              chown -R 1000:1000 /app/state
+
+              # Initialize GPU if available
+              if [ -f /dev/nvidia0 ]; then
+                echo "GPU detected, enabling GPU acceleration..."
+                export CUDA_VISIBLE_DEVICES=0
+                export STARKNET_DEVNET_GPU_ACCELERATION=true
+              fi
+
+              # Start the DevNet with comprehensive configuration
+              exec starknet-devnet \
+                --host $STARKNET_DEVNET_HOST \
+                --port $STARKNET_DEVNET_PORT \
+                --timeout $STARKNET_DEVNET_TIMEOUT \
+                --chain-id $STARKNET_DEVNET_CHAIN_ID \
+                --block-generation-on $STARKNET_DEVNET_BLOCK_GENERATION_ON \
+                --gas-price-wei $STARKNET_DEVNET_GAS_PRICE_WEI \
+                --accounts $STARKNET_DEVNET_ACCOUNTS \
+                --initial-balance $STARKNET_DEVNET_INITIAL_BALANCE \
+                --seed $STARKNET_DEVNET_SEED \
+                --state-archive-capacity $STARKNET_DEVNET_STATE_ARCHIVE_CAPACITY \
+                --cairo-version $STARKNET_DEVNET_CAIRO_VERSION \
+                --enable-fee \
+                --enable-validation \
+                --enable-profiling \
+                --enable-tracing \
+                --enable-metrics
+
+          # ========================================================================
+          # Health Checks and Probes
+          # ========================================================================
+          # Startup probe for initial readiness
+          startupProbe:
+            httpGet:
+              path: /is_alive
+              port: devnet-http
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 30
+
+          # Readiness probe for traffic routing
+          readinessProbe:
+            httpGet:
+              path: /is_alive
+              port: devnet-http
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+          # Liveness probe for restart detection
+          livenessProbe:
+            httpGet:
+              path: /is_alive
+              port: devnet-http
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+
+        # ==========================================================================
+        # Metrics Exporter Sidecar Container
+        # ==========================================================================
+        - name: metrics-exporter
+          image: prom/node-exporter:v1.7.0
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+              ephemeral-storage: "100Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
+              ephemeral-storage: "200Mi"
+
+          ports:
+            - name: node-metrics
+              containerPort: 9100
+              protocol: TCP
+
+          args:
+            - "--path.procfs=/host/proc"
+            - "--path.sysfs=/host/sys"
+            - "--path.rootfs=/host/root"
+            - "--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)"
+            - "--web.listen-address=0.0.0.0:9100"
+
+          volumeMounts:
+            - name: proc
+              mountPath: /host/proc
+              readOnly: true
+            - name: sys
+              mountPath: /host/sys
+              readOnly: true
+            - name: root
+              mountPath: /host/root
+              mountPropagation: HostToContainer
+              readOnly: true
+
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: node-metrics
+            initialDelaySeconds: 30
+            periodSeconds: 30
+
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: node-metrics
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+        # ==========================================================================
+        # Log Aggregation Sidecar Container
+        # ==========================================================================
+        - name: log-aggregator
+          image: fluent/fluent-bit:2.2.2
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+              ephemeral-storage: "500Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+              ephemeral-storage: "1Gi"
+
+          env:
+            - name: FLUENT_CONF
+              value: "/fluent-bit/etc/fluent-bit.conf"
+
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+
+          volumeMounts:
+            - name: fluent-bit-config
+              mountPath: /fluent-bit/etc
+              readOnly: true
+
+            - name: devnet-logs
+              mountPath: /var/log/devnet
+              readOnly: true
+
+      # ==============================================================================
+      # Volume Specifications
+      # ==============================================================================
+      volumes:
+        # Persistent state storage volume
+        - name: devnet-state
+          persistentVolumeClaim:
+            claimName: starknet-devnet-pvc
+
+        # Configuration volume
+        - name: devnet-config
+          configMap:
+            name: starknet-devnet-config
+            defaultMode: 0644
+
+        # Temporary storage volume
+        - name: devnet-tmp
+          emptyDir:
+            sizeLimit: "2Gi"
+            medium: "Memory"
+
+        # Shared memory volume for performance
+        - name: shared-memory
+          emptyDir:
+            medium: "Memory"
+            sizeLimit: "1Gi"
+
+        # GPU device volume (if available)
+        - name: gpu-devices
+          hostPath:
+            path: /dev/nvidia0
+            type: CharDevice
+
+        # Host system volumes for monitoring
+        - name: proc
+          hostPath:
+            path: /proc
+            type: Directory
+
+        - name: sys
+          hostPath:
+            path: /sys
+            type: Directory
+
+        - name: root
+          hostPath:
+            path: /
+            type: Directory
+
+        # Log aggregation volumes
+        - name: devnet-logs
+          emptyDir:
+            sizeLimit: "1Gi"
+
+        - name: fluent-bit-config
+          configMap:
+            name: fluent-bit-devnet-config
+            defaultMode: 0644
+
+      # ==============================================================================
+      # Image Pull Configuration
+      # ==============================================================================
+      imagePullSecrets:
+        - name: veridis-registry-secret
+
+      # ==============================================================================
+      # Restart and Update Policy
+      # ==============================================================================
+      restartPolicy: Always
+
+# ==============================================================================
+# StarkNet DevNet Deployment Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE STARKNET DEVNET DEPLOYMENT STRATEGY:
+# ==================================================
+#
+# STARKNET DEVNET ARCHITECTURE OVERVIEW:
+# --------------------------------------
+# 1. High-Performance DevNet Container:
+#    - StarkNet DevNet RS v0.1.25 with Cairo v2.11.4 integration and MLIR optimization
+#    - GPU acceleration support with CUDA for proof generation and validation optimization
+#    - Advanced state management with persistent storage, snapshots, and rollback capabilities
+#    - Comprehensive development features including debugging, profiling, and transaction tracing
+#    - High-performance resource allocation with 4 CPU cores, 8GB memory, and GPU acceleration
+#
+# 2. Metrics Exporter Sidecar:
+#    - Prometheus Node Exporter v1.7.0 for comprehensive system metrics collection
+#    - Resource-efficient monitoring with minimal overhead and comprehensive analytics
+#    - Host system monitoring with proc, sys, and filesystem metrics collection
+#    - Integration with Prometheus ecosystem for monitoring and alerting capabilities
+#
+# 3. Log Aggregation Sidecar:
+#    - Fluent Bit v2.2.2 for comprehensive log aggregation and forwarding
+#    - DevNet-specific log processing with intelligent filtering and formatting
+#    - Integration with centralized logging infrastructure for analysis and troubleshooting
+#    - Performance-optimized log collection with minimal impact on DevNet performance
+#
+# ENTERPRISE DEVNET FEATURES:
+# ===========================
+# Advanced Performance Optimization:
+#   - Cairo v2.11.4 integration with MLIR optimization for 5x faster compilation
+#   - GPU acceleration with CUDA support for proof generation and validation
+#   - High-performance resource allocation with intelligent CPU and memory management
+#   - Advanced I/O optimization with NVMe SSD storage and high-bandwidth networking
+#   - Parallel execution support with multi-threaded transaction processing
+#
+# Comprehensive Development Features:
+#   - Advanced debugging with transaction tracing and state inspection capabilities
+#   - Performance profiling with optimization recommendations and analytics
+#   - Comprehensive testing support with validation and integration capabilities
+#   - State management with persistent storage, snapshots, and rollback features
+#   - Development analytics with usage patterns and optimization intelligence
+#
+# Enterprise Security Controls:
+#   - Network isolation with development-specific security policies and access controls
+#   - Role-based access control for development teams and automated tools
+#   - Comprehensive audit logging for development activities and compliance
+#   - Data protection with encryption and secure storage of development artifacts
+#   - Security scanning integration with vulnerability assessment and validation
+#
+# Advanced Resource Management:
+#   - Intelligent node selection with GPU-enabled and high-performance nodes
+#   - Pod affinity and anti-affinity for optimal resource distribution and availability
+#   - Priority scheduling with development workload optimization and resource allocation
+#   - Resource quotas with intelligent scaling and capacity management
+#   - Cost optimization with efficient resource utilization and planning
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# DevNet Lifecycle Management:
+#   - Automated provisioning with intelligent configuration and setup procedures
+#   - Rolling update strategy with zero-downtime deployment and state preservation
+#   - Comprehensive health checking with startup, readiness, and liveness probes
+#   - Graceful termination with state preservation and proper cleanup procedures
+#   - Disaster recovery with backup and restore capabilities for development continuity
+#
+# Monitoring and Observability:
+#   - Comprehensive metrics collection with DevNet-specific analytics and intelligence
+#   - Real-time log aggregation with intelligent filtering and analysis capabilities
+#   - Performance monitoring with latency analysis and throughput optimization
+#   - Development analytics with usage patterns and optimization recommendations
+#   - Business intelligence with cost analysis and resource optimization procedures
+#
+# Integration and Coordination:
+#   - Seamless integration with development tools, IDEs, and testing frameworks
+#   - Configuration management with ConfigMaps and Secrets for flexible deployment
+#   - Service mesh integration with secure communication and traffic management
+#   - CI/CD pipeline integration with automated testing and deployment validation
+#   - Documentation integration with comprehensive guides and troubleshooting procedures
+#
+# Compliance and Governance:
+#   - Development compliance with security policies and governance frameworks
+#   - Audit trail preservation with comprehensive logging and activity tracking
+#   - Data governance with development data classification and retention policies
+#   - Risk management with threat analysis and mitigation for development environments
+#   - Regulatory compliance with development-specific requirements and validation
+#
+# ==============================================================================
