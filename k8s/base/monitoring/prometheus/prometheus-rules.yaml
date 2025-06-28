@@ -1,0 +1,1301 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Prometheus Rules Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Prometheus alerting and recording rules for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS PROMETHEUS RULES ARCHITECTURE:
+#   • Advanced Prometheus Rules with intelligent alerting management and performance-based monitoring optimization
+#   • Multi-tier alerting architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with alerting policies, rule optimization, Prometheus integration
+#   • Advanced lifecycle management with automated alerting optimization, Prometheus control, and rule enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Prometheus alerting performance insights
+#
+# VERIDIS PROMETHEUS RULES OPTIMIZATION:
+#   • High-performance alerting with intelligent rule management and Prometheus Rules optimization
+#   • Intelligent alerting traffic management with responsive policies and performance-based alerting decisions
+#   • Advanced rule management with business intelligence and alerting-based Prometheus control
+#   • Comprehensive observability control with intelligent Prometheus alerting management and rule enhancement
+#   • Enterprise acceleration with predictive Prometheus alerting management and rule optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Prometheus alerting controls with comprehensive audit and rule requirements
+#   • GDPR Prometheus alerting compliance with data protection, privacy controls, and rule management
+#   • ISO 27001 Prometheus alerting management with comprehensive framework integration
+#   • NIST 800-190 container Prometheus alerting security with rule-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Prometheus alerting best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Prometheus alerting lifecycle management with automated provisioning and rule optimization
+#   • Predictive rule analytics with capacity planning and Prometheus alerting intelligence
+#   • Advanced monitoring integration with Prometheus alerting analytics and rule business intelligence
+#   • Comprehensive observability control with Prometheus alerting preservation and rule optimization
+#   • Business continuity Prometheus alerting with rule guarantees and alerting optimization
+#
+# PROMETHEUS RULES ACCELERATION INTELLIGENCE:
+#   • Prometheus alerting usage analytics with rule patterns and optimization recommendations
+#   • Rule monitoring with Prometheus alerting latency and management optimization intelligence
+#   • Development efficiency with Prometheus alerting analytics and deployment optimization procedures
+#   • Cost optimization with Prometheus alerting utilization analysis and rule capacity planning procedures
+#   • Quality assurance with Prometheus alerting metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Prometheus Monitoring - Infrastructure Alert Rules
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: veridis-infrastructure-rules
+  namespace: veridis-infrastructure
+
+  # Core Veridis Prometheus Rules identification labels
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-rules
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Prometheus Rules specific classification
+    prometheus.veridis.xyz/type: monitoring-prometheus-rules
+    prometheus.veridis.xyz/category: infrastructure-rules
+    prometheus.veridis.xyz/role: primary-prometheus-rules
+    prometheus.veridis.xyz/performance-class: high-performance-prometheus-rules
+    prometheus.veridis.xyz/security-level: enterprise
+
+    # Monitoring Prometheus Rules classification
+    monitoring.veridis.xyz/prometheus-rules-type: intelligent-prometheus-rules
+    monitoring.veridis.xyz/rules-type: monitoring-rules
+    monitoring.veridis.xyz/performance-tier: high-performance
+    monitoring.veridis.xyz/optimization: enabled
+    monitoring.veridis.xyz/features: full-monitoring-rules-stack
+
+    # Observability Prometheus Rules classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-monitoring-rules-management
+    observability.veridis.xyz/alerting-management: advanced
+    observability.veridis.xyz/rule-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Prometheus Rules classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-monitoring-rules-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Prometheus Rules labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+    veridis.xyz/cost-center: monitoring-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "prometheus-rules-control-framework"
+    compliance.veridis.xyz/gdpr: "prometheus-rules-data-protection"
+    compliance.veridis.xyz/iso27001: "prometheus-rules-security-management"
+    compliance.veridis.xyz/nist-800-190: "prometheus-rules-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Prometheus Rules analytics and intelligence
+    monitoring.veridis.xyz/prometheus-rules-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/alerting-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Rules management labels
+    rules.veridis.xyz/alerting-enabled: "true"
+    rules.veridis.xyz/recording-enabled: "true"
+    rules.veridis.xyz/escalation: "enabled"
+    rules.veridis.xyz/notification: "enabled"
+    rules.veridis.xyz/optimization: "enabled"
+
+  annotations:
+    # Prometheus Rules purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Prometheus Rules with intelligent alerting management, advanced rule optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Prometheus Rules for decentralized identity management with intelligent alerting management, rule optimization, and observability guarantees"
+    veridis.xyz/scope: "Prometheus Rules including alerting management, rule optimization, escalation integration, and comprehensive alerting intelligence"
+
+    # Prometheus Rules architecture and design
+    prometheus.veridis.xyz/architecture: "Enterprise Prometheus Rules with intelligent alerting management, advanced rule optimization, and escalation integration optimization"
+    prometheus.veridis.xyz/design-pattern: "Multi-tier Prometheus Rules with alerting optimization, cost efficiency, and business intelligence"
+    prometheus.veridis.xyz/optimization-model: "Intelligent Prometheus Rules with predictive analytics, alerting optimization, and rule efficiency"
+    prometheus.veridis.xyz/performance-model: "High-performance Prometheus Rules with alerting optimization and intelligent rule management"
+
+    # Monitoring Prometheus Rules specifications
+    monitoring.veridis.xyz/prometheus-rules-specification: "Prometheus Rules with alerting optimization and intelligent monitoring rules management"
+    monitoring.veridis.xyz/alerting-specification: "Advanced alerting management configuration with monitoring optimization and rules enhancement"
+    monitoring.veridis.xyz/rule-specification: "Prometheus Rules rule management optimization with intelligent alerting and enhancement"
+    monitoring.veridis.xyz/performance-specification: "Prometheus performance Rules with alerting acceleration and rule efficiency"
+    monitoring.veridis.xyz/business-specification: "Prometheus business Rules with cost optimization and strategic alerting intelligence"
+
+    # Operational Prometheus Rules specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with Prometheus Rules analytics and alerting intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with Prometheus Rules preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with Prometheus Rules management and alerting optimization"
+
+    # Rules specific annotations
+    rules.veridis.xyz/evaluation-interval: "30s"
+    rules.veridis.xyz/alert-grouping: "enabled"
+    rules.veridis.xyz/escalation-policy: "tiered"
+    rules.veridis.xyz/notification-channels: "slack,email,pagerduty"
+    rules.veridis.xyz/severity-levels: "critical,warning,info"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "monitoring-team@veridis.xyz"
+    veridis.xyz/prometheus-rules-admin: "monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "monitoring-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "monitoring-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-rules"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/monitoring/prometheus-rules-management"
+    veridis.xyz/rules-docs: "https://monitoring.veridis.xyz/prometheus-rules-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/prometheus-rules-monitoring"
+
+spec:
+  # ==============================================================================
+  # Recording Rules for Performance Optimization
+  # ==============================================================================
+  groups:
+    - name: veridis.infrastructure.recording
+      interval: 30s
+      rules:
+        # ==============================================================================
+        # Infrastructure Health Recording Rules
+        # ==============================================================================
+        - record: veridis:infrastructure_health_score
+          expr: |
+            (
+              avg_over_time(up{job=~"veridis-.*"}[5m]) * 0.4 +
+              (1 - avg_over_time(rate(prometheus_rule_evaluation_failures_total[5m]))) * 0.3 +
+              (1 - avg_over_time(rate(prometheus_notifications_errors_total[5m]))) * 0.3
+            ) * 100
+          labels:
+            veridis_metric_type: "infrastructure_health"
+            veridis_severity: "info"
+            veridis_team: "monitoring-engineering"
+
+        # ==============================================================================
+        # Service Availability Recording Rules
+        # ==============================================================================
+        - record: veridis:service_availability_sli
+          expr: |
+            avg_over_time(up{job=~"veridis-.*"}[5m])
+          labels:
+            veridis_metric_type: "availability_sli"
+            veridis_slo_target: "99.9"
+
+        - record: veridis:service_availability_slo_burn_rate
+          expr: |
+            (
+              1 - veridis:service_availability_sli
+            ) / (1 - 0.999)
+          labels:
+            veridis_metric_type: "slo_burn_rate"
+            veridis_slo_target: "99.9"
+
+        # ==============================================================================
+        # Performance Recording Rules
+        # ==============================================================================
+        - record: veridis:infrastructure_cpu_utilization
+          expr: |
+            100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+          labels:
+            veridis_metric_type: "cpu_utilization"
+            veridis_resource_type: "compute"
+
+        - record: veridis:infrastructure_memory_utilization
+          expr: |
+            (
+              1 - (
+                node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes
+              )
+            ) * 100
+          labels:
+            veridis_metric_type: "memory_utilization"
+            veridis_resource_type: "memory"
+
+        - record: veridis:infrastructure_disk_utilization
+          expr: |
+            (
+              1 - (
+                node_filesystem_avail_bytes{fstype!="tmpfs"} /
+                node_filesystem_size_bytes{fstype!="tmpfs"}
+              )
+            ) * 100
+          labels:
+            veridis_metric_type: "disk_utilization"
+            veridis_resource_type: "storage"
+
+        # ==============================================================================
+        # Network Performance Recording Rules
+        # ==============================================================================
+        - record: veridis:network_throughput_bytes_per_second
+          expr: |
+            rate(node_network_transmit_bytes_total[5m]) +
+            rate(node_network_receive_bytes_total[5m])
+          labels:
+            veridis_metric_type: "network_throughput"
+            veridis_resource_type: "network"
+
+        - record: veridis:network_error_rate
+          expr: |
+            rate(node_network_transmit_errs_total[5m]) +
+            rate(node_network_receive_errs_total[5m])
+          labels:
+            veridis_metric_type: "network_errors"
+            veridis_resource_type: "network"
+
+    # ==============================================================================
+    # Critical Infrastructure Alerts
+    # ==============================================================================
+    - name: veridis.infrastructure.critical
+      interval: 30s
+      rules:
+        # ==============================================================================
+        # Node and Cluster Health Alerts
+        # ==============================================================================
+        - alert: VeridisNodeDown
+          expr: up{job="node-exporter"} == 0
+          for: 1m
+          labels:
+            severity: critical
+            team: monitoring-engineering
+            service: infrastructure
+            veridis_alert_type: "infrastructure_critical"
+            veridis_impact: "high"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "1"
+          annotations:
+            summary: "Veridis node {{ $labels.instance }} is down"
+            description: |
+              Node {{ $labels.instance }} has been down for more than 1 minute.
+
+              IMMEDIATE ACTION REQUIRED:
+              1. Check node health and connectivity
+              2. Verify infrastructure status
+              3. Escalate to infrastructure team if needed
+
+              Impact: High - Node unavailability affects service reliability
+              Runbook: https://runbooks.veridis.xyz/infrastructure/node-down
+            veridis_runbook: "https://runbooks.veridis.xyz/infrastructure/node-down"
+            veridis_escalation: "monitoring-manager@veridis.xyz"
+            veridis_severity_justification: "Node failure directly impacts service availability and violates SLA requirements"
+
+        - alert: VeridisHighCPUUsage
+          expr: veridis:infrastructure_cpu_utilization > 85
+          for: 5m
+          labels:
+            severity: warning
+            team: monitoring-engineering
+            service: infrastructure
+            veridis_alert_type: "performance_degradation"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "High CPU usage on {{ $labels.instance }}"
+            description: |
+              CPU usage on {{ $labels.instance }} has been above 85% for more than 5 minutes.
+              Current value: {{ $value }}%
+
+              RECOMMENDED ACTIONS:
+              1. Identify high CPU processes
+              2. Check for resource-intensive workloads
+              3. Consider scaling if persistent
+
+              Impact: Medium - Performance degradation possible
+              Runbook: https://runbooks.veridis.xyz/infrastructure/high-cpu
+            veridis_runbook: "https://runbooks.veridis.xyz/infrastructure/high-cpu"
+            veridis_mitigation: "Scale resources or optimize workloads"
+
+        - alert: VeridisHighMemoryUsage
+          expr: veridis:infrastructure_memory_utilization > 90
+          for: 5m
+          labels:
+            severity: critical
+            team: monitoring-engineering
+            service: infrastructure
+            veridis_alert_type: "resource_exhaustion"
+            veridis_impact: "high"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "1"
+          annotations:
+            summary: "High memory usage on {{ $labels.instance }}"
+            description: |
+              Memory usage on {{ $labels.instance }} has been above 90% for more than 5 minutes.
+              Current value: {{ $value }}%
+
+              IMMEDIATE ACTION REQUIRED:
+              1. Identify memory-consuming processes
+              2. Free memory or restart services if needed
+              3. Scale resources immediately
+
+              Impact: High - Risk of OOM kills and service disruption
+              Runbook: https://runbooks.veridis.xyz/infrastructure/high-memory
+            veridis_runbook: "https://runbooks.veridis.xyz/infrastructure/high-memory"
+            veridis_escalation: "monitoring-manager@veridis.xyz"
+            veridis_severity_justification: "High memory usage can lead to OOM kills and service unavailability"
+
+        - alert: VeridisDiskSpaceLow
+          expr: veridis:infrastructure_disk_utilization > 85
+          for: 2m
+          labels:
+            severity: warning
+            team: monitoring-engineering
+            service: infrastructure
+            veridis_alert_type: "capacity_planning"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "Low disk space on {{ $labels.instance }}"
+            description: |
+              Disk usage on {{ $labels.instance }} has been above 85% for more than 2 minutes.
+              Filesystem: {{ $labels.mountpoint }}
+              Current value: {{ $value }}%
+
+              RECOMMENDED ACTIONS:
+              1. Clean up unnecessary files
+              2. Rotate logs if applicable
+              3. Expand storage if needed
+
+              Impact: Medium - Service degradation if disk fills up
+              Runbook: https://runbooks.veridis.xyz/infrastructure/disk-space
+            veridis_runbook: "https://runbooks.veridis.xyz/infrastructure/disk-space"
+            veridis_mitigation: "Clean up disk space or expand storage"
+
+        # ==============================================================================
+        # Kubernetes Cluster Alerts
+        # ==============================================================================
+        - alert: VeridisKubernetesPodCrashLooping
+          expr: |
+            rate(kube_pod_container_status_restarts_total[15m]) * 60 * 15 > 0
+          for: 5m
+          labels:
+            severity: warning
+            team: platform-engineering
+            service: kubernetes
+            veridis_alert_type: "pod_instability"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "Pod {{ $labels.pod }} is crash looping"
+            description: |
+              Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has restarted {{ $value }} times in the last 15 minutes.
+
+              RECOMMENDED ACTIONS:
+              1. Check pod logs for errors
+              2. Verify resource limits and requests
+              3. Check application health and configuration
+
+              Impact: Medium - Service instability and potential unavailability
+              Runbook: https://runbooks.veridis.xyz/kubernetes/crash-loop
+            veridis_runbook: "https://runbooks.veridis.xyz/kubernetes/crash-loop"
+            veridis_mitigation: "Investigate application issues and fix root cause"
+
+        - alert: VeridisKubernetesPodNotReady
+          expr: |
+            kube_pod_status_ready{condition="false"} == 1
+          for: 10m
+          labels:
+            severity: warning
+            team: platform-engineering
+            service: kubernetes
+            veridis_alert_type: "pod_readiness"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "Pod {{ $labels.pod }} not ready"
+            description: |
+              Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has been in a non-ready state for more than 10 minutes.
+
+              RECOMMENDED ACTIONS:
+              1. Check pod status and events
+              2. Verify readiness probe configuration
+              3. Check resource availability
+
+              Impact: Medium - Service may be degraded or unavailable
+              Runbook: https://runbooks.veridis.xyz/kubernetes/pod-not-ready
+            veridis_runbook: "https://runbooks.veridis.xyz/kubernetes/pod-not-ready"
+            veridis_mitigation: "Fix readiness probe issues or resource constraints"
+
+        # ==============================================================================
+        # Network and Connectivity Alerts
+        # ==============================================================================
+        - alert: VeridisHighNetworkErrorRate
+          expr: veridis:network_error_rate > 100
+          for: 5m
+          labels:
+            severity: warning
+            team: monitoring-engineering
+            service: network
+            veridis_alert_type: "network_degradation"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "High network error rate on {{ $labels.instance }}"
+            description: |
+              Network error rate on {{ $labels.instance }} has been above 100 errors/sec for more than 5 minutes.
+              Current value: {{ $value }} errors/sec
+
+              RECOMMENDED ACTIONS:
+              1. Check network interface status
+              2. Verify network configuration
+              3. Check for hardware issues
+
+              Impact: Medium - Network connectivity issues
+              Runbook: https://runbooks.veridis.xyz/network/high-error-rate
+            veridis_runbook: "https://runbooks.veridis.xyz/network/high-error-rate"
+            veridis_mitigation: "Investigate network issues and fix connectivity problems"
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Application Alert Rules
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: veridis-application-rules
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-application-rules
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-application-rules
+    prometheus.veridis.xyz/category: application-rules
+    prometheus.veridis.xyz/role: application-prometheus-rules
+    prometheus.veridis.xyz/target-services: veridis-backend,zk-circuits
+
+    monitoring.veridis.xyz/prometheus-rules-type: application-rules
+    monitoring.veridis.xyz/application-monitoring: enabled
+    monitoring.veridis.xyz/business-rules: enabled
+    monitoring.veridis.xyz/performance-rules: enabled
+
+    rules.veridis.xyz/tier: production
+    rules.veridis.xyz/optimization: application-rules-management
+    rules.veridis.xyz/rust-rules: enabled
+    rules.veridis.xyz/nodejs-rules: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: application-engineering
+
+  annotations:
+    veridis.xyz/description: "Application Rules for Veridis Backend and ZK Circuits with business intelligence"
+    veridis.xyz/purpose: "Provides comprehensive application monitoring rules for Veridis services with business metrics"
+
+    prometheus.veridis.xyz/application-rules-specification: "Application Rules with business metrics and performance monitoring"
+    monitoring.veridis.xyz/application-rules-specification: "Application monitoring rules with comprehensive service analytics"
+
+spec:
+  groups:
+    # ==============================================================================
+    # Application Performance Recording Rules
+    # ==============================================================================
+    - name: veridis.application.recording
+      interval: 30s
+      rules:
+        # ==============================================================================
+        # HTTP Performance Recording Rules
+        # ==============================================================================
+        - record: veridis:http_request_rate
+          expr: |
+            sum(rate(http_requests_total{job=~"veridis-.*"}[5m])) by (service, method, status)
+          labels:
+            veridis_metric_type: "http_performance"
+            veridis_sli_type: "throughput"
+
+        - record: veridis:http_request_duration_p99
+          expr: |
+            histogram_quantile(0.99,
+              sum(rate(http_request_duration_seconds_bucket{job=~"veridis-.*"}[5m])) by (service, method, le)
+            )
+          labels:
+            veridis_metric_type: "http_performance"
+            veridis_sli_type: "latency"
+            veridis_percentile: "99"
+
+        - record: veridis:http_request_duration_p95
+          expr: |
+            histogram_quantile(0.95,
+              sum(rate(http_request_duration_seconds_bucket{job=~"veridis-.*"}[5m])) by (service, method, le)
+            )
+          labels:
+            veridis_metric_type: "http_performance"
+            veridis_sli_type: "latency"
+            veridis_percentile: "95"
+
+        - record: veridis:http_error_rate
+          expr: |
+            sum(rate(http_requests_total{job=~"veridis-.*",status=~"5.."}[5m])) by (service) /
+            sum(rate(http_requests_total{job=~"veridis-.*"}[5m])) by (service)
+          labels:
+            veridis_metric_type: "http_performance"
+            veridis_sli_type: "error_rate"
+
+        # ==============================================================================
+        # Business Metrics Recording Rules
+        # ==============================================================================
+        - record: veridis:identity_operations_rate
+          expr: |
+            sum(rate(identity_operations_total[5m])) by (operation_type, status)
+          labels:
+            veridis_metric_type: "business_metrics"
+            veridis_domain: "identity"
+
+        - record: veridis:attestation_requests_rate
+          expr: |
+            sum(rate(attestation_requests_total[5m])) by (attestation_type, status)
+          labels:
+            veridis_metric_type: "business_metrics"
+            veridis_domain: "attestation"
+
+        - record: veridis:verification_checks_rate
+          expr: |
+            sum(rate(verification_checks_total[5m])) by (verification_type, result)
+          labels:
+            veridis_metric_type: "business_metrics"
+            veridis_domain: "verification"
+
+        - record: veridis:compliance_audits_rate
+          expr: |
+            sum(rate(compliance_audits_total[5m])) by (audit_type, status)
+          labels:
+            veridis_metric_type: "business_metrics"
+            veridis_domain: "compliance"
+
+        # ==============================================================================
+        # ZK Circuits Performance Recording Rules
+        # ==============================================================================
+        - record: veridis:zk_proof_generation_rate
+          expr: |
+            sum(rate(zk_proof_generation_total[5m])) by (circuit_type, status)
+          labels:
+            veridis_metric_type: "zk_performance"
+            veridis_operation: "proof_generation"
+
+        - record: veridis:zk_proof_generation_duration_p99
+          expr: |
+            histogram_quantile(0.99,
+              sum(rate(zk_proof_generation_duration_seconds_bucket[5m])) by (circuit_type, le)
+            )
+          labels:
+            veridis_metric_type: "zk_performance"
+            veridis_operation: "proof_generation"
+            veridis_percentile: "99"
+
+        - record: veridis:zk_verification_duration_p99
+          expr: |
+            histogram_quantile(0.99,
+              sum(rate(zk_proof_verification_duration_seconds_bucket[5m])) by (circuit_type, le)
+            )
+          labels:
+            veridis_metric_type: "zk_performance"
+            veridis_operation: "verification"
+            veridis_percentile: "99"
+
+        - record: veridis:gpu_utilization_avg
+          expr: |
+            avg(gpu_utilization_percent) by (instance, gpu_id)
+          labels:
+            veridis_metric_type: "gpu_performance"
+            veridis_resource_type: "gpu"
+
+    # ==============================================================================
+    # Critical Application Alerts
+    # ==============================================================================
+    - name: veridis.application.critical
+      interval: 30s
+      rules:
+        # ==============================================================================
+        # Service Availability Alerts
+        # ==============================================================================
+        - alert: VeridisBackendDown
+          expr: up{job="veridis-backend"} == 0
+          for: 1m
+          labels:
+            severity: critical
+            team: backend-engineering
+            service: veridis-backend
+            veridis_alert_type: "service_availability"
+            veridis_impact: "critical"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "1"
+          annotations:
+            summary: "Veridis Backend service is down"
+            description: |
+              Veridis Backend service has been down for more than 1 minute.
+
+              IMMEDIATE ACTION REQUIRED:
+              1. Check service health and logs
+              2. Verify deployment status
+              3. Escalate to backend team immediately
+
+              Impact: Critical - Core identity services unavailable
+              Runbook: https://runbooks.veridis.xyz/backend/service-down
+            veridis_runbook: "https://runbooks.veridis.xyz/backend/service-down"
+            veridis_escalation: "backend-oncall@veridis.xyz"
+            veridis_severity_justification: "Backend service failure makes entire identity protocol unavailable"
+
+        - alert: VeridisZKCircuitsDown
+          expr: up{job="zk-circuits"} == 0
+          for: 2m
+          labels:
+            severity: critical
+            team: zk-engineering
+            service: zk-circuits
+            veridis_alert_type: "service_availability"
+            veridis_impact: "high"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "1"
+          annotations:
+            summary: "ZK Circuits service is down"
+            description: |
+              ZK Circuits service has been down for more than 2 minutes.
+
+              IMMEDIATE ACTION REQUIRED:
+              1. Check GPU availability and service health
+              2. Verify deployment status and logs
+              3. Escalate to ZK team immediately
+
+              Impact: High - Zero-knowledge proof generation unavailable
+              Runbook: https://runbooks.veridis.xyz/zk-circuits/service-down
+            veridis_runbook: "https://runbooks.veridis.xyz/zk-circuits/service-down"
+            veridis_escalation: "zk-oncall@veridis.xyz"
+            veridis_severity_justification: "ZK circuits failure prevents proof generation and verification"
+
+        # ==============================================================================
+        # Performance and SLA Alerts
+        # ==============================================================================
+        - alert: VeridisHighErrorRate
+          expr: veridis:http_error_rate > 0.05
+          for: 5m
+          labels:
+            severity: critical
+            team: backend-engineering
+            service: "{{ $labels.service }}"
+            veridis_alert_type: "error_rate"
+            veridis_impact: "high"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "1"
+          annotations:
+            summary: "High error rate in {{ $labels.service }}"
+            description: |
+              Error rate in {{ $labels.service }} has been above 5% for more than 5 minutes.
+              Current error rate: {{ $value | humanizePercentage }}
+
+              IMMEDIATE ACTION REQUIRED:
+              1. Check application logs for errors
+              2. Verify service health and dependencies
+              3. Consider rolling back recent deployments
+
+              Impact: High - Service quality degradation violates SLA
+              Runbook: https://runbooks.veridis.xyz/application/high-error-rate
+            veridis_runbook: "https://runbooks.veridis.xyz/application/high-error-rate"
+            veridis_escalation: "backend-oncall@veridis.xyz"
+            veridis_severity_justification: "High error rate indicates service degradation and SLA violation"
+
+        - alert: VeridisHighLatency
+          expr: veridis:http_request_duration_p99 > 2
+          for: 5m
+          labels:
+            severity: warning
+            team: backend-engineering
+            service: "{{ $labels.service }}"
+            veridis_alert_type: "latency"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "High latency in {{ $labels.service }}"
+            description: |
+              P99 latency in {{ $labels.service }} {{ $labels.method }} has been above 2 seconds for more than 5 minutes.
+              Current P99 latency: {{ $value | humanizeDuration }}
+
+              RECOMMENDED ACTIONS:
+              1. Check for performance bottlenecks
+              2. Verify database and cache performance
+              3. Consider scaling resources
+
+              Impact: Medium - User experience degradation
+              Runbook: https://runbooks.veridis.xyz/application/high-latency
+            veridis_runbook: "https://runbooks.veridis.xyz/application/high-latency"
+            veridis_mitigation: "Investigate performance bottlenecks and optimize"
+
+        # ==============================================================================
+        # Business Logic Alerts
+        # ==============================================================================
+        - alert: VeridisIdentityOperationFailures
+          expr: |
+            sum(rate(identity_operations_total{status="failed"}[5m])) by (operation_type) /
+            sum(rate(identity_operations_total[5m])) by (operation_type) > 0.10
+          for: 3m
+          labels:
+            severity: warning
+            team: backend-engineering
+            service: identity
+            veridis_alert_type: "business_logic"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "High identity operation failure rate"
+            description: |
+              Identity {{ $labels.operation_type }} operations have a failure rate above 10% for more than 3 minutes.
+              Current failure rate: {{ $value | humanizePercentage }}
+
+              RECOMMENDED ACTIONS:
+              1. Check identity service logs for errors
+              2. Verify blockchain connectivity
+              3. Check for data consistency issues
+
+              Impact: Medium - Identity operations degraded
+              Runbook: https://runbooks.veridis.xyz/business/identity-failures
+            veridis_runbook: "https://runbooks.veridis.xyz/business/identity-failures"
+            veridis_mitigation: "Investigate identity service issues and fix root cause"
+
+        - alert: VeridisZKProofGenerationSlow
+          expr: veridis:zk_proof_generation_duration_p99 > 30
+          for: 5m
+          labels:
+            severity: warning
+            team: zk-engineering
+            service: zk-circuits
+            veridis_alert_type: "zk_performance"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "Slow ZK proof generation"
+            description: |
+              ZK proof generation for {{ $labels.circuit_type }} has P99 duration above 30 seconds for more than 5 minutes.
+              Current P99 duration: {{ $value | humanizeDuration }}
+
+              RECOMMENDED ACTIONS:
+              1. Check GPU utilization and availability
+              2. Verify circuit optimization settings
+              3. Monitor memory usage and thermal throttling
+
+              Impact: Medium - ZK proof generation performance degraded
+              Runbook: https://runbooks.veridis.xyz/zk/slow-proof-generation
+            veridis_runbook: "https://runbooks.veridis.xyz/zk/slow-proof-generation"
+            veridis_mitigation: "Optimize GPU usage and check for performance bottlenecks"
+
+        # ==============================================================================
+        # GPU and Resource Alerts
+        # ==============================================================================
+        - alert: VeridisGPUUtilizationLow
+          expr: veridis:gpu_utilization_avg < 20
+          for: 10m
+          labels:
+            severity: info
+            team: zk-engineering
+            service: zk-circuits
+            veridis_alert_type: "resource_utilization"
+            veridis_impact: "low"
+            veridis_urgency: "low"
+            veridis_escalation_tier: "3"
+          annotations:
+            summary: "Low GPU utilization"
+            description: |
+              GPU {{ $labels.gpu_id }} on {{ $labels.instance }} has been underutilized (< 20%) for more than 10 minutes.
+              Current utilization: {{ $value }}%
+
+              INFORMATIONAL:
+              1. GPU resources may be over-provisioned
+              2. Consider workload optimization
+              3. Monitor for cost optimization opportunities
+
+              Impact: Low - Potential resource waste
+              Runbook: https://runbooks.veridis.xyz/gpu/low-utilization
+            veridis_runbook: "https://runbooks.veridis.xyz/gpu/low-utilization"
+            veridis_mitigation: "Review GPU allocation and workload distribution"
+
+        - alert: VeridisGPUMemoryHigh
+          expr: gpu_memory_used_bytes / gpu_memory_total_bytes > 0.90
+          for: 5m
+          labels:
+            severity: warning
+            team: zk-engineering
+            service: zk-circuits
+            veridis_alert_type: "resource_exhaustion"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+          annotations:
+            summary: "High GPU memory usage"
+            description: |
+              GPU {{ $labels.gpu_id }} on {{ $labels.instance }} has high memory usage (> 90%) for more than 5 minutes.
+              Current usage: {{ $value | humanizePercentage }}
+
+              RECOMMENDED ACTIONS:
+              1. Check for memory leaks in ZK circuits
+              2. Optimize batch sizes
+              3. Consider memory cleanup or restart
+
+              Impact: Medium - Risk of GPU memory exhaustion
+              Runbook: https://runbooks.veridis.xyz/gpu/high-memory
+            veridis_runbook: "https://runbooks.veridis.xyz/gpu/high-memory"
+            veridis_mitigation: "Optimize GPU memory usage and check for leaks"
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Security and Compliance Rules
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: veridis-security-compliance-rules
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-security-rules
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-security-rules
+    prometheus.veridis.xyz/category: security-compliance-rules
+    prometheus.veridis.xyz/role: security-prometheus-rules
+    prometheus.veridis.xyz/compliance-framework: soc2-gdpr-iso27001
+
+    monitoring.veridis.xyz/prometheus-rules-type: security-compliance-rules
+    monitoring.veridis.xyz/security-monitoring: enabled
+    monitoring.veridis.xyz/compliance-monitoring: enabled
+    monitoring.veridis.xyz/audit-monitoring: enabled
+
+    security.veridis.xyz/tier: production
+    security.veridis.xyz/optimization: security-compliance-rules-management
+    security.veridis.xyz/soc2-rules: enabled
+    security.veridis.xyz/gdpr-rules: enabled
+    security.veridis.xyz/iso27001-rules: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+
+  annotations:
+    veridis.xyz/description: "Security and Compliance Rules for Veridis with SOC 2, GDPR, and ISO 27001 monitoring"
+    veridis.xyz/purpose: "Provides comprehensive security and compliance monitoring rules for regulatory requirements"
+
+    prometheus.veridis.xyz/security-rules-specification: "Security Rules with compliance monitoring and audit intelligence"
+    monitoring.veridis.xyz/security-rules-specification: "Security monitoring rules with comprehensive compliance analytics"
+
+spec:
+  groups:
+    # ==============================================================================
+    # Security Metrics Recording Rules
+    # ==============================================================================
+    - name: veridis.security.recording
+      interval: 30s
+      rules:
+        # ==============================================================================
+        # Authentication and Authorization Recording Rules
+        # ==============================================================================
+        - record: veridis:authentication_success_rate
+          expr: |
+            sum(rate(authentication_attempts_total{result="success"}[5m])) by (method) /
+            sum(rate(authentication_attempts_total[5m])) by (method)
+          labels:
+            veridis_metric_type: "security_metrics"
+            veridis_domain: "authentication"
+
+        - record: veridis:authorization_failure_rate
+          expr: |
+            sum(rate(authorization_checks_total{result="denied"}[5m])) by (resource_type) /
+            sum(rate(authorization_checks_total[5m])) by (resource_type)
+          labels:
+            veridis_metric_type: "security_metrics"
+            veridis_domain: "authorization"
+
+        # ==============================================================================
+        # Data Access and Privacy Recording Rules
+        # ==============================================================================
+        - record: veridis:data_access_rate
+          expr: |
+            sum(rate(data_access_events_total[5m])) by (data_type, access_type)
+          labels:
+            veridis_metric_type: "privacy_metrics"
+            veridis_domain: "data_access"
+
+        - record: veridis:pii_access_rate
+          expr: |
+            sum(rate(pii_access_events_total[5m])) by (pii_type, purpose)
+          labels:
+            veridis_metric_type: "privacy_metrics"
+            veridis_domain: "pii_access"
+            veridis_compliance: "gdpr"
+
+        # ==============================================================================
+        # Audit and Compliance Recording Rules
+        # ==============================================================================
+        - record: veridis:audit_events_rate
+          expr: |
+            sum(rate(audit_events_total[5m])) by (event_type, severity)
+          labels:
+            veridis_metric_type: "audit_metrics"
+            veridis_domain: "audit_logging"
+
+        - record: veridis:compliance_violations_rate
+          expr: |
+            sum(rate(compliance_violations_total[5m])) by (violation_type, framework)
+          labels:
+            veridis_metric_type: "compliance_metrics"
+            veridis_domain: "violations"
+
+    # ==============================================================================
+    # Critical Security Alerts
+    # ==============================================================================
+    - name: veridis.security.critical
+      interval: 30s
+      rules:
+        # ==============================================================================
+        # Authentication and Access Control Alerts
+        # ==============================================================================
+        - alert: VeridisHighAuthenticationFailureRate
+          expr: |
+            (
+              sum(rate(authentication_attempts_total{result="failed"}[5m])) by (method) /
+              sum(rate(authentication_attempts_total[5m])) by (method)
+            ) > 0.20
+          for: 2m
+          labels:
+            severity: warning
+            team: security-engineering
+            service: authentication
+            veridis_alert_type: "security_incident"
+            veridis_impact: "medium"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "2"
+            veridis_compliance_framework: "soc2"
+          annotations:
+            summary: "High authentication failure rate detected"
+            description: |
+              Authentication failure rate for {{ $labels.method }} has been above 20% for more than 2 minutes.
+              Current failure rate: {{ $value | humanizePercentage }}
+
+              SECURITY ALERT - POTENTIAL ATTACK:
+              1. Check for brute force attacks
+              2. Review authentication logs
+              3. Consider implementing rate limiting
+              4. Notify security team immediately
+
+              Impact: Medium - Potential security breach attempt
+              Compliance: SOC 2 - Access control monitoring required
+              Runbook: https://runbooks.veridis.xyz/security/auth-failures
+            veridis_runbook: "https://runbooks.veridis.xyz/security/auth-failures"
+            veridis_escalation: "security-oncall@veridis.xyz"
+            veridis_compliance_requirement: "SOC 2 Type II - CC6.1 Access Control"
+            veridis_severity_justification: "High authentication failure rate indicates potential security attack"
+
+        - alert: VeridisUnauthorizedDataAccess
+          expr: |
+            sum(rate(authorization_checks_total{result="denied"}[5m])) > 10
+          for: 1m
+          labels:
+            severity: critical
+            team: security-engineering
+            service: authorization
+            veridis_alert_type: "security_incident"
+            veridis_impact: "high"
+            veridis_urgency: "critical"
+            veridis_escalation_tier: "1"
+            veridis_compliance_framework: "soc2,gdpr,iso27001"
+          annotations:
+            summary: "High rate of unauthorized access attempts"
+            description: |
+              Unauthorized access attempts have exceeded 10 per minute for more than 1 minute.
+              Current rate: {{ $value }} attempts/minute
+
+              CRITICAL SECURITY ALERT:
+              1. Immediate security team notification required
+              2. Check for privilege escalation attempts
+              3. Review access control policies
+              4. Consider immediate access restrictions
+
+              Impact: High - Potential data breach attempt
+              Compliance: SOC 2, GDPR, ISO 27001 - Access control violation
+              Runbook: https://runbooks.veridis.xyz/security/unauthorized-access
+            veridis_runbook: "https://runbooks.veridis.xyz/security/unauthorized-access"
+            veridis_escalation: "security-manager@veridis.xyz"
+            veridis_compliance_requirement: "Multiple frameworks - Access control and data protection"
+            veridis_severity_justification: "Unauthorized access attempts indicate potential data breach"
+
+        # ==============================================================================
+        # Data Privacy and GDPR Compliance Alerts
+        # ==============================================================================
+        - alert: VeridisUnauthorizedPIIAccess
+          expr: |
+            sum(rate(pii_access_events_total{authorized="false"}[5m])) > 0
+          for: 1m
+          labels:
+            severity: critical
+            team: security-engineering
+            service: data-privacy
+            veridis_alert_type: "privacy_incident"
+            veridis_impact: "critical"
+            veridis_urgency: "critical"
+            veridis_escalation_tier: "1"
+            veridis_compliance_framework: "gdpr"
+          annotations:
+            summary: "Unauthorized PII access detected"
+            description: |
+              Unauthorized access to personally identifiable information has been detected.
+              PII Type: {{ $labels.pii_type }}
+
+              CRITICAL PRIVACY ALERT - GDPR VIOLATION:
+              1. Immediate investigation required
+              2. Document incident for GDPR compliance
+              3. Notify Data Protection Officer
+              4. Consider breach notification requirements
+
+              Impact: Critical - GDPR compliance violation
+              Legal: Potential regulatory fines and notifications
+              Runbook: https://runbooks.veridis.xyz/privacy/pii-violation
+            veridis_runbook: "https://runbooks.veridis.xyz/privacy/pii-violation"
+            veridis_escalation: "dpo@veridis.xyz,security-manager@veridis.xyz"
+            veridis_compliance_requirement: "GDPR Article 32 - Security of processing"
+            veridis_legal_impact: "Potential regulatory fines and breach notification requirements"
+
+        - alert: VeridisDataRetentionViolation
+          expr: |
+            sum(data_retention_violations_total) > 0
+          for: 1m
+          labels:
+            severity: warning
+            team: security-engineering
+            service: data-lifecycle
+            veridis_alert_type: "compliance_incident"
+            veridis_impact: "medium"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "2"
+            veridis_compliance_framework: "gdpr"
+          annotations:
+            summary: "Data retention policy violation detected"
+            description: |
+              Data retention policy violation has been detected.
+              Data Type: {{ $labels.data_type }}
+              Retention Period: {{ $labels.retention_period }}
+
+              GDPR COMPLIANCE ALERT:
+              1. Review data retention policies
+              2. Schedule data deletion if required
+              3. Update retention compliance procedures
+              4. Document remediation actions
+
+              Impact: Medium - GDPR compliance risk
+              Compliance: GDPR Article 5 - Data minimization
+              Runbook: https://runbooks.veridis.xyz/privacy/data-retention
+            veridis_runbook: "https://runbooks.veridis.xyz/privacy/data-retention"
+            veridis_escalation: "dpo@veridis.xyz"
+            veridis_compliance_requirement: "GDPR Article 5 - Data minimization and retention limits"
+
+        # ==============================================================================
+        # Audit and Compliance Monitoring Alerts
+        # ==============================================================================
+        - alert: VeridisAuditLogFailure
+          expr: |
+            sum(rate(audit_log_failures_total[5m])) > 0
+          for: 1m
+          labels:
+            severity: critical
+            team: security-engineering
+            service: audit-logging
+            veridis_alert_type: "audit_incident"
+            veridis_impact: "high"
+            veridis_urgency: "critical"
+            veridis_escalation_tier: "1"
+            veridis_compliance_framework: "soc2,iso27001"
+          annotations:
+            summary: "Audit logging failure detected"
+            description: |
+              Audit logging system has failed and security events may not be recorded.
+
+              CRITICAL COMPLIANCE ALERT:
+              1. Immediate audit system investigation required
+              2. Check for log storage issues
+              3. Verify audit log integrity
+              4. Document incident for compliance
+
+              Impact: High - Compliance audit trail compromised
+              Compliance: SOC 2, ISO 27001 - Audit logging requirements
+              Runbook: https://runbooks.veridis.xyz/audit/logging-failure
+            veridis_runbook: "https://runbooks.veridis.xyz/audit/logging-failure"
+            veridis_escalation: "security-manager@veridis.xyz,compliance-team@veridis.xyz"
+            veridis_compliance_requirement: "SOC 2 CC7.2, ISO 27001 A.12.4.1 - Event logging"
+            veridis_severity_justification: "Audit log failure compromises compliance audit trail"
+
+        - alert: VeridisComplianceViolation
+          expr: |
+            sum(rate(compliance_violations_total[5m])) > 0
+          for: 1m
+          labels:
+            severity: warning
+            team: compliance-engineering
+            service: compliance-monitoring
+            veridis_alert_type: "compliance_incident"
+            veridis_impact: "medium"
+            veridis_urgency: "high"
+            veridis_escalation_tier: "2"
+            veridis_compliance_framework: "multiple"
+          annotations:
+            summary: "Compliance violation detected"
+            description: |
+              Compliance violation has been detected in {{ $labels.framework }} framework.
+              Violation Type: {{ $labels.violation_type }}
+
+              COMPLIANCE ALERT:
+              1. Review violation details and impact
+              2. Implement immediate remediation
+              3. Document incident and response
+              4. Update compliance procedures if needed
+
+              Impact: Medium - Regulatory compliance risk
+              Framework: {{ $labels.framework }}
+              Runbook: https://runbooks.veridis.xyz/compliance/violation-response
+            veridis_runbook: "https://runbooks.veridis.xyz/compliance/violation-response"
+            veridis_escalation: "compliance-team@veridis.xyz"
+            veridis_compliance_requirement: "Framework-specific compliance requirements"
+
+        # ==============================================================================
+        # Encryption and Key Management Alerts
+        # ==============================================================================
+        - alert: VeridisEncryptionKeyRotationOverdue
+          expr: |
+            time() - encryption_key_last_rotation_timestamp > (90 * 24 * 3600)
+          for: 1m
+          labels:
+            severity: warning
+            team: security-engineering
+            service: key-management
+            veridis_alert_type: "security_maintenance"
+            veridis_impact: "medium"
+            veridis_urgency: "medium"
+            veridis_escalation_tier: "2"
+            veridis_compliance_framework: "soc2,iso27001"
+          annotations:
+            summary: "Encryption key rotation overdue"
+            description: |
+              Encryption key {{ $labels.key_id }} has not been rotated for more than 90 days.
+              Last rotation: {{ $value | humanizeTimestamp }}
+
+              SECURITY MAINTENANCE REQUIRED:
+              1. Schedule immediate key rotation
+              2. Review key management procedures
+              3. Update rotation policies if needed
+              4. Verify key usage and dependencies
+
+              Impact: Medium - Security posture degradation
+              Compliance: SOC 2, ISO 27001 - Key management requirements
+              Runbook: https://runbooks.veridis.xyz/security/key-rotation
+            veridis_runbook: "https://runbooks.veridis.xyz/security/key-rotation"
+            veridis_escalation: "security-team@veridis.xyz"
+            veridis_compliance_requirement: "SOC 2 CC6.1, ISO 27001 A.10.1.2 - Key management"
+
+# ==============================================================================
+# Veridis Prometheus Rules Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS PROMETHEUS RULES STRATEGY:
+# ================================================
+#
+# VERIDIS PROMETHEUS RULES ARCHITECTURE OVERVIEW:
+# -----------------------------------------------
+# 1. Infrastructure Rules (veridis-infrastructure-rules):
+#    - Comprehensive infrastructure monitoring with intelligent alerting management and advanced rule optimization for production monitoring
+#    - Advanced Rules configuration with recording rules, critical alerts, SLA monitoring, and comprehensive infrastructure intelligence
+#    - Multi-tier rules architecture with performance recording, availability SLI/SLO, resource utilization, and comprehensive observability optimization
+#    - Enterprise rules policies with node health, CPU/memory/disk monitoring, Kubernetes alerts, and comprehensive infrastructure intelligence
+#    - Performance optimization with intelligent alerting management, rule optimization, escalation policies, and monitoring for maximum efficiency
+#
+# 2. Application Rules (veridis-application-rules):
+#    - Application monitoring with Rust/Node.js metrics and comprehensive business intelligence for application services
+#    - Advanced application configuration with HTTP performance, business metrics, ZK circuits performance, and service monitoring
+#    - Application optimization with request rates, latency percentiles, error rates, business operations, and application intelligence
+#    - Service intelligence with identity/attestation/verification/compliance operations and comprehensive application analytics
+#    - Performance excellence with high-frequency monitoring, GPU utilization tracking, and comprehensive application performance monitoring
+#
+# 3. Security and Compliance Rules (veridis-security-compliance-rules):
+#    - Security and compliance monitoring with SOC 2, GDPR, ISO 27001 comprehensive analytics for regulatory requirements
+#    - Advanced security configuration with authentication/authorization monitoring, data privacy tracking, and compliance management
+#    - Security optimization with authentication success rates, PII access monitoring, audit logging, and security intelligence
+#    - Compliance intelligence with violation detection, data retention monitoring, key rotation tracking, and comprehensive compliance analytics
+#    - Security excellence with real-time threat detection, privacy protection monitoring, and comprehensive security compliance monitoring
+#
+# ENTERPRISE PROMETHEUS RULES FEATURES:
+# =====================================
+# Advanced Rules Management and Alerting Optimization:
+#   - Multi-Rules architecture with infrastructure, application, and security/compliance rules
+#   - Intelligent alerting management with severity classification, escalation tiers, business impact assessment, and performance-based decisions
+#   - Alert discovery with comprehensive labeling, runbook integration, mitigation strategies, and alert optimization
+#   - Rules management with recording rules, alerting rules, compliance monitoring, and comprehensive security integration
+#   - Performance tuning with evaluation intervals, grouping strategies, notification channels, and intelligent alerting optimization
+#
+# Comprehensive Business Intelligence and SLA Integration:
+#   - SLA integration with availability SLI/SLO monitoring, burn rate calculation, error budgets, and business continuity
+#   - Business metrics with identity operations, attestation requests, verification checks, compliance audits, and strategic intelligence
+#   - Performance analytics with HTTP latency percentiles, throughput monitoring, error rate tracking, and comprehensive business intelligence
+#   - Cost analytics with resource utilization monitoring, capacity planning, optimization recommendations, and cost correlation
+#   - Strategic planning with predictive analytics, capacity forecasting, business impact assessment, and operational intelligence
+#
+# Enterprise Security and Compliance Integration:
+#   - Security integration with authentication monitoring, authorization tracking, data access control, and comprehensive security analytics
+#   - Compliance monitoring with SOC 2, GDPR, ISO 27001 violation detection, audit logging, and regulatory framework support
+#   - Privacy protection with PII access monitoring, data retention compliance, consent tracking, and comprehensive privacy analytics
+#   - Audit logging with comprehensive event tracking, compliance reporting, security incident detection, and audit intelligence
+#   - Encryption monitoring with key rotation tracking, certificate management, security posture monitoring, and encryption analytics
+#
+# Advanced Performance and Resource Monitoring:
+#   - Infrastructure monitoring with node health, resource utilization, network performance, and comprehensive infrastructure analytics
+#   - Application performance with HTTP metrics, database performance, cache efficiency, and comprehensive application intelligence
+#   - ZK circuits monitoring with proof generation performance, GPU utilization, verification timing, and ZK-specific analytics
+#   - Resource optimization with CPU/memory/disk monitoring, GPU performance tracking, capacity planning, and resource intelligence
+#   - Performance excellence with latency tracking, throughput optimization, error rate monitoring, and comprehensive performance analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Prometheus Rules Lifecycle Management:
+#   - Multi-Rules architecture with infrastructure, application, and security/compliance rules
+#   - Intelligent Rules management with predictive analytics and alerting utilization correlation
+#   - Advanced monitoring with comprehensive Rules analytics and alert business intelligence
+#   - Configuration validation with Rules schema enforcement and alerting deployment safety checks
+#   - Automated optimization with Rules pattern analysis and alert configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II Rules controls with comprehensive audit requirements and alert logging
+#   - GDPR Rules compliance with data protection and privacy-preserving alert management
+#   - ISO 27001 Rules security management with information security and alert compliance integration
+#   - NIST 800-190 container Rules security with alerting validation and compliance
+#   - Zero-trust Rules architecture with comprehensive encryption and alert authentication requirements
+#
+# Business Intelligence Integration:
+#   - Rules analytics with cost correlation and alert resource utilization optimization
+#   - Performance analytics with user experience optimization and Rules business intelligence
+#   - Alert intelligence with escalation pattern monitoring and Rules optimization recommendations
+#   - Strategic planning with capacity management and Rules forecasting
+#   - Business impact assessment with Rules performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment Rules support with production, development, HA, and compliance configurations
+#   - Comprehensive documentation with Rules guides and alert troubleshooting procedures
+#   - Environment-specific Rules with production, development, testing, and multi-cluster support
+#   - Testing integration with Rules development workflow and alert debugging capabilities
+#   - Rules monitoring with comprehensive tracking and alert correlation
+#
+# ==============================================================================

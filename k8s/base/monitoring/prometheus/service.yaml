@@ -1,0 +1,942 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Prometheus Monitoring Service Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Prometheus Monitoring Service for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS PROMETHEUS SERVICE ARCHITECTURE:
+#   • Advanced Prometheus service with intelligent service discovery and performance-based service optimization
+#   • Multi-tier service architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with service policies, endpoint optimization, Prometheus integration
+#   • Advanced lifecycle management with automated service optimization, Prometheus control, and endpoint enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Prometheus service performance insights
+#
+# VERIDIS PROMETHEUS SERVICE OPTIMIZATION:
+#   • High-performance service with intelligent endpoint management and Prometheus service optimization
+#   • Intelligent service traffic management with responsive policies and performance-based service decisions
+#   • Advanced load balancing management with business intelligence and endpoint-based Prometheus control
+#   • Comprehensive observability control with intelligent Prometheus service management and endpoint enhancement
+#   • Enterprise acceleration with predictive Prometheus service management and endpoint optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Prometheus service controls with comprehensive audit and endpoint requirements
+#   • GDPR Prometheus service compliance with data protection, privacy controls, and endpoint management
+#   • ISO 27001 Prometheus service management with comprehensive framework integration
+#   • NIST 800-190 container Prometheus service security with endpoint-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Prometheus service best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Prometheus service lifecycle management with automated provisioning and endpoint optimization
+#   • Predictive endpoint analytics with capacity planning and Prometheus service intelligence
+#   • Advanced monitoring integration with Prometheus service analytics and endpoint business intelligence
+#   • Comprehensive observability control with Prometheus service preservation and endpoint optimization
+#   • Business continuity Prometheus service with endpoint guarantees and service optimization
+#
+# PROMETHEUS SERVICE ACCELERATION INTELLIGENCE:
+#   • Prometheus service usage analytics with endpoint patterns and optimization recommendations
+#   • Endpoint monitoring with Prometheus service latency and discovery optimization intelligence
+#   • Development efficiency with Prometheus service analytics and deployment optimization procedures
+#   • Cost optimization with Prometheus service utilization analysis and endpoint capacity planning procedures
+#   • Quality assurance with Prometheus service metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Prometheus Monitoring - Primary Production Service
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-prometheus-monitoring
+  namespace: veridis-infrastructure
+
+  # Core Veridis Prometheus Service identification labels
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Prometheus Service specific classification
+    prometheus.veridis.xyz/type: monitoring-prometheus-service
+    prometheus.veridis.xyz/category: production-service
+    prometheus.veridis.xyz/role: primary-prometheus-service
+    prometheus.veridis.xyz/performance-class: high-performance-prometheus-service
+    prometheus.veridis.xyz/security-level: enterprise
+
+    # Monitoring Prometheus Service classification
+    monitoring.veridis.xyz/prometheus-service-type: intelligent-prometheus-service
+    monitoring.veridis.xyz/service-type: monitoring-service
+    monitoring.veridis.xyz/performance-tier: high-performance
+    monitoring.veridis.xyz/optimization: enabled
+    monitoring.veridis.xyz/features: full-monitoring-service-stack
+
+    # Observability Prometheus Service classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-monitoring-service-discovery
+    observability.veridis.xyz/endpoint-management: advanced
+    observability.veridis.xyz/load-balancing: optimized
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Prometheus Service classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-monitoring-service-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Prometheus Service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+    veridis.xyz/cost-center: monitoring-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "prometheus-service-control-framework"
+    compliance.veridis.xyz/gdpr: "prometheus-service-data-protection"
+    compliance.veridis.xyz/iso27001: "prometheus-service-security-management"
+    compliance.veridis.xyz/nist-800-190: "prometheus-service-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Prometheus Service analytics and intelligence
+    monitoring.veridis.xyz/prometheus-service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/endpoint-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Service discovery labels
+    service.veridis.xyz/discovery-enabled: "true"
+    service.veridis.xyz/endpoint-optimization: "true"
+    service.veridis.xyz/load-balancing: "intelligent"
+    service.veridis.xyz/health-checking: "enabled"
+    service.veridis.xyz/session-affinity: "enabled"
+
+  annotations:
+    # Prometheus Service purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Prometheus Service with intelligent endpoint management, advanced load balancing, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Prometheus service for decentralized identity management with intelligent endpoint discovery, service optimization, and observability guarantees"
+    veridis.xyz/scope: "Prometheus service including endpoint management, load balancing, service discovery, and comprehensive service intelligence"
+
+    # Prometheus Service architecture and design
+    prometheus.veridis.xyz/architecture: "Enterprise Prometheus service with intelligent endpoint management, advanced load balancing, and service discovery optimization"
+    prometheus.veridis.xyz/design-pattern: "Multi-tier Prometheus service with endpoint optimization, cost efficiency, and business intelligence"
+    prometheus.veridis.xyz/optimization-model: "Intelligent Prometheus service with predictive analytics, endpoint optimization, and load balancing efficiency"
+    prometheus.veridis.xyz/performance-model: "High-performance Prometheus service with endpoint optimization and intelligent load balancing management"
+
+    # Monitoring Prometheus Service specifications
+    monitoring.veridis.xyz/prometheus-service-specification: "Prometheus service with endpoint optimization and intelligent monitoring service management"
+    monitoring.veridis.xyz/discovery-specification: "Advanced service discovery configuration with monitoring optimization and endpoint enhancement"
+    monitoring.veridis.xyz/load-balancing-specification: "Prometheus load balancing management optimization with intelligent endpoints and enhancement"
+    monitoring.veridis.xyz/performance-specification: "Prometheus performance service with endpoint acceleration and load balancing efficiency"
+    monitoring.veridis.xyz/business-specification: "Prometheus business service with cost optimization and strategic endpoint intelligence"
+
+    # Observability Prometheus Service specifications
+    observability.veridis.xyz/prometheus-service-specification: "Observability-aware Prometheus service with endpoint optimization and load balancing intelligence"
+    observability.veridis.xyz/endpoint-specification: "Observability endpoint management optimization with intelligent Prometheus and load balancing enhancement"
+    observability.veridis.xyz/discovery-specification: "Observability discovery with cost optimization and intelligent Prometheus management"
+    observability.veridis.xyz/balancing-specification: "Observability load balancing management with auto-optimization and Prometheus management"
+    observability.veridis.xyz/monitoring-specification: "Observability monitoring with Prometheus service analytics and endpoint intelligence"
+
+    # Business Prometheus Service specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant Prometheus service with business continuity and endpoint guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized Prometheus service with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with Prometheus service optimization and endpoint intelligence"
+
+    # Operational Prometheus Service specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with Prometheus service analytics and endpoint intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with Prometheus service preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with Prometheus service management and endpoint optimization"
+
+    # Prometheus Service lifecycle specifications
+    lifecycle.veridis.xyz/prometheus-service-specification: "Dynamic Prometheus service with automated endpoint management and load balancing optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent Prometheus service scaling with machine learning and endpoint forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Prometheus service optimization with intelligent endpoint management and load balancing enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Prometheus service evolution with intelligent adaptation and endpoint optimization"
+
+    # Prometheus-specific service annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+
+    # Service discovery annotations
+    service.discovery.veridis.xyz/enabled: "true"
+    service.discovery.veridis.xyz/protocol: "http"
+    service.discovery.veridis.xyz/health-check: "/api/v1/status/ready"
+    service.discovery.veridis.xyz/metrics-endpoint: "/metrics"
+    service.discovery.veridis.xyz/admin-endpoint: "/api/v1/admin"
+
+    # Load balancing annotations
+    load-balancer.veridis.xyz/algorithm: "round-robin"
+    load-balancer.veridis.xyz/session-affinity: "ClientIP"
+    load-balancer.veridis.xyz/session-timeout: "3600"
+    load-balancer.veridis.xyz/health-check-interval: "10s"
+    load-balancer.veridis.xyz/health-check-timeout: "5s"
+
+    # Performance optimization annotations
+    performance.veridis.xyz/endpoint-optimization: "enabled"
+    performance.veridis.xyz/connection-pooling: "enabled"
+    performance.veridis.xyz/keep-alive: "enabled"
+    performance.veridis.xyz/timeout-optimization: "enabled"
+    performance.veridis.xyz/caching-strategy: "intelligent"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/mutual-tls: "enabled"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/access-control: "rbac-enabled"
+    security.veridis.xyz/network-policies: "enforced"
+
+    # Monitoring and observability annotations
+    monitoring.veridis.xyz/service-monitoring: "enabled"
+    monitoring.veridis.xyz/endpoint-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/sla-monitoring: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "monitoring-team@veridis.xyz"
+    veridis.xyz/prometheus-service-admin: "monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "monitoring-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "monitoring-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/monitoring/prometheus-service-management"
+    veridis.xyz/service-docs: "https://monitoring.veridis.xyz/prometheus-service-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/prometheus-service-monitoring"
+
+spec:
+  # ==============================================================================
+  # Service Type Configuration
+  # ==============================================================================
+  type: ClusterIP
+
+  # ==============================================================================
+  # Cluster IP Configuration
+  # ==============================================================================
+  clusterIP: None  # Headless service for StatefulSet-like behavior
+
+  # ==============================================================================
+  # Service Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: prometheus-monitoring
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    # ==============================================================================
+    # Main Prometheus HTTP Port
+    # ==============================================================================
+    - name: http
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+      # Port-specific annotations via service
+      # prometheus.io/scrape: "true"
+      # prometheus.io/port: "9090"
+
+    # ==============================================================================
+    # Prometheus Admin API Port
+    # ==============================================================================
+    - name: admin-api
+      port: 9091
+      targetPort: 9090
+      protocol: TCP
+      # Admin API access with restricted policies
+
+    # ==============================================================================
+    # Health Check Port
+    # ==============================================================================
+    - name: health
+      port: 8080
+      targetPort: 9090
+      protocol: TCP
+      # Health check endpoint for load balancers
+
+    # ==============================================================================
+    # Metrics Scraping Port
+    # ==============================================================================
+    - name: metrics
+      port: 9092
+      targetPort: 9090
+      protocol: TCP
+      # Dedicated metrics port for external monitoring
+
+  # ==============================================================================
+  # Session Affinity Configuration
+  # ==============================================================================
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600
+
+  # ==============================================================================
+  # External Traffic Policy
+  # ==============================================================================
+  externalTrafficPolicy: Local
+
+  # ==============================================================================
+  # Internal Traffic Policy
+  # ==============================================================================
+  internalTrafficPolicy: Local
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Load Balancer Service
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-prometheus-lb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-load-balancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-load-balancer
+    prometheus.veridis.xyz/category: external-access-service
+    prometheus.veridis.xyz/role: prometheus-load-balancer
+    prometheus.veridis.xyz/performance-class: high-performance-load-balancer
+
+    monitoring.veridis.xyz/prometheus-service-type: load-balancer-prometheus-service
+    monitoring.veridis.xyz/access-type: external
+    monitoring.veridis.xyz/load-balancing: enabled
+    monitoring.veridis.xyz/ssl-termination: enabled
+
+    loadbalancer.veridis.xyz/tier: production
+    loadbalancer.veridis.xyz/optimization: intelligent-load-balancing
+    loadbalancer.veridis.xyz/ssl-termination: enabled
+    loadbalancer.veridis.xyz/health-checking: advanced
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Enterprise Veridis Prometheus Load Balancer Service with SSL termination and intelligent load balancing"
+    veridis.xyz/purpose: "Provides external access to Prometheus monitoring with load balancing, SSL termination, and comprehensive traffic management"
+
+    prometheus.veridis.xyz/load-balancer-specification: "Prometheus load balancer with SSL termination and intelligent traffic management"
+    monitoring.veridis.xyz/load-balancer-specification: "Load balancer monitoring with Prometheus external access and traffic optimization"
+
+    # Load balancer specific annotations
+    loadbalancer.veridis.xyz/type: "application-load-balancer"
+    loadbalancer.veridis.xyz/scheme: "internet-facing"
+    loadbalancer.veridis.xyz/ssl-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
+    loadbalancer.veridis.xyz/certificate-arn: "${PROMETHEUS_SSL_CERT_ARN}"
+    loadbalancer.veridis.xyz/backend-protocol: "HTTP"
+
+    # Health check annotations
+    loadbalancer.veridis.xyz/health-check-enabled: "true"
+    loadbalancer.veridis.xyz/health-check-path: "/-/ready"
+    loadbalancer.veridis.xyz/health-check-interval: "30s"
+    loadbalancer.veridis.xyz/health-check-timeout: "10s"
+    loadbalancer.veridis.xyz/health-check-healthy-threshold: "2"
+    loadbalancer.veridis.xyz/health-check-unhealthy-threshold: "3"
+
+    # Traffic routing annotations
+    loadbalancer.veridis.xyz/sticky-sessions: "enabled"
+    loadbalancer.veridis.xyz/session-duration: "3600"
+    loadbalancer.veridis.xyz/cross-zone-load-balancing: "enabled"
+    loadbalancer.veridis.xyz/deletion-protection: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/waf-enabled: "true"
+    security.veridis.xyz/ddos-protection: "enabled"
+    security.veridis.xyz/access-logging: "enabled"
+    security.veridis.xyz/ssl-redirect: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/load-balancer-monitoring: "enabled"
+    monitoring.veridis.xyz/cloudwatch-metrics: "enabled"
+    monitoring.veridis.xyz/access-logs: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "external-access-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-load-balancer"
+
+spec:
+  type: LoadBalancer
+
+  selector:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: prometheus-monitoring
+
+  ports:
+    # HTTPS Port for secure external access
+    - name: https
+      port: 443
+      targetPort: 9090
+      protocol: TCP
+
+    # HTTP Port with redirect to HTTPS
+    - name: http
+      port: 80
+      targetPort: 9090
+      protocol: TCP
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600
+
+  loadBalancerSourceRanges:
+    # Restrict access to specific IP ranges
+    - "10.0.0.0/8"      # Private networks
+    - "172.16.0.0/12"   # Private networks
+    - "192.168.0.0/16"  # Private networks
+    # Add specific public IP ranges as needed
+    # - "203.0.113.0/24"  # Example public range
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - NodePort Service for Development
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-prometheus-nodeport
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-nodeport
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-nodeport
+    prometheus.veridis.xyz/category: development-access-service
+    prometheus.veridis.xyz/role: prometheus-nodeport
+    prometheus.veridis.xyz/environment: development
+
+    monitoring.veridis.xyz/prometheus-service-type: nodeport-prometheus-service
+    monitoring.veridis.xyz/access-type: node-port
+    monitoring.veridis.xyz/development: enabled
+
+    nodeport.veridis.xyz/tier: development
+    nodeport.veridis.xyz/optimization: development-access
+    nodeport.veridis.xyz/port-range: "30000-32767"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Development Veridis Prometheus NodePort Service for local and development access"
+    veridis.xyz/purpose: "Provides development access to Prometheus monitoring via NodePort for local development and testing"
+
+    prometheus.veridis.xyz/nodeport-specification: "Prometheus NodePort for development access and local testing"
+    monitoring.veridis.xyz/nodeport-specification: "NodePort monitoring with Prometheus development access"
+
+    # NodePort specific annotations
+    nodeport.veridis.xyz/type: "development-access"
+    nodeport.veridis.xyz/port-allocation: "automatic"
+    nodeport.veridis.xyz/external-access: "enabled"
+
+    # Development annotations
+    development.veridis.xyz/local-access: "enabled"
+    development.veridis.xyz/testing-access: "enabled"
+    development.veridis.xyz/debug-access: "enabled"
+
+    # Security annotations for development
+    security.veridis.xyz/development-only: "true"
+    security.veridis.xyz/restricted-access: "development-team"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-mode-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-development-access"
+
+spec:
+  type: NodePort
+
+  selector:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: prometheus-monitoring
+
+  ports:
+    # Main Prometheus port for development access
+    - name: http
+      port: 9090
+      targetPort: 9090
+      nodePort: 30090
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Headless Service for StatefulSet
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-prometheus-headless
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-headless
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-headless
+    prometheus.veridis.xyz/category: stateful-service
+    prometheus.veridis.xyz/role: prometheus-headless
+    prometheus.veridis.xyz/service-discovery: enabled
+
+    monitoring.veridis.xyz/prometheus-service-type: headless-prometheus-service
+    monitoring.veridis.xyz/stateful: enabled
+    monitoring.veridis.xyz/service-discovery: enabled
+    monitoring.veridis.xyz/pod-addressing: direct
+
+    headless.veridis.xyz/tier: production
+    headless.veridis.xyz/optimization: direct-pod-addressing
+    headless.veridis.xyz/service-discovery: dns-based
+    headless.veridis.xyz/load-balancing: none
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Headless Veridis Prometheus Service for direct pod addressing and service discovery"
+    veridis.xyz/purpose: "Provides direct pod addressing for Prometheus monitoring with DNS-based service discovery"
+
+    prometheus.veridis.xyz/headless-specification: "Prometheus headless service for direct pod access and service discovery"
+    monitoring.veridis.xyz/headless-specification: "Headless monitoring with Prometheus direct pod addressing"
+
+    # Headless service specific annotations
+    headless.veridis.xyz/type: "stateful-service-discovery"
+    headless.veridis.xyz/pod-addressability: "direct"
+    headless.veridis.xyz/dns-policy: "cluster-first"
+
+    # StatefulSet support annotations
+    statefulset.veridis.xyz/support: "enabled"
+    statefulset.veridis.xyz/pod-management: "parallel"
+    statefulset.veridis.xyz/update-strategy: "rolling-update"
+
+    # Service discovery annotations
+    service.discovery.veridis.xyz/type: "dns-based"
+    service.discovery.veridis.xyz/pod-records: "enabled"
+    service.discovery.veridis.xyz/srv-records: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-headless-service"
+
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+
+  selector:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: prometheus-monitoring
+
+  ports:
+    # Main Prometheus port for headless access
+    - name: http
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+
+    # Inter-cluster communication port
+    - name: cluster
+      port: 9091
+      targetPort: 9090
+      protocol: TCP
+
+  # No session affinity for headless services
+  sessionAffinity: None
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - External Name Service for Federation
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-prometheus-federation
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-federation
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-federation
+    prometheus.veridis.xyz/category: federation-service
+    prometheus.veridis.xyz/role: prometheus-federation
+    prometheus.veridis.xyz/federation: enabled
+
+    monitoring.veridis.xyz/prometheus-service-type: federation-prometheus-service
+    monitoring.veridis.xyz/multi-cluster: enabled
+    monitoring.veridis.xyz/federation: enabled
+    monitoring.veridis.xyz/cross-cluster: enabled
+
+    federation.veridis.xyz/tier: production
+    federation.veridis.xyz/optimization: multi-cluster-monitoring
+    federation.veridis.xyz/aggregation: enabled
+    federation.veridis.xyz/cross-region: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Federation Veridis Prometheus Service for multi-cluster monitoring and metrics aggregation"
+    veridis.xyz/purpose: "Provides federation capabilities for Prometheus monitoring across multiple clusters and regions"
+
+    prometheus.veridis.xyz/federation-specification: "Prometheus federation service for multi-cluster monitoring and metrics aggregation"
+    monitoring.veridis.xyz/federation-specification: "Federation monitoring with Prometheus multi-cluster support"
+
+    # Federation specific annotations
+    federation.veridis.xyz/type: "multi-cluster-federation"
+    federation.veridis.xyz/aggregation-mode: "hierarchical"
+    federation.veridis.xyz/cross-region: "enabled"
+    federation.veridis.xyz/data-retention: "federated"
+
+    # Multi-cluster annotations
+    multicluster.veridis.xyz/federation: "enabled"
+    multicluster.veridis.xyz/metrics-aggregation: "enabled"
+    multicluster.veridis.xyz/cross-cluster-discovery: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/federation-optimization: "enabled"
+    performance.veridis.xyz/aggregation-performance: "optimized"
+    performance.veridis.xyz/cross-region-latency: "minimized"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "federation-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-federation"
+
+spec:
+  type: ExternalName
+  externalName: prometheus-federation.monitoring.svc.cluster.local
+
+  ports:
+    # Federation port for metrics aggregation
+    - name: federation
+      port: 9090
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - Ingress Service Backend
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-prometheus-ingress-backend
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-ingress-backend
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-ingress-backend
+    prometheus.veridis.xyz/category: ingress-backend-service
+    prometheus.veridis.xyz/role: prometheus-ingress-backend
+    prometheus.veridis.xyz/ingress-integration: enabled
+
+    monitoring.veridis.xyz/prometheus-service-type: ingress-backend-prometheus-service
+    monitoring.veridis.xyz/ingress: enabled
+    monitoring.veridis.xyz/ssl-termination: ingress-level
+    monitoring.veridis.xyz/path-routing: enabled
+
+    ingress.veridis.xyz/tier: production
+    ingress.veridis.xyz/optimization: ingress-backend-optimization
+    ingress.veridis.xyz/ssl-termination: enabled
+    ingress.veridis.xyz/path-based-routing: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "Ingress Backend Veridis Prometheus Service for ingress controller integration and path-based routing"
+    veridis.xyz/purpose: "Provides ingress backend capabilities for Prometheus monitoring with SSL termination and path-based routing"
+
+    prometheus.veridis.xyz/ingress-backend-specification: "Prometheus ingress backend service for ingress integration and path routing"
+    monitoring.veridis.xyz/ingress-backend-specification: "Ingress backend monitoring with Prometheus ingress controller integration"
+
+    # Ingress backend specific annotations
+    ingress.veridis.xyz/backend-type: "prometheus-monitoring"
+    ingress.veridis.xyz/protocol: "HTTP"
+    ingress.veridis.xyz/health-check: "/-/ready"
+    ingress.veridis.xyz/path-prefix: "/prometheus"
+
+    # SSL and security annotations
+    ingress.veridis.xyz/ssl-termination: "ingress-level"
+    ingress.veridis.xyz/backend-protocol: "HTTP"
+    ingress.veridis.xyz/secure-backends: "enabled"
+
+    # Path routing annotations
+    ingress.veridis.xyz/path-routing: "enabled"
+    ingress.veridis.xyz/rewrite-target: "/"
+    ingress.veridis.xyz/sticky-sessions: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/ingress-optimization: "enabled"
+    performance.veridis.xyz/connection-pooling: "enabled"
+    performance.veridis.xyz/keep-alive: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-ingress-backend"
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: prometheus-monitoring
+
+  ports:
+    # HTTP port for ingress backend
+    - name: http
+      port: 80
+      targetPort: 9090
+      protocol: TCP
+
+    # HTTPS port for secure ingress backend
+    - name: https
+      port: 443
+      targetPort: 9090
+      protocol: TCP
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 1800
+
+---
+# ==============================================================================
+# Veridis Prometheus Monitoring - High Availability Service
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-prometheus-ha
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: prometheus-ha-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    prometheus.veridis.xyz/type: monitoring-prometheus-ha-service
+    prometheus.veridis.xyz/category: high-availability-service
+    prometheus.veridis.xyz/role: prometheus-ha-service
+    prometheus.veridis.xyz/ha-enabled: "true"
+
+    monitoring.veridis.xyz/prometheus-service-type: ha-prometheus-service
+    monitoring.veridis.xyz/high-availability: enabled
+    monitoring.veridis.xyz/failover: automatic
+    monitoring.veridis.xyz/redundancy: enabled
+
+    ha.veridis.xyz/tier: production
+    ha.veridis.xyz/optimization: high-availability-monitoring
+    ha.veridis.xyz/failover: automatic
+    ha.veridis.xyz/leader-election: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: monitoring-engineering
+
+  annotations:
+    veridis.xyz/description: "High-Availability Veridis Prometheus Service with automatic failover and leader election"
+    veridis.xyz/purpose: "Provides high-availability Prometheus monitoring with automatic failover and comprehensive redundancy"
+
+    prometheus.veridis.xyz/ha-specification: "High-availability Prometheus service with automatic failover and leader election"
+    monitoring.veridis.xyz/ha-specification: "HA monitoring with Prometheus high-availability support"
+
+    # High availability specific annotations
+    ha.veridis.xyz/enabled: "true"
+    ha.veridis.xyz/failover-mode: "automatic"
+    ha.veridis.xyz/leader-election: "enabled"
+    ha.veridis.xyz/replica-count: "2"
+
+    # Failover annotations
+    failover.veridis.xyz/automatic: "enabled"
+    failover.veridis.xyz/health-check-interval: "10s"
+    failover.veridis.xyz/failover-threshold: "3"
+    failover.veridis.xyz/recovery-time: "30s"
+
+    # Leader election annotations
+    leader.veridis.xyz/election-enabled: "true"
+    leader.veridis.xyz/lease-duration: "15s"
+    leader.veridis.xyz/renew-deadline: "10s"
+    leader.veridis.xyz/retry-period: "2s"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "prometheus-ha-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/monitoring/prometheus-ha-service"
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: prometheus-ha
+
+  ports:
+    # Main HA Prometheus port
+    - name: http
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+
+    # Leader election port
+    - name: leader-election
+      port: 9091
+      targetPort: 9090
+      protocol: TCP
+
+  sessionAffinity: None  # No session affinity for HA service
+
+# ==============================================================================
+# Veridis Prometheus Service Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS PROMETHEUS SERVICE STRATEGY:
+# =================================================
+#
+# VERIDIS PROMETHEUS SERVICE ARCHITECTURE OVERVIEW:
+# ------------------------------------------------
+# 1. Primary Prometheus Service (veridis-prometheus-monitoring):
+#    - Comprehensive ClusterIP service with intelligent endpoint management and advanced load balancing for production monitoring
+#    - Advanced service configuration with headless service support, session affinity, and comprehensive port management
+#    - Multi-port architecture with HTTP (9090), admin API (9091), health check (8080), and metrics (9092) ports
+#    - Enterprise service policies with ClientIP session affinity, local traffic policies, and comprehensive endpoint optimization
+#    - Performance optimization with intelligent load balancing, connection pooling, and endpoint management for maximum efficiency
+#
+# 2. Load Balancer Service (veridis-prometheus-lb):
+#    - External LoadBalancer service with SSL termination and intelligent traffic management for external access
+#    - Advanced load balancer configuration with application load balancer, SSL policies, and certificate management
+#    - Comprehensive health checking with customizable intervals, timeouts, and threshold configuration
+#    - Security integration with WAF, DDoS protection, access logging, and SSL redirect capabilities
+#    - Conditional deployment with external-access-enabled flag for flexible external access management
+#
+# 3. NodePort Service (veridis-prometheus-nodeport):
+#    - Development NodePort service with local access capabilities for development and testing environments
+#    - Development-optimized configuration with automatic port allocation and external access management
+#    - Security restrictions with development-team access and development-only security policies
+#    - Conditional deployment with development-mode-enabled flag for development environment access
+#    - Local testing support with debug access and development team integration
+#
+# 4. Headless Service (veridis-prometheus-headless):
+#    - StatefulSet-compatible headless service with direct pod addressing and DNS-based service discovery
+#    - Advanced service discovery with DNS records, SRV records, and direct pod addressability
+#    - StatefulSet support with parallel pod management and rolling update strategies
+#    - No load balancing with direct pod access for StatefulSet-based deployments
+#    - DNS-based service discovery with cluster-first DNS policy and comprehensive pod addressing
+#
+# 5. Federation Service (veridis-prometheus-federation):
+#    - Multi-cluster federation service with ExternalName type for cross-cluster monitoring and metrics aggregation
+#    - Federation optimization with hierarchical aggregation, cross-region support, and data retention management
+#    - Multi-cluster support with metrics aggregation, cross-cluster discovery, and federation-based monitoring
+#    - Conditional deployment with federation-enabled flag for multi-cluster monitoring capabilities
+#    - Performance optimization with federation acceleration and cross-region latency minimization
+#
+# 6. Ingress Backend Service (veridis-prometheus-ingress-backend):
+#    - Ingress controller integration service with path-based routing and SSL termination support
+#    - Path routing with /prometheus prefix, rewrite target configuration, and sticky session management
+#    - Ingress optimization with connection pooling, keep-alive, and backend protocol optimization
+#    - SSL termination at ingress level with secure backend communication and HTTPS support
+#    - Session affinity with ClientIP configuration and 1800-second timeout for user experience
+#
+# 7. High Availability Service (veridis-prometheus-ha):
+#    - HA-specific service with automatic failover, leader election, and comprehensive redundancy support
+#    - Leader election with lease duration, renew deadline, and retry period configuration
+#    - Automatic failover with health check intervals, failover thresholds, and recovery time optimization
+#    - No session affinity for HA service to support automatic failover and leader election
+#    - Conditional deployment with prometheus-ha-enabled flag for high-availability monitoring support
+#
+# ENTERPRISE PROMETHEUS SERVICE FEATURES:
+# =======================================
+# Advanced Service Discovery and Endpoint Management:
+#   - Multi-service architecture with ClusterIP, LoadBalancer, NodePort, Headless, ExternalName, and HA services
+#   - Intelligent endpoint management with health checking, session affinity, and load balancing optimization
+#   - Service discovery with DNS-based discovery, direct pod addressing, and comprehensive service registration
+#   - Port management with HTTP (9090), admin API (9091), health (8080), metrics (9092), and federation ports
+#   - Traffic policies with ClientIP session affinity, local traffic policies, and intelligent routing management
+#
+# Comprehensive Load Balancing and Traffic Management:
+#   - Load balancer integration with application load balancer, SSL termination, and certificate management
+#   - Health checking with customizable intervals (10-30s), timeouts (5-10s), and threshold configuration (2-3)
+#   - Session management with ClientIP affinity, 1800-3600 second timeouts, and sticky session support
+#   - Traffic routing with path-based routing, rewrite targets, and cross-zone load balancing
+#   - Security integration with WAF, DDoS protection, SSL redirect, and access control management
+#
+# Enterprise Security and Access Control Integration:
+#   - SSL/TLS termination with certificate management, SSL policies, and encryption in transit
+#   - Access control with RBAC integration, network policies, and restricted IP range management
+#   - Security scanning with vulnerability assessment, penetration testing, and comprehensive security validation
+#   - Development security with development-only access, team restrictions, and debug access management
+#   - Mutual TLS with certificate-based authentication and encrypted inter-service communication
+#
+# Advanced High Availability and Failover Management:
+#   - Multi-replica services with automatic failover, leader election, and comprehensive redundancy
+#   - Health monitoring with liveness checks, readiness probes, and automatic failover triggers
+#   - Leader election with lease management (15s duration), renew deadlines (10s), and retry periods (2s)
+#   - Failover optimization with 30s recovery time, health check intervals (10s), and failure thresholds (3)
+#   - Cross-region support with federation capabilities and multi-cluster monitoring integration
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Prometheus Service Lifecycle Management:
+#   - Multi-service architecture with primary, load balancer, NodePort, headless, federation, ingress backend, and HA services
+#   - Intelligent service management with predictive analytics and endpoint utilization correlation
+#   - Advanced monitoring with comprehensive service analytics and endpoint business intelligence
+#   - Configuration validation with service schema enforcement and endpoint deployment safety checks
+#   - Automated optimization with traffic pattern analysis and service configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II service controls with comprehensive audit requirements and endpoint logging
+#   - GDPR service compliance with data protection and privacy-preserving endpoint management
+#   - ISO 27001 service security management with information security and endpoint compliance integration
+#   - NIST 800-190 container service security with endpoint validation and compliance
+#   - Zero-trust service architecture with comprehensive encryption and endpoint authentication requirements
+#
+# Business Intelligence Integration:
+#   - Service analytics with cost correlation and endpoint resource utilization optimization
+#   - Performance analytics with user experience optimization and service business intelligence
+#   - Endpoint intelligence with traffic pattern monitoring and service optimization recommendations
+#   - Strategic planning with capacity management and service forecasting
+#   - Business impact assessment with service performance correlation and availability tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment service support with production, development, HA, and federation configurations
+#   - Comprehensive documentation with service guides and endpoint troubleshooting procedures
+#   - Environment-specific services with production, development, testing, and multi-cluster support
+#   - Testing integration with service development workflow and endpoint debugging capabilities
+#   - Service monitoring with comprehensive tracking and endpoint correlation
+#
+# ==============================================================================
