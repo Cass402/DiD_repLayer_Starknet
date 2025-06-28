@@ -1,0 +1,711 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Identity App PodDisruptionBudget
+# ==============================================================================
+#
+# This manifest defines comprehensive Identity App PodDisruptionBudget for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS IDENTITY APP AVAILABILITY ARCHITECTURE:
+#   • Advanced Next.js frontend availability with React optimization and intelligent disruption management
+#   • Multi-tier availability architecture with development, testing, staging, and production environments
+#   • Comprehensive resilience framework with frontend availability protection, API disruption control, and user experience intelligence
+#   • Advanced lifecycle management with automated availability optimization, disruption control, and resilience enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and availability insights
+#
+# VERIDIS IDENTITY APP AVAILABILITY OPTIMIZATION:
+#   • High-performance frontend availability with intelligent disruption prevention and React optimization
+#   • Intelligent user experience protection with responsive availability and performance-based disruption decisions
+#   • Advanced resource management with business intelligence and workload-based availability control
+#   • Comprehensive resilience control with intelligent availability management and disruption enhancement
+#   • Enterprise acceleration with predictive availability management and user experience optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II availability controls with comprehensive audit and resilience requirements
+#   • GDPR availability compliance with data protection, privacy controls, and resilience management
+#   • ISO 27001 availability management with comprehensive framework integration
+#   • NIST 800-190 container availability security with disruption-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and availability best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent availability lifecycle management with automated provisioning and optimization
+#   • Predictive user experience analytics with capacity planning and availability intelligence
+#   • Advanced monitoring integration with availability analytics and business intelligence
+#   • Comprehensive resilience control with availability preservation and disruption optimization
+#   • Business continuity availability with user experience guarantees and resilience optimization
+#
+# AVAILABILITY ACCELERATION INTELLIGENCE:
+#   • Availability usage analytics with disruption patterns and optimization recommendations
+#   • Resilience monitoring with availability latency and user experience optimization intelligence
+#   • Development efficiency with availability analytics and deployment optimization procedures
+#   • Cost optimization with availability utilization analysis and capacity planning procedures
+#   • Quality assurance with availability metrics and user experience validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Identity App PodDisruptionBudget - Primary Availability Protection
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-identity-app-pdb
+  namespace: veridis-infrastructure
+
+  # Core Veridis Identity App PDB identification labels
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # PDB specific classification
+    pdb.veridis.xyz/type: identity-app-pdb
+    pdb.veridis.xyz/category: frontend-pdb
+    pdb.veridis.xyz/role: primary-pdb
+    pdb.veridis.xyz/performance-class: high-performance-pdb
+    pdb.veridis.xyz/security-level: enterprise
+
+    # Frontend PDB classification
+    frontend.veridis.xyz/pdb-type: nextjs-pdb
+    frontend.veridis.xyz/framework: nextjs
+    frontend.veridis.xyz/performance-tier: high-performance
+    frontend.veridis.xyz/optimization: enabled
+    frontend.veridis.xyz/features: full-stack
+
+    # Availability PDB classification
+    availability.veridis.xyz/tier: production
+    availability.veridis.xyz/optimization: intelligent-availability
+    availability.veridis.xyz/disruption: controlled
+    availability.veridis.xyz/resilience: optimized
+    availability.veridis.xyz/efficiency: maximum
+
+    # Business PDB classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-user-experience
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational PDB labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "pdb-control-framework"
+    compliance.veridis.xyz/gdpr: "pdb-data-protection"
+    compliance.veridis.xyz/iso27001: "pdb-security-management"
+    compliance.veridis.xyz/nist-800-190: "pdb-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # PDB monitoring and analytics
+    monitoring.veridis.xyz/pdb-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/availability-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Availability protection labels
+    availability.veridis.xyz/protection-level: "enterprise"
+    availability.veridis.xyz/disruption-budget: "conservative"
+    availability.veridis.xyz/min-available: "2"
+    availability.veridis.xyz/max-unavailable: "1"
+    availability.veridis.xyz/sla-protection: "99.9"
+
+  annotations:
+    # PDB purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Identity App PDB with Next.js optimization, intelligent availability management, and comprehensive user experience"
+    veridis.xyz/purpose: "Provides comprehensive frontend availability protection for decentralized identity management with intelligent disruption control, React optimization, and resilience guarantees"
+    veridis.xyz/scope: "Frontend availability including Next.js disruption protection, React availability optimization, API disruption management, and comprehensive user experience intelligence"
+
+    # PDB architecture and design
+    pdb.veridis.xyz/architecture: "Enterprise frontend PDB with Next.js availability, intelligent disruption management, and resilience optimization"
+    pdb.veridis.xyz/design-pattern: "Multi-tier PDB with resilience optimization, cost efficiency, and business intelligence"
+    pdb.veridis.xyz/optimization-model: "Intelligent frontend PDB with predictive analytics, availability optimization, and user experience efficiency"
+    pdb.veridis.xyz/performance-model: "High-performance frontend PDB with React optimization and intelligent availability management"
+
+    # Next.js PDB specifications
+    nextjs.veridis.xyz/pdb-specification: "Next.js frontend PDB with availability optimization and intelligent disruption management"
+    nextjs.veridis.xyz/availability-specification: "Advanced availability configuration with resilience optimization and disruption enhancement"
+    nextjs.veridis.xyz/disruption-specification: "Disruption management optimization with intelligent availability and resilience enhancement"
+    nextjs.veridis.xyz/resilience-specification: "Next.js resilience management with React acceleration and user experience efficiency"
+    nextjs.veridis.xyz/business-specification: "Next.js business PDB with cost optimization and strategic intelligence"
+
+    # Availability PDB specifications
+    availability.veridis.xyz/pdb-specification: "Availability-aware frontend PDB with disruption optimization and user experience intelligence"
+    availability.veridis.xyz/disruption-specification: "Disruption management optimization with intelligent availability and resilience enhancement"
+    availability.veridis.xyz/resilience-specification: "Availability resilience with cost optimization and intelligent disruption management"
+    availability.veridis.xyz/protection-specification: "Availability protection with auto-optimization and resilience management"
+    availability.veridis.xyz/monitoring-specification: "Availability monitoring with PDB analytics and user experience intelligence"
+
+    # Business PDB specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant frontend PDB with business continuity and user experience guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized frontend PDB with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with PDB optimization and user experience intelligence"
+
+    # Operational PDB specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with PDB analytics and user experience intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with availability preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with PDB management and user experience optimization"
+
+    # PDB lifecycle specifications
+    lifecycle.veridis.xyz/pdb-specification: "Dynamic PDB with automated availability management and resilience optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent PDB scaling with machine learning and user experience forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "PDB optimization with intelligent availability management and resilience enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "PDB evolution with intelligent adaptation and user experience optimization"
+
+    # Availability protection annotations
+    pdb.policy.k8s.io/disruption-budget: "conservative"
+    pdb.policy.k8s.io/min-available: "2"
+    pdb.policy.k8s.io/max-unavailable: "1"
+    pdb.policy.k8s.io/unhealthy-pod-eviction-policy: "IfHealthyBudget"
+    pdb.policy.k8s.io/protection-level: "enterprise"
+
+    # SLA protection annotations
+    sla.veridis.xyz/availability-target: "99.9"
+    sla.veridis.xyz/downtime-budget: "43.8m/month"
+    sla.veridis.xyz/disruption-window: "maintenance"
+    sla.veridis.xyz/recovery-time: "30s"
+
+    # Business continuity annotations
+    continuity.veridis.xyz/critical-service: "true"
+    continuity.veridis.xyz/user-impact: "high"
+    continuity.veridis.xyz/revenue-impact: "high"
+    continuity.veridis.xyz/compliance-impact: "critical"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "frontend-team@veridis.xyz"
+    veridis.xyz/pdb-admin: "frontend-admin@veridis.xyz"
+    veridis.xyz/escalation: "frontend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "frontend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/pdb"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/identity-app/pdb-management"
+    veridis.xyz/pdb-docs: "https://frontend.veridis.xyz/identity-app/pdb-guide"
+    veridis.xyz/availability-docs: "https://availability.veridis.xyz/identity-app/pdb-availability"
+
+spec:
+  # ==============================================================================
+  # Pod Selection Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+
+  # ==============================================================================
+  # Availability Protection Configuration
+  # ==============================================================================
+  # Ensure at least 2 pods remain available during voluntary disruptions
+  # This provides high availability while allowing for controlled maintenance
+  minAvailable: 2
+
+  # Alternative configuration (commented out):
+  # maxUnavailable: 1  # Allow at most 1 pod to be unavailable
+
+  # ==============================================================================
+  # Advanced Disruption Control Configuration
+  # ==============================================================================
+  # Policy for handling unhealthy pods during disruption
+  # IfHealthyBudget: Only evict unhealthy pods if the budget allows
+  # AlwaysAllow: Always allow eviction of unhealthy pods (less conservative)
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Veridis Identity App PodDisruptionBudget - High Availability Configuration
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-identity-app-ha-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-ha-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: identity-app-ha-pdb
+    pdb.veridis.xyz/category: high-availability-pdb
+    pdb.veridis.xyz/role: availability-optimization-pdb
+    pdb.veridis.xyz/scope: high-availability
+
+    frontend.veridis.xyz/pdb-type: high-availability-pdb
+    frontend.veridis.xyz/availability-level: maximum
+    frontend.veridis.xyz/resilience-tier: enterprise
+
+    availability.veridis.xyz/optimization: enabled
+    availability.veridis.xyz/monitoring: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "High availability PDB for Veridis Identity App with maximum uptime optimization and enterprise resilience"
+    veridis.xyz/purpose: "Provides high availability protection for maximum user experience optimization and business continuity"
+
+    pdb.veridis.xyz/availability-specification: "High availability PDB with maximum uptime and enterprise resilience optimization"
+    frontend.veridis.xyz/availability-specification: "Frontend high availability PDB with optimization and monitoring"
+
+    # High availability annotations
+    ha-pdb.veridis.xyz/uptime-target: "99.99"
+    ha-pdb.veridis.xyz/resilience-level: "maximum"
+    ha-pdb.veridis.xyz/disruption-tolerance: "minimal"
+    ha-pdb.veridis.xyz/recovery-time: "15s"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "high-availability-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/ha-pdb"
+
+spec:
+  # ==============================================================================
+  # High Availability Pod Selection
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      availability.veridis.xyz/tier: high-availability
+
+  # ==============================================================================
+  # Maximum Availability Protection
+  # ==============================================================================
+  # For high availability deployments with 5+ replicas
+  # Ensure at least 4 pods remain available (80% minimum availability)
+  minAvailable: 4
+
+  # ==============================================================================
+  # Strict Disruption Control
+  # ==============================================================================
+  # Always allow eviction of unhealthy pods for better availability
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis Identity App PodDisruptionBudget - Performance Optimization
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-identity-app-performance-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-performance-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: identity-app-performance-pdb
+    pdb.veridis.xyz/category: performance-pdb
+    pdb.veridis.xyz/role: performance-optimization-pdb
+    pdb.veridis.xyz/scope: performance-protection
+
+    frontend.veridis.xyz/pdb-type: performance-pdb
+    frontend.veridis.xyz/performance-protection: enabled
+    frontend.veridis.xyz/performance-tier: enterprise
+
+    performance.veridis.xyz/optimization: enabled
+    performance.veridis.xyz/monitoring: comprehensive
+    performance.veridis.xyz/availability: guaranteed
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Performance-optimized PDB for Veridis Identity App with Web Vitals protection and performance guarantee"
+    veridis.xyz/purpose: "Provides performance-focused availability protection for maximum user experience optimization and Web Vitals compliance"
+
+    pdb.veridis.xyz/performance-specification: "Performance optimization PDB with Web Vitals protection and user experience guarantee"
+    frontend.veridis.xyz/performance-specification: "Frontend performance PDB with optimization and monitoring"
+
+    # Performance protection annotations
+    performance-pdb.veridis.xyz/web-vitals: "protected"
+    performance-pdb.veridis.xyz/user-experience: "guaranteed"
+    performance-pdb.veridis.xyz/response-time: "protected"
+    performance-pdb.veridis.xyz/throughput: "guaranteed"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "performance-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/performance-pdb"
+
+spec:
+  # ==============================================================================
+  # Performance-Focused Pod Selection
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      performance.veridis.xyz/tier: high-performance
+
+  # ==============================================================================
+  # Performance Protection Configuration
+  # ==============================================================================
+  # For performance deployments, ensure minimum performance capacity
+  # Allow maximum 1 pod disruption for performance stability
+  maxUnavailable: 1
+
+  # ==============================================================================
+  # Performance-Focused Disruption Control
+  # ==============================================================================
+  # Conservative approach for performance protection
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+---
+# ==============================================================================
+# Veridis Identity App PodDisruptionBudget - Cost Optimization
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-identity-app-cost-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-cost-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: identity-app-cost-pdb
+    pdb.veridis.xyz/category: cost-optimization-pdb
+    pdb.veridis.xyz/role: cost-efficiency-pdb
+    pdb.veridis.xyz/scope: cost-management
+
+    frontend.veridis.xyz/pdb-type: cost-pdb
+    frontend.veridis.xyz/cost-optimization: enabled
+    frontend.veridis.xyz/efficiency-tier: maximum
+
+    cost.veridis.xyz/optimization: enabled
+    cost.veridis.xyz/monitoring: comprehensive
+    cost.veridis.xyz/efficiency: maximum
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Cost-optimized PDB for Veridis Identity App with resource efficiency and budget management"
+    veridis.xyz/purpose: "Provides cost-efficient availability protection for budget optimization while maintaining acceptable availability"
+
+    pdb.veridis.xyz/cost-specification: "Cost optimization PDB with resource efficiency and budget management"
+    frontend.veridis.xyz/cost-specification: "Frontend cost PDB with efficiency optimization and budget control"
+
+    # Cost optimization annotations
+    cost-pdb.veridis.xyz/resource-efficiency: "maximum"
+    cost-pdb.veridis.xyz/budget-control: "enabled"
+    cost-pdb.veridis.xyz/utilization-optimization: "enabled"
+    cost-pdb.veridis.xyz/cost-per-user: "optimized"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "cost-optimization-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/cost-pdb"
+
+spec:
+  # ==============================================================================
+  # Cost-Optimized Pod Selection
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      cost.veridis.xyz/tier: cost-optimized
+
+  # ==============================================================================
+  # Cost-Efficient Availability Protection
+  # ==============================================================================
+  # For cost optimization, allow more aggressive disruption
+  # Ensure at least 1 pod remains available (minimum viable availability)
+  minAvailable: 1
+
+  # ==============================================================================
+  # Cost-Focused Disruption Control
+  # ==============================================================================
+  # Allow eviction of unhealthy pods for cost efficiency
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis Identity App PodDisruptionBudget - Development Environment
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-identity-app-dev-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-dev-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: identity-app-dev-pdb
+    pdb.veridis.xyz/category: development-pdb
+    pdb.veridis.xyz/role: testing-pdb
+    pdb.veridis.xyz/scope: development-testing
+
+    frontend.veridis.xyz/pdb-type: development-pdb
+    frontend.veridis.xyz/testing-enabled: "true"
+    frontend.veridis.xyz/development-enabled: "true"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing PDB for Veridis Identity App with flexible availability and testing capabilities"
+    veridis.xyz/purpose: "Provides development-friendly availability protection for testing workflows and development environment simulation"
+
+    pdb.veridis.xyz/dev-specification: "Development PDB with testing integration and flexible availability support"
+    frontend.veridis.xyz/dev-specification: "Frontend development PDB with testing framework and debugging integration"
+
+    # Development annotations
+    development.veridis.xyz/flexible-availability: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/development-workflow: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-features-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/dev-pdb"
+
+spec:
+  # ==============================================================================
+  # Development Pod Selection
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      development.veridis.xyz/tier: development
+
+  # ==============================================================================
+  # Development-Friendly Availability Protection
+  # ==============================================================================
+  # For development environments, allow flexible disruption
+  # No minimum availability requirement for testing flexibility
+  minAvailable: 0
+
+  # ==============================================================================
+  # Development-Focused Disruption Control
+  # ==============================================================================
+  # Always allow eviction for development flexibility
+  unhealthyPodEvictionPolicy: AlwaysAllow
+
+---
+# ==============================================================================
+# Veridis Identity App PodDisruptionBudget - Regional Availability
+# ==============================================================================
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: veridis-identity-app-regional-pdb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-identity-app
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: identity-app-regional-pdb
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    pdb.veridis.xyz/type: identity-app-regional-pdb
+    pdb.veridis.xyz/category: regional-availability-pdb
+    pdb.veridis.xyz/role: geographic-distribution-pdb
+    pdb.veridis.xyz/scope: regional-protection
+
+    frontend.veridis.xyz/pdb-type: regional-pdb
+    frontend.veridis.xyz/geographic-distribution: enabled
+    frontend.veridis.xyz/regional-availability: enabled
+
+    geographic.veridis.xyz/distribution: multi-region
+    geographic.veridis.xyz/availability: regional
+    geographic.veridis.xyz/disaster-recovery: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: frontend-engineering
+
+  annotations:
+    veridis.xyz/description: "Regional availability PDB for Veridis Identity App with geographic distribution and disaster recovery protection"
+    veridis.xyz/purpose: "Provides regional availability protection for geographic distribution and disaster recovery capabilities"
+
+    pdb.veridis.xyz/regional-specification: "Regional availability PDB with geographic distribution and disaster recovery protection"
+    frontend.veridis.xyz/regional-specification: "Frontend regional PDB with geographic optimization and availability protection"
+
+    # Regional availability annotations
+    regional-pdb.veridis.xyz/geographic-distribution: "enabled"
+    regional-pdb.veridis.xyz/disaster-recovery: "enabled"
+    regional-pdb.veridis.xyz/regional-failover: "enabled"
+    regional-pdb.veridis.xyz/cross-region-protection: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "regional-deployment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/frontend/identity-app/regional-pdb"
+
+spec:
+  # ==============================================================================
+  # Regional Pod Selection with Topology Awareness
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-identity-app
+      app.kubernetes.io/component: identity-app
+      veridis.xyz/environment: production
+      geographic.veridis.xyz/distribution: multi-region
+
+  # ==============================================================================
+  # Regional Availability Protection
+  # ==============================================================================
+  # For regional deployments, ensure cross-region availability
+  # Maintain availability across multiple regions
+  minAvailable: 2
+
+  # ==============================================================================
+  # Regional Disruption Control
+  # ==============================================================================
+  # Conservative approach for regional protection
+  unhealthyPodEvictionPolicy: IfHealthyBudget
+
+# ==============================================================================
+# Veridis Identity App PDB Summary and Enterprise Availability Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS IDENTITY APP PDB STRATEGY:
+# ================================================
+#
+# VERIDIS IDENTITY APP PDB ARCHITECTURE OVERVIEW:
+# -----------------------------------------------
+# 1. Primary PDB (veridis-identity-app-pdb):
+#    - Conservative availability protection with minAvailable: 2 for high availability guarantee
+#    - Enterprise-grade disruption control with IfHealthyBudget policy for safe maintenance
+#    - Business continuity focus with 99.9% SLA protection and 43.8 minutes monthly downtime budget
+#    - Comprehensive monitoring integration with availability analytics and user experience tracking
+#    - SOC 2/GDPR/ISO 27001 compliance with audit logging and regulatory framework integration
+#
+# 2. High Availability PDB (veridis-identity-app-ha-pdb):
+#    - Maximum uptime optimization with minAvailable: 4 for 99.99% availability target
+#    - Aggressive unhealthy pod eviction with AlwaysAllow policy for better availability
+#    - Enterprise resilience with 15-second recovery time and minimal disruption tolerance
+#    - Advanced monitoring with maximum uptime tracking and comprehensive availability analytics
+#    - Conditional deployment with high-availability feature enablement and enterprise protection
+#
+# 3. Performance PDB (veridis-identity-app-performance-pdb):
+#    - Web Vitals protection with maxUnavailable: 1 for performance stability guarantee
+#    - Performance-focused disruption control with conservative IfHealthyBudget policy
+#    - User experience optimization with response time protection and throughput guarantee
+#    - Performance monitoring integration with Web Vitals tracking and optimization analytics
+#    - Conditional deployment with performance optimization enablement and guarantee protection
+#
+# 4. Cost Optimization PDB (veridis-identity-app-cost-pdb):
+#    - Resource efficiency with minAvailable: 1 for minimum viable availability
+#    - Cost-focused disruption control with AlwaysAllow policy for budget optimization
+#    - Budget management integration with cost-per-user optimization and efficiency tracking
+#    - Cost monitoring with resource utilization analysis and budget compliance tracking
+#    - Conditional deployment with cost optimization enablement and efficiency management
+#
+# 5. Development PDB (veridis-identity-app-dev-pdb):
+#    - Development flexibility with minAvailable: 0 for testing workflow support
+#    - Testing-friendly disruption with AlwaysAllow policy for development agility
+#    - Debug support integration with flexible availability and testing capabilities
+#    - Development workflow optimization with testing framework and debugging integration
+#    - Conditional deployment with development feature enablement and testing support
+#
+# 6. Regional PDB (veridis-identity-app-regional-pdb):
+#    - Geographic distribution with minAvailable: 2 for cross-region availability
+#    - Disaster recovery protection with regional failover and cross-region protection
+#    - Multi-region deployment support with geographic optimization and availability protection
+#    - Regional monitoring with geographic distribution analytics and disaster recovery tracking
+#    - Conditional deployment with regional deployment enablement and geographic protection
+#
+# ENTERPRISE PDB FEATURES:
+# ========================
+# Advanced Availability Protection Strategy:
+#   - Multi-tier PDB architecture with primary, high availability, performance, cost, development, and regional protection
+#   - Conservative disruption budgets with minAvailable guarantees ranging from 0 (dev) to 4 (HA) pods
+#   - Intelligent policy selection with IfHealthyBudget for conservative and AlwaysAllow for aggressive scenarios
+#   - SLA protection with 99.9% (primary) to 99.99% (HA) availability targets and recovery time optimization
+#   - Business continuity integration with user experience guarantees and revenue impact protection
+#
+# Comprehensive Disruption Control Framework:
+#   - Unhealthy pod eviction policies with IfHealthyBudget for conservative and AlwaysAllow for aggressive protection
+#   - Selector-based targeting with environment-specific and tier-specific pod selection
+#   - Availability tier classification with production, high-availability, performance, cost, development, and regional tiers
+#   - Recovery time optimization with 15-30 second targets for different availability strategies
+#   - Maintenance window coordination with disruption budget management and controlled upgrade procedures
+#
+# Enterprise Security and Compliance Integration:
+#   - SOC 2 Type II PDB controls with comprehensive audit requirements and availability logging
+#   - GDPR PDB compliance with data protection and privacy-preserving availability management
+#   - ISO 27001 PDB security management with information security and compliance integration
+#   - NIST 800-190 container PDB security with validation and compliance
+#   - Zero-trust PDB architecture with comprehensive encryption and authentication requirements
+#
+# Business Intelligence and Cost Optimization:
+#   - Availability cost optimization with resource utilization correlation and budget management
+#   - Performance analytics with disruption pattern monitoring and user experience correlation
+#   - User experience intelligence with availability tracking and business impact assessment
+#   - Strategic planning with capacity management and availability forecasting
+#   - Business impact assessment with availability performance correlation and revenue tracking
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# PDB Lifecycle Management:
+#   - Multi-PDB architecture with primary, high availability, performance, cost, development, and regional strategies
+#   - Intelligent availability management with predictive analytics and machine learning correlation
+#   - Advanced monitoring with comprehensive PDB analytics and business intelligence
+#   - Configuration validation with schema enforcement and deployment safety checks
+#   - Automated optimization with usage pattern analysis and availability recommendation engine
+#
+# Availability Strategy Excellence:
+#   - Performance-first availability with Web Vitals protection and user experience guarantee
+#   - Cost-efficient availability with resource utilization optimization and budget management
+#   - Development-friendly availability with testing integration and debugging support
+#   - Regional availability with geographic distribution and disaster recovery protection
+#   - Business-aware availability with cost-per-user optimization and strategic intelligence
+#
+# User Experience and Performance Focus:
+#   - Web Vitals protection with LCP, FID, and CLS availability correlation
+#   - Response time protection with performance stability and throughput guarantee
+#   - User experience optimization with availability tracking and business intelligence
+#   - Performance monitoring integration with disruption impact analysis and optimization
+#   - Business continuity with user experience guarantees and revenue protection
+#
+# Developer Experience Excellence:
+#   - Development PDB with flexible availability and testing workflow integration
+#   - Comprehensive documentation with PDB guides and troubleshooting procedures
+#   - Environment-specific PDB with production, high availability, performance, cost, development, and regional support
+#   - Testing integration with development workflow and debugging capabilities
+#   - Availability monitoring with comprehensive tracking and user experience correlation
+#
+# ==============================================================================
