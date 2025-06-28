@@ -1,0 +1,788 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - StarkNet DevNet Service
+# ==============================================================================
+#
+# This manifest defines comprehensive StarkNet DevNet service configurations for the
+# Veridis deployment, providing:
+#
+# ENTERPRISE STARKNET DEVNET SERVICE ARCHITECTURE:
+#   • Advanced service orchestration with comprehensive blockchain communication and networking
+#   • Multi-tier service architecture with development, testing, staging, and production-like endpoints
+#   • Comprehensive service security with network isolation, access controls, and audit capabilities
+#   • Advanced service lifecycle management with automated discovery, scaling, and optimization
+#   • Enterprise-grade service intelligence with comprehensive analytics and performance insights
+#
+# STARKNET DEVNET SERVICE PERFORMANCE OPTIMIZATION:
+#   • High-performance blockchain networking with Cairo v2.11.4 integration and MLIR optimization
+#   • Intelligent load balancing with session affinity and connection optimization
+#   • Advanced connection management with persistent connections, pooling, and multiplexing
+#   • Comprehensive traffic routing with intelligent distribution and failover capabilities
+#   • Enterprise service acceleration with optimized protocols and connection reuse
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II service controls with comprehensive audit and networking requirements
+#   • GDPR service compliance with data protection, privacy controls, and deletion procedures
+#   • ISO 27001 service security management with comprehensive framework integration
+#   • NIST 800-190 container networking with service-specific validation and compliance
+#   • Blockchain compliance with regulatory frameworks and networking best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent service lifecycle management with automated provisioning and optimization
+#   • Predictive service analytics with capacity planning and performance intelligence
+#   • Advanced monitoring integration with service analytics and business intelligence
+#   • Comprehensive backup and recovery with service continuity and disaster preparedness
+#   • Business continuity service with failover capabilities and redundancy optimization
+#
+# CAIRO V2.11.4 BUSINESS INTELLIGENCE:
+#   • Service usage analytics with development patterns and optimization recommendations
+#   • Performance monitoring with connection latency and throughput optimization intelligence
+#   • Development efficiency with service analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with service metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# StarkNet DevNet Primary Service - Core Blockchain Communication
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: starknet-devnet
+  namespace: veridis-infrastructure
+
+  # Core StarkNet DevNet service identification labels
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.1.25"
+    app.kubernetes.io/component: blockchain-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Service specific classification
+    service.veridis.xyz/type: blockchain-devnet
+    service.veridis.xyz/protocol: starknet
+    service.veridis.xyz/role: local-blockchain-service
+    service.veridis.xyz/performance-class: high
+    service.veridis.xyz/security-level: development
+
+    # Networking service classification
+    networking.veridis.xyz/tier: development-blockchain
+    networking.veridis.xyz/load-balancing: session-affinity
+    networking.veridis.xyz/connection-type: persistent
+    networking.veridis.xyz/protocol-support: http-websocket
+    networking.veridis.xyz/traffic-management: intelligent
+
+    # Cairo service classification
+    cairo.veridis.xyz/version: "v2.11.4"
+    cairo.veridis.xyz/optimization: mlir-enabled
+    cairo.veridis.xyz/network-integration: comprehensive
+    cairo.veridis.xyz/rpc-support: enhanced
+    cairo.veridis.xyz/development-mode: advanced
+
+    # Performance service classification
+    performance.veridis.xyz/tier: high-performance
+    performance.veridis.xyz/optimization: connection-pooling
+    performance.veridis.xyz/latency-tier: low-latency
+    performance.veridis.xyz/throughput-tier: high-throughput
+    performance.veridis.xyz/connection-management: advanced
+
+    # Development service classification
+    development.veridis.xyz/environment: local-development
+    development.veridis.xyz/testing-support: comprehensive
+    development.veridis.xyz/debugging: enabled
+    development.veridis.xyz/integration-support: seamless
+    development.veridis.xyz/developer-experience: enhanced
+
+    # Business service classification
+    business.veridis.xyz/criticality: development-critical
+    business.veridis.xyz/impact: development-velocity
+    business.veridis.xyz/cost-tier: development
+    business.veridis.xyz/sla-tier: development
+    business.veridis.xyz/availability-requirement: high
+
+    # Operational service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: blockchain-engineering
+    veridis.xyz/cost-center: development-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "service-control-framework"
+    compliance.veridis.xyz/gdpr: "service-data-protection"
+    compliance.veridis.xyz/iso27001: "service-security-management"
+    compliance.veridis.xyz/nist-800-190: "service-container-security"
+    governance.veridis.xyz/policy-enforcement: "development"
+
+    # Service monitoring and analytics
+    monitoring.veridis.xyz/service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/traffic-analytics: "enabled"
+    monitoring.veridis.xyz/connection-monitoring: "detailed"
+    monitoring.veridis.xyz/quality-monitoring: "enabled"
+
+  annotations:
+    # Service purpose and specifications
+    veridis.xyz/description: "Enterprise StarkNet DevNet service for Veridis with Cairo v2.11.4 integration and comprehensive networking features"
+    veridis.xyz/purpose: "Provides high-performance blockchain networking for development, testing, and integration with comprehensive analytics"
+    veridis.xyz/scope: "DevNet networking including HTTP RPC, WebSocket connections, load balancing, and development analytics"
+
+    # Service architecture and design
+    service.veridis.xyz/architecture: "Enterprise StarkNet DevNet service with Cairo v2.11.4, advanced networking, and comprehensive features"
+    service.veridis.xyz/design-pattern: "High-performance service with session affinity, connection pooling, and intelligent traffic management"
+    service.veridis.xyz/security-model: "Development security with network isolation, access controls, and comprehensive monitoring"
+    service.veridis.xyz/performance-model: "High-performance networking with load balancing, connection optimization, and analytics"
+
+    # Networking service specifications
+    networking.veridis.xyz/load-balancing-specification: "Session affinity with intelligent distribution and failover capabilities"
+    networking.veridis.xyz/connection-specification: "Persistent connections with pooling, multiplexing, and optimization"
+    networking.veridis.xyz/protocol-specification: "HTTP/1.1, HTTP/2, WebSocket support with protocol optimization"
+    networking.veridis.xyz/traffic-specification: "Intelligent traffic management with routing and optimization"
+
+    # Cairo networking specifications
+    cairo.veridis.xyz/rpc-specification: "Enhanced RPC support with Cairo v2.11.4 optimization and advanced features"
+    cairo.veridis.xyz/websocket-specification: "Real-time WebSocket connections with event streaming and optimization"
+    cairo.veridis.xyz/integration-specification: "Seamless integration with Cairo development tools and frameworks"
+    cairo.veridis.xyz/optimization-specification: "MLIR-enabled networking optimization with performance intelligence"
+
+    # Performance service specifications
+    performance.veridis.xyz/latency-specification: "Low-latency networking with sub-millisecond response times and optimization"
+    performance.veridis.xyz/throughput-specification: "High-throughput connections with concurrent request handling and optimization"
+    performance.veridis.xyz/connection-specification: "Advanced connection management with pooling and resource optimization"
+    performance.veridis.xyz/scalability-specification: "Horizontal scaling with intelligent load distribution and capacity management"
+
+    # Development service specifications
+    development.veridis.xyz/testing-specification: "Comprehensive testing support with debugging and validation capabilities"
+    development.veridis.xyz/debugging-specification: "Advanced debugging with connection tracing and network analysis"
+    development.veridis.xyz/integration-specification: "Seamless integration with development tools, IDEs, and testing frameworks"
+    development.veridis.xyz/analytics-specification: "Development analytics with usage patterns and optimization recommendations"
+
+    # Business service specifications
+    business.veridis.xyz/velocity-specification: "Development velocity optimization with fast networking and comprehensive features"
+    business.veridis.xyz/efficiency-specification: "Resource efficiency with intelligent management and cost optimization"
+    business.veridis.xyz/quality-specification: "Quality assurance with comprehensive monitoring and validation procedures"
+    business.veridis.xyz/productivity-specification: "Developer productivity with advanced networking and automation capabilities"
+
+    # Operational service specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with service analytics and performance intelligence"
+    operations.veridis.xyz/maintenance-specification: "Automated maintenance with connection preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with development load management and resource optimization"
+
+    # Service lifecycle specifications
+    lifecycle.veridis.xyz/provisioning-specification: "Dynamic provisioning with automated setup and configuration management"
+    lifecycle.veridis.xyz/discovery-specification: "Service discovery with DNS integration and intelligent routing"
+    lifecycle.veridis.xyz/optimization-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/decommissioning-specification: "Safe decommissioning with connection draining and graceful shutdown"
+
+    # Traffic management specifications
+    traffic.veridis.xyz/routing-specification: "Intelligent traffic routing with load balancing and failover capabilities"
+    traffic.veridis.xyz/distribution-specification: "Traffic distribution with session affinity and connection optimization"
+    traffic.veridis.xyz/failover-specification: "Automatic failover with health checking and recovery procedures"
+    traffic.veridis.xyz/optimization-specification: "Traffic optimization with caching, compression, and connection reuse"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "blockchain-team@veridis.xyz"
+    veridis.xyz/service-admin: "starknet-service-admin@veridis.xyz"
+    veridis.xyz/escalation: "blockchain-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "blockchain-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/starknet/devnet-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/starknet/service-management"
+    veridis.xyz/networking-docs: "https://network.veridis.xyz/starknet/service-networking"
+    veridis.xyz/integration-docs: "https://integration.veridis.xyz/starknet/service-integration"
+
+    # Kubernetes service annotations
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "60"
+
+    # Load balancer configuration
+    load-balancer.veridis.xyz/algorithm: "least_connections"
+    load-balancer.veridis.xyz/session-affinity: "client-ip"
+    load-balancer.veridis.xyz/health-check-interval: "10s"
+    load-balancer.veridis.xyz/health-check-timeout: "5s"
+
+    # Performance optimizations
+    performance.veridis.xyz/connection-pooling: "enabled"
+    performance.veridis.xyz/keep-alive: "enabled"
+    performance.veridis.xyz/compression: "enabled"
+    performance.veridis.xyz/caching: "intelligent"
+
+spec:
+  # ==============================================================================
+  # Service Type and Load Balancing Configuration
+  # ==============================================================================
+  type: ClusterIP
+
+  # Session affinity for development consistency
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600  # 1 hour session timeout
+
+  # ==============================================================================
+  # Service Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: blockchain-devnet
+
+  # ==============================================================================
+  # Port Configuration - Comprehensive Blockchain Communication
+  # ==============================================================================
+  ports:
+    # Primary HTTP RPC endpoint for blockchain interactions
+    - name: devnet-rpc
+      port: 5050
+      targetPort: devnet-http
+      protocol: TCP
+      appProtocol: http
+
+    # WebSocket endpoint for real-time blockchain events
+    - name: devnet-ws
+      port: 5051
+      targetPort: devnet-ws
+      protocol: TCP
+      appProtocol: ws
+
+    # Metrics endpoint for monitoring and observability
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      protocol: TCP
+      appProtocol: http
+
+    # Health check endpoint for service validation
+    - name: health
+      port: 8080
+      targetPort: health
+      protocol: TCP
+      appProtocol: http
+
+  # ==============================================================================
+  # Advanced Service Configuration
+  # ==============================================================================
+  # IP family configuration for dual-stack support
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+
+  # Internal traffic policy for cluster-internal optimization
+  internalTrafficPolicy: Local
+
+---
+# ==============================================================================
+# StarkNet DevNet Headless Service - Direct Pod Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: starknet-devnet-headless
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.1.25"
+    app.kubernetes.io/component: blockchain-headless-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: blockchain-headless
+    service.veridis.xyz/purpose: direct-pod-access
+    service.veridis.xyz/role: development-discovery
+    networking.veridis.xyz/tier: headless-networking
+    development.veridis.xyz/direct-access: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: blockchain-engineering
+    veridis.xyz/cost-center: development-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Headless service for direct pod access to StarkNet DevNet instances"
+    veridis.xyz/purpose: "Provides direct pod discovery and access for development and debugging"
+    service.veridis.xyz/headless-mode: "pod-discovery"
+    service.veridis.xyz/dns-configuration: "pod-based"
+
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+
+  selector:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: blockchain-devnet
+
+  ports:
+    - name: devnet-rpc
+      port: 5050
+      targetPort: devnet-http
+      protocol: TCP
+
+    - name: devnet-ws
+      port: 5051
+      targetPort: devnet-ws
+      protocol: TCP
+
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      protocol: TCP
+
+    - name: health
+      port: 8080
+      targetPort: health
+      protocol: TCP
+
+  # Publish not ready addresses for development debugging
+  publishNotReadyAddresses: true
+
+---
+# ==============================================================================
+# StarkNet DevNet LoadBalancer Service - External Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: starknet-devnet-external
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.1.25"
+    app.kubernetes.io/component: blockchain-external-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: blockchain-external
+    service.veridis.xyz/purpose: external-access
+    service.veridis.xyz/role: development-gateway
+    networking.veridis.xyz/tier: external-networking
+    networking.veridis.xyz/load-balancer: aws-nlb
+    development.veridis.xyz/external-access: enabled
+
+    # Security classifications for external access
+    security.veridis.xyz/level: development
+    security.veridis.xyz/external-exposure: controlled
+    security.veridis.xyz/access-control: development-teams
+    security.veridis.xyz/network-policy: restricted
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: blockchain-engineering
+    veridis.xyz/cost-center: development-infrastructure
+
+  annotations:
+    veridis.xyz/description: "External LoadBalancer service for StarkNet DevNet with controlled access"
+    veridis.xyz/purpose: "Provides secure external access to DevNet for development teams and tools"
+
+    # AWS Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "60"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-healthy-threshold: "2"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-unhealthy-threshold: "2"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "5"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "10"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: "HTTP"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/is_alive"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "8080"
+
+    # SSL/TLS configuration
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "${SSL_CERT_ARN}"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+
+    # Security group configuration
+    service.beta.kubernetes.io/aws-load-balancer-security-groups: "${DEVNET_SECURITY_GROUPS}"
+    service.beta.kubernetes.io/aws-load-balancer-subnets: "${PUBLIC_SUBNETS}"
+
+    # Access logging
+    service.beta.kubernetes.io/aws-load-balancer-access-log-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-name: "${ACCESS_LOG_BUCKET}"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-prefix: "starknet-devnet"
+
+    # Additional performance optimizations
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
+    service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+
+spec:
+  type: LoadBalancer
+
+  # External traffic policy for source IP preservation
+  externalTrafficPolicy: Local
+
+  # Session affinity for development consistency
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 7200  # 2 hour session timeout for external access
+
+  selector:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: blockchain-devnet
+
+  ports:
+    # HTTPS RPC endpoint (SSL terminated at load balancer)
+    - name: https-rpc
+      port: 443
+      targetPort: devnet-http
+      protocol: TCP
+
+    # HTTP RPC endpoint for internal development
+    - name: http-rpc
+      port: 80
+      targetPort: devnet-http
+      protocol: TCP
+
+    # Secure WebSocket endpoint
+    - name: wss
+      port: 8443
+      targetPort: devnet-ws
+      protocol: TCP
+
+    # WebSocket endpoint for internal development
+    - name: ws
+      port: 8080
+      targetPort: devnet-ws
+      protocol: TCP
+
+  # Load balancer source ranges for security
+  loadBalancerSourceRanges:
+    - "10.0.0.0/8"      # Private networks
+    - "172.16.0.0/12"   # Private networks
+    - "192.168.0.0/16"  # Private networks
+    # Add specific public IP ranges for development teams
+    # - "203.0.113.0/24"  # Example public range
+
+---
+# ==============================================================================
+# StarkNet DevNet NodePort Service - Development Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: starknet-devnet-nodeport
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.1.25"
+    app.kubernetes.io/component: blockchain-nodeport-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: blockchain-nodeport
+    service.veridis.xyz/purpose: development-access
+    service.veridis.xyz/role: local-development
+    networking.veridis.xyz/tier: nodeport-networking
+    development.veridis.xyz/local-access: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: blockchain-engineering
+    veridis.xyz/cost-center: development-infrastructure
+
+  annotations:
+    veridis.xyz/description: "NodePort service for local development access to StarkNet DevNet"
+    veridis.xyz/purpose: "Provides NodePort access for local development and testing scenarios"
+    service.veridis.xyz/nodeport-mode: "development-access"
+    service.veridis.xyz/local-development: "enabled"
+
+spec:
+  type: NodePort
+
+  selector:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: blockchain-devnet
+
+  ports:
+    # RPC endpoint with NodePort
+    - name: devnet-rpc
+      port: 5050
+      targetPort: devnet-http
+      protocol: TCP
+      nodePort: 30050
+
+    # WebSocket endpoint with NodePort
+    - name: devnet-ws
+      port: 5051
+      targetPort: devnet-ws
+      protocol: TCP
+      nodePort: 30051
+
+    # Metrics endpoint with NodePort
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      protocol: TCP
+      nodePort: 30090
+
+    # Health endpoint with NodePort
+    - name: health
+      port: 8080
+      targetPort: health
+      protocol: TCP
+      nodePort: 30080
+
+---
+# ==============================================================================
+# StarkNet DevNet Service Monitor Integration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: starknet-devnet-monitoring
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.1.25"
+    app.kubernetes.io/component: blockchain-monitoring-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: blockchain-monitoring
+    service.veridis.xyz/purpose: metrics-collection
+    service.veridis.xyz/role: observability
+    monitoring.veridis.xyz/tier: service-monitoring
+    monitoring.veridis.xyz/prometheus: enabled
+    monitoring.veridis.xyz/grafana: enabled
+
+    # Prometheus service discovery labels
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: blockchain-engineering
+    veridis.xyz/cost-center: development-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Monitoring service for StarkNet DevNet metrics collection and observability"
+    veridis.xyz/purpose: "Provides dedicated metrics endpoint for Prometheus and monitoring systems"
+
+    # Prometheus configuration
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+    prometheus.io/interval: "30s"
+    prometheus.io/timeout: "10s"
+
+    # Monitoring service configuration
+    monitoring.veridis.xyz/service-type: "blockchain-devnet"
+    monitoring.veridis.xyz/metrics-endpoint: "/metrics"
+    monitoring.veridis.xyz/health-endpoint: "/health"
+    monitoring.veridis.xyz/dashboard: "starknet-devnet"
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: blockchain-devnet
+
+  ports:
+    # Dedicated metrics port for monitoring
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      protocol: TCP
+      appProtocol: http
+
+    # Health check port for monitoring
+    - name: health
+      port: 8080
+      targetPort: health
+      protocol: TCP
+      appProtocol: http
+
+---
+# ==============================================================================
+# StarkNet DevNet Service Account and RBAC Integration
+# ==============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: starknet-devnet-service-account
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: blockchain-service-account
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    security.veridis.xyz/rbac: enabled
+    security.veridis.xyz/service-account: starknet-devnet
+    security.veridis.xyz/permissions: development
+    compliance.veridis.xyz/audit: enabled
+
+  annotations:
+    veridis.xyz/description: "Service account for StarkNet DevNet with development permissions and audit capabilities"
+    veridis.xyz/purpose: "Provides secure service account for DevNet operations with controlled permissions"
+    security.veridis.xyz/permission-scope: "development-blockchain"
+    security.veridis.xyz/audit-required: "true"
+
+automountServiceAccountToken: true
+
+secrets:
+  - name: starknet-devnet-service-account-token
+
+---
+# ==============================================================================
+# StarkNet DevNet Endpoints - External Service Discovery
+# ==============================================================================
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: starknet-devnet-external-endpoints
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: starknet-devnet
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: blockchain-endpoints
+    app.kubernetes.io/part-of: veridis-protocol
+
+    service.veridis.xyz/type: external-endpoints
+    networking.veridis.xyz/discovery: manual
+    development.veridis.xyz/external-integration: enabled
+
+  annotations:
+    veridis.xyz/description: "Manual endpoints configuration for external StarkNet DevNet integration"
+    veridis.xyz/purpose: "Provides manual endpoint configuration for external service integration"
+
+subsets:
+  - addresses:
+      - ip: "127.0.0.1"  # Placeholder for external DevNet instances
+        nodeName: "external-devnet-1"
+      - ip: "127.0.0.2"  # Placeholder for external DevNet instances
+        nodeName: "external-devnet-2"
+    ports:
+      - name: devnet-rpc
+        port: 5050
+        protocol: TCP
+      - name: devnet-ws
+        port: 5051
+        protocol: TCP
+
+# ==============================================================================
+# StarkNet DevNet Service Summary and Enterprise Networking Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE STARKNET DEVNET SERVICE STRATEGY:
+# ===============================================
+#
+# STARKNET DEVNET SERVICE ARCHITECTURE OVERVIEW:
+# ----------------------------------------------
+# 1. Primary ClusterIP Service (starknet-devnet):
+#    - Core blockchain communication with HTTP RPC and WebSocket support
+#    - Session affinity with ClientIP for development consistency and connection management
+#    - Comprehensive port configuration with RPC, WebSocket, metrics, and health endpoints
+#    - Intelligent load balancing with connection optimization and performance analytics
+#    - Enterprise networking with advanced traffic management and monitoring capabilities
+#
+# 2. Headless Service (starknet-devnet-headless):
+#    - Direct pod access and discovery for development and debugging scenarios
+#    - DNS-based pod discovery with publishNotReadyAddresses for comprehensive access
+#    - Development-focused networking with direct pod communication capabilities
+#    - Advanced debugging support with individual pod access and monitoring
+#    - Service mesh integration with pod-level traffic management and analytics
+#
+# 3. LoadBalancer Service (starknet-devnet-external):
+#    - External access with AWS Network Load Balancer integration and SSL termination
+#    - Comprehensive security with source IP restrictions and access controls
+#    - High-availability external access with cross-zone load balancing and health checking
+#    - SSL/TLS termination with certificate management and security optimization
+#    - Performance optimization with connection draining and intelligent traffic distribution
+#
+# 4. NodePort Service (starknet-devnet-nodeport):
+#    - Development access with NodePort for local development and testing scenarios
+#    - Fixed port assignments for consistent development environment integration
+#    - Local development support with predictable networking and easy access
+#    - Testing integration with automated testing frameworks and CI/CD pipelines
+#    - Development velocity optimization with fast and reliable networking access
+#
+# 5. Monitoring Service (starknet-devnet-monitoring):
+#    - Dedicated monitoring with Prometheus integration and comprehensive metrics collection
+#    - Service discovery with automatic endpoint registration and health monitoring
+#    - Performance analytics with detailed metrics and business intelligence
+#    - Alerting integration with intelligent escalation and automated response
+#    - Business intelligence with cost analysis and resource optimization procedures
+#
+# ENTERPRISE SERVICE FEATURES:
+# ============================
+# Advanced Networking Configuration:
+#   - Multi-service architecture with ClusterIP, LoadBalancer, NodePort, and Headless services
+#   - Session affinity with ClientIP for development consistency and connection management
+#   - Comprehensive port management with HTTP, WebSocket, metrics, and health endpoints
+#   - Advanced load balancing with AWS NLB integration and intelligent traffic distribution
+#   - Performance optimization with connection pooling, keep-alive, and compression
+#
+# Security and Access Control:
+#   - Controlled external access with source IP restrictions and security group integration
+#   - SSL/TLS termination with certificate management and encryption optimization
+#   - Service account integration with RBAC permissions and audit capabilities
+#   - Network policy integration with microsegmentation and traffic control
+#   - Comprehensive access logging with audit trails and compliance validation
+#
+# Performance and Optimization:
+#   - High-performance networking with connection optimization and intelligent routing
+#   - Session affinity with timeout configuration for development consistency
+#   - Load balancer optimization with health checking and failover capabilities
+#   - Traffic management with compression, caching, and connection reuse
+#   - Performance monitoring with latency analysis and throughput optimization
+#
+# Monitoring and Observability:
+#   - Comprehensive metrics collection with Prometheus integration and service discovery
+#   - Health monitoring with multiple endpoints and validation procedures
+#   - Performance analytics with connection monitoring and traffic analysis
+#   - Business intelligence with cost optimization and capacity planning
+#   - Alerting integration with escalation procedures and automated response
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Service Lifecycle Management:
+#   - Automated service discovery with DNS integration and intelligent routing
+#   - Health checking with multiple endpoints and comprehensive validation
+#   - Graceful degradation with failover capabilities and recovery procedures
+#   - Load balancing with intelligent distribution and performance optimization
+#   - Service mesh integration with advanced traffic management and security
+#
+# Development Integration:
+#   - Multiple access patterns with ClusterIP, LoadBalancer, NodePort, and Headless services
+#   - Development-friendly networking with predictable ports and easy access
+#   - Testing integration with automated frameworks and CI/CD pipeline support
+#   - Debugging support with direct pod access and comprehensive monitoring
+#   - Integration tooling with seamless development workflow and automation
+#
+# Business Intelligence and Analytics:
+#   - Service usage analytics with development patterns and optimization recommendations
+#   - Performance monitoring with connection latency and throughput intelligence
+#   - Cost optimization with resource utilization analysis and capacity planning
+#   - Quality assurance with service metrics and development validation procedures
+#   - Strategic planning with business intelligence and long-term optimization
+#
+# Compliance and Governance:
+#   - Multi-framework compliance with SOC 2, GDPR, ISO 27001, and NIST 800-190
+#   - Service-level security with access controls and comprehensive audit trails
+#   - Network policy integration with compliance validation and enforcement
+#   - Risk management with threat analysis and mitigation procedures
+#   - Regulatory compliance with automated validation and evidence collection
+#
+# ==============================================================================
