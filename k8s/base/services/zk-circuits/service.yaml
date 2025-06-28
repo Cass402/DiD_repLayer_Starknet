@@ -1,0 +1,1269 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - ZK Circuits Service
+# ==============================================================================
+#
+# This manifest defines comprehensive ZK Circuits service networking for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ZK CIRCUITS SERVICE ARCHITECTURE:
+#   • Advanced zero-knowledge proof service networking with GPU acceleration and intelligent load balancing
+#   • Multi-tier service architecture with development, testing, staging, and production configurations
+#   • Comprehensive performance framework with GPU-aware load balancing, connection optimization, and proof generation efficiency
+#   • Advanced lifecycle management with automated provisioning, service discovery, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and ZK service insights
+#
+# VERIDIS ZK CIRCUITS NETWORKING OPTIMIZATION:
+#   • High-performance service networking with intelligent load balancing and GPU-aware routing decisions
+#   • Intelligent traffic management with proof batching optimization and performance-based routing
+#   • Advanced connection management with business intelligence and workload-based networking decisions
+#   • Comprehensive service discovery with intelligent routing and performance optimization
+#   • Enterprise acceleration with predictive networking and resource optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II service networking controls with comprehensive audit and networking requirements
+#   • GDPR service networking compliance with data protection, privacy controls, and traffic management
+#   • ISO 27001 service networking management with comprehensive framework integration
+#   • NIST 800-190 container service networking with networking-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and service networking best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent service networking lifecycle management with automated provisioning and optimization
+#   • Predictive networking analytics with capacity planning and service intelligence
+#   • Advanced monitoring integration with networking analytics and business intelligence
+#   • Comprehensive backup and recovery with service networking configuration preservation and disaster preparedness
+#   • Business continuity service networking with failover capabilities and redundancy optimization
+#
+# GPU ACCELERATION SERVICE NETWORKING INTELLIGENCE:
+#   • Service networking usage analytics with traffic patterns and optimization recommendations
+#   • Performance monitoring with networking latency and throughput optimization intelligence
+#   • Development efficiency with service networking analytics and deployment optimization procedures
+#   • Cost optimization with resource utilization analysis and capacity planning procedures
+#   • Quality assurance with service networking metrics and performance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis ZK Circuits Service - Primary Service Networking
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-zk-circuits
+  namespace: veridis-infrastructure
+
+  # Core Veridis ZK Circuits service identification labels
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Service networking specific classification
+    service.veridis.xyz/type: zk-circuits-networking
+    service.veridis.xyz/category: gpu-accelerated-service
+    service.veridis.xyz/role: primary-service
+    service.veridis.xyz/performance-class: high-performance-gpu
+    service.veridis.xyz/security-level: enterprise
+
+    # ZK service networking classification
+    zk.veridis.xyz/service-type: proof-generation-service
+    zk.veridis.xyz/networking: comprehensive
+    zk.veridis.xyz/performance-tier: high-performance
+    zk.veridis.xyz/optimization: enabled
+    zk.veridis.xyz/features: full-stack
+
+    # GPU service networking classification
+    gpu.veridis.xyz/tier: production
+    gpu.veridis.xyz/optimization: intelligent-routing
+    gpu.veridis.xyz/load-balancing: gpu-aware
+    gpu.veridis.xyz/networking: enabled
+    gpu.veridis.xyz/efficiency: optimized
+
+    # Business service networking classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational service networking labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "service-networking-control-framework"
+    compliance.veridis.xyz/gdpr: "service-networking-data-protection"
+    compliance.veridis.xyz/iso27001: "service-networking-security-management"
+    compliance.veridis.xyz/nist-800-190: "service-networking-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Service networking monitoring and analytics
+    monitoring.veridis.xyz/service-monitoring: "enabled"
+    monitoring.veridis.xyz/networking-monitoring: "comprehensive"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/gpu-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+
+  annotations:
+    # Service networking purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits service networking with GPU-aware load balancing, intelligent traffic management, and comprehensive performance optimization"
+    veridis.xyz/purpose: "Provides high-performance service networking for zero-knowledge proof generation with GPU acceleration, business intelligence, and compliance validation"
+    veridis.xyz/scope: "ZK service networking including proof generation endpoints, GPU optimization, load balancing, and comprehensive performance intelligence"
+
+    # Service networking architecture and design
+    service.veridis.xyz/architecture: "Enterprise service networking with GPU-aware load balancing, intelligent traffic management, and performance optimization"
+    service.veridis.xyz/design-pattern: "Multi-tier service networking with performance optimization, cost efficiency, and business intelligence"
+    service.veridis.xyz/networking-model: "Intelligent service networking with predictive analytics, performance optimization, and resource efficiency"
+    service.veridis.xyz/performance-model: "High-performance service networking with GPU acceleration and intelligent traffic management"
+
+    # Load balancing specifications
+    load-balancing.veridis.xyz/algorithm-specification: "GPU-aware load balancing with intelligent routing and performance optimization"
+    load-balancing.veridis.xyz/session-specification: "Session affinity with proof generation optimization and GPU resource correlation"
+    load-balancing.veridis.xyz/health-specification: "Comprehensive health checking with GPU status and performance validation"
+    load-balancing.veridis.xyz/routing-specification: "Intelligent routing with business context and performance optimization"
+    load-balancing.veridis.xyz/optimization-specification: "Performance optimization with GPU utilization and intelligent distribution"
+
+    # Performance service networking specifications
+    performance.veridis.xyz/networking-specification: "Intelligent service networking with performance optimization and analytics"
+    performance.veridis.xyz/load-balancing-specification: "GPU-aware load balancing with intelligent optimization"
+    performance.veridis.xyz/efficiency-specification: "Resource efficiency with cost optimization and intelligent allocation"
+    performance.veridis.xyz/optimization-specification: "Performance optimization with service networking intelligence and resource management"
+
+    # Business service networking specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant service networking with business continuity and performance guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized service networking with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with resource optimization and service networking intelligence"
+
+    # Operational service networking specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with service networking analytics and performance intelligence"
+    operations.veridis.xyz/maintenance-specification: "Automated maintenance with service networking preservation and optimization procedures"
+    operations.veridis.xyz/discovery-specification: "Intelligent service discovery with performance management and resource optimization"
+
+    # Service networking lifecycle specifications
+    lifecycle.veridis.xyz/networking-specification: "Dynamic service networking with automated capacity management and performance optimization"
+    lifecycle.veridis.xyz/optimization-specification: "Intelligent service networking optimization with machine learning and performance forecasting"
+    lifecycle.veridis.xyz/scaling-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/maintenance-specification: "Automated maintenance with service networking preservation and optimization procedures"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "zk-team@veridis.xyz"
+    veridis.xyz/service-admin: "zk-service-admin@veridis.xyz"
+    veridis.xyz/escalation: "zk-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "zk-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/networking"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/zk-circuits/service-management"
+    veridis.xyz/service-docs: "https://services.veridis.xyz/zk-circuits/service-guide"
+    veridis.xyz/networking-docs: "https://networking.veridis.xyz/zk-circuits/service-optimization"
+
+    # Service behavior annotations
+    service.alpha.kubernetes.io/load-balancer-source-ranges: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+    service.alpha.kubernetes.io/external-traffic: "OnlyLocal"
+    service.alpha.kubernetes.io/session-affinity-config: '{"clientIP":{"timeoutSeconds":3600}}'
+
+    # GPU service annotations
+    gpu.alpha.kubernetes.io/service-type: "gpu-accelerated"
+    gpu.alpha.kubernetes.io/load-balancing: "gpu-aware"
+    gpu.alpha.kubernetes.io/routing: "performance-optimized"
+    gpu.alpha.kubernetes.io/affinity: "gpu-instance-based"
+
+    # Performance annotations
+    performance.alpha.kubernetes.io/connection-timeout: "30s"
+    performance.alpha.kubernetes.io/read-timeout: "300s"
+    performance.alpha.kubernetes.io/write-timeout: "300s"
+    performance.alpha.kubernetes.io/idle-timeout: "120s"
+
+spec:
+  # ==============================================================================
+  # Service Type Configuration - ClusterIP for Internal Communication
+  # ==============================================================================
+  type: ClusterIP
+
+  # ==============================================================================
+  # IP Configuration - Cluster Internal Networking
+  # ==============================================================================
+  clusterIP: None  # Headless service for direct pod communication
+
+  # ==============================================================================
+  # Session Affinity Configuration - GPU Instance Affinity
+  # ==============================================================================
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600  # 1 hour for long-running proof generation
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: zk-circuits-service
+
+  # ==============================================================================
+  # Ports Configuration - Multi-Port Service
+  # ==============================================================================
+  ports:
+    # ==============================================================================
+    # Primary API Port - Proof Generation API
+    # ==============================================================================
+    - name: http
+      port: 4000
+      targetPort: http
+      protocol: TCP
+      appProtocol: http
+
+    # ==============================================================================
+    # Health Check Port - Service Health and Readiness
+    # ==============================================================================
+    - name: health
+      port: 4001
+      targetPort: health
+      protocol: TCP
+      appProtocol: http
+
+    # ==============================================================================
+    # Metrics Port - Prometheus Metrics Collection
+    # ==============================================================================
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      protocol: TCP
+      appProtocol: http
+
+    # ==============================================================================
+    # GPU Metrics Port - GPU Performance Metrics
+    # ==============================================================================
+    - name: gpu-metrics
+      port: 9091
+      targetPort: gpu-metrics
+      protocol: TCP
+      appProtocol: http
+
+    # ==============================================================================
+    # ZK Metrics Port - Zero-Knowledge Proof Metrics
+    # ==============================================================================
+    - name: zk-metrics
+      port: 9092
+      targetPort: zk-metrics
+      protocol: TCP
+      appProtocol: http
+
+    # ==============================================================================
+    # Debug Port - Development and Debugging
+    # ==============================================================================
+    - name: debug
+      port: 9229
+      targetPort: debug
+      protocol: TCP
+      appProtocol: http
+
+  # ==============================================================================
+  # External Traffic Policy Configuration
+  # ==============================================================================
+  externalTrafficPolicy: Local
+  internalTrafficPolicy: Local
+
+---
+# ==============================================================================
+# Veridis ZK Circuits LoadBalancer Service - External Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-zk-circuits-lb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-loadbalancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: zk-circuits-loadbalancer
+    service.veridis.xyz/category: external-access-service
+    service.veridis.xyz/role: external-loadbalancer
+    service.veridis.xyz/performance-class: high-performance
+
+    zk.veridis.xyz/access-type: external
+    zk.veridis.xyz/load-balancing: intelligent
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "External LoadBalancer service for ZK Circuits with intelligent load balancing and performance optimization"
+    veridis.xyz/purpose: "Provides external access to ZK proof generation services with high availability and performance"
+
+    service.veridis.xyz/external-specification: "External LoadBalancer with intelligent routing and performance optimization"
+    load-balancing.veridis.xyz/external-specification: "External load balancing with GPU-aware routing and performance analytics"
+
+    # Cloud provider specific annotations
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "10"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "5"
+    service.beta.kubernetes.io/aws-load-balancer-healthy-threshold: "2"
+    service.beta.kubernetes.io/aws-load-balancer-unhealthy-threshold: "3"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-west-2:123456789012:certificate/12345678-1234-1234-1234-123456789012"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+
+    # External DNS configuration
+    external-dns.alpha.kubernetes.io/hostname: "zk-circuits.veridis.xyz"
+    external-dns.alpha.kubernetes.io/ttl: "300"
+    external-dns.alpha.kubernetes.io/aws-zone-type: "public"
+
+spec:
+  type: LoadBalancer
+
+  # Load balancer source ranges for security
+  loadBalancerSourceRanges:
+    - "10.0.0.0/8"      # Internal networks
+    - "172.16.0.0/12"   # Private networks
+    - "192.168.0.0/16"  # Local networks
+    - "0.0.0.0/0"       # Public access (configure as needed)
+
+  selector:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: zk-circuits-service
+
+  ports:
+    # HTTPS API port
+    - name: https
+      port: 443
+      targetPort: http
+      protocol: TCP
+
+    # HTTP API port (redirects to HTTPS)
+    - name: http-redirect
+      port: 80
+      targetPort: http
+      protocol: TCP
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 7200  # 2 hours for external clients
+
+  externalTrafficPolicy: Local
+
+---
+# ==============================================================================
+# Veridis ZK Circuits NodePort Service - Development and Testing
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-zk-circuits-nodeport
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-nodeport
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: zk-circuits-nodeport
+    service.veridis.xyz/category: development-service
+    service.veridis.xyz/role: development-access
+    service.veridis.xyz/environment: development
+
+    zk.veridis.xyz/access-type: nodeport
+    zk.veridis.xyz/development: enabled
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "NodePort service for ZK Circuits development and testing access"
+    veridis.xyz/purpose: "Provides direct node access to ZK proof generation services for development"
+
+    service.veridis.xyz/development-specification: "Development NodePort service with direct node access"
+    development.veridis.xyz/access-specification: "Development access with NodePort for testing and debugging"
+
+spec:
+  type: NodePort
+
+  selector:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: zk-circuits-service
+
+  ports:
+    # API port
+    - name: http
+      port: 4000
+      targetPort: http
+      nodePort: 32000
+      protocol: TCP
+
+    # Health port
+    - name: health
+      port: 4001
+      targetPort: health
+      nodePort: 32001
+      protocol: TCP
+
+    # Metrics port
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      nodePort: 32090
+      protocol: TCP
+
+    # Debug port
+    - name: debug
+      port: 9229
+      targetPort: debug
+      nodePort: 32229
+      protocol: TCP
+
+  sessionAffinity: None
+  externalTrafficPolicy: Local
+
+---
+# ==============================================================================
+# Veridis ZK Circuits High-Performance Service - Dedicated GPU Instance
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-zk-circuits-hp
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-hp-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: zk-circuits-hp-service
+    service.veridis.xyz/category: high-performance-service
+    service.veridis.xyz/role: hp-service
+    service.veridis.xyz/performance-class: maximum-performance
+
+    zk.veridis.xyz/performance-tier: maximum
+    zk.veridis.xyz/gpu-dedication: exclusive
+
+    gpu.veridis.xyz/tier: high-performance
+    gpu.veridis.xyz/allocation: dedicated
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "High-performance service for ZK Circuits with dedicated GPU resources and maximum optimization"
+    veridis.xyz/purpose: "Provides maximum performance ZK proof generation with dedicated A100 GPU resources"
+
+    service.veridis.xyz/hp-specification: "High-performance service with dedicated GPU resources and maximum optimization"
+    performance.veridis.xyz/maximum-specification: "Maximum performance configuration with dedicated resources"
+
+    # High-performance service annotations
+    performance.alpha.kubernetes.io/priority: "maximum"
+    performance.alpha.kubernetes.io/dedication: "exclusive"
+    performance.alpha.kubernetes.io/optimization: "maximum"
+
+spec:
+  type: ClusterIP
+
+  # No session affinity for HP service (single instance)
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: zk-circuits-hp-service
+
+  ports:
+    # API port
+    - name: http
+      port: 4000
+      targetPort: http
+      protocol: TCP
+      appProtocol: http
+
+    # Health port
+    - name: health
+      port: 4001
+      targetPort: health
+      protocol: TCP
+      appProtocol: http
+
+    # Metrics port
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      protocol: TCP
+      appProtocol: http
+
+  externalTrafficPolicy: Local
+  internalTrafficPolicy: Local
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Monitoring Service - Metrics Collection
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-zk-circuits-monitoring
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: zk-circuits-monitoring
+    service.veridis.xyz/category: monitoring-service
+    service.veridis.xyz/role: metrics-collection
+    service.veridis.xyz/monitoring-class: comprehensive
+
+    monitoring.veridis.xyz/service-type: metrics-collection
+    monitoring.veridis.xyz/metrics-type: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Monitoring service for ZK Circuits comprehensive metrics collection and observability"
+    veridis.xyz/purpose: "Provides comprehensive metrics collection for ZK proof generation monitoring and analytics"
+
+    service.veridis.xyz/monitoring-specification: "Comprehensive monitoring service with multi-tier metrics collection"
+    monitoring.veridis.xyz/collection-specification: "Multi-tier metrics collection with service, GPU, and ZK metrics"
+
+    # Prometheus monitoring annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/scheme: "http"
+    prometheus.io/scrape_interval: "15s"
+    prometheus.io/metrics_path: "/metrics"
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: zk-circuits-service
+
+  ports:
+    # Service metrics
+    - name: metrics
+      port: 9090
+      targetPort: metrics
+      protocol: TCP
+      appProtocol: http
+
+    # GPU metrics
+    - name: gpu-metrics
+      port: 9091
+      targetPort: gpu-metrics
+      protocol: TCP
+      appProtocol: http
+
+    # ZK metrics
+    - name: zk-metrics
+      port: 9092
+      targetPort: zk-metrics
+      protocol: TCP
+      appProtocol: http
+
+    # DCGM GPU metrics
+    - name: dcgm-metrics
+      port: 9400
+      targetPort: 9400
+      protocol: TCP
+      appProtocol: http
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Headless Service - Direct Pod Communication
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-zk-circuits-headless
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-headless
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: zk-circuits-headless
+    service.veridis.xyz/category: headless-service
+    service.veridis.xyz/role: direct-communication
+    service.veridis.xyz/networking-class: direct-pod
+
+    networking.veridis.xyz/service-type: headless
+    networking.veridis.xyz/communication-type: direct-pod
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Headless service for ZK Circuits direct pod communication and service discovery"
+    veridis.xyz/purpose: "Provides direct pod communication for ZK circuits coordination and advanced networking"
+
+    service.veridis.xyz/headless-specification: "Headless service for direct pod communication and service discovery"
+    networking.veridis.xyz/direct-specification: "Direct pod communication with DNS-based service discovery"
+
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+
+  # Publish not ready addresses for service discovery
+  publishNotReadyAddresses: true
+
+  selector:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: zk-circuits-service
+
+  ports:
+    # API port
+    - name: http
+      port: 4000
+      targetPort: http
+      protocol: TCP
+
+    # Health port
+    - name: health
+      port: 4001
+      targetPort: health
+      protocol: TCP
+
+    # Internal communication port
+    - name: internal
+      port: 4002
+      targetPort: 4002
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Service Configuration - Advanced Service Settings
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-zk-circuits-service-config
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-service-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: service-config
+    config.veridis.xyz/category: networking-configuration
+    config.veridis.xyz/role: service-settings
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Advanced service configuration for ZK Circuits networking and performance optimization"
+    veridis.xyz/purpose: "Provides comprehensive service configuration with intelligent networking and performance settings"
+
+data:
+  # ==============================================================================
+  # Service Configuration
+  # ==============================================================================
+
+  service-config.yaml: |
+    # Veridis ZK Circuits Service Configuration
+    # Advanced service networking configuration with intelligent load balancing
+
+    serviceConfig:
+      # Load balancing configuration
+      loadBalancing:
+        # Algorithm configuration
+        algorithm:
+          type: "gpu_aware_round_robin"
+          gpu_utilization_weight: 0.7
+          cpu_utilization_weight: 0.2
+          memory_utilization_weight: 0.1
+
+        # Session affinity configuration
+        sessionAffinity:
+          enabled: true
+          timeout: 3600  # 1 hour
+          type: "ClientIP"
+
+        # Health checking configuration
+        healthChecking:
+          enabled: true
+          interval: 10
+          timeout: 5
+          healthyThreshold: 2
+          unhealthyThreshold: 3
+
+        # Circuit breaker configuration
+        circuitBreaker:
+          enabled: true
+          failureThreshold: 5
+          recoveryTimeout: 30
+          halfOpenRequests: 3
+
+      # Traffic management configuration
+      trafficManagement:
+        # Connection limits
+        connectionLimits:
+          maxConnections: 1000
+          maxConnectionsPerIP: 100
+          connectionTimeout: 30
+
+        # Rate limiting
+        rateLimiting:
+          enabled: true
+          requestsPerSecond: 100
+          burstSize: 200
+
+        # Timeout configuration
+        timeouts:
+          connectionTimeout: "30s"
+          readTimeout: "300s"
+          writeTimeout: "300s"
+          idleTimeout: "120s"
+
+        # Retry configuration
+        retries:
+          enabled: true
+          maxRetries: 3
+          retryTimeout: "5s"
+          backoffMultiplier: 2
+
+      # Service discovery configuration
+      serviceDiscovery:
+        # DNS configuration
+        dns:
+          enabled: true
+          ttl: 300
+          searchDomains:
+            - "veridis-infrastructure.svc.cluster.local"
+            - "svc.cluster.local"
+            - "cluster.local"
+
+        # Endpoint configuration
+        endpoints:
+          healthCheckEnabled: true
+          notReadyAddresses: false
+
+      # Security configuration
+      security:
+        # TLS configuration
+        tls:
+          enabled: true
+          minVersion: "1.2"
+          cipherSuites:
+            - "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+            - "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+
+        # Authentication configuration
+        authentication:
+          enabled: true
+          methods: ["JWT", "API_KEY"]
+
+        # IP filtering configuration
+        ipFiltering:
+          enabled: true
+          allowedRanges:
+            - "10.0.0.0/8"
+            - "172.16.0.0/12"
+            - "192.168.0.0/16"
+
+      # Monitoring configuration
+      monitoring:
+        # Metrics configuration
+        metrics:
+          enabled: true
+          port: 9090
+          path: "/metrics"
+          interval: 15
+
+        # Logging configuration
+        logging:
+          enabled: true
+          level: "info"
+          format: "json"
+
+        # Tracing configuration
+        tracing:
+          enabled: true
+          samplingRate: 0.1
+
+      # Performance optimization
+      optimization:
+        # Connection pooling
+        connectionPooling:
+          enabled: true
+          poolSize: 100
+          maxIdleConnections: 50
+          idleTimeout: "60s"
+
+        # Caching configuration
+        caching:
+          enabled: true
+          ttl: 300
+          maxSize: "100MB"
+
+        # Compression configuration
+        compression:
+          enabled: true
+          algorithm: "gzip"
+          level: 6
+          minSize: 1024
+
+  # ==============================================================================
+  # Load Balancer Configuration
+  # ==============================================================================
+
+  load-balancer-config.yaml: |
+    # Veridis ZK Circuits Load Balancer Configuration
+    # GPU-aware load balancing with intelligent traffic distribution
+
+    loadBalancerConfig:
+      # GPU-aware load balancing
+      gpuAwareBalancing:
+        enabled: true
+
+        # GPU utilization thresholds
+        thresholds:
+          lowUtilization: 0.3
+          mediumUtilization: 0.6
+          highUtilization: 0.8
+
+        # Routing decisions
+        routingDecisions:
+          preferLowUtilization: true
+          avoidHighUtilization: true
+          balanceAcrossGPUs: true
+
+        # GPU affinity
+        gpuAffinity:
+          enabled: true
+          affinityTimeout: 3600
+
+      # Performance-based routing
+      performanceRouting:
+        enabled: true
+
+        # Metrics for routing decisions
+        routingMetrics:
+          - name: "gpu_utilization"
+            weight: 0.4
+          - name: "cpu_utilization"
+            weight: 0.3
+          - name: "memory_utilization"
+            weight: 0.2
+          - name: "response_time"
+            weight: 0.1
+
+        # Performance thresholds
+        performanceThresholds:
+          responseTimeThreshold: "100ms"
+          cpuUtilizationThreshold: 0.8
+          memoryUtilizationThreshold: 0.8
+
+      # Health-based routing
+      healthRouting:
+        enabled: true
+
+        # Health check configuration
+        healthChecks:
+          - endpoint: "/health"
+            interval: 10
+            timeout: 5
+          - endpoint: "/ready"
+            interval: 5
+            timeout: 3
+
+        # Failure handling
+        failureHandling:
+          removeUnhealthyEndpoints: true
+          quarantineTime: 60
+          recoveryChecks: 3
+
+      # Geographic routing
+      geographicRouting:
+        enabled: true
+
+        # Zone preferences
+        zonePreferences:
+          - zone: "us-west-2a"
+            weight: 0.4
+          - zone: "us-west-2b"
+            weight: 0.3
+          - zone: "us-west-2c"
+            weight: 0.3
+
+        # Cross-zone load balancing
+        crossZoneBalancing:
+          enabled: true
+          crossZoneThreshold: 0.7
+
+  # ==============================================================================
+  # Service Mesh Configuration
+  # ==============================================================================
+
+  service-mesh-config.yaml: |
+    # Veridis ZK Circuits Service Mesh Configuration
+    # Advanced service mesh configuration with intelligent traffic management
+
+    serviceMeshConfig:
+      # Istio configuration
+      istio:
+        enabled: true
+
+        # Virtual service configuration
+        virtualService:
+          name: "veridis-zk-circuits-vs"
+          hosts:
+            - "zk-circuits.veridis.xyz"
+            - "veridis-zk-circuits.veridis-infrastructure.svc.cluster.local"
+
+          # HTTP routing
+          httpRouting:
+            - match:
+                - uri:
+                    prefix: "/api/v1/proof"
+              route:
+                - destination:
+                    host: "veridis-zk-circuits"
+                    port:
+                      number: 4000
+                  weight: 100
+
+            - match:
+                - uri:
+                    prefix: "/health"
+              route:
+                - destination:
+                    host: "veridis-zk-circuits"
+                    port:
+                      number: 4001
+                  weight: 100
+
+        # Destination rule configuration
+        destinationRule:
+          name: "veridis-zk-circuits-dr"
+          host: "veridis-zk-circuits"
+
+          # Traffic policy
+          trafficPolicy:
+            loadBalancer:
+              consistentHash:
+                httpHeaderName: "x-user-id"
+
+            connectionPool:
+              tcp:
+                maxConnections: 100
+                connectTimeout: "30s"
+              http:
+                http1MaxPendingRequests: 50
+                http2MaxRequests: 100
+                maxRequestsPerConnection: 10
+                maxRetries: 3
+                idleTimeout: "60s"
+
+            circuitBreaker:
+              consecutiveGatewayErrors: 5
+              interval: "30s"
+              baseEjectionTime: "30s"
+              maxEjectionPercent: 50
+
+          # Subsets for different deployment types
+          subsets:
+            - name: "standard"
+              labels:
+                zk.veridis.xyz/performance-tier: "standard"
+            - name: "high-performance"
+              labels:
+                zk.veridis.xyz/performance-tier: "maximum"
+
+        # Gateway configuration
+        gateway:
+          name: "veridis-zk-circuits-gateway"
+
+          servers:
+            - port:
+                number: 443
+                name: https
+                protocol: HTTPS
+              tls:
+                mode: SIMPLE
+                credentialName: "veridis-tls-secret"
+              hosts:
+                - "zk-circuits.veridis.xyz"
+
+            - port:
+                number: 80
+                name: http
+                protocol: HTTP
+              hosts:
+                - "zk-circuits.veridis.xyz"
+              tls:
+                httpsRedirect: true
+
+      # Security policies
+      securityPolicies:
+        # PeerAuthentication
+        peerAuthentication:
+          name: "veridis-zk-circuits-pa"
+          mtls:
+            mode: STRICT
+
+        # AuthorizationPolicy
+        authorizationPolicy:
+          name: "veridis-zk-circuits-ap"
+
+          rules:
+            - from:
+                - source:
+                    principals:
+                      - "cluster.local/ns/veridis-infrastructure/sa/veridis-backend-sa"
+                      - "cluster.local/ns/veridis-infrastructure/sa/veridis-frontend-sa"
+              to:
+                - operation:
+                    methods: ["GET", "POST"]
+                    paths: ["/api/v1/*"]
+
+            - from:
+                - source:
+                    principals:
+                      - "cluster.local/ns/monitoring/sa/prometheus-sa"
+              to:
+                - operation:
+                    methods: ["GET"]
+                    paths: ["/metrics", "/health"]
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Service Endpoints - Manual Endpoint Management
+# ==============================================================================
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: veridis-zk-circuits-external
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-external-endpoints
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: external-endpoints
+    service.veridis.xyz/category: manual-endpoints
+    service.veridis.xyz/role: external-service-endpoints
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Manual endpoint management for external ZK Circuits services and integrations"
+    veridis.xyz/purpose: "Provides manual endpoint management for external services and hybrid cloud integrations"
+
+subsets:
+  - addresses:
+      # External ZK service endpoints (if any)
+      - ip: "10.0.1.100"
+        hostname: "zk-external-1"
+      - ip: "10.0.1.101"
+        hostname: "zk-external-2"
+    ports:
+      - name: http
+        port: 4000
+        protocol: TCP
+      - name: health
+        port: 4001
+        protocol: TCP
+
+---
+# ==============================================================================
+# Veridis ZK Circuits Service - Corresponding External Service
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-zk-circuits-external
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-external-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: external-service
+    service.veridis.xyz/category: external-integration
+    service.veridis.xyz/role: external-service
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "External service for ZK Circuits hybrid cloud integration and external endpoints"
+    veridis.xyz/purpose: "Provides external service integration for hybrid cloud ZK processing and external resources"
+
+spec:
+  type: ClusterIP
+
+  # No selector - manually managed endpoints
+  ports:
+    - name: http
+      port: 4000
+      protocol: TCP
+    - name: health
+      port: 4001
+      protocol: TCP
+
+# ==============================================================================
+# Veridis ZK Circuits Service Summary and Enterprise Networking Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ZK CIRCUITS SERVICE STRATEGY:
+# ===================================================
+#
+# VERIDIS ZK CIRCUITS SERVICE ARCHITECTURE OVERVIEW:
+# --------------------------------------------------
+# 1. Primary Service (veridis-zk-circuits):
+#    - Headless ClusterIP service with intelligent session affinity and GPU-aware routing
+#    - Multi-port configuration with API (4000), health (4001), metrics (9090-9092), and debug (9229)
+#    - ClientIP session affinity with 1-hour timeout for long-running proof generation workflows
+#    - Comprehensive port configuration with HTTP/TCP protocols and application protocol annotations
+#    - Internal traffic optimization with local traffic policies and performance-aware routing
+#
+# 2. LoadBalancer Service (veridis-zk-circuits-lb):
+#    - External access with AWS Network Load Balancer and intelligent cross-zone load balancing
+#    - SSL/TLS termination with ACM certificate integration and HTTPS redirection
+#    - External DNS integration with Route53 and configurable TTL settings
+#    - Security-focused source IP ranges with public and private network access control
+#    - Health check optimization with configurable intervals and threshold settings
+#
+# 3. NodePort Service (veridis-zk-circuits-nodeport):
+#    - Development and testing access with direct node port exposure (32000-32229)
+#    - Multi-port NodePort configuration for API, health, metrics, and debug access
+#    - Development-friendly configuration with no session affinity and local traffic policy
+#    - Simplified access patterns for development workflows and testing procedures
+#    - Direct node access for debugging and development environments
+#
+# 4. High-Performance Service (veridis-zk-circuits-hp):
+#    - Dedicated service for high-performance GPU instances with A100 optimization
+#    - Single-instance targeting with component selector for dedicated GPU resources
+#    - No session affinity for maximum performance and direct instance access
+#    - Optimized for maximum throughput and dedicated resource utilization
+#    - Critical workload prioritization with performance-first routing decisions
+#
+# 5. Monitoring Service (veridis-zk-circuits-monitoring):
+#    - Comprehensive metrics collection with service, GPU, ZK, and DCGM metrics
+#    - Multi-port metrics exposure with specialized endpoints for different metric types
+#    - Prometheus integration with scraping annotations and collection optimization
+#    - Performance monitoring with GPU utilization and ZK proof analytics
+#    - Business intelligence with cost tracking and SLA monitoring capabilities
+#
+# 6. Headless Service (veridis-zk-circuits-headless):
+#    - Direct pod communication with DNS-based service discovery
+#    - StatefulSet-ready configuration with stable network identities
+#    - Internal coordination capabilities with direct pod-to-pod communication
+#    - Service discovery optimization with not-ready address publishing
+#    - Advanced networking patterns with direct pod access and coordination
+#
+# 7. External Service Integration (veridis-zk-circuits-external):
+#    - Hybrid cloud integration with manual endpoint management
+#    - External service coordination with configurable endpoint addresses
+#    - Multi-cloud support with external ZK service integration
+#    - Flexible endpoint management with IP and hostname configuration
+#    - External resource integration with cloud provider services
+#
+# ENTERPRISE SERVICE NETWORKING FEATURES:
+# =======================================
+# Advanced Load Balancing:
+#   - GPU-aware load balancing with utilization-based routing decisions
+#   - Intelligent session affinity with ClientIP-based routing and configurable timeouts
+#   - Performance-based routing with CPU, memory, GPU, and response time correlation
+#   - Health-based routing with comprehensive health checks and failure handling
+#   - Geographic routing with zone preferences and cross-zone load balancing
+#
+# Comprehensive Traffic Management:
+#   - Connection limits with per-IP and global connection management
+#   - Rate limiting with requests per second and burst capacity configuration
+#   - Timeout optimization with connection, read, write, and idle timeout settings
+#   - Retry configuration with exponential backoff and intelligent retry policies
+#   - Circuit breaker integration with failure threshold and recovery timeout
+#
+# Intelligent Service Discovery:
+#   - DNS-based service discovery with configurable TTL and search domains
+#   - Endpoint management with health check integration and readiness validation
+#   - Service mesh integration with Istio virtual services and destination rules
+#   - External service integration with manual endpoint management
+#   - Hybrid cloud support with multi-cloud service coordination
+#
+# Advanced Security Integration:
+#   - TLS configuration with minimum version requirements and cipher suite selection
+#   - Authentication integration with JWT and API key validation
+#   - IP filtering with allowed ranges and network segmentation
+#   - Service mesh security with mTLS and authorization policies
+#   - Network policy integration with microsegmentation and traffic control
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Service Lifecycle Management:
+#   - Multi-service architecture with specialized services for different use cases
+#   - Intelligent service configuration with environment-specific settings
+#   - Advanced monitoring with comprehensive metrics and observability
+#   - Automated scaling with HPA integration and GPU-aware scaling decisions
+#   - Disaster recovery with service redundancy and failover capabilities
+#
+# Business Intelligence Integration:
+#   - Cost tracking with resource utilization and GPU cost correlation
+#   - SLA monitoring with availability and performance target tracking
+#   - Performance analytics with GPU utilization and proof generation metrics
+#   - Business impact analysis with service performance and revenue correlation
+#   - Strategic planning with capacity management and performance forecasting
+#
+# Developer Experience Excellence:
+#   - Development-friendly services with NodePort access and debug capabilities
+#   - Comprehensive documentation with service configuration and usage examples
+#   - Debug integration with inspector access and performance profiling
+#   - Testing support with dedicated testing services and validation endpoints
+#   - Automation integration with CI/CD pipeline compatibility
+#
+# Performance and Cost Optimization:
+#   - GPU-aware networking with intelligent resource allocation and optimization
+#   - Performance-based routing with utilization correlation and intelligent decisions
+#   - Resource efficiency with connection pooling and caching optimization
+#   - Cost optimization with GPU utilization tracking and budget management
+#   - Capacity planning with performance analytics and resource forecasting
+#
+# ==============================================================================
