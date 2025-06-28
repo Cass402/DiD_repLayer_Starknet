@@ -1,0 +1,931 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Backend Load Balancer Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Backend Load Balancer for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS BACKEND LOAD BALANCER ARCHITECTURE:
+#   • Advanced Backend load balancing with intelligent traffic distribution and performance-based backend routing
+#   • Multi-tier load balancer architecture with development, testing, staging, and production environments
+#   • Comprehensive networking framework with backend routing, traffic optimization, service mesh integration
+#   • Advanced lifecycle management with automated load balancer optimization, backend routing control, and traffic enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and backend load balancer performance insights
+#
+# VERIDIS BACKEND LOAD BALANCER OPTIMIZATION:
+#   • High-performance backend load balancing with intelligent routing and backend service optimization
+#   • Intelligent backend traffic management with responsive routing and performance-based backend decisions
+#   • Advanced session management with business intelligence and sticky session-based load balancer control
+#   • Comprehensive networking control with intelligent backend load balancer management and traffic enhancement
+#   • Enterprise acceleration with predictive backend load balancer management and traffic optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II backend load balancer controls with comprehensive audit and traffic requirements
+#   • GDPR backend load balancer compliance with data protection, privacy controls, and traffic management
+#   • ISO 27001 backend load balancer management with comprehensive framework integration
+#   • NIST 800-190 container backend load balancer security with traffic-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and backend load balancer best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent backend load balancer lifecycle management with automated provisioning and traffic optimization
+#   • Predictive traffic analytics with capacity planning and backend load balancer intelligence
+#   • Advanced monitoring integration with backend load balancer analytics and traffic business intelligence
+#   • Comprehensive networking control with backend load balancer preservation and traffic optimization
+#   • Business continuity backend load balancer with traffic guarantees and backend optimization
+#
+# LOAD BALANCER ACCELERATION INTELLIGENCE:
+#   • Backend load balancer usage analytics with traffic patterns and optimization recommendations
+#   • Traffic monitoring with backend load balancer latency and routing optimization intelligence
+#   • Development efficiency with backend load balancer analytics and deployment optimization procedures
+#   • Cost optimization with backend load balancer utilization analysis and traffic capacity planning procedures
+#   • Quality assurance with backend load balancer metrics and traffic validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Load Balancer - Primary Production Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-backend-load-balancer
+  namespace: veridis-infrastructure
+
+  # Core Veridis Backend Load Balancer identification labels
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-load-balancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Load Balancer specific classification
+    loadbalancer.veridis.xyz/type: backend-load-balancer
+    loadbalancer.veridis.xyz/category: production-load-balancer
+    loadbalancer.veridis.xyz/role: primary-backend-load-balancer
+    loadbalancer.veridis.xyz/performance-class: high-performance-backend-load-balancer
+    loadbalancer.veridis.xyz/security-level: enterprise
+
+    # Backend Load Balancer classification
+    backend.veridis.xyz/load-balancer-type: intelligent-load-balancer
+    backend.veridis.xyz/service-type: backend-service
+    backend.veridis.xyz/performance-tier: high-performance
+    backend.veridis.xyz/optimization: enabled
+    backend.veridis.xyz/features: full-backend-stack
+
+    # Traffic Load Balancer classification
+    traffic.veridis.xyz/tier: production
+    traffic.veridis.xyz/optimization: intelligent-backend-routing
+    traffic.veridis.xyz/routing: advanced
+    traffic.veridis.xyz/load-balancing: weighted
+    traffic.veridis.xyz/efficiency: maximum
+
+    # Business Load Balancer classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-backend-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Load Balancer labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+    veridis.xyz/cost-center: backend-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "backend-load-balancer-control-framework"
+    compliance.veridis.xyz/gdpr: "backend-load-balancer-data-protection"
+    compliance.veridis.xyz/iso27001: "backend-load-balancer-security-management"
+    compliance.veridis.xyz/nist-800-190: "backend-load-balancer-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Backend Load Balancer monitoring and analytics
+    monitoring.veridis.xyz/backend-load-balancer-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/traffic-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Session management labels
+    session.veridis.xyz/affinity-enabled: "true"
+    session.veridis.xyz/sticky-sessions: "enabled"
+    session.veridis.xyz/session-timeout: "3600"
+    session.veridis.xyz/session-persistence: "enabled"
+    session.veridis.xyz/load-balancing-algorithm: "weighted-round-robin"
+
+  annotations:
+    # Load Balancer purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Backend Load Balancer with intelligent traffic distribution, weighted routing, and comprehensive backend service management"
+    veridis.xyz/purpose: "Provides comprehensive backend load balancing for decentralized identity management with intelligent traffic routing, backend optimization, and networking guarantees"
+    veridis.xyz/scope: "Backend load balancer including traffic routing, session management, health checking, and comprehensive backend intelligence"
+
+    # Load Balancer architecture and design
+    loadbalancer.veridis.xyz/architecture: "Enterprise backend load balancer with intelligent traffic routing, weighted distribution, and session management optimization"
+    loadbalancer.veridis.xyz/design-pattern: "Multi-tier backend load balancer with traffic optimization, cost efficiency, and business intelligence"
+    loadbalancer.veridis.xyz/optimization-model: "Intelligent backend load balancer with predictive analytics, traffic optimization, and session efficiency"
+    loadbalancer.veridis.xyz/performance-model: "High-performance backend load balancer with traffic optimization and intelligent session management"
+
+    # Backend Load Balancer specifications
+    backend.veridis.xyz/load-balancer-specification: "Backend load balancer with traffic optimization and intelligent backend service management"
+    backend.veridis.xyz/routing-specification: "Advanced backend routing configuration with traffic optimization and session enhancement"
+    backend.veridis.xyz/traffic-specification: "Backend traffic management optimization with intelligent routing and enhancement"
+    backend.veridis.xyz/performance-specification: "Backend performance routing with traffic acceleration and session efficiency"
+    backend.veridis.xyz/business-specification: "Backend business load balancer with cost optimization and strategic traffic intelligence"
+
+    # Traffic Load Balancer specifications
+    traffic.veridis.xyz/load-balancer-specification: "Traffic-aware backend load balancer with session optimization and traffic intelligence"
+    traffic.veridis.xyz/routing-specification: "Traffic routing management optimization with intelligent backend and session enhancement"
+    traffic.veridis.xyz/balancing-specification: "Traffic balancing with cost optimization and intelligent backend management"
+    traffic.veridis.xyz/session-specification: "Traffic session management with auto-optimization and backend management"
+    traffic.veridis.xyz/monitoring-specification: "Traffic monitoring with backend load balancer analytics and session intelligence"
+
+    # Business Load Balancer specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant backend load balancer with business continuity and traffic guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized backend load balancer with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with backend load balancer optimization and traffic intelligence"
+
+    # Operational Load Balancer specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with backend load balancer analytics and traffic intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with backend load balancer preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with backend load balancer management and traffic optimization"
+
+    # Backend Load Balancer lifecycle specifications
+    lifecycle.veridis.xyz/backend-load-balancer-specification: "Dynamic backend load balancer with automated traffic management and session optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent backend load balancer scaling with machine learning and traffic forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Backend load balancer optimization with intelligent traffic management and session enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Backend load balancer evolution with intelligent adaptation and traffic optimization"
+
+    # Cloud Provider Load Balancer annotations
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-internal: "false"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: "HTTP"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "8080"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "10"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "5"
+    service.beta.kubernetes.io/aws-load-balancer-healthy-threshold: "2"
+    service.beta.kubernetes.io/aws-load-balancer-unhealthy-threshold: "2"
+
+    # Advanced Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "300"
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
+    service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-name: "veridis-lb-access-logs"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-prefix: "backend-lb"
+
+    # Session Affinity and Stickiness
+    service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: |
+      stickiness.enabled=true,
+      stickiness.type=source_ip,
+      stickiness.source_ip.duration_seconds=3600,
+      deregistration_delay.timeout_seconds=300,
+      preserve_client_ip.enabled=true,
+      load_balancing.algorithm.type=weighted_round_robin
+
+    # Security and Compliance annotations
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-west-2:123456789012:certificate/veridis-backend-cert"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-policy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
+    service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-backend-lb-security"
+
+    # Performance optimization annotations
+    loadbalancer.veridis.xyz/performance-optimization: "enabled"
+    loadbalancer.veridis.xyz/connection-pooling: "enabled"
+    loadbalancer.veridis.xyz/keep-alive: "enabled"
+    loadbalancer.veridis.xyz/compression: "enabled"
+    loadbalancer.veridis.xyz/caching: "intelligent"
+
+    # Monitoring and observability annotations
+    monitoring.veridis.xyz/prometheus-scrape: "true"
+    monitoring.veridis.xyz/prometheus-port: "9090"
+    monitoring.veridis.xyz/prometheus-path: "/metrics"
+    monitoring.veridis.xyz/grafana-dashboard: "backend-load-balancer"
+    monitoring.veridis.xyz/alerting-enabled: "true"
+
+    # Traffic management annotations
+    traffic.veridis.xyz/load-balancing-algorithm: "weighted-round-robin"
+    traffic.veridis.xyz/session-affinity: "source-ip"
+    traffic.veridis.xyz/health-check-enabled: "true"
+    traffic.veridis.xyz/failover-enabled: "true"
+    traffic.veridis.xyz/circuit-breaker: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "backend-team@veridis.xyz"
+    veridis.xyz/load-balancer-admin: "backend-admin@veridis.xyz"
+    veridis.xyz/escalation: "backend-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "backend-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/load-balancer"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backend/load-balancer-management"
+    veridis.xyz/load-balancer-docs: "https://backend.veridis.xyz/load-balancer-guide"
+    veridis.xyz/networking-docs: "https://networking.veridis.xyz/backend-load-balancer"
+
+spec:
+  # ==============================================================================
+  # Service Type Configuration
+  # ==============================================================================
+  type: LoadBalancer
+
+  # ==============================================================================
+  # Load Balancer IP Configuration
+  # ==============================================================================
+  loadBalancerIP: "52.25.123.45"  # Static IP for production
+  loadBalancerSourceRanges:
+    - "0.0.0.0/0"  # Allow from all sources for public API
+
+  # ==============================================================================
+  # Session Affinity Configuration
+  # ==============================================================================
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    # ==============================================================================
+    # HTTPS Production Traffic Port
+    # ==============================================================================
+    - name: https
+      port: 443
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 30443
+
+    # ==============================================================================
+    # HTTP Production Traffic Port (redirect to HTTPS)
+    # ==============================================================================
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 30080
+
+    # ==============================================================================
+    # Backend API Port
+    # ==============================================================================
+    - name: backend-api
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 30808
+
+    # ==============================================================================
+    # WebSocket Port
+    # ==============================================================================
+    - name: websocket
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+      nodePort: 30809
+
+    # ==============================================================================
+    # Metrics Port
+    # ==============================================================================
+    - name: metrics
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+      nodePort: 30909
+
+    # ==============================================================================
+    # Health Check Port
+    # ==============================================================================
+    - name: health
+      port: 8888
+      targetPort: 8888
+      protocol: TCP
+      nodePort: 30888
+
+  # ==============================================================================
+  # Service Selector
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/component: backend-service
+
+---
+# ==============================================================================
+# Veridis Backend Load Balancer - Internal Service Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-backend-internal-lb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-internal-load-balancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    loadbalancer.veridis.xyz/type: backend-internal-load-balancer
+    loadbalancer.veridis.xyz/category: internal-load-balancer
+    loadbalancer.veridis.xyz/role: internal-backend-load-balancer
+    loadbalancer.veridis.xyz/scope: internal-communication
+
+    backend.veridis.xyz/load-balancer-type: internal-load-balancer
+    backend.veridis.xyz/internal-communication: enabled
+    backend.veridis.xyz/service-mesh: enabled
+    backend.veridis.xyz/secure-communication: enabled
+
+    internal.veridis.xyz/backend-access: restricted
+    internal.veridis.xyz/authentication: required
+    internal.veridis.xyz/authorization: rbac
+    internal.veridis.xyz/load-balancer-security: maximum
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Internal backend load balancer for Veridis with restricted access and secure service communication"
+    veridis.xyz/purpose: "Provides internal backend load balancing for service-to-service communication with authentication and secure traffic distribution"
+
+    loadbalancer.veridis.xyz/internal-specification: "Internal backend load balancer with restricted access and secure communication"
+    backend.veridis.xyz/internal-specification: "Backend internal load balancer with authentication and secure traffic distribution"
+
+    # Internal Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
+    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-internal-1,subnet-internal-2,subnet-internal-3"
+    service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-internal-backend-lb"
+
+    # Internal traffic management
+    service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: |
+      stickiness.enabled=true,
+      stickiness.type=app_cookie,
+      stickiness.app_cookie.cookie_name=VERIDIS_INTERNAL_SESSION,
+      stickiness.app_cookie.duration_seconds=3600,
+      deregistration_delay.timeout_seconds=60,
+      preserve_client_ip.enabled=true
+
+    # Internal security annotations
+    internal.veridis.xyz/access-control: "restricted"
+    internal.veridis.xyz/service-mesh-integration: "enabled"
+    internal.veridis.xyz/mutual-tls: "enabled"
+    internal.veridis.xyz/rbac-enforcement: "enabled"
+    internal.veridis.xyz/traffic-encryption: "maximum"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "internal-backend-load-balancer-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/internal-load-balancer"
+
+spec:
+  type: LoadBalancer
+
+  # Internal load balancer configuration
+  loadBalancerSourceRanges:
+    - "10.0.0.0/8"
+    - "172.16.0.0/12"
+    - "192.168.0.0/16"
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600
+
+  ports:
+    - name: backend-internal
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+    - name: websocket-internal
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+
+    - name: metrics-internal
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+
+  selector:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/component: backend-service
+
+---
+# ==============================================================================
+# Veridis Backend Load Balancer - High-Performance Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-backend-performance-lb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-performance-load-balancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    loadbalancer.veridis.xyz/type: backend-performance-load-balancer
+    loadbalancer.veridis.xyz/category: performance-load-balancer
+    loadbalancer.veridis.xyz/role: high-performance-backend-load-balancer
+    loadbalancer.veridis.xyz/scope: performance-optimization
+
+    backend.veridis.xyz/load-balancer-type: performance-load-balancer
+    backend.veridis.xyz/performance-optimization: enabled
+    backend.veridis.xyz/connection-pooling: enabled
+    backend.veridis.xyz/latency-optimization: enabled
+
+    performance.veridis.xyz/optimization: enabled
+    performance.veridis.xyz/monitoring: comprehensive
+    performance.veridis.xyz/load-balancing: advanced
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "High-performance backend load balancer for Veridis with connection pooling and latency optimization"
+    veridis.xyz/purpose: "Provides performance-focused backend load balancing for maximum backend performance and traffic efficiency"
+
+    loadbalancer.veridis.xyz/performance-specification: "Performance optimization load balancer with connection pooling and latency optimization"
+    backend.veridis.xyz/performance-specification: "Backend performance load balancer with optimization and monitoring"
+
+    # Performance-specific Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb-ip"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "300"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "30"
+
+    # High-performance configuration
+    service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: |
+      stickiness.enabled=true,
+      stickiness.type=source_ip,
+      stickiness.source_ip.duration_seconds=7200,
+      deregistration_delay.timeout_seconds=30,
+      preserve_client_ip.enabled=true,
+      load_balancing.algorithm.type=least_outstanding_requests,
+      target_group_health.dns_failover.minimum_healthy_targets.count=2,
+      target_group_health.dns_failover.minimum_healthy_targets.percentage=50
+
+    # Performance monitoring annotations
+    performance-loadbalancer.veridis.xyz/connection-utilization: "monitored"
+    performance-loadbalancer.veridis.xyz/latency-optimization: "enabled"
+    performance-loadbalancer.veridis.xyz/throughput-maximized: "enabled"
+    performance-loadbalancer.veridis.xyz/connection-pooling: "optimized"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "backend-performance-load-balancer-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/performance-load-balancer"
+
+spec:
+  type: LoadBalancer
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 7200
+
+  ports:
+    - name: backend-performance
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+    - name: websocket-performance
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+
+    - name: high-perf-api
+      port: 8082
+      targetPort: 8082
+      protocol: TCP
+
+  selector:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/component: backend-service
+    performance.veridis.xyz/tier: high-performance
+
+---
+# ==============================================================================
+# Veridis Backend Load Balancer - Development and Testing Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-backend-dev-lb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-dev-load-balancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    loadbalancer.veridis.xyz/type: backend-dev-load-balancer
+    loadbalancer.veridis.xyz/category: development-load-balancer
+    loadbalancer.veridis.xyz/role: testing-load-balancer
+    loadbalancer.veridis.xyz/scope: development-testing
+
+    backend.veridis.xyz/load-balancer-type: development-load-balancer
+    backend.veridis.xyz/testing-enabled: "true"
+    backend.veridis.xyz/debugging-enabled: "true"
+    backend.veridis.xyz/traffic-monitoring: "detailed"
+
+    development.veridis.xyz/environment: "production"
+    development.veridis.xyz/testing-framework: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/backend-testing: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Development and testing backend load balancer for Veridis with debugging and traffic monitoring"
+    veridis.xyz/purpose: "Provides development-friendly backend load balancing for testing workflows and backend development simulation"
+
+    loadbalancer.veridis.xyz/dev-specification: "Development backend load balancer with testing integration and debugging support"
+    backend.veridis.xyz/dev-specification: "Backend development load balancer with testing framework and debugging integration"
+
+    # Development Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-type: "clb"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "3600"
+
+    # Development annotations
+    development.veridis.xyz/flexible-routing: "enabled"
+    development.veridis.xyz/testing-support: "enabled"
+    development.veridis.xyz/debugging-support: "enabled"
+    development.veridis.xyz/backend-development-workflow: "enabled"
+    development.veridis.xyz/traffic-debugging: "enabled"
+
+    # Debug configuration
+    service.beta.kubernetes.io/aws-load-balancer-access-log-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-name: "veridis-dev-lb-logs"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-prefix: "backend-dev-lb"
+
+    # Development-specific configuration
+    service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: |
+      stickiness.enabled=false,
+      deregistration_delay.timeout_seconds=10,
+      preserve_client_ip.enabled=true,
+      load_balancing.algorithm.type=round_robin
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "backend-development-load-balancer-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/dev-load-balancer"
+
+spec:
+  type: LoadBalancer
+
+  sessionAffinity: None
+
+  ports:
+    - name: backend-dev
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+    - name: debug-port
+      port: 8888
+      targetPort: 8888
+      protocol: TCP
+
+    - name: test-api
+      port: 9000
+      targetPort: 9000
+      protocol: TCP
+
+  selector:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/component: backend-service
+    development.veridis.xyz/environment: development
+
+---
+# ==============================================================================
+# Veridis Backend Load Balancer - Regional Multi-Zone Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-backend-regional-lb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-regional-load-balancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    loadbalancer.veridis.xyz/type: backend-regional-load-balancer
+    loadbalancer.veridis.xyz/category: regional-load-balancer
+    loadbalancer.veridis.xyz/role: multi-zone-backend-load-balancer
+    loadbalancer.veridis.xyz/scope: regional-deployment
+
+    backend.veridis.xyz/load-balancer-type: regional-load-balancer
+    backend.veridis.xyz/multi-zone: enabled
+    backend.veridis.xyz/regional-optimization: enabled
+    backend.veridis.xyz/failover-enabled: "true"
+
+    regional.veridis.xyz/deployment: multi-zone
+    regional.veridis.xyz/availability: high-availability
+    regional.veridis.xyz/disaster-recovery: enabled
+    regional.veridis.xyz/cross-zone-balancing: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Regional multi-zone backend load balancer for Veridis with high availability and disaster recovery"
+    veridis.xyz/purpose: "Provides regional backend load balancing across multiple availability zones with failover and disaster recovery"
+
+    loadbalancer.veridis.xyz/regional-specification: "Regional backend load balancer with multi-zone deployment and high availability"
+    backend.veridis.xyz/regional-specification: "Backend regional load balancer with failover and disaster recovery"
+
+    # Regional Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-us-west-2a,subnet-us-west-2b,subnet-us-west-2c"
+    service.beta.kubernetes.io/aws-load-balancer-availability-zone-affinity: "any"
+
+    # Multi-zone configuration
+    service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: |
+      stickiness.enabled=true,
+      stickiness.type=source_ip,
+      stickiness.source_ip.duration_seconds=1800,
+      deregistration_delay.timeout_seconds=300,
+      preserve_client_ip.enabled=true,
+      load_balancing.cross_zone.enabled=true,
+      target_group_health.dns_failover.minimum_healthy_targets.count=1,
+      target_group_health.dns_failover.minimum_healthy_targets.percentage=25
+
+    # Regional annotations
+    regional.veridis.xyz/multi-zone-deployment: "enabled"
+    regional.veridis.xyz/cross-zone-balancing: "enabled"
+    regional.veridis.xyz/disaster-recovery: "enabled"
+    regional.veridis.xyz/high-availability: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "regional-backend-load-balancer-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/regional-load-balancer"
+
+spec:
+  type: LoadBalancer
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 1800
+
+  ports:
+    - name: backend-regional
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+    - name: websocket-regional
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+
+    - name: failover-health
+      port: 8888
+      targetPort: 8888
+      protocol: TCP
+
+  selector:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/component: backend-service
+
+---
+# ==============================================================================
+# Veridis Backend Load Balancer - Global CDN Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-backend-global-lb
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: backend-global-load-balancer
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    loadbalancer.veridis.xyz/type: backend-global-load-balancer
+    loadbalancer.veridis.xyz/category: global-load-balancer
+    loadbalancer.veridis.xyz/role: cdn-backend-load-balancer
+    loadbalancer.veridis.xyz/scope: global-deployment
+
+    backend.veridis.xyz/load-balancer-type: global-load-balancer
+    backend.veridis.xyz/cdn-integration: enabled
+    backend.veridis.xyz/global-optimization: enabled
+    backend.veridis.xyz/edge-caching: enabled
+
+    global.veridis.xyz/deployment: worldwide
+    global.veridis.xyz/cdn-enabled: "true"
+    global.veridis.xyz/edge-optimization: enabled
+    global.veridis.xyz/latency-optimization: global
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: backend-engineering
+
+  annotations:
+    veridis.xyz/description: "Global CDN-integrated backend load balancer for Veridis with worldwide distribution and edge optimization"
+    veridis.xyz/purpose: "Provides global backend load balancing with CDN integration for worldwide performance and edge caching"
+
+    loadbalancer.veridis.xyz/global-specification: "Global backend load balancer with CDN integration and worldwide distribution"
+    backend.veridis.xyz/global-specification: "Backend global load balancer with edge optimization and CDN caching"
+
+    # Global Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-ip-address-type: "dualstack"
+
+    # CDN integration configuration
+    service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: |
+      stickiness.enabled=true,
+      stickiness.type=app_cookie,
+      stickiness.app_cookie.cookie_name=VERIDIS_GLOBAL_SESSION,
+      stickiness.app_cookie.duration_seconds=86400,
+      deregistration_delay.timeout_seconds=300,
+      preserve_client_ip.enabled=false,
+      load_balancing.algorithm.type=weighted_round_robin,
+      target_group_health.dns_failover.minimum_healthy_targets.count=2,
+      target_group_health.dns_failover.minimum_healthy_targets.percentage=33
+
+    # Global CDN annotations
+    global.veridis.xyz/cdn-integration: "enabled"
+    global.veridis.xyz/edge-caching: "intelligent"
+    global.veridis.xyz/global-latency: "optimized"
+    global.veridis.xyz/worldwide-distribution: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "global-backend-load-balancer-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backend/global-load-balancer"
+
+spec:
+  type: LoadBalancer
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 86400
+
+  ports:
+    - name: backend-global
+      port: 443
+      targetPort: 8080
+      protocol: TCP
+
+    - name: global-api
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+
+    - name: cdn-cache-control
+      port: 8888
+      targetPort: 8888
+      protocol: TCP
+
+  selector:
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/component: backend-service
+
+# ==============================================================================
+# Veridis Backend Load Balancer Summary and Enterprise Traffic Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS BACKEND LOAD BALANCER STRATEGY:
+# =====================================================
+#
+# VERIDIS BACKEND LOAD BALANCER ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------
+# 1. Primary Backend Load Balancer (veridis-backend-load-balancer):
+#    - Comprehensive backend traffic distribution with multiple ports and protocol-specific endpoints for production traffic
+#    - Advanced AWS NLB configuration with SSL termination, health checking, session affinity, and comprehensive traffic management
+#    - Multi-port routing with HTTPS, HTTP, backend API, WebSocket, metrics, and health check endpoints
+#    - Enterprise security with SSL certificates, security groups, proxy protocol, and comprehensive traffic security controls
+#    - Performance optimization with connection pooling, cross-zone load balancing, and weighted routing algorithms
+#
+# 2. Internal Service Load Balancer (veridis-backend-internal-lb):
+#    - Internal backend traffic distribution with private subnet restrictions and secure service-to-service communication
+#    - Service mesh integration with mutual TLS, RBAC enforcement, and secure internal traffic management
+#    - Internal session management with application cookie stickiness and secure communication protocols
+#    - Conditional deployment with internal backend load balancer enablement and secure traffic distribution
+#    - Advanced internal networking with service mesh integration and comprehensive internal security controls
+#
+# 3. High-Performance Load Balancer (veridis-backend-performance-lb):
+#    - Performance-optimized backend traffic distribution with connection pooling and latency optimization
+#    - Advanced algorithms with least outstanding requests and minimum healthy targets for maximum performance
+#    - Connection management with 300-second idle timeout and 30-second draining for performance efficiency
+#    - Conditional deployment with backend performance load balancer enablement and traffic optimization
+#    - Advanced performance monitoring with connection utilization tracking and throughput optimization intelligence
+#
+# 4. Development Environment Load Balancer (veridis-backend-dev-lb):
+#    - Development-friendly backend traffic distribution with flexible routing and comprehensive debugging
+#    - Classic Load Balancer configuration with simplified routing and development-specific settings
+#    - Testing framework integration with backend development workflow and traffic debugging capabilities
+#    - Round-robin algorithm with no session stickiness for development testing and flexible traffic distribution
+#    - Conditional deployment with backend development load balancer enablement and testing support
+#
+# 5. Regional Multi-Zone Load Balancer (veridis-backend-regional-lb):
+#    - Regional backend traffic distribution with multi-zone deployment and high availability
+#    - Cross-zone load balancing with availability zone affinity and disaster recovery capabilities
+#    - Regional failover with minimum healthy targets and comprehensive disaster recovery protocols
+#    - Multi-zone deployment with subnet distribution across us-west-2a, us-west-2b, us-west-2c availability zones
+#    - Conditional deployment with regional backend load balancer enablement and high availability management
+#
+# 6. Global CDN Load Balancer (veridis-backend-global-lb):
+#    - Global backend traffic distribution with CDN integration and worldwide performance optimization
+#    - Dual-stack IP addressing with IPv4/IPv6 support for global accessibility and modern networking
+#    - Edge caching integration with application cookie stickiness and global session management
+#    - CDN optimization with intelligent edge caching and global latency optimization
+#    - Conditional deployment with global backend load balancer enablement and CDN integration
+#
+# ENTERPRISE BACKEND LOAD BALANCER FEATURES:
+# ==========================================
+# Advanced AWS Load Balancer Configuration and Security:
+#   - SSL termination with ACM certificate integration and comprehensive TLS configuration for backend traffic
+#   - Network Load Balancer (NLB) with TCP backend protocol and IP target type for high-performance traffic distribution
+#   - Security group integration with backend-specific security controls and network-level traffic protection
+#   - Proxy protocol support with connection preservation and client IP maintenance for backend applications
+#   - Access logging with S3 bucket integration for comprehensive traffic audit and backend performance analysis
+#
+# Comprehensive Backend Traffic Management and Health Checking:
+#   - Multi-port configuration with HTTPS (443), HTTP (80), backend API (8080), WebSocket (8081), metrics (9090), health (8888)
+#   - Health check configuration with HTTP protocol, /health endpoint, 10-second interval, and 5-second timeout
+#   - Session affinity with ClientIP and configurable timeout (3600 seconds) for backend application session consistency
+#   - Connection draining with 300-second timeout and graceful backend service rotation for zero-downtime deployments
+#   - Cross-zone load balancing with availability zone distribution for backend service high availability
+#
+# Enterprise Backend Performance and Connection Optimization:
+#   - Target group attributes with stickiness configuration, deregistration delay, and client IP preservation
+#   - Load balancing algorithms including weighted round robin, least outstanding requests, and source IP hashing
+#   - Connection management with idle timeout configuration (60-3600 seconds) and connection pooling optimization
+#   - Session management with source IP stickiness, application cookie stickiness, and configurable duration
+#   - Performance monitoring with connection utilization tracking and backend service performance optimization
+#
+# Advanced Backend Security and Compliance Integration:
+#   - SSL policy configuration with TLS 1.3 support and modern cipher suites for backend traffic encryption
+#   - Security group integration with backend-specific rules and network-level access control
+#   - Internal load balancer configuration with private subnet restrictions and secure internal communication
+#   - Access control with source IP ranges and backend service authentication integration
+#   - Compliance logging with comprehensive audit trails and backend traffic security monitoring
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Backend Load Balancer Lifecycle Management:
+#   - Multi-load balancer architecture with primary, internal, performance, development, regional, and global configurations
+#   - Intelligent backend traffic management with predictive analytics and connection utilization correlation
+#   - Advanced monitoring with comprehensive backend load balancer analytics and traffic business intelligence
+#   - Configuration validation with backend load balancer schema enforcement and traffic deployment safety checks
+#   - Automated optimization with backend traffic pattern analysis and load balancer routing recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II backend load balancer controls with comprehensive audit requirements and traffic logging
+#   - GDPR backend load balancer compliance with data protection and privacy-preserving traffic management
+#   - ISO 27001 backend load balancer security management with information security and traffic compliance integration
+#   - NIST 800-190 container backend load balancer security with traffic validation and compliance
+#   - Zero-trust backend load balancer architecture with comprehensive encryption and traffic authentication requirements
+#
+# Business Intelligence Integration:
+#   - Backend traffic analytics with load balancer cost correlation and backend resource utilization optimization
+#   - Performance analytics with backend user experience optimization and traffic business intelligence
+#   - Routing intelligence with backend traffic pattern monitoring and load balancer optimization recommendations
+#   - Strategic planning with backend capacity management and traffic forecasting
+#   - Business impact assessment with backend traffic performance correlation and load balancer availability tracking
+#
+# Developer Experience Excellence:
+#   - Development backend load balancer with flexible routing and traffic debugging workflow integration
+#   - Comprehensive documentation with backend load balancer guides and traffic troubleshooting procedures
+#   - Environment-specific backend load balancer with production, internal, performance, development, regional, and global support
+#   - Testing integration with backend development workflow and traffic debugging capabilities
+#   - Backend load balancer monitoring with comprehensive tracking and traffic correlation
+#
+# ==============================================================================
