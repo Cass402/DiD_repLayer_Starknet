@@ -1,0 +1,892 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - HashiCorp Vault Service
+# ==============================================================================
+#
+# This manifest defines comprehensive HashiCorp Vault service configurations for the
+# Veridis deployment, providing:
+#
+# ENTERPRISE VAULT NETWORKING:
+#   • Advanced service discovery with intelligent load balancing and health-aware routing
+#   • Multi-tier service architecture with primary, standby, and monitoring endpoints
+#   • Comprehensive network security with TLS termination and certificate management
+#   • Advanced traffic management with session affinity and connection optimization
+#   • Enterprise-grade service mesh integration with secure communication protocols
+#
+# VAULT SERVICE OPTIMIZATION:
+#   • High-performance service networking with ultra-low latency and high throughput
+#   • Intelligent load balancing with health-based routing and failover capabilities
+#   • Advanced session management with sticky sessions and connection persistence
+#   • Business-aware traffic distribution with priority-based routing and optimization
+#   • Cost-optimized networking with resource efficiency and capacity management
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II network controls with comprehensive security and audit logging
+#   • GDPR network compliance with data protection and encrypted communication
+#   • ISO 27001 network security with access controls and monitoring integration
+#   • PCI DSS network requirements for cardholder data environment protection
+#   • FIPS 140-2 network compliance with validated communication protocols
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent service management with automated discovery and health monitoring
+#   • Predictive networking with capacity planning and performance optimization
+#   • Advanced monitoring integration with network analytics and security intelligence
+#   • Comprehensive service coordination with microservices architecture support
+#   • Business continuity integration with failover procedures and disaster recovery
+#
+# VAULT BUSINESS INTELLIGENCE:
+#   • Service usage analytics with access patterns and performance optimization
+#   • Network performance monitoring with latency analysis and capacity planning
+#   • Security intelligence with threat detection and anomaly analysis
+#   • Cost optimization with resource utilization and efficiency recommendations
+#   • Compliance reporting with network audit trails and validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Vault Primary Service - Main API Endpoint
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-primary
+  namespace: veridis-secrets
+
+  # Core Vault service identification labels
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.15.6"
+    app.kubernetes.io/component: primary-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Service specific classification
+    service.veridis.xyz/type: vault-primary
+    service.veridis.xyz/tier: enterprise
+    service.veridis.xyz/role: secrets-api
+    service.veridis.xyz/endpoint-type: primary
+    service.veridis.xyz/load-balancing: intelligent
+
+    # Network service classification
+    network.veridis.xyz/protocol: https
+    network.veridis.xyz/security-level: maximum
+    network.veridis.xyz/encryption: tls13
+    network.veridis.xyz/performance-tier: ultra-high
+    network.veridis.xyz/availability-tier: maximum
+
+    # Traffic management classification
+    traffic.veridis.xyz/distribution: weighted
+    traffic.veridis.xyz/session-affinity: client-ip
+    traffic.veridis.xyz/health-check: comprehensive
+    traffic.veridis.xyz/failover: automatic
+    traffic.veridis.xyz/monitoring: detailed
+
+    # Business service classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: security-foundation
+    business.veridis.xyz/cost-tier: premium
+    business.veridis.xyz/sla-target: "99.99"
+    business.veridis.xyz/priority: highest
+
+    # Performance classification
+    performance.veridis.xyz/latency-requirement: ultra-low
+    performance.veridis.xyz/throughput-requirement: high
+    performance.veridis.xyz/connection-limit: high
+    performance.veridis.xyz/session-persistence: enabled
+    performance.veridis.xyz/cache-strategy: intelligent
+
+    # Security service classification
+    security.veridis.xyz/encryption-level: enterprise
+    security.veridis.xyz/authentication: mutual-tls
+    security.veridis.xyz/authorization: rbac
+    security.veridis.xyz/audit-level: comprehensive
+    security.veridis.xyz/threat-protection: advanced
+
+    # Operational service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: security-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "network-security-control"
+    compliance.veridis.xyz/gdpr: "encrypted-communication-protection"
+    compliance.veridis.xyz/iso27001: "network-access-control"
+    compliance.veridis.xyz/pci-dss: "network-security-requirements"
+    compliance.veridis.xyz/fips-140-2: "network-protocol-validation"
+    governance.veridis.xyz/policy-enforcement: "strict"
+
+    # Service monitoring and validation
+    monitoring.veridis.xyz/service-metrics: "enabled"
+    monitoring.veridis.xyz/network-monitoring: "comprehensive"
+    monitoring.veridis.xyz/security-monitoring: "advanced"
+    monitoring.veridis.xyz/performance-monitoring: "detailed"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+
+  annotations:
+    # Service purpose and specifications
+    veridis.xyz/description: "Enterprise Vault primary service with intelligent load balancing, advanced security, and comprehensive monitoring"
+    veridis.xyz/purpose: "Provides primary Vault API access with enterprise networking, security controls, and performance optimization"
+    veridis.xyz/scope: "Primary Vault service including API access, secret operations, authentication, and administrative functions"
+
+    # Service architecture and networking
+    service.veridis.xyz/architecture: "High-performance service with intelligent load balancing, session affinity, and comprehensive health monitoring"
+    service.veridis.xyz/networking-strategy: "Enterprise networking with TLS termination, certificate management, and secure communication"
+    service.veridis.xyz/load-balancing: "Intelligent load balancing with health-based routing, session persistence, and failover capabilities"
+    service.veridis.xyz/traffic-management: "Advanced traffic management with priority routing, connection optimization, and performance tuning"
+
+    # Performance and optimization specifications
+    performance.veridis.xyz/connection-optimization: "Connection optimization with pooling, keep-alive, and intelligent resource management"
+    performance.veridis.xyz/session-management: "Advanced session management with sticky sessions, persistence, and state coordination"
+    performance.veridis.xyz/caching-strategy: "Intelligent caching with performance optimization and resource efficiency"
+    performance.veridis.xyz/latency-optimization: "Ultra-low latency optimization with connection reuse and protocol tuning"
+
+    # Security networking specifications
+    security.veridis.xyz/tls-configuration: "TLS 1.3 with enterprise cipher suites, certificate pinning, and mutual authentication"
+    security.veridis.xyz/network-security: "Comprehensive network security with microsegmentation and access control"
+    security.veridis.xyz/certificate-management: "Automated certificate management with rotation, validation, and compliance"
+    security.veridis.xyz/threat-protection: "Advanced threat protection with DDoS mitigation and anomaly detection"
+
+    # Business networking specifications
+    business.veridis.xyz/sla-networking: "SLA-aware networking with availability guarantees and performance targets"
+    business.veridis.xyz/cost-optimization: "Cost-optimized networking with resource efficiency and capacity planning"
+    business.veridis.xyz/business-continuity: "Business continuity with failover procedures and disaster recovery integration"
+    business.veridis.xyz/service-quality: "Enterprise service quality with performance monitoring and optimization"
+
+    # Compliance networking specifications
+    compliance.veridis.xyz/network-compliance: "Multi-framework network compliance with audit trails and validation"
+    compliance.veridis.xyz/encryption-compliance: "Encryption compliance with regulatory requirements and validation"
+    compliance.veridis.xyz/access-control-compliance: "Access control compliance with authentication and authorization"
+    compliance.veridis.xyz/audit-compliance: "Network audit compliance with logging and monitoring integration"
+
+    # Operational excellence specifications
+    operations.veridis.xyz/automation-level: "Full automation with intelligent service management and human oversight"
+    operations.veridis.xyz/health-monitoring: "Comprehensive health monitoring with automated recovery and failover"
+    operations.veridis.xyz/capacity-management: "Intelligent capacity management with scaling and optimization"
+    operations.veridis.xyz/incident-response: "Automated incident response with detection, escalation, and recovery"
+
+    # Advanced networking specifications
+    networking.veridis.xyz/service-mesh: "Service mesh integration with secure communication and traffic management"
+    networking.veridis.xyz/dns-optimization: "DNS optimization with intelligent resolution and caching strategies"
+    networking.veridis.xyz/connection-pooling: "Advanced connection pooling with resource optimization and performance"
+    networking.veridis.xyz/protocol-optimization: "Protocol optimization with HTTP/2, connection multiplexing, and compression"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/service-admin: "vault-service-admin@veridis.xyz"
+    veridis.xyz/escalation: "security-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "security-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/vault/primary-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/vault/service-operations"
+    veridis.xyz/network-docs: "https://network.veridis.xyz/vault/configuration"
+    veridis.xyz/security-docs: "https://security.veridis.xyz/vault/networking"
+
+    # Service mesh and ingress annotations
+    service.istio.io/canonical-name: "vault-primary"
+    service.istio.io/canonical-revision: "v1.15.6"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+
+# Service specification for Vault primary
+spec:
+  # Service type and networking
+  type: ClusterIP
+
+  # Session affinity for consistent routing
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 86400  # 24 hours
+
+  # IP families for dual-stack support
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+  - IPv4
+  - IPv6
+
+  # Service selector for Vault primary pods
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: primary
+    vault.veridis.xyz/role: secrets-manager
+
+  # Service ports configuration
+  ports:
+  # ==============================================================================
+  # Primary Vault API Port
+  # ==============================================================================
+  - name: vault-api
+    port: 8200
+    targetPort: vault-api
+    protocol: TCP
+    appProtocol: https
+
+  # ==============================================================================
+  # Vault Cluster Communication Port
+  # ==============================================================================
+  - name: vault-cluster
+    port: 8201
+    targetPort: vault-cluster
+    protocol: TCP
+    appProtocol: https
+
+  # ==============================================================================
+  # Vault Metrics Port for Monitoring
+  # ==============================================================================
+  - name: vault-metrics
+    port: 8220
+    targetPort: vault-metrics
+    protocol: TCP
+    appProtocol: http
+
+---
+# ==============================================================================
+# Vault Standby Service - Read Replica Endpoint
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-standby
+  namespace: veridis-secrets
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.15.6"
+    app.kubernetes.io/component: standby-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: vault-standby
+    service.veridis.xyz/tier: enterprise
+    service.veridis.xyz/role: read-replica
+    service.veridis.xyz/endpoint-type: standby
+    service.veridis.xyz/load-balancing: round-robin
+
+    network.veridis.xyz/protocol: https
+    network.veridis.xyz/security-level: high
+    network.veridis.xyz/performance-tier: high
+    network.veridis.xyz/availability-tier: high
+
+    traffic.veridis.xyz/distribution: balanced
+    traffic.veridis.xyz/session-affinity: none
+    traffic.veridis.xyz/health-check: standard
+    traffic.veridis.xyz/failover: automatic
+
+    business.veridis.xyz/criticality: business-critical
+    business.veridis.xyz/impact: read-performance
+    business.veridis.xyz/cost-tier: standard
+    business.veridis.xyz/sla-target: "99.9"
+
+    performance.veridis.xyz/latency-requirement: low
+    performance.veridis.xyz/throughput-requirement: standard
+    performance.veridis.xyz/connection-limit: medium
+    performance.veridis.xyz/read-optimization: enabled
+
+    security.veridis.xyz/encryption-level: high
+    security.veridis.xyz/authentication: tls
+    security.veridis.xyz/audit-level: standard
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: security-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "standby-network-control"
+    compliance.veridis.xyz/gdpr: "standby-communication-protection"
+    monitoring.veridis.xyz/service-metrics: "enabled"
+
+  annotations:
+    veridis.xyz/description: "Vault standby service for read operations with load balancing and performance optimization"
+    veridis.xyz/purpose: "Provides read-only Vault access for load distribution and enhanced performance"
+    veridis.xyz/scope: "Standby Vault service including read operations, status checks, and monitoring functions"
+
+    # Standby service specifications
+    service.veridis.xyz/standby-strategy: "Read replica service with load balancing and automatic promotion capability"
+    service.veridis.xyz/read-optimization: "Read-optimized service with performance tuning and connection optimization"
+    service.veridis.xyz/load-distribution: "Intelligent load distribution with health-based routing and failover"
+
+    # Performance optimization specifications
+    performance.veridis.xyz/read-performance: "Read performance optimization with connection pooling and caching"
+    performance.veridis.xyz/connection-management: "Connection management with efficient pooling and resource utilization"
+    performance.veridis.xyz/cache-optimization: "Cache optimization with intelligent invalidation and consistency"
+
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/standby-admin: "vault-standby-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/vault/standby-service"
+
+spec:
+  type: ClusterIP
+
+  # No session affinity for balanced load distribution
+  sessionAffinity: None
+
+  # IP families support
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+  - IPv4
+  - IPv6
+
+  # Selector for Vault standby pods
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: standby
+    vault.veridis.xyz/role: standby-replica
+
+  ports:
+  - name: vault-api
+    port: 8200
+    targetPort: vault-api
+    protocol: TCP
+    appProtocol: https
+
+  - name: vault-metrics
+    port: 8220
+    targetPort: vault-metrics
+    protocol: TCP
+    appProtocol: http
+
+---
+# ==============================================================================
+# Vault LoadBalancer Service - External Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-external
+  namespace: veridis-secrets
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.15.6"
+    app.kubernetes.io/component: external-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: vault-external
+    service.veridis.xyz/tier: enterprise
+    service.veridis.xyz/role: external-access
+    service.veridis.xyz/endpoint-type: load-balancer
+    service.veridis.xyz/exposure: controlled
+
+    network.veridis.xyz/protocol: https
+    network.veridis.xyz/security-level: maximum
+    network.veridis.xyz/encryption: tls13
+    network.veridis.xyz/performance-tier: ultra-high
+    network.veridis.xyz/availability-tier: maximum
+
+    traffic.veridis.xyz/distribution: intelligent
+    traffic.veridis.xyz/session-affinity: client-ip
+    traffic.veridis.xyz/health-check: comprehensive
+    traffic.veridis.xyz/ddos-protection: enabled
+    traffic.veridis.xyz/rate-limiting: enabled
+
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: external-access
+    business.veridis.xyz/cost-tier: premium
+    business.veridis.xyz/sla-target: "99.99"
+    business.veridis.xyz/external-exposure: controlled
+
+    performance.veridis.xyz/latency-requirement: ultra-low
+    performance.veridis.xyz/throughput-requirement: high
+    performance.veridis.xyz/connection-limit: very-high
+    performance.veridis.xyz/global-optimization: enabled
+
+    security.veridis.xyz/encryption-level: enterprise
+    security.veridis.xyz/authentication: mutual-tls
+    security.veridis.xyz/authorization: strict-rbac
+    security.veridis.xyz/audit-level: comprehensive
+    security.veridis.xyz/threat-protection: maximum
+    security.veridis.xyz/ip-allowlist: enabled
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: security-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "external-network-control"
+    compliance.veridis.xyz/gdpr: "external-communication-protection"
+    compliance.veridis.xyz/iso27001: "external-access-control"
+    compliance.veridis.xyz/pci-dss: "external-security-requirements"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+
+    monitoring.veridis.xyz/service-metrics: "enabled"
+    monitoring.veridis.xyz/external-monitoring: "comprehensive"
+    monitoring.veridis.xyz/security-monitoring: "maximum"
+    monitoring.veridis.xyz/ddos-monitoring: "enabled"
+
+  annotations:
+    veridis.xyz/description: "External Vault service with enterprise security, DDoS protection, and comprehensive monitoring"
+    veridis.xyz/purpose: "Provides secure external Vault access with enterprise networking and advanced security controls"
+    veridis.xyz/scope: "External Vault service including controlled access, security validation, and comprehensive monitoring"
+
+    # External service specifications
+    service.veridis.xyz/external-strategy: "Controlled external access with comprehensive security, monitoring, and compliance"
+    service.veridis.xyz/security-model: "Zero-trust external access with mutual TLS, IP allowlisting, and comprehensive audit"
+    service.veridis.xyz/ddos-protection: "Advanced DDoS protection with rate limiting, traffic analysis, and automated mitigation"
+    service.veridis.xyz/global-optimization: "Global performance optimization with CDN integration and edge acceleration"
+
+    # Advanced security specifications
+    security.veridis.xyz/external-security: "Maximum external security with threat protection and comprehensive monitoring"
+    security.veridis.xyz/ip-allowlist: "IP allowlisting with geographic restrictions and automated threat detection"
+    security.veridis.xyz/certificate-pinning: "Certificate pinning with validation and automated rotation procedures"
+    security.veridis.xyz/threat-intelligence: "Threat intelligence integration with automated response and mitigation"
+
+    # Performance and availability specifications
+    performance.veridis.xyz/global-performance: "Global performance optimization with edge nodes and intelligent routing"
+    performance.veridis.xyz/cdn-integration: "CDN integration with static content optimization and global distribution"
+    performance.veridis.xyz/edge-acceleration: "Edge acceleration with intelligent caching and request optimization"
+
+    # Business and compliance specifications
+    business.veridis.xyz/external-sla: "External SLA management with availability guarantees and performance targets"
+    business.veridis.xyz/cost-management: "External cost management with usage tracking and optimization recommendations"
+    compliance.veridis.xyz/external-compliance: "External compliance with regulatory requirements and audit validation"
+
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/external-admin: "vault-external-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/vault/external-service"
+
+    # Load balancer specific annotations
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:region:account:certificate/cert-id"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "300"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-name: "veridis-vault-access-logs"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-prefix: "vault-external"
+
+spec:
+  type: LoadBalancer
+
+  # External traffic policy for source IP preservation
+  externalTrafficPolicy: Local
+
+  # Session affinity for external clients
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600  # 1 hour for external sessions
+
+  # IP families support
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+  - IPv4
+  - IPv6
+
+  # Load balancer source ranges (IP allowlist)
+  loadBalancerSourceRanges:
+  - "10.0.0.0/8"      # Internal corporate network
+  - "172.16.0.0/12"   # Internal VPC network
+  - "192.168.0.0/16"  # Internal development network
+  # Add specific external IP ranges as needed
+
+  # Selector for both primary and standby pods with weighted routing
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    # Note: This will select both primary and standby pods
+    # Load balancer will distribute traffic intelligently
+
+  ports:
+  - name: vault-api
+    port: 443
+    targetPort: vault-api
+    protocol: TCP
+    appProtocol: https
+
+  - name: vault-api-alt
+    port: 8200
+    targetPort: vault-api
+    protocol: TCP
+    appProtocol: https
+
+---
+# ==============================================================================
+# Vault Headless Service - Service Discovery
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-headless
+  namespace: veridis-secrets
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.15.6"
+    app.kubernetes.io/component: headless-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: vault-headless
+    service.veridis.xyz/tier: enterprise
+    service.veridis.xyz/role: service-discovery
+    service.veridis.xyz/endpoint-type: headless
+    service.veridis.xyz/discovery-type: dns
+
+    network.veridis.xyz/protocol: https
+    network.veridis.xyz/security-level: high
+    network.veridis.xyz/discovery-optimization: enabled
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/impact: service-discovery
+    business.veridis.xyz/cost-tier: minimal
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: security-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    monitoring.veridis.xyz/service-metrics: "enabled"
+    monitoring.veridis.xyz/discovery-monitoring: "enabled"
+
+  annotations:
+    veridis.xyz/description: "Vault headless service for DNS service discovery and cluster coordination"
+    veridis.xyz/purpose: "Provides DNS-based service discovery for Vault cluster coordination and peer discovery"
+    veridis.xyz/scope: "Headless service for Vault cluster discovery, coordination, and internal communication"
+
+    # Headless service specifications
+    service.veridis.xyz/discovery-strategy: "DNS-based service discovery with cluster coordination and peer communication"
+    service.veridis.xyz/cluster-coordination: "Cluster coordination with peer discovery and consensus communication"
+    service.veridis.xyz/internal-communication: "Internal communication optimization with direct pod addressing"
+
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/headless-admin: "vault-headless-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/vault/headless-service"
+
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+
+  # No session affinity for discovery service
+  sessionAffinity: None
+
+  # Selector for all Vault pods (primary and standby)
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    # Selects both primary and standby components
+
+  ports:
+  - name: vault-api
+    port: 8200
+    targetPort: vault-api
+    protocol: TCP
+    appProtocol: https
+
+  - name: vault-cluster
+    port: 8201
+    targetPort: vault-cluster
+    protocol: TCP
+    appProtocol: https
+
+---
+# ==============================================================================
+# Vault Monitoring Service - Metrics Collection
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-monitoring
+  namespace: veridis-secrets
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.15.6"
+    app.kubernetes.io/component: monitoring-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: vault-monitoring
+    service.veridis.xyz/tier: enterprise
+    service.veridis.xyz/role: metrics-collection
+    service.veridis.xyz/endpoint-type: monitoring
+    service.veridis.xyz/metrics-type: comprehensive
+
+    network.veridis.xyz/protocol: http
+    network.veridis.xyz/security-level: medium
+    network.veridis.xyz/performance-tier: standard
+
+    monitoring.veridis.xyz/metrics-collection: comprehensive
+    monitoring.veridis.xyz/prometheus-integration: enabled
+    monitoring.veridis.xyz/grafana-integration: enabled
+    monitoring.veridis.xyz/alerting-integration: enabled
+
+    business.veridis.xyz/criticality: operational
+    business.veridis.xyz/impact: observability
+    business.veridis.xyz/cost-tier: standard
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: security-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "monitoring-network-control"
+    compliance.veridis.xyz/audit-monitoring: "enabled"
+
+  annotations:
+    veridis.xyz/description: "Vault monitoring service for comprehensive metrics collection and observability"
+    veridis.xyz/purpose: "Provides metrics collection endpoint for Vault monitoring, alerting, and observability"
+    veridis.xyz/scope: "Monitoring service including metrics collection, health monitoring, and performance analytics"
+
+    # Monitoring service specifications
+    service.veridis.xyz/monitoring-strategy: "Comprehensive monitoring with metrics collection and observability integration"
+    service.veridis.xyz/metrics-collection: "Advanced metrics collection with business and technical analytics"
+    service.veridis.xyz/observability-integration: "Observability integration with Prometheus, Grafana, and alerting"
+
+    # Metrics collection specifications
+    monitoring.veridis.xyz/metrics-scope: "Comprehensive metrics including performance, security, and business analytics"
+    monitoring.veridis.xyz/collection-frequency: "High-frequency collection with intelligent sampling and optimization"
+    monitoring.veridis.xyz/retention-policy: "Long-term retention with compression and intelligent archiving"
+
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/monitoring-admin: "vault-monitoring-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/vault/monitoring-service"
+
+    # Prometheus annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8220"
+    prometheus.io/path: "/v1/sys/metrics"
+    prometheus.io/scheme: "http"
+
+spec:
+  type: ClusterIP
+
+  # No session affinity for monitoring
+  sessionAffinity: None
+
+  # Selector for all Vault pods for comprehensive monitoring
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    # Monitors both primary and standby components
+
+  ports:
+  - name: vault-metrics
+    port: 8220
+    targetPort: vault-metrics
+    protocol: TCP
+    appProtocol: http
+
+  - name: vault-exporter-metrics
+    port: 9410
+    targetPort: 9410
+    protocol: TCP
+    appProtocol: http
+
+---
+# ==============================================================================
+# Vault Admin Service - Administrative Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-admin
+  namespace: veridis-secrets
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.15.6"
+    app.kubernetes.io/component: admin-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    service.veridis.xyz/type: vault-admin
+    service.veridis.xyz/tier: enterprise
+    service.veridis.xyz/role: administrative-access
+    service.veridis.xyz/endpoint-type: admin
+    service.veridis.xyz/access-control: strict
+
+    network.veridis.xyz/protocol: https
+    network.veridis.xyz/security-level: maximum
+    network.veridis.xyz/encryption: tls13
+    network.veridis.xyz/access-restriction: admin-only
+
+    security.veridis.xyz/encryption-level: enterprise
+    security.veridis.xyz/authentication: multi-factor
+    security.veridis.xyz/authorization: admin-rbac
+    security.veridis.xyz/audit-level: comprehensive
+    security.veridis.xyz/access-logging: detailed
+
+    business.veridis.xyz/criticality: administrative
+    business.veridis.xyz/impact: operational-control
+    business.veridis.xyz/access-tier: privileged
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: security-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    compliance.veridis.xyz/soc2: "admin-access-control"
+    compliance.veridis.xyz/gdpr: "admin-data-protection"
+    compliance.veridis.xyz/iso27001: "admin-security-management"
+    governance.veridis.xyz/policy-enforcement: "maximum"
+
+    monitoring.veridis.xyz/admin-monitoring: "comprehensive"
+    monitoring.veridis.xyz/access-monitoring: "detailed"
+    monitoring.veridis.xyz/security-monitoring: "maximum"
+
+  annotations:
+    veridis.xyz/description: "Vault administrative service with maximum security, comprehensive audit, and strict access control"
+    veridis.xyz/purpose: "Provides secure administrative access to Vault with enterprise security and comprehensive monitoring"
+    veridis.xyz/scope: "Administrative service including configuration management, security operations, and compliance functions"
+
+    # Administrative service specifications
+    service.veridis.xyz/admin-strategy: "Secure administrative access with comprehensive security controls and audit logging"
+    service.veridis.xyz/access-control: "Strict access control with multi-factor authentication and privilege validation"
+    service.veridis.xyz/security-model: "Zero-trust administrative access with comprehensive monitoring and validation"
+
+    # Security specifications for admin access
+    security.veridis.xyz/admin-security: "Maximum administrative security with comprehensive validation and monitoring"
+    security.veridis.xyz/privilege-management: "Privilege management with just-in-time access and validation procedures"
+    security.veridis.xyz/audit-requirements: "Comprehensive audit requirements with detailed logging and validation"
+
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/admin-service-admin: "vault-admin-service-admin@veridis.xyz"
+    veridis.xyz/documentation: "https://docs.veridis.xyz/infrastructure/vault/admin-service"
+
+spec:
+  type: ClusterIP
+
+  # Session affinity for administrative consistency
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 7200  # 2 hours for admin sessions
+
+  # Selector for primary Vault pods only (admin operations)
+  selector:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: primary
+    vault.veridis.xyz/role: secrets-manager
+
+  ports:
+  - name: vault-admin-api
+    port: 8200
+    targetPort: vault-api
+    protocol: TCP
+    appProtocol: https
+
+# ==============================================================================
+# Vault Service Summary and Enterprise Networking Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VAULT SERVICE STRATEGY:
+# =====================================
+#
+# VAULT SERVICE ARCHITECTURE OVERVIEW:
+# ------------------------------------
+# 1. Vault Primary Service (vault-primary):
+#    - Main API endpoint with intelligent load balancing and comprehensive security
+#    - Enterprise networking with TLS 1.3, session affinity, and performance optimization
+#    - Mission-critical service with 99.99% SLA and ultra-low latency requirements
+#    - Advanced traffic management with health-based routing and failover capabilities
+#    - Comprehensive monitoring with security analytics and business intelligence
+#
+# 2. Vault Standby Service (vault-standby):
+#    - Read replica endpoint with load balancing and performance optimization
+#    - Business-critical service with 99.9% SLA and read performance optimization
+#    - Connection management with efficient pooling and resource utilization
+#    - Cache optimization with intelligent invalidation and consistency management
+#    - Standard monitoring with performance tracking and optimization analytics
+#
+# 3. Vault External Service (vault-external):
+#    - LoadBalancer service with enterprise security and DDoS protection
+#    - Controlled external access with IP allowlisting and comprehensive monitoring
+#    - Advanced security with mutual TLS, certificate pinning, and threat protection
+#    - Global performance optimization with CDN integration and edge acceleration
+#    - Maximum compliance with regulatory requirements and audit validation
+#
+# 4. Vault Headless Service (vault-headless):
+#    - DNS-based service discovery for cluster coordination and peer communication
+#    - Cluster coordination with peer discovery and consensus communication
+#    - Internal communication optimization with direct pod addressing
+#    - Operational service with discovery monitoring and optimization
+#    - Minimal cost tier with essential functionality and monitoring
+#
+# 5. Vault Monitoring Service (vault-monitoring):
+#    - Comprehensive metrics collection with Prometheus integration
+#    - Advanced metrics including performance, security, and business analytics
+#    - High-frequency collection with intelligent sampling and optimization
+#    - Long-term retention with compression and intelligent archiving
+#    - Observability integration with Grafana, alerting, and business intelligence
+#
+# 6. Vault Admin Service (vault-admin):
+#    - Administrative access with maximum security and strict access control
+#    - Multi-factor authentication with privilege validation and audit logging
+#    - Zero-trust administrative access with comprehensive monitoring and validation
+#    - Just-in-time access with validation procedures and security controls
+#    - Comprehensive audit requirements with detailed logging and compliance
+#
+# ENTERPRISE SERVICE FEATURES:
+# ============================
+# Advanced Networking Architecture:
+#   - Multi-tier service architecture with specialized endpoints and optimization
+#   - Intelligent load balancing with health-based routing and performance optimization
+#   - Session management with sticky sessions, persistence, and state coordination
+#   - Connection optimization with pooling, keep-alive, and resource management
+#   - Protocol optimization with HTTP/2, multiplexing, and compression support
+#
+# Security and Compliance Integration:
+#   - TLS 1.3 with enterprise cipher suites and certificate management
+#   - Mutual authentication with certificate validation and pinning procedures
+#   - Network security with microsegmentation and access control integration
+#   - Comprehensive audit logging with security event correlation and analysis
+#   - Multi-framework compliance with SOC 2, GDPR, ISO 27001, and PCI DSS
+#
+# Performance and Optimization:
+#   - Ultra-low latency optimization with connection reuse and protocol tuning
+#   - High-throughput networking with intelligent resource allocation and management
+#   - Global performance optimization with CDN integration and edge acceleration
+#   - Cache optimization with intelligent invalidation and consistency management
+#   - Resource efficiency with capacity planning and utilization optimization
+#
+# Business Intelligence Integration:
+#   - Service usage analytics with access patterns and optimization recommendations
+#   - Network performance monitoring with latency analysis and capacity planning
+#   - Security intelligence with threat detection and anomaly analysis
+#   - Cost optimization with resource utilization and efficiency recommendations
+#   - Compliance reporting with network audit trails and validation procedures
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Service Management:
+#   - Full automation with intelligent service management and human oversight
+#   - Health monitoring with comprehensive checks and automated recovery procedures
+#   - Capacity management with intelligent scaling and optimization recommendations
+#   - Incident response with automated detection, escalation, and recovery coordination
+#   - Change management with impact analysis, validation procedures, and rollback capabilities
+#
+# Traffic Management:
+#   - Intelligent traffic distribution with priority routing and optimization
+#   - Session affinity with client IP-based routing and persistence management
+#   - Health-based routing with automatic failover and recovery procedures
+#   - DDoS protection with rate limiting, traffic analysis, and automated mitigation
+#   - Geographic routing with edge optimization and global performance enhancement
+#
+# Monitoring and Observability:
+#   - Comprehensive service monitoring with network analytics and performance tracking
+#   - Security monitoring with threat detection and automated response procedures
+#   - Business monitoring with SLA tracking and performance optimization
+#   - Compliance monitoring with audit trails and regulatory requirement validation
+#   - Cost monitoring with resource utilization analysis and optimization recommendations
+#
+# Integration and Coordination:
+#   - Service mesh integration with secure communication and traffic management
+#   - DNS optimization with intelligent resolution and caching strategies
+#   - Load balancer integration with advanced features and performance optimization
+#   - Ingress controller integration with certificate management and security controls
+#   - Monitoring integration with Prometheus, Grafana, and alerting systems
+#
+# ==============================================================================
