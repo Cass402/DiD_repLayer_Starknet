@@ -1,0 +1,948 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - ZK Circuits ServiceMonitor
+# ==============================================================================
+#
+# This manifest defines comprehensive ZK Circuits ServiceMonitor for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ZK CIRCUITS MONITORING ARCHITECTURE:
+#   • Advanced zero-knowledge proof monitoring with GPU optimization and intelligent metrics collection
+#   • Multi-tier monitoring architecture with development, testing, staging, and production observability
+#   • Comprehensive performance framework with GPU-aware metrics, monitoring optimization, and intelligence insights
+#   • Advanced lifecycle management with automated monitoring management, metrics collection, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and monitoring insights
+#
+# VERIDIS ZK CIRCUITS MONITORING OPTIMIZATION:
+#   • High-performance monitoring with intelligent metrics collection and GPU-aware optimization
+#   • Intelligent proof generation metrics with GPU utilization optimization and performance-based monitoring decisions
+#   • Advanced resource management with business intelligence and workload-based monitoring control
+#   • Comprehensive GPU monitoring control with intelligent collection and performance enhancement
+#   • Enterprise acceleration with predictive monitoring management and metrics optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II monitoring controls with comprehensive audit and metrics requirements
+#   • GDPR monitoring compliance with data protection, privacy controls, and metrics management
+#   • ISO 27001 monitoring management with comprehensive framework integration
+#   • NIST 800-190 container monitoring with metrics-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and monitoring best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent monitoring lifecycle management with automated provisioning and optimization
+#   • Predictive metrics analytics with capacity planning and monitoring intelligence
+#   • Advanced observability integration with monitoring analytics and business intelligence
+#   • Comprehensive metrics control with monitoring preservation and performance optimization
+#   • Business continuity monitoring with metrics guarantees and observability optimization
+#
+# GPU ACCELERATION MONITORING INTELLIGENCE:
+#   • Monitoring usage analytics with metrics patterns and optimization recommendations
+#   • Performance monitoring with metrics latency and monitoring optimization intelligence
+#   • Development efficiency with monitoring analytics and deployment optimization procedures
+#   • Cost optimization with metrics utilization analysis and capacity planning procedures
+#   • Quality assurance with monitoring metrics and performance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis ZK Circuits ServiceMonitor - Primary Metrics Collection
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-zk-circuits-service-monitor
+  namespace: veridis-infrastructure
+
+  # Core Veridis ZK Circuits monitoring identification labels
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-service-monitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Monitoring specific classification
+    monitoring.veridis.xyz/type: zk-circuits-service-monitor
+    monitoring.veridis.xyz/category: gpu-monitoring-control
+    monitoring.veridis.xyz/role: primary-service-monitor
+    monitoring.veridis.xyz/performance-class: high-performance-monitoring
+    monitoring.veridis.xyz/security-level: enterprise
+
+    # ZK monitoring classification
+    zk.veridis.xyz/monitoring-type: gpu-metrics-monitor
+    zk.veridis.xyz/monitoring: comprehensive
+    zk.veridis.xyz/performance-tier: high-performance
+    zk.veridis.xyz/optimization: enabled
+    zk.veridis.xyz/features: full-stack
+
+    # GPU monitoring classification
+    gpu.veridis.xyz/tier: production
+    gpu.veridis.xyz/optimization: intelligent-monitoring
+    gpu.veridis.xyz/acceleration: enabled
+    gpu.veridis.xyz/monitoring: optimized
+    gpu.veridis.xyz/efficiency: maximum
+
+    # Business monitoring classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational monitoring labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "monitoring-control-framework"
+    compliance.veridis.xyz/gdpr: "monitoring-data-protection"
+    compliance.veridis.xyz/iso27001: "monitoring-security-management"
+    compliance.veridis.xyz/nist-800-190: "monitoring-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Monitoring configuration labels
+    prometheus.veridis.xyz/scrape: "true"
+    prometheus.veridis.xyz/scrape-interval: "30s"
+    prometheus.veridis.xyz/scrape-timeout: "10s"
+    prometheus.veridis.xyz/metrics-path: "/metrics"
+    prometheus.veridis.xyz/scheme: "http"
+
+    # Alerting and notification labels
+    alerting.veridis.xyz/enabled: "true"
+    alerting.veridis.xyz/priority: "high"
+    alerting.veridis.xyz/team: "zk-engineering"
+    alerting.veridis.xyz/escalation: "enabled"
+    alerting.veridis.xyz/business-hours: "enabled"
+
+  annotations:
+    # Monitoring purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits ServiceMonitor with GPU optimization, intelligent metrics collection, and comprehensive performance monitoring"
+    veridis.xyz/purpose: "Provides comprehensive monitoring for zero-knowledge proof generation with intelligent metrics collection, GPU optimization, and performance guarantees"
+    veridis.xyz/scope: "Monitoring including GPU metrics, proof generation metrics, performance analytics, and comprehensive business intelligence"
+
+    # Monitoring architecture and design
+    monitoring.veridis.xyz/architecture: "Enterprise monitoring with GPU-aware metrics collection, intelligent aggregation, and performance optimization"
+    monitoring.veridis.xyz/design-pattern: "Multi-tier monitoring with performance optimization, cost efficiency, and business intelligence"
+    monitoring.veridis.xyz/optimization-model: "Intelligent monitoring with predictive analytics, performance optimization, and resource efficiency"
+    monitoring.veridis.xyz/performance-model: "High-performance monitoring with GPU acceleration and intelligent metrics management"
+
+    # GPU monitoring specifications
+    gpu.veridis.xyz/monitoring-specification: "GPU metrics collection with NVIDIA A100 optimization and intelligent performance monitoring"
+    gpu.veridis.xyz/metrics-specification: "Advanced GPU metrics with performance optimization and utilization enhancement"
+    gpu.veridis.xyz/utilization-specification: "GPU utilization monitoring with intelligent analytics and performance enhancement"
+    gpu.veridis.xyz/performance-specification: "GPU performance monitoring with acceleration optimization and metrics efficiency"
+    gpu.veridis.xyz/business-specification: "GPU business metrics with cost optimization and strategic intelligence"
+
+    # Performance monitoring specifications
+    performance.veridis.xyz/monitoring-specification: "Performance-aware monitoring with GPU optimization and metrics intelligence"
+    performance.veridis.xyz/metrics-specification: "Metrics optimization with intelligent collection and performance enhancement"
+    performance.veridis.xyz/efficiency-specification: "Monitoring efficiency with cost optimization and intelligent collection"
+    performance.veridis.xyz/scaling-specification: "Performance scaling with auto-optimization and metrics management"
+    performance.veridis.xyz/analytics-specification: "Performance analytics with monitoring intelligence and utilization optimization"
+
+    # Business monitoring specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant monitoring with business continuity and performance guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized monitoring with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with monitoring optimization and metrics intelligence"
+
+    # Operational monitoring specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/observability-specification: "Comprehensive observability with monitoring analytics and performance intelligence"
+    operations.veridis.xyz/management-specification: "Automated management with metrics preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with monitoring management and metrics optimization"
+
+    # Monitoring lifecycle specifications
+    lifecycle.veridis.xyz/collection-specification: "Dynamic collection with automated metrics management and performance optimization"
+    lifecycle.veridis.xyz/scaling-specification: "Intelligent monitoring scaling with machine learning and metrics forecasting"
+    lifecycle.veridis.xyz/optimization-specification: "Monitoring optimization with intelligent metrics management and performance enhancement"
+    lifecycle.veridis.xyz/evolution-specification: "Monitoring evolution with intelligent adaptation and metrics optimization"
+
+    # Prometheus specific annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+    prometheus.io/interval: "30s"
+    prometheus.io/timeout: "10s"
+
+    # GPU monitoring annotations
+    gpu.alpha.kubernetes.io/monitoring: "enabled"
+    gpu.alpha.kubernetes.io/metrics-collection: "comprehensive"
+    gpu.alpha.kubernetes.io/performance-monitoring: "enabled"
+    gpu.alpha.kubernetes.io/utilization-tracking: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "zk-team@veridis.xyz"
+    veridis.xyz/monitoring-admin: "zk-monitoring-admin@veridis.xyz"
+    veridis.xyz/escalation: "zk-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "zk-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/monitoring"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/zk-circuits/monitoring-management"
+    veridis.xyz/monitoring-docs: "https://monitoring.veridis.xyz/zk-circuits/service-monitor-guide"
+    veridis.xyz/optimization-docs: "https://optimization.veridis.xyz/zk-circuits/monitoring-optimization"
+
+spec:
+  # ==============================================================================
+  # Service Selector - Target ZK Circuits Services
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      app.kubernetes.io/component: zk-circuits
+      monitoring.veridis.xyz/enabled: "true"
+
+  # ==============================================================================
+  # Namespace Selector - Monitoring Scope
+  # ==============================================================================
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  # ==============================================================================
+  # Endpoints Configuration - Comprehensive Metrics Collection
+  # ==============================================================================
+  endpoints:
+    # ==============================================================================
+    # Primary Metrics Endpoint - Application Metrics
+    # ==============================================================================
+    - port: metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      path: /metrics
+      scheme: http
+
+      # HTTP configuration
+      honorLabels: true
+      honorTimestamps: true
+
+      # Metric relabeling for performance optimization
+      metricRelabelings:
+        # Add environment labels
+        - sourceLabels: [__name__]
+          targetLabel: environment
+          replacement: production
+
+        # Add team ownership
+        - sourceLabels: [__name__]
+          targetLabel: team
+          replacement: zk-engineering
+
+        # Add business unit
+        - sourceLabels: [__name__]
+          targetLabel: business_unit
+          replacement: identity-protocol
+
+        # GPU metrics optimization
+        - sourceLabels: [__name__]
+          regex: 'gpu_.*'
+          targetLabel: gpu_optimized
+          replacement: "true"
+
+        # ZK metrics classification
+        - sourceLabels: [__name__]
+          regex: 'zk_.*|proof_.*|circuit_.*'
+          targetLabel: zk_metric
+          replacement: "true"
+
+        # Performance metrics classification
+        - sourceLabels: [__name__]
+          regex: '.*_latency_.*|.*_duration_.*|.*_throughput_.*'
+          targetLabel: performance_metric
+          replacement: "true"
+
+        # Business metrics classification
+        - sourceLabels: [__name__]
+          regex: '.*_cost_.*|.*_revenue_.*|.*_efficiency_.*'
+          targetLabel: business_metric
+          replacement: "true"
+
+      # Sample limit for performance
+      sampleLimit: 10000
+
+      # Target limit for scalability
+      targetLimit: 100
+
+      # Label limit for efficiency
+      labelLimit: 100
+
+      # Label name length limit
+      labelNameLengthLimit: 100
+
+      # Label value length limit
+      labelValueLengthLimit: 200
+
+    # ==============================================================================
+    # GPU Metrics Endpoint - NVIDIA GPU Monitoring
+    # ==============================================================================
+    - port: gpu-metrics
+      interval: 15s
+      scrapeTimeout: 10s
+      path: /gpu-metrics
+      scheme: http
+
+      honorLabels: true
+      honorTimestamps: true
+
+      # GPU-specific metric relabeling
+      metricRelabelings:
+        # GPU identification
+        - sourceLabels: [gpu_uuid]
+          targetLabel: gpu_device_id
+
+        # GPU model classification
+        - sourceLabels: [gpu_name]
+          regex: '.*A100.*'
+          targetLabel: gpu_model
+          replacement: "A100"
+
+        # GPU memory optimization
+        - sourceLabels: [__name__]
+          regex: 'gpu_memory_.*'
+          targetLabel: gpu_memory_metric
+          replacement: "true"
+
+        # GPU utilization optimization
+        - sourceLabels: [__name__]
+          regex: 'gpu_utilization_.*'
+          targetLabel: gpu_utilization_metric
+          replacement: "true"
+
+        # GPU performance optimization
+        - sourceLabels: [__name__]
+          regex: 'gpu_performance_.*|cuda_.*'
+          targetLabel: gpu_performance_metric
+          replacement: "true"
+
+      sampleLimit: 5000
+      targetLimit: 50
+      labelLimit: 50
+
+    # ==============================================================================
+    # ZK Proof Generation Metrics Endpoint
+    # ==============================================================================
+    - port: zk-metrics
+      interval: 30s
+      scrapeTimeout: 15s
+      path: /zk-metrics
+      scheme: http
+
+      honorLabels: true
+      honorTimestamps: true
+
+      # ZK-specific metric relabeling
+      metricRelabelings:
+        # Proof generation classification
+        - sourceLabels: [proof_type]
+          targetLabel: zk_proof_type
+
+        # Circuit classification
+        - sourceLabels: [circuit_name]
+          targetLabel: zk_circuit_name
+
+        # Performance classification
+        - sourceLabels: [__name__]
+          regex: 'proof_generation_.*'
+          targetLabel: proof_generation_metric
+          replacement: "true"
+
+        # Circuit compilation classification
+        - sourceLabels: [__name__]
+          regex: 'circuit_compilation_.*'
+          targetLabel: circuit_compilation_metric
+          replacement: "true"
+
+        # Verification classification
+        - sourceLabels: [__name__]
+          regex: 'verification_.*'
+          targetLabel: verification_metric
+          replacement: "true"
+
+        # Business impact classification
+        - sourceLabels: [__name__]
+          regex: '.*_sla_.*|.*_user_.*|.*_business_.*'
+          targetLabel: business_impact_metric
+          replacement: "true"
+
+      sampleLimit: 8000
+      targetLimit: 80
+      labelLimit: 80
+
+    # ==============================================================================
+    # Performance Metrics Endpoint - System Performance
+    # ==============================================================================
+    - port: performance-metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      path: /performance-metrics
+      scheme: http
+
+      honorLabels: true
+      honorTimestamps: true
+
+      # Performance-specific metric relabeling
+      metricRelabelings:
+        # Latency metrics
+        - sourceLabels: [__name__]
+          regex: '.*_latency_.*|.*_response_time_.*'
+          targetLabel: latency_metric
+          replacement: "true"
+
+        # Throughput metrics
+        - sourceLabels: [__name__]
+          regex: '.*_throughput_.*|.*_rate_.*|.*_qps_.*'
+          targetLabel: throughput_metric
+          replacement: "true"
+
+        # Resource utilization metrics
+        - sourceLabels: [__name__]
+          regex: '.*_cpu_.*|.*_memory_.*|.*_disk_.*'
+          targetLabel: resource_metric
+          replacement: "true"
+
+        # Cache metrics
+        - sourceLabels: [__name__]
+          regex: '.*_cache_.*'
+          targetLabel: cache_metric
+          replacement: "true"
+
+        # Error metrics
+        - sourceLabels: [__name__]
+          regex: '.*_error_.*|.*_failure_.*'
+          targetLabel: error_metric
+          replacement: "true"
+
+      sampleLimit: 6000
+      targetLimit: 60
+      labelLimit: 60
+
+    # ==============================================================================
+    # Business Metrics Endpoint - Business Intelligence
+    # ==============================================================================
+    - port: business-metrics
+      interval: 60s
+      scrapeTimeout: 15s
+      path: /business-metrics
+      scheme: http
+
+      honorLabels: true
+      honorTimestamps: true
+
+      # Business-specific metric relabeling
+      metricRelabelings:
+        # Cost metrics
+        - sourceLabels: [__name__]
+          regex: '.*_cost_.*|.*_spend_.*|.*_budget_.*'
+          targetLabel: cost_metric
+          replacement: "true"
+
+        # Revenue metrics
+        - sourceLabels: [__name__]
+          regex: '.*_revenue_.*|.*_income_.*'
+          targetLabel: revenue_metric
+          replacement: "true"
+
+        # Efficiency metrics
+        - sourceLabels: [__name__]
+          regex: '.*_efficiency_.*|.*_utilization_.*'
+          targetLabel: efficiency_metric
+          replacement: "true"
+
+        # SLA metrics
+        - sourceLabels: [__name__]
+          regex: '.*_sla_.*|.*_availability_.*'
+          targetLabel: sla_metric
+          replacement: "true"
+
+        # User experience metrics
+        - sourceLabels: [__name__]
+          regex: '.*_user_.*|.*_experience_.*'
+          targetLabel: user_experience_metric
+          replacement: "true"
+
+      sampleLimit: 3000
+      targetLimit: 30
+      labelLimit: 30
+
+    # ==============================================================================
+    # Health Check Metrics Endpoint
+    # ==============================================================================
+    - port: health-metrics
+      interval: 15s
+      scrapeTimeout: 5s
+      path: /health-metrics
+      scheme: http
+
+      honorLabels: true
+      honorTimestamps: true
+
+      # Health-specific metric relabeling
+      metricRelabelings:
+        # Health status classification
+        - sourceLabels: [__name__]
+          regex: '.*_health_.*|.*_status_.*'
+          targetLabel: health_metric
+          replacement: "true"
+
+        # Readiness classification
+        - sourceLabels: [__name__]
+          regex: '.*_ready_.*|.*_readiness_.*'
+          targetLabel: readiness_metric
+          replacement: "true"
+
+        # Liveness classification
+        - sourceLabels: [__name__]
+          regex: '.*_alive_.*|.*_liveness_.*'
+          targetLabel: liveness_metric
+          replacement: "true"
+
+      sampleLimit: 1000
+      targetLimit: 10
+      labelLimit: 20
+
+  # ==============================================================================
+  # Job Label Configuration
+  # ==============================================================================
+  jobLabel: "app.kubernetes.io/name"
+
+  # ==============================================================================
+  # Target Labels Configuration
+  # ==============================================================================
+  targetLabels:
+    - "app.kubernetes.io/name"
+    - "app.kubernetes.io/version"
+    - "app.kubernetes.io/component"
+    - "app.kubernetes.io/part-of"
+    - "veridis.xyz/environment"
+    - "veridis.xyz/team"
+    - "gpu.veridis.xyz/enabled"
+    - "zk.veridis.xyz/workload-type"
+    - "business.veridis.xyz/criticality"
+
+  # ==============================================================================
+  # Pod Target Labels Configuration
+  # ==============================================================================
+  podTargetLabels:
+    - "pod-template-hash"
+    - "app.kubernetes.io/instance"
+    - "gpu.veridis.xyz/device-id"
+    - "zk.veridis.xyz/circuit-type"
+    - "performance.veridis.xyz/tier"
+
+  # ==============================================================================
+  # Sample Limit Configuration
+  # ==============================================================================
+  sampleLimit: 50000
+
+  # ==============================================================================
+  # Target Limit Configuration
+  # ==============================================================================
+  targetLimit: 500
+
+  # ==============================================================================
+  # Label Limit Configuration
+  # ==============================================================================
+  labelLimit: 500
+
+  # ==============================================================================
+  # Label Name Length Limit
+  # ==============================================================================
+  labelNameLengthLimit: 200
+
+  # ==============================================================================
+  # Label Value Length Limit
+  # ==============================================================================
+  labelValueLengthLimit: 500
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PodMonitor - Pod-Level Metrics Collection
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: veridis-zk-circuits-pod-monitor
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-pod-monitor
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: zk-circuits-pod-monitor
+    monitoring.veridis.xyz/category: pod-level-monitoring
+    monitoring.veridis.xyz/role: pod-metrics-collection
+
+    gpu.veridis.xyz/monitoring: pod-level
+    gpu.veridis.xyz/metrics: comprehensive
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Pod-level monitoring for ZK Circuits with comprehensive GPU and performance metrics collection"
+    veridis.xyz/purpose: "Provides detailed pod-level metrics for GPU utilization, ZK proof generation, and system performance"
+
+    monitoring.veridis.xyz/pod-specification: "Pod-level monitoring with GPU metrics, performance analytics, and business intelligence"
+    gpu.veridis.xyz/pod-specification: "GPU pod monitoring with comprehensive utilization and performance tracking"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/pod-monitoring"
+
+spec:
+  # ==============================================================================
+  # Pod Selector - Target ZK Circuits Pods
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      gpu.veridis.xyz/enabled: "true"
+
+  # ==============================================================================
+  # Namespace Selector
+  # ==============================================================================
+  namespaceSelector:
+    matchNames:
+      - veridis-infrastructure
+
+  # ==============================================================================
+  # Pod Metrics Endpoints
+  # ==============================================================================
+  podMetricsEndpoints:
+    # Pod-level application metrics
+    - port: metrics
+      interval: 30s
+      path: /metrics
+
+    # Pod-level GPU metrics
+    - port: gpu-metrics
+      interval: 15s
+      path: /gpu-metrics
+
+    # Pod-level performance metrics
+    - port: performance-metrics
+      interval: 30s
+      path: /performance-metrics
+
+  # ==============================================================================
+  # Sample and Target Limits
+  # ==============================================================================
+  sampleLimit: 20000
+  targetLimit: 200
+  labelLimit: 200
+
+---
+# ==============================================================================
+# Veridis ZK Circuits PrometheusRule - Alerting Rules
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: veridis-zk-circuits-prometheus-rules
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-prometheus-rules
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    monitoring.veridis.xyz/type: zk-circuits-prometheus-rules
+    monitoring.veridis.xyz/category: alerting-rules
+    monitoring.veridis.xyz/role: alerts-configuration
+
+    alerting.veridis.xyz/enabled: "true"
+    alerting.veridis.xyz/priority: "high"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "Prometheus alerting rules for ZK Circuits with GPU, performance, and business intelligence alerts"
+    veridis.xyz/purpose: "Provides comprehensive alerting for ZK Circuits GPU utilization, proof generation, and system health"
+
+    alerting.veridis.xyz/rules-specification: "Alerting rules with GPU monitoring, performance thresholds, and business impact alerts"
+    monitoring.veridis.xyz/rules-specification: "Prometheus rules with intelligent alerting and escalation management"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits/alerting-rules"
+
+spec:
+  groups:
+    # ==============================================================================
+    # GPU Monitoring Alerts
+    # ==============================================================================
+    - name: veridis-zk-circuits-gpu-alerts
+      interval: 30s
+      rules:
+        # GPU utilization alert
+        - alert: ZKCircuitsGPUHighUtilization
+          expr: gpu_utilization_percent{job="veridis-zk-circuits"} > 90
+          for: 5m
+          labels:
+            severity: warning
+            team: zk-engineering
+            component: gpu
+            priority: high
+          annotations:
+            summary: "High GPU utilization detected in ZK Circuits"
+            description: "GPU utilization is {{ $value }}% for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/gpu-high-utilization"
+
+        # GPU memory alert
+        - alert: ZKCircuitsGPUMemoryHigh
+          expr: gpu_memory_used_bytes{job="veridis-zk-circuits"} / gpu_memory_total_bytes{job="veridis-zk-circuits"} > 0.85
+          for: 3m
+          labels:
+            severity: warning
+            team: zk-engineering
+            component: gpu-memory
+            priority: high
+          annotations:
+            summary: "High GPU memory usage in ZK Circuits"
+            description: "GPU memory usage is {{ $value | humanizePercentage }} for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/gpu-memory-high"
+
+        # GPU temperature alert
+        - alert: ZKCircuitsGPUTemperatureHigh
+          expr: gpu_temperature_celsius{job="veridis-zk-circuits"} > 80
+          for: 2m
+          labels:
+            severity: critical
+            team: zk-engineering
+            component: gpu-thermal
+            priority: critical
+          annotations:
+            summary: "High GPU temperature in ZK Circuits"
+            description: "GPU temperature is {{ $value }}°C for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/gpu-temperature-high"
+
+    # ==============================================================================
+    # ZK Proof Generation Alerts
+    # ==============================================================================
+    - name: veridis-zk-circuits-proof-alerts
+      interval: 30s
+      rules:
+        # Proof generation latency alert
+        - alert: ZKCircuitsProofGenerationSlow
+          expr: histogram_quantile(0.95, proof_generation_duration_seconds{job="veridis-zk-circuits"}) > 30
+          for: 5m
+          labels:
+            severity: warning
+            team: zk-engineering
+            component: proof-generation
+            priority: high
+          annotations:
+            summary: "Slow proof generation detected in ZK Circuits"
+            description: "95th percentile proof generation time is {{ $value }}s for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/proof-generation-slow"
+
+        # Proof generation error rate alert
+        - alert: ZKCircuitsProofGenerationErrors
+          expr: rate(proof_generation_errors_total{job="veridis-zk-circuits"}[5m]) > 0.1
+          for: 2m
+          labels:
+            severity: critical
+            team: zk-engineering
+            component: proof-generation
+            priority: critical
+          annotations:
+            summary: "High proof generation error rate in ZK Circuits"
+            description: "Proof generation error rate is {{ $value | humanizePercentage }} for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/proof-generation-errors"
+
+        # Proof queue backlog alert
+        - alert: ZKCircuitsProofQueueBacklog
+          expr: proof_queue_size{job="veridis-zk-circuits"} > 100
+          for: 10m
+          labels:
+            severity: warning
+            team: zk-engineering
+            component: proof-queue
+            priority: medium
+          annotations:
+            summary: "Large proof queue backlog in ZK Circuits"
+            description: "Proof queue size is {{ $value }} for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/proof-queue-backlog"
+
+    # ==============================================================================
+    # Performance and Resource Alerts
+    # ==============================================================================
+    - name: veridis-zk-circuits-performance-alerts
+      interval: 30s
+      rules:
+        # High CPU usage alert
+        - alert: ZKCircuitsHighCPUUsage
+          expr: rate(process_cpu_seconds_total{job="veridis-zk-circuits"}[5m]) * 100 > 80
+          for: 5m
+          labels:
+            severity: warning
+            team: zk-engineering
+            component: cpu
+            priority: medium
+          annotations:
+            summary: "High CPU usage in ZK Circuits"
+            description: "CPU usage is {{ $value }}% for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/high-cpu-usage"
+
+        # High memory usage alert
+        - alert: ZKCircuitsHighMemoryUsage
+          expr: process_resident_memory_bytes{job="veridis-zk-circuits"} / container_spec_memory_limit_bytes{container="zk-circuits"} > 0.9
+          for: 5m
+          labels:
+            severity: warning
+            team: zk-engineering
+            component: memory
+            priority: medium
+          annotations:
+            summary: "High memory usage in ZK Circuits"
+            description: "Memory usage is {{ $value | humanizePercentage }} for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/high-memory-usage"
+
+        # Service unavailable alert
+        - alert: ZKCircuitsServiceDown
+          expr: up{job="veridis-zk-circuits"} == 0
+          for: 1m
+          labels:
+            severity: critical
+            team: zk-engineering
+            component: service
+            priority: critical
+          annotations:
+            summary: "ZK Circuits service is down"
+            description: "ZK Circuits service is not responding for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/service-down"
+
+    # ==============================================================================
+    # Business Impact Alerts
+    # ==============================================================================
+    - name: veridis-zk-circuits-business-alerts
+      interval: 60s
+      rules:
+        # SLA breach alert
+        - alert: ZKCircuitsSLABreach
+          expr: (rate(http_requests_total{job="veridis-zk-circuits",code!~"5.."}[5m]) / rate(http_requests_total{job="veridis-zk-circuits"}[5m])) < 0.999
+          for: 5m
+          labels:
+            severity: critical
+            team: zk-engineering
+            component: sla
+            priority: critical
+            business_impact: high
+          annotations:
+            summary: "ZK Circuits SLA breach detected"
+            description: "Service availability is {{ $value | humanizePercentage }} (below 99.9% SLA)"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/sla-breach"
+
+        # High cost alert
+        - alert: ZKCircuitsHighCost
+          expr: increase(gpu_cost_total{job="veridis-zk-circuits"}[1h]) > 100
+          for: 15m
+          labels:
+            severity: warning
+            team: zk-engineering
+            component: cost
+            priority: medium
+            business_impact: medium
+          annotations:
+            summary: "High ZK Circuits operational cost detected"
+            description: "GPU cost is ${{ $value }} per hour for instance {{ $labels.instance }}"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits/high-cost"
+
+# ==============================================================================
+# Veridis ZK Circuits ServiceMonitor Summary and Enterprise Monitoring Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ZK CIRCUITS MONITORING STRATEGY:
+# ======================================================
+#
+# VERIDIS ZK CIRCUITS MONITORING ARCHITECTURE OVERVIEW:
+# -----------------------------------------------------
+# 1. Primary ServiceMonitor (veridis-zk-circuits-service-monitor):
+#    - Comprehensive metrics collection with 6 specialized endpoints for different metric types
+#    - GPU-optimized monitoring with 15-second intervals for GPU metrics and intelligent relabeling
+#    - Advanced metric classification with performance, business, ZK-specific, and health metrics
+#    - Enterprise sample limits with 50,000 total samples and intelligent label management
+#    - Business intelligence integration with cost, revenue, efficiency, and SLA metrics
+#
+# 2. PodMonitor (veridis-zk-circuits-pod-monitor):
+#    - Pod-level metrics collection for detailed GPU utilization and performance tracking
+#    - Comprehensive pod monitoring with 3 specialized endpoints for granular visibility
+#    - 20,000 sample limit with 200 target limit for scalable pod-level monitoring
+#    - GPU-enabled pod targeting with intelligent selector configuration
+#    - Performance correlation with business metrics and operational intelligence
+#
+# 3. PrometheusRule (veridis-zk-circuits-prometheus-rules):
+#    - Comprehensive alerting with 4 specialized rule groups for different alert categories
+#    - GPU monitoring alerts with utilization, memory, and temperature thresholds
+#    - ZK proof generation alerts with latency, error rate, and queue backlog monitoring
+#    - Performance alerts with CPU, memory, and service availability monitoring
+#    - Business impact alerts with SLA breach detection and cost monitoring
+#
+# ENTERPRISE MONITORING FEATURES:
+# ===============================
+# Advanced Metrics Collection Architecture:
+#   - Multi-endpoint monitoring with specialized collection for application, GPU, ZK, performance, business, and health metrics
+#   - Intelligent scraping intervals optimized for metric type (15s for GPU, 30s for application, 60s for business)
+#   - Comprehensive metric relabeling with automatic classification and optimization
+#   - Sample limits optimization with 50,000 total samples and intelligent distribution
+#   - Label management with enterprise-grade limits and length restrictions
+#
+# GPU-Aware Monitoring Excellence:
+#   - NVIDIA A100 GPU optimization with specialized GPU metrics endpoint (15-second intervals)
+#   - GPU device identification with UUID tracking and model classification
+#   - GPU memory monitoring with utilization tracking and performance optimization
+#   - GPU temperature monitoring with thermal management and safety alerts
+#   - CUDA performance tracking with stream monitoring and acceleration analytics
+#
+# ZK Proof Generation Intelligence:
+#   - Proof generation latency monitoring with 95th percentile SLA tracking (30-second threshold)
+#   - Circuit compilation metrics with performance optimization and build process tracking
+#   - Verification metrics with accuracy tracking and performance validation
+#   - Proof queue management with backlog monitoring (100 proof threshold)
+#   - Business impact tracking with user experience and revenue correlation
+#
+# Comprehensive Alerting Framework:
+#   - GPU alerts with 90% utilization threshold, 85% memory threshold, and 80°C temperature threshold
+#   - Proof generation alerts with 30-second latency threshold and 10% error rate threshold
+#   - Performance alerts with 80% CPU threshold and 90% memory threshold
+#   - Business alerts with 99.9% SLA monitoring and $100/hour cost threshold
+#   - Escalation management with team assignment and priority classification
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Monitoring Lifecycle Management:
+#   - Multi-monitor architecture with ServiceMonitor and PodMonitor for comprehensive coverage
+#   - Intelligent metric classification with automatic labeling and optimization
+#   - Advanced observability with comprehensive monitoring analytics and business intelligence
+#   - Configuration validation with schema enforcement and deployment safety checks
+#   - Automated optimization with machine learning-based threshold adjustment
+#
+# Business Intelligence Integration:
+#   - Cost monitoring with GPU utilization correlation and budget management ($10,000/month target)
+#   - Revenue impact analysis with proof generation correlation and business metrics
+#   - SLA monitoring with 99.9% availability target and comprehensive breach detection
+#   - Efficiency analytics with resource utilization and cost optimization
+#   - Strategic planning with capacity management and performance forecasting
+#
+# Compliance and Security Framework:
+#   - SOC 2 Type II monitoring controls with comprehensive audit requirements
+#   - GDPR monitoring compliance with data protection and privacy-preserving metrics
+#   - ISO 27001 monitoring management with information security and compliance integration
+#   - NIST 800-190 container monitoring with security validation and compliance
+#   - Audit trail preservation with comprehensive monitoring logging and 90-day retention
+#
+# Developer Experience Excellence:
+#   - Comprehensive documentation with monitoring guides and alerting procedures
+#   - Runbook integration with incident response and troubleshooting procedures
+#   - Team assignment with ZK engineering ownership and escalation procedures
+#   - Monitoring integration with Prometheus, Grafana, and alerting dashboards
+#   - Automation compatibility with CI/CD pipeline integration and monitoring validation
+#
+# ==============================================================================

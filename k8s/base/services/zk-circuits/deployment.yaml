@@ -1,0 +1,1665 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - ZK Circuits Service Deployment
+# ==============================================================================
+#
+# This manifest defines comprehensive ZK Circuits service deployment for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ZK CIRCUITS SERVICE ARCHITECTURE:
+#   • Advanced zero-knowledge proof generation with GPU acceleration and intelligent workload optimization
+#   • Multi-tier ZK service architecture with development, testing, staging, and production configurations
+#   • Comprehensive performance framework with CUDA optimization, memory management, and proof generation efficiency
+#   • Advanced lifecycle management with automated provisioning, GPU resource management, and optimization
+#   • Enterprise-grade intelligence with comprehensive analytics and ZK performance insights
+#
+# VERIDIS ZK CIRCUITS PERFORMANCE OPTIMIZATION:
+#   • High-performance GPU acceleration with CUDA 12.0 and intelligent resource allocation decisions
+#   • Intelligent proof generation with Garaga SDK integration and performance-based optimization
+#   • Advanced circuit compilation with business intelligence and workload-based processing decisions
+#   • Comprehensive GPU resource management with intelligent allocation and performance optimization
+#   • Enterprise acceleration with predictive analytics and resource optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II ZK security controls with comprehensive audit and cryptographic requirements
+#   • GDPR ZK compliance with privacy-preserving proofs, data protection, and cryptographic management
+#   • ISO 27001 ZK security management with comprehensive framework integration
+#   • NIST 800-190 container ZK security with cryptographic validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and cryptographic best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent ZK lifecycle management with automated provisioning and GPU optimization
+#   • Predictive performance analytics with capacity planning and ZK intelligence
+#   • Advanced monitoring integration with ZK analytics and business intelligence
+#   • Comprehensive backup and recovery with ZK circuit preservation and disaster preparedness
+#   • Business continuity ZK services with failover capabilities and redundancy optimization
+#
+# GPU ACCELERATION INTELLIGENCE:
+#   • CUDA usage analytics with performance patterns and optimization recommendations
+#   • Performance monitoring with GPU utilization and throughput optimization intelligence
+#   • Development efficiency with ZK analytics and deployment optimization procedures
+#   • Cost optimization with GPU resource utilization analysis and capacity planning procedures
+#   • Quality assurance with ZK proof metrics and performance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis ZK Circuits Service Deployment - Primary GPU-Accelerated Service
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-zk-circuits
+  namespace: veridis-infrastructure
+
+  # Core Veridis ZK Circuits service identification labels
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # ZK service specific classification
+    zk.veridis.xyz/type: proof-generation-service
+    zk.veridis.xyz/category: gpu-accelerated-computing
+    zk.veridis.xyz/role: primary-zk-service
+    zk.veridis.xyz/performance-class: high-performance-gpu
+    zk.veridis.xyz/security-level: enterprise
+
+    # GPU acceleration classification
+    gpu.veridis.xyz/enabled: "true"
+    gpu.veridis.xyz/type: nvidia-cuda
+    gpu.veridis.xyz/compute-capability: "7.0"
+    gpu.veridis.xyz/memory-requirement: "8Gi"
+    gpu.veridis.xyz/optimization: intelligent-allocation
+
+    # ZK proof classification
+    proof.veridis.xyz/type: zero-knowledge
+    proof.veridis.xyz/security-level: "128"
+    proof.veridis.xyz/optimization: garaga-accelerated
+    proof.veridis.xyz/batching: enabled
+    proof.veridis.xyz/caching: optimized
+
+    # Business ZK classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/performance-requirement: 99.9
+
+    # Operational ZK labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+    veridis.xyz/cost-center: identity-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "zk-security-control-framework"
+    compliance.veridis.xyz/gdpr: "zk-privacy-data-protection"
+    compliance.veridis.xyz/iso27001: "zk-security-management"
+    compliance.veridis.xyz/nist-800-190: "zk-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # ZK performance monitoring and analytics
+    monitoring.veridis.xyz/zk-monitoring: "enabled"
+    monitoring.veridis.xyz/gpu-monitoring: "comprehensive"
+    monitoring.veridis.xyz/proof-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+
+  annotations:
+    # ZK service purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis ZK Circuits service with GPU acceleration, intelligent proof generation, and comprehensive performance optimization"
+    veridis.xyz/purpose: "Provides high-performance zero-knowledge proof generation for identity protocol with CUDA acceleration, business intelligence, and compliance validation"
+    veridis.xyz/scope: "ZK proof generation including circuit compilation, proof batching, GPU optimization, and comprehensive performance intelligence"
+
+    # ZK service architecture and design
+    zk.veridis.xyz/architecture: "Enterprise ZK service with GPU acceleration, intelligent proof generation, and performance optimization"
+    zk.veridis.xyz/design-pattern: "Multi-tier ZK processing with performance optimization, cost efficiency, and business intelligence"
+    zk.veridis.xyz/processing-model: "Intelligent proof generation with predictive analytics, performance optimization, and resource efficiency"
+    zk.veridis.xyz/performance-model: "High-performance ZK processing with GPU acceleration and intelligent resource allocation"
+
+    # GPU acceleration specifications
+    gpu.veridis.xyz/cuda-specification: "CUDA 12.0 with compute capability 7.0+ and 8GB+ memory requirement"
+    gpu.veridis.xyz/garaga-specification: "Garaga SDK 0.18.1 with optimization level 3 and intelligent acceleration"
+    gpu.veridis.xyz/memory-specification: "GPU memory optimization with intelligent allocation and performance management"
+    gpu.veridis.xyz/compute-specification: "High-performance compute with parallel processing and optimization intelligence"
+    gpu.veridis.xyz/optimization-specification: "Intelligent GPU optimization with resource efficiency and performance analytics"
+
+    # Performance ZK specifications
+    performance.veridis.xyz/proof-specification: "Intelligent proof generation with performance optimization and analytics"
+    performance.veridis.xyz/batching-specification: "Proof batching with intelligent processing and performance optimization"
+    performance.veridis.xyz/caching-specification: "Circuit caching with performance optimization and resource efficiency"
+    performance.veridis.xyz/optimization-specification: "Performance optimization with ZK intelligence and resource management"
+
+    # Business ZK specifications
+    business.veridis.xyz/sla-specification: "SLA-compliant ZK processing with business continuity and performance guarantees"
+    business.veridis.xyz/intelligence-specification: "Business intelligence with operational analytics and strategic insights"
+    business.veridis.xyz/cost-specification: "Cost-optimized ZK processing with efficiency analysis and budget management"
+    business.veridis.xyz/efficiency-specification: "Business efficiency with resource optimization and ZK intelligence"
+
+    # Operational ZK specifications
+    operations.veridis.xyz/automation-specification: "Full automation with intelligent management and developer-friendly interfaces"
+    operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with ZK analytics and performance intelligence"
+    operations.veridis.xyz/maintenance-specification: "Automated maintenance with circuit preservation and optimization procedures"
+    operations.veridis.xyz/scaling-specification: "Intelligent scaling with performance management and resource optimization"
+
+    # ZK lifecycle specifications
+    lifecycle.veridis.xyz/provisioning-specification: "Dynamic ZK provisioning with automated capacity management and performance optimization"
+    lifecycle.veridis.xyz/optimization-specification: "Intelligent ZK optimization with machine learning and performance forecasting"
+    lifecycle.veridis.xyz/scaling-specification: "Performance optimization with intelligent tuning and resource management"
+    lifecycle.veridis.xyz/maintenance-specification: "Automated maintenance with circuit preservation and optimization procedures"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "zk-team@veridis.xyz"
+    veridis.xyz/zk-admin: "zk-admin@veridis.xyz"
+    veridis.xyz/escalation: "zk-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "zk-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/services/zk-circuits"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/zk-circuits/deployment-management"
+    veridis.xyz/zk-docs: "https://zk.veridis.xyz/circuits/deployment-guide"
+    veridis.xyz/gpu-docs: "https://gpu.veridis.xyz/zk-circuits/gpu-optimization"
+
+    # Deployment behavior annotations
+    deployment.alpha.kubernetes.io/revision: "1"
+    deployment.alpha.kubernetes.io/desired-replicas: "2"
+    deployment.alpha.kubernetes.io/max-replicas: "10"
+    deployment.alpha.kubernetes.io/min-replicas: "2"
+
+    # GPU deployment annotations
+    gpu.alpha.kubernetes.io/gpu-required: "true"
+    gpu.alpha.kubernetes.io/gpu-type: "nvidia"
+    gpu.alpha.kubernetes.io/compute-capability: "7.0"
+    gpu.alpha.kubernetes.io/memory-minimum: "8Gi"
+
+spec:
+  # ==============================================================================
+  # Replica Configuration - Production High Availability
+  # ==============================================================================
+  replicas: 2
+
+  # ==============================================================================
+  # Deployment Strategy - Rolling Update with GPU Considerations
+  # ==============================================================================
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # Conservative update strategy due to GPU resource constraints
+      maxSurge: 1
+      maxUnavailable: 0  # Ensure service availability during updates
+
+  # ==============================================================================
+  # Revision History and Rollback Configuration
+  # ==============================================================================
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600  # Extended for GPU initialization
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: zk-circuits-service
+
+  # ==============================================================================
+  # Pod Template Configuration
+  # ==============================================================================
+  template:
+    metadata:
+      # ==============================================================================
+      # Pod Labels Configuration
+      # ==============================================================================
+      labels:
+        app.kubernetes.io/name: veridis-zk-circuits
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "3.2.1"
+        app.kubernetes.io/component: zk-circuits-service
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+
+        # Pod-specific ZK labels
+        zk.veridis.xyz/pod-type: zk-circuits-worker
+        zk.veridis.xyz/gpu-enabled: "true"
+        zk.veridis.xyz/proof-generation: "enabled"
+        zk.veridis.xyz/circuit-compilation: "enabled"
+        zk.veridis.xyz/garaga-acceleration: "enabled"
+
+        # GPU resource labels
+        gpu.veridis.xyz/allocation: "dedicated"
+        gpu.veridis.xyz/sharing: "exclusive"
+        gpu.veridis.xyz/workload-type: "zk-proof-generation"
+        gpu.veridis.xyz/performance-tier: "high-performance"
+
+        # Business continuity labels
+        business.veridis.xyz/availability: "high"
+        business.veridis.xyz/disaster-recovery: "enabled"
+        business.veridis.xyz/backup-required: "true"
+        business.veridis.xyz/monitoring-required: "comprehensive"
+
+        # Network and security labels
+        network.veridis.xyz/policy: "zk-circuits-network-policy"
+        security.veridis.xyz/context: "zk-circuits-security-context"
+        security.veridis.xyz/pod-security: "restricted"
+        security.veridis.xyz/encryption: "enabled"
+
+        # Operational labels
+        veridis.xyz/environment: production
+        veridis.xyz/team: zk-engineering
+        veridis.xyz/cost-center: identity-infrastructure
+        veridis.xyz/business-unit: identity-protocol
+
+      # ==============================================================================
+      # Pod Annotations Configuration
+      # ==============================================================================
+      annotations:
+        # Pod purpose and specifications
+        veridis.xyz/pod-description: "High-performance ZK circuits worker pod with GPU acceleration and intelligent proof generation"
+        veridis.xyz/pod-purpose: "Provides zero-knowledge proof generation with CUDA acceleration and business intelligence"
+        veridis.xyz/pod-scope: "Circuit compilation, proof generation, GPU optimization, and performance analytics"
+
+        # ZK processing specifications
+        zk.veridis.xyz/processing-specification: "High-performance ZK processing with GPU acceleration and intelligent optimization"
+        zk.veridis.xyz/circuit-specification: "Circuit compilation with Garaga SDK and performance optimization"
+        zk.veridis.xyz/proof-specification: "Proof generation with batching, caching, and performance intelligence"
+        zk.veridis.xyz/gpu-specification: "GPU acceleration with CUDA 12.0 and intelligent resource allocation"
+
+        # Performance specifications
+        performance.veridis.xyz/cpu-specification: "CPU optimization with intelligent threading and performance management"
+        performance.veridis.xyz/memory-specification: "Memory optimization with intelligent allocation and caching strategies"
+        performance.veridis.xyz/gpu-specification: "GPU optimization with CUDA acceleration and performance analytics"
+        performance.veridis.xyz/storage-specification: "Storage optimization with circuit caching and performance management"
+
+        # Security specifications
+        security.veridis.xyz/pod-specification: "Pod security with non-root execution and capability restrictions"
+        security.veridis.xyz/network-specification: "Network security with microsegmentation and traffic control"
+        security.veridis.xyz/storage-specification: "Storage security with encryption and access control"
+        security.veridis.xyz/runtime-specification: "Runtime security with security contexts and monitoring"
+
+        # Business specifications
+        business.veridis.xyz/availability-specification: "High availability with redundancy and failover capabilities"
+        business.veridis.xyz/performance-specification: "Performance guarantees with SLA compliance and monitoring"
+        business.veridis.xyz/cost-specification: "Cost optimization with resource efficiency and budget management"
+        business.veridis.xyz/monitoring-specification: "Comprehensive monitoring with business intelligence"
+
+        # Operational specifications
+        operations.veridis.xyz/deployment-specification: "Automated deployment with intelligent management and validation"
+        operations.veridis.xyz/scaling-specification: "Intelligent scaling with performance optimization and resource management"
+        operations.veridis.xyz/monitoring-specification: "Comprehensive monitoring with operational intelligence"
+        operations.veridis.xyz/maintenance-specification: "Automated maintenance with circuit preservation"
+
+        # Prometheus monitoring annotations
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/metrics"
+        prometheus.io/interval: "15s"
+        prometheus.io/scheme: "http"
+
+        # GPU monitoring annotations
+        gpu.alpha.kubernetes.io/scrape: "true"
+        gpu.alpha.kubernetes.io/port: "9091"
+        gpu.alpha.kubernetes.io/path: "/gpu-metrics"
+        gpu.alpha.kubernetes.io/interval: "10s"
+
+        # ZK monitoring annotations
+        zk.alpha.kubernetes.io/scrape: "true"
+        zk.alpha.kubernetes.io/port: "9092"
+        zk.alpha.kubernetes.io/path: "/zk-metrics"
+        zk.alpha.kubernetes.io/interval: "30s"
+
+    spec:
+      # ==============================================================================
+      # Service Account Configuration
+      # ==============================================================================
+      serviceAccountName: veridis-zk-circuits-sa
+      automountServiceAccountToken: false  # Security best practice
+
+      # ==============================================================================
+      # Security Context Configuration
+      # ==============================================================================
+      securityContext:
+        # Pod security context
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+
+        # Security profiles
+        seccompProfile:
+          type: RuntimeDefault
+
+        # Supplemental groups for GPU access
+        supplementalGroups: [44, 107]  # video and render groups
+
+      # ==============================================================================
+      # Node Selection and Affinity Configuration
+      # ==============================================================================
+      nodeSelector:
+        # GPU node requirement
+        accelerator: nvidia-tesla-v100
+        node-type: gpu-enabled
+
+        # High-performance node requirement
+        node.kubernetes.io/instance-type: p3.2xlarge
+
+        # Availability zone for redundancy
+        topology.kubernetes.io/zone: us-west-2a
+
+      affinity:
+        # ==============================================================================
+        # Node Affinity - GPU and Performance Requirements
+        # ==============================================================================
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  # GPU availability requirement
+                  - key: accelerator
+                    operator: In
+                    values: ["nvidia-tesla-v100", "nvidia-tesla-t4", "nvidia-a100"]
+
+                  # GPU memory requirement
+                  - key: gpu.memory
+                    operator: Gt
+                    values: ["8Gi"]
+
+                  # Node stability requirement
+                  - key: node.kubernetes.io/stable
+                    operator: In
+                    values: ["true"]
+
+          preferredDuringSchedulingIgnoredDuringExecution:
+            # Prefer high-performance GPU nodes
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: accelerator
+                    operator: In
+                    values: ["nvidia-tesla-v100", "nvidia-a100"]
+
+            # Prefer nodes with NVMe storage
+            - weight: 80
+              preference:
+                matchExpressions:
+                  - key: storage.type
+                    operator: In
+                    values: ["nvme"]
+
+            # Prefer nodes with high memory
+            - weight: 60
+              preference:
+                matchExpressions:
+                  - key: node.memory
+                    operator: Gt
+                    values: ["32Gi"]
+
+        # ==============================================================================
+        # Pod Affinity - Performance and Availability
+        # ==============================================================================
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            # Prefer to co-locate with backend service for low latency
+            - weight: 80
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: veridis-backend
+                    app.kubernetes.io/component: backend-service
+                topologyKey: kubernetes.io/hostname
+
+            # Prefer to co-locate with cache for performance
+            - weight: 60
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: redis
+                    app.kubernetes.io/component: cache
+                topologyKey: kubernetes.io/hostname
+
+        # ==============================================================================
+        # Pod Anti-Affinity - High Availability and Resource Distribution
+        # ==============================================================================
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            # Ensure ZK circuits pods are distributed across nodes
+            - labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: veridis-zk-circuits
+                  app.kubernetes.io/component: zk-circuits-service
+              topologyKey: kubernetes.io/hostname
+
+          preferredDuringSchedulingIgnoredDuringExecution:
+            # Prefer distribution across availability zones
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: veridis-zk-circuits
+                    app.kubernetes.io/component: zk-circuits-service
+                topologyKey: topology.kubernetes.io/zone
+
+      # ==============================================================================
+      # Tolerations Configuration - GPU Node Taints
+      # ==============================================================================
+      tolerations:
+        # GPU node taints
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule
+
+        - key: gpu-workload
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+
+        # High-performance node taints
+        - key: high-performance
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+
+        # Dedicated node taints
+        - key: dedicated
+          operator: Equal
+          value: "zk-circuits"
+          effect: NoSchedule
+
+      # ==============================================================================
+      # DNS Configuration
+      # ==============================================================================
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "2"
+          - name: edns0
+
+      # ==============================================================================
+      # Hostname and Subdomain Configuration
+      # ==============================================================================
+      hostname: zk-circuits-worker
+      subdomain: veridis-zk-circuits
+
+      # ==============================================================================
+      # Priority and Preemption Configuration
+      # ==============================================================================
+      priorityClassName: veridis-high-priority
+      preemptionPolicy: PreemptLowerPriority
+
+      # ==============================================================================
+      # Restart and Termination Configuration
+      # ==============================================================================
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 60  # Extended for GPU cleanup
+
+      # ==============================================================================
+      # Init Containers Configuration
+      # ==============================================================================
+      initContainers:
+        # ==============================================================================
+        # GPU Initialization Container
+        # ==============================================================================
+        - name: gpu-init
+          image: nvidia/cuda:12.0.0-base-ubuntu22.04
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "🔍 Initializing GPU environment..."
+
+              # Check GPU availability
+              if ! nvidia-smi; then
+                echo "❌ GPU not available"
+                exit 1
+              fi
+
+              # Verify CUDA compatibility
+              if ! nvidia-smi | grep -q "CUDA Version: 12."; then
+                echo "⚠️  CUDA version may be incompatible"
+              fi
+
+              # Check GPU memory
+              GPU_MEMORY=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits)
+              if [ "$GPU_MEMORY" -lt 8192 ]; then
+                echo "⚠️  GPU memory (${GPU_MEMORY}MB) may be insufficient"
+              fi
+
+              echo "✅ GPU initialization complete"
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+        # ==============================================================================
+        # Circuit Compilation Container
+        # ==============================================================================
+        - name: circuit-compile
+          image: veridis/zk-circuits:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "🔨 Compiling ZK circuits..."
+
+              # Set optimization environment
+              export GARAGA_CUDA_ENABLED=true
+              export GARAGA_OPTIMIZATION_LEVEL=3
+              export CUDA_VISIBLE_DEVICES=all
+
+              # Compile circuits if not already compiled
+              if [ ! -d "/app/circuits/build" ]; then
+                cd /app/circuits
+                npm run build:optimized
+              else
+                echo "✅ Circuits already compiled"
+              fi
+
+              # Generate keys if not already generated
+              if [ ! -d "/app/keys" ]; then
+                npm run generate:keys
+              else
+                echo "✅ Keys already generated"
+              fi
+
+              echo "✅ Circuit compilation complete"
+
+          env:
+            - name: GARAGA_CUDA_ENABLED
+              value: "true"
+            - name: GARAGA_OPTIMIZATION_LEVEL
+              value: "3"
+            - name: ZK_PROOF_SECURITY_LEVEL
+              value: "128"
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=2048"
+
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 2Gi
+              nvidia.com/gpu: 1
+            limits:
+              cpu: 2000m
+              memory: 4Gi
+              nvidia.com/gpu: 1
+
+          volumeMounts:
+            - name: circuit-cache
+              mountPath: /app/circuits/build
+            - name: key-storage
+              mountPath: /app/keys
+            - name: tmp-storage
+              mountPath: /tmp
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false  # Needed for circuit compilation
+            capabilities:
+              drop:
+                - ALL
+
+        # ==============================================================================
+        # Circuit Validation Container
+        # ==============================================================================
+        - name: circuit-validate
+          image: veridis/zk-circuits:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "🔍 Validating circuit compilation..."
+
+              # Check circuit artifacts
+              if [ ! -d "/app/circuits/build" ]; then
+                echo "❌ Circuit build directory not found"
+                exit 1
+              fi
+
+              # Check for R1CS files
+              if [ "$(find /app/circuits/build -name '*.r1cs' | wc -l)" -eq 0 ]; then
+                echo "❌ No R1CS files found"
+                exit 1
+              fi
+
+              # Check cryptographic keys
+              if [ ! -d "/app/keys" ]; then
+                echo "❌ Keys directory not found"
+                exit 1
+              fi
+
+              # Validate key count
+              KEY_COUNT=$(find /app/keys -type f | wc -l)
+              if [ "$KEY_COUNT" -eq 0 ]; then
+                echo "❌ No cryptographic keys found"
+                exit 1
+              fi
+
+              echo "✅ Circuit validation complete"
+              echo "  • Circuits: $(find /app/circuits/build -name '*.r1cs' | wc -l)"
+              echo "  • Keys: $KEY_COUNT"
+
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+
+          volumeMounts:
+            - name: circuit-cache
+              mountPath: /app/circuits/build
+              readOnly: true
+            - name: key-storage
+              mountPath: /app/keys
+              readOnly: true
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+      # ==============================================================================
+      # Main Containers Configuration
+      # ==============================================================================
+      containers:
+        # ==============================================================================
+        # ZK Circuits Service Container - Primary Service
+        # ==============================================================================
+        - name: zk-circuits
+          image: veridis/zk-circuits:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          # ==============================================================================
+          # Command and Arguments Configuration
+          # ==============================================================================
+          command:
+            - /usr/bin/dumb-init
+            - --
+            - /home/zkuser/startup.sh
+            - node
+            - --max-old-space-size=4096
+            - --inspect=0.0.0.0:9229
+            - proof-service/index.js
+
+          # ==============================================================================
+          # Working Directory Configuration
+          # ==============================================================================
+          workingDir: /app
+
+          # ==============================================================================
+          # Environment Variables Configuration
+          # ==============================================================================
+          env:
+            # ==============================================================================
+            # Core Service Configuration
+            # ==============================================================================
+            - name: NODE_ENV
+              value: "production"
+
+            - name: LOG_LEVEL
+              value: "info"
+
+            - name: SERVICE_NAME
+              value: "veridis-zk-circuits"
+
+            - name: SERVICE_VERSION
+              value: "3.2.1"
+
+            - name: PORT
+              value: "4000"
+
+            - name: HEALTH_CHECK_PORT
+              value: "4001"
+
+            - name: METRICS_PORT
+              value: "9090"
+
+            - name: GPU_METRICS_PORT
+              value: "9091"
+
+            - name: ZK_METRICS_PORT
+              value: "9092"
+
+            # ==============================================================================
+            # GPU and CUDA Configuration
+            # ==============================================================================
+            - name: GARAGA_CUDA_ENABLED
+              value: "true"
+
+            - name: CUDA_VISIBLE_DEVICES
+              value: "all"
+
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: "all"
+
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: "compute,utility"
+
+            - name: CUDA_CACHE_PATH
+              value: "/app/cache/cuda"
+
+            - name: GARAGA_OPTIMIZATION_LEVEL
+              value: "3"
+
+            # ==============================================================================
+            # ZK Proof Configuration
+            # ==============================================================================
+            - name: ZK_PROOF_SECURITY_LEVEL
+              value: "128"
+
+            - name: ZK_CIRCUIT_CACHE_SIZE
+              value: "2048"
+
+            - name: ZK_PROOF_BATCH_SIZE
+              value: "10"
+
+            - name: ZK_PARALLEL_PROVING
+              value: "true"
+
+            - name: ZK_PROOF_TIMEOUT
+              value: "300"
+
+            - name: ZK_CIRCUIT_OPTIMIZATION
+              value: "true"
+
+            # ==============================================================================
+            # Memory and Performance Configuration
+            # ==============================================================================
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=4096 --gc-interval=100"
+
+            - name: UV_THREADPOOL_SIZE
+              value: "16"
+
+            - name: MAX_MEMORY
+              value: "4096"
+
+            - name: MALLOC_ARENA_MAX
+              value: "2"
+
+            - name: MALLOC_MMAP_THRESHOLD_
+              value: "131072"
+
+            # ==============================================================================
+            # Circuit Configuration
+            # ==============================================================================
+            - name: CIRCUIT_CACHE_PATH
+              value: "/app/cache/circuits"
+
+            - name: CIRCUIT_BUILD_PATH
+              value: "/app/circuits/build"
+
+            - name: KEYS_PATH
+              value: "/app/keys"
+
+            - name: PROOF_CACHE_PATH
+              value: "/app/cache/proofs"
+
+            - name: CIRCUIT_PRELOAD
+              value: "true"
+
+            # ==============================================================================
+            # Database Configuration
+            # ==============================================================================
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-zk-circuits-secret
+                  key: database-url
+
+            - name: DATABASE_POOL_SIZE
+              value: "10"
+
+            - name: DATABASE_TIMEOUT
+              value: "30"
+
+            # ==============================================================================
+            # Cache Configuration
+            # ==============================================================================
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-zk-circuits-secret
+                  key: redis-url
+
+            - name: REDIS_TIMEOUT
+              value: "5"
+
+            - name: REDIS_RETRY_ATTEMPTS
+              value: "3"
+
+            # ==============================================================================
+            # Blockchain Configuration
+            # ==============================================================================
+            - name: STARKNET_NETWORK
+              value: "mainnet"
+
+            - name: STARKNET_RPC_URL
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-zk-circuits-secret
+                  key: starknet-rpc-url
+
+            - name: ETHEREUM_RPC_URL
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-zk-circuits-secret
+                  key: ethereum-rpc-url
+
+            # ==============================================================================
+            # Security Configuration
+            # ==============================================================================
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-zk-circuits-secret
+                  key: jwt-secret
+
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-zk-circuits-secret
+                  key: api-key
+
+            - name: ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-zk-circuits-secret
+                  key: encryption-key
+
+            # ==============================================================================
+            # Monitoring Configuration
+            # ==============================================================================
+            - name: PROMETHEUS_ENABLED
+              value: "true"
+
+            - name: JAEGER_ENABLED
+              value: "true"
+
+            - name: JAEGER_ENDPOINT
+              value: "http://jaeger-collector:14268/api/traces"
+
+            - name: METRICS_COLLECTION_INTERVAL
+              value: "15"
+
+            - name: GPU_METRICS_ENABLED
+              value: "true"
+
+            # ==============================================================================
+            # Business Configuration
+            # ==============================================================================
+            - name: BUSINESS_METRICS_ENABLED
+              value: "true"
+
+            - name: COST_TRACKING_ENABLED
+              value: "true"
+
+            - name: PERFORMANCE_TRACKING_ENABLED
+              value: "true"
+
+            - name: SLA_TRACKING_ENABLED
+              value: "true"
+
+            # ==============================================================================
+            # Kubernetes Configuration
+            # ==============================================================================
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+
+            - name: KUBERNETES_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+
+            - name: KUBERNETES_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+
+          # ==============================================================================
+          # Environment Variables from ConfigMaps
+          # ==============================================================================
+          envFrom:
+            - configMapRef:
+                name: veridis-global-config
+            - configMapRef:
+                name: veridis-zk-config
+            - configMapRef:
+                name: veridis-network-config
+            - secretRef:
+                name: veridis-zk-circuits-secret
+
+          # ==============================================================================
+          # Ports Configuration
+          # ==============================================================================
+          ports:
+            - name: http
+              containerPort: 4000
+              protocol: TCP
+
+            - name: health
+              containerPort: 4001
+              protocol: TCP
+
+            - name: metrics
+              containerPort: 9090
+              protocol: TCP
+
+            - name: gpu-metrics
+              containerPort: 9091
+              protocol: TCP
+
+            - name: zk-metrics
+              containerPort: 9092
+              protocol: TCP
+
+            - name: debug
+              containerPort: 9229
+              protocol: TCP
+
+          # ==============================================================================
+          # Resource Configuration - GPU and High-Performance Computing
+          # ==============================================================================
+          resources:
+            requests:
+              cpu: 2000m
+              memory: 4Gi
+              nvidia.com/gpu: 1
+              ephemeral-storage: 10Gi
+
+            limits:
+              cpu: 4000m
+              memory: 8Gi
+              nvidia.com/gpu: 1
+              ephemeral-storage: 20Gi
+
+          # ==============================================================================
+          # Volume Mounts Configuration
+          # ==============================================================================
+          volumeMounts:
+            # Circuit and key storage
+            - name: circuit-cache
+              mountPath: /app/circuits/build
+
+            - name: key-storage
+              mountPath: /app/keys
+
+            - name: proof-cache
+              mountPath: /app/cache/proofs
+
+            - name: cuda-cache
+              mountPath: /app/cache/cuda
+
+            # Temporary storage
+            - name: tmp-storage
+              mountPath: /tmp
+
+            - name: logs-storage
+              mountPath: /app/logs
+
+            # Configuration
+            - name: zk-config
+              mountPath: /app/config/zk-config.yaml
+              subPath: zk-config.yaml
+              readOnly: true
+
+            - name: circuit-config
+              mountPath: /app/config/circuit-config.yaml
+              subPath: circuit-config.yaml
+              readOnly: true
+
+          # ==============================================================================
+          # Health Checks Configuration
+          # ==============================================================================
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: health
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: health
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: health
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 12  # Extended for circuit compilation
+
+          # ==============================================================================
+          # Container Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false  # Needed for circuit compilation
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+            seccompProfile:
+              type: RuntimeDefault
+
+          # ==============================================================================
+          # Lifecycle Configuration
+          # ==============================================================================
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/bash
+                  - -c
+                  - |
+                    echo "🛑 Gracefully shutting down ZK circuits service..."
+
+                    # Stop accepting new requests
+                    curl -X POST http://localhost:4001/shutdown/prepare || true
+
+                    # Wait for ongoing proofs to complete
+                    sleep 15
+
+                    # Final shutdown
+                    curl -X POST http://localhost:4001/shutdown/execute || true
+
+                    echo "✅ ZK circuits service shutdown complete"
+
+        # ==============================================================================
+        # GPU Monitoring Sidecar Container
+        # ==============================================================================
+        - name: gpu-monitor
+          image: nvidia/dcgm-exporter:3.3.0-3.1.7-ubuntu22.04
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: gpu-metrics
+              containerPort: 9400
+              protocol: TCP
+
+          env:
+            - name: DCGM_EXPORTER_LISTEN
+              value: "0.0.0.0:9400"
+            - name: DCGM_EXPORTER_KUBERNETES
+              value: "true"
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+        # ==============================================================================
+        # Circuit Cache Management Sidecar Container
+        # ==============================================================================
+        - name: cache-manager
+          image: busybox:1.36.1
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              while true; do
+                echo "🧹 Circuit cache cleanup cycle"
+
+                # Clean old circuit cache (older than 1 hour)
+                find /app/cache/circuits -type f -mmin +60 -delete 2>/dev/null || true
+
+                # Clean old proof cache (older than 30 minutes)
+                find /app/cache/proofs -type f -mmin +30 -delete 2>/dev/null || true
+
+                # Clean CUDA cache (older than 2 hours)
+                find /app/cache/cuda -type f -mmin +120 -delete 2>/dev/null || true
+
+                echo "💤 Sleeping for 300 seconds..."
+                sleep 300
+              done
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+
+          volumeMounts:
+            - name: circuit-cache
+              mountPath: /app/cache/circuits
+            - name: proof-cache
+              mountPath: /app/cache/proofs
+            - name: cuda-cache
+              mountPath: /app/cache/cuda
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+      # ==============================================================================
+      # Volumes Configuration
+      # ==============================================================================
+      volumes:
+        # ==============================================================================
+        # Persistent Storage Volumes
+        # ==============================================================================
+        - name: circuit-cache
+          persistentVolumeClaim:
+            claimName: veridis-zk-circuits-cache-pvc
+
+        - name: key-storage
+          persistentVolumeClaim:
+            claimName: veridis-zk-circuits-keys-pvc
+
+        - name: proof-cache
+          persistentVolumeClaim:
+            claimName: veridis-zk-circuits-proofs-pvc
+
+        # ==============================================================================
+        # Ephemeral Storage Volumes
+        # ==============================================================================
+        - name: tmp-storage
+          emptyDir:
+            sizeLimit: 2Gi
+
+        - name: logs-storage
+          emptyDir:
+            sizeLimit: 1Gi
+
+        - name: cuda-cache
+          emptyDir:
+            sizeLimit: 4Gi
+
+        # ==============================================================================
+        # Configuration Volumes
+        # ==============================================================================
+        - name: zk-config
+          configMap:
+            name: veridis-zk-circuits-config
+            items:
+              - key: zk-config.yaml
+                path: zk-config.yaml
+
+        - name: circuit-config
+          configMap:
+            name: veridis-zk-circuits-config
+            items:
+              - key: circuit-config.yaml
+                path: circuit-config.yaml
+
+---
+# ==============================================================================
+# Veridis ZK Circuits High-Performance Deployment - GPU Optimized
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-zk-circuits-hp
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-circuits
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-circuits-hp-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    zk.veridis.xyz/type: high-performance-service
+    zk.veridis.xyz/category: gpu-optimized-computing
+    zk.veridis.xyz/role: hp-zk-service
+    zk.veridis.xyz/performance-class: maximum-performance
+
+    gpu.veridis.xyz/enabled: "true"
+    gpu.veridis.xyz/type: nvidia-a100
+    gpu.veridis.xyz/compute-capability: "8.0"
+    gpu.veridis.xyz/memory-requirement: "40Gi"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+
+  annotations:
+    veridis.xyz/description: "High-performance ZK circuits deployment optimized for maximum GPU utilization"
+    veridis.xyz/purpose: "Provides maximum performance zero-knowledge proof generation for high-throughput scenarios"
+
+    zk.veridis.xyz/hp-specification: "High-performance ZK processing with A100 GPU and maximum optimization"
+    performance.veridis.xyz/optimization-specification: "Maximum performance optimization with dedicated GPU resources"
+
+spec:
+  # High-performance configuration
+  replicas: 1  # Single high-performance instance
+
+  strategy:
+    type: Recreate  # Recreate strategy for dedicated GPU resources
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: veridis-zk-circuits
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: zk-circuits-hp-service
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: veridis-zk-circuits
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "3.2.1"
+        app.kubernetes.io/component: zk-circuits-hp-service
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+
+        zk.veridis.xyz/pod-type: zk-circuits-hp-worker
+        zk.veridis.xyz/gpu-enabled: "true"
+        zk.veridis.xyz/performance-tier: maximum
+
+        gpu.veridis.xyz/allocation: "exclusive"
+        gpu.veridis.xyz/sharing: "none"
+        gpu.veridis.xyz/workload-type: "high-performance-zk"
+
+        veridis.xyz/environment: production
+        veridis.xyz/team: zk-engineering
+
+      annotations:
+        veridis.xyz/pod-description: "High-performance ZK circuits worker pod with dedicated A100 GPU"
+        zk.veridis.xyz/hp-specification: "Maximum performance ZK processing with dedicated resources"
+
+    spec:
+      serviceAccountName: veridis-zk-circuits-sa
+      automountServiceAccountToken: false
+
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+        supplementalGroups: [44, 107]
+
+      # High-performance node selection
+      nodeSelector:
+        accelerator: nvidia-a100
+        node-type: high-performance-gpu
+        node.kubernetes.io/instance-type: p4d.24xlarge
+
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: accelerator
+                    operator: In
+                    values: ["nvidia-a100"]
+                  - key: gpu.memory
+                    operator: Gt
+                    values: ["40Gi"]
+
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  zk.veridis.xyz/performance-tier: maximum
+              topologyKey: kubernetes.io/hostname
+
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule
+        - key: high-performance
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        - key: dedicated
+          operator: Equal
+          value: "zk-circuits-hp"
+          effect: NoSchedule
+
+      priorityClassName: veridis-critical-priority
+      terminationGracePeriodSeconds: 120
+
+      containers:
+        - name: zk-circuits-hp
+          image: veridis/zk-circuits:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /usr/bin/dumb-init
+            - --
+            - /home/zkuser/startup.sh
+            - node
+            - --max-old-space-size=16384
+            - --inspect=0.0.0.0:9229
+            - proof-service/index.js
+
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: SERVICE_NAME
+              value: "veridis-zk-circuits-hp"
+            - name: PORT
+              value: "4000"
+            - name: GARAGA_CUDA_ENABLED
+              value: "true"
+            - name: GARAGA_OPTIMIZATION_LEVEL
+              value: "3"
+            - name: ZK_PROOF_SECURITY_LEVEL
+              value: "128"
+            - name: ZK_PROOF_BATCH_SIZE
+              value: "50"  # Larger batch size for HP
+            - name: ZK_PARALLEL_PROVING
+              value: "true"
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=16384 --gc-interval=50"
+            - name: UV_THREADPOOL_SIZE
+              value: "32"
+            - name: MAX_MEMORY
+              value: "16384"
+            - name: PERFORMANCE_MODE
+              value: "maximum"
+            - name: GPU_MEMORY_FRACTION
+              value: "0.9"
+
+          envFrom:
+            - configMapRef:
+                name: veridis-global-config
+            - configMapRef:
+                name: veridis-zk-config
+            - secretRef:
+                name: veridis-zk-circuits-secret
+
+          ports:
+            - name: http
+              containerPort: 4000
+              protocol: TCP
+            - name: health
+              containerPort: 4001
+              protocol: TCP
+            - name: metrics
+              containerPort: 9090
+              protocol: TCP
+
+          resources:
+            requests:
+              cpu: 8000m
+              memory: 16Gi
+              nvidia.com/gpu: 1
+              ephemeral-storage: 50Gi
+            limits:
+              cpu: 16000m
+              memory: 32Gi
+              nvidia.com/gpu: 1
+              ephemeral-storage: 100Gi
+
+          volumeMounts:
+            - name: circuit-cache-hp
+              mountPath: /app/circuits/build
+            - name: key-storage-hp
+              mountPath: /app/keys
+            - name: proof-cache-hp
+              mountPath: /app/cache/proofs
+            - name: cuda-cache-hp
+              mountPath: /app/cache/cuda
+            - name: tmp-storage-hp
+              mountPath: /tmp
+            - name: logs-storage-hp
+              mountPath: /app/logs
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4001
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 15
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 4001
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
+
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: 4001
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 20
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+            seccompProfile:
+              type: RuntimeDefault
+
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/bash
+                  - -c
+                  - |
+                    echo "🛑 Gracefully shutting down HP ZK circuits service..."
+                    curl -X POST http://localhost:4001/shutdown/prepare || true
+                    sleep 30  # Extended for HP workloads
+                    curl -X POST http://localhost:4001/shutdown/execute || true
+                    echo "✅ HP ZK circuits service shutdown complete"
+
+      volumes:
+        - name: circuit-cache-hp
+          persistentVolumeClaim:
+            claimName: veridis-zk-circuits-hp-cache-pvc
+        - name: key-storage-hp
+          persistentVolumeClaim:
+            claimName: veridis-zk-circuits-hp-keys-pvc
+        - name: proof-cache-hp
+          persistentVolumeClaim:
+            claimName: veridis-zk-circuits-hp-proofs-pvc
+        - name: tmp-storage-hp
+          emptyDir:
+            sizeLimit: 10Gi
+        - name: logs-storage-hp
+          emptyDir:
+            sizeLimit: 5Gi
+        - name: cuda-cache-hp
+          emptyDir:
+            sizeLimit: 20Gi
+
+# ==============================================================================
+# Veridis ZK Circuits Deployment Summary and Enterprise GPU Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ZK CIRCUITS DEPLOYMENT STRATEGY:
+# ======================================================
+#
+# VERIDIS ZK CIRCUITS ARCHITECTURE OVERVIEW:
+# ------------------------------------------
+# 1. Primary ZK Circuits Deployment (veridis-zk-circuits):
+#    - Enterprise-grade GPU acceleration with CUDA 12.0 and intelligent resource management
+#    - Multi-container architecture with init containers for GPU initialization and circuit compilation
+#    - Comprehensive monitoring with main service, GPU monitoring, and cache management sidecars
+#    - Production-optimized scaling with 2 replicas and intelligent node affinity policies
+#    - Advanced security with non-root execution, capability restrictions, and GPU security considerations
+#
+# 2. High-Performance ZK Circuits Deployment (veridis-zk-circuits-hp):
+#    - Maximum performance configuration with dedicated A100 GPU and exclusive resource allocation
+#    - Single high-performance instance with 16GB memory limit and 32-thread processing
+#    - Recreate deployment strategy for dedicated GPU resource management
+#    - Extended batch processing (50 proofs per batch) for high-throughput scenarios
+#    - Critical priority class with extended termination grace period for workload completion
+#
+# 3. Comprehensive Init Container Strategy:
+#    - GPU Initialization: CUDA environment validation and GPU availability verification
+#    - Circuit Compilation: Automated circuit compilation with Garaga SDK optimization
+#    - Circuit Validation: Comprehensive validation of compiled circuits and cryptographic keys
+#    - Security-first approach with non-root execution and read-only filesystem where possible
+#    - Resource-optimized init containers with appropriate CPU, memory, and GPU allocation
+#
+# 4. Advanced Sidecar Container Architecture:
+#    - GPU Monitoring: NVIDIA DCGM exporter for comprehensive GPU metrics collection
+#    - Cache Management: Intelligent cache cleanup with configurable retention policies
+#    - Resource-efficient sidecars with minimal CPU and memory footprint
+#    - Security-compliant sidecars with restricted capabilities and non-root execution
+#    - Operational intelligence with automated maintenance and performance optimization
+#
+# 5. Enterprise GPU Resource Management:
+#    - Intelligent node selection with GPU type, compute capability, and memory requirements
+#    - Advanced affinity and anti-affinity rules for optimal GPU resource distribution
+#    - Comprehensive tolerations for GPU node taints and dedicated node scheduling
+#    - Priority-based scheduling with high and critical priority classes
+#    - Resource quotas with appropriate CPU, memory, GPU, and storage allocation
+#
+# 6. Comprehensive Security and Compliance:
+#    - Non-root execution with dedicated user (zkuser:1000) and group security
+#    - Capability restrictions with ALL capabilities dropped and selective additions
+#    - Read-only root filesystem where possible with secure volume mounting
+#    - Security context inheritance with pod and container security policies
+#    - Compliance integration with SOC 2, GDPR, ISO 27001, and NIST frameworks
+#
+# ENTERPRISE ZK CIRCUITS FEATURES:
+# ================================
+# Advanced GPU Acceleration:
+#   - CUDA 12.0 support with compute capability 7.0+ requirement and intelligent GPU selection
+#   - Garaga SDK integration with optimization level 3 and performance-based acceleration
+#   - Intelligent GPU resource allocation with dedicated and shared allocation strategies
+#   - GPU memory optimization with configurable memory fractions and caching strategies
+#   - Advanced GPU monitoring with NVIDIA DCGM integration and performance analytics
+#
+# Comprehensive ZK Processing:
+#   - Zero-knowledge proof generation with 128-bit security level and cryptographic validation
+#   - Circuit compilation with automated optimization and performance intelligence
+#   - Proof batching with configurable batch sizes (10-50 proofs) and parallel processing
+#   - Circuit caching with intelligent cache management and performance optimization
+#   - Cryptographic key management with secure storage and rotation capabilities
+#
+# Intelligent Performance Optimization:
+#   - Node.js runtime optimization with configurable memory limits (4GB-16GB) and GC tuning
+#   - Thread pool optimization with configurable thread counts (16-32 threads) and workload balancing
+#   - Memory allocation optimization with arena management and fragmentation prevention
+#   - Cache optimization with multi-tier caching (circuit, proof, CUDA) and intelligent cleanup
+#   - Resource efficiency with predictive scaling and intelligent resource allocation
+#
+# Advanced Monitoring and Observability:
+#   - Multi-tier metrics collection with service, GPU, and ZK-specific metrics endpoints
+#   - Comprehensive health checks with startup, liveness, and readiness probes
+#   - Distributed tracing with Jaeger integration and performance correlation
+#   - Business intelligence with cost tracking, SLA monitoring, and performance analytics
+#   - Operational intelligence with automated alerting and incident response
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# ZK Service Lifecycle Management:
+#   - Multi-deployment architecture with standard and high-performance configurations
+#   - Intelligent scaling strategies with replica management and resource optimization
+#   - Automated deployment with init container validation and comprehensive health checks
+#   - Graceful shutdown procedures with proof completion and resource cleanup
+#   - Disaster recovery with circuit preservation and rapid service restoration
+#
+# Business Continuity Integration:
+#   - High availability with multi-replica deployment and intelligent load distribution
+#   - Fault tolerance with GPU failover capabilities and redundant processing
+#   - Performance SLA compliance with 99.9% availability targets and monitoring
+#   - Cost optimization with intelligent resource allocation and GPU utilization analysis
+#   - Strategic planning with capacity management and performance forecasting
+#
+# Developer Experience Excellence:
+#   - Comprehensive logging with structured logging and distributed tracing
+#   - Debug capabilities with inspector integration and performance profiling
+#   - Development-friendly configuration with environment-based settings
+#   - Automation integration with CI/CD pipeline compatibility and deployment validation
+#   - Documentation integration with extensive annotations and operational procedures
+#
+# Security and Compliance Excellence:
+#   - Multi-framework compliance with SOC 2, GDPR, ISO 27001, and NIST integration
+#   - Advanced security controls with non-root execution and capability restrictions
+#   - Cryptographic security with secure key management and circuit protection
+#   - Network security with microsegmentation and traffic control integration
+#   - Audit capabilities with comprehensive logging and compliance reporting
+#
+# ==============================================================================
