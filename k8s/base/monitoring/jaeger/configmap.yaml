@@ -1,0 +1,1249 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Jaeger ConfigMap Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Jaeger ConfigMap for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS JAEGER CONFIGMAP ARCHITECTURE:
+#   • Advanced Jaeger ConfigMap with intelligent tracing management and performance-based optimization
+#   • Multi-tier ConfigMap architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with ConfigMap policies, tracing optimization, Jaeger integration
+#   • Advanced lifecycle management with automated ConfigMap optimization, Jaeger control, and tracing enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Jaeger ConfigMap performance insights
+#
+# VERIDIS JAEGER CONFIGMAP OPTIMIZATION:
+#   • High-performance ConfigMap with intelligent tracing management and Jaeger configuration optimization
+#   • Intelligent ConfigMap configuration management with responsive policies and performance-based tracing decisions
+#   • Advanced ConfigMap management with business intelligence and tracing-based Jaeger control
+#   • Comprehensive observability control with intelligent Jaeger ConfigMap management and tracing enhancement
+#   • Enterprise acceleration with predictive Jaeger ConfigMap management and tracing optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Jaeger ConfigMap controls with comprehensive audit and tracing requirements
+#   • GDPR Jaeger ConfigMap compliance with data protection, privacy controls, and tracing management
+#   • ISO 27001 Jaeger ConfigMap management with comprehensive framework integration
+#   • NIST 800-190 container Jaeger ConfigMap security with tracing-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Jaeger ConfigMap best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Jaeger ConfigMap lifecycle management with automated provisioning and tracing optimization
+#   • Predictive tracing analytics with capacity planning and Jaeger ConfigMap intelligence
+#   • Advanced ConfigMap integration with Jaeger tracing analytics and performance business intelligence
+#   • Comprehensive observability control with Jaeger ConfigMap preservation and tracing optimization
+#   • Business continuity Jaeger ConfigMap with tracing guarantees and performance optimization
+#
+# JAEGER CONFIGMAP ACCELERATION INTELLIGENCE:
+#   • Jaeger ConfigMap usage analytics with tracing patterns and optimization recommendations
+#   • ConfigMap monitoring with Jaeger tracing latency and management optimization intelligence
+#   • Development efficiency with Jaeger ConfigMap analytics and deployment optimization procedures
+#   • Cost optimization with Jaeger ConfigMap utilization analysis and tracing capacity planning procedures
+#   • Quality assurance with Jaeger ConfigMap metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Jaeger ConfigMap - Primary Configuration
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-jaeger-config
+  namespace: veridis-infrastructure
+
+  # Core Veridis Jaeger ConfigMap identification labels
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-configmap
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Jaeger ConfigMap specific classification
+    jaeger.veridis.xyz/type: tracing-jaeger-configmap
+    jaeger.veridis.xyz/category: observability-configmap
+    jaeger.veridis.xyz/role: primary-jaeger-configmap
+    jaeger.veridis.xyz/configmap-class: high-performance-jaeger-configmap
+    jaeger.veridis.xyz/security-level: enterprise
+
+    # ConfigMap Jaeger ConfigMap classification
+    configmap.veridis.xyz/jaeger-configmap-type: intelligent-jaeger-configmap
+    configmap.veridis.xyz/configmap-type: tracing-configmap
+    configmap.veridis.xyz/performance-tier: high-throughput
+    configmap.veridis.xyz/optimization: enabled
+    configmap.veridis.xyz/features: full-jaeger-configmap-stack
+
+    # Observability Jaeger ConfigMap classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-jaeger-configmap-management
+    observability.veridis.xyz/tracing-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Jaeger ConfigMap classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-jaeger-configmap-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Jaeger ConfigMap labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "jaeger-configmap-control-framework"
+    compliance.veridis.xyz/gdpr: "jaeger-configmap-data-protection"
+    compliance.veridis.xyz/iso27001: "jaeger-configmap-security-management"
+    compliance.veridis.xyz/nist-800-190: "jaeger-configmap-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Jaeger ConfigMap analytics and intelligence
+    monitoring.veridis.xyz/jaeger-configmap-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/tracing-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Configuration management labels
+    config.veridis.xyz/type: "tracing"
+    config.veridis.xyz/format: "json-yaml"
+    config.veridis.xyz/version: "v1.52.0"
+    config.veridis.xyz/validation: "enabled"
+    config.veridis.xyz/hot-reload: "supported"
+
+    # Performance labels
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/sampling-enabled: "true"
+    performance.veridis.xyz/caching-enabled: "true"
+
+  annotations:
+    # Jaeger ConfigMap purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Jaeger ConfigMap with intelligent tracing management, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Jaeger ConfigMap for decentralized identity management with intelligent tracing management, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "Jaeger ConfigMap including tracing management, performance optimization, sampling configuration, and comprehensive monitoring intelligence"
+
+    # Jaeger ConfigMap architecture and design
+    jaeger.veridis.xyz/architecture: "Enterprise Jaeger ConfigMap with intelligent tracing management, advanced performance optimization, and sampling integration optimization"
+    jaeger.veridis.xyz/design-pattern: "Multi-tier Jaeger ConfigMap with performance optimization, cost efficiency, and business intelligence"
+    jaeger.veridis.xyz/optimization-model: "Intelligent Jaeger ConfigMap with predictive analytics, performance optimization, and tracing efficiency"
+    jaeger.veridis.xyz/performance-model: "High-performance Jaeger ConfigMap with tracing optimization and intelligent sampling management"
+
+    # ConfigMap Jaeger ConfigMap specifications
+    configmap.veridis.xyz/jaeger-configmap-specification: "Jaeger ConfigMap with performance optimization and intelligent jaeger configmap management"
+    configmap.veridis.xyz/tracing-specification: "Advanced tracing management configuration with jaeger optimization and configmap enhancement"
+    configmap.veridis.xyz/sampling-specification: "Jaeger ConfigMap sampling management optimization with intelligent tracing and enhancement"
+    configmap.veridis.xyz/storage-specification: "Jaeger storage configmap with performance acceleration and tracing efficiency"
+    configmap.veridis.xyz/business-specification: "Jaeger business configmap with cost optimization and strategic tracing intelligence"
+
+    # Configuration specific annotations
+    config.veridis.xyz/sampling-strategies: "adaptive"
+    config.veridis.xyz/storage-backend: "elasticsearch"
+    config.veridis.xyz/retention-policy: "7d"
+    config.veridis.xyz/batch-processing: "enabled"
+    config.veridis.xyz/compression: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/sampling-rate: "adaptive"
+    performance.veridis.xyz/batch-size: "1000"
+    performance.veridis.xyz/worker-threads: "10"
+    performance.veridis.xyz/queue-size: "10000"
+    performance.veridis.xyz/timeout-ms: "5000"
+
+    # Storage annotations
+    storage.veridis.xyz/backend: "elasticsearch"
+    storage.veridis.xyz/index-prefix: "veridis-jaeger"
+    storage.veridis.xyz/retention-days: "7"
+    storage.veridis.xyz/max-span-age: "168h"
+    storage.veridis.xyz/bulk-size: "1000"
+
+    # Security annotations
+    security.veridis.xyz/data-encryption: "enabled"
+    security.veridis.xyz/access-control: "rbac"
+    security.veridis.xyz/audit-logging: "enabled"
+    security.veridis.xyz/sensitive-data-masking: "enabled"
+    security.veridis.xyz/compliance-validation: "enabled"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-tracing"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/config-monitoring: "enabled"
+    monitoring.veridis.xyz/validation-alerts: "enabled"
+    monitoring.veridis.xyz/performance-alerts: "enabled"
+    monitoring.veridis.xyz/compliance-alerts: "enabled"
+    monitoring.veridis.xyz/health-checks: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/jaeger-configmap-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-configmap"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/jaeger-configmap-management"
+    veridis.xyz/configmap-docs: "https://observability.veridis.xyz/jaeger-configmap-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/jaeger-configmap-monitoring"
+
+data:
+  # ==============================================================================
+  # Sampling Strategies Configuration
+  # ==============================================================================
+  sampling_strategies.json: |
+    {
+      "default_strategy": {
+        "type": "adaptive",
+        "max_traces_per_second": 10000,
+        "max_idle_time_minutes": 2,
+        "sampling_refresh_interval": "1m"
+      },
+      "per_service_strategies": [
+        {
+          "service": "veridis-backend",
+          "type": "adaptive",
+          "max_traces_per_second": 5000,
+          "operation_strategies": [
+            {
+              "operation": "identity_verification",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "attestation_creation",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "compliance_check",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "bridge_operation",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "health_check",
+              "type": "probabilistic",
+              "param": 0.01
+            },
+            {
+              "operation": "metrics_endpoint",
+              "type": "probabilistic",
+              "param": 0.001
+            }
+          ]
+        },
+        {
+          "service": "veridis-zk-circuits",
+          "type": "adaptive",
+          "max_traces_per_second": 2000,
+          "operation_strategies": [
+            {
+              "operation": "zk_proof_generation",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "zk_proof_verification",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "circuit_compilation",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "gpu_acceleration",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "health_check",
+              "type": "probabilistic",
+              "param": 0.01
+            }
+          ]
+        },
+        {
+          "service": "veridis-ui",
+          "type": "adaptive",
+          "max_traces_per_second": 1000,
+          "operation_strategies": [
+            {
+              "operation": "user_authentication",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "dashboard_load",
+              "type": "probabilistic",
+              "param": 0.1
+            },
+            {
+              "operation": "static_assets",
+              "type": "probabilistic",
+              "param": 0.001
+            }
+          ]
+        },
+        {
+          "service": "postgres",
+          "type": "adaptive",
+          "max_traces_per_second": 1000,
+          "operation_strategies": [
+            {
+              "operation": "transaction_commit",
+              "type": "probabilistic",
+              "param": 0.1
+            },
+            {
+              "operation": "query_execution",
+              "type": "probabilistic",
+              "param": 0.05
+            },
+            {
+              "operation": "connection_pool",
+              "type": "probabilistic",
+              "param": 0.01
+            }
+          ]
+        },
+        {
+          "service": "redis",
+          "type": "adaptive",
+          "max_traces_per_second": 500,
+          "operation_strategies": [
+            {
+              "operation": "cache_miss",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "cache_hit",
+              "type": "probabilistic",
+              "param": 0.01
+            },
+            {
+              "operation": "session_management",
+              "type": "probabilistic",
+              "param": 0.1
+            }
+          ]
+        },
+        {
+          "service": "vault",
+          "type": "adaptive",
+          "max_traces_per_second": 200,
+          "operation_strategies": [
+            {
+              "operation": "secret_retrieval",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "key_rotation",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "health_check",
+              "type": "probabilistic",
+              "param": 0.001
+            }
+          ]
+        },
+        {
+          "service": "starknet-devnet",
+          "type": "adaptive",
+          "max_traces_per_second": 300,
+          "operation_strategies": [
+            {
+              "operation": "transaction_submission",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "block_creation",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "operation": "state_query",
+              "type": "probabilistic",
+              "param": 0.1
+            }
+          ]
+        }
+      ]
+    }
+
+  # ==============================================================================
+  # Jaeger Configuration
+  # ==============================================================================
+  jaeger.yaml: |
+    # Jaeger Configuration for Veridis Production Environment
+    # Enterprise-grade configuration with high availability and performance optimization
+
+    # Collector Configuration
+    collector:
+      # gRPC Server Configuration
+      grpc-server:
+        host-port: ":14250"
+        max-message-size: 4194304  # 4MB
+        max-connection-idle: 300s
+        max-connection-age: 300s
+        max-connection-age-grace: 10s
+        time: 30s
+        timeout: 5s
+
+      # HTTP Server Configuration
+      http-server:
+        host-port: ":14268"
+        cors:
+          allowed-origins:
+            - "https://jaeger.veridis.xyz"
+            - "https://observability.veridis.xyz"
+          allowed-headers:
+            - "Accept"
+            - "Authorization"
+            - "Content-Type"
+            - "X-Requested-With"
+          allowed-methods:
+            - "GET"
+            - "POST"
+            - "PUT"
+            - "DELETE"
+            - "OPTIONS"
+
+      # Zipkin Configuration
+      zipkin:
+        host-port: ":9411"
+        cors:
+          allowed-origins: ["*"]
+
+      # Performance and Scaling Configuration
+      num-workers: 10
+      queue-size: 10000
+      write-cache-ttl: 12h
+      tags:
+        environment: "production"
+        version: "v3.2.1"
+        cluster: "veridis-production"
+        region: "us-west-2"
+
+    # Query Configuration
+    query:
+      # Server Configuration
+      http-server:
+        host-port: ":16686"
+        base-path: "/jaeger"
+        static-files: "/go/jaeger-ui/"
+        ui-config: "/etc/jaeger/ui-config.json"
+
+      # Additional query configuration
+      max-clock-skew-adjustment: 0s
+
+    # Agent Configuration (for sidecar deployment)
+    agent:
+      # Thrift UDP Server
+      processor:
+        jaeger-compact:
+          server-host-port: ":6831"
+          server-max-packet-size: 65000
+          server-queue-size: 1000
+          workers: 10
+        jaeger-binary:
+          server-host-port: ":6832"
+          server-max-packet-size: 65000
+          server-queue-size: 1000
+          workers: 10
+
+      # HTTP Server for Configuration
+      http-server:
+        host-port: ":5778"
+
+    # Storage Configuration
+    storage:
+      type: "elasticsearch"
+      elasticsearch:
+        server-urls: "http://veridis-elasticsearch.veridis-infrastructure.svc.cluster.local:9200"
+        index-prefix: "veridis-jaeger"
+        username: "${ES_USERNAME}"
+        password: "${ES_PASSWORD}"
+        timeout: 60s
+        num-shards: 3
+        num-replicas: 1
+        priority-span-template: 0
+        priority-service-template: 0
+        priority-dependencies-template: 0
+        max-span-age: 168h  # 7 days
+        max-num-spans: 10000000
+        log-es-bulk-requests: false
+        bulk:
+          size: 1000
+          workers: 10
+          flush-interval: 200ms
+          actions: 1000
+        create-index-templates: true
+        version: 7
+        sniffer: false
+        sniffer-tls-enabled: false
+        tags-as-fields:
+          all: false
+          config-file: "/etc/jaeger/tags-as-fields.json"
+
+    # Metrics Configuration
+    metrics:
+      backend: "prometheus"
+      http-route: "/metrics"
+
+    # Logging Configuration
+    log-level: "info"
+
+    # Memory Configuration (for all-in-one deployment)
+    memory:
+      max-traces: 50000
+
+    # Sampling Configuration
+    sampling:
+      strategies-file: "/etc/jaeger/sampling_strategies.json"
+      strategies-reload-interval: "1m"
+
+  # ==============================================================================
+  # UI Configuration
+  # ==============================================================================
+  ui-config.json: |
+    {
+      "dependencies": {
+        "dagMaxNumServices": 200,
+        "menuEnabled": true
+      },
+      "archiveEnabled": true,
+      "tracking": {
+        "gaID": "",
+        "trackErrors": false
+      },
+      "menu": [
+        {
+          "label": "Veridis Documentation",
+          "url": "https://docs.veridis.xyz/observability/jaeger",
+          "anchorTarget": "_blank"
+        },
+        {
+          "label": "Runbooks",
+          "url": "https://runbooks.veridis.xyz/observability/jaeger",
+          "anchorTarget": "_blank"
+        },
+        {
+          "label": "Support",
+          "url": "https://support.veridis.xyz/jaeger",
+          "anchorTarget": "_blank"
+        }
+      ],
+      "search": {
+        "maxLookback": {
+          "label": "2 Days",
+          "value": "2d"
+        },
+        "maxLimit": 1500
+      },
+      "linkPatterns": [
+        {
+          "type": "process",
+          "key": "git.commit",
+          "url": "https://github.com/veridis/protocol/commit/#{git.commit}",
+          "text": "View Commit: #{git.commit}"
+        },
+        {
+          "type": "process",
+          "key": "jaeger.version",
+          "url": "https://github.com/jaegertracing/jaeger/releases/tag/#{jaeger.version}",
+          "text": "Jaeger Version: #{jaeger.version}"
+        }
+      ],
+      "criticalPathEnabled": true,
+      "qualityMetrics": {
+        "enabled": true,
+        "warningThreshold": 0.95,
+        "errorThreshold": 0.98
+      }
+    }
+
+  # ==============================================================================
+  # Tags as Fields Configuration
+  # ==============================================================================
+  tags-as-fields.json: |
+    {
+      "tags": [
+        "environment",
+        "service.name",
+        "service.version",
+        "span.kind",
+        "component",
+        "db.type",
+        "db.instance",
+        "http.method",
+        "http.status_code",
+        "error",
+        "sampling.priority",
+        "user.id",
+        "user.role",
+        "tenant.id",
+        "request.id",
+        "trace.id",
+        "span.id",
+        "parent.id",
+        "operation.name",
+        "veridis.service.type",
+        "veridis.operation.category",
+        "veridis.user.identity",
+        "veridis.compliance.level",
+        "veridis.security.context",
+        "veridis.performance.tier",
+        "blockchain.network",
+        "blockchain.transaction.hash",
+        "zk.circuit.type",
+        "zk.proof.type",
+        "gpu.device.id",
+        "gpu.memory.usage"
+      ],
+      "include": true,
+      "dotReplacement": "_"
+    }
+
+  # ==============================================================================
+  # Elasticsearch Index Template Configuration
+  # ==============================================================================
+  elasticsearch-index-template.json: |
+    {
+      "index_patterns": ["veridis-jaeger-*"],
+      "settings": {
+        "index": {
+          "number_of_shards": 3,
+          "number_of_replicas": 1,
+          "codec": "best_compression",
+          "refresh_interval": "5s",
+          "max_result_window": 10000,
+          "mapping": {
+            "total_fields": {
+              "limit": 2000
+            },
+            "nested_fields": {
+              "limit": 100
+            },
+            "depth": {
+              "limit": 20
+            }
+          },
+          "lifecycle": {
+            "name": "veridis-jaeger-policy",
+            "rollover_alias": "veridis-jaeger-write"
+          }
+        },
+        "analysis": {
+          "analyzer": {
+            "veridis_analyzer": {
+              "type": "custom",
+              "tokenizer": "keyword",
+              "filter": ["lowercase", "trim"]
+            }
+          }
+        }
+      },
+      "mappings": {
+        "properties": {
+          "traceID": {
+            "type": "keyword",
+            "index": true
+          },
+          "spanID": {
+            "type": "keyword",
+            "index": true
+          },
+          "parentSpanID": {
+            "type": "keyword",
+            "index": false
+          },
+          "operationName": {
+            "type": "keyword",
+            "index": true
+          },
+          "startTime": {
+            "type": "date",
+            "format": "epoch_micros"
+          },
+          "duration": {
+            "type": "long"
+          },
+          "tags": {
+            "type": "nested",
+            "properties": {
+              "key": {
+                "type": "keyword",
+                "index": true
+              },
+              "value": {
+                "type": "text",
+                "analyzer": "veridis_analyzer",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              }
+            }
+          },
+          "process": {
+            "properties": {
+              "serviceName": {
+                "type": "keyword",
+                "index": true
+              },
+              "tags": {
+                "type": "nested",
+                "properties": {
+                  "key": {
+                    "type": "keyword",
+                    "index": true
+                  },
+                  "value": {
+                    "type": "keyword",
+                    "index": false
+                  }
+                }
+              }
+            }
+          },
+          "logs": {
+            "type": "nested",
+            "properties": {
+              "timestamp": {
+                "type": "date",
+                "format": "epoch_micros"
+              },
+              "fields": {
+                "type": "nested",
+                "properties": {
+                  "key": {
+                    "type": "keyword"
+                  },
+                  "value": {
+                    "type": "text",
+                    "analyzer": "veridis_analyzer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "aliases": {
+        "veridis-jaeger-read": {},
+        "veridis-jaeger-write": {
+          "is_write_index": true
+        }
+      }
+    }
+
+  # ==============================================================================
+  # Performance Tuning Configuration
+  # ==============================================================================
+  performance-config.yaml: |
+    # Veridis Jaeger Performance Configuration
+    # Optimized for high-throughput production workloads
+
+    performance:
+      # Collector Performance
+      collector:
+        workers: 10
+        queue_size: 10000
+        batch_size: 1000
+        batch_timeout: "1s"
+        max_message_size: "4MB"
+
+      # Storage Performance
+      storage:
+        elasticsearch:
+          bulk_size: 1000
+          bulk_workers: 10
+          bulk_flush_interval: "200ms"
+          bulk_actions: 1000
+          index_cleaner_enabled: true
+          timeout: "60s"
+
+      # Memory Management
+      memory:
+        max_traces: 50000
+        gc_interval: "1m"
+        cleanup_threshold: 0.8
+
+      # Network Configuration
+      network:
+        tcp_keep_alive: true
+        tcp_keep_alive_time: "7200s"
+        tcp_keep_alive_interval: "75s"
+        tcp_keep_alive_probes: 7
+        max_idle_conns: 100
+        max_idle_conns_per_host: 10
+        idle_conn_timeout: "90s"
+
+      # Caching Configuration
+      cache:
+        enabled: true
+        ttl: "12h"
+        max_size: "1GB"
+        cleanup_interval: "30m"
+
+  # ==============================================================================
+  # Security Configuration
+  # ==============================================================================
+  security-config.yaml: |
+    # Veridis Jaeger Security Configuration
+    # Enterprise security settings for production deployment
+
+    security:
+      # Authentication Configuration
+      authentication:
+        type: "oauth2"
+        oauth2:
+          client_id: "${OAUTH2_CLIENT_ID}"
+          client_secret: "${OAUTH2_CLIENT_SECRET}"
+          auth_url: "https://auth.veridis.xyz/oauth/authorize"
+          token_url: "https://auth.veridis.xyz/oauth/token"
+          redirect_url: "https://jaeger.veridis.xyz/oauth/callback"
+          scopes: ["openid", "profile", "email", "jaeger:read", "jaeger:write"]
+
+      # Authorization Configuration
+      authorization:
+        enabled: true
+        type: "rbac"
+        rbac:
+          admin_users:
+            - "admin@veridis.xyz"
+            - "observability-admin@veridis.xyz"
+          read_only_users:
+            - "developer@veridis.xyz"
+            - "support@veridis.xyz"
+          service_accounts:
+            - "system:serviceaccount:veridis-infrastructure:veridis-jaeger"
+
+      # Data Protection
+      data_protection:
+        sensitive_tags:
+          - "user.email"
+          - "user.phone"
+          - "user.ssn"
+          - "credit_card.number"
+          - "api.key"
+          - "password"
+          - "token"
+          - "secret"
+        mask_values: true
+        hash_sensitive_data: true
+
+      # Audit Logging
+      audit:
+        enabled: true
+        log_level: "info"
+        log_format: "json"
+        include_request_body: false
+        include_response_body: false
+        retention_days: 90
+
+      # TLS Configuration
+      tls:
+        enabled: true
+        cert_file: "/etc/ssl/certs/jaeger.crt"
+        key_file: "/etc/ssl/private/jaeger.key"
+        ca_file: "/etc/ssl/certs/ca.crt"
+        insecure_skip_verify: false
+        min_version: "1.2"
+        max_version: "1.3"
+
+---
+# ==============================================================================
+# Veridis Jaeger ConfigMap - Development Environment Configuration
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-jaeger-config-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-configmap-dev
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-configmap-dev
+    jaeger.veridis.xyz/category: observability-configmap-dev
+    jaeger.veridis.xyz/role: development-jaeger-configmap
+
+    configmap.veridis.xyz/type: "development"
+    configmap.veridis.xyz/storage-type: "memory"
+    configmap.veridis.xyz/performance-tier: "basic"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development Jaeger ConfigMap with simplified configuration for testing environment"
+    veridis.xyz/purpose: "Provides development Jaeger ConfigMap for testing and development workflows"
+
+    config.veridis.xyz/sampling-rate: "1.0"
+    config.veridis.xyz/storage-backend: "memory"
+    config.veridis.xyz/retention-policy: "24h"
+    config.veridis.xyz/performance-optimized: "false"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/performance-relaxed: "true"
+    development.veridis.xyz/security-simplified: "true"
+    development.veridis.xyz/cost-optimized: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-configmap-development"
+
+data:
+  # Simplified sampling for development
+  sampling_strategies.json: |
+    {
+      "default_strategy": {
+        "type": "const",
+        "param": 1.0
+      },
+      "per_service_strategies": [
+        {
+          "service": "veridis-backend",
+          "type": "const",
+          "param": 1.0
+        },
+        {
+          "service": "veridis-zk-circuits",
+          "type": "const",
+          "param": 1.0
+        },
+        {
+          "service": "veridis-ui",
+          "type": "const",
+          "param": 1.0
+        }
+      ]
+    }
+
+  # Development Jaeger configuration
+  jaeger.yaml: |
+    # Development Jaeger Configuration
+    collector:
+      grpc-server:
+        host-port: ":14250"
+      http-server:
+        host-port: ":14268"
+      num-workers: 2
+      queue-size: 1000
+
+    query:
+      http-server:
+        host-port: ":16686"
+        base-path: "/jaeger"
+
+    memory:
+      max-traces: 10000
+
+    sampling:
+      strategies-file: "/etc/jaeger/sampling_strategies.json"
+
+    log-level: "debug"
+
+    metrics:
+      backend: "prometheus"
+      http-route: "/metrics"
+
+  # Simplified UI configuration for development
+  ui-config.json: |
+    {
+      "dependencies": {
+        "dagMaxNumServices": 50,
+        "menuEnabled": true
+      },
+      "archiveEnabled": false,
+      "tracking": {
+        "gaID": "",
+        "trackErrors": false
+      },
+      "search": {
+        "maxLookback": {
+          "label": "1 Hour",
+          "value": "1h"
+        },
+        "maxLimit": 100
+      },
+      "criticalPathEnabled": false
+    }
+
+---
+# ==============================================================================
+# Veridis Jaeger ConfigMap - Staging Environment Configuration
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-jaeger-config-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-configmap-staging
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-configmap-staging
+    jaeger.veridis.xyz/category: observability-configmap-staging
+    jaeger.veridis.xyz/role: staging-jaeger-configmap
+
+    configmap.veridis.xyz/type: "staging"
+    configmap.veridis.xyz/storage-type: "elasticsearch"
+    configmap.veridis.xyz/performance-tier: "enhanced"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging Jaeger ConfigMap with production-like configuration for pre-production testing"
+    veridis.xyz/purpose: "Provides staging Jaeger ConfigMap for pre-production validation and testing"
+
+    config.veridis.xyz/sampling-rate: "0.1"
+    config.veridis.xyz/storage-backend: "elasticsearch"
+    config.veridis.xyz/retention-policy: "3d"
+    config.veridis.xyz/performance-optimized: "true"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/performance-enhanced: "true"
+    staging.veridis.xyz/load-testing-ready: "true"
+    staging.veridis.xyz/monitoring-enhanced: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-configmap-staging"
+
+data:
+  # Production-like sampling for staging
+  sampling_strategies.json: |
+    {
+      "default_strategy": {
+        "type": "adaptive",
+        "max_traces_per_second": 1000,
+        "max_idle_time_minutes": 2,
+        "sampling_refresh_interval": "1m"
+      },
+      "per_service_strategies": [
+        {
+          "service": "veridis-backend",
+          "type": "adaptive",
+          "max_traces_per_second": 500,
+          "operation_strategies": [
+            {
+              "operation": "identity_verification",
+              "type": "probabilistic",
+              "param": 0.5
+            },
+            {
+              "operation": "health_check",
+              "type": "probabilistic",
+              "param": 0.01
+            }
+          ]
+        },
+        {
+          "service": "veridis-zk-circuits",
+          "type": "adaptive",
+          "max_traces_per_second": 200,
+          "operation_strategies": [
+            {
+              "operation": "zk_proof_generation",
+              "type": "probabilistic",
+              "param": 0.5
+            }
+          ]
+        }
+      ]
+    }
+
+  # Staging Jaeger configuration
+  jaeger.yaml: |
+    # Staging Jaeger Configuration
+    collector:
+      grpc-server:
+        host-port: ":14250"
+      http-server:
+        host-port: ":14268"
+      num-workers: 5
+      queue-size: 5000
+
+    query:
+      http-server:
+        host-port: ":16686"
+        base-path: "/jaeger"
+
+    storage:
+      type: "elasticsearch"
+      elasticsearch:
+        server-urls: "http://veridis-elasticsearch-staging.veridis-infrastructure.svc.cluster.local:9200"
+        index-prefix: "veridis-jaeger-staging"
+        timeout: 30s
+        num-shards: 2
+        num-replicas: 1
+        max-span-age: 72h  # 3 days
+        bulk:
+          size: 500
+          workers: 5
+          flush-interval: 500ms
+
+    memory:
+      max-traces: 25000
+
+    sampling:
+      strategies-file: "/etc/jaeger/sampling_strategies.json"
+
+    log-level: "info"
+
+    metrics:
+      backend: "prometheus"
+      http-route: "/metrics"
+
+  # Staging UI configuration
+  ui-config.json: |
+    {
+      "dependencies": {
+        "dagMaxNumServices": 100,
+        "menuEnabled": true
+      },
+      "archiveEnabled": true,
+      "tracking": {
+        "gaID": "",
+        "trackErrors": false
+      },
+      "search": {
+        "maxLookback": {
+          "label": "1 Day",
+          "value": "1d"
+        },
+        "maxLimit": 500
+      },
+      "criticalPathEnabled": true
+    }
+
+# ==============================================================================
+# Veridis Jaeger ConfigMap Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS JAEGER CONFIGMAP STRATEGY:
+# ================================================
+#
+# VERIDIS JAEGER CONFIGMAP ARCHITECTURE OVERVIEW:
+# -----------------------------------------------
+# 1. Primary Production ConfigMap (veridis-jaeger-config):
+#    - Comprehensive enterprise-grade configmap with intelligent tracing management and advanced performance optimization for production Jaeger
+#    - Advanced configmap configuration with adaptive sampling, Elasticsearch storage, high throughput (10K traces/sec), and comprehensive observability integration
+#    - Multi-tier configmap architecture with service-specific sampling, operation-level strategies, performance tuning, and comprehensive operational excellence
+#    - Enterprise configmap policies with security configuration, data protection, audit logging, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent sampling management, storage optimization, security integration, and analytics for maximum efficiency
+#
+# 2. Development Environment ConfigMap (veridis-jaeger-config-dev):
+#    - Development-focused configmap with simplified configuration and comprehensive testing environment integration
+#    - Advanced development configuration with constant sampling (1.0), memory storage, debug logging, and comprehensive experimentation support
+#    - Flexible configmap optimization with simplified settings, reduced complexity, and comprehensive development intelligence
+#    - Development intelligence with testing procedures, debugging support, rapid iteration, and comprehensive development coordination
+#    - Testing excellence with cost-optimized configuration, development workflows, debugging support, and comprehensive development environment management
+#
+# 3. Staging Environment ConfigMap (veridis-jaeger-config-staging):
+#    - Pre-production configmap with production-like configuration and comprehensive staging environment integration
+#    - Staging configuration with adaptive sampling (0.1), Elasticsearch storage, 3-day retention, and comprehensive validation procedures
+#    - Production-like configmap optimization with enhanced performance, load testing support, and comprehensive staging intelligence
+#    - Production simulation with realistic tracing, performance testing, storage validation, and comprehensive pre-production coordination
+#    - Validation excellence with production-like behavior, performance testing, storage validation, and comprehensive staging environment management
+#
+# ENTERPRISE JAEGER CONFIGMAP FEATURES:
+# =====================================
+# Advanced Configuration Management and Performance Integration:
+#   - Multi-environment configmap architecture with production, development, and staging configurations
+#   - Intelligent configuration management with adaptive sampling, storage optimization, performance tuning, and comprehensive configuration decisions
+#   - ConfigMap discovery with sampling strategy optimization, storage backend management, UI configuration, and comprehensive configuration analytics
+#   - Performance management with high throughput configuration, latency optimization, concurrent processing, and comprehensive performance intelligence
+#   - Scalability tuning with resource optimization, worker management, queue configuration, and intelligent configmap optimization
+#
+# Comprehensive Sampling Strategy and Performance Management:
+#   - Multi-tier sampling strategy with service-specific rates, operation-level strategies, adaptive algorithms, and comprehensive sampling coordination
+#   - Sampling optimization with probabilistic sampling, adaptive sampling, rate limiting, and comprehensive sampling intelligence
+#   - Performance configuration with batch processing, worker optimization, queue management, and comprehensive performance coordination
+#   - Business intelligence with sampling analytics, performance correlation, cost optimization, and comprehensive strategic insights
+#   - Configuration management with hot reloading, validation, versioning, and comprehensive configuration analytics
+#
+# Enterprise Security and Compliance Integration:
+#   - Authentication integration with OAuth2, RBAC authorization, audit logging, and comprehensive security enforcement
+#   - Data protection with sensitive data masking, encryption integration, access control, and comprehensive security management
+#   - Compliance integration with SOC 2 Type II controls, GDPR requirements, ISO 27001 management, and comprehensive regulatory compliance
+#   - Access control with role-based security, data classification, audit requirements, and comprehensive access management
+#   - Security intelligence with threat detection, compliance monitoring, audit requirements, and comprehensive security analytics
+#
+# Advanced Storage Configuration and Data Management:
+#   - Multi-storage backend support with Elasticsearch (production/staging), memory (development), and comprehensive storage coordination
+#   - Storage optimization with index management, retention policies, sharding configuration, and comprehensive storage intelligence
+#   - Data lifecycle management with automated cleanup, compression, archival, and comprehensive data coordination
+#   - Index template management with mapping optimization, lifecycle policies, alias management, and comprehensive index intelligence
+#   - Storage analytics with usage tracking, performance monitoring, optimization recommendations, and comprehensive storage coordination
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Jaeger ConfigMap Lifecycle Management:
+#   - Multi-ConfigMap deployment with production performance, development flexibility, staging validation, and comprehensive configmap coordination
+#   - Intelligent configmap management with predictive analytics and configuration utilization correlation
+#   - Advanced monitoring with comprehensive configmap analytics and configuration business intelligence
+#   - Configuration validation with configmap schema enforcement and tracing configuration safety checks
+#   - Automated optimization with configmap pattern analysis and configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II configmap controls with comprehensive audit requirements and configuration logging
+#   - GDPR configmap compliance with data protection and privacy-preserving configuration management
+#   - ISO 27001 configmap security management with information security and configuration compliance integration
+#   - NIST 800-190 container configmap security with configuration validation and compliance
+#   - Zero-trust configmap architecture with comprehensive encryption and configuration authentication requirements
+#
+# Business Intelligence Integration:
+#   - ConfigMap analytics with cost correlation and configuration resource utilization optimization
+#   - Performance analytics with user experience optimization and configmap business intelligence
+#   - Configuration intelligence with usage pattern monitoring and configmap optimization recommendations
+#   - Strategic planning with capacity management and configmap forecasting
+#   - Business impact assessment with configmap performance correlation and configuration tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment configmap support with production performance, development flexibility, staging validation, and comprehensive configmap coordination
+#   - Comprehensive documentation with configmap guides and configuration troubleshooting procedures
+#   - Environment-specific configmaps with production, development, and staging support
+#   - Testing integration with configmap development workflow and configuration debugging capabilities
+#   - ConfigMap monitoring with comprehensive tracking and configuration correlation
+#
+# ==============================================================================
