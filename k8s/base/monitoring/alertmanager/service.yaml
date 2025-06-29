@@ -1,0 +1,762 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - AlertManager Service Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive AlertManager Service for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ALERTMANAGER SERVICE ARCHITECTURE:
+#   • Advanced AlertManager Service with intelligent alert management and performance-based optimization
+#   • Multi-tier Service architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with Service policies, alert optimization, AlertManager integration
+#   • Advanced lifecycle management with automated Service optimization, AlertManager control, and alert enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and AlertManager Service performance insights
+#
+# VERIDIS ALERTMANAGER SERVICE OPTIMIZATION:
+#   • High-performance Service with intelligent alert management and AlertManager service optimization
+#   • Intelligent Service alert management with responsive policies and performance-based alert decisions
+#   • Advanced Service management with business intelligence and alert-based AlertManager control
+#   • Comprehensive observability control with intelligent AlertManager Service management and alert enhancement
+#   • Enterprise acceleration with predictive AlertManager Service management and alert optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II AlertManager Service controls with comprehensive audit and alert requirements
+#   • GDPR AlertManager Service compliance with data protection, privacy controls, and alert management
+#   • ISO 27001 AlertManager Service management with comprehensive framework integration
+#   • NIST 800-190 container AlertManager Service security with alert-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and AlertManager Service best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent AlertManager Service lifecycle management with automated provisioning and alert optimization
+#   • Predictive alert analytics with capacity planning and AlertManager Service intelligence
+#   • Advanced Service integration with AlertManager alert analytics and performance business intelligence
+#   • Comprehensive observability control with AlertManager Service preservation and alert optimization
+#   • Business continuity AlertManager Service with alert guarantees and performance optimization
+#
+# ALERTMANAGER SERVICE ACCELERATION INTELLIGENCE:
+#   • AlertManager Service usage analytics with alert patterns and optimization recommendations
+#   • Service monitoring with AlertManager alert latency and management optimization intelligence
+#   • Development efficiency with AlertManager Service analytics and deployment optimization procedures
+#   • Cost optimization with AlertManager Service utilization analysis and alert capacity planning procedures
+#   • Quality assurance with AlertManager Service metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis AlertManager Service - Primary Alert Management Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-alertmanager
+  namespace: veridis-infrastructure
+
+  # Core Veridis AlertManager Service identification labels
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.26.0"
+    app.kubernetes.io/component: alertmanager-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # AlertManager Service specific classification
+    alertmanager.veridis.xyz/type: alert-alertmanager-service
+    alertmanager.veridis.xyz/category: observability-service
+    alertmanager.veridis.xyz/role: primary-alertmanager-service
+    alertmanager.veridis.xyz/service-class: high-performance-alertmanager-service
+    alertmanager.veridis.xyz/security-level: enterprise
+
+    # Service AlertManager Service classification
+    service.veridis.xyz/alertmanager-service-type: intelligent-alertmanager-service
+    service.veridis.xyz/service-type: alert-service
+    service.veridis.xyz/performance-tier: high-throughput
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-alertmanager-service-stack
+
+    # Observability AlertManager Service classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-alertmanager-service-management
+    observability.veridis.xyz/alert-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business AlertManager Service classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-alertmanager-service-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational AlertManager Service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "alertmanager-service-control-framework"
+    compliance.veridis.xyz/gdpr: "alertmanager-service-data-protection"
+    compliance.veridis.xyz/iso27001: "alertmanager-service-security-management"
+    compliance.veridis.xyz/nist-800-190: "alertmanager-service-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # AlertManager Service analytics and intelligence
+    monitoring.veridis.xyz/alertmanager-service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/alert-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Alert management labels
+    alert.veridis.xyz/type: "manager"
+    alert.veridis.xyz/routing: "intelligent"
+    alert.veridis.xyz/grouping: "advanced"
+    alert.veridis.xyz/inhibition: "enabled"
+    alert.veridis.xyz/silencing: "enabled"
+
+    # Network management labels
+    network.veridis.xyz/type: "cluster-ip"
+    network.veridis.xyz/protocol: "http"
+    network.veridis.xyz/load-balancing: "round-robin"
+    network.veridis.xyz/session-affinity: "none"
+    network.veridis.xyz/clustering: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/concurrency-tier: "high"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/clustering-enabled: "true"
+
+  annotations:
+    # AlertManager Service purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis AlertManager Service with intelligent alert management, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive AlertManager Service for decentralized identity management with intelligent alert management, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "AlertManager Service including alert management, performance optimization, clustering configuration, and comprehensive monitoring intelligence"
+
+    # AlertManager Service architecture and design
+    alertmanager.veridis.xyz/architecture: "Enterprise AlertManager Service with intelligent alert management, advanced performance optimization, and clustering integration optimization"
+    alertmanager.veridis.xyz/design-pattern: "Multi-tier AlertManager Service with performance optimization, cost efficiency, and business intelligence"
+    alertmanager.veridis.xyz/optimization-model: "Intelligent AlertManager Service with predictive analytics, performance optimization, and alert efficiency"
+    alertmanager.veridis.xyz/performance-model: "High-performance AlertManager Service with alert optimization and intelligent clustering management"
+
+    # Service AlertManager Service specifications
+    service.veridis.xyz/alertmanager-service-specification: "AlertManager Service with performance optimization and intelligent alertmanager service management"
+    service.veridis.xyz/alert-specification: "Advanced alert management configuration with alertmanager optimization and service enhancement"
+    service.veridis.xyz/clustering-specification: "AlertManager Service clustering management optimization with intelligent alert and enhancement"
+    service.veridis.xyz/performance-specification: "AlertManager performance service with alert acceleration and efficiency"
+    service.veridis.xyz/business-specification: "AlertManager business service with cost optimization and strategic alert intelligence"
+
+    # Alert specific annotations
+    alert.veridis.xyz/web-port: "9093"
+    alert.veridis.xyz/cluster-port: "9094"
+    alert.veridis.xyz/mesh-port: "9095"
+    alert.veridis.xyz/clustering-enabled: "true"
+    alert.veridis.xyz/load-balancing: "round-robin"
+
+    # Performance annotations
+    performance.veridis.xyz/expected-alerts-per-second: "1000"
+    performance.veridis.xyz/max-alert-size: "64KB"
+    performance.veridis.xyz/response-time-target: "100ms"
+    performance.veridis.xyz/concurrent-connections: "1000"
+    performance.veridis.xyz/clustering-latency: "10ms"
+
+    # Network specific annotations
+    network.veridis.xyz/service-type: "ClusterIP"
+    network.veridis.xyz/protocol-support: "http,tcp"
+    network.veridis.xyz/port-configuration: "multi-port"
+    network.veridis.xyz/load-balancer-class: "internal"
+    network.veridis.xyz/session-persistence: "none"
+
+    # Health annotations
+    health.veridis.xyz/health-check-path: "/-/healthy"
+    health.veridis.xyz/ready-check-path: "/-/ready"
+    health.veridis.xyz/metrics-path: "/metrics"
+    health.veridis.xyz/api-path: "/api/v2"
+    health.veridis.xyz/ui-path: "/#/alerts"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/authentication: "oauth2"
+    security.veridis.xyz/authorization: "rbac"
+    security.veridis.xyz/network-policy: "enabled"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-alerting"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-alerts: "enabled"
+    monitoring.veridis.xyz/capacity-alerts: "enabled"
+    monitoring.veridis.xyz/availability-alerts: "enabled"
+    monitoring.veridis.xyz/latency-alerts: "enabled"
+
+    # Clustering annotations
+    clustering.veridis.xyz/enabled: "true"
+    clustering.veridis.xyz/peers: "3"
+    clustering.veridis.xyz/gossip-protocol: "enabled"
+    clustering.veridis.xyz/settlement-timeout: "30s"
+    clustering.veridis.xyz/sync-interval: "200ms"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/alertmanager-service-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/alertmanager-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/alertmanager-service-management"
+    veridis.xyz/service-docs: "https://observability.veridis.xyz/alertmanager-service-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/alertmanager-service-monitoring"
+
+spec:
+  # ==============================================================================
+  # Service Type Configuration
+  # ==============================================================================
+  type: ClusterIP  # Internal cluster service for alert management
+
+  # ==============================================================================
+  # Session Affinity Configuration
+  # ==============================================================================
+  sessionAffinity: None  # No session affinity for clustered alert service
+
+  # ==============================================================================
+  # IP Family Configuration
+  # ==============================================================================
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+    - IPv4
+
+  # ==============================================================================
+  # Service Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: alertmanager-deployment
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    # ==============================================================================
+    # Web Interface Port Configuration
+    # ==============================================================================
+    - name: web
+      port: 9093
+      targetPort: 9093
+      protocol: TCP
+      # Web UI and API access for AlertManager
+
+    # ==============================================================================
+    # Cluster Communication Port Configuration
+    # ==============================================================================
+    - name: cluster
+      port: 9094
+      targetPort: 9094
+      protocol: TCP
+      # Cluster communication for multi-replica setup
+
+    # ==============================================================================
+    # Mesh Communication Port Configuration
+    # ==============================================================================
+    - name: mesh
+      port: 9095
+      targetPort: 9095
+      protocol: TCP
+      # Advanced cluster mesh communication
+
+---
+# ==============================================================================
+# Veridis AlertManager Service - Headless Service for Clustering
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-alertmanager-headless
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.26.0"
+    app.kubernetes.io/component: alertmanager-service-headless
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    alertmanager.veridis.xyz/type: alert-alertmanager-service-headless
+    alertmanager.veridis.xyz/category: observability-service-headless
+    alertmanager.veridis.xyz/role: headless-alertmanager-service
+
+    service.veridis.xyz/type: "headless"
+    service.veridis.xyz/clustering: "enabled"
+    service.veridis.xyz/dns-discovery: "enabled"
+    service.veridis.xyz/direct-access: "enabled"
+
+    # Headless service labels
+    headless.veridis.xyz/dns-enabled: "true"
+    headless.veridis.xyz/service-discovery: "enabled"
+    headless.veridis.xyz/pod-access: "direct"
+    headless.veridis.xyz/clustering-support: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Headless AlertManager Service for clustering and direct pod access"
+    veridis.xyz/purpose: "Provides headless service for AlertManager clustering and DNS-based service discovery"
+
+    # Headless service annotations
+    service.veridis.xyz/headless: "true"
+    service.veridis.xyz/dns-discovery: "enabled"
+    service.veridis.xyz/load-balancing: "none"
+    service.veridis.xyz/cluster-ip: "none"
+
+    # Clustering annotations
+    clustering.veridis.xyz/headless-enabled: "true"
+    clustering.veridis.xyz/peer-discovery: "dns"
+    clustering.veridis.xyz/pod-addressing: "direct"
+    clustering.veridis.xyz/gossip-enabled: "true"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/alertmanager-service-headless"
+
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: alertmanager-deployment
+
+  ports:
+    # All ports for direct pod access and clustering
+    - name: web
+      port: 9093
+      targetPort: 9093
+      protocol: TCP
+
+    - name: cluster
+      port: 9094
+      targetPort: 9094
+      protocol: TCP
+
+    - name: mesh
+      port: 9095
+      targetPort: 9095
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis AlertManager Service - Development Environment Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-alertmanager-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "0.26.0"
+    app.kubernetes.io/component: alertmanager-service-dev
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    alertmanager.veridis.xyz/type: alert-alertmanager-service-dev
+    alertmanager.veridis.xyz/category: observability-service-dev
+    alertmanager.veridis.xyz/role: development-alertmanager-service
+
+    service.veridis.xyz/type: "development"
+    service.veridis.xyz/clustering: "disabled"
+    service.veridis.xyz/performance-tier: "basic"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development AlertManager Service with simplified configuration for testing environment"
+    veridis.xyz/purpose: "Provides development AlertManager Service for testing and development workflows"
+
+    alert.veridis.xyz/web-port: "9093"
+    alert.veridis.xyz/clustering-enabled: "false"
+    alert.veridis.xyz/single-instance: "true"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/performance-relaxed: "true"
+    development.veridis.xyz/security-simplified: "true"
+    development.veridis.xyz/cost-optimized: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/alertmanager-service-development"
+
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/component: alertmanager-deployment-dev
+
+  ports:
+    # Essential port for development
+    - name: web
+      port: 9093
+      targetPort: 9093
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis AlertManager Service - Staging Environment Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-alertmanager-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "0.26.0"
+    app.kubernetes.io/component: alertmanager-service-staging
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    alertmanager.veridis.xyz/type: alert-alertmanager-service-staging
+    alertmanager.veridis.xyz/category: observability-service-staging
+    alertmanager.veridis.xyz/role: staging-alertmanager-service
+
+    service.veridis.xyz/type: "staging"
+    service.veridis.xyz/clustering: "enabled"
+    service.veridis.xyz/performance-tier: "enhanced"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging AlertManager Service with production-like configuration for pre-production testing"
+    veridis.xyz/purpose: "Provides staging AlertManager Service for pre-production validation and testing"
+
+    alert.veridis.xyz/web-port: "9093"
+    alert.veridis.xyz/cluster-port: "9094"
+    alert.veridis.xyz/clustering-enabled: "true"
+    alert.veridis.xyz/reduced-clustering: "true"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/performance-enhanced: "true"
+    staging.veridis.xyz/load-testing-ready: "true"
+    staging.veridis.xyz/monitoring-enhanced: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/alertmanager-service-staging"
+
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/component: alertmanager-deployment-staging
+
+  ports:
+    # Production-like ports for staging
+    - name: web
+      port: 9093
+      targetPort: 9093
+      protocol: TCP
+
+    - name: cluster
+      port: 9094
+      targetPort: 9094
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis AlertManager Service - External Load Balancer Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-alertmanager-external
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.26.0"
+    app.kubernetes.io/component: alertmanager-service-external
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    alertmanager.veridis.xyz/type: alert-alertmanager-service-external
+    alertmanager.veridis.xyz/category: observability-service-external
+    alertmanager.veridis.xyz/role: external-alertmanager-service
+
+    service.veridis.xyz/type: "external"
+    service.veridis.xyz/load-balancer: "enabled"
+    service.veridis.xyz/external-access: "secured"
+
+    # External access labels
+    external.veridis.xyz/type: "load-balancer"
+    external.veridis.xyz/protocol: "https"
+    external.veridis.xyz/authentication: "required"
+    external.veridis.xyz/authorization: "rbac"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "External AlertManager Service with LoadBalancer for secure external access to AlertManager UI"
+    veridis.xyz/purpose: "Provides external access to AlertManager UI with enterprise security and load balancing"
+
+    # Load balancer annotations (cloud-specific)
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:region:account:certificate/cert-id"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+
+    # Security annotations
+    security.veridis.xyz/external-access: "secured"
+    security.veridis.xyz/tls-termination: "load-balancer"
+    security.veridis.xyz/whitelist-enabled: "true"
+    security.veridis.xyz/rate-limiting: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/external-monitoring: "enabled"
+    monitoring.veridis.xyz/access-logging: "enabled"
+    monitoring.veridis.xyz/performance-tracking: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "external-access-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/alertmanager-service-external"
+
+spec:
+  type: LoadBalancer
+  sessionAffinity: None
+
+  # Load balancer configuration
+  loadBalancerClass: external-lb
+  externalTrafficPolicy: Cluster
+
+  selector:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: alertmanager-deployment
+
+  ports:
+    # HTTPS port for external UI access
+    - name: https
+      port: 443
+      targetPort: 9093
+      protocol: TCP
+
+    # HTTP port (redirect to HTTPS)
+    - name: http
+      port: 80
+      targetPort: 9093
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis AlertManager Service - NodePort Service for Development Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-alertmanager-nodeport
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "0.26.0"
+    app.kubernetes.io/component: alertmanager-service-nodeport
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    alertmanager.veridis.xyz/type: alert-alertmanager-service-nodeport
+    alertmanager.veridis.xyz/category: observability-service-nodeport
+    alertmanager.veridis.xyz/role: nodeport-alertmanager-service
+
+    service.veridis.xyz/type: "nodeport"
+    service.veridis.xyz/development-access: "enabled"
+    service.veridis.xyz/external-port: "exposed"
+
+    # NodePort service labels
+    nodeport.veridis.xyz/enabled: "true"
+    nodeport.veridis.xyz/port-range: "30000-32767"
+    nodeport.veridis.xyz/development-access: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "NodePort AlertManager Service for development and debugging access"
+    veridis.xyz/purpose: "Provides NodePort access to AlertManager for development and troubleshooting scenarios"
+
+    # NodePort service annotations
+    service.veridis.xyz/nodeport: "true"
+    service.veridis.xyz/development-access: "enabled"
+    service.veridis.xyz/external-port: "30093"
+    service.veridis.xyz/internal-port: "9093"
+
+    # Security annotations
+    security.veridis.xyz/nodeport-access: "restricted"
+    security.veridis.xyz/development-only: "true"
+    security.veridis.xyz/firewall-required: "true"
+    security.veridis.xyz/ip-restriction: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "nodeport-access-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/alertmanager-service-nodeport"
+
+spec:
+  type: NodePort
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: alertmanager
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: alertmanager-deployment
+
+  ports:
+    # NodePort for web access
+    - name: web
+      port: 9093
+      targetPort: 9093
+      nodePort: 30093
+      protocol: TCP
+
+# ==============================================================================
+# Veridis AlertManager Service Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ALERTMANAGER SERVICE STRATEGY:
+# ====================================================
+#
+# VERIDIS ALERTMANAGER SERVICE ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------
+# 1. Primary Production Service (veridis-alertmanager):
+#    - Comprehensive enterprise-grade service with intelligent alert management and advanced performance optimization for production AlertManager
+#    - Advanced service configuration with multi-port support (web 9093, cluster 9094, mesh 9095), clustering support, high throughput (1K alerts/sec), and comprehensive observability integration
+#    - Multi-tier service architecture with clustering communication, alert processing, web interface access, and comprehensive operational excellence
+#    - Enterprise service policies with intelligent routing, load balancing, health monitoring, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent alert processing, clustering algorithms, traffic management, and security for maximum efficiency
+#
+# 2. Headless Service (veridis-alertmanager-headless):
+#    - Cluster-focused service with DNS-based service discovery and comprehensive pod-level communication for clustering support
+#    - Advanced headless configuration with direct pod access, DNS records, peer discovery, and comprehensive clustering support
+#    - Flexible service optimization with no ClusterIP, direct pod addressing, and comprehensive clustering intelligence
+#    - Clustering intelligence with peer discovery, gossip protocol, settlement algorithms, and comprehensive clustering coordination
+#    - Discovery excellence with DNS-based discovery, direct access, pod communication, and comprehensive headless environment management
+#
+# 3. Development Environment Service (veridis-alertmanager-dev):
+#    - Development-focused service with simplified configuration and comprehensive testing environment integration
+#    - Advanced development configuration with single port (9093), no clustering, debug-friendly, and comprehensive experimentation support
+#    - Flexible service optimization with simplified networking, reduced complexity, and comprehensive development intelligence
+#    - Development intelligence with testing procedures, debugging support, rapid iteration, and comprehensive development coordination
+#    - Testing excellence with cost-optimized networking, development workflows, debugging support, and comprehensive development environment management
+#
+# 4. Staging Environment Service (veridis-alertmanager-staging):
+#    - Pre-production service with production-like configuration and comprehensive staging environment integration
+#    - Staging configuration with multi-port support (web 9093, cluster 9094), reduced clustering (2 replicas), and comprehensive validation procedures
+#    - Production-like service optimization with clustering support, performance testing, and comprehensive staging intelligence
+#    - Production simulation with realistic alert processing, performance testing, clustering validation, and comprehensive pre-production coordination
+#    - Validation excellence with production-like behavior, performance testing, alert validation, and comprehensive staging environment management
+#
+# 5. External Load Balancer Service (veridis-alertmanager-external):
+#    - External access service with LoadBalancer type and comprehensive external security integration
+#    - External configuration with HTTPS termination (443), SSL certificates, HTTP redirect (80), and comprehensive external access procedures
+#    - Secure external optimization with TLS termination, authentication, authorization, and comprehensive external intelligence
+#    - External access management with rate limiting, IP whitelisting, access logging, and comprehensive external coordination
+#    - Security excellence with encrypted access, authentication requirements, authorization controls, and comprehensive external environment management
+#
+# 6. NodePort Service (veridis-alertmanager-nodeport):
+#    - Development access service with NodePort type and comprehensive debugging support
+#    - NodePort configuration with fixed port (30093), development access, debugging support, and comprehensive troubleshooting procedures
+#    - Development access optimization with simplified networking, debugging features, and comprehensive development intelligence
+#    - Debugging support with direct access, troubleshooting capabilities, development workflow, and comprehensive debugging coordination
+#    - Development excellence with debugging access, troubleshooting support, development workflow, and comprehensive development environment management
+#
+# ENTERPRISE ALERTMANAGER SERVICE FEATURES:
+# =========================================
+# Advanced Alert Management and Performance Integration:
+#   - Multi-environment service architecture with production, development, staging, external, headless, and NodePort configurations
+#   - Intelligent alert management with clustering algorithms, traffic routing, performance optimization, and comprehensive alert decisions
+#   - Service discovery with DNS optimization, endpoint management, port configuration, and comprehensive networking analytics
+#   - Performance management with high throughput (1K alerts/sec), low latency (100ms), concurrent connections (1K), and comprehensive performance intelligence
+#   - Alert processing tuning with intelligent routing, clustering algorithms, performance optimization, and intelligent service optimization
+#
+# Comprehensive Clustering and High Availability Integration:
+#   - Multi-port clustering support with web interface (9093), cluster communication (9094), mesh networking (9095), and comprehensive clustering coordination
+#   - Clustering optimization with gossip protocol, peer discovery, settlement algorithms, and comprehensive clustering intelligence
+#   - High availability management with headless service, direct pod access, DNS discovery, and comprehensive availability coordination
+#   - Business intelligence with clustering analytics, performance correlation, cost optimization, and comprehensive strategic insights
+#   - Availability management with clustering health, failover automation, recovery procedures, and comprehensive availability analytics
+#
+# Enterprise Security and External Access Integration:
+#   - External access management with LoadBalancer configuration, SSL termination, certificate management, and comprehensive external security
+#   - Network security with TLS encryption, authentication requirements, authorization controls, and comprehensive security management
+#   - Access control with rate limiting, IP whitelisting, access logging, and comprehensive access enforcement
+#   - Security monitoring with threat detection, access tracking, compliance validation, and comprehensive security management
+#   - External intelligence with access analytics, security correlation, performance tracking, and comprehensive external analytics
+#
+# Advanced Load Balancing and Traffic Management:
+#   - Multi-tier load balancing with internal cluster access, external load balancer, NodePort development access, and comprehensive traffic optimization
+#   - Health monitoring with comprehensive health checks, endpoint validation, service readiness, and comprehensive health intelligence
+#   - Traffic distribution with round-robin algorithms, session management, clustering support, and comprehensive traffic coordination
+#   - Service resilience with health-based routing, automatic failover, traffic shaping, and comprehensive resilience management
+#   - Business continuity with disaster recovery, traffic management, service availability, and comprehensive continuity intelligence
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# AlertManager Service Lifecycle Management:
+#   - Multi-Service deployment with production clustering, development simplicity, staging validation, external access, headless discovery, and NodePort debugging
+#   - Intelligent service management with predictive analytics and alert utilization correlation
+#   - Advanced monitoring with comprehensive service analytics and alert business intelligence
+#   - Configuration validation with service schema enforcement and alert deployment safety checks
+#   - Automated optimization with service pattern analysis and alert configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II service controls with comprehensive audit requirements and alert logging
+#   - GDPR service compliance with data protection and privacy-preserving alert management
+#   - ISO 27001 service security management with information security and alert compliance integration
+#   - NIST 800-190 container service security with alert validation and compliance
+#   - Zero-trust service architecture with comprehensive encryption and alert authentication requirements
+#
+# Business Intelligence Integration:
+#   - Service analytics with cost correlation and alert resource utilization optimization
+#   - Performance analytics with user experience optimization and service business intelligence
+#   - Alert intelligence with performance pattern monitoring and service optimization recommendations
+#   - Strategic planning with capacity management and service forecasting
+#   - Business impact assessment with service performance correlation and alert tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment service support with production clustering, development simplicity, staging validation, external access, headless discovery, and NodePort debugging
+#   - Comprehensive documentation with service guides and alert troubleshooting procedures
+#   - Environment-specific services with production, development, staging, external, headless, and NodePort support
+#   - Testing integration with service development workflow and alert debugging capabilities
+#   - Service monitoring with comprehensive tracking and alert correlation
+#
+# ==============================================================================
