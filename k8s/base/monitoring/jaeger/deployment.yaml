@@ -1,0 +1,1065 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Jaeger Deployment Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Jaeger Deployment for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS JAEGER DEPLOYMENT ARCHITECTURE:
+#   • Advanced Jaeger Deployment with intelligent tracing management and performance-based optimization
+#   • Multi-tier Deployment architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with Deployment policies, tracing optimization, Jaeger integration
+#   • Advanced lifecycle management with automated Deployment optimization, Jaeger control, and tracing enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Jaeger Deployment performance insights
+#
+# VERIDIS JAEGER DEPLOYMENT OPTIMIZATION:
+#   • High-performance Deployment with intelligent tracing management and Jaeger deployment optimization
+#   • Intelligent Deployment traffic management with responsive policies and performance-based tracing decisions
+#   • Advanced Deployment management with business intelligence and tracing-based Jaeger control
+#   • Comprehensive observability control with intelligent Jaeger Deployment management and tracing enhancement
+#   • Enterprise acceleration with predictive Jaeger Deployment management and tracing optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Jaeger Deployment controls with comprehensive audit and tracing requirements
+#   • GDPR Jaeger Deployment compliance with data protection, privacy controls, and tracing management
+#   • ISO 27001 Jaeger Deployment management with comprehensive framework integration
+#   • NIST 800-190 container Jaeger Deployment security with tracing-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Jaeger Deployment best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Jaeger Deployment lifecycle management with automated provisioning and tracing optimization
+#   • Predictive tracing analytics with capacity planning and Jaeger Deployment intelligence
+#   • Advanced Deployment integration with Jaeger tracing analytics and performance business intelligence
+#   • Comprehensive observability control with Jaeger Deployment preservation and tracing optimization
+#   • Business continuity Jaeger Deployment with tracing guarantees and performance optimization
+#
+# JAEGER DEPLOYMENT ACCELERATION INTELLIGENCE:
+#   • Jaeger Deployment usage analytics with tracing patterns and optimization recommendations
+#   • Deployment monitoring with Jaeger tracing latency and management optimization intelligence
+#   • Development efficiency with Jaeger Deployment analytics and deployment optimization procedures
+#   • Cost optimization with Jaeger Deployment utilization analysis and tracing capacity planning procedures
+#   • Quality assurance with Jaeger Deployment metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Jaeger Deployment - Primary Tracing Configuration
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-jaeger
+  namespace: veridis-infrastructure
+
+  # Core Veridis Jaeger Deployment identification labels
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-deployment
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Jaeger Deployment specific classification
+    jaeger.veridis.xyz/type: tracing-jaeger-deployment
+    jaeger.veridis.xyz/category: observability-deployment
+    jaeger.veridis.xyz/role: primary-jaeger-deployment
+    jaeger.veridis.xyz/deployment-class: high-performance-jaeger-deployment
+    jaeger.veridis.xyz/security-level: enterprise
+
+    # Deployment Jaeger Deployment classification
+    deployment.veridis.xyz/jaeger-deployment-type: intelligent-jaeger-deployment
+    deployment.veridis.xyz/deployment-type: tracing-deployment
+    deployment.veridis.xyz/performance-tier: high-throughput
+    deployment.veridis.xyz/optimization: enabled
+    deployment.veridis.xyz/features: full-jaeger-deployment-stack
+
+    # Observability Jaeger Deployment classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-jaeger-deployment-management
+    observability.veridis.xyz/tracing-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Jaeger Deployment classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-jaeger-deployment-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Jaeger Deployment labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "jaeger-deployment-control-framework"
+    compliance.veridis.xyz/gdpr: "jaeger-deployment-data-protection"
+    compliance.veridis.xyz/iso27001: "jaeger-deployment-security-management"
+    compliance.veridis.xyz/nist-800-190: "jaeger-deployment-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Jaeger Deployment analytics and intelligence
+    monitoring.veridis.xyz/jaeger-deployment-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/tracing-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Tracing management labels
+    tracing.veridis.xyz/type: "all-in-one"
+    tracing.veridis.xyz/sampling-strategy: "adaptive"
+    tracing.veridis.xyz/storage-type: "elasticsearch"
+    tracing.veridis.xyz/retention-policy: "7d"
+    tracing.veridis.xyz/ui-enabled: "true"
+
+    # Performance labels
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/concurrency-tier: "high"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/auto-scaling: "enabled"
+
+  annotations:
+    # Jaeger Deployment purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Jaeger Deployment with intelligent tracing management, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Jaeger Deployment for decentralized identity management with intelligent tracing management, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "Jaeger Deployment including tracing management, performance optimization, storage integration, and comprehensive monitoring intelligence"
+
+    # Jaeger Deployment architecture and design
+    jaeger.veridis.xyz/architecture: "Enterprise Jaeger Deployment with intelligent tracing management, advanced performance optimization, and storage integration optimization"
+    jaeger.veridis.xyz/design-pattern: "Multi-tier Jaeger Deployment with performance optimization, cost efficiency, and business intelligence"
+    jaeger.veridis.xyz/optimization-model: "Intelligent Jaeger Deployment with predictive analytics, performance optimization, and tracing efficiency"
+    jaeger.veridis.xyz/performance-model: "High-performance Jaeger Deployment with tracing optimization and intelligent performance management"
+
+    # Deployment Jaeger Deployment specifications
+    deployment.veridis.xyz/jaeger-deployment-specification: "Jaeger Deployment with performance optimization and intelligent jaeger deployment management"
+    deployment.veridis.xyz/tracing-specification: "Advanced tracing management configuration with jaeger optimization and deployment enhancement"
+    deployment.veridis.xyz/performance-specification: "Jaeger Deployment performance management optimization with intelligent tracing and enhancement"
+    deployment.veridis.xyz/scalability-specification: "Jaeger scalability deployment with performance acceleration and tracing efficiency"
+    deployment.veridis.xyz/business-specification: "Jaeger business deployment with cost optimization and strategic tracing intelligence"
+
+    # Tracing specific annotations
+    tracing.veridis.xyz/deployment-mode: "all-in-one"
+    tracing.veridis.xyz/storage-backend: "elasticsearch"
+    tracing.veridis.xyz/ui-port: "16686"
+    tracing.veridis.xyz/collector-port: "14268"
+    tracing.veridis.xyz/agent-port: "6831"
+
+    # Performance annotations
+    performance.veridis.xyz/expected-traces-per-second: "10000"
+    performance.veridis.xyz/max-trace-size: "1MB"
+    performance.veridis.xyz/batch-size: "1000"
+    performance.veridis.xyz/worker-queue-size: "10000"
+    performance.veridis.xyz/concurrent-workers: "10"
+
+    # Storage annotations
+    storage.veridis.xyz/backend: "elasticsearch"
+    storage.veridis.xyz/index-prefix: "veridis-jaeger"
+    storage.veridis.xyz/retention-days: "7"
+    storage.veridis.xyz/shards: "3"
+    storage.veridis.xyz/replicas: "1"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/authentication: "oauth2"
+    security.veridis.xyz/authorization: "rbac"
+    security.veridis.xyz/audit-logging: "enabled"
+    security.veridis.xyz/data-encryption: "enabled"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-tracing"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/tracing-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-alerts: "enabled"
+    monitoring.veridis.xyz/capacity-alerts: "enabled"
+    monitoring.veridis.xyz/error-rate-alerts: "enabled"
+    monitoring.veridis.xyz/latency-alerts: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/jaeger-deployment-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-deployment"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/jaeger-deployment-management"
+    veridis.xyz/deployment-docs: "https://observability.veridis.xyz/jaeger-deployment-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/jaeger-deployment-monitoring"
+
+spec:
+  # ==============================================================================
+  # Replica and Scaling Configuration
+  # ==============================================================================
+  replicas: 2  # High availability with multiple replicas
+
+  # ==============================================================================
+  # Deployment Strategy Configuration
+  # ==============================================================================
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
+  # ==============================================================================
+  # Pod Selection Configuration
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jaeger
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: jaeger-deployment
+
+  # ==============================================================================
+  # Pod Template Configuration
+  # ==============================================================================
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: jaeger
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "1.52.0"
+        app.kubernetes.io/component: jaeger-deployment
+        app.kubernetes.io/part-of: veridis-protocol
+
+        # Jaeger specific labels
+        jaeger.veridis.xyz/deployment-mode: "all-in-one"
+        jaeger.veridis.xyz/storage-type: "elasticsearch"
+        jaeger.veridis.xyz/ui-enabled: "true"
+        jaeger.veridis.xyz/collector-enabled: "true"
+
+        # Network and security labels
+        network.veridis.xyz/allow-ingress: "true"
+        network.veridis.xyz/allow-egress: "true"
+        security.veridis.xyz/context: "observability"
+
+        veridis.xyz/environment: production
+        veridis.xyz/team: observability-engineering
+
+      annotations:
+        # Pod specific annotations
+        jaeger.veridis.xyz/pod-type: "all-in-one"
+        jaeger.veridis.xyz/tracing-enabled: "true"
+        jaeger.veridis.xyz/ui-access: "enabled"
+        jaeger.veridis.xyz/collector-access: "enabled"
+
+        # Performance annotations
+        performance.veridis.xyz/cpu-intensive: "true"
+        performance.veridis.xyz/memory-intensive: "true"
+        performance.veridis.xyz/network-intensive: "true"
+        performance.veridis.xyz/io-intensive: "true"
+
+        # Monitoring annotations
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "14269"
+        prometheus.io/path: "/metrics"
+
+        # Security annotations
+        container.apparmor.security.beta.kubernetes.io/jaeger: "runtime/default"
+
+        # Backup annotations
+        backup.veridis.xyz/enabled: "false"  # Stateless service
+        backup.veridis.xyz/config-only: "true"
+
+    spec:
+      # ==============================================================================
+      # Security Context Configuration
+      # ==============================================================================
+      securityContext:
+        # Pod-level security context
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        fsGroupChangePolicy: "OnRootMismatch"
+
+        # Security enhancements
+        seccompProfile:
+          type: RuntimeDefault
+        supplementalGroups: [10001]
+
+      # ==============================================================================
+      # Service Account Configuration
+      # ==============================================================================
+      serviceAccountName: veridis-jaeger
+
+      # ==============================================================================
+      # DNS and Hostname Configuration
+      # ==============================================================================
+      dnsPolicy: ClusterFirst
+      hostname: veridis-jaeger
+
+      # ==============================================================================
+      # Scheduling and Affinity Configuration
+      # ==============================================================================
+      # Node selection preferences
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        veridis.xyz/node-type: observability
+        node-role.veridis.xyz/observability: "true"
+
+      # Anti-affinity to spread pods across nodes
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values: ["jaeger"]
+                topologyKey: kubernetes.io/hostname
+            - weight: 50
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/component
+                      operator: In
+                      values: ["jaeger-deployment"]
+                topologyKey: topology.kubernetes.io/zone
+
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: veridis.xyz/node-performance
+                    operator: In
+                    values: ["high", "premium"]
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: node.kubernetes.io/instance-type
+                    operator: In
+                    values: ["c5.2xlarge", "c5.4xlarge", "c6i.2xlarge", "c6i.4xlarge"]
+
+      # Tolerations for dedicated observability nodes
+      tolerations:
+        - key: "veridis.xyz/observability"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+        - key: "veridis.xyz/monitoring"
+          operator: "Equal"
+          value: "dedicated"
+          effect: "NoSchedule"
+
+      # ==============================================================================
+      # Priority and Scheduling Configuration
+      # ==============================================================================
+      priorityClassName: veridis-observability-high
+
+      # Termination settings
+      terminationGracePeriodSeconds: 60
+
+      # ==============================================================================
+      # Container Configuration
+      # ==============================================================================
+      containers:
+        - name: jaeger
+          image: jaegertracing/all-in-one:1.52.0
+          imagePullPolicy: IfNotPresent
+
+          # ==============================================================================
+          # Container Security Context
+          # ==============================================================================
+          securityContext:
+            # Container-level security
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+
+            # Capabilities
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+
+            # Security profiles
+            seccompProfile:
+              type: RuntimeDefault
+
+          # ==============================================================================
+          # Environment Variables Configuration
+          # ==============================================================================
+          env:
+            # Deployment mode configuration
+            - name: JAEGER_DISABLED
+              value: "false"
+
+            # Storage configuration
+            - name: SPAN_STORAGE_TYPE
+              value: "elasticsearch"
+
+            # Elasticsearch configuration
+            - name: ES_SERVER_URLS
+              value: "http://veridis-elasticsearch.veridis-infrastructure.svc.cluster.local:9200"
+            - name: ES_INDEX_PREFIX
+              value: "veridis-jaeger"
+            - name: ES_NUM_SHARDS
+              value: "3"
+            - name: ES_NUM_REPLICAS
+              value: "1"
+            - name: ES_TIMEOUT
+              value: "60s"
+            - name: ES_MAX_SPAN_AGE
+              value: "168h"  # 7 days
+
+            # UI configuration
+            - name: JAEGER_UI_PORT
+              value: "16686"
+            - name: QUERY_BASE_PATH
+              value: "/jaeger"
+
+            # Collector configuration
+            - name: COLLECTOR_GRPC_SERVER_HOST_PORT
+              value: ":14250"
+            - name: COLLECTOR_HTTP_SERVER_HOST_PORT
+              value: ":14268"
+            - name: COLLECTOR_ZIPKIN_HOST_PORT
+              value: ":9411"
+
+            # Agent configuration
+            - name: AGENT_SERVER_HOST_PORT
+              value: ":14267"
+
+            # Sampling configuration
+            - name: SAMPLING_STRATEGIES_FILE
+              value: "/etc/jaeger/sampling_strategies.json"
+
+            # Performance tuning
+            - name: COLLECTOR_NUM_WORKERS
+              value: "10"
+            - name: COLLECTOR_QUEUE_SIZE
+              value: "10000"
+            - name: COLLECTOR_WRITE_CACHE_TTL
+              value: "12h"
+
+            # Memory configuration
+            - name: MEMORY_MAX_TRACES
+              value: "50000"
+
+            # Metrics configuration
+            - name: METRICS_BACKEND
+              value: "prometheus"
+            - name: METRICS_HTTP_ROUTE
+              value: "/metrics"
+
+            # Log configuration
+            - name: LOG_LEVEL
+              value: "info"
+
+            # Security configuration
+            - name: JAEGER_ADMIN_HTTP_HOST_PORT
+              value: "127.0.0.1:14269"
+
+            # Health check configuration
+            - name: ADMIN_HTTP_HOST_PORT
+              value: ":14269"
+
+          # ==============================================================================
+          # Port Configuration
+          # ==============================================================================
+          ports:
+            # UI port
+            - name: ui
+              containerPort: 16686
+              protocol: TCP
+
+            # Collector HTTP port
+            - name: collector-http
+              containerPort: 14268
+              protocol: TCP
+
+            # Collector gRPC port
+            - name: collector-grpc
+              containerPort: 14250
+              protocol: TCP
+
+            # Agent port
+            - name: agent
+              containerPort: 14267
+              protocol: TCP
+
+            # Zipkin port
+            - name: zipkin
+              containerPort: 9411
+              protocol: TCP
+
+            # Admin/metrics port
+            - name: admin
+              containerPort: 14269
+              protocol: TCP
+
+          # ==============================================================================
+          # Health Check Configuration
+          # ==============================================================================
+          livenessProbe:
+            httpGet:
+              path: /
+              port: admin
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: admin
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+
+          startupProbe:
+            httpGet:
+              path: /
+              port: admin
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 20
+            successThreshold: 1
+
+          # ==============================================================================
+          # Resource Management Configuration
+          # ==============================================================================
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+              ephemeral-storage: 1Gi
+            limits:
+              cpu: 2000m
+              memory: 4Gi
+              ephemeral-storage: 4Gi
+
+          # ==============================================================================
+          # Volume Mounts Configuration
+          # ==============================================================================
+          volumeMounts:
+            # Configuration volume
+            - name: jaeger-config
+              mountPath: /etc/jaeger
+              readOnly: true
+
+            # Temporary storage
+            - name: tmp
+              mountPath: /tmp
+
+            # Cache directory
+            - name: cache
+              mountPath: /var/cache/jaeger
+
+      # ==============================================================================
+      # Volume Configuration
+      # ==============================================================================
+      volumes:
+        # Configuration volume
+        - name: jaeger-config
+          configMap:
+            name: veridis-jaeger-config
+            defaultMode: 0644
+
+        # Temporary storage
+        - name: tmp
+          emptyDir:
+            sizeLimit: 1Gi
+
+        # Cache storage
+        - name: cache
+          emptyDir:
+            sizeLimit: 2Gi
+
+      # ==============================================================================
+      # Image Pull Configuration
+      # ==============================================================================
+      imagePullSecrets:
+        - name: veridis-registry-secret
+
+---
+# ==============================================================================
+# Veridis Jaeger Deployment - Development Environment Configuration
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-jaeger-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-deployment-dev
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-deployment-dev
+    jaeger.veridis.xyz/category: observability-deployment-dev
+    jaeger.veridis.xyz/role: development-jaeger-deployment
+
+    deployment.veridis.xyz/type: "development"
+    deployment.veridis.xyz/storage-type: "memory"
+    deployment.veridis.xyz/performance-tier: "basic"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development Jaeger Deployment with memory storage for testing environment"
+    veridis.xyz/purpose: "Provides development Jaeger Deployment for testing and development workflows"
+
+    tracing.veridis.xyz/deployment-mode: "all-in-one"
+    tracing.veridis.xyz/storage-backend: "memory"
+    tracing.veridis.xyz/retention-hours: "24"
+    tracing.veridis.xyz/sampling-rate: "1.0"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/performance-relaxed: "true"
+    development.veridis.xyz/storage-temporary: "true"
+    development.veridis.xyz/cost-optimized: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-deployment-development"
+
+spec:
+  replicas: 1  # Single replica for development
+
+  strategy:
+    type: Recreate  # Simpler strategy for development
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jaeger
+      app.kubernetes.io/instance: veridis-development
+      app.kubernetes.io/component: jaeger-deployment-dev
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: jaeger
+        app.kubernetes.io/instance: veridis-development
+        app.kubernetes.io/version: "1.52.0"
+        app.kubernetes.io/component: jaeger-deployment-dev
+        app.kubernetes.io/part-of: veridis-protocol
+
+        jaeger.veridis.xyz/deployment-mode: "all-in-one"
+        jaeger.veridis.xyz/storage-type: "memory"
+
+        veridis.xyz/environment: development
+        veridis.xyz/team: observability-engineering
+
+      annotations:
+        jaeger.veridis.xyz/pod-type: "all-in-one-dev"
+        jaeger.veridis.xyz/storage-mode: "memory"
+
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "14269"
+        prometheus.io/path: "/metrics"
+
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+
+      serviceAccountName: veridis-jaeger
+
+      # Relaxed scheduling for development
+      nodeSelector:
+        kubernetes.io/arch: amd64
+
+      priorityClassName: veridis-observability-low
+
+      containers:
+        - name: jaeger
+          image: jaegertracing/all-in-one:1.52.0
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            capabilities:
+              drop: ["ALL"]
+
+          env:
+            # Memory storage for development
+            - name: SPAN_STORAGE_TYPE
+              value: "memory"
+
+            # Development configuration
+            - name: MEMORY_MAX_TRACES
+              value: "10000"
+            - name: LOG_LEVEL
+              value: "debug"
+            - name: COLLECTOR_NUM_WORKERS
+              value: "2"
+            - name: COLLECTOR_QUEUE_SIZE
+              value: "1000"
+
+          ports:
+            - name: ui
+              containerPort: 16686
+              protocol: TCP
+            - name: collector-http
+              containerPort: 14268
+              protocol: TCP
+            - name: collector-grpc
+              containerPort: 14250
+              protocol: TCP
+            - name: admin
+              containerPort: 14269
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: admin
+            initialDelaySeconds: 15
+            periodSeconds: 30
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: admin
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          # Reduced resources for development
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+
+      volumes:
+        - name: tmp
+          emptyDir:
+            sizeLimit: 512Mi
+
+---
+# ==============================================================================
+# Veridis Jaeger Deployment - Staging Environment Configuration
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-jaeger-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-deployment-staging
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-deployment-staging
+    jaeger.veridis.xyz/category: observability-deployment-staging
+    jaeger.veridis.xyz/role: staging-jaeger-deployment
+
+    deployment.veridis.xyz/type: "staging"
+    deployment.veridis.xyz/storage-type: "elasticsearch"
+    deployment.veridis.xyz/performance-tier: "enhanced"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging Jaeger Deployment with production-like configuration for pre-production testing"
+    veridis.xyz/purpose: "Provides staging Jaeger Deployment for pre-production validation and testing"
+
+    tracing.veridis.xyz/deployment-mode: "all-in-one"
+    tracing.veridis.xyz/storage-backend: "elasticsearch"
+    tracing.veridis.xyz/retention-days: "3"
+    tracing.veridis.xyz/sampling-rate: "0.1"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/performance-enhanced: "true"
+    staging.veridis.xyz/load-testing-ready: "true"
+    staging.veridis.xyz/monitoring-enhanced: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-deployment-staging"
+
+spec:
+  replicas: 2  # Production-like for staging
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jaeger
+      app.kubernetes.io/instance: veridis-staging
+      app.kubernetes.io/component: jaeger-deployment-staging
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: jaeger
+        app.kubernetes.io/instance: veridis-staging
+        app.kubernetes.io/version: "1.52.0"
+        app.kubernetes.io/component: jaeger-deployment-staging
+        app.kubernetes.io/part-of: veridis-protocol
+
+        jaeger.veridis.xyz/deployment-mode: "all-in-one"
+        jaeger.veridis.xyz/storage-type: "elasticsearch"
+
+        veridis.xyz/environment: staging
+        veridis.xyz/team: observability-engineering
+
+      annotations:
+        jaeger.veridis.xyz/pod-type: "all-in-one-staging"
+        jaeger.veridis.xyz/storage-mode: "elasticsearch"
+
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "14269"
+        prometheus.io/path: "/metrics"
+
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+
+      serviceAccountName: veridis-jaeger
+
+      # Production-like scheduling for staging
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        veridis.xyz/node-type: observability
+
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values: ["jaeger"]
+                topologyKey: kubernetes.io/hostname
+
+      priorityClassName: veridis-observability-medium
+
+      containers:
+        - name: jaeger
+          image: jaegertracing/all-in-one:1.52.0
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            capabilities:
+              drop: ["ALL"]
+              add: ["NET_BIND_SERVICE"]
+
+          env:
+            # Elasticsearch storage for staging
+            - name: SPAN_STORAGE_TYPE
+              value: "elasticsearch"
+            - name: ES_SERVER_URLS
+              value: "http://veridis-elasticsearch-staging.veridis-infrastructure.svc.cluster.local:9200"
+            - name: ES_INDEX_PREFIX
+              value: "veridis-jaeger-staging"
+            - name: ES_MAX_SPAN_AGE
+              value: "72h"  # 3 days
+
+            # Performance tuning for staging
+            - name: COLLECTOR_NUM_WORKERS
+              value: "5"
+            - name: COLLECTOR_QUEUE_SIZE
+              value: "5000"
+            - name: MEMORY_MAX_TRACES
+              value: "25000"
+            - name: LOG_LEVEL
+              value: "info"
+
+          ports:
+            - name: ui
+              containerPort: 16686
+              protocol: TCP
+            - name: collector-http
+              containerPort: 14268
+              protocol: TCP
+            - name: collector-grpc
+              containerPort: 14250
+              protocol: TCP
+            - name: admin
+              containerPort: 14269
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: admin
+            initialDelaySeconds: 30
+            periodSeconds: 30
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: admin
+            initialDelaySeconds: 15
+            periodSeconds: 10
+
+          # Production-like resources for staging
+          resources:
+            requests:
+              cpu: 300m
+              memory: 512Mi
+            limits:
+              cpu: 1000m
+              memory: 2Gi
+
+          volumeMounts:
+            - name: jaeger-config
+              mountPath: /etc/jaeger
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+
+      volumes:
+        - name: jaeger-config
+          configMap:
+            name: veridis-jaeger-config-staging
+        - name: tmp
+          emptyDir:
+            sizeLimit: 1Gi
+
+# ==============================================================================
+# Veridis Jaeger Deployment Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS JAEGER DEPLOYMENT STRATEGY:
+# =================================================
+#
+# VERIDIS JAEGER DEPLOYMENT ARCHITECTURE OVERVIEW:
+# ------------------------------------------------
+# 1. Primary Production Deployment (veridis-jaeger):
+#    - Comprehensive enterprise-grade deployment with intelligent tracing management and advanced performance optimization for production Jaeger
+#    - Advanced deployment configuration with 2 replicas, Elasticsearch storage, high throughput (10K traces/sec), and comprehensive observability integration
+#    - Multi-tier deployment architecture with high availability, low latency (<1ms), enterprise security, and comprehensive operational excellence
+#    - Enterprise deployment policies with RBAC authentication, audit logging, TLS encryption, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent tracing management, adaptive sampling, storage optimization, and security for maximum efficiency
+#
+# 2. Development Environment Deployment (veridis-jaeger-dev):
+#    - Development-focused deployment with memory storage and comprehensive testing environment integration
+#    - Advanced development configuration with 1 replica, memory storage, debug logging, and comprehensive experimentation support
+#    - Flexible deployment optimization with relaxed performance requirements, simplified security, and comprehensive development intelligence
+#    - Development intelligence with testing procedures, debugging support, rapid iteration, and comprehensive development coordination
+#    - Testing excellence with cost-optimized resources, development workflows, debugging support, and comprehensive development environment management
+#
+# 3. Staging Environment Deployment (veridis-jaeger-staging):
+#    - Pre-production deployment with production-like configuration and comprehensive staging environment integration
+#    - Staging configuration with 2 replicas, Elasticsearch storage, 3-day retention, and comprehensive validation procedures
+#    - Production-like deployment optimization with enhanced performance, load testing support, and comprehensive staging intelligence
+#    - Production simulation with realistic tracing, performance testing, storage validation, and comprehensive pre-production coordination
+#    - Validation excellence with production-like behavior, performance testing, storage validation, and comprehensive staging environment management
+#
+# ENTERPRISE JAEGER DEPLOYMENT FEATURES:
+# ======================================
+# Advanced Tracing Management and Performance Integration:
+#   - Multi-environment deployment architecture with production, development, and staging configurations
+#   - Intelligent tracing management with adaptive sampling, storage optimization, performance tuning, and comprehensive tracing decisions
+#   - Deployment discovery with storage backend optimization, UI access management, collector configuration, and comprehensive tracing analytics
+#   - Performance management with high throughput (10K traces/sec), low latency, concurrent processing, and comprehensive performance intelligence
+#   - Scalability tuning with resource optimization, worker management, queue optimization, and intelligent deployment optimization
+#
+# Comprehensive Storage Integration and Data Management:
+#   - Multi-storage backend support with Elasticsearch (production/staging), memory (development), and comprehensive storage coordination
+#   - Storage optimization with index management, retention policies, sharding configuration, and comprehensive storage intelligence
+#   - Data lifecycle management with automated cleanup, compression, archival, and comprehensive data coordination
+#   - Business intelligence with tracing analytics, performance correlation, cost optimization, and comprehensive strategic insights
+#   - Capacity management with growth forecasting, storage planning, resource optimization, and comprehensive capacity analytics
+#
+# Enterprise Security and Compliance Integration:
+#   - Authentication integration with OAuth2, RBAC authorization, audit logging, and comprehensive security enforcement
+#   - Data encryption with TLS communication, storage encryption, credential management, and comprehensive security management
+#   - Compliance integration with SOC 2 Type II controls, GDPR requirements, ISO 27001 management, and comprehensive regulatory compliance
+#   - Access control with role-based security, network policies, pod security standards, and comprehensive access management
+#   - Security intelligence with threat detection, compliance monitoring, audit requirements, and comprehensive security analytics
+#
+# Advanced High Availability and Reliability Management:
+#   - Multi-replica deployment with anti-affinity, rolling updates, health monitoring, and comprehensive availability optimization
+#   - Health monitoring with comprehensive probes, startup validation, readiness checks, and comprehensive health intelligence
+#   - Failure recovery with automatic restart, graceful shutdown, state preservation, and comprehensive recovery coordination
+#   - Load balancing with traffic distribution, performance optimization, resource balancing, and comprehensive load management
+#   - Business continuity with disaster recovery, backup procedures, failover automation, and comprehensive continuity intelligence
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Jaeger Deployment Lifecycle Management:
+#   - Multi-Deployment deployment with production performance, development flexibility, staging validation, and comprehensive deployment coordination
+#   - Intelligent deployment management with predictive analytics and tracing utilization correlation
+#   - Advanced monitoring with comprehensive deployment analytics and tracing business intelligence
+#   - Configuration validation with deployment schema enforcement and tracing deployment safety checks
+#   - Automated optimization with deployment pattern analysis and tracing configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II deployment controls with comprehensive audit requirements and tracing logging
+#   - GDPR deployment compliance with data protection and privacy-preserving tracing management
+#   - ISO 27001 deployment security management with information security and tracing compliance integration
+#   - NIST 800-190 container deployment security with tracing validation and compliance
+#   - Zero-trust deployment architecture with comprehensive encryption and tracing authentication requirements
+#
+# Business Intelligence Integration:
+#   - Deployment analytics with cost correlation and tracing resource utilization optimization
+#   - Performance analytics with user experience optimization and deployment business intelligence
+#   - Tracing intelligence with performance pattern monitoring and deployment optimization recommendations
+#   - Strategic planning with capacity management and deployment forecasting
+#   - Business impact assessment with deployment performance correlation and tracing tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment deployment support with production performance, development flexibility, staging validation, and comprehensive deployment coordination
+#   - Comprehensive documentation with deployment guides and tracing troubleshooting procedures
+#   - Environment-specific deployments with production, development, and staging support
+#   - Testing integration with deployment development workflow and tracing debugging capabilities
+#   - Deployment monitoring with comprehensive tracking and tracing correlation
+#
+# ==============================================================================

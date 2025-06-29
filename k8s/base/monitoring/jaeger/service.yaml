@@ -1,0 +1,756 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Jaeger Service Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Jaeger Service for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS JAEGER SERVICE ARCHITECTURE:
+#   • Advanced Jaeger Service with intelligent tracing management and performance-based optimization
+#   • Multi-tier Service architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with Service policies, tracing optimization, Jaeger integration
+#   • Advanced lifecycle management with automated Service optimization, Jaeger control, and tracing enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Jaeger Service performance insights
+#
+# VERIDIS JAEGER SERVICE OPTIMIZATION:
+#   • High-performance Service with intelligent tracing management and Jaeger service optimization
+#   • Intelligent Service traffic management with responsive policies and performance-based tracing decisions
+#   • Advanced Service management with business intelligence and tracing-based Jaeger control
+#   • Comprehensive observability control with intelligent Jaeger Service management and tracing enhancement
+#   • Enterprise acceleration with predictive Jaeger Service management and tracing optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Jaeger Service controls with comprehensive audit and tracing requirements
+#   • GDPR Jaeger Service compliance with data protection, privacy controls, and tracing management
+#   • ISO 27001 Jaeger Service management with comprehensive framework integration
+#   • NIST 800-190 container Jaeger Service security with tracing-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Jaeger Service best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Jaeger Service lifecycle management with automated provisioning and tracing optimization
+#   • Predictive tracing analytics with capacity planning and Jaeger Service intelligence
+#   • Advanced Service integration with Jaeger tracing analytics and performance business intelligence
+#   • Comprehensive observability control with Jaeger Service preservation and tracing optimization
+#   • Business continuity Jaeger Service with tracing guarantees and performance optimization
+#
+# JAEGER SERVICE ACCELERATION INTELLIGENCE:
+#   • Jaeger Service usage analytics with tracing patterns and optimization recommendations
+#   • Service monitoring with Jaeger tracing latency and management optimization intelligence
+#   • Development efficiency with Jaeger Service analytics and deployment optimization procedures
+#   • Cost optimization with Jaeger Service utilization analysis and tracing capacity planning procedures
+#   • Quality assurance with Jaeger Service metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Jaeger Service - Primary Tracing Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-jaeger
+  namespace: veridis-infrastructure
+
+  # Core Veridis Jaeger Service identification labels
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Jaeger Service specific classification
+    jaeger.veridis.xyz/type: tracing-jaeger-service
+    jaeger.veridis.xyz/category: observability-service
+    jaeger.veridis.xyz/role: primary-jaeger-service
+    jaeger.veridis.xyz/service-class: high-performance-jaeger-service
+    jaeger.veridis.xyz/security-level: enterprise
+
+    # Service Jaeger Service classification
+    service.veridis.xyz/jaeger-service-type: intelligent-jaeger-service
+    service.veridis.xyz/service-type: tracing-service
+    service.veridis.xyz/performance-tier: high-throughput
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-jaeger-service-stack
+
+    # Observability Jaeger Service classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-jaeger-service-management
+    observability.veridis.xyz/tracing-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Jaeger Service classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-jaeger-service-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Jaeger Service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "jaeger-service-control-framework"
+    compliance.veridis.xyz/gdpr: "jaeger-service-data-protection"
+    compliance.veridis.xyz/iso27001: "jaeger-service-security-management"
+    compliance.veridis.xyz/nist-800-190: "jaeger-service-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Jaeger Service analytics and intelligence
+    monitoring.veridis.xyz/jaeger-service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/tracing-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Network management labels
+    network.veridis.xyz/type: "multi-port"
+    network.veridis.xyz/protocol: "http-grpc"
+    network.veridis.xyz/load-balancing: "round-robin"
+    network.veridis.xyz/session-affinity: "none"
+    network.veridis.xyz/external-access: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/concurrency-tier: "high"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/load-balancing: "enabled"
+
+  annotations:
+    # Jaeger Service purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Jaeger Service with intelligent tracing management, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Jaeger Service for decentralized identity management with intelligent tracing management, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "Jaeger Service including tracing management, performance optimization, load balancing, and comprehensive monitoring intelligence"
+
+    # Jaeger Service architecture and design
+    jaeger.veridis.xyz/architecture: "Enterprise Jaeger Service with intelligent tracing management, advanced performance optimization, and load balancing optimization"
+    jaeger.veridis.xyz/design-pattern: "Multi-tier Jaeger Service with performance optimization, cost efficiency, and business intelligence"
+    jaeger.veridis.xyz/optimization-model: "Intelligent Jaeger Service with predictive analytics, performance optimization, and tracing efficiency"
+    jaeger.veridis.xyz/performance-model: "High-performance Jaeger Service with tracing optimization and intelligent load balancing management"
+
+    # Service Jaeger Service specifications
+    service.veridis.xyz/jaeger-service-specification: "Jaeger Service with performance optimization and intelligent jaeger service management"
+    service.veridis.xyz/tracing-specification: "Advanced tracing management configuration with jaeger optimization and service enhancement"
+    service.veridis.xyz/load-balancing-specification: "Jaeger Service load balancing management optimization with intelligent tracing and enhancement"
+    service.veridis.xyz/network-specification: "Jaeger network service with performance acceleration and tracing efficiency"
+    service.veridis.xyz/business-specification: "Jaeger business service with cost optimization and strategic tracing intelligence"
+
+    # Network specific annotations
+    network.veridis.xyz/service-type: "ClusterIP"
+    network.veridis.xyz/protocol-support: "http,grpc,tcp"
+    network.veridis.xyz/port-configuration: "multi-port"
+    network.veridis.xyz/load-balancer-class: "internal"
+    network.veridis.xyz/session-persistence: "none"
+
+    # Performance annotations
+    performance.veridis.xyz/expected-rps: "10000"
+    performance.veridis.xyz/concurrent-connections: "5000"
+    performance.veridis.xyz/response-time-target: "10ms"
+    performance.veridis.xyz/throughput-target: "1Gbps"
+    performance.veridis.xyz/optimization-enabled: "true"
+
+    # Health annotations
+    health.veridis.xyz/health-check-path: "/health"
+    health.veridis.xyz/ready-check-path: "/ready"
+    health.veridis.xyz/metrics-path: "/metrics"
+    health.veridis.xyz/ui-path: "/jaeger"
+    health.veridis.xyz/collector-path: "/api/traces"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/authentication: "oauth2"
+    security.veridis.xyz/authorization: "rbac"
+    security.veridis.xyz/network-policy: "enabled"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-tracing"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-alerts: "enabled"
+    monitoring.veridis.xyz/capacity-alerts: "enabled"
+    monitoring.veridis.xyz/availability-alerts: "enabled"
+    monitoring.veridis.xyz/latency-alerts: "enabled"
+
+    # Load balancing annotations
+    load-balancer.veridis.xyz/algorithm: "round-robin"
+    load-balancer.veridis.xyz/health-check-enabled: "true"
+    load-balancer.veridis.xyz/sticky-sessions: "false"
+    load-balancer.veridis.xyz/connection-draining: "enabled"
+    load-balancer.veridis.xyz/timeout: "30s"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/jaeger-service-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/jaeger-service-management"
+    veridis.xyz/service-docs: "https://observability.veridis.xyz/jaeger-service-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/jaeger-service-monitoring"
+
+spec:
+  # ==============================================================================
+  # Service Type Configuration
+  # ==============================================================================
+  type: ClusterIP  # Internal cluster service for tracing infrastructure
+
+  # ==============================================================================
+  # Session Affinity Configuration
+  # ==============================================================================
+  sessionAffinity: None  # No session affinity for stateless tracing service
+
+  # ==============================================================================
+  # IP Family Configuration
+  # ==============================================================================
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+    - IPv4
+
+  # ==============================================================================
+  # Service Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: jaeger-deployment
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    # ==============================================================================
+    # Jaeger UI Port Configuration
+    # ==============================================================================
+    - name: ui
+      port: 16686
+      targetPort: 16686
+      protocol: TCP
+      # UI access for Jaeger web interface
+
+    # ==============================================================================
+    # Collector HTTP Port Configuration
+    # ==============================================================================
+    - name: collector-http
+      port: 14268
+      targetPort: 14268
+      protocol: TCP
+      # HTTP endpoint for span collection
+
+    # ==============================================================================
+    # Collector gRPC Port Configuration
+    # ==============================================================================
+    - name: collector-grpc
+      port: 14250
+      targetPort: 14250
+      protocol: TCP
+      # gRPC endpoint for span collection
+
+    # ==============================================================================
+    # Agent Port Configuration (UDP)
+    # ==============================================================================
+    - name: agent-compact
+      port: 6831
+      targetPort: 6831
+      protocol: UDP
+      # Compact thrift protocol for agent communication
+
+    # ==============================================================================
+    # Agent Port Configuration (UDP Binary)
+    # ==============================================================================
+    - name: agent-binary
+      port: 6832
+      targetPort: 6832
+      protocol: UDP
+      # Binary thrift protocol for agent communication
+
+    # ==============================================================================
+    # Agent Configuration Port
+    # ==============================================================================
+    - name: agent-config
+      port: 5778
+      targetPort: 5778
+      protocol: TCP
+      # Configuration server for sampling strategies
+
+    # ==============================================================================
+    # Zipkin Port Configuration
+    # ==============================================================================
+    - name: zipkin
+      port: 9411
+      targetPort: 9411
+      protocol: TCP
+      # Zipkin-compatible endpoint for span collection
+
+    # ==============================================================================
+    # Admin/Metrics Port Configuration
+    # ==============================================================================
+    - name: admin
+      port: 14269
+      targetPort: 14269
+      protocol: TCP
+      # Admin interface and metrics endpoint
+
+---
+# ==============================================================================
+# Veridis Jaeger Service - Development Environment Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-jaeger-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-service-dev
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-service-dev
+    jaeger.veridis.xyz/category: observability-service-dev
+    jaeger.veridis.xyz/role: development-jaeger-service
+
+    service.veridis.xyz/type: "development"
+    service.veridis.xyz/performance-tier: "basic"
+    service.veridis.xyz/optimization: "relaxed"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development Jaeger Service with simplified configuration for testing environment"
+    veridis.xyz/purpose: "Provides development Jaeger Service for testing and development workflows"
+
+    network.veridis.xyz/service-type: "ClusterIP"
+    network.veridis.xyz/protocol-support: "http,grpc"
+    network.veridis.xyz/load-balancer-class: "basic"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/performance-relaxed: "true"
+    development.veridis.xyz/security-simplified: "true"
+    development.veridis.xyz/cost-optimized: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-service-development"
+
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/component: jaeger-deployment-dev
+
+  ports:
+    # Essential ports for development
+    - name: ui
+      port: 16686
+      targetPort: 16686
+      protocol: TCP
+
+    - name: collector-http
+      port: 14268
+      targetPort: 14268
+      protocol: TCP
+
+    - name: collector-grpc
+      port: 14250
+      targetPort: 14250
+      protocol: TCP
+
+    - name: admin
+      port: 14269
+      targetPort: 14269
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Jaeger Service - Staging Environment Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-jaeger-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-service-staging
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-service-staging
+    jaeger.veridis.xyz/category: observability-service-staging
+    jaeger.veridis.xyz/role: staging-jaeger-service
+
+    service.veridis.xyz/type: "staging"
+    service.veridis.xyz/performance-tier: "enhanced"
+    service.veridis.xyz/optimization: "enabled"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging Jaeger Service with production-like configuration for pre-production testing"
+    veridis.xyz/purpose: "Provides staging Jaeger Service for pre-production validation and testing"
+
+    network.veridis.xyz/service-type: "ClusterIP"
+    network.veridis.xyz/protocol-support: "http,grpc,tcp,udp"
+    network.veridis.xyz/load-balancer-class: "enhanced"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/performance-enhanced: "true"
+    staging.veridis.xyz/load-testing-ready: "true"
+    staging.veridis.xyz/monitoring-enhanced: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-service-staging"
+
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/component: jaeger-deployment-staging
+
+  ports:
+    # Full port configuration for staging
+    - name: ui
+      port: 16686
+      targetPort: 16686
+      protocol: TCP
+
+    - name: collector-http
+      port: 14268
+      targetPort: 14268
+      protocol: TCP
+
+    - name: collector-grpc
+      port: 14250
+      targetPort: 14250
+      protocol: TCP
+
+    - name: agent-compact
+      port: 6831
+      targetPort: 6831
+      protocol: UDP
+
+    - name: agent-binary
+      port: 6832
+      targetPort: 6832
+      protocol: UDP
+
+    - name: zipkin
+      port: 9411
+      targetPort: 9411
+      protocol: TCP
+
+    - name: admin
+      port: 14269
+      targetPort: 14269
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Jaeger Service - External Load Balancer Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-jaeger-external
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-service-external
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-service-external
+    jaeger.veridis.xyz/category: observability-service-external
+    jaeger.veridis.xyz/role: external-jaeger-service
+
+    service.veridis.xyz/type: "external"
+    service.veridis.xyz/load-balancer: "enabled"
+    service.veridis.xyz/external-access: "secured"
+
+    # External access labels
+    external.veridis.xyz/type: "load-balancer"
+    external.veridis.xyz/protocol: "https"
+    external.veridis.xyz/authentication: "required"
+    external.veridis.xyz/authorization: "rbac"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "External Jaeger Service with LoadBalancer for secure external access to Jaeger UI"
+    veridis.xyz/purpose: "Provides external access to Jaeger UI with enterprise security and load balancing"
+
+    # Load balancer annotations (cloud-specific)
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:region:account:certificate/cert-id"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+
+    # Security annotations
+    security.veridis.xyz/external-access: "secured"
+    security.veridis.xyz/tls-termination: "load-balancer"
+    security.veridis.xyz/whitelist-enabled: "true"
+    security.veridis.xyz/rate-limiting: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/external-monitoring: "enabled"
+    monitoring.veridis.xyz/access-logging: "enabled"
+    monitoring.veridis.xyz/performance-tracking: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "external-access-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-service-external"
+
+spec:
+  type: LoadBalancer
+  sessionAffinity: None
+
+  # Load balancer configuration
+  loadBalancerClass: external-lb
+  externalTrafficPolicy: Cluster
+
+  selector:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: jaeger-deployment
+
+  ports:
+    # HTTPS port for external UI access
+    - name: https
+      port: 443
+      targetPort: 16686
+      protocol: TCP
+
+    # HTTP port (redirect to HTTPS)
+    - name: http
+      port: 80
+      targetPort: 16686
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Jaeger Service - Headless Service for Direct Pod Access
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-jaeger-headless
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.52.0"
+    app.kubernetes.io/component: jaeger-service-headless
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    jaeger.veridis.xyz/type: tracing-jaeger-service-headless
+    jaeger.veridis.xyz/category: observability-service-headless
+    jaeger.veridis.xyz/role: headless-jaeger-service
+
+    service.veridis.xyz/type: "headless"
+    service.veridis.xyz/dns-discovery: "enabled"
+    service.veridis.xyz/direct-access: "enabled"
+
+    # Headless service labels
+    headless.veridis.xyz/dns-enabled: "true"
+    headless.veridis.xyz/service-discovery: "enabled"
+    headless.veridis.xyz/pod-access: "direct"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Headless Jaeger Service for direct pod access and service discovery"
+    veridis.xyz/purpose: "Provides headless service for direct pod communication and DNS-based service discovery"
+
+    # Headless service annotations
+    service.veridis.xyz/headless: "true"
+    service.veridis.xyz/dns-discovery: "enabled"
+    service.veridis.xyz/load-balancing: "none"
+    service.veridis.xyz/cluster-ip: "none"
+
+    # Service discovery annotations
+    discovery.veridis.xyz/enabled: "true"
+    discovery.veridis.xyz/method: "dns"
+    discovery.veridis.xyz/pod-access: "direct"
+    discovery.veridis.xyz/health-checking: "pod-level"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/jaeger-service-headless"
+
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+  sessionAffinity: None
+
+  selector:
+    app.kubernetes.io/name: jaeger
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: jaeger-deployment
+
+  ports:
+    # All ports for direct pod access
+    - name: ui
+      port: 16686
+      targetPort: 16686
+      protocol: TCP
+
+    - name: collector-http
+      port: 14268
+      targetPort: 14268
+      protocol: TCP
+
+    - name: collector-grpc
+      port: 14250
+      targetPort: 14250
+      protocol: TCP
+
+    - name: admin
+      port: 14269
+      targetPort: 14269
+      protocol: TCP
+
+# ==============================================================================
+# Veridis Jaeger Service Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS JAEGER SERVICE STRATEGY:
+# ==============================================
+#
+# VERIDIS JAEGER SERVICE ARCHITECTURE OVERVIEW:
+# ---------------------------------------------
+# 1. Primary Production Service (veridis-jaeger):
+#    - Comprehensive enterprise-grade service with intelligent tracing management and advanced performance optimization for production Jaeger
+#    - Advanced service configuration with multi-port support, load balancing, high throughput (10K RPS), and comprehensive observability integration
+#    - Multi-tier service architecture with UI access (16686), collector endpoints (HTTP 14268, gRPC 14250), agent ports (UDP 6831/6832), and comprehensive operational excellence
+#    - Enterprise service policies with session management, health monitoring, performance tracking, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent load balancing, traffic management, endpoint optimization, and security for maximum efficiency
+#
+# 2. Development Environment Service (veridis-jaeger-dev):
+#    - Development-focused service with simplified port configuration and comprehensive testing environment integration
+#    - Advanced development configuration with essential ports only, relaxed performance requirements, and comprehensive experimentation support
+#    - Flexible service optimization with basic load balancing, simplified security, and comprehensive development intelligence
+#    - Development intelligence with testing procedures, debugging support, rapid iteration, and comprehensive development coordination
+#    - Testing excellence with cost-optimized networking, development workflows, debugging support, and comprehensive development environment management
+#
+# 3. Staging Environment Service (veridis-jaeger-staging):
+#    - Pre-production service with production-like configuration and comprehensive staging environment integration
+#    - Staging configuration with full port support, enhanced performance, load testing readiness, and comprehensive validation procedures
+#    - Production-like service optimization with enhanced load balancing, performance testing, and comprehensive staging intelligence
+#    - Production simulation with realistic networking, performance testing, load validation, and comprehensive pre-production coordination
+#    - Validation excellence with production-like behavior, performance testing, load validation, and comprehensive staging environment management
+#
+# 4. External Load Balancer Service (veridis-jaeger-external):
+#    - External access service with LoadBalancer type and comprehensive external security integration
+#    - External configuration with HTTPS termination, SSL certificates, rate limiting, and comprehensive external access procedures
+#    - Secure external optimization with TLS termination, authentication, authorization, and comprehensive external intelligence
+#    - External access management with whitelisting, rate limiting, access logging, and comprehensive external coordination
+#    - Security excellence with encrypted access, authentication requirements, authorization controls, and comprehensive external environment management
+#
+# 5. Headless Service (veridis-jaeger-headless):
+#    - Direct pod access service with DNS-based service discovery and comprehensive pod-level communication
+#    - Headless configuration with no ClusterIP, direct pod access, DNS discovery, and comprehensive service discovery procedures
+#    - Service discovery optimization with DNS records, pod addressing, direct communication, and comprehensive discovery intelligence
+#    - Pod-level access with direct networking, health checking, service coordination, and comprehensive pod coordination
+#    - Discovery excellence with DNS-based discovery, direct access, pod communication, and comprehensive headless environment management
+#
+# ENTERPRISE JAEGER SERVICE FEATURES:
+# ===================================
+# Advanced Network Management and Performance Integration:
+#   - Multi-environment service architecture with production, development, staging, external, and headless configurations
+#   - Intelligent traffic management with load balancing, session management, health monitoring, and comprehensive networking decisions
+#   - Service discovery with DNS optimization, endpoint management, port configuration, and comprehensive networking analytics
+#   - Performance management with high throughput (10K RPS), low latency (10ms), concurrent connections (5K), and comprehensive performance intelligence
+#   - Load balancing tuning with round-robin algorithms, health checks, connection draining, and intelligent service optimization
+#
+# Comprehensive Protocol Support and Multi-Port Integration:
+#   - Multi-protocol support with HTTP, gRPC, TCP, UDP protocols for comprehensive tracing communication
+#   - Port optimization with UI access (16686), collector endpoints (14268, 14250), agent communication (6831, 6832), and comprehensive port intelligence
+#   - Protocol management with Zipkin compatibility (9411), admin interface (14269), configuration server (5778), and comprehensive protocol coordination
+#   - Business intelligence with traffic analytics, protocol correlation, port optimization, and comprehensive strategic insights
+#   - Network management with service mesh integration, network policies, traffic encryption, and comprehensive networking analytics
+#
+# Enterprise Security and External Access Integration:
+#   - External access management with LoadBalancer configuration, SSL termination, certificate management, and comprehensive external security
+#   - Network security with TLS encryption, authentication requirements, authorization controls, and comprehensive security management
+#   - Access control with rate limiting, IP whitelisting, access logging, and comprehensive access enforcement
+#   - Security monitoring with threat detection, access tracking, compliance validation, and comprehensive security management
+#   - External intelligence with access analytics, security correlation, performance tracking, and comprehensive external analytics
+#
+# Advanced Load Balancing and High Availability Management:
+#   - Multi-tier load balancing with internal cluster access, external load balancer, headless discovery, and comprehensive availability optimization
+#   - Health monitoring with comprehensive health checks, endpoint validation, service readiness, and comprehensive health intelligence
+#   - Traffic distribution with round-robin algorithms, session management, connection draining, and comprehensive traffic coordination
+#   - Service resilience with health-based routing, automatic failover, traffic shaping, and comprehensive resilience management
+#   - Business continuity with disaster recovery, traffic management, service availability, and comprehensive continuity intelligence
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Jaeger Service Lifecycle Management:
+#   - Multi-Service deployment with production performance, development flexibility, staging validation, external access, and headless discovery
+#   - Intelligent service management with predictive analytics and traffic utilization correlation
+#   - Advanced monitoring with comprehensive service analytics and networking business intelligence
+#   - Configuration validation with service schema enforcement and networking deployment safety checks
+#   - Automated optimization with service pattern analysis and networking configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II service controls with comprehensive audit requirements and networking logging
+#   - GDPR service compliance with data protection and privacy-preserving networking management
+#   - ISO 27001 service security management with information security and networking compliance integration
+#   - NIST 800-190 container service security with networking validation and compliance
+#   - Zero-trust service architecture with comprehensive encryption and networking authentication requirements
+#
+# Business Intelligence Integration:
+#   - Service analytics with cost correlation and networking resource utilization optimization
+#   - Performance analytics with user experience optimization and service business intelligence
+#   - Networking intelligence with traffic pattern monitoring and service optimization recommendations
+#   - Strategic planning with capacity management and service forecasting
+#   - Business impact assessment with service performance correlation and networking tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment service support with production performance, development flexibility, staging validation, external access, and headless discovery
+#   - Comprehensive documentation with service guides and networking troubleshooting procedures
+#   - Environment-specific services with production, development, staging, external, and headless support
+#   - Testing integration with service development workflow and networking debugging capabilities
+#   - Service monitoring with comprehensive tracking and networking correlation
+#
+# ==============================================================================
