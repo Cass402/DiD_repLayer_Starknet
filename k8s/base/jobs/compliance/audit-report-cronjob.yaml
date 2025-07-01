@@ -1,0 +1,1544 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Audit Report CronJob Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Audit Report CronJob for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS AUDIT REPORT CRONJOB ARCHITECTURE:
+#   • Advanced Audit Report CronJob with intelligent audit management and compliance-based optimization
+#   • Multi-tier Audit Report architecture with development, testing, staging, and production environments
+#   • Comprehensive audit framework with Report policies, compliance optimization, SOC2 integration
+#   • Advanced lifecycle management with automated Report optimization, audit control, and compliance enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Audit Report CronJob performance insights
+#
+# VERIDIS AUDIT REPORT CRONJOB OPTIMIZATION:
+#   • High-performance CronJob with intelligent audit reporting and SOC2 compliance optimization
+#   • Intelligent CronJob audit reporting with responsive policies and compliance-based reporting decisions
+#   • Advanced CronJob management with business intelligence and audit-based SOC2 control
+#   • Comprehensive audit reporting control with intelligent SOC2 CronJob management and compliance enhancement
+#   • Enterprise acceleration with predictive SOC2 CronJob management and audit reporting optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Audit Report CronJob controls with comprehensive audit and reporting requirements
+#   • GDPR Audit Report CronJob compliance with data protection, privacy controls, and reporting management
+#   • ISO 27001 Audit Report CronJob management with comprehensive framework integration
+#   • NIST 800-190 container Audit Report CronJob security with reporting-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Audit Report CronJob best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Audit Report CronJob lifecycle management with automated provisioning and reporting optimization
+#   • Predictive reporting analytics with capacity planning and Audit Report CronJob intelligence
+#   • Advanced CronJob integration with SOC2 reporting analytics and performance business intelligence
+#   • Comprehensive audit reporting control with Audit Report CronJob preservation and compliance optimization
+#   • Business continuity Audit Report CronJob with reporting guarantees and performance optimization
+#
+# AUDIT REPORT CRONJOB ACCELERATION INTELLIGENCE:
+#   • Audit Report CronJob usage analytics with reporting patterns and optimization recommendations
+#   • CronJob monitoring with SOC2 reporting latency and management optimization intelligence
+#   • Development efficiency with Audit Report CronJob analytics and deployment optimization procedures
+#   • Cost optimization with Audit Report CronJob utilization analysis and reporting capacity planning procedures
+#   • Quality assurance with Audit Report CronJob metrics and reporting validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production Audit Report CronJob - Comprehensive Compliance Reporting
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-audit-report-cronjob
+  namespace: veridis
+
+  # Core Veridis Audit Report CronJob identification labels
+  labels:
+    app.kubernetes.io/name: veridis-audit-report
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: audit-report-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Audit Report CronJob specific classification
+    job.veridis.xyz/type: production-audit-report-cronjob
+    job.veridis.xyz/category: comprehensive-reporting-cronjob
+    job.veridis.xyz/role: primary-reporting-cronjob
+    job.veridis.xyz/reporting-class: high-performance-reporting-cronjob
+    job.veridis.xyz/security-level: enterprise
+
+    # Reporting CronJob Audit Report CronJob classification
+    reporting.veridis.xyz/audit-report-cronjob-type: intelligent-reporting-cronjob
+    reporting.veridis.xyz/reporting-type: audit-reporting
+    reporting.veridis.xyz/performance-tier: high-throughput
+    reporting.veridis.xyz/optimization: enabled
+    reporting.veridis.xyz/features: full-reporting-cronjob-stack
+
+    # Audit Report CronJob classification
+    audit.veridis.xyz/tier: production
+    audit.veridis.xyz/optimization: intelligent-reporting-cronjob-management
+    audit.veridis.xyz/data-management: advanced
+    audit.veridis.xyz/performance-optimization: enabled
+    audit.veridis.xyz/efficiency: maximum
+
+    # Business Reporting CronJob classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-reporting-cronjob-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Reporting CronJob labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance-engineering
+    veridis.xyz/cost-center: compliance-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "reporting-cronjob-control-framework"
+    compliance.veridis.xyz/gdpr: "reporting-cronjob-data-protection"
+    compliance.veridis.xyz/iso27001: "reporting-cronjob-security-management"
+    compliance.veridis.xyz/nist-800-190: "reporting-cronjob-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Reporting CronJob analytics and intelligence
+    monitoring.veridis.xyz/reporting-cronjob-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/reporting-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Audit reporting specific labels
+    audit.veridis.xyz/provider: "soc2"
+    audit.veridis.xyz/reporting-strategy: "comprehensive"
+    audit.veridis.xyz/compliance-optimization: "enabled"
+    audit.veridis.xyz/evidence-collection: "enabled"
+    audit.veridis.xyz/report-generation: "enabled"
+    audit.veridis.xyz/performance-monitoring: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/reporting-speed: "high"
+    performance.veridis.xyz/batch-processing: "enabled"
+    performance.veridis.xyz/parallel-reporting: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/memory-efficient: "enabled"
+
+  annotations:
+    # Reporting CronJob purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Audit Report CronJob with intelligent audit management, advanced performance optimization, and comprehensive reporting optimization"
+    veridis.xyz/purpose: "Provides comprehensive Audit Report CronJob for decentralized identity management with intelligent reporting management, performance optimization, and reporting guarantees"
+    veridis.xyz/scope: "Audit Report CronJob including reporting management, performance optimization, cronjob configuration, and comprehensive monitoring intelligence"
+
+    # Reporting CronJob architecture and design
+    audit.veridis.xyz/architecture: "Enterprise Audit Report CronJob with intelligent reporting management, advanced performance optimization, and cronjob integration optimization"
+    audit.veridis.xyz/design-pattern: "Multi-tier Reporting CronJob with performance optimization, cost efficiency, and business intelligence"
+    audit.veridis.xyz/optimization-model: "Intelligent Reporting CronJob with predictive analytics, performance optimization, and reporting efficiency"
+    audit.veridis.xyz/performance-model: "High-performance Reporting CronJob with reporting optimization and intelligent cronjob management"
+
+    # Reporting CronJob specifications
+    reporting.veridis.xyz/reporting-cronjob-specification: "Reporting CronJob with performance optimization and intelligent audit reporting management"
+    reporting.veridis.xyz/reporting-specification: "Advanced reporting management with reporting optimization and cronjob enhancement"
+    reporting.veridis.xyz/soc2-specification: "Reporting CronJob SOC2 management optimization with intelligent reporting and enhancement"
+    reporting.veridis.xyz/performance-specification: "Reporting performance cronjob with reporting acceleration and efficiency"
+    reporting.veridis.xyz/business-specification: "Reporting business cronjob with cost optimization and strategic reporting intelligence"
+
+    # Audit reporting configuration annotations
+    audit.veridis.xyz/schedule: "0 3 * * 1"  # Weekly on Monday at 3 AM
+    audit.veridis.xyz/reporting-strategy: "comprehensive"
+    audit.veridis.xyz/compliance-frameworks: "soc2,gdpr,iso27001,nist"
+    audit.veridis.xyz/evidence-retention: "7y"
+    audit.veridis.xyz/report-format: "json,pdf,csv"
+
+    # Performance annotations
+    performance.veridis.xyz/reporting-timeout: "2h"
+    performance.veridis.xyz/parallel-workers: "6"
+    performance.veridis.xyz/batch-processing: "enabled"
+    performance.veridis.xyz/memory-optimization: "enabled"
+    performance.veridis.xyz/progress-tracking: "enabled"
+
+    # Database connection annotations
+    database.veridis.xyz/host: "veridis-postgres-service.veridis.svc.cluster.local"
+    database.veridis.xyz/port: "5432"
+    database.veridis.xyz/database: "veridis_production"
+    database.veridis.xyz/connection-pool-size: "20"
+    database.veridis.xyz/connection-timeout: "30s"
+
+    # Compliance strategy annotations
+    compliance.veridis.xyz/soc2-controls: "enabled"
+    compliance.veridis.xyz/gdpr-compliance: "enabled"
+    compliance.veridis.xyz/iso27001-framework: "enabled"
+    compliance.veridis.xyz/evidence-collection: "enabled"
+    compliance.veridis.xyz/audit-trail: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/authentication-required: "true"
+    security.veridis.xyz/authorization-enabled: "true"
+    security.veridis.xyz/audit-logging: "enabled"
+    security.veridis.xyz/data-classification: "confidential"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/reporting-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-tracking: "enabled"
+    monitoring.veridis.xyz/error-tracking: "enabled"
+    monitoring.veridis.xyz/success-notification: "enabled"
+    monitoring.veridis.xyz/failure-alerting: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-retention: "7y"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/compliance-validation: "enabled"
+    compliance.veridis.xyz/regulatory-compliance: "soc2,gdpr,iso27001,nist"
+    compliance.veridis.xyz/reporting-policy: "production-audit-report-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "compliance-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-audit-reporting"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/performance-tier: "production"
+
+    # Report storage annotations
+    storage.veridis.xyz/report-encryption: "enabled"
+    storage.veridis.xyz/report-compression: "enabled"
+    storage.veridis.xyz/report-backup: "enabled"
+    storage.veridis.xyz/report-archival: "enabled"
+    storage.veridis.xyz/report-retention: "7y"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "compliance-team@veridis.xyz"
+    veridis.xyz/reporting-cronjob-admin: "audit-admin@veridis.xyz"
+    veridis.xyz/escalation: "compliance-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "compliance-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/compliance/audit-reporting"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/compliance/audit-report-management"
+    veridis.xyz/reporting-docs: "https://compliance.veridis.xyz/audit-report-guide"
+    veridis.xyz/monitoring-docs: "https://compliance.veridis.xyz/audit-report-monitoring"
+
+# ==============================================================================
+# Audit Report CronJob Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Schedule Configuration
+  # ==============================================================================
+  schedule: "0 3 * * 1"  # Weekly on Monday at 3 AM UTC
+
+  # ==============================================================================
+  # Timezone Configuration
+  # ==============================================================================
+  timeZone: "UTC"
+
+  # ==============================================================================
+  # Concurrency Policy
+  # ==============================================================================
+  concurrencyPolicy: Forbid
+
+  # ==============================================================================
+  # History Limits
+  # ==============================================================================
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+
+  # ==============================================================================
+  # Startup Deadline
+  # ==============================================================================
+  startingDeadlineSeconds: 600  # 10 minutes
+
+  # ==============================================================================
+  # Suspend Configuration
+  # ==============================================================================
+  suspend: false
+
+  # ==============================================================================
+  # Job Template Configuration
+  # ==============================================================================
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: audit-report
+        job.veridis.xyz/schedule: weekly
+        job.veridis.xyz/environment: production
+        job.veridis.xyz/criticality: high
+        veridis.xyz/component: audit-report
+        veridis.xyz/managed-by: cronjob
+        compliance.veridis.xyz/framework: "soc2,gdpr,iso27001"
+
+      annotations:
+        job.veridis.xyz/created-by: "audit-report-cronjob"
+        job.veridis.xyz/schedule-cron: "0 3 * * 1"
+        job.veridis.xyz/reporting-strategy: "comprehensive"
+        job.veridis.xyz/performance-optimized: "true"
+        job.veridis.xyz/compliance-frameworks: "soc2,gdpr,iso27001,nist"
+
+    # ==============================================================================
+    # Job Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Job Completion and Parallelism
+      # ==============================================================================
+      completions: 1
+      parallelism: 1
+
+      # ==============================================================================
+      # Job Deadline and Backoff
+      # ==============================================================================
+      activeDeadlineSeconds: 7200  # 2 hours
+      backoffLimit: 2
+
+      # ==============================================================================
+      # TTL After Finished
+      # ==============================================================================
+      ttlSecondsAfterFinished: 604800  # 7 days
+
+      # ==============================================================================
+      # Pod Template Specification
+      # ==============================================================================
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: audit-report
+            job.veridis.xyz/component: reporting-worker
+            veridis.xyz/audit-reporting: "true"
+            veridis.xyz/monitoring: "enabled"
+            compliance.veridis.xyz/sensitive: "true"
+
+          annotations:
+            job.veridis.xyz/reporting-job: "audit-report"
+            job.veridis.xyz/performance-optimized: "true"
+            job.veridis.xyz/monitoring-enabled: "true"
+            compliance.veridis.xyz/data-sensitivity: "high"
+
+            # Prometheus annotations
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "8080"
+            prometheus.io/path: "/metrics"
+
+        spec:
+          # ==============================================================================
+          # Pod Restart Policy
+          # ==============================================================================
+          restartPolicy: OnFailure
+
+          # ==============================================================================
+          # Service Account
+          # ==============================================================================
+          serviceAccountName: veridis-audit-report-sa
+
+          # ==============================================================================
+          # Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534  # nobody
+            runAsGroup: 65534  # nobody
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+            supplementalGroups: []
+
+          # ==============================================================================
+          # DNS Configuration
+          # ==============================================================================
+          dnsPolicy: ClusterFirst
+          dnsConfig:
+            options:
+              - name: ndots
+                value: "2"
+              - name: edns0
+
+          # ==============================================================================
+          # Priority and Scheduling
+          # ==============================================================================
+          priorityClassName: veridis-compliance-priority
+
+          # ==============================================================================
+          # Node Selection and Affinity
+          # ==============================================================================
+          nodeSelector:
+            veridis.xyz/node-type: "compliance"
+            kubernetes.io/arch: "amd64"
+
+          affinity:
+            # Node affinity for compliance nodes
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/workload-type
+                        operator: In
+                        values: ["compliance", "reporting"]
+                - weight: 50
+                  preference:
+                    matchExpressions:
+                      - key: node.kubernetes.io/instance-type
+                        operator: In
+                        values: ["m5.large", "m5.xlarge", "c5.large"]
+
+            # Pod anti-affinity to avoid scheduling on database nodes during reporting
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchExpressions:
+                        - key: app.kubernetes.io/name
+                          operator: In
+                          values: ["postgresql", "postgres"]
+                    topologyKey: kubernetes.io/hostname
+
+          # ==============================================================================
+          # Tolerations
+          # ==============================================================================
+          tolerations:
+            - key: veridis.xyz/compliance
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: node.kubernetes.io/not-ready
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+            - key: node.kubernetes.io/unreachable
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+
+          # ==============================================================================
+          # Init Containers
+          # ==============================================================================
+          initContainers:
+            # ==============================================================================
+            # Database Connection Validator
+            # ==============================================================================
+            - name: database-connection-check
+              image: postgres:16.1-alpine
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Checking database connection..."
+                  PGPASSWORD=$POSTGRES_PASSWORD pg_isready -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB
+                  if [ $? -eq 0 ]; then
+                    echo "Database connection successful"
+                  else
+                    echo "Database connection failed"
+                    exit 1
+                  fi
+
+              env:
+                - name: POSTGRES_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: POSTGRES_PORT
+                  value: "5432"
+                - name: POSTGRES_DB
+                  value: "veridis_production"
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: POSTGRES_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "10m"
+                  memory: "16Mi"
+                limits:
+                  cpu: "100m"
+                  memory: "32Mi"
+
+            # ==============================================================================
+            # Compliance Framework Validator
+            # ==============================================================================
+            - name: compliance-framework-validator
+              image: veridis/compliance-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Validating compliance framework configuration..."
+
+                  # Check SOC 2 controls
+                  if [ "$SOC2_CONTROLS_ENABLED" = "true" ]; then
+                    echo "Validating SOC 2 controls configuration..."
+                    /usr/local/bin/compliance-validator --framework=soc2 --config=/etc/compliance/soc2-config.yaml
+                    if [ $? -ne 0 ]; then
+                      echo "SOC 2 controls validation failed"
+                      exit 1
+                    fi
+                  fi
+
+                  # Check GDPR compliance
+                  if [ "$GDPR_COMPLIANCE_ENABLED" = "true" ]; then
+                    echo "Validating GDPR compliance configuration..."
+                    /usr/local/bin/compliance-validator --framework=gdpr --config=/etc/compliance/gdpr-config.yaml
+                    if [ $? -ne 0 ]; then
+                      echo "GDPR compliance validation failed"
+                      exit 1
+                    fi
+                  fi
+
+                  # Check ISO 27001 framework
+                  if [ "$ISO27001_FRAMEWORK_ENABLED" = "true" ]; then
+                    echo "Validating ISO 27001 framework configuration..."
+                    /usr/local/bin/compliance-validator --framework=iso27001 --config=/etc/compliance/iso27001-config.yaml
+                    if [ $? -ne 0 ]; then
+                      echo "ISO 27001 framework validation failed"
+                      exit 1
+                    fi
+                  fi
+
+                  echo "Compliance framework validation completed successfully"
+
+              env:
+                - name: SOC2_CONTROLS_ENABLED
+                  value: "true"
+                - name: GDPR_COMPLIANCE_ENABLED
+                  value: "true"
+                - name: ISO27001_FRAMEWORK_ENABLED
+                  value: "true"
+                - name: NIST_FRAMEWORK_ENABLED
+                  value: "true"
+
+              volumeMounts:
+                - name: compliance-config
+                  mountPath: /etc/compliance
+                  readOnly: true
+                - name: audit-workspace
+                  mountPath: /workspace
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "64Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "128Mi"
+
+            # ==============================================================================
+            # Report Storage Preparation
+            # ==============================================================================
+            - name: report-storage-preparation
+              image: veridis/compliance-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Preparing report storage..."
+
+                  # Create report directories
+                  mkdir -p /reports/soc2
+                  mkdir -p /reports/gdpr
+                  mkdir -p /reports/iso27001
+                  mkdir -p /reports/nist
+                  mkdir -p /reports/combined
+                  mkdir -p /reports/evidence
+                  mkdir -p /reports/temp
+
+                  # Set permissions
+                  chmod 750 /reports/*
+
+                  # Create report metadata file
+                  cat > /reports/metadata.json << EOF
+                  {
+                    "report_generation_start": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+                    "compliance_frameworks": ["soc2", "gdpr", "iso27001", "nist"],
+                    "report_format": ["json", "pdf", "csv"],
+                    "environment": "production",
+                    "namespace": "$NAMESPACE",
+                    "job_name": "$JOB_NAME"
+                  }
+                  EOF
+
+                  echo "Report storage preparation completed"
+
+              env:
+                - name: NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: JOB_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+
+              volumeMounts:
+                - name: audit-reports
+                  mountPath: /reports
+                - name: audit-workspace
+                  mountPath: /workspace
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: false
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "25m"
+                  memory: "32Mi"
+                limits:
+                  cpu: "100m"
+                  memory: "64Mi"
+
+          # ==============================================================================
+          # Main Container - Audit Report Generator
+          # ==============================================================================
+          containers:
+            - name: audit-report-generator
+              image: veridis/audit-report-generator:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              # ==============================================================================
+              # Container Command and Arguments
+              # ==============================================================================
+              command:
+                - /usr/local/bin/audit-report-generator
+
+              args:
+                - --config=/etc/audit/config.yaml
+                - --log-level=info
+                - --metrics-port=8080
+                - --health-port=8081
+                - --parallel-workers=6
+                - --report-formats=json,pdf,csv
+                - --compliance-frameworks=soc2,gdpr,iso27001,nist
+                - --evidence-collection=true
+                - --performance-optimized=true
+                - --audit-logging=true
+                - --encryption-enabled=true
+
+              # ==============================================================================
+              # Environment Variables
+              # ==============================================================================
+              env:
+                # Database Connection Configuration
+                - name: DATABASE_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: DATABASE_PORT
+                  value: "5432"
+                - name: DATABASE_NAME
+                  value: "veridis_production"
+                - name: DATABASE_SSL_MODE
+                  value: "require"
+                - name: DATABASE_CONNECTION_POOL_SIZE
+                  value: "20"
+                - name: DATABASE_CONNECTION_TIMEOUT
+                  value: "30s"
+                - name: DATABASE_QUERY_TIMEOUT
+                  value: "60s"
+
+                # Database Authentication
+                - name: DATABASE_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: DATABASE_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+
+                # Audit Reporting Configuration
+                - name: AUDIT_STRATEGY
+                  value: "comprehensive"
+                - name: COMPLIANCE_FRAMEWORKS
+                  value: "soc2,gdpr,iso27001,nist"
+                - name: REPORT_FORMATS
+                  value: "json,pdf,csv"
+                - name: EVIDENCE_COLLECTION_ENABLED
+                  value: "true"
+                - name: EVIDENCE_RETENTION_YEARS
+                  value: "7"
+                - name: PARALLEL_WORKERS
+                  value: "6"
+                - name: BATCH_SIZE
+                  value: "1000"
+
+                # SOC 2 Configuration
+                - name: SOC2_CONTROLS_ENABLED
+                  value: "true"
+                - name: SOC2_TRUST_SERVICES_CRITERIA
+                  value: "security,availability,confidentiality,processing-integrity"
+                - name: SOC2_REPORTING_PERIOD_MONTHS
+                  value: "12"
+                - name: SOC2_EVIDENCE_RETENTION_YEARS
+                  value: "7"
+
+                # GDPR Configuration
+                - name: GDPR_COMPLIANCE_ENABLED
+                  value: "true"
+                - name: GDPR_DATA_PROTECTION_ASSESSMENT
+                  value: "enabled"
+                - name: GDPR_PRIVACY_IMPACT_ASSESSMENT
+                  value: "enabled"
+                - name: GDPR_BREACH_NOTIFICATION_TRACKING
+                  value: "enabled"
+
+                # ISO 27001 Configuration
+                - name: ISO27001_FRAMEWORK_ENABLED
+                  value: "true"
+                - name: ISO27001_SECURITY_CONTROLS
+                  value: "all"
+                - name: ISO27001_RISK_ASSESSMENT
+                  value: "enabled"
+                - name: ISO27001_MANAGEMENT_REVIEW
+                  value: "enabled"
+
+                # NIST Configuration
+                - name: NIST_FRAMEWORK_ENABLED
+                  value: "true"
+                - name: NIST_800_190_CONTAINER_SECURITY
+                  value: "enabled"
+                - name: NIST_CYBERSECURITY_FRAMEWORK
+                  value: "enabled"
+
+                # Performance Configuration
+                - name: PERFORMANCE_OPTIMIZED
+                  value: "true"
+                - name: PROGRESS_TRACKING_ENABLED
+                  value: "true"
+                - name: METRICS_ENABLED
+                  value: "true"
+                - name: METRICS_PORT
+                  value: "8080"
+                - name: HEALTH_CHECK_PORT
+                  value: "8081"
+                - name: MEMORY_OPTIMIZATION
+                  value: "enabled"
+
+                # Logging Configuration
+                - name: LOG_LEVEL
+                  value: "info"
+                - name: LOG_FORMAT
+                  value: "json"
+                - name: AUDIT_LOGGING_ENABLED
+                  value: "true"
+                - name: STRUCTURED_LOGGING
+                  value: "true"
+                - name: LOG_CORRELATION_ID
+                  value: "true"
+
+                # Security Configuration
+                - name: ENCRYPTION_ENABLED
+                  value: "true"
+                - name: ENCRYPTION_ALGORITHM
+                  value: "AES-256-GCM"
+                - name: AUTHENTICATION_REQUIRED
+                  value: "true"
+                - name: AUTHORIZATION_ENABLED
+                  value: "true"
+                - name: DATA_CLASSIFICATION
+                  value: "confidential"
+                - name: ACCESS_LOGGING
+                  value: "enabled"
+
+                # Report Storage Configuration
+                - name: REPORT_STORAGE_PATH
+                  value: "/reports"
+                - name: REPORT_ENCRYPTION_ENABLED
+                  value: "true"
+                - name: REPORT_COMPRESSION_ENABLED
+                  value: "true"
+                - name: REPORT_BACKUP_ENABLED
+                  value: "true"
+                - name: REPORT_ARCHIVAL_ENABLED
+                  value: "true"
+
+                # Monitoring Configuration
+                - name: MONITORING_ENABLED
+                  value: "true"
+                - name: PROMETHEUS_METRICS_ENABLED
+                  value: "true"
+                - name: HEALTH_CHECKS_ENABLED
+                  value: "true"
+                - name: ERROR_TRACKING_ENABLED
+                  value: "true"
+                - name: PERFORMANCE_MONITORING_ENABLED
+                  value: "true"
+
+                # Notification Configuration
+                - name: SUCCESS_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: FAILURE_ALERTING_ENABLED
+                  value: "true"
+                - name: PROGRESS_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-notification-secrets
+                      key: slack-webhook-url
+                      optional: true
+                - name: EMAIL_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: EMAIL_SMTP_HOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-notification-secrets
+                      key: smtp-host
+                      optional: true
+
+                # Environment and Deployment
+                - name: ENVIRONMENT
+                  value: "production"
+                - name: DEPLOYMENT_VERSION
+                  value: "3.2.1"
+                - name: CLUSTER_NAME
+                  value: "veridis-production"
+                - name: NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+
+                # Job Metadata
+                - name: JOB_START_TIME
+                  value: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                - name: JOB_TYPE
+                  value: "audit-report"
+                - name: JOB_SCHEDULE
+                  value: "weekly"
+                - name: JOB_CRITICALITY
+                  value: "high"
+                - name: COMPLIANCE_FRAMEWORKS_LIST
+                  value: "soc2,gdpr,iso27001,nist"
+
+              # ==============================================================================
+              # Volume Mounts
+              # ==============================================================================
+              volumeMounts:
+                # Configuration
+                - name: audit-config
+                  mountPath: /etc/audit
+                  readOnly: true
+
+                # Compliance configuration
+                - name: compliance-config
+                  mountPath: /etc/compliance
+                  readOnly: true
+
+                # Database TLS certificates
+                - name: database-tls-certs
+                  mountPath: /etc/database-tls
+                  readOnly: true
+
+                # Report storage
+                - name: audit-reports
+                  mountPath: /reports
+
+                # Workspace for temporary files
+                - name: audit-workspace
+                  mountPath: /workspace
+
+                # Audit logs
+                - name: audit-logs
+                  mountPath: /var/log/audit
+
+                # Evidence storage
+                - name: evidence-storage
+                  mountPath: /var/lib/evidence
+
+                # Cache for optimization
+                - name: audit-cache
+                  mountPath: /var/cache/audit
+
+              # ==============================================================================
+              # Security Context
+              # ==============================================================================
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                runAsGroup: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              # ==============================================================================
+              # Resource Management
+              # ==============================================================================
+              resources:
+                requests:
+                  cpu: "500m"
+                  memory: "1Gi"
+                  ephemeral-storage: "2Gi"
+                limits:
+                  cpu: "2000m"
+                  memory: "4Gi"
+                  ephemeral-storage: "4Gi"
+
+              # ==============================================================================
+              # Health Checks
+              # ==============================================================================
+              livenessProbe:
+                httpGet:
+                  path: /health/live
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 60
+                periodSeconds: 30
+                timeoutSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+
+              readinessProbe:
+                httpGet:
+                  path: /health/ready
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 30
+                periodSeconds: 15
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 3
+
+              # ==============================================================================
+              # Startup Probe
+              # ==============================================================================
+              startupProbe:
+                httpGet:
+                  path: /health/startup
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 12
+
+              # ==============================================================================
+              # Container Ports
+              # ==============================================================================
+              ports:
+                - name: metrics
+                  containerPort: 8080
+                  protocol: TCP
+                - name: health
+                  containerPort: 8081
+                  protocol: TCP
+
+              # ==============================================================================
+              # Lifecycle Hooks
+              # ==============================================================================
+              lifecycle:
+                preStop:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - -c
+                      - |
+                        echo "Gracefully shutting down audit report generator..."
+                        # Send graceful shutdown signal
+                        kill -TERM 1
+                        # Wait for report generation to complete
+                        sleep 60
+                        echo "Audit report generation shutdown completed"
+
+          # ==============================================================================
+          # Volumes Configuration
+          # ==============================================================================
+          volumes:
+            # ==============================================================================
+            # Configuration Volume
+            # ==============================================================================
+            - name: audit-config
+              configMap:
+                name: veridis-audit-report-config
+                defaultMode: 0644
+                items:
+                  - key: config.yaml
+                    path: config.yaml
+                  - key: reporting-strategies.yaml
+                    path: reporting-strategies.yaml
+                  - key: performance-config.yaml
+                    path: performance-config.yaml
+
+            # ==============================================================================
+            # Compliance Configuration Volume
+            # ==============================================================================
+            - name: compliance-config
+              configMap:
+                name: veridis-compliance-config
+                defaultMode: 0644
+                items:
+                  - key: soc2-config.yaml
+                    path: soc2-config.yaml
+                  - key: gdpr-config.yaml
+                    path: gdpr-config.yaml
+                  - key: iso27001-config.yaml
+                    path: iso27001-config.yaml
+                  - key: nist-config.yaml
+                    path: nist-config.yaml
+
+            # ==============================================================================
+            # Database TLS Certificates Volume
+            # ==============================================================================
+            - name: database-tls-certs
+              secret:
+                secretName: veridis-postgres-tls-certs
+                defaultMode: 0600
+                items:
+                  - key: tls.crt
+                    path: tls.crt
+                  - key: tls.key
+                    path: tls.key
+                  - key: ca.crt
+                    path: ca.crt
+
+            # ==============================================================================
+            # Report Storage Volume (PVC)
+            # ==============================================================================
+            - name: audit-reports
+              persistentVolumeClaim:
+                claimName: veridis-audit-reports-pvc
+
+            # ==============================================================================
+            # Workspace Volume (EmptyDir)
+            # ==============================================================================
+            - name: audit-workspace
+              emptyDir:
+                sizeLimit: "4Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Audit Logs Volume
+            # ==============================================================================
+            - name: audit-logs
+              emptyDir:
+                sizeLimit: "1Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Evidence Storage Volume (PVC)
+            # ==============================================================================
+            - name: evidence-storage
+              persistentVolumeClaim:
+                claimName: veridis-evidence-storage-pvc
+
+            # ==============================================================================
+            # Audit Cache Volume
+            # ==============================================================================
+            - name: audit-cache
+              emptyDir:
+                sizeLimit: "512Mi"
+                medium: "Memory"
+
+---
+# ==============================================================================
+# Veridis Monthly Comprehensive Audit Report CronJob - Detailed Monthly Reporting
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-monthly-audit-report-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-monthly-audit-report
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: monthly-audit-report-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: monthly-audit-report-cronjob
+    job.veridis.xyz/category: comprehensive-monthly-reporting
+    job.veridis.xyz/role: detailed-audit-reporting
+    job.veridis.xyz/priority: high
+
+    # Monthly reporting labels
+    monthly.veridis.xyz/type: "comprehensive-audit-report"
+    monthly.veridis.xyz/comprehensive: "enabled"
+    monthly.veridis.xyz/detailed: "enabled"
+    monthly.veridis.xyz/executive-summary: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance-engineering
+    veridis.xyz/cost-center: compliance-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Monthly comprehensive audit report with detailed analysis"
+    veridis.xyz/purpose: "Provides detailed monthly audit reports with executive summaries"
+
+    # Monthly reporting specific annotations
+    monthly.veridis.xyz/comprehensive-analysis: "enabled"
+    monthly.veridis.xyz/executive-summary: "enabled"
+    monthly.veridis.xyz/trend-analysis: "enabled"
+
+# ==============================================================================
+# Monthly Audit Report CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 4 1 * *"  # Monthly on 1st at 4 AM
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 6
+  failedJobsHistoryLimit: 6
+  startingDeadlineSeconds: 1200  # 20 minutes
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: monthly-audit-report
+        job.veridis.xyz/frequency: monthly
+        job.veridis.xyz/scope: comprehensive
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 10800  # 3 hours
+      backoffLimit: 2
+      ttlSecondsAfterFinished: 2592000  # 30 days
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: monthly-audit-report
+            job.veridis.xyz/component: monthly-reporting-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-audit-report-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: monthly-audit-report
+              image: veridis/audit-report-generator:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/audit-report-generator
+
+              args:
+                - --config=/etc/audit/monthly-config.yaml
+                - --report-type=monthly-comprehensive
+                - --compliance-frameworks=soc2,gdpr,iso27001,nist
+                - --detailed-analysis=true
+                - --executive-summary=true
+                - --trend-analysis=true
+                - --benchmark-comparison=true
+                - --parallel-workers=8
+                - --log-level=info
+
+              env:
+                - name: DATABASE_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: DATABASE_PORT
+                  value: "5432"
+                - name: DATABASE_NAME
+                  value: "veridis_production"
+                - name: DATABASE_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: DATABASE_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+                - name: REPORT_TYPE
+                  value: "monthly-comprehensive"
+                - name: DETAILED_ANALYSIS
+                  value: "true"
+                - name: EXECUTIVE_SUMMARY
+                  value: "true"
+                - name: TREND_ANALYSIS
+                  value: "true"
+                - name: BENCHMARK_COMPARISON
+                  value: "true"
+                - name: COMPLIANCE_FRAMEWORKS
+                  value: "soc2,gdpr,iso27001,nist"
+
+              volumeMounts:
+                - name: monthly-audit-config
+                  mountPath: /etc/audit
+                  readOnly: true
+                - name: compliance-config
+                  mountPath: /etc/compliance
+                  readOnly: true
+                - name: database-tls-certs
+                  mountPath: /etc/database-tls
+                  readOnly: true
+                - name: audit-reports
+                  mountPath: /reports
+                - name: audit-workspace
+                  mountPath: /workspace
+                - name: evidence-storage
+                  mountPath: /var/lib/evidence
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "1000m"
+                  memory: "2Gi"
+                limits:
+                  cpu: "4000m"
+                  memory: "8Gi"
+
+          volumes:
+            - name: monthly-audit-config
+              configMap:
+                name: veridis-monthly-audit-config
+            - name: compliance-config
+              configMap:
+                name: veridis-compliance-config
+            - name: database-tls-certs
+              secret:
+                secretName: veridis-postgres-tls-certs
+            - name: audit-reports
+              persistentVolumeClaim:
+                claimName: veridis-audit-reports-pvc
+            - name: audit-workspace
+              emptyDir:
+                sizeLimit: "8Gi"
+            - name: evidence-storage
+              persistentVolumeClaim:
+                claimName: veridis-evidence-storage-pvc
+
+---
+# ==============================================================================
+# Veridis Quarterly Executive Audit Report CronJob - Executive Summary Reporting
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-quarterly-executive-audit-report-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-quarterly-executive-audit-report
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: quarterly-executive-audit-report-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: quarterly-executive-audit-report-cronjob
+    job.veridis.xyz/category: executive-summary-reporting
+    job.veridis.xyz/role: executive-audit-reporting
+    job.veridis.xyz/priority: critical
+
+    # Quarterly reporting labels
+    quarterly.veridis.xyz/type: "executive-audit-report"
+    quarterly.veridis.xyz/executive: "enabled"
+    quarterly.veridis.xyz/strategic: "enabled"
+    quarterly.veridis.xyz/board-ready: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance-engineering
+    veridis.xyz/cost-center: compliance-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Quarterly executive audit report for board and stakeholders"
+    veridis.xyz/purpose: "Provides quarterly executive-level audit reports for governance"
+
+    # Quarterly reporting specific annotations
+    quarterly.veridis.xyz/executive-level: "c-suite"
+    quarterly.veridis.xyz/board-ready: "true"
+    quarterly.veridis.xyz/strategic-insights: "enabled"
+
+# ==============================================================================
+# Quarterly Executive Audit Report CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 6 1 1,4,7,10 *"  # Quarterly on 1st at 6 AM (Jan, Apr, Jul, Oct)
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 8
+  failedJobsHistoryLimit: 8
+  startingDeadlineSeconds: 1800  # 30 minutes
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: quarterly-executive-audit-report
+        job.veridis.xyz/frequency: quarterly
+        job.veridis.xyz/scope: executive
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 14400  # 4 hours
+      backoffLimit: 1
+      ttlSecondsAfterFinished: 7776000  # 90 days
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: quarterly-executive-audit-report
+            job.veridis.xyz/component: executive-reporting-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-audit-report-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: quarterly-executive-audit-report
+              image: veridis/audit-report-generator:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/audit-report-generator
+
+              args:
+                - --config=/etc/audit/quarterly-executive-config.yaml
+                - --report-type=quarterly-executive
+                - --compliance-frameworks=soc2,gdpr,iso27001,nist
+                - --executive-summary=true
+                - --strategic-insights=true
+                - --board-ready-format=true
+                - --risk-assessment=comprehensive
+                - --performance-benchmarks=enabled
+                - --parallel-workers=10
+                - --log-level=info
+
+              env:
+                - name: DATABASE_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: DATABASE_PORT
+                  value: "5432"
+                - name: DATABASE_NAME
+                  value: "veridis_production"
+                - name: DATABASE_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: DATABASE_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+                - name: REPORT_TYPE
+                  value: "quarterly-executive"
+                - name: EXECUTIVE_SUMMARY
+                  value: "true"
+                - name: STRATEGIC_INSIGHTS
+                  value: "true"
+                - name: BOARD_READY_FORMAT
+                  value: "true"
+                - name: RISK_ASSESSMENT
+                  value: "comprehensive"
+                - name: PERFORMANCE_BENCHMARKS
+                  value: "enabled"
+                - name: COMPLIANCE_FRAMEWORKS
+                  value: "soc2,gdpr,iso27001,nist"
+
+              volumeMounts:
+                - name: quarterly-executive-config
+                  mountPath: /etc/audit
+                  readOnly: true
+                - name: compliance-config
+                  mountPath: /etc/compliance
+                  readOnly: true
+                - name: database-tls-certs
+                  mountPath: /etc/database-tls
+                  readOnly: true
+                - name: audit-reports
+                  mountPath: /reports
+                - name: audit-workspace
+                  mountPath: /workspace
+                - name: evidence-storage
+                  mountPath: /var/lib/evidence
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "1500m"
+                  memory: "4Gi"
+                limits:
+                  cpu: "6000m"
+                  memory: "16Gi"
+
+          volumes:
+            - name: quarterly-executive-config
+              configMap:
+                name: veridis-quarterly-executive-config
+            - name: compliance-config
+              configMap:
+                name: veridis-compliance-config
+            - name: database-tls-certs
+              secret:
+                secretName: veridis-postgres-tls-certs
+            - name: audit-reports
+              persistentVolumeClaim:
+                claimName: veridis-audit-reports-pvc
+            - name: audit-workspace
+              emptyDir:
+                sizeLimit: "16Gi"
+            - name: evidence-storage
+              persistentVolumeClaim:
+                claimName: veridis-evidence-storage-pvc
+
+# ==============================================================================
+# Veridis Audit Report CronJob Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS AUDIT REPORT CRONJOB STRATEGY:
+# ====================================================
+#
+# VERIDIS AUDIT REPORT CRONJOB ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------
+# 1. Production Audit Report CronJob (veridis-audit-report-cronjob):
+#    - Comprehensive enterprise-grade reporting cronjob with intelligent audit management and advanced performance optimization for production environments
+#    - Advanced audit configuration with comprehensive database integration, compliance management, TLS support, and comprehensive operational excellence
+#    - Multi-tier audit architecture with weekly scheduling, intelligent reporting strategies, performance optimization, and comprehensive audit intelligence
+#    - Enterprise audit policies with security enforcement, compliance controls, evidence automation, and comprehensive regulatory procedures
+#    - Performance optimization with intelligent parallel processing, batch reporting, memory optimization, and efficiency for maximum audit performance
+#
+# 2. Monthly Comprehensive Audit Report CronJob (veridis-monthly-audit-report-cronjob):
+#    - Detailed monthly reporting with comprehensive analysis and comprehensive monthly coordination
+#    - Advanced monthly configuration with detailed analysis, executive summaries, trend analysis, and comprehensive monthly intelligence
+#    - Flexible audit optimization with monthly workflow, comprehensive coverage, and comprehensive monthly intelligence
+#    - Monthly intelligence with audit procedures, comprehensive support, monthly automation, and comprehensive monthly coordination
+#    - Comprehensive excellence with monthly audit, detailed workflows, monthly automation, and comprehensive monthly environment management
+#
+# 3. Quarterly Executive Audit Report CronJob (veridis-quarterly-executive-audit-report-cronjob):
+#    - Executive-level quarterly reporting with strategic insights and comprehensive quarterly coordination
+#    - Advanced quarterly configuration with executive summaries, strategic insights, board-ready format, and comprehensive quarterly intelligence
+#    - Flexible audit optimization with quarterly workflow, executive focus, and comprehensive quarterly intelligence
+#    - Quarterly intelligence with audit procedures, executive support, quarterly automation, and comprehensive quarterly coordination
+#    - Executive excellence with quarterly audit, strategic workflows, quarterly automation, and comprehensive quarterly environment management
+#
+# ENTERPRISE AUDIT REPORT CRONJOB FEATURES:
+# =========================================
+# Advanced Audit Management and Database Integration:
+#   - Multi-tier audit architecture with weekly reports, monthly reports, quarterly reports, and comprehensive audit configurations
+#   - Intelligent audit management with database integration, TLS encryption, compliance management, and comprehensive audit decisions
+#   - Audit discovery with PostgreSQL optimization, connection management, audit policies, and comprehensive audit analytics
+#   - Performance management with parallel processing, batch reporting, memory optimization, and comprehensive performance intelligence
+#   - Audit processing tuning with report management, worker optimization, performance algorithms, and intelligent audit optimization
+#
+# Comprehensive Security and Encryption Integration:
+#   - Multi-tier security with database TLS, authentication, access controls, and comprehensive security coordination
+#   - Security optimization with encryption enforcement, credential management, audit logging, and comprehensive security intelligence
+#   - Access management with database authentication, TLS certificates, connection validation, and comprehensive access coordination
+#   - Business intelligence with security analytics, access correlation, audit optimization, and comprehensive strategic insights
+#   - Security management with access policies, encryption optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Compliance and Framework Integration:
+#   - Multi-tier compliance with SOC 2, GDPR, ISO 27001, NIST frameworks, and comprehensive compliance coordination
+#   - Compliance optimization with framework integration, evidence collection, regulatory reporting, and comprehensive compliance intelligence
+#   - Framework management with controls validation, compliance monitoring, evidence preservation, and comprehensive framework coordination
+#   - Business intelligence with compliance analytics, framework correlation, regulatory optimization, and comprehensive strategic insights
+#   - Compliance management with framework policies, regulatory optimization, compliance integration, and comprehensive compliance analytics
+#
+# Advanced Evidence Collection and Retention:
+#   - Multi-tier evidence with collection automation, retention policies, archival management, and comprehensive evidence coordination
+#   - Evidence optimization with automated collection, secure storage, retention compliance, and comprehensive evidence intelligence
+#   - Retention management with policy enforcement, archival automation, compliance validation, and comprehensive retention coordination
+#   - Business intelligence with evidence analytics, retention correlation, compliance optimization, and comprehensive strategic insights
+#   - Evidence management with collection policies, retention optimization, evidence integration, and comprehensive evidence analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Audit Report CronJob Lifecycle Management:
+#   - Multi-CronJob deployment with weekly reports, monthly reports, quarterly reports, and comprehensive cronjob coordination
+#   - Intelligent cronjob management with predictive analytics and audit utilization correlation
+#   - Advanced monitoring with comprehensive cronjob analytics and audit business intelligence
+#   - CronJob validation with audit schema enforcement and cronjob deployment safety checks
+#   - Automated optimization with cronjob pattern analysis and audit optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II audit controls with comprehensive audit requirements and audit logging
+#   - GDPR audit compliance with data protection and privacy-preserving audit management
+#   - ISO 27001 audit security management with information security and audit compliance integration
+#   - NIST 800-190 container audit security with audit validation and compliance
+#   - Zero-trust audit architecture with comprehensive encryption and audit authentication requirements
+#
+# Business Intelligence Integration:
+#   - Audit analytics with cost correlation and cronjob resource utilization optimization
+#   - Performance analytics with audit experience optimization and cronjob business intelligence
+#   - Audit intelligence with processing pattern monitoring and cronjob optimization recommendations
+#   - Strategic planning with capacity management and cronjob forecasting
+#   - Business impact assessment with cronjob performance correlation and audit tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment cronjob support with production audit, monthly audit, quarterly audit, and comprehensive cronjob coordination
+#   - Comprehensive documentation with cronjob guides and audit troubleshooting procedures
+#   - Environment-specific cronjobs with weekly, monthly, and quarterly support
+#   - Testing integration with cronjob development workflow and audit debugging capabilities
+#   - CronJob monitoring with comprehensive tracking and audit correlation
+#
+# ==============================================================================
