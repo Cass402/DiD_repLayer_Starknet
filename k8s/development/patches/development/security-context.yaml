@@ -1,0 +1,1037 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Security Context Patch
+# ==============================================================================
+#
+# This Development Security Context Patch provides comprehensive development-optimized
+# security configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT SECURITY CONTEXT ARCHITECTURE:
+#   • Advanced Development Security Context with intelligent security management and comprehensive development-based optimization
+#   • Multi-tier Development Security architecture with developer productivity, security efficiency, debugging support, and validation environments
+#   • Comprehensive development security framework with Security policies, developer tooling integration, debugging automation
+#   • Advanced lifecycle management with automated Security optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Security Context performance insights
+#
+# VERIDIS DEVELOPMENT SECURITY CONTEXT OPTIMIZATION:
+#   • High-performance Development with intelligent security management and developer-optimized security allocation
+#   • Intelligent Development security management with responsive policies and development-based security decisions
+#   • Advanced Development management with business intelligence and security-based developer control
+#   • Comprehensive development security control with intelligent Developer Security management and security enhancement
+#   • Enterprise acceleration with predictive Developer Security management and development security optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Security controls with comprehensive audit and development requirements
+#   • GDPR Development Security compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Security management with comprehensive framework integration
+#   • NIST 800-190 container Development Security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Security best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Security lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Security intelligence
+#   • Advanced Security integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development security control with Development Security preservation and security optimization
+#   • Business continuity Development Security with development guarantees and performance optimization
+#
+# DEVELOPMENT SECURITY ACCELERATION INTELLIGENCE:
+#   • Development Security usage analytics with development patterns and optimization recommendations
+#   • Security monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Security analytics and deployment optimization procedures
+#   • Cost optimization with Development Security utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Security metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Development Security Context Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-backend
+  namespace: veridis-dev
+
+  # Development security optimization labels
+  labels:
+    security.veridis.xyz/context-level: development
+    security.veridis.xyz/security-tier: development
+    security.veridis.xyz/compliance-tier: development
+    security.veridis.xyz/security-profile: developer-friendly
+    security.veridis.xyz/debugging-support: enabled
+
+    # Development security management labels
+    development.veridis.xyz/security-optimization: developer-focused
+    development.veridis.xyz/debugging-enabled: true
+    development.veridis.xyz/developer-productivity: prioritized
+    development.veridis.xyz/security-monitoring: enabled
+    development.veridis.xyz/compliance-relaxed: true
+
+    # Security development labels
+    devsec.veridis.xyz/security-level: development
+    devsec.veridis.xyz/debugging-allowed: true
+    devsec.veridis.xyz/development-mode: enabled
+    devsec.veridis.xyz/security-monitoring: comprehensive
+    devsec.veridis.xyz/developer-access: enhanced
+
+  annotations:
+    # Development security optimization annotations
+    security.veridis.xyz/security-strategy: "developer-productivity-first"
+    security.veridis.xyz/context-optimization: "development-friendly"
+    security.veridis.xyz/debugging-support: "comprehensive"
+    security.veridis.xyz/developer-access: "enhanced"
+    security.veridis.xyz/compliance-mode: "development"
+
+    # Development security management annotations
+    devsec.veridis.xyz/security-level: "development"
+    devsec.veridis.xyz/debugging-capabilities: "full"
+    devsec.veridis.xyz/developer-tools: "enabled"
+    devsec.veridis.xyz/security-monitoring: "comprehensive"
+    devsec.veridis.xyz/compliance-enforcement: "relaxed"
+
+    # Developer productivity annotations
+    productivity.veridis.xyz/security-balance: "productivity-optimized"
+    productivity.veridis.xyz/debugging-access: "unrestricted"
+    productivity.veridis.xyz/development-support: "comprehensive"
+    productivity.veridis.xyz/security-overhead: "minimized"
+    productivity.veridis.xyz/developer-experience: "enhanced"
+
+spec:
+  template:
+    spec:
+      # ==============================================================================
+      # Development Pod Security Context
+      # ==============================================================================
+      securityContext:
+        # Development filesystem permissions - more permissive for debugging
+        fsGroup: 1000              # Application group
+        fsGroupChangePolicy: "OnRootMismatch"  # Optimize group changes
+        supplementalGroups:
+          - 1000                   # Application group
+          - 1001                   # Developer tools group
+          - 1002                   # Debugging tools group
+
+        # Development sysctls - allow debugging sysctls
+        sysctls:
+          - name: "net.core.somaxconn"
+            value: "1024"          # Increased connection queue
+          - name: "net.core.rmem_max"
+            value: "16777216"      # 16MB receive buffer
+          - name: "net.core.wmem_max"
+            value: "16777216"      # 16MB send buffer
+          - name: "kernel.shm_rmid_forced"
+            value: "1"             # Force shared memory cleanup
+
+        # Development security policies - relaxed for productivity
+        runAsNonRoot: true         # Still run as non-root for basic security
+        runAsUser: 1000            # Consistent user ID
+        runAsGroup: 1000           # Consistent group ID
+
+        # Development SELinux context - permissive for debugging
+        seLinuxOptions:
+          level: "s0:c123,c456"    # Development SELinux level
+          role: "system_r"         # System role
+          type: "container_t"      # Container type
+          user: "system_u"         # System user
+
+        # Development seccomp profile - allow debugging syscalls
+        seccompProfile:
+          type: "Localhost"
+          localhostProfile: "development-seccomp.json"
+
+        # Development Windows options (if applicable)
+        windowsOptions:
+          gmsaCredentialSpecName: "veridis-dev-gmsa"
+          gmsaCredentialSpec: |
+            {
+              "DomainJoinConfig": {
+                "Guid": "12345678-1234-1234-1234-123456789012",
+                "DnsTreeName": "dev.veridis.xyz",
+                "DnsName": "dev.veridis.xyz",
+                "NetBiosName": "VERIDISDEV"
+              }
+            }
+          hostProcess: false
+          runAsUserName: "veridis-dev-user"
+
+      containers:
+        - name: veridis-backend
+          # ==============================================================================
+          # Development Container Security Context
+          # ==============================================================================
+          securityContext:
+            # Development privilege settings - minimal for security, maximal for debugging
+            privileged: false                    # No privileged access needed
+            allowPrivilegeEscalation: false      # Prevent privilege escalation
+            readOnlyRootFilesystem: false        # Allow writes for debugging
+            runAsNonRoot: true                   # Run as non-root user
+            runAsUser: 1000                      # Consistent user ID
+            runAsGroup: 1000                     # Consistent group ID
+
+            # Development capabilities - minimal required + debugging capabilities
+            capabilities:
+              add:
+                - "NET_BIND_SERVICE"             # Bind to privileged ports
+                - "SYS_TIME"                     # Set system time (for debugging)
+                - "SYS_PTRACE"                   # Debug other processes
+                - "DAC_OVERRIDE"                 # Override file permissions (debugging)
+                - "FOWNER"                       # File ownership changes (debugging)
+                - "SETUID"                       # Set user ID (debugging)
+                - "SETGID"                       # Set group ID (debugging)
+              drop:
+                - "ALL"                          # Drop all other capabilities
+                # Remove dangerous capabilities even in development
+                # - "SYS_ADMIN"                  # System administration
+                # - "SYS_MODULE"                 # Load kernel modules
+                # - "SYS_RAWIO"                  # Raw I/O operations
+                # - "NET_ADMIN"                  # Network administration
+
+            # Development SELinux context
+            seLinuxOptions:
+              level: "s0:c123,c456"              # Development SELinux level
+              role: "system_r"                   # System role
+              type: "container_t"                # Container type
+              user: "system_u"                   # System user
+
+            # Development seccomp profile
+            seccompProfile:
+              type: "Localhost"
+              localhostProfile: "backend-development-seccomp.json"
+
+            # Development AppArmor profile
+            appArmorProfile:
+              type: "Localhost"
+              localhostProfile: "backend-development-apparmor"
+
+            # Development Windows security context
+            windowsOptions:
+              gmsaCredentialSpecName: "backend-dev-gmsa"
+              hostProcess: false
+              runAsUserName: "backend-dev-user"
+
+          # ==============================================================================
+          # Development Volume Mounts with Security Context
+          # ==============================================================================
+          volumeMounts:
+            # Application data volume - read-write for debugging
+            - name: app-data
+              mountPath: /app/data
+              readOnly: false
+              mountPropagation: None
+              subPath: ""
+              subPathExpr: ""
+
+            # Configuration volume - read-only for security
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+              mountPropagation: None
+
+            # Secrets volume - read-only with restricted permissions
+            - name: secrets
+              mountPath: /app/secrets
+              readOnly: true
+              mountPropagation: None
+
+            # Logs volume - read-write for debugging
+            - name: logs
+              mountPath: /app/logs
+              readOnly: false
+              mountPropagation: None
+
+            # Development tools volume - read-write for debugging
+            - name: dev-tools
+              mountPath: /app/dev-tools
+              readOnly: false
+              mountPropagation: None
+
+            # Debug volume - read-write for debugging artifacts
+            - name: debug
+              mountPath: /app/debug
+              readOnly: false
+              mountPropagation: None
+
+            # Temporary volume - read-write for temporary files
+            - name: tmp
+              mountPath: /tmp
+              readOnly: false
+              mountPropagation: None
+
+          # ==============================================================================
+          # Development Environment Variables for Security
+          # ==============================================================================
+          env:
+            # Development security configuration
+            - name: SECURITY_PROFILE
+              value: "development"
+            - name: DEBUG_MODE
+              value: "true"
+            - name: DEVELOPER_MODE
+              value: "true"
+            - name: SECURITY_LEVEL
+              value: "development"
+
+            # Development authentication and authorization
+            - name: AUTH_DEVELOPMENT_MODE
+              value: "true"
+            - name: AUTH_DEBUG_LOGGING
+              value: "true"
+            - name: JWT_VALIDATION_STRICT
+              value: "false"              # Relaxed JWT validation for development
+            - name: SESSION_SECURE_COOKIE
+              value: "false"              # Allow non-HTTPS cookies in development
+            - name: CORS_ALLOW_ALL_ORIGINS
+              value: "true"               # Allow all origins for development
+
+            # Development encryption settings
+            - name: ENCRYPTION_DEVELOPMENT_MODE
+              value: "true"
+            - name: TLS_VERIFY_CERTIFICATES
+              value: "false"              # Skip certificate verification in development
+            - name: TLS_ALLOW_SELF_SIGNED
+              value: "true"               # Allow self-signed certificates
+
+            # Development audit and logging
+            - name: AUDIT_LOG_LEVEL
+              value: "debug"
+            - name: SECURITY_LOG_LEVEL
+              value: "debug"
+            - name: ACCESS_LOG_ENABLED
+              value: "true"
+            - name: SECURITY_EVENTS_LOG
+              value: "true"
+
+            # Development debugging and profiling
+            - name: PROFILING_ENABLED
+              value: "true"
+            - name: DEBUG_ENDPOINTS_ENABLED
+              value: "true"
+            - name: HEALTH_CHECK_DETAILED
+              value: "true"
+            - name: METRICS_DEBUG_MODE
+              value: "true"
+
+      # ==============================================================================
+      # Development Volumes with Security Context
+      # ==============================================================================
+      volumes:
+        # Application data volume
+        - name: app-data
+          emptyDir:
+            sizeLimit: "1Gi"
+            medium: ""                   # Use default storage medium
+
+        # Configuration volume from ConfigMap
+        - name: config
+          configMap:
+            name: veridis-backend-config
+            defaultMode: 0644            # Read-only for owner, group, others
+            optional: false
+
+        # Secrets volume from Secret
+        - name: secrets
+          secret:
+            secretName: veridis-backend-secrets
+            defaultMode: 0600            # Read-only for owner only
+            optional: false
+
+        # Logs volume for debugging
+        - name: logs
+          emptyDir:
+            sizeLimit: "2Gi"
+            medium: ""
+
+        # Development tools volume
+        - name: dev-tools
+          emptyDir:
+            sizeLimit: "500Mi"
+            medium: ""
+
+        # Debug volume for debugging artifacts
+        - name: debug
+          emptyDir:
+            sizeLimit: "1Gi"
+            medium: ""
+
+        # Temporary volume
+        - name: tmp
+          emptyDir:
+            sizeLimit: "1Gi"
+            medium: ""
+
+---
+# ==============================================================================
+# ZK Circuits Development Security Context Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zk-circuits
+  namespace: veridis-dev
+
+  # Development ZK security optimization labels
+  labels:
+    security.veridis.xyz/context-level: development
+    security.veridis.xyz/security-tier: development-zk
+    security.veridis.xyz/compliance-tier: development
+    security.veridis.xyz/security-profile: zk-development
+    security.veridis.xyz/debugging-support: enabled
+
+    # Development ZK security management labels
+    development.veridis.xyz/zk-security: developer-focused
+    development.veridis.xyz/circuit-debugging: enabled
+    development.veridis.xyz/proof-debugging: enabled
+    development.veridis.xyz/zk-monitoring: comprehensive
+    development.veridis.xyz/circuit-access: enhanced
+
+    # ZK development security labels
+    zk.veridis.xyz/security-level: development
+    zk.veridis.xyz/circuit-debugging: enabled
+    zk.veridis.xyz/proof-validation: relaxed
+    zk.veridis.xyz/key-management: development
+    zk.veridis.xyz/circuit-access: unrestricted
+
+  annotations:
+    # Development ZK security optimization annotations
+    security.veridis.xyz/zk-security-strategy: "circuit-debugging-first"
+    security.veridis.xyz/proof-validation: "development-relaxed"
+    security.veridis.xyz/circuit-access: "debugging-enabled"
+    security.veridis.xyz/key-management: "development-mode"
+    security.veridis.xyz/zk-monitoring: "comprehensive"
+
+spec:
+  template:
+    spec:
+      # ==============================================================================
+      # Development ZK Pod Security Context
+      # ==============================================================================
+      securityContext:
+        # Development ZK filesystem permissions
+        fsGroup: 2000              # ZK circuits group
+        fsGroupChangePolicy: "OnRootMismatch"
+        supplementalGroups:
+          - 2000                   # ZK circuits group
+          - 2001                   # Circuit debugging group
+          - 2002                   # Proof validation group
+
+        # Development ZK sysctls
+        sysctls:
+          - name: "kernel.shmmax"
+            value: "268435456"     # 256MB shared memory max
+          - name: "kernel.shmall"
+            value: "2097152"       # 8GB total shared memory
+
+        # Development ZK security policies
+        runAsNonRoot: true         # Run as non-root for security
+        runAsUser: 2000            # ZK circuits user
+        runAsGroup: 2000           # ZK circuits group
+
+        # Development ZK SELinux context
+        seLinuxOptions:
+          level: "s0:c789,c012"    # ZK development SELinux level
+          role: "system_r"
+          type: "container_t"
+          user: "system_u"
+
+        # Development ZK seccomp profile
+        seccompProfile:
+          type: "Localhost"
+          localhostProfile: "zk-development-seccomp.json"
+
+      containers:
+        - name: zk-circuits
+          # ==============================================================================
+          # Development ZK Container Security Context
+          # ==============================================================================
+          securityContext:
+            # Development ZK privilege settings
+            privileged: false                    # No privileged access
+            allowPrivilegeEscalation: false      # Prevent privilege escalation
+            readOnlyRootFilesystem: false        # Allow writes for circuit compilation
+            runAsNonRoot: true                   # Run as non-root user
+            runAsUser: 2000                      # ZK circuits user
+            runAsGroup: 2000                     # ZK circuits group
+
+            # Development ZK capabilities
+            capabilities:
+              add:
+                - "SYS_TIME"                     # Time operations for benchmarking
+                - "SYS_PTRACE"                   # Debug circuit processes
+                - "IPC_LOCK"                     # Lock memory for circuit data
+                - "SYS_RESOURCE"                 # Resource limits modification
+                - "DAC_OVERRIDE"                 # File access for debugging
+                - "FOWNER"                       # File ownership for debugging
+              drop:
+                - "ALL"                          # Drop all other capabilities
+
+            # Development ZK SELinux context
+            seLinuxOptions:
+              level: "s0:c789,c012"              # ZK development SELinux level
+              role: "system_r"
+              type: "container_t"
+              user: "system_u"
+
+            # Development ZK seccomp profile
+            seccompProfile:
+              type: "Localhost"
+              localhostProfile: "zk-circuits-development-seccomp.json"
+
+          # ==============================================================================
+          # Development ZK Volume Mounts
+          # ==============================================================================
+          volumeMounts:
+            # Circuit artifacts volume - read-write for compilation
+            - name: circuit-artifacts
+              mountPath: /app/circuits
+              readOnly: false
+              mountPropagation: None
+
+            # Keys volume - read-write for development key generation
+            - name: keys
+              mountPath: /app/keys
+              readOnly: false
+              mountPropagation: None
+
+            # Proofs volume - read-write for proof generation
+            - name: proofs
+              mountPath: /app/proofs
+              readOnly: false
+              mountPropagation: None
+
+            # Development cache volume
+            - name: cache
+              mountPath: /app/cache
+              readOnly: false
+              mountPropagation: None
+
+            # Debug volume for ZK debugging
+            - name: zk-debug
+              mountPath: /app/debug
+              readOnly: false
+              mountPropagation: None
+
+          # ==============================================================================
+          # Development ZK Environment Variables
+          # ==============================================================================
+          env:
+            # Development ZK security configuration
+            - name: ZK_SECURITY_PROFILE
+              value: "development"
+            - name: ZK_DEBUG_MODE
+              value: "true"
+            - name: ZK_DEVELOPMENT_MODE
+              value: "true"
+            - name: CIRCUIT_DEBUGGING_ENABLED
+              value: "true"
+
+            # Development ZK key management
+            - name: ZK_KEY_GENERATION_MODE
+              value: "development"
+            - name: ZK_KEY_VALIDATION_STRICT
+              value: "false"              # Relaxed key validation
+            - name: ZK_KEY_BACKUP_ENABLED
+              value: "false"              # Disable backup in development
+
+            # Development ZK proof settings
+            - name: ZK_PROOF_VALIDATION_LEVEL
+              value: "basic"              # Basic validation for development
+            - name: ZK_PROOF_DEBUGGING
+              value: "enabled"
+            - name: ZK_MOCK_PROOFS
+              value: "true"               # Enable mock proofs for testing
+
+            # Development ZK circuit settings
+            - name: CIRCUIT_COMPILATION_DEBUG
+              value: "true"
+            - name: CIRCUIT_OPTIMIZATION_LEVEL
+              value: "development"        # Fast compilation for development
+            - name: CIRCUIT_CACHE_ENABLED
+              value: "true"
+
+      # ==============================================================================
+      # Development ZK Volumes
+      # ==============================================================================
+      volumes:
+        # Circuit artifacts volume
+        - name: circuit-artifacts
+          emptyDir:
+            sizeLimit: "5Gi"
+            medium: ""
+
+        # Keys volume
+        - name: keys
+          emptyDir:
+            sizeLimit: "1Gi"
+            medium: ""
+
+        # Proofs volume
+        - name: proofs
+          emptyDir:
+            sizeLimit: "2Gi"
+            medium: ""
+
+        # Cache volume
+        - name: cache
+          emptyDir:
+            sizeLimit: "1Gi"
+            medium: ""
+
+        # ZK debug volume
+        - name: zk-debug
+          emptyDir:
+            sizeLimit: "1Gi"
+            medium: ""
+
+---
+# ==============================================================================
+# PostgreSQL Development Security Context Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: veridis-dev
+
+  # Development database security optimization labels
+  labels:
+    security.veridis.xyz/context-level: development
+    security.veridis.xyz/security-tier: development-database
+    security.veridis.xyz/compliance-tier: development
+    security.veridis.xyz/security-profile: database-development
+    security.veridis.xyz/data-access: enhanced
+
+    # Development database security management labels
+    database.veridis.xyz/security-level: development
+    database.veridis.xyz/access-logging: comprehensive
+    database.veridis.xyz/debugging-enabled: true
+    database.veridis.xyz/development-access: unrestricted
+    database.veridis.xyz/backup-security: relaxed
+
+  annotations:
+    # Development database security optimization annotations
+    security.veridis.xyz/database-security-strategy: "development-access-first"
+    security.veridis.xyz/data-protection: "development-appropriate"
+    security.veridis.xyz/access-control: "development-relaxed"
+    security.veridis.xyz/audit-logging: "comprehensive"
+
+spec:
+  template:
+    spec:
+      # ==============================================================================
+      # Development Database Pod Security Context
+      # ==============================================================================
+      securityContext:
+        # Development database filesystem permissions
+        fsGroup: 999               # PostgreSQL group
+        fsGroupChangePolicy: "Always"  # Always change group ownership
+        supplementalGroups:
+          - 999                    # PostgreSQL group
+          - 1003                   # Database debugging group
+
+        # Development database sysctls
+        sysctls:
+          - name: "kernel.shmmax"
+            value: "1073741824"    # 1GB shared memory max
+          - name: "kernel.shmall"
+            value: "262144"        # 1GB total shared memory
+          - name: "kernel.sem"
+            value: "250 32000 100 128"  # Semaphore limits
+
+        # Development database security policies
+        runAsNonRoot: true         # Run as non-root for security
+        runAsUser: 999             # PostgreSQL user
+        runAsGroup: 999            # PostgreSQL group
+
+        # Development database SELinux context
+        seLinuxOptions:
+          level: "s0:c345,c678"    # Database development SELinux level
+          role: "system_r"
+          type: "container_t"
+          user: "system_u"
+
+      containers:
+        - name: postgres
+          # ==============================================================================
+          # Development Database Container Security Context
+          # ==============================================================================
+          securityContext:
+            # Development database privilege settings
+            privileged: false                    # No privileged access
+            allowPrivilegeEscalation: false      # Prevent privilege escalation
+            readOnlyRootFilesystem: false        # Allow writes for database operations
+            runAsNonRoot: true                   # Run as non-root user
+            runAsUser: 999                       # PostgreSQL user
+            runAsGroup: 999                      # PostgreSQL group
+
+            # Development database capabilities
+            capabilities:
+              add:
+                - "CHOWN"                        # Change file ownership
+                - "FOWNER"                       # File ownership operations
+                - "FSETID"                       # Set file ID
+                - "DAC_OVERRIDE"                 # Override file permissions
+                - "SETUID"                       # Set user ID
+                - "SETGID"                       # Set group ID
+              drop:
+                - "ALL"                          # Drop all other capabilities
+
+          # ==============================================================================
+          # Development Database Environment Variables
+          # ==============================================================================
+          env:
+            # Development database security configuration
+            - name: POSTGRES_SECURITY_PROFILE
+              value: "development"
+            - name: POSTGRES_DEBUG_MODE
+              value: "true"
+            - name: POSTGRES_DEVELOPMENT_MODE
+              value: "true"
+
+            # Development database authentication
+            - name: POSTGRES_AUTH_METHOD
+              value: "md5"                 # MD5 authentication for development
+            - name: POSTGRES_TRUST_LOCAL_CONNECTIONS
+              value: "true"                # Trust local connections
+            - name: POSTGRES_LOG_CONNECTIONS
+              value: "true"                # Log all connections
+            - name: POSTGRES_LOG_DISCONNECTIONS
+              value: "true"                # Log disconnections
+
+            # Development database logging
+            - name: POSTGRES_LOG_STATEMENT
+              value: "all"                 # Log all statements
+            - name: POSTGRES_LOG_MIN_DURATION_STATEMENT
+              value: "0"                   # Log all statement durations
+            - name: POSTGRES_LOG_CHECKPOINTS
+              value: "true"                # Log checkpoints
+            - name: POSTGRES_LOG_LOCK_WAITS
+              value: "true"                # Log lock waits
+
+---
+# ==============================================================================
+# Redis Development Security Context Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: veridis-dev
+
+  # Development cache security optimization labels
+  labels:
+    security.veridis.xyz/context-level: development
+    security.veridis.xyz/security-tier: development-cache
+    security.veridis.xyz/compliance-tier: development
+    security.veridis.xyz/security-profile: cache-development
+    security.veridis.xyz/data-access: unrestricted
+
+  annotations:
+    # Development cache security optimization annotations
+    security.veridis.xyz/cache-security-strategy: "development-performance-first"
+    security.veridis.xyz/data-protection: "development-minimal"
+    security.veridis.xyz/access-control: "development-open"
+
+spec:
+  template:
+    spec:
+      # ==============================================================================
+      # Development Cache Pod Security Context
+      # ==============================================================================
+      securityContext:
+        # Development cache filesystem permissions
+        fsGroup: 999               # Redis group
+        fsGroupChangePolicy: "OnRootMismatch"
+        supplementalGroups:
+          - 999                    # Redis group
+
+        # Development cache security policies
+        runAsNonRoot: true         # Run as non-root for security
+        runAsUser: 999             # Redis user
+        runAsGroup: 999            # Redis group
+
+      containers:
+        - name: redis
+          # ==============================================================================
+          # Development Cache Container Security Context
+          # ==============================================================================
+          securityContext:
+            # Development cache privilege settings
+            privileged: false                    # No privileged access
+            allowPrivilegeEscalation: false      # Prevent privilege escalation
+            readOnlyRootFilesystem: false        # Allow writes for cache operations
+            runAsNonRoot: true                   # Run as non-root user
+            runAsUser: 999                       # Redis user
+            runAsGroup: 999                      # Redis group
+
+            # Development cache capabilities
+            capabilities:
+              add:
+                - "SETUID"                       # Set user ID
+                - "SETGID"                       # Set group ID
+              drop:
+                - "ALL"                          # Drop all other capabilities
+
+          # ==============================================================================
+          # Development Cache Environment Variables
+          # ==============================================================================
+          env:
+            # Development cache security configuration
+            - name: REDIS_SECURITY_PROFILE
+              value: "development"
+            - name: REDIS_DEBUG_MODE
+              value: "true"
+            - name: REDIS_DEVELOPMENT_MODE
+              value: "true"
+
+            # Development cache authentication
+            - name: REDIS_REQUIREPASS
+              value: ""                    # No password for development
+            - name: REDIS_PROTECTED_MODE
+              value: "no"                  # Disable protected mode for development
+
+---
+# ==============================================================================
+# Vault Development Security Context Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+  namespace: veridis-dev
+
+  # Development secrets security optimization labels
+  labels:
+    security.veridis.xyz/context-level: development
+    security.veridis.xyz/security-tier: development-secrets
+    security.veridis.xyz/compliance-tier: development
+    security.veridis.xyz/security-profile: secrets-development
+    security.veridis.xyz/vault-mode: development
+
+  annotations:
+    # Development secrets security optimization annotations
+    security.veridis.xyz/vault-security-strategy: "development-accessibility-first"
+    security.veridis.xyz/secrets-protection: "development-appropriate"
+    security.veridis.xyz/access-control: "development-simplified"
+
+spec:
+  template:
+    spec:
+      # ==============================================================================
+      # Development Secrets Pod Security Context
+      # ==============================================================================
+      securityContext:
+        # Development secrets filesystem permissions
+        fsGroup: 100               # Vault group
+        fsGroupChangePolicy: "OnRootMismatch"
+        supplementalGroups:
+          - 100                    # Vault group
+
+        # Development secrets security policies
+        runAsNonRoot: true         # Run as non-root for security
+        runAsUser: 100             # Vault user
+        runAsGroup: 100            # Vault group
+
+      containers:
+        - name: vault
+          # ==============================================================================
+          # Development Secrets Container Security Context
+          # ==============================================================================
+          securityContext:
+            # Development secrets privilege settings
+            privileged: false                    # No privileged access
+            allowPrivilegeEscalation: false      # Prevent privilege escalation
+            readOnlyRootFilesystem: false        # Allow writes for Vault operations
+            runAsNonRoot: true                   # Run as non-root user
+            runAsUser: 100                       # Vault user
+            runAsGroup: 100                      # Vault group
+
+            # Development secrets capabilities
+            capabilities:
+              add:
+                - "IPC_LOCK"                     # Lock memory for secrets
+              drop:
+                - "ALL"                          # Drop all other capabilities
+
+          # ==============================================================================
+          # Development Secrets Environment Variables
+          # ==============================================================================
+          env:
+            # Development secrets security configuration
+            - name: VAULT_SECURITY_PROFILE
+              value: "development"
+            - name: VAULT_DEV_MODE
+              value: "true"                # Enable Vault development mode
+            - name: VAULT_DEVELOPMENT_MODE
+              value: "true"
+
+            # Development secrets configuration
+            - name: VAULT_DISABLE_MLOCK
+              value: "true"                # Disable memory locking for development
+            - name: VAULT_LOG_LEVEL
+              value: "debug"               # Debug logging for development
+            - name: VAULT_DEV_ROOT_TOKEN_ID
+              value: "dev-root-token"      # Fixed root token for development
+
+---
+# ==============================================================================
+# Development Pod Security Policy
+# ==============================================================================
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: veridis-dev-psp
+  namespace: veridis-dev
+
+  labels:
+    security.veridis.xyz/policy-type: development
+    security.veridis.xyz/enforcement-level: relaxed
+    security.veridis.xyz/developer-friendly: true
+
+  annotations:
+    security.veridis.xyz/description: "Development Pod Security Policy with developer-friendly constraints"
+    security.veridis.xyz/policy-level: "development"
+
+spec:
+  # Development privilege settings - more permissive
+  privileged: false                      # No privileged containers
+  allowPrivilegeEscalation: false        # Prevent privilege escalation
+
+  # Development capabilities - allow debugging capabilities
+  allowedCapabilities:
+    - "NET_BIND_SERVICE"                 # Bind to privileged ports
+    - "SYS_TIME"                         # Set system time
+    - "SYS_PTRACE"                       # Debug processes
+    - "DAC_OVERRIDE"                     # Override file permissions
+    - "FOWNER"                           # File ownership operations
+    - "SETUID"                           # Set user ID
+    - "SETGID"                           # Set group ID
+    - "CHOWN"                            # Change file ownership
+    - "FSETID"                           # Set file ID
+    - "IPC_LOCK"                         # Lock memory
+    - "SYS_RESOURCE"                     # Resource limits
+
+  requiredDropCapabilities:
+    - "SYS_ADMIN"                        # System administration
+    - "SYS_MODULE"                       # Load kernel modules
+    - "SYS_RAWIO"                        # Raw I/O operations
+    - "NET_ADMIN"                        # Network administration
+    - "SYS_BOOT"                         # System boot
+    - "LINUX_IMMUTABLE"                  # Immutable files
+    - "NET_BROADCAST"                    # Network broadcast
+    - "IPC_OWNER"                        # IPC ownership
+    - "SYS_CHROOT"                       # Change root
+
+  # Development volume types - allow debugging volumes
+  volumes:
+    - "configMap"
+    - "emptyDir"
+    - "projected"
+    - "secret"
+    - "downwardAPI"
+    - "persistentVolumeClaim"
+    - "hostPath"                         # Allow hostPath for debugging (with restrictions)
+
+  # Development host access - restricted but allow for debugging
+  hostNetwork: false                     # No host network access
+  hostIPC: false                         # No host IPC access
+  hostPID: false                         # No host PID access
+
+  # Development hostPath restrictions
+  allowedHostPaths:
+    - pathPrefix: "/tmp"                 # Allow /tmp for debugging
+      readOnly: false
+    - pathPrefix: "/var/log"             # Allow /var/log for log debugging
+      readOnly: true
+    - pathPrefix: "/dev/null"            # Allow /dev/null
+      readOnly: false
+
+  # Development port restrictions - allow debugging ports
+  hostPorts:
+    - min: 8000                          # Allow debugging ports
+      max: 9999
+
+  # Development user/group restrictions
+  runAsUser:
+    rule: "MustRunAsNonRoot"             # Must run as non-root
+
+  runAsGroup:
+    rule: "MustRunAs"
+    ranges:
+      - min: 100                         # Allow specific group ranges
+        max: 2000
+
+  supplementalGroups:
+    rule: "MustRunAs"
+    ranges:
+      - min: 100                         # Allow specific supplemental groups
+        max: 2000
+
+  fsGroup:
+    rule: "MustRunAs"
+    ranges:
+      - min: 100                         # Allow specific filesystem groups
+        max: 2000
+
+  # Development SELinux - permissive for debugging
+  seLinux:
+    rule: "RunAsAny"                     # Allow any SELinux context
+
+  # Development filesystem restrictions - relaxed for debugging
+  readOnlyRootFilesystem: false          # Allow read-write root filesystem
+
+  # Development allowed proc mount types
+  allowedProcMountTypes:
+    - "Default"
+    - "Unmasked"                         # Allow unmasked proc for debugging
+
+  # Development allowed unsafe sysctls - for debugging
+  allowedUnsafeSysctls:
+    - "kernel.shm*"                      # Shared memory sysctls
+    - "net.core.*"                       # Network core sysctls
+
+  # Development forbidden sysctls - still restrict dangerous ones
+  forbiddenSysctls:
+    - "kernel.kptr_restrict"             # Kernel pointer restriction
+    - "kernel.yama.ptrace_scope"         # Ptrace scope restriction
+
+# ==============================================================================
+# Development Security Context Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT SECURITY CONTEXT STRATEGY:
+# ============================================================
+#
+# VERIDIS DEVELOPMENT SECURITY CONTEXT ARCHITECTURE OVERVIEW:
+# -----------------------------------------------------------
+# 1. Developer-Friendly Security Configuration:
+#    - Comprehensive enterprise-grade development security context with intelligent security management and advanced developer-focused optimization
+#    - Advanced security configuration with comprehensive developer productivity, debugging support, security efficiency, and comprehensive operational excellence
+#    - Multi-tier security architecture with relaxed constraints, debugging capabilities, developer access, and comprehensive security intelligence
+#    - Enterprise security policies with developer-friendly enforcement, productivity controls, debugging automation, and comprehensive security procedures
+#    - Performance optimization with intelligent security allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. Debugging and Development Access Enhancement:
+#    - Developer-focused security allocation with debugging optimization, enhanced access, development efficiency, and comprehensive debugging coordination
+#    - Advanced debugging configuration with security tools, access features, debugging frameworks, and comprehensive debugging intelligence
+#    - Flexible security optimization with developer workflow, debugging enhancement, and comprehensive debugging intelligence
+#    - Debugging intelligence with security procedures, access support, debugging automation, and comprehensive debugging coordination
+#    - Development excellence with security optimization, debugging workflows, access automation, and comprehensive debugging environment management
+#
+# 3. Service-Specific Security Optimization:
+#    - Service-optimized security contexts with backend debugging, ZK circuit access, database development, and comprehensive service coordination
+#    - Advanced service configuration with security tuning, debugging optimization, access management, and comprehensive service intelligence
+#    - Flexible service optimization with workload-specific security, debugging efficiency, and comprehensive service intelligence
+#    - Service intelligence with security procedures, debugging support, service automation, and comprehensive service coordination
+#    - Security excellence with service optimization, security workflows, service automation, and comprehensive service environment management
+#
+# ENTERPRISE DEVELOPMENT SECURITY CONTEXT FEATURES:
+# =================================================
+# Advanced Security Management and Developer Productivity:
+#   - Multi-tier security architecture with developer optimization, debugging monitoring, access tracking, and comprehensive security configurations
+#   - Intelligent security management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive security decisions
+#   - Security discovery with developer optimization, debugging management, security policies, and comprehensive security analytics
+#   - Performance management with developer productivity, debugging efficiency, security optimization, and comprehensive performance intelligence
+#   - Security processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent security optimization
+#
+# This Development Security Context configuration provides enterprise-grade developer productivity enhancement with comprehensive debugging support, intelligent security optimization, and operational excellence while maintaining appropriate security, access control, and comprehensive monitoring for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================

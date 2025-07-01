@@ -1,0 +1,874 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Kubernetes Kustomization
+# ==============================================================================
+#
+# This Development Kustomization manifest orchestrates the complete development
+# deployment of the Veridis Decentralized Identity Protocol on Kubernetes, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT KUSTOMIZATION ARCHITECTURE:
+#   • Advanced Development Kustomization with intelligent development management and comprehensive development-based optimization
+#   • Multi-tier Development Kustomization architecture with local development, testing, integration, and validation environments
+#   • Comprehensive development framework with Development policies, resource optimization, developer tooling integration
+#   • Advanced lifecycle management with automated Development optimization, resource control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Kustomization performance insights
+#
+# VERIDIS DEVELOPMENT KUSTOMIZATION OPTIMIZATION:
+#   • High-performance Development with intelligent resource management and developer-optimized resource allocation
+#   • Intelligent Development resource management with responsive policies and development-based resource decisions
+#   • Advanced Development management with business intelligence and resource-based developer control
+#   • Comprehensive development resource control with intelligent Developer Kustomization management and resource enhancement
+#   • Enterprise acceleration with predictive Developer Kustomization management and development resource optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Kustomization controls with comprehensive audit and development requirements
+#   • GDPR Development Kustomization compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Kustomization management with comprehensive framework integration
+#   • NIST 800-190 container Development Kustomization security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Kustomization best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Kustomization lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Kustomization intelligence
+#   • Advanced Kustomization integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development resource control with Development Kustomization preservation and resource optimization
+#   • Business continuity Development Kustomization with development guarantees and performance optimization
+#
+# DEVELOPMENT KUSTOMIZATION ACCELERATION INTELLIGENCE:
+#   • Development Kustomization usage analytics with development patterns and optimization recommendations
+#   • Kustomization monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Kustomization analytics and deployment optimization procedures
+#   • Cost optimization with Development Kustomization utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Kustomization metrics and development validation procedures
+#
+# DEVELOPMENT CORE SERVICES:
+#   • Veridis Backend - Unified Rust service handling identity, attestation,
+#     verification, compliance, and bridge operations with development optimization
+#   • ZK Circuits - Zero-knowledge proof generation and verification service
+#     with CPU-only processing for cost-effective development
+#
+# DEVELOPMENT INFRASTRUCTURE COMPONENTS:
+#   • PostgreSQL - Primary persistent data storage with development configuration
+#   • Redis - High-performance caching and session management with development optimization
+#   • StarkNet DevNet - Local blockchain development environment with enhanced development features
+#   • HashiCorp Vault - Development secrets management with developer-friendly configuration
+#
+# DEVELOPMENT SECURITY & COMPLIANCE:
+#   • Network Policies - Development-appropriate microsegmentation and traffic control
+#   • Pod Security Standards - Development security constraints with developer productivity
+#   • RBAC - Role-based access control with development-friendly permissions
+#   • Service Mesh - Development inter-service communication with debugging support
+#   • Audit Logging - Development audit trail for compliance and debugging
+#
+# DEVELOPMENT MONITORING & OBSERVABILITY:
+#   • Prometheus - Development metrics collection and alerting with extended retention
+#   • Grafana - Development visualization and dashboards with development-specific panels
+#   • Jaeger - Development distributed tracing with detailed sampling
+#   • Fluent Bit - Development log aggregation and forwarding with debug logging
+#
+# DEVELOPMENT DEPLOYMENT TARGETS:
+#   • Local Development - Individual developer workstations with minimal resources
+#   • Shared Development - Team development environment with collaborative features
+#   • Integration Testing - Automated testing environment with CI/CD integration
+#   • Feature Validation - Feature branch validation with isolated environments
+#
+# DEVELOPMENT COMPLIANCE STANDARDS:
+#   • Development SOC 2 - Security controls adapted for development environments
+#   • Development GDPR - Data protection with development data handling
+#   • Development ISO 27001 - Information security for development workflows
+#   • Development NIST 800-190 - Container security with development flexibility
+#
+# DEVELOPMENT VERSION COMPATIBILITY:
+#   • Kubernetes: 1.28+
+#   • Kustomize: 5.0+
+#   • Cairo: 2.11.4
+#   • StarkNet: 0.13.4
+#   • Helm: 3.12+ (for dependency charts)
+#   • Docker Desktop: 4.25+ (for local development)
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Kustomization Configuration
+# ==============================================================================
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# ==============================================================================
+# Development Environment Metadata
+# ==============================================================================
+metadata:
+  name: veridis-protocol-development
+  annotations:
+    # Development deployment metadata
+    veridis.xyz/deployment-version: "3.2.1-dev"
+    veridis.xyz/deployment-date: "2025-01-18"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/kustomize-version: "5.3.0"
+    veridis.xyz/kubernetes-version: "1.28+"
+    veridis.xyz/docker-desktop-version: "4.25+"
+
+    # Development technology stack versions
+    veridis.xyz/cairo-version: "2.11.4"
+    veridis.xyz/starknet-version: "0.13.4"
+    veridis.xyz/rust-version: "1.87.0"
+    veridis.xyz/node-version: "22.14.0"
+    veridis.xyz/garaga-version: "0.18.1"
+
+    # Development compliance annotations
+    veridis.xyz/compliance-soc2: "development"
+    veridis.xyz/compliance-gdpr: "development"
+    veridis.xyz/compliance-iso27001: "development"
+    veridis.xyz/compliance-nist: "development"
+
+    # Development security annotations
+    veridis.xyz/security-level: "development"
+    veridis.xyz/encryption-at-rest: "enabled"
+    veridis.xyz/encryption-in-transit: "enabled"
+    veridis.xyz/network-policies: "development"
+    veridis.xyz/pod-security-standards: "development"
+
+    # Development monitoring annotations
+    veridis.xyz/monitoring-enabled: "true"
+    veridis.xyz/metrics-retention: "7d"
+    veridis.xyz/log-retention: "30d"
+    veridis.xyz/tracing-enabled: "true"
+    veridis.xyz/debug-logging: "enabled"
+
+    # Development optimization annotations
+    veridis.xyz/resource-optimization: "development"
+    veridis.xyz/cost-optimization: "enabled"
+    veridis.xyz/developer-productivity: "high"
+    veridis.xyz/debugging-support: "comprehensive"
+    veridis.xyz/hot-reload: "enabled"
+
+    # Development workflow annotations
+    veridis.xyz/ci-cd-integration: "enabled"
+    veridis.xyz/feature-flags: "development"
+    veridis.xyz/testing-support: "comprehensive"
+    veridis.xyz/local-development: "optimized"
+    veridis.xyz/collaborative-development: "enabled"
+
+# ==============================================================================
+# Base Resources Reference
+# ==============================================================================
+resources:
+  # Reference to base kustomization
+  - ../base
+
+# ==============================================================================
+# Development Namespace Override
+# ==============================================================================
+namespace: veridis-dev
+
+# ==============================================================================
+# Development Common Labels
+# ==============================================================================
+commonLabels:
+  # Core development identification labels
+  app.kubernetes.io/name: veridis
+  app.kubernetes.io/instance: veridis-development
+  app.kubernetes.io/version: "3.2.1-dev"
+  app.kubernetes.io/component: protocol
+  app.kubernetes.io/part-of: veridis-protocol
+  app.kubernetes.io/managed-by: kustomize
+
+  # Development deployment context labels
+  veridis.xyz/environment: development
+  veridis.xyz/deployment-method: kustomize
+  veridis.xyz/protocol-version: "3.2.1-dev"
+  veridis.xyz/deployment-type: development
+
+  # Development technology stack labels
+  veridis.xyz/blockchain: starknet-devnet
+  veridis.xyz/primary-language: rust
+  veridis.xyz/zk-language: nodejs
+  veridis.xyz/framework: axum
+  veridis.xyz/gpu-acceleration: disabled
+
+  # Development operational labels
+  veridis.xyz/team: development
+  veridis.xyz/cost-center: development
+  veridis.xyz/business-unit: identity-protocol
+  veridis.xyz/resource-tier: development
+
+  # Development workflow labels
+  development.veridis.xyz/workflow: enabled
+  development.veridis.xyz/hot-reload: enabled
+  development.veridis.xyz/debugging: enabled
+  development.veridis.xyz/testing: comprehensive
+  development.veridis.xyz/profiling: enabled
+
+# ==============================================================================
+# Development Common Annotations
+# ==============================================================================
+commonAnnotations:
+  # Development deployment information
+  veridis.xyz/deployed-by: "kustomize-development"
+  veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+  veridis.xyz/deployment-environment: "development"
+  veridis.xyz/git-commit: "${GIT_COMMIT:-development}"
+  veridis.xyz/git-branch: "${GIT_BRANCH:-develop}"
+  veridis.xyz/build-number: "${BUILD_NUMBER:-dev-build}"
+  veridis.xyz/developer: "${DEVELOPER_NAME:-unknown}"
+
+  # Development technology versions
+  veridis.xyz/cairo-version: "2.11.4"
+  veridis.xyz/starknet-version: "0.13.4"
+  veridis.xyz/rust-version: "1.87.0"
+  veridis.xyz/node-version: "22.14.0"
+  veridis.xyz/garaga-version: "0.18.1"
+  veridis.xyz/kubernetes-version: "1.28+"
+
+  # Development security and compliance
+  veridis.xyz/security-scan-date: "${SECURITY_SCAN_DATE:-not-required}"
+  veridis.xyz/vulnerability-scan: "development"
+  veridis.xyz/compliance-audit: "development"
+  veridis.xyz/pen-test-date: "${PEN_TEST_DATE:-not-required}"
+
+  # Development monitoring and observability
+  veridis.xyz/metrics-enabled: "true"
+  veridis.xyz/logging-enabled: "true"
+  veridis.xyz/tracing-enabled: "true"
+  veridis.xyz/alerting-enabled: "true"
+  veridis.xyz/debug-logging: "enabled"
+  veridis.xyz/verbose-logging: "enabled"
+
+  # Development documentation and support
+  veridis.xyz/documentation: "https://docs.veridis.xyz/development"
+  veridis.xyz/support-channel: "#veridis-development"
+  veridis.xyz/runbook: "https://runbooks.veridis.xyz/development"
+  veridis.xyz/oncall-team: "development-team"
+  veridis.xyz/development-guide: "https://dev.veridis.xyz/getting-started"
+
+  # Development workflow annotations
+  development.veridis.xyz/hot-reload-enabled: "true"
+  development.veridis.xyz/debug-mode: "enabled"
+  development.veridis.xyz/profiling-enabled: "true"
+  development.veridis.xyz/test-data-enabled: "true"
+  development.veridis.xyz/mock-services: "enabled"
+
+# ==============================================================================
+# Development Configuration Generators
+# ==============================================================================
+configMapGenerator:
+  # Development global configuration
+  - name: veridis-development-global-config
+    behavior: merge
+    literals:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=debug
+      - METRICS_ENABLED=true
+      - TRACING_ENABLED=true
+      - DEBUG_LOGGING=enabled
+      - VERBOSE_LOGGING=enabled
+      - HOT_RELOAD_ENABLED=true
+      - PROFILING_ENABLED=true
+      - TEST_DATA_ENABLED=true
+      - MOCK_SERVICES_ENABLED=true
+      - CAIRO_VERSION=2.11.4
+      - STARKNET_VERSION=0.13.4
+      - PROTOCOL_VERSION=3.2.1-dev
+      - RUST_VERSION=1.87.0
+      - NODE_VERSION=22.14.0
+      - GARAGA_VERSION=0.18.1
+
+  # Development feature flags
+  - name: veridis-development-feature-flags
+    behavior: merge
+    literals:
+      - GDPR_FEATURES_ENABLED=true
+      - BRIDGE_ENABLED=true
+      - ZK_PROOFS_ENABLED=true
+      - COMPLIANCE_AUTOMATION=true
+      - ENTERPRISE_FEATURES=false
+      - AUDIT_LOGGING=true
+      - IDENTITY_SERVICE_ENABLED=true
+      - ATTESTATION_SERVICE_ENABLED=true
+      - VERIFICATION_SERVICE_ENABLED=true
+      - COMPLIANCE_SERVICE_ENABLED=true
+      - BRIDGE_SERVICE_ENABLED=true
+      - DEVELOPMENT_FEATURES=true
+      - TESTING_FEATURES=true
+      - DEBUGGING_FEATURES=true
+      - PROFILING_FEATURES=true
+      - MOCK_EXTERNAL_SERVICES=true
+
+  # Development network configuration
+  - name: veridis-development-network-config
+    behavior: merge
+    literals:
+      - STARKNET_NETWORK=devnet
+      - ETHEREUM_NETWORK=sepolia
+      - COSMOS_NETWORK=theta-testnet-001
+      - BRIDGE_SECURITY_THRESHOLD=1
+      - FINALITY_CONFIRMATIONS=1
+      - BACKEND_SERVICE_PORT=8080
+      - ZK_CIRCUITS_SERVICE_PORT=4000
+      - DEVELOPMENT_API_PORT=8090
+      - DEBUG_API_PORT=8091
+      - METRICS_PORT=9090
+      - HEALTH_CHECK_PORT=8081
+
+  # Development ZK Circuits configuration
+  - name: veridis-development-zk-config
+    behavior: merge
+    literals:
+      - GARAGA_CUDA_ENABLED=false
+      - ZK_PROOF_SECURITY_LEVEL=64
+      - GARAGA_OPTIMIZATION_LEVEL=1
+      - ZK_CIRCUIT_CACHE_SIZE=512
+      - ZK_PROOF_BATCH_SIZE=1
+      - ZK_GPU_MEMORY_LIMIT=0
+      - ZK_PARALLEL_PROVING=false
+      - ZK_CPU_ONLY_MODE=true
+      - ZK_DEVELOPMENT_MODE=true
+      - ZK_MOCK_PROOFS=true
+      - ZK_FAST_PROOFS=true
+
+  # Development database configuration
+  - name: veridis-development-database-config
+    literals:
+      - POSTGRES_DB=veridis_dev
+      - POSTGRES_HOST=veridis-postgres-service.veridis-dev.svc.cluster.local
+      - POSTGRES_PORT=5432
+      - POSTGRES_MAX_CONNECTIONS=20
+      - POSTGRES_POOL_SIZE=10
+      - POSTGRES_CONNECTION_TIMEOUT=30s
+      - POSTGRES_IDLE_TIMEOUT=300s
+      - POSTGRES_LOG_STATEMENTS=all
+      - POSTGRES_LOG_LEVEL=debug
+      - DATABASE_MIGRATION_AUTO=true
+      - DATABASE_SEED_DATA=true
+      - DATABASE_TEST_DATA=true
+
+  # Development cache configuration
+  - name: veridis-development-cache-config
+    literals:
+      - REDIS_HOST=veridis-redis-service.veridis-dev.svc.cluster.local
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_MAX_CONNECTIONS=10
+      - REDIS_POOL_SIZE=5
+      - REDIS_CONNECTION_TIMEOUT=5s
+      - REDIS_IDLE_TIMEOUT=60s
+      - REDIS_TTL_DEFAULT=3600
+      - REDIS_LOG_LEVEL=debug
+      - CACHE_ENABLED=true
+      - CACHE_DEVELOPMENT_MODE=true
+
+  # Development monitoring configuration
+  - name: veridis-development-monitoring-config
+    literals:
+      - PROMETHEUS_ENABLED=true
+      - PROMETHEUS_SCRAPE_INTERVAL=15s
+      - PROMETHEUS_RETENTION=7d
+      - GRAFANA_ENABLED=true
+      - GRAFANA_DEVELOPMENT_MODE=true
+      - JAEGER_ENABLED=true
+      - JAEGER_SAMPLING_RATE=1.0
+      - JAEGER_DEVELOPMENT_MODE=true
+      - LOGGING_LEVEL=debug
+      - LOGGING_FORMAT=pretty
+      - METRICS_DETAILED=true
+
+  # Development testing configuration
+  - name: veridis-development-testing-config
+    literals:
+      - TESTING_ENABLED=true
+      - UNIT_TESTS_ENABLED=true
+      - INTEGRATION_TESTS_ENABLED=true
+      - E2E_TESTS_ENABLED=true
+      - PERFORMANCE_TESTS_ENABLED=true
+      - LOAD_TESTS_ENABLED=false
+      - TEST_DATA_RESET=true
+      - TEST_PARALLEL_EXECUTION=true
+      - TEST_COVERAGE_ENABLED=true
+      - TEST_REPORTING_ENABLED=true
+
+# ==============================================================================
+# Development Secret Generators
+# ==============================================================================
+secretGenerator:
+  # Development database credentials
+  - name: veridis-development-database-credentials
+    behavior: merge
+    type: Opaque
+    literals:
+      - POSTGRES_USER=veridis_dev
+      - POSTGRES_PASSWORD=dev_password_123
+      - POSTGRES_DB=veridis_dev
+      - DATABASE_URL=postgresql://veridis_dev:dev_password_123@veridis-postgres-service.veridis-dev.svc.cluster.local:5432/veridis_dev
+
+  # Development backend secrets
+  - name: veridis-development-backend-secrets
+    behavior: merge
+    type: Opaque
+    literals:
+      - JWT_SECRET=dev_jwt_secret_key_123
+      - ENCRYPTION_KEY=dev_encryption_key_456
+      - API_SECRET=dev_api_secret_789
+      - WEBHOOK_SECRET=dev_webhook_secret_abc
+      - DEVELOPMENT_TOKEN=dev_token_xyz
+
+  # Development ZK circuits secrets
+  - name: veridis-development-zk-circuits-secrets
+    behavior: merge
+    type: Opaque
+    literals:
+      - ZK_SIGNING_KEY=dev_zk_signing_key_123
+      - ZK_VERIFICATION_KEY=dev_zk_verification_key_456
+      - CIRCUIT_ENCRYPTION_KEY=dev_circuit_key_789
+      - GARAGA_LICENSE_KEY=dev_garaga_license
+
+  # Development API keys
+  - name: veridis-development-api-keys
+    behavior: merge
+    type: Opaque
+    literals:
+      - STARKNET_API_KEY=dev_starknet_api_key
+      - ETHEREUM_API_KEY=dev_ethereum_api_key
+      - COSMOS_API_KEY=dev_cosmos_api_key
+      - EXTERNAL_SERVICE_API_KEY=dev_external_api_key
+
+  # Development TLS certificates (self-signed for development)
+  - name: veridis-development-tls-certificates
+    behavior: replace
+    type: kubernetes.io/tls
+    literals:
+      - tls.crt=LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0t # Development self-signed cert
+      - tls.key=LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0t # Development private key
+
+# ==============================================================================
+# Development Resource Patches
+# ==============================================================================
+patchesStrategicMerge:
+  # Development environment-specific patches
+  - patches/development/resource-limits.yaml
+  - patches/development/security-context.yaml
+  - patches/development/monitoring.yaml
+  - patches/development/database-config.yaml
+  - patches/development/cache-config.yaml
+  - patches/development/developer-tools.yaml
+  - patches/development/debugging.yaml
+  - patches/development/testing.yaml
+
+patchesJson6902:
+  # Development service replicas - reduced for cost optimization
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: veridis-backend
+    path: patches/development/veridis-backend-development.yaml
+
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: zk-circuits
+    path: patches/development/zk-circuits-development.yaml
+
+  # Development PostgreSQL configuration
+  - target:
+      group: apps
+      version: v1
+      kind: StatefulSet
+      name: postgres
+    path: patches/development/postgres-development.yaml
+
+  # Development Redis configuration
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: redis
+    path: patches/development/redis-development.yaml
+
+  # Development Vault configuration
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: vault
+    path: patches/development/vault-development.yaml
+
+  # Development network policies - more permissive
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: NetworkPolicy
+      name: veridis-backend-network-policy
+    path: patches/development/network-policy-development.yaml
+
+  # Development ingress configuration
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: veridis-backend-ingress
+    path: patches/development/ingress-development.yaml
+
+# ==============================================================================
+# Development Image Transformations
+# ==============================================================================
+images:
+  # Development core services with latest tags
+  - name: veridis/veridis-backend
+    newTag: "v3.2.1-dev"
+    # No digest in development for faster iteration
+
+  - name: veridis/zk-circuits
+    newTag: "v3.2.1-dev"
+    # No digest in development for faster iteration
+
+  # Development frontend service
+  - name: veridis/ui
+    newTag: "v3.2.1-dev"
+    # No digest in development for faster iteration
+
+  # Development infrastructure images - stable versions
+  - name: postgres
+    newTag: "16.1-alpine"
+
+  - name: redis
+    newTag: "7.2.4-alpine"
+
+  - name: vault
+    newTag: "1.15.6"
+
+  - name: shardlabs/starknet-devnet-rs
+    newTag: "0.13.4"
+
+# ==============================================================================
+# Development Resource Name Transformations
+# ==============================================================================
+namePrefix: veridis-dev-
+nameSuffix: ""
+
+# ==============================================================================
+# Development Replica Count Configurations
+# ==============================================================================
+replicas:
+  # Development core services - reduced replicas for cost optimization
+  - name: veridis-backend
+    count: 1
+
+  - name: zk-circuits
+    count: 1
+
+  # Development frontend
+  - name: ui
+    count: 1
+
+  # Development infrastructure - minimal replicas
+  - name: redis
+    count: 1
+
+  - name: vault
+    count: 1
+
+# ==============================================================================
+# Development Helm Chart Dependencies
+# ==============================================================================
+helmCharts:
+  # Development Prometheus with reduced resources
+  - name: prometheus
+    repo: https://prometheus-community.github.io/helm-charts
+    version: "25.8.0"
+    releaseName: veridis-development-prometheus
+    namespace: veridis-dev
+    valuesFile: helm-values/development/prometheus-values.yaml
+
+  # Development Grafana with development dashboards
+  - name: grafana
+    repo: https://grafana.github.io/helm-charts
+    version: "7.3.7"
+    releaseName: veridis-development-grafana
+    namespace: veridis-dev
+    valuesFile: helm-values/development/grafana-values.yaml
+
+  # Development Jaeger with full sampling
+  - name: jaeger
+    repo: https://jaegertracing.github.io/helm-charts
+    version: "0.71.14"
+    releaseName: veridis-development-jaeger
+    namespace: veridis-dev
+    valuesFile: helm-values/development/jaeger-values.yaml
+
+  # Skip GPU operator for development (CPU only)
+  # - name: gpu-operator
+  #   condition: false
+
+# ==============================================================================
+# Development Build Metadata
+# ==============================================================================
+buildMetadata:
+  - commit=${GIT_COMMIT:-development}
+  - branch=${GIT_BRANCH:-develop}
+  - buildNumber=${BUILD_NUMBER:-dev-build}
+  - buildDate=${BUILD_DATE:-$(date -u +%Y-%m-%dT%H:%M:%SZ)}
+  - buildUser=${BUILD_USER:-developer}
+  - developer=${DEVELOPER_NAME:-unknown}
+  - backendBinary=${BINARY_NAME:-veridis_backend_dev}
+  - staticBuild=${STATIC_BUILD:-false}
+  - zkCudaEnabled=false
+  - developmentMode=true
+  - debugMode=true
+  - testingEnabled=true
+  - profilingEnabled=true
+
+# ==============================================================================
+# Development Component Validation
+# ==============================================================================
+components:
+  - name: development-security-baseline
+    resources:
+      - ../base/security/policies/*
+      - ../base/security/contexts/*
+      - ../base/security/rbac/*
+      - patches/development/security/*
+
+  - name: development-monitoring-stack
+    resources:
+      - ../base/monitoring/prometheus/*
+      - ../base/monitoring/grafana/*
+      - ../base/monitoring/jaeger/*
+      - ../base/monitoring/alertmanager/*
+      - patches/development/monitoring/*
+
+  - name: development-core-services
+    resources:
+      - ../base/services/veridis-backend/*
+      - ../base/services/zk-circuits/*
+      - patches/development/services/*
+
+  - name: development-infrastructure-services
+    resources:
+      - ../base/infrastructure/postgres/*
+      - ../base/infrastructure/redis/*
+      - ../base/infrastructure/vault/*
+      - ../base/infrastructure/starknet/*
+      - patches/development/infrastructure/*
+
+  - name: development-tooling
+    resources:
+      - patches/development/developer-tools/*
+      - patches/development/debugging/*
+      - patches/development/testing/*
+
+# ==============================================================================
+# Development Environment Variable Configurations
+# ==============================================================================
+# The following environment variables are optimized for development:
+#
+# DEVELOPMENT SERVICE CONFIGURATION:
+# =================================
+# VERIDIS_BACKEND_REPLICAS=1
+# ZK_CIRCUITS_REPLICAS=1
+# UI_REPLICAS=1
+# REDIS_REPLICAS=1
+# VAULT_REPLICAS=1
+#
+# DEVELOPMENT FEATURE FLAGS:
+# =========================
+# DEVELOPMENT_MODE=true
+# DEBUG_MODE=true
+# HOT_RELOAD_ENABLED=true
+# PROFILING_ENABLED=true
+# TESTING_ENABLED=true
+# MOCK_SERVICES_ENABLED=true
+# TEST_DATA_ENABLED=true
+# VERBOSE_LOGGING=true
+#
+# DEVELOPMENT RESOURCE LIMITS:
+# ===========================
+# CPU_LIMIT_BACKEND=1000m
+# MEMORY_LIMIT_BACKEND=2Gi
+# CPU_LIMIT_ZK_CIRCUITS=500m
+# MEMORY_LIMIT_ZK_CIRCUITS=1Gi
+# STORAGE_SIZE_POSTGRES=10Gi
+# STORAGE_SIZE_REDIS=1Gi
+#
+# DEVELOPMENT SECURITY CONFIGURATION:
+# ==================================
+# SECURITY_LEVEL=development
+# TLS_ENABLED=true
+# NETWORK_POLICIES_STRICT=false
+# POD_SECURITY_STANDARDS=development
+# AUDIT_LOGGING_LEVEL=debug
+#
+# DEVELOPMENT MONITORING CONFIGURATION:
+# ====================================
+# METRICS_RETENTION=7d
+# LOG_RETENTION=30d
+# TRACING_SAMPLING_RATE=1.0
+# DEBUG_LOGGING=enabled
+# PROFILING_ENABLED=true
+#
+# DEVELOPMENT BUILD METADATA:
+# ==========================
+# GIT_COMMIT=development-commit
+# GIT_BRANCH=develop
+# BUILD_NUMBER=dev-build
+# BUILD_DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+# BUILD_USER=developer
+# DEVELOPER_NAME=current-developer
+#
+# DEVELOPMENT DATABASE CONFIGURATION:
+# ==================================
+# POSTGRES_USER=veridis_dev
+# POSTGRES_PASSWORD=dev_password_123
+# POSTGRES_DB=veridis_dev
+# DATABASE_MIGRATION_AUTO=true
+# DATABASE_SEED_DATA=true
+# DATABASE_TEST_DATA=true
+#
+# DEVELOPMENT ZK CIRCUITS CONFIGURATION:
+# =====================================
+# GARAGA_CUDA_ENABLED=false
+# ZK_CPU_ONLY_MODE=true
+# ZK_DEVELOPMENT_MODE=true
+# ZK_MOCK_PROOFS=true
+# ZK_FAST_PROOFS=true
+# ZK_PROOF_SECURITY_LEVEL=64
+#
+# ==============================================================================
+
+---
+# ==============================================================================
+# Development-Specific Patch Files Reference
+# ==============================================================================
+#
+# This kustomization references the following patch files that should be created
+# in the patches/development/ directory:
+#
+# RESOURCE PATCHES:
+# ================
+# - patches/development/resource-limits.yaml
+# - patches/development/security-context.yaml
+# - patches/development/monitoring.yaml
+# - patches/development/database-config.yaml
+# - patches/development/cache-config.yaml
+# - patches/development/developer-tools.yaml
+# - patches/development/debugging.yaml
+# - patches/development/testing.yaml
+#
+# SERVICE PATCHES:
+# ===============
+# - patches/development/veridis-backend-development.yaml
+# - patches/development/zk-circuits-development.yaml
+# - patches/development/postgres-development.yaml
+# - patches/development/redis-development.yaml
+# - patches/development/vault-development.yaml
+#
+# NETWORKING PATCHES:
+# ==================
+# - patches/development/network-policy-development.yaml
+# - patches/development/ingress-development.yaml
+# HELM VALUES:
+# ===========
+# - helm-values/development/prometheus-values.yaml
+# - helm-values/development/grafana-values.yaml
+# - helm-values/development/jaeger-values.yaml
+#
+# These patch files provide development-specific optimizations including:
+# - Reduced resource limits for cost optimization
+# - Enhanced debugging and development features
+# - Relaxed security policies for development productivity
+# - Development-optimized monitoring and observability
+# - Hot reload and live development support
+# - Comprehensive testing and profiling capabilities
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Development Kustomization Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT KUSTOMIZATION STRATEGY:
+# =========================================================
+#
+# VERIDIS DEVELOPMENT KUSTOMIZATION ARCHITECTURE OVERVIEW:
+# --------------------------------------------------------
+# 1. Development Environment Optimization:
+#    - Comprehensive enterprise-grade development kustomization with intelligent resource management and advanced developer-focused optimization
+#    - Advanced development configuration with comprehensive cost optimization, developer productivity, hot reload support, and comprehensive operational excellence
+#    - Multi-tier development architecture with local development, shared development, integration testing, and comprehensive development intelligence
+#    - Enterprise development policies with developer-friendly enforcement, productivity controls, debugging automation, and comprehensive development procedures
+#    - Performance optimization with intelligent resource allocation, cost efficiency, developer acceleration, and productivity for maximum development performance
+#
+# 2. Resource Optimization and Cost Management:
+#    - Cost-optimized resource allocation with reduced replicas, minimal resource limits, and comprehensive cost coordination
+#    - Advanced cost configuration with single-replica services, development-sized databases, cost monitoring, and comprehensive cost intelligence
+#    - Flexible resource optimization with development workflow, cost efficiency, and comprehensive cost intelligence
+#    - Cost intelligence with resource procedures, optimization support, cost automation, and comprehensive cost coordination
+#    - Resource excellence with cost optimization, resource workflows, cost automation, and comprehensive cost environment management
+#
+# 3. Developer Productivity and Tooling:
+#    - Developer-focused productivity with hot reload, debugging support, comprehensive testing, and comprehensive productivity coordination
+#    - Advanced productivity configuration with development tools, debugging features, testing frameworks, and comprehensive productivity intelligence
+#    - Flexible productivity optimization with developer workflow, tool integration, and comprehensive productivity intelligence
+#    - Productivity intelligence with development procedures, tool support, productivity automation, and comprehensive productivity coordination
+#    - Development excellence with productivity optimization, tool workflows, productivity automation, and comprehensive productivity environment management
+#
+# ENTERPRISE DEVELOPMENT KUSTOMIZATION FEATURES:
+# ==============================================
+# Advanced Development Resource Management:
+#   - Multi-tier resource architecture with cost optimization, developer productivity, resource efficiency, and comprehensive resource configurations
+#   - Intelligent resource management with cost optimization, developer-focused allocation, productivity enhancement, and comprehensive resource decisions
+#   - Resource discovery with cost optimization, productivity management, resource policies, and comprehensive resource analytics
+#   - Performance management with developer productivity, cost efficiency, resource optimization, and comprehensive performance intelligence
+#   - Resource processing tuning with cost management, productivity optimization, performance algorithms, and intelligent resource optimization
+#
+# Comprehensive Developer Experience and Productivity:
+#   - Multi-tier productivity with hot reload, debugging support, testing frameworks, and comprehensive productivity coordination
+#   - Productivity optimization with development tools, debugging capabilities, testing integration, and comprehensive productivity intelligence
+#   - Developer management with tool integration, productivity enhancement, development workflow, and comprehensive developer coordination
+#   - Business intelligence with productivity analytics, developer correlation, development optimization, and comprehensive strategic insights
+#   - Development management with productivity policies, tool optimization, development integration, and comprehensive development analytics
+#
+# Enterprise Cost Optimization and Resource Efficiency:
+#   - Multi-tier cost management with resource optimization, cost monitoring, efficiency tracking, and comprehensive cost coordination
+#   - Cost optimization with intelligent resource allocation, usage tracking, cost efficiency, and comprehensive cost intelligence
+#   - Resource management with cost limits, usage optimization, efficiency monitoring, and comprehensive resource coordination
+#   - Business intelligence with cost analytics, resource correlation, efficiency optimization, and comprehensive strategic insights
+#   - Cost management with optimization policies, resource allocation, efficiency monitoring, and comprehensive cost analytics
+#
+# Advanced Development Testing and Debugging:
+#   - Multi-tier testing with unit testing, integration testing, e2e testing, and comprehensive testing coordination
+#   - Testing optimization with test automation, coverage tracking, performance testing, and comprehensive testing intelligence
+#   - Debugging management with debugging tools, profiling support, error tracking, and comprehensive debugging coordination
+#   - Business intelligence with testing analytics, debugging correlation, development optimization, and comprehensive strategic insights
+#   - Quality management with testing policies, debugging optimization, quality integration, and comprehensive quality analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Development Kustomization Lifecycle Management:
+#   - Multi-environment deployment with development optimization, cost efficiency, productivity enhancement, and comprehensive kustomization coordination
+#   - Intelligent kustomization management with predictive analytics and development utilization correlation
+#   - Advanced monitoring with comprehensive kustomization analytics and development business intelligence
+#   - Kustomization validation with development schema enforcement and kustomization deployment safety checks
+#   - Automated optimization with kustomization pattern analysis and development optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - Development SOC 2 controls with appropriate audit requirements and development logging
+#   - Development GDPR compliance with data protection and privacy-preserving development management
+#   - Development ISO 27001 security management with information security and development compliance integration
+#   - Development NIST 800-190 container security with development validation and compliance
+#   - Development-trust security architecture with appropriate encryption and development authentication requirements
+#
+# Business Intelligence Integration:
+#   - Development analytics with cost correlation and kustomization resource utilization optimization
+#   - Performance analytics with developer experience optimization and kustomization business intelligence
+#   - Development intelligence with productivity pattern monitoring and kustomization optimization recommendations
+#   - Strategic planning with capacity management and kustomization forecasting
+#   - Business impact assessment with kustomization performance correlation and development tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment kustomization support with development optimization, productivity enhancement, cost efficiency, and comprehensive kustomization coordination
+#   - Comprehensive documentation with kustomization guides and development troubleshooting procedures
+#   - Environment-specific kustomizations with development, testing, and integration support
+#   - Development integration with kustomization development workflow and development debugging capabilities
+#   - Kustomization monitoring with comprehensive tracking and development correlation
+#
+# ==============================================================================

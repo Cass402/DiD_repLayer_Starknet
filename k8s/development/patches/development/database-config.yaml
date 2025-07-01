@@ -1,0 +1,1383 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Database Configuration Patch
+# ==============================================================================
+#
+# This Development Database Configuration Patch provides comprehensive development-optimized
+# database configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT DATABASE ARCHITECTURE:
+#   • Advanced Development Database with intelligent database management and comprehensive development-based optimization
+#   • Multi-tier Development Database architecture with developer productivity, database efficiency, debugging support, and validation environments
+#   • Comprehensive development database framework with Database policies, developer tooling integration, debugging automation
+#   • Advanced lifecycle management with automated Database optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Database performance insights
+#
+# VERIDIS DEVELOPMENT DATABASE OPTIMIZATION:
+#   • High-performance Development with intelligent database management and developer-optimized database allocation
+#   • Intelligent Development database management with responsive policies and development-based database decisions
+#   • Advanced Development management with business intelligence and database-based developer control
+#   • Comprehensive development database control with intelligent Developer Database management and database enhancement
+#   • Enterprise acceleration with predictive Developer Database management and development database optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Database controls with comprehensive audit and development requirements
+#   • GDPR Development Database compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Database management with comprehensive framework integration
+#   • NIST 800-190 container Development Database security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Database best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Database lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Database intelligence
+#   • Advanced Database integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development database control with Development Database preservation and database optimization
+#   • Business continuity Development Database with development guarantees and performance optimization
+#
+# DEVELOPMENT DATABASE ACCELERATION INTELLIGENCE:
+#   • Development Database usage analytics with development patterns and optimization recommendations
+#   • Database monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Database analytics and deployment optimization procedures
+#   • Cost optimization with Development Database utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Database metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# PostgreSQL Development Database Configuration Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: veridis-dev
+
+  # Development database optimization labels
+  labels:
+    database.veridis.xyz/database-level: development
+    database.veridis.xyz/database-tier: development
+    database.veridis.xyz/performance-tier: development
+    database.veridis.xyz/database-profile: developer-optimized
+    database.veridis.xyz/debugging-support: comprehensive
+
+    # Development database management labels
+    development.veridis.xyz/database-optimization: developer-focused
+    development.veridis.xyz/debugging-enabled: true
+    development.veridis.xyz/developer-productivity: prioritized
+    development.veridis.xyz/database-monitoring: enabled
+    development.veridis.xyz/performance-tuning: development
+
+    # Database development labels
+    postgres.veridis.xyz/configuration-level: development
+    postgres.veridis.xyz/debugging-allowed: true
+    postgres.veridis.xyz/development-mode: enabled
+    postgres.veridis.xyz/database-monitoring: comprehensive
+    postgres.veridis.xyz/developer-access: enhanced
+
+  annotations:
+    # Development database optimization annotations
+    database.veridis.xyz/database-strategy: "developer-productivity-first"
+    database.veridis.xyz/configuration-optimization: "development-friendly"
+    database.veridis.xyz/debugging-support: "comprehensive"
+    database.veridis.xyz/developer-access: "enhanced"
+    database.veridis.xyz/performance-mode: "development"
+
+    # Development database management annotations
+    postgres.veridis.xyz/configuration-level: "development"
+    postgres.veridis.xyz/debugging-capabilities: "full"
+    postgres.veridis.xyz/developer-tools: "enabled"
+    postgres.veridis.xyz/database-monitoring: "comprehensive"
+    postgres.veridis.xyz/performance-enforcement: "relaxed"
+
+    # Developer productivity annotations
+    productivity.veridis.xyz/database-balance: "productivity-optimized"
+    productivity.veridis.xyz/debugging-access: "unrestricted"
+    productivity.veridis.xyz/development-support: "comprehensive"
+    productivity.veridis.xyz/database-overhead: "minimized"
+    productivity.veridis.xyz/developer-experience: "enhanced"
+
+spec:
+  template:
+    spec:
+      containers:
+        - name: postgres
+          # ==============================================================================
+          # Development Database Environment Variables
+          # ==============================================================================
+          env:
+            # Development database configuration
+            - name: DATABASE_PROFILE
+              value: "development"
+            - name: DATABASE_DEBUG_MODE
+              value: "true"
+            - name: DATABASE_DEVELOPER_MODE
+              value: "true"
+            - name: DATABASE_DEVELOPMENT_OPTIMIZATION
+              value: "true"
+
+            # PostgreSQL basic configuration
+            - name: POSTGRES_DB
+              value: "veridis_dev"
+            - name: POSTGRES_USER
+              value: "veridis_dev"
+            - name: POSTGRES_PASSWORD
+              value: "dev_password_123"
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: "md5"
+            - name: POSTGRES_INITDB_ARGS
+              value: "--auth-host=md5 --auth-local=trust"
+
+            # PostgreSQL connection configuration - development optimized
+            - name: POSTGRES_MAX_CONNECTIONS
+              value: "100"                # 100 connections for development
+            - name: POSTGRES_SHARED_BUFFERS
+              value: "256MB"              # 256MB shared buffers
+            - name: POSTGRES_EFFECTIVE_CACHE_SIZE
+              value: "1GB"                # 1GB effective cache size
+            - name: POSTGRES_WORK_MEM
+              value: "8MB"                # 8MB work memory per operation
+            - name: POSTGRES_MAINTENANCE_WORK_MEM
+              value: "128MB"              # 128MB maintenance work memory
+
+            # PostgreSQL logging configuration - verbose for development
+            - name: POSTGRES_LOG_DESTINATION
+              value: "stderr"
+            - name: POSTGRES_LOGGING_COLLECTOR
+              value: "off"
+            - name: POSTGRES_LOG_DIRECTORY
+              value: "log"
+            - name: POSTGRES_LOG_FILENAME
+              value: "postgresql-%Y-%m-%d_%H%M%S.log"
+            - name: POSTGRES_LOG_ROTATION_AGE
+              value: "1d"
+            - name: POSTGRES_LOG_ROTATION_SIZE
+              value: "100MB"
+            - name: POSTGRES_LOG_TRUNCATE_ON_ROTATION
+              value: "on"
+            - name: POSTGRES_LOG_MIN_MESSAGES
+              value: "info"               # Info level for development
+            - name: POSTGRES_LOG_MIN_ERROR_STATEMENT
+              value: "error"
+            - name: POSTGRES_LOG_MIN_DURATION_STATEMENT
+              value: "1000"               # Log queries slower than 1 second
+            - name: POSTGRES_LOG_CONNECTIONS
+              value: "on"
+            - name: POSTGRES_LOG_DISCONNECTIONS
+              value: "on"
+            - name: POSTGRES_LOG_LOCK_WAITS
+              value: "on"
+            - name: POSTGRES_LOG_STATEMENT
+              value: "all"                # Log all statements for development
+            - name: POSTGRES_LOG_LINE_PREFIX
+              value: "%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h "
+
+            # PostgreSQL performance tuning - development optimized
+            - name: POSTGRES_CHECKPOINT_COMPLETION_TARGET
+              value: "0.9"
+            - name: POSTGRES_WAL_BUFFERS
+              value: "16MB"
+            - name: POSTGRES_DEFAULT_STATISTICS_TARGET
+              value: "100"
+            - name: POSTGRES_RANDOM_PAGE_COST
+              value: "1.1"                # SSD optimized
+            - name: POSTGRES_EFFECTIVE_IO_CONCURRENCY
+              value: "200"                # SSD optimized
+            - name: POSTGRES_MAX_WORKER_PROCESSES
+              value: "4"
+            - name: POSTGRES_MAX_PARALLEL_WORKERS_PER_GATHER
+              value: "2"
+            - name: POSTGRES_MAX_PARALLEL_WORKERS
+              value: "4"
+            - name: POSTGRES_MAX_PARALLEL_MAINTENANCE_WORKERS
+              value: "2"
+
+            # PostgreSQL WAL configuration - development optimized
+            - name: POSTGRES_WAL_LEVEL
+              value: "replica"
+            - name: POSTGRES_MAX_WAL_SIZE
+              value: "2GB"
+            - name: POSTGRES_MIN_WAL_SIZE
+              value: "100MB"
+            - name: POSTGRES_CHECKPOINT_TIMEOUT
+              value: "15min"
+            - name: POSTGRES_ARCHIVE_MODE
+              value: "off"                # Disabled for development
+            - name: POSTGRES_ARCHIVE_COMMAND
+              value: ""
+
+            # PostgreSQL autovacuum configuration - aggressive for development
+            - name: POSTGRES_AUTOVACUUM
+              value: "on"
+            - name: POSTGRES_AUTOVACUUM_MAX_WORKERS
+              value: "3"
+            - name: POSTGRES_AUTOVACUUM_NAPTIME
+              value: "30s"                # More frequent for development
+            - name: POSTGRES_AUTOVACUUM_VACUUM_THRESHOLD
+              value: "25"
+            - name: POSTGRES_AUTOVACUUM_VACUUM_SCALE_FACTOR
+              value: "0.1"
+            - name: POSTGRES_AUTOVACUUM_ANALYZE_THRESHOLD
+              value: "25"
+            - name: POSTGRES_AUTOVACUUM_ANALYZE_SCALE_FACTOR
+              value: "0.05"
+            - name: POSTGRES_AUTOVACUUM_VACUUM_COST_DELAY
+              value: "10ms"
+            - name: POSTGRES_AUTOVACUUM_VACUUM_COST_LIMIT
+              value: "1000"
+
+            # PostgreSQL query planner configuration
+            - name: POSTGRES_ENABLE_SEQSCAN
+              value: "on"
+            - name: POSTGRES_ENABLE_INDEXSCAN
+              value: "on"
+            - name: POSTGRES_ENABLE_BITMAPSCAN
+              value: "on"
+            - name: POSTGRES_ENABLE_TIDSCAN
+              value: "on"
+            - name: POSTGRES_ENABLE_SORT
+              value: "on"
+            - name: POSTGRES_ENABLE_HASHJOIN
+              value: "on"
+            - name: POSTGRES_ENABLE_MERGEJOIN
+              value: "on"
+            - name: POSTGRES_ENABLE_NESTLOOP
+              value: "on"
+            - name: POSTGRES_ENABLE_PARTITION_PRUNING
+              value: "on"
+            - name: POSTGRES_ENABLE_PARTITIONWISE_JOIN
+              value: "on"
+            - name: POSTGRES_ENABLE_PARTITIONWISE_AGGREGATE
+              value: "on"
+
+            # PostgreSQL development-specific settings
+            - name: POSTGRES_FSYNC
+              value: "off"                # Disabled for development performance
+            - name: POSTGRES_SYNCHRONOUS_COMMIT
+              value: "off"                # Disabled for development performance
+            - name: POSTGRES_FULL_PAGE_WRITES
+              value: "off"                # Disabled for development performance
+            - name: POSTGRES_COMMIT_DELAY
+              value: "0"
+            - name: POSTGRES_COMMIT_SIBLINGS
+              value: "5"
+
+            # PostgreSQL connection pooling settings
+            - name: POSTGRES_LISTEN_ADDRESSES
+              value: "*"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_UNIX_SOCKET_DIRECTORIES
+              value: "/var/run/postgresql"
+            - name: POSTGRES_UNIX_SOCKET_GROUP
+              value: ""
+            - name: POSTGRES_UNIX_SOCKET_PERMISSIONS
+              value: "0777"
+
+            # PostgreSQL SSL configuration - disabled for development
+            - name: POSTGRES_SSL
+              value: "off"
+            - name: POSTGRES_SSL_CERT_FILE
+              value: ""
+            - name: POSTGRES_SSL_KEY_FILE
+              value: ""
+            - name: POSTGRES_SSL_CA_FILE
+              value: ""
+
+            # PostgreSQL statistics configuration
+            - name: POSTGRES_TRACK_ACTIVITIES
+              value: "on"
+            - name: POSTGRES_TRACK_COUNTS
+              value: "on"
+            - name: POSTGRES_TRACK_IO_TIMING
+              value: "on"
+            - name: POSTGRES_TRACK_FUNCTIONS
+              value: "all"
+            - name: POSTGRES_STATS_TEMP_DIRECTORY
+              value: "pg_stat_tmp"
+
+            # PostgreSQL memory configuration
+            - name: POSTGRES_SHARED_PRELOAD_LIBRARIES
+              value: "pg_stat_statements"
+            - name: POSTGRES_DYNAMIC_SHARED_MEMORY_TYPE
+              value: "posix"
+            - name: POSTGRES_HUGE_PAGES
+              value: "try"
+            - name: POSTGRES_TEMP_BUFFERS
+              value: "32MB"
+
+            # PostgreSQL development extensions
+            - name: POSTGRES_EXTENSIONS_AUTO_PRELOAD
+              value: "pg_stat_statements,auto_explain"
+            - name: POSTGRES_AUTO_EXPLAIN_LOG_MIN_DURATION
+              value: "1s"
+            - name: POSTGRES_AUTO_EXPLAIN_LOG_ANALYZE
+              value: "on"
+            - name: POSTGRES_AUTO_EXPLAIN_LOG_BUFFERS
+              value: "on"
+            - name: POSTGRES_AUTO_EXPLAIN_LOG_TIMING
+              value: "on"
+            - name: POSTGRES_AUTO_EXPLAIN_LOG_TRIGGERS
+              value: "on"
+            - name: POSTGRES_AUTO_EXPLAIN_LOG_VERBOSE
+              value: "on"
+
+            # PostgreSQL development debugging
+            - name: POSTGRES_LOG_PARSER_STATS
+              value: "off"
+            - name: POSTGRES_LOG_PLANNER_STATS
+              value: "off"
+            - name: POSTGRES_LOG_EXECUTOR_STATS
+              value: "off"
+            - name: POSTGRES_LOG_STATEMENT_STATS
+              value: "off"
+            - name: POSTGRES_DEBUG_PRINT_PARSE
+              value: "off"
+            - name: POSTGRES_DEBUG_PRINT_REWRITTEN
+              value: "off"
+            - name: POSTGRES_DEBUG_PRINT_PLAN
+              value: "off"
+            - name: POSTGRES_DEBUG_PRETTY_PRINT
+              value: "on"
+
+            # PostgreSQL application-specific settings
+            - name: DATABASE_TIMEZONE
+              value: "UTC"
+            - name: DATABASE_ENCODING
+              value: "UTF8"
+            - name: DATABASE_LOCALE
+              value: "en_US.UTF-8"
+            - name: DATABASE_COLLATION
+              value: "en_US.UTF-8"
+            - name: DATABASE_CTYPE
+              value: "en_US.UTF-8"
+
+            # Development database features
+            - name: DEV_DATABASE_RESET_ON_START
+              value: "false"              # Don't reset by default
+            - name: DEV_DATABASE_SEED_DATA
+              value: "true"               # Seed with test data
+            - name: DEV_DATABASE_MIGRATION_AUTO
+              value: "true"               # Auto-run migrations
+            - name: DEV_DATABASE_BACKUP_ENABLED
+              value: "true"               # Enable backups
+            - name: DEV_DATABASE_MONITORING
+              value: "true"               # Enable monitoring
+
+            # Development performance monitoring
+            - name: POSTGRES_PERFORMANCE_MONITORING
+              value: "true"
+            - name: POSTGRES_SLOW_QUERY_LOG
+              value: "true"
+            - name: POSTGRES_QUERY_STATS_ENABLED
+              value: "true"
+            - name: POSTGRES_CONNECTION_STATS_ENABLED
+              value: "true"
+            - name: POSTGRES_LOCK_MONITORING_ENABLED
+              value: "true"
+
+          # ==============================================================================
+          # Development Database Volume Mounts
+          # ==============================================================================
+          volumeMounts:
+            # PostgreSQL data directory
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+              readOnly: false
+
+            # PostgreSQL configuration directory
+            - name: postgres-config
+              mountPath: /etc/postgresql
+              readOnly: true
+
+            # PostgreSQL initialization scripts
+            - name: postgres-init
+              mountPath: /docker-entrypoint-initdb.d
+              readOnly: true
+
+            # Development database logs
+            - name: postgres-logs
+              mountPath: /var/log/postgresql
+              readOnly: false
+
+            # Development database backups
+            - name: postgres-backups
+              mountPath: /var/backups/postgresql
+              readOnly: false
+
+            # PostgreSQL socket directory
+            - name: postgres-socket
+              mountPath: /var/run/postgresql
+              readOnly: false
+
+          # ==============================================================================
+          # Development Database Command Override
+          # ==============================================================================
+          command:
+            - docker-entrypoint.sh
+            - postgres
+            - -c
+            - config_file=/etc/postgresql/postgresql.conf
+            - -c
+            - hba_file=/etc/postgresql/pg_hba.conf
+            - -c
+            - log_destination=stderr
+            - -c
+            - log_statement=all
+            - -c
+            - log_min_duration_statement=1000
+            - -c
+            - shared_preload_libraries=pg_stat_statements,auto_explain
+            - -c
+            - max_connections=100
+            - -c
+            - shared_buffers=256MB
+            - -c
+            - effective_cache_size=1GB
+            - -c
+            - work_mem=8MB
+            - -c
+            - maintenance_work_mem=128MB
+            - -c
+            - fsync=off
+            - -c
+            - synchronous_commit=off
+            - -c
+            - full_page_writes=off
+
+          # ==============================================================================
+          # Development Database Ports
+          # ==============================================================================
+          ports:
+            # PostgreSQL port
+            - name: postgres
+              containerPort: 5432
+              protocol: TCP
+
+          # ==============================================================================
+          # Development Database Health Checks
+          # ==============================================================================
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - veridis_dev
+                - -d
+                - veridis_dev
+                - -h
+                - localhost
+                - -p
+                - "5432"
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+          readinessProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - veridis_dev
+                - -d
+                - veridis_dev
+                - -h
+                - localhost
+                - -p
+                - "5432"
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+
+          startupProbe:
+            exec:
+              command:
+                - pg_isready
+                - -U
+                - veridis_dev
+                - -d
+                - veridis_dev
+                - -h
+                - localhost
+                - -p
+                - "5432"
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 30
+
+      # ==============================================================================
+      # Development Database Volumes
+      # ==============================================================================
+      volumes:
+        # PostgreSQL configuration volume
+        - name: postgres-config
+          configMap:
+            name: veridis-development-postgres-config
+            defaultMode: 0644
+            items:
+              - key: postgresql.conf
+                path: postgresql.conf
+              - key: pg_hba.conf
+                path: pg_hba.conf
+
+        # PostgreSQL initialization scripts volume
+        - name: postgres-init
+          configMap:
+            name: veridis-development-postgres-init
+            defaultMode: 0755
+
+        # PostgreSQL logs volume
+        - name: postgres-logs
+          emptyDir:
+            sizeLimit: "1Gi"
+            medium: ""
+
+        # PostgreSQL backups volume
+        - name: postgres-backups
+          emptyDir:
+            sizeLimit: "2Gi"
+            medium: ""
+
+        # PostgreSQL socket volume
+        - name: postgres-socket
+          emptyDir:
+            sizeLimit: "1Mi"
+            medium: "Memory"
+
+  # ==============================================================================
+  # Development Database Volume Claim Template
+  # ==============================================================================
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+        labels:
+          database.veridis.xyz/component: postgres-storage
+          database.veridis.xyz/environment: development
+        annotations:
+          database.veridis.xyz/description: "Development PostgreSQL data storage"
+          database.veridis.xyz/backup-required: "true"
+          database.veridis.xyz/retention-policy: "30d"
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: standard      # Use standard storage class for development
+        resources:
+          requests:
+            storage: 10Gi              # 10GB storage for development
+
+---
+# ==============================================================================
+# Development PostgreSQL Configuration ConfigMap
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-development-postgres-config
+  namespace: veridis-dev
+
+  labels:
+    database.veridis.xyz/component: postgres-config
+    database.veridis.xyz/environment: development
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/component: config
+    app.kubernetes.io/part-of: veridis-protocol
+
+  annotations:
+    database.veridis.xyz/description: "Development PostgreSQL configuration for Veridis Protocol"
+    database.veridis.xyz/config-version: "development-v1"
+    database.veridis.xyz/optimization-level: "development"
+
+data:
+  postgresql.conf: |
+    # ==============================================================================
+    # Veridis Development PostgreSQL Configuration
+    # ==============================================================================
+
+    # Development connection settings
+    listen_addresses = '*'
+    port = 5432
+    max_connections = 100
+    superuser_reserved_connections = 3
+    unix_socket_directories = '/var/run/postgresql'
+    unix_socket_group = ''
+    unix_socket_permissions = 0777
+
+    # Development memory settings
+    shared_buffers = 256MB
+    huge_pages = try
+    temp_buffers = 32MB
+    max_prepared_transactions = 0
+    work_mem = 8MB
+    maintenance_work_mem = 128MB
+    replacement_sort_tuples = 150000
+    autovacuum_work_mem = -1
+    max_stack_depth = 2MB
+    dynamic_shared_memory_type = posix
+
+    # Development WAL settings - optimized for development speed
+    wal_level = replica
+    fsync = off                          # Disabled for development performance
+    synchronous_commit = off             # Disabled for development performance
+    wal_sync_method = fsync
+    full_page_writes = off               # Disabled for development performance
+    wal_compression = on
+    wal_buffers = 16MB
+    wal_writer_delay = 200ms
+    wal_writer_flush_after = 1MB
+    commit_delay = 0
+    commit_siblings = 5
+
+    # Development checkpoint settings
+    checkpoint_timeout = 15min
+    max_wal_size = 2GB
+    min_wal_size = 100MB
+    checkpoint_completion_target = 0.9
+    checkpoint_flush_after = 256kB
+    checkpoint_warning = 30s
+
+    # Development archiving - disabled
+    archive_mode = off
+    archive_command = ''
+    archive_timeout = 0
+
+    # Development replication - basic settings
+    max_wal_senders = 10
+    max_replication_slots = 10
+    track_commit_timestamp = off
+
+    # Development query planner settings
+    enable_bitmapscan = on
+    enable_hashagg = on
+    enable_hashjoin = on
+    enable_indexscan = on
+    enable_indexonlyscan = on
+    enable_material = on
+    enable_mergejoin = on
+    enable_nestloop = on
+    enable_seqscan = on
+    enable_sort = on
+    enable_tidscan = on
+    enable_partition_pruning = on
+    enable_partitionwise_join = on
+    enable_partitionwise_aggregate = on
+
+    # Development planner cost constants
+    seq_page_cost = 1.0
+    random_page_cost = 1.1               # SSD optimized
+    cpu_tuple_cost = 0.01
+    cpu_index_tuple_cost = 0.005
+    cpu_operator_cost = 0.0025
+    parallel_tuple_cost = 0.1
+    parallel_setup_cost = 1000.0
+    min_parallel_table_scan_size = 8MB
+    min_parallel_index_scan_size = 512kB
+    effective_cache_size = 1GB
+
+    # Development genetic query optimizer
+    geqo = on
+    geqo_threshold = 12
+    geqo_effort = 5
+    geqo_pool_size = 0
+    geqo_generations = 0
+    geqo_selection_bias = 2.0
+    geqo_seed = 0.0
+
+    # Development other planner options
+    default_statistics_target = 100
+    constraint_exclusion = partition
+    cursor_tuple_fraction = 0.1
+    from_collapse_limit = 8
+    join_collapse_limit = 8
+    force_parallel_mode = off
+    jit = on
+    jit_above_cost = 100000
+    jit_inline_above_cost = 500000
+    jit_optimize_above_cost = 500000
+
+    # Development logging configuration - verbose for development
+    log_destination = 'stderr'
+    logging_collector = off
+    log_directory = 'log'
+    log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
+    log_file_mode = 0600
+    log_truncate_on_rotation = on
+    log_rotation_age = 1d
+    log_rotation_size = 100MB
+    syslog_facility = 'LOCAL0'
+    syslog_ident = 'postgres'
+    syslog_sequence_numbers = on
+    syslog_split_messages = on
+    event_source = 'PostgreSQL'
+
+    # Development what to log
+    client_min_messages = notice
+    log_min_messages = info
+    log_min_error_statement = error
+    log_min_duration_statement = 1000    # Log queries slower than 1 second
+    log_checkpoints = on
+    log_connections = on
+    log_disconnections = on
+    log_duration = off
+    log_error_verbosity = default
+    log_hostname = off
+    log_line_prefix = '%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '
+    log_lock_waits = on
+    log_statement = 'all'                # Log all statements for development
+    log_replication_commands = off
+    log_temp_files = -1
+    log_timezone = 'UTC'
+
+    # Development process title
+    cluster_name = 'veridis-dev'
+    update_process_title = on
+
+    # Development statistics
+    track_activities = on
+    track_counts = on
+    track_io_timing = on
+    track_functions = all
+    stats_temp_directory = 'pg_stat_tmp'
+
+    # Development autovacuum - aggressive for development
+    autovacuum = on
+    log_autovacuum_min_duration = -1
+    autovacuum_max_workers = 3
+    autovacuum_naptime = 30s             # More frequent for development
+    autovacuum_vacuum_threshold = 25
+    autovacuum_analyze_threshold = 25
+    autovacuum_vacuum_scale_factor = 0.1
+    autovacuum_analyze_scale_factor = 0.05
+    autovacuum_freeze_max_age = 200000000
+    autovacuum_multixact_freeze_max_age = 400000000
+    autovacuum_vacuum_cost_delay = 10ms
+    autovacuum_vacuum_cost_limit = 1000
+
+    # Development client connection defaults
+    search_path = '"$user", public'
+    row_security = on
+    default_tablespace = ''
+    temp_tablespaces = ''
+    default_table_access_method = 'heap'
+    check_function_bodies = on
+    default_transaction_isolation = 'read committed'
+    default_transaction_read_only = off
+    default_transaction_deferrable = off
+    session_replication_role = 'origin'
+    statement_timeout = 0
+    lock_timeout = 0
+    idle_in_transaction_session_timeout = 0
+    vacuum_freeze_min_age = 50000000
+    vacuum_freeze_table_age = 150000000
+    vacuum_multixact_freeze_min_age = 5000000
+    vacuum_multixact_freeze_table_age = 150000000
+    vacuum_cleanup_index_scale_factor = 0.1
+    bytea_output = 'hex'
+    xmlbinary = 'base64'
+    xmloption = 'content'
+    gin_fuzzy_search_limit = 0
+    gin_pending_list_limit = 4MB
+
+    # Development locale and formatting
+    datestyle = 'iso, mdy'
+    intervalstyle = 'postgres'
+    timezone = 'UTC'
+    timezone_abbreviations = 'Default'
+    extra_float_digits = 1
+    client_encoding = utf8
+
+    # Development shared library preloading
+    shared_preload_libraries = 'pg_stat_statements,auto_explain'
+    local_preload_libraries = ''
+    session_preload_libraries = ''
+
+    # Development other defaults
+    dynamic_library_path = '$libdir'
+    extension_destdir = ''
+
+    # Development lock management
+    deadlock_timeout = 1s
+    max_locks_per_transaction = 64
+    max_pred_locks_per_transaction = 64
+    max_pred_locks_per_relation = -2
+    max_pred_locks_per_page = 2
+
+    # Development version compatibility
+    array_nulls = on
+    backslash_quote = safe_encoding
+    default_with_oids = off
+    escape_string_warning = on
+    lo_compat_privileges = off
+    operator_precedence_warning = off
+    quote_all_identifiers = off
+    standard_conforming_strings = on
+    synchronize_seqscans = on
+    transform_null_equals = off
+
+    # Development error handling
+    exit_on_error = off
+    restart_after_crash = on
+    data_sync_retry = off
+
+    # Development extensions configuration
+    # pg_stat_statements
+    pg_stat_statements.max = 10000
+    pg_stat_statements.track = all
+    pg_stat_statements.track_utility = on
+    pg_stat_statements.save = on
+
+    # auto_explain
+    auto_explain.log_min_duration = 1s
+    auto_explain.log_analyze = on
+    auto_explain.log_verbose = on
+    auto_explain.log_buffers = on
+    auto_explain.log_timing = on
+    auto_explain.log_triggers = on
+    auto_explain.log_nested_statements = on
+    auto_explain.sample_rate = 1.0
+
+    # Development worker processes
+    max_worker_processes = 4
+    max_parallel_workers = 4
+    max_parallel_maintenance_workers = 2
+    max_parallel_workers_per_gather = 2
+    parallel_leader_participation = on
+    old_snapshot_threshold = -1
+    backend_flush_after = 0
+    effective_io_concurrency = 200       # SSD optimized
+    max_logical_replication_workers = 4
+    max_sync_workers_per_subscription = 2
+
+  pg_hba.conf: |
+    # ==============================================================================
+    # Veridis Development PostgreSQL Host-Based Authentication Configuration
+    # ==============================================================================
+
+    # Development TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+    # "local" is for Unix domain socket connections only
+    local   all             all                                     trust
+
+    # IPv4 local connections:
+    host    all             all             127.0.0.1/32            md5
+
+    # IPv6 local connections:
+    host    all             all             ::1/128                 md5
+
+    # Allow replication connections from localhost, by a user with the
+    # replication privilege.
+    local   replication     all                                     trust
+    host    replication     all             127.0.0.1/32            md5
+    host    replication     all             ::1/128                 md5
+
+    # Development - Allow all connections from within the cluster
+    host    all             all             10.0.0.0/8              md5
+    host    all             all             172.16.0.0/12           md5
+    host    all             all             192.168.0.0/16          md5
+
+    # Development - Allow connections from pods
+    host    all             all             0.0.0.0/0               md5
+
+---
+# ==============================================================================
+# Development PostgreSQL Initialization Scripts ConfigMap
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: veridis-development-postgres-init
+  namespace: veridis-dev
+
+  labels:
+    database.veridis.xyz/component: postgres-init
+    database.veridis.xyz/environment: development
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/component: init
+    app.kubernetes.io/part-of: veridis-protocol
+
+data:
+  # Database initialization script
+  01-init-database.sql: |
+    -- ==============================================================================
+    -- Veridis Development Database Initialization
+    -- ==============================================================================
+
+    -- Create development database if not exists
+    SELECT 'CREATE DATABASE veridis_dev'
+    WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'veridis_dev')\gexec
+
+    -- Connect to veridis_dev database
+    \c veridis_dev;
+
+    -- Create development user if not exists
+    DO
+    $do$
+    BEGIN
+       IF NOT EXISTS (
+          SELECT FROM pg_catalog.pg_user
+          WHERE  usename = 'veridis_dev') THEN
+          CREATE USER veridis_dev WITH PASSWORD 'dev_password_123';
+       END IF;
+    END
+    $do$;
+
+    -- Grant all privileges to development user
+    GRANT ALL PRIVILEGES ON DATABASE veridis_dev TO veridis_dev;
+    ALTER USER veridis_dev CREATEDB;
+    ALTER USER veridis_dev CREATEROLE;
+
+    -- Create development schema
+    CREATE SCHEMA IF NOT EXISTS veridis AUTHORIZATION veridis_dev;
+
+    -- Set default privileges
+    ALTER DEFAULT PRIVILEGES IN SCHEMA veridis GRANT ALL ON TABLES TO veridis_dev;
+    ALTER DEFAULT PRIVILEGES IN SCHEMA veridis GRANT ALL ON SEQUENCES TO veridis_dev;
+    ALTER DEFAULT PRIVILEGES IN SCHEMA veridis GRANT ALL ON FUNCTIONS TO veridis_dev;
+
+    -- Enable required extensions
+    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+    CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+    CREATE EXTENSION IF NOT EXISTS "pg_stat_statements";
+    CREATE EXTENSION IF NOT EXISTS "auto_explain";
+
+    -- Development settings
+    ALTER SYSTEM SET log_statement = 'all';
+    ALTER SYSTEM SET log_min_duration_statement = 1000;
+    ALTER SYSTEM SET shared_preload_libraries = 'pg_stat_statements,auto_explain';
+
+    -- Create development tables (basic structure)
+    CREATE TABLE IF NOT EXISTS veridis.users (
+        id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+        email VARCHAR(255) UNIQUE NOT NULL,
+        wallet_address VARCHAR(66),
+        starknet_address VARCHAR(66),
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+        verified BOOLEAN DEFAULT FALSE
+    );
+
+    CREATE TABLE IF NOT EXISTS veridis.identities (
+        id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+        user_id UUID REFERENCES veridis.users(id) ON DELETE CASCADE,
+        did VARCHAR(255) UNIQUE NOT NULL,
+        public_key VARCHAR(128),
+        metadata JSONB,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    );
+
+    CREATE TABLE IF NOT EXISTS veridis.attestations (
+        id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+        identity_id UUID REFERENCES veridis.identities(id) ON DELETE CASCADE,
+        attestation_type VARCHAR(100) NOT NULL,
+        attestation_data JSONB NOT NULL,
+        proof TEXT,
+        status VARCHAR(20) DEFAULT 'pending',
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    );
+
+    CREATE TABLE IF NOT EXISTS veridis.verifications (
+        id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+        attestation_id UUID REFERENCES veridis.attestations(id) ON DELETE CASCADE,
+        verifier_address VARCHAR(66),
+        verification_result BOOLEAN,
+        verification_data JSONB,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    );
+
+    -- Create indexes for development
+    CREATE INDEX IF NOT EXISTS idx_users_email ON veridis.users(email);
+    CREATE INDEX IF NOT EXISTS idx_users_wallet_address ON veridis.users(wallet_address);
+    CREATE INDEX IF NOT EXISTS idx_identities_user_id ON veridis.identities(user_id);
+    CREATE INDEX IF NOT EXISTS idx_identities_did ON veridis.identities(did);
+    CREATE INDEX IF NOT EXISTS idx_attestations_identity_id ON veridis.attestations(identity_id);
+    CREATE INDEX IF NOT EXISTS idx_attestations_type ON veridis.attestations(attestation_type);
+    CREATE INDEX IF NOT EXISTS idx_verifications_attestation_id ON veridis.verifications(attestation_id);
+
+    -- Grant permissions to development user
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA veridis TO veridis_dev;
+    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA veridis TO veridis_dev;
+    GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA veridis TO veridis_dev;
+
+  # Development data seeding script
+  02-seed-development-data.sql: |
+    -- ==============================================================================
+    -- Veridis Development Data Seeding
+    -- ==============================================================================
+
+    \c veridis_dev;
+
+    -- Insert development test data
+    INSERT INTO veridis.users (id, email, wallet_address, starknet_address, verified) VALUES
+    ('00000000-0000-0000-0000-000000000001', 'testuser1@example.com', '0x1234567890abcdef1234567890abcdef12345678', '0x0123456789abcdef0123456789abcdef01234567', true),
+    ('00000000-0000-0000-0000-000000000002', 'testuser2@example.com', '0xabcdef1234567890abcdef1234567890abcdef12', '0x89abcdef0123456789abcdef0123456789abcdef', false),
+    ('00000000-0000-0000-0000-000000000003', 'developer@veridis.xyz', '0x9876543210fedcba9876543210fedcba98765432', '0xfedcba9876543210fedcba9876543210fedcba98', true)
+    ON CONFLICT (email) DO NOTHING;
+
+    INSERT INTO veridis.identities (id, user_id, did, public_key, metadata) VALUES
+    ('10000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-000000000001', 'did:veridis:starknet:0x0123456789abcdef0123456789abcdef01234567', '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef', '{"name": "Test Identity 1", "description": "Development test identity"}'),
+    ('10000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-000000000002', 'did:veridis:starknet:0x89abcdef0123456789abcdef0123456789abcdef', '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890', '{"name": "Test Identity 2", "description": "Development test identity 2"}'),
+    ('10000000-0000-0000-0000-000000000003', '00000000-0000-0000-0000-000000000003', 'did:veridis:starknet:0xfedcba9876543210fedcba9876543210fedcba98', '0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba', '{"name": "Developer Identity", "description": "Developer test identity"}')
+    ON CONFLICT (did) DO NOTHING;
+
+    INSERT INTO veridis.attestations (id, identity_id, attestation_type, attestation_data, proof, status) VALUES
+    ('20000000-0000-0000-0000-000000000001', '10000000-0000-0000-0000-000000000001', 'email_verification', '{"email": "testuser1@example.com", "verified_at": "2024-01-01T00:00:00Z"}', '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890', 'verified'),
+    ('20000000-0000-0000-0000-000000000002', '10000000-0000-0000-0000-000000000001', 'kyc_verification', '{"level": "basic", "provider": "test_provider", "verified_at": "2024-01-01T00:00:00Z"}', '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef', 'verified'),
+    ('20000000-0000-0000-0000-000000000003', '10000000-0000-0000-0000-000000000003', 'email_verification', '{"email": "developer@veridis.xyz", "verified_at": "2024-01-01T00:00:00Z"}', '0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba', 'verified')
+    ON CONFLICT (id) DO NOTHING;
+
+    INSERT INTO veridis.verifications (id, attestation_id, verifier_address, verification_result, verification_data) VALUES
+    ('30000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', '0x1111111111111111111111111111111111111111', true, '{"verified_at": "2024-01-01T00:00:00Z", "method": "zk_proof"}'),
+    ('30000000-0000-0000-0000-000000000002', '20000000-0000-0000-0000-000000000002', '0x2222222222222222222222222222222222222222', true, '{"verified_at": "2024-01-01T00:00:00Z", "method": "document_verification"}'),
+    ('30000000-0000-0000-0000-000000000003', '20000000-0000-0000-0000-000000000003', '0x3333333333333333333333333333333333333333', true, '{"verified_at": "2024-01-01T00:00:00Z", "method": "email_verification"}')
+    ON CONFLICT (id) DO NOTHING;
+
+    -- Create development views
+    CREATE OR REPLACE VIEW veridis.user_identities AS
+    SELECT u.id as user_id, u.email, u.wallet_address, u.starknet_address, u.verified as user_verified,
+           i.id as identity_id, i.did, i.public_key, i.metadata as identity_metadata,
+           i.created_at as identity_created_at
+    FROM veridis.users u
+    LEFT JOIN veridis.identities i ON u.id = i.user_id;
+
+    CREATE OR REPLACE VIEW veridis.identity_attestations AS
+    SELECT i.id as identity_id, i.did, i.user_id,
+           a.id as attestation_id, a.attestation_type, a.attestation_data, a.proof, a.status,
+           a.created_at as attestation_created_at
+    FROM veridis.identities i
+    LEFT JOIN veridis.attestations a ON i.id = a.identity_id;
+
+    -- Grant permissions on views
+    GRANT SELECT ON veridis.user_identities TO veridis_dev;
+    GRANT SELECT ON veridis.identity_attestations TO veridis_dev;
+
+  # Development utility functions
+  03-development-functions.sql: |
+    -- ==============================================================================
+    -- Veridis Development Utility Functions
+    -- ==============================================================================
+
+    \c veridis_dev;
+
+    -- Function to reset development data
+    CREATE OR REPLACE FUNCTION veridis.reset_development_data()
+    RETURNS void AS $$
+    BEGIN
+        -- Truncate all tables in correct order (respecting foreign keys)
+        TRUNCATE veridis.verifications CASCADE;
+        TRUNCATE veridis.attestations CASCADE;
+        TRUNCATE veridis.identities CASCADE;
+        TRUNCATE veridis.users CASCADE;
+
+        -- Reset sequences
+        ALTER SEQUENCE IF EXISTS veridis.users_id_seq RESTART WITH 1;
+        ALTER SEQUENCE IF EXISTS veridis.identities_id_seq RESTART WITH 1;
+        ALTER SEQUENCE IF EXISTS veridis.attestations_id_seq RESTART WITH 1;
+        ALTER SEQUENCE IF EXISTS veridis.verifications_id_seq RESTART WITH 1;
+
+        RAISE NOTICE 'Development data reset completed';
+    END;
+    $$ LANGUAGE plpgsql;
+
+    -- Function to generate test data
+    CREATE OR REPLACE FUNCTION veridis.generate_test_data(num_users INTEGER DEFAULT 10)
+    RETURNS void AS $$
+    DECLARE
+        i INTEGER;
+        user_uuid UUID;
+        identity_uuid UUID;
+        attestation_uuid UUID;
+    BEGIN
+        FOR i IN 1..num_users LOOP
+            user_uuid := uuid_generate_v4();
+            identity_uuid := uuid_generate_v4();
+            attestation_uuid := uuid_generate_v4();
+
+            -- Insert test user
+            INSERT INTO veridis.users (id, email, wallet_address, starknet_address, verified)
+            VALUES (user_uuid, 'testuser' || i || '@example.com',
+                   '0x' || substr(md5(i::text), 1, 40),
+                   '0x' || substr(md5((i+1000)::text), 1, 40),
+                   (i % 2 = 0));
+
+            -- Insert test identity
+            INSERT INTO veridis.identities (id, user_id, did, public_key, metadata)
+            VALUES (identity_uuid, user_uuid,
+                   'did:veridis:starknet:0x' || substr(md5((i+2000)::text), 1, 40),
+                   '0x' || substr(md5((i+3000)::text), 1, 64),
+                   ('{"name": "Test Identity ' || i || '", "description": "Generated test identity"}')::jsonb);
+
+            -- Insert test attestation
+            INSERT INTO veridis.attestations (id, identity_id, attestation_type, attestation_data, proof, status)
+            VALUES (attestation_uuid, identity_uuid, 'email_verification',
+                   ('{"email": "testuser' || i || '@example.com", "verified_at": "' || NOW() || '"}')::jsonb,
+                   '0x' || substr(md5((i+4000)::text), 1, 64),
+                   CASE WHEN i % 3 = 0 THEN 'verified' ELSE 'pending' END);
+        END LOOP;
+
+        RAISE NOTICE 'Generated % test users with identities and attestations', num_users;
+    END;
+    $$ LANGUAGE plpgsql;
+
+    -- Function to get database statistics
+    CREATE OR REPLACE FUNCTION veridis.get_dev_stats()
+    RETURNS TABLE (
+        table_name TEXT,
+        row_count INTEGER,
+        size_bytes BIGINT,
+        size_pretty TEXT
+    ) AS $$
+    BEGIN
+        RETURN QUERY
+        SELECT
+            schemaname||'.'||tablename as table_name,
+            n_tup_ins::integer as row_count,
+            pg_total_relation_size(schemaname||'.'||tablename)::bigint as size_bytes,
+            pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) as size_pretty
+        FROM pg_stat_user_tables
+        WHERE schemaname = 'veridis'
+        ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC;
+    END;
+    $$ LANGUAGE plpgsql;
+
+    -- Grant execute permissions
+    GRANT EXECUTE ON FUNCTION veridis.reset_development_data() TO veridis_dev;
+    GRANT EXECUTE ON FUNCTION veridis.generate_test_data(INTEGER) TO veridis_dev;
+    GRANT EXECUTE ON FUNCTION veridis.get_dev_stats() TO veridis_dev;
+
+---
+# ==============================================================================
+# Development Database Service
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-postgres-service
+  namespace: veridis-dev
+
+  labels:
+    database.veridis.xyz/component: postgres
+    database.veridis.xyz/environment: development
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: veridis-protocol
+
+  annotations:
+    database.veridis.xyz/description: "Development PostgreSQL service for Veridis Protocol"
+    database.veridis.xyz/service-type: "database"
+    database.veridis.xyz/port: "5432"
+
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/component: database
+
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: postgres
+      protocol: TCP
+
+---
+# ==============================================================================
+# Development Database Monitoring ServiceMonitor
+# ==============================================================================
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: veridis-dev-postgres-monitor
+  namespace: veridis-dev
+
+  labels:
+    database.veridis.xyz/component: postgres-monitoring
+    database.veridis.xyz/environment: development
+    monitoring.veridis.xyz/service: postgres
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/component: monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+
+  annotations:
+    database.veridis.xyz/description: "Development ServiceMonitor for PostgreSQL database metrics"
+    monitoring.veridis.xyz/scrape-interval: "30s"
+    monitoring.veridis.xyz/metrics-path: "/metrics"
+    monitoring.veridis.xyz/development-mode: "true"
+
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgres-exporter
+      app.kubernetes.io/component: exporter
+      database.veridis.xyz/environment: development
+
+  endpoints:
+    - port: metrics
+      interval: 30s
+      path: /metrics
+      scheme: http
+      scrapeTimeout: 10s
+
+      # Development metric relabeling
+      metricRelabelings:
+        # Add development environment label
+        - sourceLabels: [__name__]
+          targetLabel: environment
+          replacement: development
+
+        # Add service label
+        - sourceLabels: [__name__]
+          targetLabel: service
+          replacement: postgres
+
+        # Add database tier label
+        - sourceLabels: [__name__]
+          targetLabel: database_tier
+          replacement: development
+
+      # Development target relabeling
+      relabelings:
+        - sourceLabels: [__meta_kubernetes_namespace]
+          targetLabel: kubernetes_namespace
+
+        - sourceLabels: [__meta_kubernetes_service_name]
+          targetLabel: kubernetes_service_name
+
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          targetLabel: kubernetes_pod_name
+
+---
+# ==============================================================================
+# Development Database Backup CronJob
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: postgres-backup-development
+  namespace: veridis-dev
+
+  labels:
+    database.veridis.xyz/component: postgres-backup
+    database.veridis.xyz/environment: development
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/component: backup
+    app.kubernetes.io/part-of: veridis-protocol
+
+  annotations:
+    database.veridis.xyz/description: "Development PostgreSQL backup job"
+    database.veridis.xyz/backup-frequency: "daily"
+    database.veridis.xyz/backup-retention: "7d"
+
+spec:
+  schedule: "0 2 * * *"           # Daily at 2 AM
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            database.veridis.xyz/component: postgres-backup
+            app.kubernetes.io/name: postgres-backup
+
+        spec:
+          restartPolicy: OnFailure
+
+          containers:
+            - name: postgres-backup
+              image: postgres:16.1-alpine
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  # Development database backup
+                  BACKUP_FILE="veridis_dev_backup_$(date +%Y%m%d_%H%M%S).sql"
+
+                  echo "Starting development database backup..."
+                  pg_dump -h veridis-postgres-service.veridis-dev.svc.cluster.local \
+                         -U veridis_dev \
+                         -d veridis_dev \
+                         --verbose \
+                         --clean \
+                         --if-exists \
+                         --create \
+                         --format=plain \
+                         > /backups/$BACKUP_FILE
+
+                  # Compress backup
+                  gzip /backups/$BACKUP_FILE
+
+                  # Clean old backups (keep 7 days)
+                  find /backups -name "*.sql.gz" -mtime +7 -delete
+
+                  echo "Development database backup completed: $BACKUP_file.gz"
+
+              env:
+                - name: PGPASSWORD
+                  value: "dev_password_123"
+
+              volumeMounts:
+                - name: backup-storage
+                  mountPath: /backups
+
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "500m"
+                  memory: "512Mi"
+
+          volumes:
+            - name: backup-storage
+              emptyDir:
+                sizeLimit: "5Gi"
+
+# ==============================================================================
+# Veridis Development Database Configuration Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT DATABASE CONFIGURATION STRATEGY:
+# ================================================================
+#
+# VERIDIS DEVELOPMENT DATABASE CONFIGURATION ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------------------
+# 1. Development-Optimized Database Configuration:
+#    - Comprehensive enterprise-grade development database configuration with intelligent database management and advanced developer-focused optimization
+#    - Advanced database configuration with comprehensive developer productivity, debugging support, performance efficiency, and comprehensive operational excellence
+#    - Multi-tier database architecture with connection optimization, development tuning, debugging support, and comprehensive database intelligence
+#    - Enterprise database policies with developer-friendly enforcement, productivity controls, debugging automation, and comprehensive database procedures
+#    - Performance optimization with intelligent database allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. PostgreSQL Development Optimization:
+#    - Developer-focused PostgreSQL configuration with productivity optimization, enhanced debugging, development efficiency, and comprehensive productivity coordination
+#    - Advanced PostgreSQL configuration with database tools, debugging features, performance frameworks, and comprehensive PostgreSQL intelligence
+#    - Flexible database optimization with developer workflow, productivity enhancement, and comprehensive database intelligence
+#    - Database intelligence with PostgreSQL procedures, debugging support, database automation, and comprehensive database coordination
+#    - Development excellence with database optimization, productivity workflows, debugging automation, and comprehensive database environment management
+#
+# 3. Database Monitoring and Observability:
+#    - Database-optimized monitoring with PostgreSQL metrics, performance observability, debugging analytics, and comprehensive monitoring coordination
+#    - Advanced monitoring configuration with database tuning, debugging optimization, performance management, and comprehensive monitoring intelligence
+#    - Flexible monitoring optimization with database-specific monitoring, debugging efficiency, and comprehensive monitoring intelligence
+#    - Monitoring intelligence with database procedures, debugging support, monitoring automation, and comprehensive monitoring coordination
+#    - Database excellence with monitoring optimization, database workflows, monitoring automation, and comprehensive database environment management
+#
+# ENTERPRISE DEVELOPMENT DATABASE FEATURES:
+# ========================================
+# Advanced Database Management and Developer Productivity:
+#   - Multi-tier database architecture with developer optimization, debugging monitoring, performance tracking, and comprehensive database configurations
+#   - Intelligent database management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive database decisions
+#   - Database discovery with developer optimization, debugging management, database policies, and comprehensive database analytics
+#   - Performance management with developer productivity, debugging efficiency, database optimization, and comprehensive performance intelligence
+#   - Database processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent database optimization
+#
+# This Development Database Configuration provides enterprise-grade developer productivity enhancement with comprehensive debugging support, intelligent database optimization, advanced performance features, and operational excellence while maintaining appropriate performance, efficiency validation, and comprehensive monitoring for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
