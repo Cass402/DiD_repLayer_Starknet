@@ -1,0 +1,1287 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Cache Cleanup CronJob Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Cache Cleanup CronJob for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS CACHE CLEANUP CRONJOB ARCHITECTURE:
+#   • Advanced Cache Cleanup CronJob with intelligent cache management and performance-based optimization
+#   • Multi-tier Cache Cleanup architecture with development, testing, staging, and production environments
+#   • Comprehensive cache framework with Cleanup policies, data optimization, Redis integration
+#   • Advanced lifecycle management with automated Cleanup optimization, cache control, and data enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Cache Cleanup CronJob performance insights
+#
+# VERIDIS CACHE CLEANUP CRONJOB OPTIMIZATION:
+#   • High-performance CronJob with intelligent cache cleanup and Redis cache optimization
+#   • Intelligent CronJob cache cleanup with responsive policies and performance-based cleanup decisions
+#   • Advanced CronJob management with business intelligence and cache-based Redis control
+#   • Comprehensive cache cleanup control with intelligent Redis CronJob management and data enhancement
+#   • Enterprise acceleration with predictive Redis CronJob management and cache cleanup optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Cache Cleanup CronJob controls with comprehensive audit and cleanup requirements
+#   • GDPR Cache Cleanup CronJob compliance with data protection, privacy controls, and cleanup management
+#   • ISO 27001 Cache Cleanup CronJob management with comprehensive framework integration
+#   • NIST 800-190 container Cache Cleanup CronJob security with cleanup-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Cache Cleanup CronJob best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Cache Cleanup CronJob lifecycle management with automated provisioning and cleanup optimization
+#   • Predictive cleanup analytics with capacity planning and Cache Cleanup CronJob intelligence
+#   • Advanced CronJob integration with Redis cleanup analytics and performance business intelligence
+#   • Comprehensive cache cleanup control with Cache Cleanup CronJob preservation and data optimization
+#   • Business continuity Cache Cleanup CronJob with cleanup guarantees and performance optimization
+#
+# CACHE CLEANUP CRONJOB ACCELERATION INTELLIGENCE:
+#   • Cache Cleanup CronJob usage analytics with cleanup patterns and optimization recommendations
+#   • CronJob monitoring with Redis cleanup latency and management optimization intelligence
+#   • Development efficiency with Cache Cleanup CronJob analytics and deployment optimization procedures
+#   • Cost optimization with Cache Cleanup CronJob utilization analysis and cleanup capacity planning procedures
+#   • Quality assurance with Cache Cleanup CronJob metrics and cleanup validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production Cache Cleanup CronJob - Comprehensive Cache Management
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-cache-cleanup-cronjob
+  namespace: veridis
+
+  # Core Veridis Cache Cleanup CronJob identification labels
+  labels:
+    app.kubernetes.io/name: veridis-cache-cleanup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: cache-cleanup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Cache Cleanup CronJob specific classification
+    job.veridis.xyz/type: production-cache-cleanup-cronjob
+    job.veridis.xyz/category: comprehensive-cleanup-cronjob
+    job.veridis.xyz/role: primary-cleanup-cronjob
+    job.veridis.xyz/cleanup-class: high-performance-cleanup-cronjob
+    job.veridis.xyz/security-level: enterprise
+
+    # Cleanup CronJob Cache Cleanup CronJob classification
+    cleanup.veridis.xyz/cache-cleanup-cronjob-type: intelligent-cleanup-cronjob
+    cleanup.veridis.xyz/cleanup-type: cache-cleanup
+    cleanup.veridis.xyz/performance-tier: high-throughput
+    cleanup.veridis.xyz/optimization: enabled
+    cleanup.veridis.xyz/features: full-cleanup-cronjob-stack
+
+    # Cache Cleanup CronJob classification
+    cache.veridis.xyz/tier: production
+    cache.veridis.xyz/optimization: intelligent-cleanup-cronjob-management
+    cache.veridis.xyz/data-management: advanced
+    cache.veridis.xyz/performance-optimization: enabled
+    cache.veridis.xyz/efficiency: maximum
+
+    # Business Cleanup CronJob classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-cleanup-cronjob-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Cleanup CronJob labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: cache-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "cleanup-cronjob-control-framework"
+    compliance.veridis.xyz/gdpr: "cleanup-cronjob-data-protection"
+    compliance.veridis.xyz/iso27001: "cleanup-cronjob-security-management"
+    compliance.veridis.xyz/nist-800-190: "cleanup-cronjob-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Cleanup CronJob analytics and intelligence
+    monitoring.veridis.xyz/cleanup-cronjob-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/cleanup-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Cache cleanup specific labels
+    cache.veridis.xyz/provider: "redis"
+    cache.veridis.xyz/cleanup-strategy: "intelligent"
+    cache.veridis.xyz/memory-optimization: "enabled"
+    cache.veridis.xyz/ttl-management: "enabled"
+    cache.veridis.xyz/pattern-based-cleanup: "enabled"
+    cache.veridis.xyz/performance-monitoring: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/cleanup-speed: "high"
+    performance.veridis.xyz/batch-processing: "enabled"
+    performance.veridis.xyz/parallel-cleanup: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/memory-efficient: "enabled"
+
+  annotations:
+    # Cleanup CronJob purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Cache Cleanup CronJob with intelligent cache management, advanced performance optimization, and comprehensive cleanup optimization"
+    veridis.xyz/purpose: "Provides comprehensive Cache Cleanup CronJob for decentralized identity management with intelligent cleanup management, performance optimization, and cleanup guarantees"
+    veridis.xyz/scope: "Cache Cleanup CronJob including cleanup management, performance optimization, cronjob configuration, and comprehensive monitoring intelligence"
+
+    # Cleanup CronJob architecture and design
+    cache.veridis.xyz/architecture: "Enterprise Cache Cleanup CronJob with intelligent cleanup management, advanced performance optimization, and cronjob integration optimization"
+    cache.veridis.xyz/design-pattern: "Multi-tier Cleanup CronJob with performance optimization, cost efficiency, and business intelligence"
+    cache.veridis.xyz/optimization-model: "Intelligent Cleanup CronJob with predictive analytics, performance optimization, and cleanup efficiency"
+    cache.veridis.xyz/performance-model: "High-performance Cleanup CronJob with cleanup optimization and intelligent cronjob management"
+
+    # Cleanup CronJob specifications
+    cleanup.veridis.xyz/cleanup-cronjob-specification: "Cleanup CronJob with performance optimization and intelligent cache cleanup management"
+    cleanup.veridis.xyz/cleanup-specification: "Advanced cleanup management with cleanup optimization and cronjob enhancement"
+    cleanup.veridis.xyz/redis-specification: "Cleanup CronJob Redis management optimization with intelligent cleanup and enhancement"
+    cleanup.veridis.xyz/performance-specification: "Cleanup performance cronjob with cleanup acceleration and efficiency"
+    cleanup.veridis.xyz/business-specification: "Cleanup business cronjob with cost optimization and strategic cleanup intelligence"
+
+    # Cache cleanup configuration annotations
+    cache.veridis.xyz/schedule: "0 2 * * *"  # Daily at 2 AM
+    cache.veridis.xyz/cleanup-strategy: "intelligent"
+    cache.veridis.xyz/memory-threshold: "80%"
+    cache.veridis.xyz/ttl-threshold: "24h"
+    cache.veridis.xyz/batch-size: "1000"
+
+    # Performance annotations
+    performance.veridis.xyz/cleanup-timeout: "30m"
+    performance.veridis.xyz/parallel-workers: "4"
+    performance.veridis.xyz/batch-processing: "enabled"
+    performance.veridis.xyz/memory-optimization: "enabled"
+    performance.veridis.xyz/progress-tracking: "enabled"
+
+    # Redis connection annotations
+    redis.veridis.xyz/host: "veridis-redis-service.veridis.svc.cluster.local"
+    redis.veridis.xyz/port: "6379"
+    redis.veridis.xyz/database: "0"
+    redis.veridis.xyz/connection-pool-size: "10"
+    redis.veridis.xyz/connection-timeout: "5s"
+
+    # Cleanup strategy annotations
+    cleanup.veridis.xyz/expired-keys: "enabled"
+    cleanup.veridis.xyz/memory-pressure: "enabled"
+    cleanup.veridis.xyz/pattern-based: "enabled"
+    cleanup.veridis.xyz/statistics-tracking: "enabled"
+    cleanup.veridis.xyz/dry-run-mode: "false"
+
+    # Security annotations
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/authentication-required: "true"
+    security.veridis.xyz/authorization-enabled: "true"
+    security.veridis.xyz/audit-logging: "enabled"
+    security.veridis.xyz/data-classification: "confidential"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/cleanup-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-tracking: "enabled"
+    monitoring.veridis.xyz/error-tracking: "enabled"
+    monitoring.veridis.xyz/success-notification: "enabled"
+    monitoring.veridis.xyz/failure-alerting: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-retention: "24h"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/compliance-validation: "enabled"
+    compliance.veridis.xyz/regulatory-compliance: "gdpr,soc2,iso27001"
+    compliance.veridis.xyz/cleanup-policy: "production-cache-cleanup-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "cache-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-cache-cleanup"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/performance-tier: "production"
+
+    # Disaster recovery annotations
+    dr.veridis.xyz/backup-before-cleanup: "enabled"
+    dr.veridis.xyz/recovery-point: "pre-cleanup"
+    dr.veridis.xyz/rollback-capability: "enabled"
+    dr.veridis.xyz/safety-checks: "enabled"
+    dr.veridis.xyz/validation-enabled: "true"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/cleanup-cronjob-admin: "cache-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "platform-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/maintenance/cache-cleanup"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/maintenance/cache-cleanup-management"
+    veridis.xyz/cleanup-docs: "https://maintenance.veridis.xyz/cache-cleanup-guide"
+    veridis.xyz/monitoring-docs: "https://maintenance.veridis.xyz/cache-cleanup-monitoring"
+
+# ==============================================================================
+# Cache Cleanup CronJob Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Schedule Configuration
+  # ==============================================================================
+  schedule: "0 2 * * *"  # Daily at 2 AM UTC
+
+  # ==============================================================================
+  # Timezone Configuration
+  # ==============================================================================
+  timeZone: "UTC"
+
+  # ==============================================================================
+  # Concurrency Policy
+  # ==============================================================================
+  concurrencyPolicy: Forbid
+
+  # ==============================================================================
+  # History Limits
+  # ==============================================================================
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+
+  # ==============================================================================
+  # Startup Deadline
+  # ==============================================================================
+  startingDeadlineSeconds: 300  # 5 minutes
+
+  # ==============================================================================
+  # Suspend Configuration
+  # ==============================================================================
+  suspend: false
+
+  # ==============================================================================
+  # Job Template Configuration
+  # ==============================================================================
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: cache-cleanup
+        job.veridis.xyz/schedule: daily
+        job.veridis.xyz/environment: production
+        job.veridis.xyz/criticality: high
+        veridis.xyz/component: cache-cleanup
+        veridis.xyz/managed-by: cronjob
+
+      annotations:
+        job.veridis.xyz/created-by: "cache-cleanup-cronjob"
+        job.veridis.xyz/schedule-cron: "0 2 * * *"
+        job.veridis.xyz/cleanup-strategy: "intelligent"
+        job.veridis.xyz/performance-optimized: "true"
+
+    # ==============================================================================
+    # Job Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Job Completion and Parallelism
+      # ==============================================================================
+      completions: 1
+      parallelism: 1
+
+      # ==============================================================================
+      # Job Deadline and Backoff
+      # ==============================================================================
+      activeDeadlineSeconds: 1800  # 30 minutes
+      backoffLimit: 3
+
+      # ==============================================================================
+      # TTL After Finished
+      # ==============================================================================
+      ttlSecondsAfterFinished: 86400  # 24 hours
+
+      # ==============================================================================
+      # Pod Template Specification
+      # ==============================================================================
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: cache-cleanup
+            job.veridis.xyz/component: cleanup-worker
+            veridis.xyz/cache-cleanup: "true"
+            veridis.xyz/monitoring: "enabled"
+
+          annotations:
+            job.veridis.xyz/cleanup-job: "cache-cleanup"
+            job.veridis.xyz/performance-optimized: "true"
+            job.veridis.xyz/monitoring-enabled: "true"
+
+            # Prometheus annotations
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "8080"
+            prometheus.io/path: "/metrics"
+
+        spec:
+          # ==============================================================================
+          # Pod Restart Policy
+          # ==============================================================================
+          restartPolicy: OnFailure
+
+          # ==============================================================================
+          # Service Account
+          # ==============================================================================
+          serviceAccountName: veridis-cache-cleanup-sa
+
+          # ==============================================================================
+          # Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534  # nobody
+            runAsGroup: 65534  # nobody
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+            supplementalGroups: []
+
+          # ==============================================================================
+          # DNS Configuration
+          # ==============================================================================
+          dnsPolicy: ClusterFirst
+          dnsConfig:
+            options:
+              - name: ndots
+                value: "2"
+              - name: edns0
+
+          # ==============================================================================
+          # Priority and Scheduling
+          # ==============================================================================
+          priorityClassName: veridis-maintenance-priority
+
+          # ==============================================================================
+          # Node Selection and Affinity
+          # ==============================================================================
+          nodeSelector:
+            veridis.xyz/node-type: "maintenance"
+            kubernetes.io/arch: "amd64"
+
+          affinity:
+            # Node affinity for maintenance nodes
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/workload-type
+                        operator: In
+                        values: ["maintenance", "batch-processing"]
+                - weight: 50
+                  preference:
+                    matchExpressions:
+                      - key: node.kubernetes.io/instance-type
+                        operator: In
+                        values: ["m5.large", "m5.xlarge", "c5.large"]
+
+            # Pod anti-affinity to avoid scheduling on Redis nodes during cleanup
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchExpressions:
+                        - key: app.kubernetes.io/name
+                          operator: In
+                          values: ["redis"]
+                    topologyKey: kubernetes.io/hostname
+
+          # ==============================================================================
+          # Tolerations
+          # ==============================================================================
+          tolerations:
+            - key: veridis.xyz/maintenance
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: node.kubernetes.io/not-ready
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+            - key: node.kubernetes.io/unreachable
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+
+          # ==============================================================================
+          # Init Containers
+          # ==============================================================================
+          initContainers:
+            # ==============================================================================
+            # Redis Connection Validator
+            # ==============================================================================
+            - name: redis-connection-check
+              image: redis:7.2.4-alpine
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Checking Redis connection..."
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT --tls-cert-file $REDIS_TLS_CERT --tls-key-file $REDIS_TLS_KEY --tls-ca-cert-file $REDIS_TLS_CA ping
+                  if [ $? -eq 0 ]; then
+                    echo "Redis connection successful"
+                  else
+                    echo "Redis connection failed"
+                    exit 1
+                  fi
+
+              env:
+                - name: REDIS_HOST
+                  value: "veridis-redis-service.veridis.svc.cluster.local"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_TLS_CERT
+                  value: "/etc/redis-tls/tls.crt"
+                - name: REDIS_TLS_KEY
+                  value: "/etc/redis-tls/tls.key"
+                - name: REDIS_TLS_CA
+                  value: "/etc/redis-tls/ca.crt"
+
+              volumeMounts:
+                - name: redis-tls-certs
+                  mountPath: /etc/redis-tls
+                  readOnly: true
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "10m"
+                  memory: "16Mi"
+                limits:
+                  cpu: "100m"
+                  memory: "32Mi"
+
+            # ==============================================================================
+            # Pre-cleanup Backup Validator
+            # ==============================================================================
+            - name: backup-validator
+              image: veridis/maintenance-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Validating recent backup existence..."
+
+                  # Check if recent backup exists
+                  BACKUP_TIMESTAMP=$(redis-cli -h $REDIS_HOST -p $REDIS_PORT --tls-cert-file $REDIS_TLS_CERT --tls-key-file $REDIS_TLS_KEY --tls-ca-cert-file $REDIS_TLS_CA get "backup:last_successful")
+
+                  if [ -z "$BACKUP_TIMESTAMP" ]; then
+                    echo "No recent backup found. Creating backup before cleanup..."
+                    redis-cli -h $REDIS_HOST -p $REDIS_PORT --tls-cert-file $REDIS_TLS_CERT --tls-key-file $REDIS_TLS_KEY --tls-ca-cert-file $REDIS_TLS_CA bgsave
+
+                    # Wait for backup to complete
+                    while [ $(redis-cli -h $REDIS_HOST -p $REDIS_PORT --tls-cert-file $REDIS_TLS_CERT --tls-key-file $REDIS_TLS_KEY --tls-ca-cert-file $REDIS_TLS_CA lastsave) -eq $(redis-cli -h $REDIS_HOST -p $REDIS_PORT --tls-cert-file $REDIS_TLS_CERT --tls-key-file $REDIS_TLS_KEY --tls-ca-cert-file $REDIS_TLS_CA lastsave) ]; do
+                      echo "Waiting for backup to complete..."
+                      sleep 5
+                    done
+
+                    # Set backup timestamp
+                    redis-cli -h $REDIS_HOST -p $REDIS_PORT --tls-cert-file $REDIS_TLS_CERT --tls-key-file $REDIS_TLS_KEY --tls-ca-cert-file $REDIS_TLS_CA set "backup:last_successful" $(date +%s)
+                    echo "Backup completed successfully"
+                  else
+                    echo "Recent backup found: $BACKUP_TIMESTAMP"
+                  fi
+
+              env:
+                - name: REDIS_HOST
+                  value: "veridis-redis-service.veridis.svc.cluster.local"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_TLS_CERT
+                  value: "/etc/redis-tls/tls.crt"
+                - name: REDIS_TLS_KEY
+                  value: "/etc/redis-tls/tls.key"
+                - name: REDIS_TLS_CA
+                  value: "/etc/redis-tls/ca.crt"
+
+              volumeMounts:
+                - name: redis-tls-certs
+                  mountPath: /etc/redis-tls
+                  readOnly: true
+                - name: cleanup-workspace
+                  mountPath: /workspace
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "64Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "128Mi"
+
+          # ==============================================================================
+          # Main Container - Cache Cleanup Worker
+          # ==============================================================================
+          containers:
+            - name: cache-cleanup-worker
+              image: veridis/cache-cleanup:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              # ==============================================================================
+              # Container Command and Arguments
+              # ==============================================================================
+              command:
+                - /usr/local/bin/cache-cleanup
+
+              args:
+                - --config=/etc/cleanup/config.yaml
+                - --log-level=info
+                - --metrics-port=8080
+                - --dry-run=false
+                - --parallel-workers=4
+                - --batch-size=1000
+                - --memory-threshold=80
+                - --cleanup-strategy=intelligent
+                - --performance-optimized=true
+                - --audit-logging=true
+
+              # ==============================================================================
+              # Environment Variables
+              # ==============================================================================
+              env:
+                # Redis Connection Configuration
+                - name: REDIS_HOST
+                  value: "veridis-redis-service.veridis.svc.cluster.local"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_DATABASE
+                  value: "0"
+                - name: REDIS_CONNECTION_POOL_SIZE
+                  value: "10"
+                - name: REDIS_CONNECTION_TIMEOUT
+                  value: "5s"
+                - name: REDIS_TLS_ENABLED
+                  value: "true"
+                - name: REDIS_TLS_CERT_PATH
+                  value: "/etc/redis-tls/tls.crt"
+                - name: REDIS_TLS_KEY_PATH
+                  value: "/etc/redis-tls/tls.key"
+                - name: REDIS_TLS_CA_PATH
+                  value: "/etc/redis-tls/ca.crt"
+
+                # Redis Authentication
+                - name: REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-redis-secret
+                      key: redis-password
+
+                # Cleanup Configuration
+                - name: CLEANUP_STRATEGY
+                  value: "intelligent"
+                - name: MEMORY_THRESHOLD_PERCENT
+                  value: "80"
+                - name: TTL_THRESHOLD_HOURS
+                  value: "24"
+                - name: BATCH_SIZE
+                  value: "1000"
+                - name: PARALLEL_WORKERS
+                  value: "4"
+                - name: DRY_RUN_MODE
+                  value: "false"
+                - name: SAFETY_CHECKS_ENABLED
+                  value: "true"
+
+                # Performance Configuration
+                - name: PERFORMANCE_OPTIMIZED
+                  value: "true"
+                - name: PROGRESS_TRACKING_ENABLED
+                  value: "true"
+                - name: METRICS_ENABLED
+                  value: "true"
+                - name: METRICS_PORT
+                  value: "8080"
+                - name: HEALTH_CHECK_PORT
+                  value: "8081"
+
+                # Logging Configuration
+                - name: LOG_LEVEL
+                  value: "info"
+                - name: LOG_FORMAT
+                  value: "json"
+                - name: AUDIT_LOGGING_ENABLED
+                  value: "true"
+                - name: STRUCTURED_LOGGING
+                  value: "true"
+
+                # Security Configuration
+                - name: ENCRYPTION_IN_TRANSIT
+                  value: "true"
+                - name: AUTHENTICATION_REQUIRED
+                  value: "true"
+                - name: AUTHORIZATION_ENABLED
+                  value: "true"
+                - name: DATA_CLASSIFICATION
+                  value: "confidential"
+
+                # Monitoring Configuration
+                - name: MONITORING_ENABLED
+                  value: "true"
+                - name: PROMETHEUS_METRICS_ENABLED
+                  value: "true"
+                - name: HEALTH_CHECKS_ENABLED
+                  value: "true"
+                - name: ERROR_TRACKING_ENABLED
+                  value: "true"
+
+                # Notification Configuration
+                - name: SUCCESS_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: FAILURE_ALERTING_ENABLED
+                  value: "true"
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-notification-secrets
+                      key: slack-webhook-url
+                      optional: true
+
+                # Environment and Deployment
+                - name: ENVIRONMENT
+                  value: "production"
+                - name: DEPLOYMENT_VERSION
+                  value: "3.2.1"
+                - name: CLUSTER_NAME
+                  value: "veridis-production"
+                - name: NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+
+                # Job Metadata
+                - name: JOB_START_TIME
+                  value: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                - name: JOB_TYPE
+                  value: "cache-cleanup"
+                - name: JOB_SCHEDULE
+                  value: "daily"
+                - name: JOB_CRITICALITY
+                  value: "high"
+
+              # ==============================================================================
+              # Volume Mounts
+              # ==============================================================================
+              volumeMounts:
+                # Configuration
+                - name: cleanup-config
+                  mountPath: /etc/cleanup
+                  readOnly: true
+
+                # TLS Certificates
+                - name: redis-tls-certs
+                  mountPath: /etc/redis-tls
+                  readOnly: true
+
+                # Workspace for temporary files
+                - name: cleanup-workspace
+                  mountPath: /workspace
+
+                # Audit logs
+                - name: audit-logs
+                  mountPath: /var/log/audit
+
+                # Cache for optimization
+                - name: cleanup-cache
+                  mountPath: /var/cache/cleanup
+
+              # ==============================================================================
+              # Security Context
+              # ==============================================================================
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                runAsGroup: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              # ==============================================================================
+              # Resource Management
+              # ==============================================================================
+              resources:
+                requests:
+                  cpu: "200m"
+                  memory: "256Mi"
+                  ephemeral-storage: "1Gi"
+                limits:
+                  cpu: "1000m"
+                  memory: "1Gi"
+                  ephemeral-storage: "2Gi"
+
+              # ==============================================================================
+              # Health Checks
+              # ==============================================================================
+              livenessProbe:
+                httpGet:
+                  path: /health/live
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 30
+                periodSeconds: 30
+                timeoutSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+
+              readinessProbe:
+                httpGet:
+                  path: /health/ready
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 3
+
+              # ==============================================================================
+              # Startup Probe
+              # ==============================================================================
+              startupProbe:
+                httpGet:
+                  path: /health/startup
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 5
+                periodSeconds: 5
+                timeoutSeconds: 3
+                successThreshold: 1
+                failureThreshold: 12
+
+              # ==============================================================================
+              # Container Ports
+              # ==============================================================================
+              ports:
+                - name: metrics
+                  containerPort: 8080
+                  protocol: TCP
+                - name: health
+                  containerPort: 8081
+                  protocol: TCP
+
+              # ==============================================================================
+              # Lifecycle Hooks
+              # ==============================================================================
+              lifecycle:
+                preStop:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - -c
+                      - |
+                        echo "Gracefully shutting down cache cleanup job..."
+                        # Send graceful shutdown signal
+                        kill -TERM 1
+                        # Wait for cleanup to complete
+                        sleep 30
+                        echo "Cache cleanup job shutdown completed"
+
+          # ==============================================================================
+          # Volumes Configuration
+          # ==============================================================================
+          volumes:
+            # ==============================================================================
+            # Configuration Volume
+            # ==============================================================================
+            - name: cleanup-config
+              configMap:
+                name: veridis-cache-cleanup-config
+                defaultMode: 0644
+                items:
+                  - key: config.yaml
+                    path: config.yaml
+                  - key: cleanup-strategies.yaml
+                    path: cleanup-strategies.yaml
+                  - key: performance-config.yaml
+                    path: performance-config.yaml
+
+            # ==============================================================================
+            # TLS Certificates Volume
+            # ==============================================================================
+            - name: redis-tls-certs
+              secret:
+                secretName: veridis-redis-tls-certs
+                defaultMode: 0600
+                items:
+                  - key: tls.crt
+                    path: tls.crt
+                  - key: tls.key
+                    path: tls.key
+                  - key: ca.crt
+                    path: ca.crt
+
+            # ==============================================================================
+            # Workspace Volume (EmptyDir)
+            # ==============================================================================
+            - name: cleanup-workspace
+              emptyDir:
+                sizeLimit: "1Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Audit Logs Volume
+            # ==============================================================================
+            - name: audit-logs
+              emptyDir:
+                sizeLimit: "500Mi"
+                medium: ""
+
+            # ==============================================================================
+            # Cleanup Cache Volume
+            # ==============================================================================
+            - name: cleanup-cache
+              emptyDir:
+                sizeLimit: "256Mi"
+                medium: "Memory"
+
+---
+# ==============================================================================
+# Veridis Memory Pressure Cache Cleanup CronJob - Memory-Based Cleanup
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-memory-pressure-cleanup-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-memory-pressure-cleanup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: memory-pressure-cleanup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: memory-pressure-cleanup-cronjob
+    job.veridis.xyz/category: memory-based-cleanup
+    job.veridis.xyz/role: memory-optimization-cleanup
+    job.veridis.xyz/priority: high
+
+    # Memory pressure labels
+    memory.veridis.xyz/type: "memory-pressure-cleanup"
+    memory.veridis.xyz/optimization: "enabled"
+    memory.veridis.xyz/monitoring: "enabled"
+    memory.veridis.xyz/alerting: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: cache-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Memory pressure-based cache cleanup for Redis optimization"
+    veridis.xyz/purpose: "Provides memory pressure-based cache cleanup when Redis memory usage is high"
+
+    # Memory pressure specific annotations
+    memory.veridis.xyz/threshold: "85%"
+    memory.veridis.xyz/cleanup-aggressive: "true"
+    memory.veridis.xyz/monitoring-enabled: "true"
+
+# ==============================================================================
+# Memory Pressure Cleanup CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "*/30 * * * *"  # Every 30 minutes
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  startingDeadlineSeconds: 180  # 3 minutes
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: memory-pressure-cleanup
+        job.veridis.xyz/frequency: high
+        job.veridis.xyz/trigger: memory-based
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 900  # 15 minutes
+      backoffLimit: 2
+      ttlSecondsAfterFinished: 3600  # 1 hour
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: memory-pressure-cleanup
+            job.veridis.xyz/component: memory-cleanup-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-cache-cleanup-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: memory-pressure-cleanup
+              image: veridis/cache-cleanup:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/cache-cleanup
+
+              args:
+                - --config=/etc/cleanup/memory-pressure-config.yaml
+                - --cleanup-strategy=memory-pressure
+                - --memory-threshold=85
+                - --aggressive-cleanup=true
+                - --batch-size=2000
+                - --parallel-workers=6
+                - --log-level=info
+
+              env:
+                - name: REDIS_HOST
+                  value: "veridis-redis-service.veridis.svc.cluster.local"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-redis-secret
+                      key: redis-password
+                - name: CLEANUP_STRATEGY
+                  value: "memory-pressure"
+                - name: MEMORY_THRESHOLD_PERCENT
+                  value: "85"
+                - name: AGGRESSIVE_CLEANUP
+                  value: "true"
+                - name: MONITORING_ENABLED
+                  value: "true"
+
+              volumeMounts:
+                - name: memory-cleanup-config
+                  mountPath: /etc/cleanup
+                  readOnly: true
+                - name: redis-tls-certs
+                  mountPath: /etc/redis-tls
+                  readOnly: true
+                - name: cleanup-workspace
+                  mountPath: /workspace
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "300m"
+                  memory: "512Mi"
+                limits:
+                  cpu: "1500m"
+                  memory: "2Gi"
+
+          volumes:
+            - name: memory-cleanup-config
+              configMap:
+                name: veridis-memory-cleanup-config
+            - name: redis-tls-certs
+              secret:
+                secretName: veridis-redis-tls-certs
+            - name: cleanup-workspace
+              emptyDir:
+                sizeLimit: "1Gi"
+
+---
+# ==============================================================================
+# Veridis Weekly Deep Cache Cleanup CronJob - Comprehensive Weekly Cleanup
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-weekly-deep-cleanup-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-weekly-deep-cleanup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: weekly-deep-cleanup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: weekly-deep-cleanup-cronjob
+    job.veridis.xyz/category: comprehensive-cleanup
+    job.veridis.xyz/role: deep-cache-cleanup
+    job.veridis.xyz/priority: medium
+
+    # Weekly cleanup labels
+    weekly.veridis.xyz/type: "deep-cleanup"
+    weekly.veridis.xyz/comprehensive: "enabled"
+    weekly.veridis.xyz/optimization: "enabled"
+    weekly.veridis.xyz/defragmentation: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: cache-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Weekly comprehensive cache cleanup with defragmentation"
+    veridis.xyz/purpose: "Provides weekly deep cache cleanup and optimization"
+
+    # Weekly cleanup specific annotations
+    weekly.veridis.xyz/maintenance-window: "sunday-2am"
+    weekly.veridis.xyz/defragmentation: "enabled"
+    weekly.veridis.xyz/optimization: "comprehensive"
+
+# ==============================================================================
+# Weekly Deep Cleanup CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 2 * * 0"  # Weekly on Sunday at 2 AM
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 4
+  failedJobsHistoryLimit: 4
+  startingDeadlineSeconds: 600  # 10 minutes
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: weekly-deep-cleanup
+        job.veridis.xyz/frequency: weekly
+        job.veridis.xyz/scope: comprehensive
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 3600  # 1 hour
+      backoffLimit: 2
+      ttlSecondsAfterFinished: 604800  # 1 week
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: weekly-deep-cleanup
+            job.veridis.xyz/component: deep-cleanup-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-cache-cleanup-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: weekly-deep-cleanup
+              image: veridis/cache-cleanup:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/cache-cleanup
+
+              args:
+                - --config=/etc/cleanup/weekly-deep-config.yaml
+                - --cleanup-strategy=comprehensive
+                - --defragmentation=true
+                - --optimization=true
+                - --statistics-analysis=true
+                - --performance-tuning=true
+                - --batch-size=5000
+                - --parallel-workers=8
+                - --log-level=info
+
+              env:
+                - name: REDIS_HOST
+                  value: "veridis-redis-service.veridis.svc.cluster.local"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-redis-secret
+                      key: redis-password
+                - name: CLEANUP_STRATEGY
+                  value: "comprehensive"
+                - name: DEFRAGMENTATION_ENABLED
+                  value: "true"
+                - name: OPTIMIZATION_ENABLED
+                  value: "true"
+                - name: STATISTICS_ANALYSIS
+                  value: "true"
+                - name: PERFORMANCE_TUNING
+                  value: "true"
+
+              volumeMounts:
+                - name: weekly-cleanup-config
+                  mountPath: /etc/cleanup
+                  readOnly: true
+                - name: redis-tls-certs
+                  mountPath: /etc/redis-tls
+                  readOnly: true
+                - name: cleanup-workspace
+                  mountPath: /workspace
+                - name: statistics-data
+                  mountPath: /var/lib/statistics
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "500m"
+                  memory: "1Gi"
+                limits:
+                  cpu: "2000m"
+                  memory: "4Gi"
+
+          volumes:
+            - name: weekly-cleanup-config
+              configMap:
+                name: veridis-weekly-cleanup-config
+            - name: redis-tls-certs
+              secret:
+                secretName: veridis-redis-tls-certs
+            - name: cleanup-workspace
+              emptyDir:
+                sizeLimit: "2Gi"
+            - name: statistics-data
+              emptyDir:
+                sizeLimit: "1Gi"
+
+# ==============================================================================
+# Veridis Cache Cleanup CronJob Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS CACHE CLEANUP CRONJOB STRATEGY:
+# =====================================================
+#
+# VERIDIS CACHE CLEANUP CRONJOB ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------
+# 1. Production Cache Cleanup CronJob (veridis-cache-cleanup-cronjob):
+#    - Comprehensive enterprise-grade cleanup cronjob with intelligent cache management and advanced performance optimization for production environments
+#    - Advanced cleanup configuration with comprehensive Redis integration, lifecycle management, TLS support, and comprehensive operational excellence
+#    - Multi-tier cleanup architecture with daily scheduling, intelligent cleanup strategies, performance optimization, and comprehensive cleanup intelligence
+#    - Enterprise cleanup policies with security enforcement, compliance controls, backup automation, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent batch processing, parallel workers, memory optimization, and efficiency for maximum cleanup performance
+#
+# 2. Memory Pressure Cleanup CronJob (veridis-memory-pressure-cleanup-cronjob):
+#    - High-frequency memory-based cleanup with memory pressure detection and comprehensive memory coordination
+#    - Advanced memory configuration with 30-minute scheduling, memory threshold monitoring, aggressive cleanup, and comprehensive memory intelligence
+#    - Flexible cleanup optimization with memory workflow, pressure detection, and comprehensive memory intelligence
+#    - Memory intelligence with cleanup procedures, pressure support, memory automation, and comprehensive memory coordination
+#    - Operational excellence with memory cleanup, pressure workflows, memory automation, and comprehensive memory environment management
+#
+# 3. Weekly Deep Cleanup CronJob (veridis-weekly-deep-cleanup-cronjob):
+#    - Comprehensive weekly cleanup with defragmentation and comprehensive weekly coordination
+#    - Advanced weekly configuration with Sunday scheduling, defragmentation support, optimization features, and comprehensive weekly intelligence
+#    - Flexible cleanup optimization with weekly workflow, comprehensive coverage, and comprehensive weekly intelligence
+#    - Weekly intelligence with cleanup procedures, comprehensive support, weekly automation, and comprehensive weekly coordination
+#    - Comprehensive excellence with weekly cleanup, defragmentation workflows, weekly automation, and comprehensive weekly environment management
+#
+# ENTERPRISE CACHE CLEANUP CRONJOB FEATURES:
+# ==========================================
+# Advanced Cache Management and Redis Integration:
+#   - Multi-tier cleanup architecture with daily cleanup, memory pressure cleanup, weekly cleanup, and comprehensive cleanup configurations
+#   - Intelligent cleanup management with Redis integration, TLS encryption, authentication management, and comprehensive cleanup decisions
+#   - Cleanup discovery with Redis optimization, connection management, cleanup policies, and comprehensive cleanup analytics
+#   - Performance management with batch processing, parallel workers, memory optimization, and comprehensive performance intelligence
+#   - Cleanup processing tuning with batch management, worker optimization, performance algorithms, and intelligent cleanup optimization
+#
+# Comprehensive Security and TLS Integration:
+#   - Multi-tier security with Redis TLS, authentication, access controls, and comprehensive security coordination
+#   - Security optimization with encryption enforcement, credential management, audit logging, and comprehensive security intelligence
+#   - Access management with Redis authentication, TLS certificates, connection validation, and comprehensive access coordination
+#   - Business intelligence with security analytics, access correlation, cleanup optimization, and comprehensive strategic insights
+#   - Security management with access policies, encryption optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Performance and Resource Optimization:
+#   - Multi-tier performance with batch processing, parallel workers, memory optimization, and comprehensive performance coordination
+#   - Performance optimization with intelligent batching, worker scaling, resource efficiency, and comprehensive performance intelligence
+#   - Resource management with CPU limits, memory limits, storage optimization, and comprehensive resource coordination
+#   - Business intelligence with performance analytics, resource correlation, efficiency optimization, and comprehensive strategic insights
+#   - Optimization management with performance tuning, resource allocation, efficiency monitoring, and comprehensive optimization analytics
+#
+# Advanced Monitoring and Health Management:
+#   - Multi-tier monitoring with metrics collection, health checks, performance tracking, and comprehensive monitoring coordination
+#   - Monitoring optimization with Prometheus integration, health validation, error tracking, and comprehensive monitoring intelligence
+#   - Health management with startup probes, liveness probes, readiness probes, and comprehensive health coordination
+#   - Business intelligence with monitoring analytics, health correlation, performance optimization, and comprehensive strategic insights
+#   - Health management with monitoring policies, health optimization, monitoring integration, and comprehensive health analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Cache Cleanup CronJob Lifecycle Management:
+#   - Multi-CronJob deployment with daily cleanup, memory cleanup, weekly cleanup, and comprehensive cronjob coordination
+#   - Intelligent cronjob management with predictive analytics and cleanup utilization correlation
+#   - Advanced monitoring with comprehensive cronjob analytics and cleanup business intelligence
+#   - CronJob validation with cleanup schema enforcement and cronjob deployment safety checks
+#   - Automated optimization with cronjob pattern analysis and cleanup optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II cleanup controls with comprehensive audit requirements and cleanup logging
+#   - GDPR cleanup compliance with data protection and privacy-preserving cleanup management
+#   - ISO 27001 cleanup security management with information security and cleanup compliance integration
+#   - NIST 800-190 container cleanup security with cleanup validation and compliance
+#   - Zero-trust cleanup architecture with comprehensive encryption and cleanup authentication requirements
+#
+# Business Intelligence Integration:
+#   - Cleanup analytics with cost correlation and cronjob resource utilization optimization
+#   - Performance analytics with cleanup experience optimization and cronjob business intelligence
+#   - Cleanup intelligence with processing pattern monitoring and cronjob optimization recommendations
+#   - Strategic planning with capacity management and cronjob forecasting
+#   - Business impact assessment with cronjob performance correlation and cleanup tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment cronjob support with production cleanup, memory cleanup, weekly cleanup, and comprehensive cronjob coordination
+#   - Comprehensive documentation with cronjob guides and cleanup troubleshooting procedures
+#   - Environment-specific cronjobs with production, memory-pressure, and weekly support
+#   - Testing integration with cronjob development workflow and cleanup debugging capabilities
+#   - CronJob monitoring with comprehensive tracking and cleanup correlation
+#
+# ==============================================================================
