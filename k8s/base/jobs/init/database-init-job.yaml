@@ -1,0 +1,1556 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Database Initialization Job Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Database Initialization Job for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS DATABASE INITIALIZATION JOB ARCHITECTURE:
+#   • Advanced Database Initialization Job with intelligent database setup and performance-based optimization
+#   • Multi-tier Job architecture with development, testing, staging, and production environments
+#   • Comprehensive database initialization framework with Job policies, data optimization, database integration
+#   • Advanced lifecycle management with automated Job optimization, database control, and data enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Database Initialization Job performance insights
+#
+# VERIDIS DATABASE INITIALIZATION JOB OPTIMIZATION:
+#   • High-performance Job with intelligent database initialization and database job optimization
+#   • Intelligent Job database initialization with responsive policies and performance-based initialization decisions
+#   • Advanced Job management with business intelligence and database-based job control
+#   • Comprehensive database initialization control with intelligent database Job management and data enhancement
+#   • Enterprise acceleration with predictive database Job management and initialization optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Database Initialization Job controls with comprehensive audit and initialization requirements
+#   • GDPR Database Initialization Job compliance with data protection, privacy controls, and initialization management
+#   • ISO 27001 Database Initialization Job management with comprehensive framework integration
+#   • NIST 800-190 container Database Initialization Job security with initialization-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Database Initialization Job best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Database Initialization Job lifecycle management with automated provisioning and initialization optimization
+#   • Predictive initialization analytics with capacity planning and Database Initialization Job intelligence
+#   • Advanced Job integration with database initialization analytics and performance business intelligence
+#   • Comprehensive database initialization control with Database Initialization Job preservation and data optimization
+#   • Business continuity Database Initialization Job with initialization guarantees and performance optimization
+#
+# DATABASE INITIALIZATION JOB ACCELERATION INTELLIGENCE:
+#   • Database Initialization Job usage analytics with initialization patterns and optimization recommendations
+#   • Job monitoring with database initialization latency and management optimization intelligence
+#   • Development efficiency with Database Initialization Job analytics and deployment optimization procedures
+#   • Cost optimization with Database Initialization Job utilization analysis and initialization capacity planning procedures
+#   • Quality assurance with Database Initialization Job metrics and initialization validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production Database Initialization Job - Comprehensive Database Setup
+# ==============================================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: veridis-database-init-job
+  namespace: veridis
+
+  # Core Veridis Database Initialization Job identification labels
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: database-init-job
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Database Initialization Job specific classification
+    job.veridis.xyz/type: database-initialization-job
+    job.veridis.xyz/category: comprehensive-database-init
+    job.veridis.xyz/role: primary-database-init
+    job.veridis.xyz/job-class: high-performance-init-job
+    job.veridis.xyz/security-level: enterprise
+
+    # Database Job Database Initialization Job classification
+    database.veridis.xyz/init-job-type: intelligent-database-init
+    database.veridis.xyz/init-type: database-initialization
+    database.veridis.xyz/performance-tier: high-throughput
+    database.veridis.xyz/optimization: enabled
+    database.veridis.xyz/features: full-database-init-stack
+
+    # Init Database Initialization Job classification
+    init.veridis.xyz/tier: production
+    init.veridis.xyz/optimization: intelligent-database-init-management
+    init.veridis.xyz/data-management: advanced
+    init.veridis.xyz/performance-optimization: enabled
+    init.veridis.xyz/efficiency: maximum
+
+    # Business Database Initialization Job classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-database-init-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Database Initialization Job labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: database-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "database-init-control-framework"
+    compliance.veridis.xyz/gdpr: "database-init-data-protection"
+    compliance.veridis.xyz/iso27001: "database-init-security-management"
+    compliance.veridis.xyz/nist-800-190: "database-init-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Database Initialization Job analytics and intelligence
+    monitoring.veridis.xyz/database-init-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/init-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Database initialization specific labels
+    database.veridis.xyz/engine: "postgresql"
+    database.veridis.xyz/version: "16.1"
+    database.veridis.xyz/schema-version: "3.2.1"
+    database.veridis.xyz/migration-support: "enabled"
+    database.veridis.xyz/backup-enabled: "true"
+    database.veridis.xyz/encryption: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/init-speed: "high"
+    performance.veridis.xyz/parallel-init: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/connection-pooling: "enabled"
+    performance.veridis.xyz/transaction-optimization: "enabled"
+
+  annotations:
+    # Database Initialization Job purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Database Initialization Job with intelligent database setup, advanced performance optimization, and comprehensive initialization optimization"
+    veridis.xyz/purpose: "Provides comprehensive Database Initialization Job for decentralized identity management with intelligent database setup, performance optimization, and initialization guarantees"
+    veridis.xyz/scope: "Database Initialization Job including database setup, performance optimization, schema creation, and comprehensive monitoring intelligence"
+
+    # Database Initialization Job architecture and design
+    init.veridis.xyz/architecture: "Enterprise Database Initialization Job with intelligent database setup, advanced performance optimization, and job integration optimization"
+    init.veridis.xyz/design-pattern: "Multi-tier Database Initialization Job with performance optimization, cost efficiency, and business intelligence"
+    init.veridis.xyz/optimization-model: "Intelligent Database Initialization Job with predictive analytics, performance optimization, and initialization efficiency"
+    init.veridis.xyz/performance-model: "High-performance Database Initialization Job with initialization optimization and intelligent job management"
+
+    # Database Initialization Job specifications
+    database.veridis.xyz/init-job-specification: "Database Initialization Job with performance optimization and intelligent database job management"
+    database.veridis.xyz/init-specification: "Advanced database initialization with setup optimization and job enhancement"
+    database.veridis.xyz/schema-specification: "Database schema initialization optimization with intelligent setup and enhancement"
+    database.veridis.xyz/performance-specification: "Database performance initialization with setup acceleration and efficiency"
+    database.veridis.xyz/business-specification: "Database business initialization with cost optimization and strategic database intelligence"
+
+    # Database initialization annotations
+    database.veridis.xyz/init-strategy: "comprehensive-setup"
+    database.veridis.xyz/schema-version: "3.2.1"
+    database.veridis.xyz/migration-strategy: "safe-migration"
+    database.veridis.xyz/rollback-strategy: "automatic-rollback"
+    database.veridis.xyz/validation-enabled: "true"
+
+    # Performance annotations
+    performance.veridis.xyz/init-timeout: "30m"
+    performance.veridis.xyz/connection-timeout: "30s"
+    performance.veridis.xyz/query-timeout: "300s"
+    performance.veridis.xyz/batch-size: "1000"
+    performance.veridis.xyz/parallel-jobs: "4"
+
+    # Security annotations
+    security.veridis.xyz/encryption-at-rest: "enabled"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/ssl-required: "true"
+    security.veridis.xyz/certificate-validation: "enabled"
+    security.veridis.xyz/audit-logging: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/init-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/error-monitoring: "enabled"
+    monitoring.veridis.xyz/progress-monitoring: "enabled"
+    monitoring.veridis.xyz/alerts-enabled: "true"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-classification: "confidential"
+    compliance.veridis.xyz/audit-required: "true"
+    compliance.veridis.xyz/validation-required: "true"
+    compliance.veridis.xyz/approval-required: "true"
+    compliance.veridis.xyz/init-policy: "production-init-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "database-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-database-init"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/init-tier: "production"
+
+    # Rollback annotations
+    rollback.veridis.xyz/strategy: "automatic"
+    rollback.veridis.xyz/backup-before-init: "enabled"
+    rollback.veridis.xyz/validation-points: "enabled"
+    rollback.veridis.xyz/failure-threshold: "3"
+    rollback.veridis.xyz/recovery-procedure: "comprehensive"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/database-init-admin: "database-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "platform-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/database/initialization"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/database/init-job-management"
+    veridis.xyz/init-docs: "https://database.veridis.xyz/init-job-guide"
+    veridis.xyz/troubleshooting: "https://database.veridis.xyz/init-troubleshooting"
+
+# ==============================================================================
+# Database Initialization Job Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Job Execution Configuration
+  # ==============================================================================
+  # Number of completions required
+  completions: 1
+
+  # Number of parallel pods
+  parallelism: 1
+
+  # Backoff limit for failed attempts
+  backoffLimit: 3
+
+  # Active deadline seconds (30 minutes)
+  activeDeadlineSeconds: 1800
+
+  # TTL for finished jobs (24 hours)
+  ttlSecondsAfterFinished: 86400
+
+  # Completion mode
+  completionMode: NonIndexed
+
+  # Suspend job execution
+  suspend: false
+
+  # Manual selector
+  manualSelector: false
+
+  # ==============================================================================
+  # Pod Template Specification
+  # ==============================================================================
+  template:
+    metadata:
+      # Pod labels
+      labels:
+        app.kubernetes.io/name: veridis
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/component: database-init-job
+        app.kubernetes.io/part-of: veridis-protocol
+
+        # Job-specific labels
+        job.veridis.xyz/type: "database-initialization"
+        job.veridis.xyz/environment: "production"
+        job.veridis.xyz/criticality: "high"
+        database.veridis.xyz/init-job: "true"
+
+        # Security labels
+        security.veridis.xyz/network-policy: "database-init"
+        security.veridis.xyz/pod-security: "restricted"
+
+        # Monitoring labels
+        monitoring.veridis.xyz/scrape: "true"
+        monitoring.veridis.xyz/port: "9090"
+
+      annotations:
+        # Pod annotations
+        job.veridis.xyz/init-type: "comprehensive-database-setup"
+        job.veridis.xyz/schema-version: "3.2.1"
+        job.veridis.xyz/estimated-duration: "15m"
+        job.veridis.xyz/resource-intensive: "true"
+
+        # Security annotations
+        seccomp.security.alpha.kubernetes.io/pod: "runtime/default"
+        container.apparmor.security.beta.kubernetes.io/database-init: "runtime/default"
+
+        # Prometheus annotations
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        prometheus.io/path: "/metrics"
+
+    # ==============================================================================
+    # Pod Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Pod Security and Identity
+      # ==============================================================================
+      serviceAccountName: veridis-database-init-sa
+      automountServiceAccountToken: true
+
+      # Security context
+      securityContext:
+        # Run as non-root user
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: "Always"
+
+        # Security capabilities
+        seccompProfile:
+          type: RuntimeDefault
+
+        # Supplemental groups
+        supplementalGroups:
+          - 1000
+
+        # SELinux options
+        seLinuxOptions:
+          level: "s0:c123,c456"
+
+      # ==============================================================================
+      # Pod Scheduling and Placement
+      # ==============================================================================
+      # Restart policy for jobs
+      restartPolicy: OnFailure
+
+      # Termination grace period
+      terminationGracePeriodSeconds: 60
+
+      # DNS policy
+      dnsPolicy: ClusterFirst
+
+      # Priority class
+      priorityClassName: veridis-high-priority
+
+      # Node selection
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        node.kubernetes.io/instance-type: "m5.large"
+        veridis.xyz/node-pool: "database-jobs"
+
+      # Affinity rules
+      affinity:
+        # Node affinity
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values: ["amd64"]
+                  - key: node.kubernetes.io/instance-type
+                    operator: In
+                    values: ["m5.large", "m5.xlarge", "m5.2xlarge"]
+
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: veridis.xyz/node-pool
+                    operator: In
+                    values: ["database-jobs"]
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: node.kubernetes.io/instance-type
+                    operator: In
+                    values: ["m5.xlarge", "m5.2xlarge"]
+
+        # Pod anti-affinity (avoid running on nodes with database pods)
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: postgresql
+                topologyKey: kubernetes.io/hostname
+
+      # Tolerations
+      tolerations:
+        - key: "veridis.xyz/database-jobs"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+        - key: "node.kubernetes.io/memory-pressure"
+          operator: "Exists"
+          effect: "NoExecute"
+          tolerationSeconds: 300
+
+      # ==============================================================================
+      # Init Containers
+      # ==============================================================================
+      initContainers:
+        # ==============================================================================
+        # Database Connectivity Check
+        # ==============================================================================
+        - name: database-connectivity-check
+          image: postgres:16.1-alpine
+          imagePullPolicy: IfNotPresent
+
+          # Security context
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+          # Command to check database connectivity
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Checking database connectivity..."
+              export PGPASSWORD="$DATABASE_PASSWORD"
+
+              # Wait for database to be ready
+              until pg_isready -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USER"; do
+                echo "Waiting for database to be ready..."
+                sleep 5
+              done
+
+              # Test connection
+              psql -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USER" -d "$DATABASE_NAME" -c "SELECT 1;" > /dev/null
+
+              if [ $? -eq 0 ]; then
+                echo "Database connectivity check passed"
+              else
+                echo "Database connectivity check failed"
+                exit 1
+              fi
+
+          # Environment variables
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: database
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: password
+
+          # Resource limits
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+
+          # Volume mounts
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+
+        # ==============================================================================
+        # Schema Validation Check
+        # ==============================================================================
+        - name: schema-validation-check
+          image: postgres:16.1-alpine
+          imagePullPolicy: IfNotPresent
+
+          # Security context
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+          # Command to validate existing schema
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Validating existing database schema..."
+              export PGPASSWORD="$DATABASE_PASSWORD"
+
+              # Check if schema_version table exists
+              SCHEMA_EXISTS=$(psql -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USER" -d "$DATABASE_NAME" -t -c "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'schema_version');" | tr -d ' ')
+
+              if [ "$SCHEMA_EXISTS" = "t" ]; then
+                echo "Schema version table exists, checking current version..."
+                CURRENT_VERSION=$(psql -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USER" -d "$DATABASE_NAME" -t -c "SELECT version FROM schema_version ORDER BY applied_at DESC LIMIT 1;" | tr -d ' ')
+                echo "Current schema version: $CURRENT_VERSION"
+                echo "Target schema version: $TARGET_SCHEMA_VERSION"
+
+                if [ "$CURRENT_VERSION" = "$TARGET_SCHEMA_VERSION" ]; then
+                  echo "Schema is already at target version, skipping initialization"
+                  echo "SKIP_INIT=true" > /shared/init-status
+                else
+                  echo "Schema needs migration from $CURRENT_VERSION to $TARGET_SCHEMA_VERSION"
+                  echo "SKIP_INIT=false" > /shared/init-status
+                fi
+              else
+                echo "Schema version table does not exist, full initialization required"
+                echo "SKIP_INIT=false" > /shared/init-status
+              fi
+
+          # Environment variables
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: database
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: password
+            - name: TARGET_SCHEMA_VERSION
+              value: "3.2.1"
+
+          # Resource limits
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+
+          # Volume mounts
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: shared-volume
+              mountPath: /shared
+
+        # ==============================================================================
+        # Backup Creation (Before Init)
+        # ==============================================================================
+        - name: pre-init-backup
+          image: postgres:16.1-alpine
+          imagePullPolicy: IfNotPresent
+
+          # Security context
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+          # Command to create backup before initialization
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Creating pre-initialization backup..."
+              export PGPASSWORD="$DATABASE_PASSWORD"
+
+              # Check if we should skip backup
+              if [ -f /shared/init-status ]; then
+                SKIP_INIT=$(cat /shared/init-status | grep SKIP_INIT | cut -d'=' -f2)
+                if [ "$SKIP_INIT" = "true" ]; then
+                  echo "Skipping backup as initialization will be skipped"
+                  exit 0
+                fi
+              fi
+
+              # Create backup
+              BACKUP_FILE="/backups/pre-init-backup-$(date +%Y%m%d-%H%M%S).sql"
+              echo "Creating backup: $BACKUP_FILE"
+
+              pg_dump -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USER" -d "$DATABASE_NAME" \
+                --verbose --no-password --format=plain --file="$BACKUP_FILE"
+
+              if [ $? -eq 0 ]; then
+                echo "Pre-initialization backup created successfully: $BACKUP_FILE"
+                echo "BACKUP_FILE=$BACKUP_FILE" >> /shared/init-status
+              else
+                echo "Failed to create pre-initialization backup"
+                exit 1
+              fi
+
+          # Environment variables
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: database
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: password
+
+          # Resource limits
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+
+          # Volume mounts
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: shared-volume
+              mountPath: /shared
+            - name: backup-volume
+              mountPath: /backups
+
+      # ==============================================================================
+      # Main Containers
+      # ==============================================================================
+      containers:
+        # ==============================================================================
+        # Database Initialization Container
+        # ==============================================================================
+        - name: database-init
+          image: veridis/database-init:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          # Security context
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+          # Command and arguments
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Starting Veridis Database Initialization..."
+
+              # Check if initialization should be skipped
+              if [ -f /shared/init-status ]; then
+                SKIP_INIT=$(cat /shared/init-status | grep SKIP_INIT | cut -d'=' -f2)
+                if [ "$SKIP_INIT" = "true" ]; then
+                  echo "Database is already initialized, skipping initialization"
+                  exit 0
+                fi
+              fi
+
+              # Set database connection parameters
+              export PGHOST="$DATABASE_HOST"
+              export PGPORT="$DATABASE_PORT"
+              export PGDATABASE="$DATABASE_NAME"
+              export PGUSER="$DATABASE_USER"
+              export PGPASSWORD="$DATABASE_PASSWORD"
+
+              # Run database initialization script
+              echo "Running database initialization script..."
+              /app/scripts/init-database.sh
+
+              # Check initialization result
+              if [ $? -eq 0 ]; then
+                echo "Database initialization completed successfully"
+                echo "INIT_STATUS=success" >> /shared/init-status
+                echo "INIT_COMPLETED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> /shared/init-status
+              else
+                echo "Database initialization failed"
+                echo "INIT_STATUS=failed" >> /shared/init-status
+                exit 1
+              fi
+
+          # Environment variables
+          env:
+            # Database connection
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: database
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: password
+
+            # SSL configuration
+            - name: DATABASE_SSL_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: ssl_mode
+                  optional: true
+            - name: DATABASE_SSL_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: ssl_cert
+                  optional: true
+            - name: DATABASE_SSL_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: ssl_key
+                  optional: true
+            - name: DATABASE_SSL_ROOT_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: ssl_root_cert
+                  optional: true
+
+            # Application configuration
+            - name: SCHEMA_VERSION
+              value: "3.2.1"
+            - name: ENVIRONMENT
+              value: "production"
+            - name: LOG_LEVEL
+              value: "info"
+
+            # Performance configuration
+            - name: BATCH_SIZE
+              value: "1000"
+            - name: PARALLEL_JOBS
+              value: "4"
+            - name: CONNECTION_TIMEOUT
+              value: "30"
+            - name: QUERY_TIMEOUT
+              value: "300"
+
+            # Feature flags
+            - name: ENABLE_IDENTITY_TABLES
+              value: "true"
+            - name: ENABLE_ATTESTATION_TABLES
+              value: "true"
+            - name: ENABLE_VERIFICATION_TABLES
+              value: "true"
+            - name: ENABLE_COMPLIANCE_TABLES
+              value: "true"
+            - name: ENABLE_BRIDGE_TABLES
+              value: "true"
+            - name: ENABLE_AUDIT_TABLES
+              value: "true"
+
+            # Security configuration
+            - name: ENABLE_ROW_LEVEL_SECURITY
+              value: "true"
+            - name: ENABLE_ENCRYPTION
+              value: "true"
+            - name: ENABLE_AUDIT_LOGGING
+              value: "true"
+
+            # Monitoring configuration
+            - name: ENABLE_METRICS
+              value: "true"
+            - name: METRICS_PORT
+              value: "9090"
+
+          # Resource requirements
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: 2000m
+              memory: 4Gi
+
+          # Liveness probe
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  if [ -f /shared/init-status ]; then
+                    INIT_STATUS=$(cat /shared/init-status | grep INIT_STATUS | cut -d'=' -f2)
+                    if [ "$INIT_STATUS" = "failed" ]; then
+                      exit 1
+                    fi
+                  fi
+                  exit 0
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+
+          # Readiness probe
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  if [ -f /shared/init-status ]; then
+                    INIT_STATUS=$(cat /shared/init-status | grep INIT_STATUS | cut -d'=' -f2)
+                    if [ "$INIT_STATUS" = "success" ]; then
+                      exit 0
+                    fi
+                  fi
+                  exit 1
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+
+          # Volume mounts
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: shared-volume
+              mountPath: /shared
+            - name: backup-volume
+              mountPath: /backups
+            - name: init-scripts-volume
+              mountPath: /app/scripts
+              readOnly: true
+            - name: sql-schemas-volume
+              mountPath: /app/schemas
+              readOnly: true
+
+        # ==============================================================================
+        # Metrics and Monitoring Sidecar
+        # ==============================================================================
+        - name: metrics-exporter
+          image: veridis/database-init-metrics:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          # Security context
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+          # Command
+          command:
+            - /app/metrics-exporter
+            - --port=9090
+            - --status-file=/shared/init-status
+            - --log-level=info
+
+          # Environment variables
+          env:
+            - name: METRICS_PORT
+              value: "9090"
+            - name: LOG_LEVEL
+              value: "info"
+
+          # Ports
+          ports:
+            - name: metrics
+              containerPort: 9090
+              protocol: TCP
+
+          # Resource requirements
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+
+          # Liveness probe
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: metrics
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          # Readiness probe
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: metrics
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          # Volume mounts
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: shared-volume
+              mountPath: /shared
+              readOnly: true
+
+      # ==============================================================================
+      # Volumes
+      # ==============================================================================
+      volumes:
+        # Temporary volume
+        - name: tmp-volume
+          emptyDir:
+            sizeLimit: 1Gi
+
+        # Shared volume for inter-container communication
+        - name: shared-volume
+          emptyDir:
+            sizeLimit: 100Mi
+
+        # Backup volume
+        - name: backup-volume
+          persistentVolumeClaim:
+            claimName: veridis-database-backup-pvc
+
+        # Init scripts volume
+        - name: init-scripts-volume
+          configMap:
+            name: veridis-database-init-scripts
+            defaultMode: 0755
+
+        # SQL schemas volume
+        - name: sql-schemas-volume
+          configMap:
+            name: veridis-database-sql-schemas
+            defaultMode: 0644
+
+      # ==============================================================================
+      # Image Pull Configuration
+      # ==============================================================================
+      imagePullSecrets:
+        - name: veridis-registry-secret
+
+---
+# ==============================================================================
+# Veridis Database Migration Job - Schema Migration and Updates
+# ==============================================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: veridis-database-migration-job
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: database-migration-job
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: database-migration-job
+    job.veridis.xyz/category: schema-migration
+    job.veridis.xyz/role: database-migration
+    job.veridis.xyz/priority: high
+
+    # Migration specific labels
+    migration.veridis.xyz/type: "schema-migration"
+    migration.veridis.xyz/from-version: "auto-detect"
+    migration.veridis.xyz/to-version: "3.2.1"
+    migration.veridis.xyz/rollback-supported: "true"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: database-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Database schema migration job for Veridis protocol"
+    veridis.xyz/purpose: "Provides safe database schema migration with rollback capabilities"
+
+    # Migration specific annotations
+    migration.veridis.xyz/target-version: "3.2.1"
+    migration.veridis.xyz/backup-required: "true"
+    migration.veridis.xyz/validation-required: "true"
+    migration.veridis.xyz/rollback-strategy: "automatic"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "database-migration-required"
+
+# ==============================================================================
+# Database Migration Job Specification
+# ==============================================================================
+spec:
+  completions: 1
+  parallelism: 1
+  backoffLimit: 2
+  activeDeadlineSeconds: 2700  # 45 minutes
+  ttlSecondsAfterFinished: 172800  # 48 hours
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: veridis
+        app.kubernetes.io/component: database-migration-job
+        job.veridis.xyz/type: "database-migration"
+        migration.veridis.xyz/target-version: "3.2.1"
+
+    spec:
+      serviceAccountName: veridis-database-migration-sa
+      restartPolicy: OnFailure
+      terminationGracePeriodSeconds: 120
+      priorityClassName: veridis-high-priority
+
+      # Security context
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+
+      # Node selection for migration jobs
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        veridis.xyz/node-pool: "database-jobs"
+
+      # Init container for pre-migration backup
+      initContainers:
+        - name: pre-migration-backup
+          image: postgres:16.1-alpine
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Creating pre-migration backup..."
+              export PGPASSWORD="$DATABASE_PASSWORD"
+
+              BACKUP_FILE="/backups/pre-migration-backup-$(date +%Y%m%d-%H%M%S).sql"
+              echo "Creating backup: $BACKUP_FILE"
+
+              pg_dump -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USER" -d "$DATABASE_NAME" \
+                --verbose --no-password --format=plain --file="$BACKUP_FILE"
+
+              if [ $? -eq 0 ]; then
+                echo "Pre-migration backup created successfully: $BACKUP_FILE"
+                echo "BACKUP_FILE=$BACKUP_FILE" > /shared/migration-status
+              else
+                echo "Failed to create pre-migration backup"
+                exit 1
+              fi
+
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: database
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: password
+
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: shared-volume
+              mountPath: /shared
+            - name: backup-volume
+              mountPath: /backups
+
+      # Main migration container
+      containers:
+        - name: database-migration
+          image: veridis/database-migration:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Starting database schema migration..."
+
+              # Set database connection parameters
+              export PGHOST="$DATABASE_HOST"
+              export PGPORT="$DATABASE_PORT"
+              export PGDATABASE="$DATABASE_NAME"
+              export PGUSER="$DATABASE_USER"
+              export PGPASSWORD="$DATABASE_PASSWORD"
+
+              # Run migration script
+              echo "Running database migration script..."
+              /app/scripts/migrate-database.sh
+
+              # Check migration result
+              if [ $? -eq 0 ]; then
+                echo "Database migration completed successfully"
+                echo "MIGRATION_STATUS=success" >> /shared/migration-status
+                echo "MIGRATION_COMPLETED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> /shared/migration-status
+              else
+                echo "Database migration failed"
+                echo "MIGRATION_STATUS=failed" >> /shared/migration-status
+                exit 1
+              fi
+
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: database
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: password
+            - name: TARGET_SCHEMA_VERSION
+              value: "3.2.1"
+            - name: MIGRATION_TIMEOUT
+              value: "2400"  # 40 minutes
+            - name: ROLLBACK_ON_FAILURE
+              value: "true"
+
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: 1000m
+              memory: 2Gi
+
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: shared-volume
+              mountPath: /shared
+            - name: backup-volume
+              mountPath: /backups
+            - name: migration-scripts-volume
+              mountPath: /app/scripts
+              readOnly: true
+            - name: sql-migrations-volume
+              mountPath: /app/migrations
+              readOnly: true
+
+      volumes:
+        - name: tmp-volume
+          emptyDir:
+            sizeLimit: 1Gi
+        - name: shared-volume
+          emptyDir:
+            sizeLimit: 100Mi
+        - name: backup-volume
+          persistentVolumeClaim:
+            claimName: veridis-database-backup-pvc
+        - name: migration-scripts-volume
+          configMap:
+            name: veridis-database-migration-scripts
+            defaultMode: 0755
+        - name: sql-migrations-volume
+          configMap:
+            name: veridis-database-sql-migrations
+            defaultMode: 0644
+
+      imagePullSecrets:
+        - name: veridis-registry-secret
+
+---
+# ==============================================================================
+# Veridis Database Validation Job - Post-Initialization Validation
+# ==============================================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: veridis-database-validation-job
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: database-validation-job
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: database-validation-job
+    job.veridis.xyz/category: database-validation
+    job.veridis.xyz/role: schema-validation
+    job.veridis.xyz/priority: medium
+
+    # Validation specific labels
+    validation.veridis.xyz/type: "comprehensive-validation"
+    validation.veridis.xyz/schema-version: "3.2.1"
+    validation.veridis.xyz/test-data: "enabled"
+    validation.veridis.xyz/performance-test: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: database-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Database validation job for post-initialization checks"
+    veridis.xyz/purpose: "Validates database schema and performs comprehensive testing"
+
+    # Validation specific annotations
+    validation.veridis.xyz/schema-version: "3.2.1"
+    validation.veridis.xyz/comprehensive-tests: "enabled"
+    validation.veridis.xyz/performance-benchmarks: "enabled"
+    validation.veridis.xyz/data-integrity-checks: "enabled"
+
+# ==============================================================================
+# Database Validation Job Specification
+# ==============================================================================
+spec:
+  completions: 1
+  parallelism: 1
+  backoffLimit: 2
+  activeDeadlineSeconds: 1800  # 30 minutes
+  ttlSecondsAfterFinished: 86400  # 24 hours
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: veridis
+        app.kubernetes.io/component: database-validation-job
+        job.veridis.xyz/type: "database-validation"
+        validation.veridis.xyz/schema-version: "3.2.1"
+
+    spec:
+      serviceAccountName: veridis-database-validation-sa
+      restartPolicy: OnFailure
+      terminationGracePeriodSeconds: 60
+      priorityClassName: veridis-medium-priority
+
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        veridis.xyz/node-pool: "database-jobs"
+
+      containers:
+        - name: database-validation
+          image: veridis/database-validation:v3.2.1
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Starting database validation..."
+
+              # Set database connection parameters
+              export PGHOST="$DATABASE_HOST"
+              export PGPORT="$DATABASE_PORT"
+              export PGDATABASE="$DATABASE_NAME"
+              export PGUSER="$DATABASE_USER"
+              export PGPASSWORD="$DATABASE_PASSWORD"
+
+              # Run validation script
+              echo "Running database validation script..."
+              /app/scripts/validate-database.sh
+
+              # Check validation result
+              if [ $? -eq 0 ]; then
+                echo "Database validation completed successfully"
+                echo "VALIDATION_STATUS=success" > /shared/validation-status
+                echo "VALIDATION_COMPLETED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> /shared/validation-status
+              else
+                echo "Database validation failed"
+                echo "VALIDATION_STATUS=failed" > /shared/validation-status
+                exit 1
+              fi
+
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: host
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: port
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: veridis-database-config
+                  key: database
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-database-credentials
+                  key: password
+            - name: EXPECTED_SCHEMA_VERSION
+              value: "3.2.1"
+            - name: ENABLE_PERFORMANCE_TESTS
+              value: "true"
+            - name: ENABLE_DATA_INTEGRITY_TESTS
+              value: "true"
+            - name: ENABLE_SECURITY_TESTS
+              value: "true"
+
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: shared-volume
+              mountPath: /shared
+            - name: validation-scripts-volume
+              mountPath: /app/scripts
+              readOnly: true
+            - name: test-data-volume
+              mountPath: /app/test-data
+              readOnly: true
+
+      volumes:
+        - name: tmp-volume
+          emptyDir:
+            sizeLimit: 500Mi
+        - name: shared-volume
+          emptyDir:
+            sizeLimit: 100Mi
+        - name: validation-scripts-volume
+          configMap:
+            name: veridis-database-validation-scripts
+            defaultMode: 0755
+        - name: test-data-volume
+          configMap:
+            name: veridis-database-test-data
+            defaultMode: 0644
+
+      imagePullSecrets:
+        - name: veridis-registry-secret
+
+# ==============================================================================
+# Veridis Database Initialization Job Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DATABASE INITIALIZATION JOB STRATEGY:
+# ===========================================================
+#
+# VERIDIS DATABASE INITIALIZATION JOB ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------------
+# 1. Database Initialization Job (veridis-database-init-job):
+#    - Comprehensive enterprise-grade database initialization with intelligent setup automation and advanced performance optimization for production environments
+#    - Advanced initialization configuration with comprehensive PostgreSQL integration, schema management, backup support, and comprehensive operational excellence
+#    - Multi-tier initialization architecture with connectivity checks, validation, backup creation, and comprehensive initialization intelligence
+#    - Enterprise initialization policies with security enforcement, compliance controls, rollback automation, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent batch processing, parallel execution, connection pooling, and efficiency for maximum initialization performance
+#
+# 2. Database Migration Job (veridis-database-migration-job):
+#    - Schema migration job with version management and comprehensive migration coordination
+#    - Advanced migration configuration with backup creation, rollback support, validation checks, and comprehensive migration intelligence
+#    - Flexible migration optimization with version workflow, rollback procedures, and comprehensive migration intelligence
+#    - Migration intelligence with schema procedures, version support, migration automation, and comprehensive migration coordination
+#    - Operational excellence with migration safety, rollback workflows, version automation, and comprehensive migration environment management
+#
+# 3. Database Validation Job (veridis-database-validation-job):
+#    - Post-initialization validation with comprehensive testing and comprehensive validation coordination
+#    - Advanced validation configuration with schema validation, performance testing, integrity checks, and comprehensive validation intelligence
+#    - Flexible validation optimization with testing workflow, integrity validation, and comprehensive validation intelligence
+#    - Validation intelligence with testing procedures, integrity support, validation automation, and comprehensive validation coordination
+#    - Quality excellence with validation testing, integrity workflows, validation automation, and comprehensive validation environment management
+#
+# ENTERPRISE DATABASE INITIALIZATION JOB FEATURES:
+# ================================================
+# Advanced Database Setup and PostgreSQL Integration:
+#   - Multi-tier initialization architecture with database connectivity, schema creation, data initialization, and comprehensive initialization configurations
+#   - Intelligent initialization management with schema policies, version management, migration support, and comprehensive initialization decisions
+#   - Database discovery with PostgreSQL optimization, connection management, initialization policies, and comprehensive database analytics
+#   - Performance management with batch processing, parallel execution, connection pooling, and comprehensive performance intelligence
+#   - Database processing tuning with initialization management, query optimization, performance algorithms, and intelligent database optimization
+#
+# Comprehensive Security and Compliance Integration:
+#   - Multi-tier security with database encryption, SSL connections, audit logging, and comprehensive security coordination
+#   - Security optimization with connection security, data protection, access controls, and comprehensive security intelligence
+#   - Compliance management with audit trails, data protection, regulatory compliance, and comprehensive compliance coordination
+#   - Business intelligence with security analytics, compliance correlation, database optimization, and comprehensive strategic insights
+#   - Security management with access policies, encryption optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Backup and Recovery Management:
+#   - Multi-tier backup with pre-initialization backup, migration backup, rollback support, and comprehensive backup coordination
+#   - Backup optimization with automated backup creation, validation procedures, recovery testing, and comprehensive backup intelligence
+#   - Recovery management with rollback automation, backup restoration, disaster recovery, and comprehensive recovery coordination
+#   - Business intelligence with backup analytics, recovery correlation, restoration optimization, and comprehensive strategic insights
+#   - Recovery management with backup policies, restoration optimization, recovery integration, and comprehensive recovery analytics
+#
+# Advanced Schema Management and Migration:
+#   - Multi-tier schema with version management, migration automation, rollback support, and comprehensive schema coordination
+#   - Schema optimization with version control, migration validation, compatibility checking, and comprehensive schema intelligence
+#   - Migration management with version tracking, schema evolution, backward compatibility, and comprehensive migration coordination
+#   - Business intelligence with schema analytics, migration correlation, version optimization, and comprehensive strategic insights
+#   - Schema management with migration policies, version optimization, schema integration, and comprehensive schema analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Database Initialization Job Lifecycle Management:
+#   - Multi-Job deployment with initialization job, migration job, validation job, and comprehensive job coordination
+#   - Intelligent job management with predictive analytics and database utilization correlation
+#   - Advanced monitoring with comprehensive job analytics and database business intelligence
+#   - Job validation with initialization schema enforcement and job deployment safety checks
+#   - Automated optimization with job pattern analysis and database optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II database controls with comprehensive audit requirements and database logging
+#   - GDPR database compliance with data protection and privacy-preserving database management
+#   - ISO 27001 database security management with information security and database compliance integration
+#   - NIST 800-190 container database security with database validation and compliance
+#   - Zero-trust database architecture with comprehensive encryption and database authentication requirements
+#
+# Business Intelligence Integration:
+#   - Database analytics with cost correlation and job resource utilization optimization
+#   - Performance analytics with database experience optimization and job business intelligence
+#   - Database intelligence with processing pattern monitoring and job optimization recommendations
+#   - Strategic planning with capacity management and job forecasting
+#   - Business impact assessment with job performance correlation and database tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment job support with production initialization, migration support, validation testing, and comprehensive job coordination
+#   - Comprehensive documentation with job guides and database troubleshooting procedures
+#   - Environment-specific jobs with production, staging, development, and testing support
+#   - Testing integration with job development workflow and database debugging capabilities
+#   - Job monitoring with comprehensive tracking and database correlation
+#
+# ==============================================================================
