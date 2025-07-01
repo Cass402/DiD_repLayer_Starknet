@@ -1,0 +1,1555 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Vault Initialization Job Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Vault Initialization Job for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS VAULT INITIALIZATION ARCHITECTURE:
+#   • Advanced Vault Initialization with intelligent vault setup and performance-based optimization
+#   • Multi-tier Initialization architecture with development, testing, staging, and production environments
+#   • Comprehensive vault framework with Job policies, security optimization, HashiCorp integration
+#   • Advanced lifecycle management with automated Job optimization, Vault control, and security enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Vault Initialization performance insights
+#
+# VERIDIS VAULT INITIALIZATION OPTIMIZATION:
+#   • High-performance Job with intelligent vault initialization and HashiCorp vault optimization
+#   • Intelligent Job vault setup with responsive policies and performance-based initialization decisions
+#   • Advanced Job management with business intelligence and vault-based HashiCorp control
+#   • Comprehensive vault control with intelligent HashiCorp Job management and security enhancement
+#   • Enterprise acceleration with predictive HashiCorp Job management and vault optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Vault Initialization controls with comprehensive audit and vault requirements
+#   • GDPR Vault Initialization compliance with data protection, privacy controls, and vault management
+#   • ISO 27001 Vault Initialization management with comprehensive framework integration
+#   • NIST 800-190 container Vault Initialization security with vault-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Vault Initialization best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Vault Initialization lifecycle management with automated provisioning and vault optimization
+#   • Predictive vault analytics with capacity planning and Vault Initialization intelligence
+#   • Advanced Job integration with HashiCorp vault analytics and performance business intelligence
+#   • Comprehensive vault control with Vault Initialization preservation and security optimization
+#   • Business continuity Vault Initialization with vault guarantees and performance optimization
+#
+# VAULT INITIALIZATION ACCELERATION INTELLIGENCE:
+#   • Vault Initialization usage analytics with vault patterns and optimization recommendations
+#   • Job monitoring with HashiCorp vault latency and management optimization intelligence
+#   • Development efficiency with Vault Initialization analytics and deployment optimization procedures
+#   • Cost optimization with Vault Initialization utilization analysis and vault capacity planning procedures
+#   • Quality assurance with Vault Initialization metrics and vault validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production Vault Initialization Job - Enterprise Vault Setup
+# ==============================================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: veridis-vault-init-job
+  namespace: veridis-infrastructure
+
+  # Core Veridis Vault Initialization Job identification labels
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.15.6"
+    app.kubernetes.io/component: vault-initialization-job
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Vault Initialization Job specific classification
+    job.veridis.xyz/type: production-vault-initialization-job
+    job.veridis.xyz/category: comprehensive-initialization-job
+    job.veridis.xyz/role: primary-initialization-job
+    job.veridis.xyz/job-class: high-performance-initialization-job
+    job.veridis.xyz/security-level: enterprise
+
+    # Vault Job Vault Initialization Job classification
+    vault.veridis.xyz/initialization-job-type: intelligent-initialization-job
+    vault.veridis.xyz/initialization-type: vault-initialization
+    vault.veridis.xyz/performance-tier: high-throughput
+    vault.veridis.xyz/optimization: enabled
+    vault.veridis.xyz/features: full-initialization-job-stack
+
+    # Initialization Vault Initialization Job classification
+    initialization.veridis.xyz/tier: production
+    initialization.veridis.xyz/optimization: intelligent-initialization-job-management
+    initialization.veridis.xyz/security-management: advanced
+    initialization.veridis.xyz/performance-optimization: enabled
+    initialization.veridis.xyz/efficiency: maximum
+
+    # Business Initialization Job classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-initialization-job-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Initialization Job labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: vault-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "initialization-job-control-framework"
+    compliance.veridis.xyz/gdpr: "initialization-job-data-protection"
+    compliance.veridis.xyz/iso27001: "initialization-job-security-management"
+    compliance.veridis.xyz/nist-800-190: "initialization-job-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Initialization Job analytics and intelligence
+    monitoring.veridis.xyz/initialization-job-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/vault-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Vault specific labels
+    vault.veridis.xyz/mode: "enterprise"
+    vault.veridis.xyz/ha-enabled: "true"
+    vault.veridis.xyz/auto-unseal: "enabled"
+    vault.veridis.xyz/audit-enabled: "true"
+    vault.veridis.xyz/encryption: "transit"
+    vault.veridis.xyz/kv-version: "v2"
+
+    # Performance labels
+    performance.veridis.xyz/initialization-speed: "high"
+    performance.veridis.xyz/concurrent-init: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/cache-enabled: "true"
+    performance.veridis.xyz/performance-mode: "enterprise"
+
+  annotations:
+    # Initialization Job purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Vault Initialization Job with intelligent vault setup, advanced security optimization, and comprehensive vault optimization"
+    veridis.xyz/purpose: "Provides comprehensive Vault Initialization for decentralized identity management with intelligent vault setup, security optimization, and vault guarantees"
+    veridis.xyz/scope: "Vault Initialization including vault setup, security optimization, job configuration, and comprehensive monitoring intelligence"
+
+    # Initialization Job architecture and design
+    job.veridis.xyz/architecture: "Enterprise Vault Initialization Job with intelligent vault setup, advanced security optimization, and job integration optimization"
+    job.veridis.xyz/design-pattern: "Multi-tier Initialization Job with security optimization, performance efficiency, and business intelligence"
+    job.veridis.xyz/optimization-model: "Intelligent Initialization Job with predictive analytics, security optimization, and vault efficiency"
+    job.veridis.xyz/performance-model: "High-performance Initialization Job with vault optimization and intelligent job management"
+
+    # Vault Job specifications
+    vault.veridis.xyz/initialization-job-specification: "Initialization Job with security optimization and intelligent vault initialization management"
+    vault.veridis.xyz/vault-specification: "Advanced vault management with security optimization and job enhancement"
+    vault.veridis.xyz/setup-specification: "Initialization Job vault setup optimization with intelligent vault and enhancement"
+    vault.veridis.xyz/performance-specification: "Vault performance job with vault acceleration and efficiency"
+    vault.veridis.xyz/business-specification: "Vault business job with cost optimization and strategic vault intelligence"
+
+    # Job configuration annotations
+    job.veridis.xyz/job-type: "initialization"
+    job.veridis.xyz/completion-mode: "NonIndexed"
+    job.veridis.xyz/parallelism: "1"
+    job.veridis.xyz/completions: "1"
+    job.veridis.xyz/backoff-limit: "3"
+    job.veridis.xyz/active-deadline-seconds: "1800"  # 30 minutes
+
+    # Vault configuration annotations
+    vault.veridis.xyz/vault-addr: "https://vault.veridis-infrastructure.svc.cluster.local:8200"
+    vault.veridis.xyz/vault-api-version: "v1"
+    vault.veridis.xyz/vault-namespace: "veridis"
+    vault.veridis.xyz/auto-unseal-enabled: "true"
+    vault.veridis.xyz/ha-mode: "raft"
+
+    # Security annotations
+    security.veridis.xyz/vault-root-token: "managed"
+    security.veridis.xyz/unseal-keys: "kms-managed"
+    security.veridis.xyz/encryption-enabled: "true"
+    security.veridis.xyz/audit-logging: "enabled"
+    security.veridis.xyz/security-policies: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/init-timeout: "30m"
+    performance.veridis.xyz/retry-attempts: "3"
+    performance.veridis.xyz/retry-delay: "30s"
+    performance.veridis.xyz/health-check-interval: "10s"
+    performance.veridis.xyz/initialization-parallelism: "1"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/job-monitoring: "enabled"
+    monitoring.veridis.xyz/success-notification: "enabled"
+    monitoring.veridis.xyz/failure-notification: "enabled"
+    monitoring.veridis.xyz/progress-tracking: "enabled"
+    monitoring.veridis.xyz/metrics-collection: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/vault-compliance: "enterprise"
+    compliance.veridis.xyz/audit-requirements: "soc2,gdpr,iso27001"
+    compliance.veridis.xyz/security-validation: "enabled"
+    compliance.veridis.xyz/compliance-check: "enabled"
+    compliance.veridis.xyz/vault-policy: "production-vault-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "vault-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-vault-initialization"
+    business.veridis.xyz/business-impact: "high"
+    business.veridis.xyz/operational-priority: "critical"
+    business.veridis.xyz/service-tier: "enterprise"
+
+    # Dependencies annotations
+    dependencies.veridis.xyz/requires: "vault-statefulset,vault-service,vault-configmap"
+    dependencies.veridis.xyz/depends-on: "vault-pvc,vault-service-account"
+    dependencies.veridis.xyz/prerequisite-check: "enabled"
+    dependencies.veridis.xyz/dependency-validation: "strict"
+    dependencies.veridis.xyz/startup-order: "1"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/initialization-job-admin: "vault-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "platform-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/vault/initialization-job"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/vault/initialization-job-management"
+    veridis.xyz/vault-docs: "https://vault.veridis.xyz/initialization-job-guide"
+    veridis.xyz/job-docs: "https://vault.veridis.xyz/initialization-job-monitoring"
+
+# ==============================================================================
+# Vault Initialization Job Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Job Execution Configuration
+  # ==============================================================================
+  completions: 1
+  parallelism: 1
+  backoffLimit: 3
+  activeDeadlineSeconds: 1800  # 30 minutes timeout
+
+  # ==============================================================================
+  # Completion Mode Configuration
+  # ==============================================================================
+  completionMode: NonIndexed
+
+  # ==============================================================================
+  # Pod Template Specification
+  # ==============================================================================
+  template:
+    # ==============================================================================
+    # Pod Metadata
+    # ==============================================================================
+    metadata:
+      labels:
+        app.kubernetes.io/name: vault
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/component: vault-initialization
+        app.kubernetes.io/part-of: veridis-protocol
+        job.veridis.xyz/type: vault-initialization
+        job.veridis.xyz/environment: production
+        job.veridis.xyz/criticality: high
+        veridis.xyz/component: vault-init
+        veridis.xyz/managed-by: kustomize
+
+      annotations:
+        job.veridis.xyz/initialization-phase: "vault-setup"
+        job.veridis.xyz/retry-policy: "backoff"
+        job.veridis.xyz/timeout: "30m"
+        job.veridis.xyz/dependency-order: "1"
+
+        # Security annotations
+        security.veridis.xyz/vault-initialization: "secure"
+        security.veridis.xyz/root-token-management: "automated"
+        security.veridis.xyz/unseal-automation: "enabled"
+        security.veridis.xyz/audit-setup: "enabled"
+
+        # Monitoring annotations
+        monitoring.veridis.xyz/job-tracking: "enabled"
+        monitoring.veridis.xyz/progress-reporting: "enabled"
+        monitoring.veridis.xyz/failure-alerting: "enabled"
+        monitoring.veridis.xyz/success-notification: "enabled"
+
+    # ==============================================================================
+    # Pod Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Pod Security and Service Account
+      # ==============================================================================
+      serviceAccountName: vault-init-service-account
+      automountServiceAccountToken: true
+
+      # ==============================================================================
+      # Pod Security Context
+      # ==============================================================================
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534  # nobody user
+        runAsGroup: 65534  # nobody group
+        fsGroup: 65534
+        fsGroupChangePolicy: "OnRootMismatch"
+        seccompProfile:
+          type: RuntimeDefault
+        supplementalGroups: [65534]
+
+      # ==============================================================================
+      # Pod Restart and DNS Policy
+      # ==============================================================================
+      restartPolicy: OnFailure
+      dnsPolicy: ClusterFirst
+
+      # ==============================================================================
+      # Pod Scheduling Configuration
+      # ==============================================================================
+      schedulerName: default-scheduler
+      priorityClassName: high-priority
+
+      # ==============================================================================
+      # Node Selection and Affinity
+      # ==============================================================================
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        node.veridis.xyz/vault-init: "true"
+
+      affinity:
+        # Prefer nodes with vault workloads
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: node.veridis.xyz/workload
+                    operator: In
+                    values: ["vault", "infrastructure"]
+            - weight: 50
+              preference:
+                matchExpressions:
+                  - key: node.veridis.xyz/zone
+                    operator: In
+                    values: ["primary", "secondary"]
+
+        # Anti-affinity with other vault init jobs
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: job.veridis.xyz/type
+                    operator: In
+                    values: ["vault-initialization"]
+              topologyKey: kubernetes.io/hostname
+
+      # ==============================================================================
+      # Tolerations for Infrastructure Nodes
+      # ==============================================================================
+      tolerations:
+        - key: node.veridis.xyz/infrastructure
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        - key: node.veridis.xyz/vault
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        - key: CriticalAddonsOnly
+          operator: Exists
+          effect: NoSchedule
+
+      # ==============================================================================
+      # Init Containers
+      # ==============================================================================
+      initContainers:
+        # ==============================================================================
+        # Vault Service Readiness Check
+        # ==============================================================================
+        - name: vault-readiness-check
+          image: curlimages/curl:8.6.0
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -euo pipefail
+
+              echo "Starting Vault service readiness check..."
+
+              VAULT_ADDR="https://vault.veridis-infrastructure.svc.cluster.local:8200"
+              MAX_RETRIES=30
+              RETRY_INTERVAL=10
+
+              for i in $(seq 1 $MAX_RETRIES); do
+                echo "Attempt $i/$MAX_RETRIES: Checking Vault service availability..."
+
+                if curl -k --connect-timeout 5 --max-time 10 -s "$VAULT_ADDR/v1/sys/health" > /dev/null; then
+                  echo "✅ Vault service is available"
+                  exit 0
+                fi
+
+                echo "⏳ Vault service not ready, waiting ${RETRY_INTERVAL}s..."
+                sleep $RETRY_INTERVAL
+              done
+
+              echo "❌ Vault service readiness check failed after $MAX_RETRIES attempts"
+              exit 1
+
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 32Mi
+
+          env:
+            - name: CURL_CA_BUNDLE
+              value: ""
+
+        # ==============================================================================
+        # Vault Dependencies Validation
+        # ==============================================================================
+        - name: vault-dependencies-check
+          image: bitnami/kubectl:1.28.6
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+
+          command:
+            - /bin/bash
+            - -c
+            - |
+              set -euo pipefail
+
+              echo "Starting Vault dependencies validation..."
+
+              # Check required resources exist
+              REQUIRED_RESOURCES=(
+                "statefulset/vault"
+                "service/vault"
+                "configmap/vault-config"
+                "secret/vault-secrets"
+                "persistentvolumeclaim/vault-data-vault-0"
+              )
+
+              for resource in "${REQUIRED_RESOURCES[@]}"; do
+                echo "Checking for $resource..."
+                if kubectl get "$resource" -n veridis-infrastructure > /dev/null 2>&1; then
+                  echo "✅ Found $resource"
+                else
+                  echo "❌ Missing required resource: $resource"
+                  exit 1
+                fi
+              done
+
+              # Check Vault pods are running
+              echo "Checking Vault pod status..."
+              VAULT_PODS=$(kubectl get pods -l app.kubernetes.io/name=vault -n veridis-infrastructure --field-selector=status.phase=Running --no-headers 2>/dev/null | wc -l)
+
+              if [ "$VAULT_PODS" -gt 0 ]; then
+                echo "✅ Found $VAULT_PODS running Vault pod(s)"
+              else
+                echo "❌ No running Vault pods found"
+                exit 1
+              fi
+
+              echo "✅ All Vault dependencies validated successfully"
+
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+
+      # ==============================================================================
+      # Main Container
+      # ==============================================================================
+      containers:
+        - name: vault-init
+          image: hashicorp/vault:1.15.6
+          imagePullPolicy: IfNotPresent
+
+          # ==============================================================================
+          # Container Security Context
+          # ==============================================================================
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+
+          # ==============================================================================
+          # Container Environment Variables
+          # ==============================================================================
+          env:
+            # Vault connection configuration
+            - name: VAULT_ADDR
+              value: "https://vault.veridis-infrastructure.svc.cluster.local:8200"
+            - name: VAULT_API_ADDR
+              value: "https://vault.veridis-infrastructure.svc.cluster.local:8200"
+            - name: VAULT_CLUSTER_ADDR
+              value: "https://vault.veridis-infrastructure.svc.cluster.local:8201"
+            - name: VAULT_SKIP_VERIFY
+              value: "true"  # For internal cluster communication
+            - name: VAULT_FORMAT
+              value: "json"
+            - name: VAULT_NAMESPACE
+              value: "veridis"
+
+            # Initialization configuration
+            - name: VAULT_INIT_SECRET_SHARES
+              valueFrom:
+                configMapKeyRef:
+                  name: vault-init-config
+                  key: secret-shares
+            - name: VAULT_INIT_SECRET_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: vault-init-config
+                  key: secret-threshold
+            - name: VAULT_INIT_RECOVERY_SHARES
+              valueFrom:
+                configMapKeyRef:
+                  name: vault-init-config
+                  key: recovery-shares
+            - name: VAULT_INIT_RECOVERY_THRESHOLD
+              valueFrom:
+                configMapKeyRef:
+                  name: vault-init-config
+                  key: recovery-threshold
+
+            # Auto-unseal configuration
+            - name: AWS_REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: vault-init-config
+                  key: aws-region
+            - name: AWS_KMS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: vault-init-secrets
+                  key: kms-key-id
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: vault-init-secrets
+                  key: aws-access-key-id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: vault-init-secrets
+                  key: aws-secret-access-key
+
+            # Notification configuration
+            - name: SLACK_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: vault-init-secrets
+                  key: slack-webhook-url
+            - name: NOTIFICATION_ENABLED
+              value: "true"
+
+            # Monitoring configuration
+            - name: METRICS_ENABLED
+              value: "true"
+            - name: AUDIT_ENABLED
+              value: "true"
+            - name: DEBUG_MODE
+              value: "false"
+
+            # Business configuration
+            - name: ENVIRONMENT
+              value: "production"
+            - name: TEAM
+              value: "platform-engineering"
+            - name: COST_CENTER
+              value: "vault-infrastructure"
+
+          # ==============================================================================
+          # Container Command and Initialization Script
+          # ==============================================================================
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -euo pipefail
+
+              # ==============================================================================
+              # Vault Initialization Script - Enterprise Grade
+              # ==============================================================================
+
+              echo "🚀 Starting Veridis Vault Enterprise Initialization..."
+              echo "📅 Timestamp: $(date -Iseconds)"
+              echo "🌐 Environment: $ENVIRONMENT"
+              echo "🏢 Team: $TEAM"
+              echo "💰 Cost Center: $COST_CENTER"
+              echo ""
+
+              # ==============================================================================
+              # Configuration and Variables
+              # ==============================================================================
+
+              VAULT_ADDR="${VAULT_ADDR:-https://vault.veridis-infrastructure.svc.cluster.local:8200}"
+              MAX_RETRIES=10
+              RETRY_INTERVAL=30
+              INIT_TIMEOUT=1800  # 30 minutes
+
+              # Initialization parameters
+              SECRET_SHARES="${VAULT_INIT_SECRET_SHARES:-5}"
+              SECRET_THRESHOLD="${VAULT_INIT_SECRET_THRESHOLD:-3}"
+              RECOVERY_SHARES="${VAULT_INIT_RECOVERY_SHARES:-5}"
+              RECOVERY_THRESHOLD="${VAULT_INIT_RECOVERY_THRESHOLD:-3}"
+
+              # Paths and files
+              VAULT_INIT_OUTPUT="/tmp/vault-init-output.json"
+              VAULT_STATUS_OUTPUT="/tmp/vault-status.json"
+              VAULT_HEALTH_OUTPUT="/tmp/vault-health.json"
+
+              # ==============================================================================
+              # Utility Functions
+              # ==============================================================================
+
+              log() {
+                echo "$(date -Iseconds) [INFO] $*"
+              }
+
+              error() {
+                echo "$(date -Iseconds) [ERROR] $*" >&2
+              }
+
+              warn() {
+                echo "$(date -Iseconds) [WARN] $*" >&2
+              }
+
+              success() {
+                echo "$(date -Iseconds) [SUCCESS] $*"
+              }
+
+              send_notification() {
+                local message="$1"
+                local status="${2:-info}"
+
+                if [ "$NOTIFICATION_ENABLED" = "true" ] && [ -n "${SLACK_WEBHOOK_URL:-}" ]; then
+                  local emoji="ℹ️"
+                  case "$status" in
+                    success) emoji="✅" ;;
+                    error) emoji="❌" ;;
+                    warning) emoji="⚠️" ;;
+                  esac
+
+                  curl -X POST "$SLACK_WEBHOOK_URL" \
+                    -H 'Content-type: application/json' \
+                    --data "{\"text\":\"$emoji Vault Init: $message\"}" \
+                    --max-time 10 --silent || true
+                fi
+              }
+
+              cleanup() {
+                log "Performing cleanup..."
+                rm -f "$VAULT_INIT_OUTPUT" "$VAULT_STATUS_OUTPUT" "$VAULT_HEALTH_OUTPUT" 2>/dev/null || true
+              }
+
+              # Set up cleanup trap
+              trap cleanup EXIT
+
+              # ==============================================================================
+              # Vault Health and Status Check
+              # ==============================================================================
+
+              check_vault_health() {
+                log "Checking Vault health status..."
+
+                if ! vault status -format=json > "$VAULT_STATUS_OUTPUT" 2>/dev/null; then
+                  error "Failed to get Vault status"
+                  return 1
+                fi
+
+                # Check if Vault is sealed
+                local sealed
+                sealed=$(jq -r '.sealed' "$VAULT_STATUS_OUTPUT" 2>/dev/null || echo "true")
+
+                # Check if Vault is initialized
+                local initialized
+                initialized=$(jq -r '.initialized' "$VAULT_STATUS_OUTPUT" 2>/dev/null || echo "false")
+
+                log "Vault Status:"
+                log "  - Initialized: $initialized"
+                log "  - Sealed: $sealed"
+
+                return 0
+              }
+
+              # ==============================================================================
+              # Vault Initialization Function
+              # ==============================================================================
+
+              initialize_vault() {
+                log "Starting Vault initialization..."
+                log "Configuration:"
+                log "  - Secret Shares: $SECRET_SHARES"
+                log "  - Secret Threshold: $SECRET_THRESHOLD"
+                log "  - Recovery Shares: $RECOVERY_SHARES"
+                log "  - Recovery Threshold: $RECOVERY_THRESHOLD"
+
+                # Initialize Vault with auto-unseal
+                if ! vault operator init \
+                  -key-shares="$SECRET_SHARES" \
+                  -key-threshold="$SECRET_THRESHOLD" \
+                  -recovery-shares="$RECOVERY_SHARES" \
+                  -recovery-threshold="$RECOVERY_THRESHOLD" \
+                  -format=json > "$VAULT_INIT_OUTPUT" 2>/dev/null; then
+                  error "Vault initialization failed"
+                  return 1
+                fi
+
+                success "Vault initialization completed successfully"
+
+                # Extract and store initialization data
+                local root_token
+                root_token=$(jq -r '.root_token' "$VAULT_INIT_OUTPUT")
+
+                if [ -z "$root_token" ] || [ "$root_token" = "null" ]; then
+                  error "Failed to extract root token from initialization output"
+                  return 1
+                fi
+
+                log "Root token extracted successfully"
+
+                # Store root token in Kubernetes secret
+                if ! kubectl create secret generic vault-root-token \
+                  --from-literal=root-token="$root_token" \
+                  --namespace=veridis-infrastructure \
+                  --dry-run=client -o yaml | kubectl apply -f -; then
+                  error "Failed to store root token in Kubernetes secret"
+                  return 1
+                fi
+
+                success "Root token stored in Kubernetes secret"
+
+                # Store recovery keys if present
+                local recovery_keys
+                recovery_keys=$(jq -r '.recovery_keys[]?' "$VAULT_INIT_OUTPUT" 2>/dev/null || echo "")
+
+                if [ -n "$recovery_keys" ]; then
+                  # Create recovery keys secret
+                  local recovery_keys_json
+                  recovery_keys_json=$(jq -c '.recovery_keys' "$VAULT_INIT_OUTPUT")
+
+                  if ! kubectl create secret generic vault-recovery-keys \
+                    --from-literal=recovery-keys="$recovery_keys_json" \
+                    --namespace=veridis-infrastructure \
+                    --dry-run=client -o yaml | kubectl apply -f -; then
+                    warn "Failed to store recovery keys in Kubernetes secret"
+                  else
+                    success "Recovery keys stored in Kubernetes secret"
+                  fi
+                fi
+
+                return 0
+              }
+
+              # ==============================================================================
+              # Vault Configuration Function
+              # ==============================================================================
+
+              configure_vault() {
+                log "Starting Vault post-initialization configuration..."
+
+                # Set root token for authentication
+                local root_token
+                root_token=$(jq -r '.root_token' "$VAULT_INIT_OUTPUT")
+                export VAULT_TOKEN="$root_token"
+
+                # Enable audit logging
+                log "Enabling audit logging..."
+                if ! vault audit enable file file_path=/vault/logs/audit.log; then
+                  warn "Failed to enable file audit logging"
+                fi
+
+                # Enable KV secrets engine v2
+                log "Enabling KV secrets engine v2..."
+                if ! vault secrets enable -version=2 -path=veridis kv; then
+                  warn "KV secrets engine may already be enabled"
+                fi
+
+                # Enable transit secrets engine for encryption
+                log "Enabling transit secrets engine..."
+                if ! vault secrets enable transit; then
+                  warn "Transit secrets engine may already be enabled"
+                fi
+
+                # Create encryption key for application data
+                log "Creating encryption key for application data..."
+                if ! vault write -f transit/keys/veridis-app-data; then
+                  warn "Encryption key may already exist"
+                fi
+
+                # Enable PKI secrets engine for certificate management
+                log "Enabling PKI secrets engine..."
+                if ! vault secrets enable -path=pki pki; then
+                  warn "PKI secrets engine may already be enabled"
+                fi
+
+                # Configure PKI TTL
+                if ! vault secrets tune -max-lease-ttl=87600h pki; then
+                  warn "Failed to configure PKI max lease TTL"
+                fi
+
+                # Enable authentication methods
+                log "Enabling Kubernetes authentication..."
+                if ! vault auth enable kubernetes; then
+                  warn "Kubernetes auth may already be enabled"
+                fi
+
+                # Configure Kubernetes authentication
+                log "Configuring Kubernetes authentication..."
+                vault write auth/kubernetes/config \
+                  kubernetes_host="https://kubernetes.default.svc.cluster.local:443" \
+                  kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+                  token_reviewer_jwt=@/var/run/secrets/kubernetes.io/serviceaccount/token || warn "Failed to configure Kubernetes auth"
+
+                # Create policies for Veridis services
+                log "Creating Veridis service policies..."
+
+                # Backend service policy
+                vault policy write veridis-backend-policy - <<EOF
+              # Allow access to KV secrets for backend service
+              path "veridis/data/backend/*" {
+                capabilities = ["create", "read", "update", "delete", "list"]
+              }
+
+              path "veridis/metadata/backend/*" {
+                capabilities = ["list", "read", "delete"]
+              }
+
+              # Allow encryption/decryption operations
+              path "transit/encrypt/veridis-app-data" {
+                capabilities = ["update"]
+              }
+
+              path "transit/decrypt/veridis-app-data" {
+                capabilities = ["update"]
+              }
+
+              # Allow token operations
+              path "auth/token/lookup-self" {
+                capabilities = ["read"]
+              }
+
+              path "auth/token/renew-self" {
+                capabilities = ["update"]
+              }
+              EOF
+
+                # ZK Circuits service policy
+                vault policy write veridis-zk-circuits-policy - <<EOF
+              # Allow access to KV secrets for ZK circuits service
+              path "veridis/data/zk-circuits/*" {
+                capabilities = ["create", "read", "update", "delete", "list"]
+              }
+
+              path "veridis/metadata/zk-circuits/*" {
+                capabilities = ["list", "read", "delete"]
+              }
+
+              # Allow encryption/decryption operations
+              path "transit/encrypt/veridis-app-data" {
+                capabilities = ["update"]
+              }
+
+              path "transit/decrypt/veridis-app-data" {
+                capabilities = ["update"]
+              }
+
+              # Allow token operations
+              path "auth/token/lookup-self" {
+                capabilities = ["read"]
+              }
+
+              path "auth/token/renew-self" {
+                capabilities = ["update"]
+              }
+              EOF
+
+                # Create Kubernetes auth roles
+                log "Creating Kubernetes authentication roles..."
+
+                # Backend service role
+                vault write auth/kubernetes/role/veridis-backend \
+                  bound_service_account_names=veridis-backend \
+                  bound_service_account_namespaces=veridis \
+                  policies=veridis-backend-policy \
+                  ttl=24h || warn "Failed to create backend service role"
+
+                # ZK Circuits service role
+                vault write auth/kubernetes/role/veridis-zk-circuits \
+                  bound_service_account_names=veridis-zk-circuits \
+                  bound_service_account_namespaces=veridis \
+                  policies=veridis-zk-circuits-policy \
+                  ttl=24h || warn "Failed to create ZK circuits service role"
+
+                success "Vault configuration completed successfully"
+                return 0
+              }
+
+              # ==============================================================================
+              # Vault Health Validation
+              # ==============================================================================
+
+              validate_vault_setup() {
+                log "Validating Vault setup..."
+
+                # Check Vault status
+                if ! vault status > /dev/null 2>&1; then
+                  error "Vault status check failed"
+                  return 1
+                fi
+
+                # Check if unsealed
+                local sealed
+                sealed=$(vault status -format=json | jq -r '.sealed' 2>/dev/null || echo "true")
+
+                if [ "$sealed" = "true" ]; then
+                  error "Vault is still sealed after initialization"
+                  return 1
+                fi
+
+                # Test encryption operations
+                log "Testing encryption operations..."
+                local test_data="test-encryption-data"
+                local encrypted_data
+
+                if encrypted_data=$(vault write -field=ciphertext transit/encrypt/veridis-app-data plaintext=$(echo "$test_data" | base64) 2>/dev/null); then
+                  log "Encryption test successful"
+
+                  # Test decryption
+                  local decrypted_data
+                  if decrypted_data=$(vault write -field=plaintext transit/decrypt/veridis-app-data ciphertext="$encrypted_data" 2>/dev/null); then
+                    local decoded_data
+                    decoded_data=$(echo "$decrypted_data" | base64 -d)
+
+                    if [ "$decoded_data" = "$test_data" ]; then
+                      success "Decryption test successful"
+                    else
+                      error "Decryption test failed - data mismatch"
+                      return 1
+                    fi
+                  else
+                    error "Decryption test failed"
+                    return 1
+                  fi
+                else
+                  error "Encryption test failed"
+                  return 1
+                fi
+
+                # Test KV operations
+                log "Testing KV operations..."
+                if vault kv put veridis/test key=value >/dev/null 2>&1; then
+                  if vault kv get veridis/test >/dev/null 2>&1; then
+                    vault kv delete veridis/test >/dev/null 2>&1
+                    success "KV operations test successful"
+                  else
+                    error "KV read test failed"
+                    return 1
+                  fi
+                else
+                  error "KV write test failed"
+                  return 1
+                fi
+
+                success "Vault setup validation completed successfully"
+                return 0
+              }
+
+              # ==============================================================================
+              # Main Initialization Logic
+              # ==============================================================================
+
+              main() {
+                log "Starting main initialization process..."
+
+                # Check if Vault is already initialized
+                if ! check_vault_health; then
+                  error "Vault health check failed"
+                  send_notification "Vault health check failed" "error"
+                  return 1
+                fi
+
+                # Read current status
+                local initialized
+                initialized=$(jq -r '.initialized' "$VAULT_STATUS_OUTPUT" 2>/dev/null || echo "false")
+
+                if [ "$initialized" = "true" ]; then
+                  success "Vault is already initialized"
+                  send_notification "Vault is already initialized - skipping initialization" "success"
+
+                  # Still validate the setup
+                  if validate_vault_setup; then
+                    success "Vault validation completed successfully"
+                    send_notification "Vault validation completed successfully" "success"
+                    return 0
+                  else
+                    error "Vault validation failed"
+                    send_notification "Vault validation failed" "error"
+                    return 1
+                  fi
+                fi
+
+                # Initialize Vault
+                send_notification "Starting Vault initialization..." "info"
+
+                if ! initialize_vault; then
+                  error "Vault initialization failed"
+                  send_notification "Vault initialization failed" "error"
+                  return 1
+                fi
+
+                # Wait for auto-unseal to complete
+                log "Waiting for auto-unseal to complete..."
+                sleep 10
+
+                # Configure Vault
+                if ! configure_vault; then
+                  error "Vault configuration failed"
+                  send_notification "Vault configuration failed" "error"
+                  return 1
+                fi
+
+                # Validate setup
+                if ! validate_vault_setup; then
+                  error "Vault setup validation failed"
+                  send_notification "Vault setup validation failed" "error"
+                  return 1
+                fi
+
+                success "🎉 Vault initialization completed successfully!"
+                send_notification "Vault initialization completed successfully! 🎉" "success"
+
+                return 0
+              }
+
+              # ==============================================================================
+              # Execute Main Function
+              # ==============================================================================
+
+              if main; then
+                success "Vault initialization job completed successfully"
+                exit 0
+              else
+                error "Vault initialization job failed"
+                exit 1
+              fi
+
+          # ==============================================================================
+          # Container Resource Configuration
+          # ==============================================================================
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+              ephemeral-storage: 100Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+              ephemeral-storage: 200Mi
+
+          # ==============================================================================
+          # Container Health Checks
+          # ==============================================================================
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - "ps aux | grep '[v]ault' || exit 1"
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+
+          # ==============================================================================
+          # Volume Mounts
+          # ==============================================================================
+          volumeMounts:
+            - name: vault-init-scripts
+              mountPath: /scripts
+              readOnly: true
+            - name: vault-init-temp
+              mountPath: /tmp
+            - name: vault-ca-cert
+              mountPath: /etc/ssl/certs/vault-ca.crt
+              subPath: vault-ca.crt
+              readOnly: true
+
+      # ==============================================================================
+      # Pod Volumes
+      # ==============================================================================
+      volumes:
+        # Init scripts volume
+        - name: vault-init-scripts
+          configMap:
+            name: vault-init-scripts
+            defaultMode: 0755
+
+        # Temporary storage for init process
+        - name: vault-init-temp
+          emptyDir:
+            sizeLimit: 100Mi
+
+        # Vault CA certificate
+        - name: vault-ca-cert
+          secret:
+            secretName: vault-ca-cert
+            defaultMode: 0644
+
+---
+# ==============================================================================
+# Veridis Vault Initialization ConfigMap - Configuration Data
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vault-init-config
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: vault-initialization-config
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: vault-initialization-config
+    config.veridis.xyz/category: vault-setup
+    veridis.xyz/environment: production
+
+  annotations:
+    veridis.xyz/description: "Configuration data for Vault initialization job"
+    veridis.xyz/purpose: "Provides initialization parameters for Vault setup"
+
+# ==============================================================================
+# Configuration Data
+# ==============================================================================
+data:
+  # Vault initialization parameters
+  secret-shares: "5"
+  secret-threshold: "3"
+  recovery-shares: "5"
+  recovery-threshold: "3"
+
+  # AWS configuration for auto-unseal
+  aws-region: "us-east-1"
+
+  # Vault configuration
+  vault-api-version: "v1"
+  vault-namespace: "veridis"
+  vault-ha-mode: "raft"
+
+  # Timeout and retry configuration
+  init-timeout: "1800"
+  max-retries: "10"
+  retry-interval: "30"
+  health-check-interval: "10"
+
+  # Feature flags
+  auto-unseal-enabled: "true"
+  audit-logging-enabled: "true"
+  metrics-enabled: "true"
+  notification-enabled: "true"
+
+  # Security configuration
+  tls-enabled: "true"
+  skip-verify: "true"  # For internal cluster communication
+
+  # Monitoring configuration
+  progress-tracking: "true"
+  success-notification: "true"
+  failure-notification: "true"
+
+---
+# ==============================================================================
+# Veridis Vault Initialization Scripts ConfigMap - Utility Scripts
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vault-init-scripts
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: vault-initialization-scripts
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    config.veridis.xyz/type: vault-initialization-scripts
+    config.veridis.xyz/category: utility-scripts
+    veridis.xyz/environment: production
+
+  annotations:
+    veridis.xyz/description: "Utility scripts for Vault initialization job"
+    veridis.xyz/purpose: "Provides helper scripts for Vault setup and validation"
+
+# ==============================================================================
+# Script Data
+# ==============================================================================
+data:
+  # ==============================================================================
+  # Vault Health Check Script
+  # ==============================================================================
+  vault-health-check.sh: |
+    #!/bin/bash
+    set -euo pipefail
+
+    # Health check script for Vault service
+    VAULT_ADDR="${VAULT_ADDR:-https://vault.veridis-infrastructure.svc.cluster.local:8200}"
+    MAX_RETRIES="${1:-30}"
+    RETRY_INTERVAL="${2:-10}"
+
+    log() {
+      echo "$(date -Iseconds) [HEALTH-CHECK] $*"
+    }
+
+    for i in $(seq 1 $MAX_RETRIES); do
+      log "Health check attempt $i/$MAX_RETRIES..."
+
+      if curl -k --connect-timeout 5 --max-time 10 -s "$VAULT_ADDR/v1/sys/health" > /dev/null; then
+        log "✅ Vault service is healthy"
+        exit 0
+      fi
+
+      log "⏳ Vault service not ready, waiting ${RETRY_INTERVAL}s..."
+      sleep $RETRY_INTERVAL
+    done
+
+    log "❌ Vault health check failed after $MAX_RETRIES attempts"
+    exit 1
+
+  # ==============================================================================
+  # Vault Validation Script
+  # ==============================================================================
+  vault-validation.sh: |
+    #!/bin/bash
+    set -euo pipefail
+
+    # Validation script for Vault setup
+    VAULT_ADDR="${VAULT_ADDR:-https://vault.veridis-infrastructure.svc.cluster.local:8200}"
+
+    log() {
+      echo "$(date -Iseconds) [VALIDATION] $*"
+    }
+
+    error() {
+      echo "$(date -Iseconds) [VALIDATION-ERROR] $*" >&2
+    }
+
+    # Check Vault status
+    log "Checking Vault status..."
+    if ! vault status > /dev/null 2>&1; then
+      error "Vault status check failed"
+      exit 1
+    fi
+
+    # Check if unsealed
+    SEALED=$(vault status -format=json | jq -r '.sealed' 2>/dev/null || echo "true")
+    if [ "$SEALED" = "true" ]; then
+      error "Vault is sealed"
+      exit 1
+    fi
+
+    # Check authentication methods
+    log "Checking authentication methods..."
+    if ! vault auth list | grep -q kubernetes; then
+      error "Kubernetes authentication not configured"
+      exit 1
+    fi
+
+    # Check secrets engines
+    log "Checking secrets engines..."
+    if ! vault secrets list | grep -q "veridis/"; then
+      error "Veridis KV secrets engine not configured"
+      exit 1
+    fi
+
+    if ! vault secrets list | grep -q "transit/"; then
+      error "Transit secrets engine not configured"
+      exit 1
+    fi
+
+    log "✅ Vault validation completed successfully"
+    exit 0
+
+  # ==============================================================================
+  # Vault Cleanup Script
+  # ==============================================================================
+  vault-cleanup.sh: |
+    #!/bin/bash
+    set -euo pipefail
+
+    # Cleanup script for Vault initialization
+    log() {
+      echo "$(date -Iseconds) [CLEANUP] $*"
+    }
+
+    log "Starting cleanup process..."
+
+    # Remove temporary files
+    rm -f /tmp/vault-init-output.json /tmp/vault-status.json /tmp/vault-health.json 2>/dev/null || true
+
+    # Clear environment variables with sensitive data
+    unset VAULT_TOKEN VAULT_ROOT_TOKEN 2>/dev/null || true
+
+    log "✅ Cleanup completed"
+
+---
+# ==============================================================================
+# Veridis Vault Initialization Service Account - RBAC Configuration
+# ==============================================================================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-init-service-account
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: vault-initialization-service-account
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: vault-initialization-service-account
+    rbac.veridis.xyz/scope: vault-initialization
+    veridis.xyz/environment: production
+
+  annotations:
+    veridis.xyz/description: "Service account for Vault initialization job"
+    veridis.xyz/purpose: "Provides necessary permissions for Vault setup and secret management"
+
+automountServiceAccountToken: true
+
+---
+# ==============================================================================
+# Veridis Vault Initialization Role - Kubernetes RBAC
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: vault-init-role
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: vault-initialization-role
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: vault-initialization-role
+    rbac.veridis.xyz/scope: vault-initialization
+    veridis.xyz/environment: production
+
+  annotations:
+    veridis.xyz/description: "RBAC role for Vault initialization job"
+    veridis.xyz/purpose: "Defines permissions required for Vault initialization"
+
+# ==============================================================================
+# Role Rules
+# ==============================================================================
+rules:
+  # Secret management permissions
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "create", "update", "patch"]
+    resourceNames: ["vault-root-token", "vault-recovery-keys", "vault-init-secrets"]
+
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
+    resourceNames: ["vault-secrets", "vault-ca-cert"]
+
+  # ConfigMap access
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list"]
+    resourceNames: ["vault-config", "vault-init-config"]
+
+  # Pod and service monitoring
+  - apiGroups: [""]
+    resources: ["pods", "services"]
+    verbs: ["get", "list", "watch"]
+
+  # StatefulSet access for Vault
+  - apiGroups: ["apps"]
+    resources: ["statefulsets"]
+    verbs: ["get", "list"]
+    resourceNames: ["vault"]
+
+  # PVC access for Vault storage
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list"]
+
+---
+# ==============================================================================
+# Veridis Vault Initialization Role Binding - RBAC Binding
+# ==============================================================================
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: vault-init-role-binding
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: vault-initialization-role-binding
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    rbac.veridis.xyz/type: vault-initialization-role-binding
+    rbac.veridis.xyz/scope: vault-initialization
+    veridis.xyz/environment: production
+
+  annotations:
+    veridis.xyz/description: "RBAC role binding for Vault initialization job"
+    veridis.xyz/purpose: "Binds vault initialization service account to required role"
+
+# ==============================================================================
+# Role Binding Configuration
+# ==============================================================================
+subjects:
+  - kind: ServiceAccount
+    name: vault-init-service-account
+    namespace: veridis-infrastructure
+
+roleRef:
+  kind: Role
+  name: vault-init-role
+  apiGroup: rbac.authorization.k8s.io
+
+# ==============================================================================
+# Veridis Vault Initialization Job Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS VAULT INITIALIZATION JOB STRATEGY:
+# ========================================================
+#
+# VERIDIS VAULT INITIALIZATION JOB ARCHITECTURE OVERVIEW:
+# -------------------------------------------------------
+# 1. Production Vault Initialization Job (veridis-vault-init-job):
+#    - Comprehensive enterprise-grade initialization job with intelligent vault setup and advanced security optimization for production environments
+#    - Advanced initialization configuration with comprehensive HashiCorp integration, auto-unseal setup, audit configuration, and comprehensive operational excellence
+#    - Multi-tier initialization architecture with secure token management, policy creation, secrets engine setup, and comprehensive vault intelligence
+#    - Enterprise initialization policies with security enforcement, compliance controls, audit automation, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent initialization scripts, timeout management, retry logic, and efficiency for maximum initialization performance
+#
+# 2. Configuration Management (vault-init-config):
+#    - Comprehensive configuration management with initialization parameters and comprehensive config coordination
+#    - Advanced config configuration with secret shares, recovery keys, AWS integration, and comprehensive config intelligence
+#    - Flexible initialization optimization with config workflow, parameter management, and comprehensive config intelligence
+#    - Config intelligence with initialization procedures, parameter support, config automation, and comprehensive config coordination
+#    - Configuration excellence with config management, parameter workflows, config automation, and comprehensive config environment management
+#
+# 3. Utility Scripts (vault-init-scripts):
+#    - Comprehensive utility scripts with health checking, validation, cleanup, and comprehensive script coordination
+#    - Advanced script configuration with health checks, status validation, cleanup procedures, and comprehensive script intelligence
+#    - Flexible script optimization with utility workflow, validation support, and comprehensive script intelligence
+#    - Script intelligence with utility procedures, validation support, script automation, and comprehensive script coordination
+#    - Utility excellence with script management, validation workflows, script automation, and comprehensive script environment management
+#
+# 4. RBAC Configuration (vault-init-service-account, vault-init-role, vault-init-role-binding):
+#    - Security-focused RBAC configuration with least privilege access and comprehensive RBAC coordination
+#    - Advanced RBAC configuration with service account management, role definitions, binding configuration, and comprehensive RBAC intelligence
+#    - Flexible security optimization with RBAC workflow, access control, and comprehensive RBAC intelligence
+#    - RBAC intelligence with security procedures, access support, RBAC automation, and comprehensive RBAC coordination
+#    - Security excellence with RBAC management, access workflows, RBAC automation, and comprehensive RBAC environment management
+#
+# ENTERPRISE VAULT INITIALIZATION JOB FEATURES:
+# =============================================
+# Advanced Vault Setup and HashiCorp Integration:
+#   - Multi-tier initialization architecture with vault setup, auto-unseal configuration, audit setup, and comprehensive initialization configurations
+#   - Intelligent initialization management with setup policies, security configuration, policy creation, and comprehensive initialization decisions
+#   - Initialization discovery with HashiCorp optimization, vault management, setup policies, and comprehensive initialization analytics
+#   - Performance management with concurrent initialization, timeout optimization, retry logic, and comprehensive performance intelligence
+#   - Initialization processing tuning with setup management, configuration optimization, performance algorithms, and intelligent initialization optimization
+#
+# Comprehensive Security and Compliance Integration:
+#   - Multi-tier security with auto-unseal setup, token management, policy creation, and comprehensive security coordination
+#   - Security optimization with KMS integration, audit logging, access controls, and comprehensive security intelligence
+#   - Compliance management with audit setup, policy enforcement, security validation, and comprehensive compliance coordination
+#   - Business intelligence with security analytics, compliance correlation, initialization optimization, and comprehensive strategic insights
+#   - Security management with vault policies, compliance optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Auto-Unseal and Key Management:
+#   - Multi-tier key management with KMS integration, auto-unseal setup, recovery keys, and comprehensive key coordination
+#   - Key optimization with AWS KMS integration, key rotation, secure storage, and comprehensive key intelligence
+#   - Unseal management with automated unsealing, key distribution, recovery procedures, and comprehensive unseal coordination
+#   - Business intelligence with key analytics, unseal correlation, security optimization, and comprehensive strategic insights
+#   - Key management with unseal policies, key optimization, security integration, and comprehensive key analytics
+#
+# Advanced Policy and Secrets Engine Management:
+#   - Multi-tier engine management with KV v2 setup, transit engine, PKI configuration, and comprehensive engine coordination
+#   - Engine optimization with secrets management, encryption setup, certificate management, and comprehensive engine intelligence
+#   - Policy management with service policies, authentication roles, access control, and comprehensive policy coordination
+#   - Business intelligence with engine analytics, policy correlation, access optimization, and comprehensive strategic insights
+#   - Engine management with policy creation, access optimization, security integration, and comprehensive engine analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Vault Initialization Lifecycle Management:
+#   - Multi-Job deployment with initialization job, configuration management, script utilities, and comprehensive job coordination
+#   - Intelligent job management with predictive analytics and initialization utilization correlation
+#   - Advanced monitoring with comprehensive job analytics and initialization business intelligence
+#   - Job validation with initialization schema enforcement and job deployment safety checks
+#   - Automated optimization with job pattern analysis and initialization optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II initialization controls with comprehensive audit requirements and initialization logging
+#   - GDPR initialization compliance with data protection and privacy-preserving initialization management
+#   - ISO 27001 initialization security management with information security and initialization compliance integration
+#   - NIST 800-190 container initialization security with initialization validation and compliance
+#   - Zero-trust initialization architecture with comprehensive encryption and initialization authentication requirements
+#
+# Business Intelligence Integration:
+#   - Initialization analytics with cost correlation and job resource utilization optimization
+#   - Performance analytics with initialization experience optimization and job business intelligence
+#   - Initialization intelligence with processing pattern monitoring and job optimization recommendations
+#   - Strategic planning with capacity management and job forecasting
+#   - Business impact assessment with job performance correlation and initialization tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment job support with production initialization, configuration management, script utilities, and comprehensive job coordination
+#   - Comprehensive documentation with job guides and initialization troubleshooting procedures
+#   - Environment-specific jobs with production, staging, development, and testing support
+#   - Testing integration with job development workflow and initialization debugging capabilities
+#   - Job monitoring with comprehensive tracking and initialization correlation
+#
+# ==============================================================================

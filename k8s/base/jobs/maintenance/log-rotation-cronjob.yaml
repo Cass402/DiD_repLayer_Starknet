@@ -1,0 +1,1430 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Log Rotation CronJob Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Log Rotation CronJob for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS LOG ROTATION CRONJOB ARCHITECTURE:
+#   • Advanced Log Rotation CronJob with intelligent log management and performance-based optimization
+#   • Multi-tier Log Rotation architecture with development, testing, staging, and production environments
+#   • Comprehensive logging framework with Rotation policies, data optimization, ELK integration
+#   • Advanced lifecycle management with automated Rotation optimization, log control, and data enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Log Rotation CronJob performance insights
+#
+# VERIDIS LOG ROTATION CRONJOB OPTIMIZATION:
+#   • High-performance CronJob with intelligent log rotation and ELK log optimization
+#   • Intelligent CronJob log rotation with responsive policies and performance-based rotation decisions
+#   • Advanced CronJob management with business intelligence and log-based ELK control
+#   • Comprehensive log rotation control with intelligent ELK CronJob management and data enhancement
+#   • Enterprise acceleration with predictive ELK CronJob management and log rotation optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Log Rotation CronJob controls with comprehensive audit and rotation requirements
+#   • GDPR Log Rotation CronJob compliance with data protection, privacy controls, and rotation management
+#   • ISO 27001 Log Rotation CronJob management with comprehensive framework integration
+#   • NIST 800-190 container Log Rotation CronJob security with rotation-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Log Rotation CronJob best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Log Rotation CronJob lifecycle management with automated provisioning and rotation optimization
+#   • Predictive rotation analytics with capacity planning and Log Rotation CronJob intelligence
+#   • Advanced CronJob integration with ELK rotation analytics and performance business intelligence
+#   • Comprehensive log rotation control with Log Rotation CronJob preservation and data optimization
+#   • Business continuity Log Rotation CronJob with rotation guarantees and performance optimization
+#
+# LOG ROTATION CRONJOB ACCELERATION INTELLIGENCE:
+#   • Log Rotation CronJob usage analytics with rotation patterns and optimization recommendations
+#   • CronJob monitoring with ELK rotation latency and management optimization intelligence
+#   • Development efficiency with Log Rotation CronJob analytics and deployment optimization procedures
+#   • Cost optimization with Log Rotation CronJob utilization analysis and rotation capacity planning procedures
+#   • Quality assurance with Log Rotation CronJob metrics and rotation validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production Log Rotation CronJob - Comprehensive Log Management
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-log-rotation-cronjob
+  namespace: veridis
+
+  # Core Veridis Log Rotation CronJob identification labels
+  labels:
+    app.kubernetes.io/name: veridis-log-rotation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: log-rotation-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Log Rotation CronJob specific classification
+    job.veridis.xyz/type: production-log-rotation-cronjob
+    job.veridis.xyz/category: comprehensive-rotation-cronjob
+    job.veridis.xyz/role: primary-rotation-cronjob
+    job.veridis.xyz/rotation-class: high-performance-rotation-cronjob
+    job.veridis.xyz/security-level: enterprise
+
+    # Rotation CronJob Log Rotation CronJob classification
+    rotation.veridis.xyz/log-rotation-cronjob-type: intelligent-rotation-cronjob
+    rotation.veridis.xyz/rotation-type: log-rotation
+    rotation.veridis.xyz/performance-tier: high-throughput
+    rotation.veridis.xyz/optimization: enabled
+    rotation.veridis.xyz/features: full-rotation-cronjob-stack
+
+    # Log Rotation CronJob classification
+    log.veridis.xyz/tier: production
+    log.veridis.xyz/optimization: intelligent-rotation-cronjob-management
+    log.veridis.xyz/data-management: advanced
+    log.veridis.xyz/performance-optimization: enabled
+    log.veridis.xyz/efficiency: maximum
+
+    # Business Rotation CronJob classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-rotation-cronjob-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Rotation CronJob labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: logging-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "rotation-cronjob-control-framework"
+    compliance.veridis.xyz/gdpr: "rotation-cronjob-data-protection"
+    compliance.veridis.xyz/iso27001: "rotation-cronjob-security-management"
+    compliance.veridis.xyz/nist-800-190: "rotation-cronjob-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Rotation CronJob analytics and intelligence
+    monitoring.veridis.xyz/rotation-cronjob-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/rotation-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Log rotation specific labels
+    log.veridis.xyz/provider: "elasticsearch-fluent-bit-kibana"
+    log.veridis.xyz/rotation-strategy: "intelligent"
+    log.veridis.xyz/compression: "enabled"
+    log.veridis.xyz/archival: "enabled"
+    log.veridis.xyz/retention-management: "enabled"
+    log.veridis.xyz/performance-monitoring: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/rotation-speed: "high"
+    performance.veridis.xyz/batch-processing: "enabled"
+    performance.veridis.xyz/parallel-rotation: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/compression-efficient: "enabled"
+
+  annotations:
+    # Rotation CronJob purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Log Rotation CronJob with intelligent log management, advanced performance optimization, and comprehensive rotation optimization"
+    veridis.xyz/purpose: "Provides comprehensive Log Rotation CronJob for decentralized identity management with intelligent rotation management, performance optimization, and rotation guarantees"
+    veridis.xyz/scope: "Log Rotation CronJob including rotation management, performance optimization, cronjob configuration, and comprehensive monitoring intelligence"
+
+    # Rotation CronJob architecture and design
+    log.veridis.xyz/architecture: "Enterprise Log Rotation CronJob with intelligent rotation management, advanced performance optimization, and cronjob integration optimization"
+    log.veridis.xyz/design-pattern: "Multi-tier Rotation CronJob with performance optimization, cost efficiency, and business intelligence"
+    log.veridis.xyz/optimization-model: "Intelligent Rotation CronJob with predictive analytics, performance optimization, and rotation efficiency"
+    log.veridis.xyz/performance-model: "High-performance Rotation CronJob with rotation optimization and intelligent cronjob management"
+
+    # Rotation CronJob specifications
+    rotation.veridis.xyz/rotation-cronjob-specification: "Rotation CronJob with performance optimization and intelligent log rotation management"
+    rotation.veridis.xyz/rotation-specification: "Advanced rotation management with rotation optimization and cronjob enhancement"
+    rotation.veridis.xyz/elk-specification: "Rotation CronJob ELK management optimization with intelligent rotation and enhancement"
+    rotation.veridis.xyz/performance-specification: "Rotation performance cronjob with rotation acceleration and efficiency"
+    rotation.veridis.xyz/business-specification: "Rotation business cronjob with cost optimization and strategic rotation intelligence"
+
+    # Log rotation configuration annotations
+    log.veridis.xyz/schedule: "0 3 * * *"  # Daily at 3 AM
+    log.veridis.xyz/rotation-strategy: "intelligent"
+    log.veridis.xyz/retention-days: "90"
+    log.veridis.xyz/compression-enabled: "true"
+    log.veridis.xyz/archival-enabled: "true"
+
+    # Performance annotations
+    performance.veridis.xyz/rotation-timeout: "45m"
+    performance.veridis.xyz/parallel-workers: "6"
+    performance.veridis.xyz/batch-processing: "enabled"
+    performance.veridis.xyz/compression-level: "6"
+    performance.veridis.xyz/progress-tracking: "enabled"
+
+    # Elasticsearch connection annotations
+    elasticsearch.veridis.xyz/host: "veridis-elasticsearch-service.veridis.svc.cluster.local"
+    elasticsearch.veridis.xyz/port: "9200"
+    elasticsearch.veridis.xyz/index-pattern: "veridis-*"
+    elasticsearch.veridis.xyz/connection-pool-size: "15"
+    elasticsearch.veridis.xyz/connection-timeout: "10s"
+
+    # Rotation strategy annotations
+    rotation.veridis.xyz/old-indices: "enabled"
+    rotation.veridis.xyz/size-based: "enabled"
+    rotation.veridis.xyz/date-based: "enabled"
+    rotation.veridis.xyz/performance-based: "enabled"
+    rotation.veridis.xyz/statistics-tracking: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/authentication-required: "true"
+    security.veridis.xyz/authorization-enabled: "true"
+    security.veridis.xyz/audit-logging: "enabled"
+    security.veridis.xyz/data-classification: "confidential"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/rotation-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-tracking: "enabled"
+    monitoring.veridis.xyz/error-tracking: "enabled"
+    monitoring.veridis.xyz/success-notification: "enabled"
+    monitoring.veridis.xyz/failure-alerting: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-retention: "90d"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/compliance-validation: "enabled"
+    compliance.veridis.xyz/regulatory-compliance: "gdpr,soc2,iso27001"
+    compliance.veridis.xyz/rotation-policy: "production-log-rotation-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "logging-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-log-rotation"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/performance-tier: "production"
+
+    # Storage annotations
+    storage.veridis.xyz/archival-location: "s3://veridis-log-archives"
+    storage.veridis.xyz/compression-format: "gzip"
+    storage.veridis.xyz/archival-enabled: "enabled"
+    storage.veridis.xyz/storage-optimization: "enabled"
+    storage.veridis.xyz/lifecycle-management: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/rotation-cronjob-admin: "logging-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "platform-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/maintenance/log-rotation"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/maintenance/log-rotation-management"
+    veridis.xyz/rotation-docs: "https://maintenance.veridis.xyz/log-rotation-guide"
+    veridis.xyz/monitoring-docs: "https://maintenance.veridis.xyz/log-rotation-monitoring"
+
+# ==============================================================================
+# Log Rotation CronJob Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Schedule Configuration
+  # ==============================================================================
+  schedule: "0 3 * * *"  # Daily at 3 AM UTC
+
+  # ==============================================================================
+  # Timezone Configuration
+  # ==============================================================================
+  timeZone: "UTC"
+
+  # ==============================================================================
+  # Concurrency Policy
+  # ==============================================================================
+  concurrencyPolicy: Forbid
+
+  # ==============================================================================
+  # History Limits
+  # ==============================================================================
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+
+  # ==============================================================================
+  # Startup Deadline
+  # ==============================================================================
+  startingDeadlineSeconds: 600  # 10 minutes
+
+  # ==============================================================================
+  # Suspend Configuration
+  # ==============================================================================
+  suspend: false
+
+  # ==============================================================================
+  # Job Template Configuration
+  # ==============================================================================
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: log-rotation
+        job.veridis.xyz/schedule: daily
+        job.veridis.xyz/environment: production
+        job.veridis.xyz/criticality: high
+        veridis.xyz/component: log-rotation
+        veridis.xyz/managed-by: cronjob
+
+      annotations:
+        job.veridis.xyz/created-by: "log-rotation-cronjob"
+        job.veridis.xyz/schedule-cron: "0 3 * * *"
+        job.veridis.xyz/rotation-strategy: "intelligent"
+        job.veridis.xyz/performance-optimized: "true"
+
+    # ==============================================================================
+    # Job Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Job Completion and Parallelism
+      # ==============================================================================
+      completions: 1
+      parallelism: 1
+
+      # ==============================================================================
+      # Job Deadline and Backoff
+      # ==============================================================================
+      activeDeadlineSeconds: 2700  # 45 minutes
+      backoffLimit: 3
+
+      # ==============================================================================
+      # TTL After Finished
+      # ==============================================================================
+      ttlSecondsAfterFinished: 172800  # 48 hours
+
+      # ==============================================================================
+      # Pod Template Specification
+      # ==============================================================================
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: log-rotation
+            job.veridis.xyz/component: rotation-worker
+            veridis.xyz/log-rotation: "true"
+            veridis.xyz/monitoring: "enabled"
+
+          annotations:
+            job.veridis.xyz/rotation-job: "log-rotation"
+            job.veridis.xyz/performance-optimized: "true"
+            job.veridis.xyz/monitoring-enabled: "true"
+
+            # Prometheus annotations
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "8080"
+            prometheus.io/path: "/metrics"
+
+        spec:
+          # ==============================================================================
+          # Pod Restart Policy
+          # ==============================================================================
+          restartPolicy: OnFailure
+
+          # ==============================================================================
+          # Service Account
+          # ==============================================================================
+          serviceAccountName: veridis-log-rotation-sa
+
+          # ==============================================================================
+          # Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534  # nobody
+            runAsGroup: 65534  # nobody
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+            supplementalGroups: []
+
+          # ==============================================================================
+          # DNS Configuration
+          # ==============================================================================
+          dnsPolicy: ClusterFirst
+          dnsConfig:
+            options:
+              - name: ndots
+                value: "2"
+              - name: edns0
+
+          # ==============================================================================
+          # Priority and Scheduling
+          # ==============================================================================
+          priorityClassName: veridis-maintenance-priority
+
+          # ==============================================================================
+          # Node Selection and Affinity
+          # ==============================================================================
+          nodeSelector:
+            veridis.xyz/node-type: "maintenance"
+            kubernetes.io/arch: "amd64"
+
+          affinity:
+            # Node affinity for maintenance nodes
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/workload-type
+                        operator: In
+                        values: ["maintenance", "batch-processing"]
+                - weight: 75
+                  preference:
+                    matchExpressions:
+                      - key: node.kubernetes.io/instance-type
+                        operator: In
+                        values: ["m5.large", "m5.xlarge", "c5.large", "c5.xlarge"]
+
+            # Pod anti-affinity to avoid scheduling on Elasticsearch nodes during rotation
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchExpressions:
+                        - key: app.kubernetes.io/name
+                          operator: In
+                          values: ["elasticsearch"]
+                    topologyKey: kubernetes.io/hostname
+
+          # ==============================================================================
+          # Tolerations
+          # ==============================================================================
+          tolerations:
+            - key: veridis.xyz/maintenance
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: node.kubernetes.io/not-ready
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+            - key: node.kubernetes.io/unreachable
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+
+          # ==============================================================================
+          # Init Containers
+          # ==============================================================================
+          initContainers:
+            # ==============================================================================
+            # Elasticsearch Connection Validator
+            # ==============================================================================
+            - name: elasticsearch-connection-check
+              image: curlimages/curl:8.6.0
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Checking Elasticsearch connection..."
+                  response=$(curl -s -o /dev/null -w "%{http_code}" \
+                    --cacert /etc/elasticsearch-tls/ca.crt \
+                    --cert /etc/elasticsearch-tls/tls.crt \
+                    --key /etc/elasticsearch-tls/tls.key \
+                    "https://$ELASTICSEARCH_HOST:$ELASTICSEARCH_PORT/_cluster/health")
+
+                  if [ "$response" = "200" ]; then
+                    echo "Elasticsearch connection successful"
+                  else
+                    echo "Elasticsearch connection failed with status: $response"
+                    exit 1
+                  fi
+
+              env:
+                - name: ELASTICSEARCH_HOST
+                  value: "veridis-elasticsearch-service.veridis.svc.cluster.local"
+                - name: ELASTICSEARCH_PORT
+                  value: "9200"
+
+              volumeMounts:
+                - name: elasticsearch-tls-certs
+                  mountPath: /etc/elasticsearch-tls
+                  readOnly: true
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "10m"
+                  memory: "16Mi"
+                limits:
+                  cpu: "100m"
+                  memory: "32Mi"
+
+            # ==============================================================================
+            # Log Index Analyzer
+            # ==============================================================================
+            - name: log-index-analyzer
+              image: veridis/maintenance-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Analyzing log indices..."
+
+                  # Get cluster status
+                  cluster_status=$(curl -s \
+                    --cacert /etc/elasticsearch-tls/ca.crt \
+                    --cert /etc/elasticsearch-tls/tls.crt \
+                    --key /etc/elasticsearch-tls/tls.key \
+                    -H "Authorization: Basic $(echo -n $ELASTICSEARCH_USER:$ELASTICSEARCH_PASSWORD | base64)" \
+                    "https://$ELASTICSEARCH_HOST:$ELASTICSEARCH_PORT/_cluster/health" | \
+                    jq -r '.status')
+
+                  echo "Elasticsearch cluster status: $cluster_status"
+
+                  # Get indices information
+                  indices_info=$(curl -s \
+                    --cacert /etc/elasticsearch-tls/ca.crt \
+                    --cert /etc/elasticsearch-tls/tls.crt \
+                    --key /etc/elasticsearch-tls/tls.key \
+                    -H "Authorization: Basic $(echo -n $ELASTICSEARCH_USER:$ELASTICSEARCH_PASSWORD | base64)" \
+                    "https://$ELASTICSEARCH_HOST:$ELASTICSEARCH_PORT/_cat/indices/veridis-*?format=json&s=index")
+
+                  echo "Found indices:" > /workspace/indices_analysis.json
+                  echo "$indices_info" >> /workspace/indices_analysis.json
+
+                  # Calculate storage usage
+                  total_size=$(echo "$indices_info" | jq -r '.[].["store.size"] // "0b"' | \
+                    sed 's/[kmgtKMGT]b$//' | awk '{sum += $1} END {print sum}')
+
+                  echo "Total log storage: ${total_size}MB"
+                  echo "$total_size" > /workspace/total_storage.txt
+
+                  # Identify old indices
+                  cutoff_date=$(date -d "90 days ago" +%Y.%m.%d)
+                  echo "Cutoff date for rotation: $cutoff_date"
+                  echo "$cutoff_date" > /workspace/cutoff_date.txt
+
+                  echo "Log index analysis completed"
+
+              env:
+                - name: ELASTICSEARCH_HOST
+                  value: "veridis-elasticsearch-service.veridis.svc.cluster.local"
+                - name: ELASTICSEARCH_PORT
+                  value: "9200"
+                - name: ELASTICSEARCH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-user
+                - name: ELASTICSEARCH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-password
+
+              volumeMounts:
+                - name: elasticsearch-tls-certs
+                  mountPath: /etc/elasticsearch-tls
+                  readOnly: true
+                - name: rotation-workspace
+                  mountPath: /workspace
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "256Mi"
+
+          # ==============================================================================
+          # Main Container - Log Rotation Worker
+          # ==============================================================================
+          containers:
+            - name: log-rotation-worker
+              image: veridis/log-rotation:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              # ==============================================================================
+              # Container Command and Arguments
+              # ==============================================================================
+              command:
+                - /usr/local/bin/log-rotation
+
+              args:
+                - --config=/etc/rotation/config.yaml
+                - --log-level=info
+                - --metrics-port=8080
+                - --dry-run=false
+                - --parallel-workers=6
+                - --compression-level=6
+                - --retention-days=90
+                - --rotation-strategy=intelligent
+                - --performance-optimized=true
+                - --audit-logging=true
+                - --archival-enabled=true
+
+              # ==============================================================================
+              # Environment Variables
+              # ==============================================================================
+              env:
+                # Elasticsearch Connection Configuration
+                - name: ELASTICSEARCH_HOST
+                  value: "veridis-elasticsearch-service.veridis.svc.cluster.local"
+                - name: ELASTICSEARCH_PORT
+                  value: "9200"
+                - name: ELASTICSEARCH_SCHEME
+                  value: "https"
+                - name: ELASTICSEARCH_CONNECTION_POOL_SIZE
+                  value: "15"
+                - name: ELASTICSEARCH_CONNECTION_TIMEOUT
+                  value: "10s"
+                - name: ELASTICSEARCH_TLS_ENABLED
+                  value: "true"
+                - name: ELASTICSEARCH_TLS_CERT_PATH
+                  value: "/etc/elasticsearch-tls/tls.crt"
+                - name: ELASTICSEARCH_TLS_KEY_PATH
+                  value: "/etc/elasticsearch-tls/tls.key"
+                - name: ELASTICSEARCH_TLS_CA_PATH
+                  value: "/etc/elasticsearch-tls/ca.crt"
+
+                # Elasticsearch Authentication
+                - name: ELASTICSEARCH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-user
+                - name: ELASTICSEARCH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-password
+
+                # Rotation Configuration
+                - name: ROTATION_STRATEGY
+                  value: "intelligent"
+                - name: RETENTION_DAYS
+                  value: "90"
+                - name: INDEX_PATTERN
+                  value: "veridis-*"
+                - name: COMPRESSION_ENABLED
+                  value: "true"
+                - name: COMPRESSION_LEVEL
+                  value: "6"
+                - name: ARCHIVAL_ENABLED
+                  value: "true"
+                - name: PARALLEL_WORKERS
+                  value: "6"
+                - name: BATCH_SIZE
+                  value: "10"
+                - name: SAFETY_CHECKS_ENABLED
+                  value: "true"
+
+                # Performance Configuration
+                - name: PERFORMANCE_OPTIMIZED
+                  value: "true"
+                - name: PROGRESS_TRACKING_ENABLED
+                  value: "true"
+                - name: METRICS_ENABLED
+                  value: "true"
+                - name: METRICS_PORT
+                  value: "8080"
+                - name: HEALTH_CHECK_PORT
+                  value: "8081"
+                - name: CONCURRENT_OPERATIONS
+                  value: "5"
+
+                # Storage Configuration
+                - name: ARCHIVAL_BUCKET
+                  value: "s3://veridis-log-archives"
+                - name: ARCHIVAL_PREFIX
+                  value: "production/logs"
+                - name: ARCHIVAL_STORAGE_CLASS
+                  value: "STANDARD_IA"
+                - name: ARCHIVAL_ENCRYPTION_ENABLED
+                  value: "true"
+
+                # AWS S3 Configuration for Archival
+                - name: AWS_REGION
+                  value: "us-east-1"
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-s3-archival-secret
+                      key: aws-access-key-id
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-s3-archival-secret
+                      key: aws-secret-access-key
+
+                # Logging Configuration
+                - name: LOG_LEVEL
+                  value: "info"
+                - name: LOG_FORMAT
+                  value: "json"
+                - name: AUDIT_LOGGING_ENABLED
+                  value: "true"
+                - name: STRUCTURED_LOGGING
+                  value: "true"
+                - name: LOG_ROTATION_ENABLED
+                  value: "false"  # Avoid recursive rotation
+
+                # Security Configuration
+                - name: ENCRYPTION_IN_TRANSIT
+                  value: "true"
+                - name: AUTHENTICATION_REQUIRED
+                  value: "true"
+                - name: AUTHORIZATION_ENABLED
+                  value: "true"
+                - name: DATA_CLASSIFICATION
+                  value: "confidential"
+                - name: AUDIT_TRAIL_ENABLED
+                  value: "true"
+
+                # Monitoring Configuration
+                - name: MONITORING_ENABLED
+                  value: "true"
+                - name: PROMETHEUS_METRICS_ENABLED
+                  value: "true"
+                - name: HEALTH_CHECKS_ENABLED
+                  value: "true"
+                - name: ERROR_TRACKING_ENABLED
+                  value: "true"
+                - name: PERFORMANCE_MONITORING
+                  value: "true"
+
+                # Notification Configuration
+                - name: SUCCESS_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: FAILURE_ALERTING_ENABLED
+                  value: "true"
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-notification-secrets
+                      key: slack-webhook-url
+                      optional: true
+                - name: EMAIL_NOTIFICATIONS_ENABLED
+                  value: "true"
+                - name: SMTP_SERVER
+                  value: "smtp.veridis.xyz"
+                - name: SMTP_PORT
+                  value: "587"
+
+                # Compliance Configuration
+                - name: COMPLIANCE_VALIDATION_ENABLED
+                  value: "true"
+                - name: GDPR_COMPLIANCE_MODE
+                  value: "enabled"
+                - name: SOC2_AUDIT_MODE
+                  value: "enabled"
+                - name: ISO27001_COMPLIANCE
+                  value: "enabled"
+                - name: DATA_RESIDENCY_ENFORCEMENT
+                  value: "enabled"
+
+                # Environment and Deployment
+                - name: ENVIRONMENT
+                  value: "production"
+                - name: DEPLOYMENT_VERSION
+                  value: "3.2.1"
+                - name: CLUSTER_NAME
+                  value: "veridis-production"
+                - name: NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+
+                # Job Metadata
+                - name: JOB_START_TIME
+                  value: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                - name: JOB_TYPE
+                  value: "log-rotation"
+                - name: JOB_SCHEDULE
+                  value: "daily"
+                - name: JOB_CRITICALITY
+                  value: "high"
+                - name: ROTATION_TYPE
+                  value: "elasticsearch-indices"
+
+              # ==============================================================================
+              # Volume Mounts
+              # ==============================================================================
+              volumeMounts:
+                # Configuration
+                - name: rotation-config
+                  mountPath: /etc/rotation
+                  readOnly: true
+
+                # TLS Certificates
+                - name: elasticsearch-tls-certs
+                  mountPath: /etc/elasticsearch-tls
+                  readOnly: true
+
+                # Workspace for temporary files
+                - name: rotation-workspace
+                  mountPath: /workspace
+
+                # Audit logs
+                - name: audit-logs
+                  mountPath: /var/log/audit
+
+                # Archive staging area
+                - name: archive-staging
+                  mountPath: /var/archive
+
+                # Cache for optimization
+                - name: rotation-cache
+                  mountPath: /var/cache/rotation
+
+                # AWS credentials
+                - name: aws-credentials
+                  mountPath: /root/.aws
+                  readOnly: true
+
+              # ==============================================================================
+              # Security Context
+              # ==============================================================================
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                runAsGroup: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              # ==============================================================================
+              # Resource Management
+              # ==============================================================================
+              resources:
+                requests:
+                  cpu: "300m"
+                  memory: "512Mi"
+                  ephemeral-storage: "2Gi"
+                limits:
+                  cpu: "1500m"
+                  memory: "2Gi"
+                  ephemeral-storage: "5Gi"
+
+              # ==============================================================================
+              # Health Checks
+              # ==============================================================================
+              livenessProbe:
+                httpGet:
+                  path: /health/live
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 60
+                periodSeconds: 30
+                timeoutSeconds: 15
+                successThreshold: 1
+                failureThreshold: 3
+
+              readinessProbe:
+                httpGet:
+                  path: /health/ready
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 30
+                periodSeconds: 15
+                timeoutSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+
+              # ==============================================================================
+              # Startup Probe
+              # ==============================================================================
+              startupProbe:
+                httpGet:
+                  path: /health/startup
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 18  # 3 minutes
+
+              # ==============================================================================
+              # Container Ports
+              # ==============================================================================
+              ports:
+                - name: metrics
+                  containerPort: 8080
+                  protocol: TCP
+                - name: health
+                  containerPort: 8081
+                  protocol: TCP
+
+              # ==============================================================================
+              # Lifecycle Hooks
+              # ==============================================================================
+              lifecycle:
+                preStop:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - -c
+                      - |
+                        echo "Gracefully shutting down log rotation job..."
+                        # Send graceful shutdown signal
+                        kill -TERM 1
+                        # Wait for rotation to complete
+                        sleep 60
+                        echo "Log rotation job shutdown completed"
+
+          # ==============================================================================
+          # Volumes Configuration
+          # ==============================================================================
+          volumes:
+            # ==============================================================================
+            # Configuration Volume
+            # ==============================================================================
+            - name: rotation-config
+              configMap:
+                name: veridis-log-rotation-config
+                defaultMode: 0644
+                items:
+                  - key: config.yaml
+                    path: config.yaml
+                  - key: rotation-strategies.yaml
+                    path: rotation-strategies.yaml
+                  - key: archival-config.yaml
+                    path: archival-config.yaml
+                  - key: performance-config.yaml
+                    path: performance-config.yaml
+
+            # ==============================================================================
+            # TLS Certificates Volume
+            # ==============================================================================
+            - name: elasticsearch-tls-certs
+              secret:
+                secretName: veridis-elasticsearch-tls-certs
+                defaultMode: 0600
+                items:
+                  - key: tls.crt
+                    path: tls.crt
+                  - key: tls.key
+                    path: tls.key
+                  - key: ca.crt
+                    path: ca.crt
+
+            # ==============================================================================
+            # Workspace Volume (EmptyDir)
+            # ==============================================================================
+            - name: rotation-workspace
+              emptyDir:
+                sizeLimit: "2Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Audit Logs Volume
+            # ==============================================================================
+            - name: audit-logs
+              emptyDir:
+                sizeLimit: "1Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Archive Staging Volume
+            # ==============================================================================
+            - name: archive-staging
+              emptyDir:
+                sizeLimit: "5Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Rotation Cache Volume
+            # ==============================================================================
+            - name: rotation-cache
+              emptyDir:
+                sizeLimit: "512Mi"
+                medium: "Memory"
+
+            # ==============================================================================
+            # AWS Credentials Volume
+            # ==============================================================================
+            - name: aws-credentials
+              secret:
+                secretName: veridis-s3-archival-secret
+                defaultMode: 0600
+                items:
+                  - key: aws-credentials
+                    path: credentials
+                  - key: aws-config
+                    path: config
+
+---
+# ==============================================================================
+# Veridis Emergency Log Rotation CronJob - High-Frequency Storage Management
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-emergency-log-rotation-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-emergency-log-rotation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: emergency-log-rotation-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: emergency-log-rotation-cronjob
+    job.veridis.xyz/category: storage-pressure-based
+    job.veridis.xyz/role: emergency-rotation-cronjob
+    job.veridis.xyz/priority: high
+
+    # Emergency rotation labels
+    emergency.veridis.xyz/type: "storage-pressure-rotation"
+    emergency.veridis.xyz/trigger: "storage-threshold"
+    emergency.veridis.xyz/automation: "enabled"
+    emergency.veridis.xyz/alerting: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: logging-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Emergency log rotation for storage pressure relief"
+    veridis.xyz/purpose: "Provides emergency log rotation when storage usage exceeds thresholds"
+
+    # Emergency rotation specific annotations
+    emergency.veridis.xyz/storage-threshold: "85%"
+    emergency.veridis.xyz/rotation-aggressive: "true"
+    emergency.veridis.xyz/monitoring-enabled: "true"
+
+# ==============================================================================
+# Emergency Log Rotation CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "*/20 * * * *"  # Every 20 minutes
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  startingDeadlineSeconds: 300  # 5 minutes
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: emergency-log-rotation
+        job.veridis.xyz/frequency: high
+        job.veridis.xyz/trigger: storage-based
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 1200  # 20 minutes
+      backoffLimit: 2
+      ttlSecondsAfterFinished: 3600  # 1 hour
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: emergency-log-rotation
+            job.veridis.xyz/component: emergency-rotation-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-log-rotation-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: emergency-log-rotation
+              image: veridis/log-rotation:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/log-rotation
+
+              args:
+                - --config=/etc/rotation/emergency-config.yaml
+                - --rotation-strategy=emergency
+                - --storage-threshold=85
+                - --aggressive-rotation=true
+                - --retention-days=30
+                - --batch-size=20
+                - --parallel-workers=8
+                - --log-level=info
+
+              env:
+                - name: ELASTICSEARCH_HOST
+                  value: "veridis-elasticsearch-service.veridis.svc.cluster.local"
+                - name: ELASTICSEARCH_PORT
+                  value: "9200"
+                - name: ELASTICSEARCH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-user
+                - name: ELASTICSEARCH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-password
+                - name: ROTATION_STRATEGY
+                  value: "emergency"
+                - name: STORAGE_THRESHOLD_PERCENT
+                  value: "85"
+                - name: AGGRESSIVE_ROTATION
+                  value: "true"
+                - name: MONITORING_ENABLED
+                  value: "true"
+                - name: EMERGENCY_MODE
+                  value: "true"
+
+              volumeMounts:
+                - name: emergency-rotation-config
+                  mountPath: /etc/rotation
+                  readOnly: true
+                - name: elasticsearch-tls-certs
+                  mountPath: /etc/elasticsearch-tls
+                  readOnly: true
+                - name: rotation-workspace
+                  mountPath: /workspace
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "400m"
+                  memory: "768Mi"
+                limits:
+                  cpu: "2000m"
+                  memory: "3Gi"
+
+          volumes:
+            - name: emergency-rotation-config
+              configMap:
+                name: veridis-emergency-rotation-config
+            - name: elasticsearch-tls-certs
+              secret:
+                secretName: veridis-elasticsearch-tls-certs
+            - name: rotation-workspace
+              emptyDir:
+                sizeLimit: "2Gi"
+
+---
+# ==============================================================================
+# Veridis Weekly Archive Log Rotation CronJob - Comprehensive Archival
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-weekly-archive-rotation-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-weekly-archive-rotation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: weekly-archive-rotation-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: weekly-archive-rotation-cronjob
+    job.veridis.xyz/category: comprehensive-archival
+    job.veridis.xyz/role: archive-rotation-cronjob
+    job.veridis.xyz/priority: medium
+
+    # Weekly archival labels
+    archive.veridis.xyz/type: "comprehensive-archival"
+    archive.veridis.xyz/compression: "maximum"
+    archive.veridis.xyz/storage-optimization: "enabled"
+    archive.veridis.xyz/long-term-retention: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: logging-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Weekly comprehensive log archival with maximum compression"
+    veridis.xyz/purpose: "Provides weekly deep archival of logs for long-term retention"
+
+    # Weekly archival specific annotations
+    archive.veridis.xyz/maintenance-window: "sunday-4am"
+    archive.veridis.xyz/compression-level: "9"
+    archive.veridis.xyz/long-term-storage: "glacier"
+
+# ==============================================================================
+# Weekly Archive Rotation CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 4 * * 0"  # Weekly on Sunday at 4 AM
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 4
+  failedJobsHistoryLimit: 4
+  startingDeadlineSeconds: 900  # 15 minutes
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: weekly-archive-rotation
+        job.veridis.xyz/frequency: weekly
+        job.veridis.xyz/scope: comprehensive-archival
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 7200  # 2 hours
+      backoffLimit: 2
+      ttlSecondsAfterFinished: 604800  # 1 week
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: weekly-archive-rotation
+            job.veridis.xyz/component: archive-rotation-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-log-rotation-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: weekly-archive-rotation
+              image: veridis/log-rotation:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/log-rotation
+
+              args:
+                - --config=/etc/rotation/weekly-archive-config.yaml
+                - --rotation-strategy=comprehensive-archival
+                - --compression-level=9
+                - --archival-storage-class=GLACIER
+                - --long-term-retention=true
+                - --retention-days=365
+                - --batch-size=50
+                - --parallel-workers=10
+                - --log-level=info
+
+              env:
+                - name: ELASTICSEARCH_HOST
+                  value: "veridis-elasticsearch-service.veridis.svc.cluster.local"
+                - name: ELASTICSEARCH_PORT
+                  value: "9200"
+                - name: ELASTICSEARCH_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-user
+                - name: ELASTICSEARCH_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-elasticsearch-secret
+                      key: elasticsearch-password
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-s3-archival-secret
+                      key: aws-access-key-id
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-s3-archival-secret
+                      key: aws-secret-access-key
+                - name: ROTATION_STRATEGY
+                  value: "comprehensive-archival"
+                - name: COMPRESSION_LEVEL
+                  value: "9"
+                - name: ARCHIVAL_STORAGE_CLASS
+                  value: "GLACIER"
+                - name: LONG_TERM_RETENTION
+                  value: "true"
+                - name: ARCHIVAL_BUCKET
+                  value: "s3://veridis-log-archives-glacier"
+
+              volumeMounts:
+                - name: weekly-archive-config
+                  mountPath: /etc/rotation
+                  readOnly: true
+                - name: elasticsearch-tls-certs
+                  mountPath: /etc/elasticsearch-tls
+                  readOnly: true
+                - name: rotation-workspace
+                  mountPath: /workspace
+                - name: archive-staging
+                  mountPath: /var/archive
+                - name: aws-credentials
+                  mountPath: /root/.aws
+                  readOnly: true
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "600m"
+                  memory: "1Gi"
+                limits:
+                  cpu: "3000m"
+                  memory: "6Gi"
+
+          volumes:
+            - name: weekly-archive-config
+              configMap:
+                name: veridis-weekly-archive-config
+            - name: elasticsearch-tls-certs
+              secret:
+                secretName: veridis-elasticsearch-tls-certs
+            - name: rotation-workspace
+              emptyDir:
+                sizeLimit: "3Gi"
+            - name: archive-staging
+              emptyDir:
+                sizeLimit: "10Gi"
+            - name: aws-credentials
+              secret:
+                secretName: veridis-s3-archival-secret
+                defaultMode: 0600
+
+# ==============================================================================
+# Veridis Log Rotation CronJob Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS LOG ROTATION CRONJOB STRATEGY:
+# ====================================================
+#
+# VERIDIS LOG ROTATION CRONJOB ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------
+# 1. Production Log Rotation CronJob (veridis-log-rotation-cronjob):
+#    - Comprehensive enterprise-grade rotation cronjob with intelligent log management and advanced performance optimization for production environments
+#    - Advanced rotation configuration with comprehensive ELK integration, lifecycle management, TLS support, and comprehensive operational excellence
+#    - Multi-tier rotation architecture with daily scheduling, intelligent rotation strategies, performance optimization, and comprehensive rotation intelligence
+#    - Enterprise rotation policies with security enforcement, compliance controls, archival automation, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent batch processing, parallel workers, compression optimization, and efficiency for maximum rotation performance
+#
+# 2. Emergency Log Rotation CronJob (veridis-emergency-log-rotation-cronjob):
+#    - High-frequency storage-based rotation with storage pressure detection and comprehensive storage coordination
+#    - Advanced storage configuration with 20-minute scheduling, storage threshold monitoring, aggressive rotation, and comprehensive storage intelligence
+#    - Flexible rotation optimization with storage workflow, pressure detection, and comprehensive storage intelligence
+#    - Storage intelligence with rotation procedures, pressure support, storage automation, and comprehensive storage coordination
+#    - Operational excellence with storage rotation, pressure workflows, storage automation, and comprehensive storage environment management
+#
+# 3. Weekly Archive Rotation CronJob (veridis-weekly-archive-rotation-cronjob):
+#    - Comprehensive weekly archival with maximum compression and comprehensive archival coordination
+#    - Advanced archival configuration with Sunday scheduling, GLACIER storage, maximum compression, and comprehensive archival intelligence
+#    - Flexible rotation optimization with archival workflow, comprehensive coverage, and comprehensive archival intelligence
+#    - Archival intelligence with rotation procedures, comprehensive support, archival automation, and comprehensive archival coordination
+#    - Comprehensive excellence with archival rotation, compression workflows, archival automation, and comprehensive archival environment management
+#
+# ENTERPRISE LOG ROTATION CRONJOB FEATURES:
+# =========================================
+# Advanced Log Management and ELK Integration:
+#   - Multi-tier rotation architecture with daily rotation, emergency rotation, weekly archival, and comprehensive rotation configurations
+#   - Intelligent rotation management with Elasticsearch integration, TLS encryption, authentication management, and comprehensive rotation decisions
+#   - Rotation discovery with ELK optimization, index management, rotation policies, and comprehensive rotation analytics
+#   - Performance management with batch processing, parallel workers, compression optimization, and comprehensive performance intelligence
+#   - Rotation processing tuning with batch management, worker optimization, performance algorithms, and intelligent rotation optimization
+#
+# Comprehensive Security and TLS Integration:
+#   - Multi-tier security with Elasticsearch TLS, authentication, access controls, and comprehensive security coordination
+#   - Security optimization with encryption enforcement, credential management, audit logging, and comprehensive security intelligence
+#   - Access management with Elasticsearch authentication, TLS certificates, connection validation, and comprehensive access coordination
+#   - Business intelligence with security analytics, access correlation, rotation optimization, and comprehensive strategic insights
+#   - Security management with access policies, encryption optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Performance and Resource Optimization:
+#   - Multi-tier performance with batch processing, parallel workers, compression optimization, and comprehensive performance coordination
+#   - Performance optimization with intelligent batching, worker scaling, resource efficiency, and comprehensive performance intelligence
+#   - Resource management with CPU limits, memory limits, storage optimization, and comprehensive resource coordination
+#   - Business intelligence with performance analytics, resource correlation, efficiency optimization, and comprehensive strategic insights
+#   - Optimization management with performance tuning, resource allocation, efficiency monitoring, and comprehensive optimization analytics
+#
+# Advanced Archival and Storage Management:
+#   - Multi-tier archival with S3 integration, GLACIER storage, compression optimization, and comprehensive archival coordination
+#   - Archival optimization with intelligent compression, storage class management, lifecycle policies, and comprehensive archival intelligence
+#   - Storage management with S3 buckets, storage classes, retention policies, and comprehensive storage coordination
+#   - Business intelligence with archival analytics, storage correlation, cost optimization, and comprehensive strategic insights
+#   - Storage management with archival policies, storage optimization, cost monitoring, and comprehensive storage analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Log Rotation CronJob Lifecycle Management:
+#   - Multi-CronJob deployment with daily rotation, emergency rotation, weekly archival, and comprehensive cronjob coordination
+#   - Intelligent cronjob management with predictive analytics and rotation utilization correlation
+#   - Advanced monitoring with comprehensive cronjob analytics and rotation business intelligence
+#   - CronJob validation with rotation schema enforcement and cronjob deployment safety checks
+#   - Automated optimization with cronjob pattern analysis and rotation optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II rotation controls with comprehensive audit requirements and rotation logging
+#   - GDPR rotation compliance with data protection and privacy-preserving rotation management
+#   - ISO 27001 rotation security management with information security and rotation compliance integration
+#   - NIST 800-190 container rotation security with rotation validation and compliance
+#   - Zero-trust rotation architecture with comprehensive encryption and rotation authentication requirements
+#
+# Business Intelligence Integration:
+#   - Rotation analytics with cost correlation and cronjob resource utilization optimization
+#   - Performance analytics with rotation experience optimization and cronjob business intelligence
+#   - Rotation intelligence with processing pattern monitoring and cronjob optimization recommendations
+#   - Strategic planning with capacity management and cronjob forecasting
+#   - Business impact assessment with cronjob performance correlation and rotation tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment cronjob support with production rotation, emergency rotation, weekly archival, and comprehensive cronjob coordination
+#   - Comprehensive documentation with cronjob guides and rotation troubleshooting procedures
+#   - Environment-specific cronjobs with production, emergency, and archival support
+#   - Testing integration with cronjob development workflow and rotation debugging capabilities
+#   - CronJob monitoring with comprehensive tracking and rotation correlation
+#
+# ==============================================================================
