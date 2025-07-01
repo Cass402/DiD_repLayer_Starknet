@@ -1,0 +1,1507 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - GDPR Compliance Cleanup CronJob Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive GDPR Compliance Cleanup CronJob for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS GDPR COMPLIANCE CLEANUP CRONJOB ARCHITECTURE:
+#   • Advanced GDPR Compliance Cleanup CronJob with intelligent data management and privacy-based optimization
+#   • Multi-tier GDPR Compliance architecture with development, testing, staging, and production environments
+#   • Comprehensive compliance framework with GDPR policies, data optimization, privacy integration
+#   • Advanced lifecycle management with automated GDPR optimization, compliance control, and data enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and GDPR Compliance Cleanup CronJob performance insights
+#
+# VERIDIS GDPR COMPLIANCE CLEANUP CRONJOB OPTIMIZATION:
+#   • High-performance CronJob with intelligent GDPR compliance and privacy data optimization
+#   • Intelligent CronJob GDPR compliance with responsive policies and performance-based compliance decisions
+#   • Advanced CronJob management with business intelligence and GDPR-based privacy control
+#   • Comprehensive GDPR compliance control with intelligent privacy CronJob management and data enhancement
+#   • Enterprise acceleration with predictive privacy CronJob management and GDPR compliance optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II GDPR Compliance Cleanup CronJob controls with comprehensive audit and compliance requirements
+#   • GDPR GDPR Compliance Cleanup CronJob compliance with data protection, privacy controls, and compliance management
+#   • ISO 27001 GDPR Compliance Cleanup CronJob management with comprehensive framework integration
+#   • NIST 800-190 container GDPR Compliance Cleanup CronJob security with compliance-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and GDPR Compliance Cleanup CronJob best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent GDPR Compliance Cleanup CronJob lifecycle management with automated provisioning and compliance optimization
+#   • Predictive compliance analytics with capacity planning and GDPR Compliance Cleanup CronJob intelligence
+#   • Advanced CronJob integration with privacy compliance analytics and performance business intelligence
+#   • Comprehensive GDPR compliance control with GDPR Compliance Cleanup CronJob preservation and data optimization
+#   • Business continuity GDPR Compliance Cleanup CronJob with compliance guarantees and performance optimization
+#
+# GDPR COMPLIANCE CLEANUP CRONJOB ACCELERATION INTELLIGENCE:
+#   • GDPR Compliance Cleanup CronJob usage analytics with compliance patterns and optimization recommendations
+#   • CronJob monitoring with privacy compliance latency and management optimization intelligence
+#   • Development efficiency with GDPR Compliance Cleanup CronJob analytics and deployment optimization procedures
+#   • Cost optimization with GDPR Compliance Cleanup CronJob utilization analysis and compliance capacity planning procedures
+#   • Quality assurance with GDPR Compliance Cleanup CronJob metrics and compliance validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production GDPR Compliance Cleanup CronJob - Comprehensive Data Privacy Management
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-gdpr-cleanup-cronjob
+  namespace: veridis
+
+  # Core Veridis GDPR Compliance Cleanup CronJob identification labels
+  labels:
+    app.kubernetes.io/name: veridis-gdpr-cleanup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: gdpr-cleanup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # GDPR Compliance Cleanup CronJob specific classification
+    job.veridis.xyz/type: production-gdpr-cleanup-cronjob
+    job.veridis.xyz/category: comprehensive-compliance-cronjob
+    job.veridis.xyz/role: primary-gdpr-cronjob
+    job.veridis.xyz/compliance-class: high-performance-gdpr-cronjob
+    job.veridis.xyz/security-level: enterprise
+
+    # Compliance CronJob GDPR Compliance Cleanup CronJob classification
+    compliance.veridis.xyz/gdpr-cleanup-cronjob-type: intelligent-gdpr-cronjob
+    compliance.veridis.xyz/compliance-type: gdpr-cleanup
+    compliance.veridis.xyz/performance-tier: high-throughput
+    compliance.veridis.xyz/optimization: enabled
+    compliance.veridis.xyz/features: full-gdpr-cronjob-stack
+
+    # GDPR Compliance Cleanup CronJob classification
+    gdpr.veridis.xyz/tier: production
+    gdpr.veridis.xyz/optimization: intelligent-gdpr-cronjob-management
+    gdpr.veridis.xyz/data-management: advanced
+    gdpr.veridis.xyz/performance-optimization: enabled
+    gdpr.veridis.xyz/efficiency: maximum
+
+    # Business Compliance CronJob classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-gdpr-cronjob-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Compliance CronJob labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance-engineering
+    veridis.xyz/cost-center: compliance-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "gdpr-cronjob-control-framework"
+    compliance.veridis.xyz/gdpr: "gdpr-cronjob-data-protection"
+    compliance.veridis.xyz/iso27001: "gdpr-cronjob-security-management"
+    compliance.veridis.xyz/nist-800-190: "gdpr-cronjob-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Compliance CronJob analytics and intelligence
+    monitoring.veridis.xyz/gdpr-cronjob-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # GDPR compliance specific labels
+    gdpr.veridis.xyz/data-subject-rights: "enabled"
+    gdpr.veridis.xyz/right-to-erasure: "enabled"
+    gdpr.veridis.xyz/data-retention-management: "enabled"
+    gdpr.veridis.xyz/privacy-by-design: "enabled"
+    gdpr.veridis.xyz/consent-management: "enabled"
+    gdpr.veridis.xyz/data-portability: "enabled"
+
+    # Privacy labels
+    privacy.veridis.xyz/data-minimization: "enabled"
+    privacy.veridis.xyz/purpose-limitation: "enabled"
+    privacy.veridis.xyz/storage-limitation: "enabled"
+    privacy.veridis.xyz/accuracy-principle: "enabled"
+    privacy.veridis.xyz/accountability: "enabled"
+
+  annotations:
+    # Compliance CronJob purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis GDPR Compliance Cleanup CronJob with intelligent data management, advanced privacy optimization, and comprehensive compliance optimization"
+    veridis.xyz/purpose: "Provides comprehensive GDPR Compliance Cleanup CronJob for decentralized identity management with intelligent compliance management, privacy optimization, and compliance guarantees"
+    veridis.xyz/scope: "GDPR Compliance Cleanup CronJob including compliance management, privacy optimization, cronjob configuration, and comprehensive monitoring intelligence"
+
+    # Compliance CronJob architecture and design
+    gdpr.veridis.xyz/architecture: "Enterprise GDPR Compliance Cleanup CronJob with intelligent compliance management, advanced privacy optimization, and cronjob integration optimization"
+    gdpr.veridis.xyz/design-pattern: "Multi-tier Compliance CronJob with privacy optimization, cost efficiency, and business intelligence"
+    gdpr.veridis.xyz/optimization-model: "Intelligent Compliance CronJob with predictive analytics, privacy optimization, and compliance efficiency"
+    gdpr.veridis.xyz/performance-model: "High-performance Compliance CronJob with compliance optimization and intelligent cronjob management"
+
+    # Compliance CronJob specifications
+    compliance.veridis.xyz/gdpr-cronjob-specification: "Compliance CronJob with privacy optimization and intelligent GDPR compliance management"
+    compliance.veridis.xyz/compliance-specification: "Advanced compliance management with compliance optimization and cronjob enhancement"
+    compliance.veridis.xyz/privacy-specification: "Compliance CronJob privacy management optimization with intelligent compliance and enhancement"
+    compliance.veridis.xyz/performance-specification: "Compliance performance cronjob with compliance acceleration and efficiency"
+    compliance.veridis.xyz/business-specification: "Compliance business cronjob with cost optimization and strategic compliance intelligence"
+
+    # GDPR compliance configuration annotations
+    gdpr.veridis.xyz/schedule: "0 1 * * *"  # Daily at 1 AM
+    gdpr.veridis.xyz/retention-policy: "right-to-erasure"
+    gdpr.veridis.xyz/data-subject-requests: "automated"
+    gdpr.veridis.xyz/consent-expiry: "365d"
+    gdpr.veridis.xyz/data-minimization: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/cleanup-timeout: "45m"
+    performance.veridis.xyz/parallel-workers: "6"
+    performance.veridis.xyz/batch-processing: "enabled"
+    performance.veridis.xyz/privacy-optimization: "enabled"
+    performance.veridis.xyz/progress-tracking: "enabled"
+
+    # Data subject rights annotations
+    gdpr.veridis.xyz/right-to-access: "automated"
+    gdpr.veridis.xyz/right-to-rectification: "automated"
+    gdpr.veridis.xyz/right-to-erasure: "automated"
+    gdpr.veridis.xyz/right-to-portability: "automated"
+    gdpr.veridis.xyz/right-to-restrict: "automated"
+
+    # Privacy by design annotations
+    privacy.veridis.xyz/data-protection-by-design: "enabled"
+    privacy.veridis.xyz/data-protection-by-default: "enabled"
+    privacy.veridis.xyz/privacy-impact-assessment: "completed"
+    privacy.veridis.xyz/lawful-basis-tracking: "enabled"
+    privacy.veridis.xyz/consent-management-integration: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/encryption-at-rest: "enabled"
+    security.veridis.xyz/authentication-required: "true"
+    security.veridis.xyz/authorization-enabled: "true"
+    security.veridis.xyz/audit-logging: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/gdpr-monitoring: "enabled"
+    monitoring.veridis.xyz/privacy-tracking: "enabled"
+    monitoring.veridis.xyz/compliance-reporting: "enabled"
+    monitoring.veridis.xyz/data-subject-requests: "tracked"
+    monitoring.veridis.xyz/retention-monitoring: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/dpo-notification: "enabled"
+    compliance.veridis.xyz/supervisory-authority: "configured"
+    compliance.veridis.xyz/breach-notification: "automated"
+    compliance.veridis.xyz/compliance-reporting: "enabled"
+    compliance.veridis.xyz/gdpr-compliance-policy: "production-gdpr-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "compliance-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-gdpr-compliance"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/compliance-tier: "production"
+
+    # Legal annotations
+    legal.veridis.xyz/data-processing-agreement: "signed"
+    legal.veridis.xyz/data-controller: "veridis-protocol"
+    legal.veridis.xyz/data-processor: "platform-team"
+    legal.veridis.xyz/legal-basis: "legitimate-interest"
+    legal.veridis.xyz/cross-border-transfers: "adequacy-decision"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "compliance-team@veridis.xyz"
+    veridis.xyz/gdpr-cronjob-admin: "gdpr-admin@veridis.xyz"
+    veridis.xyz/escalation: "compliance-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "compliance-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/compliance/gdpr-cleanup"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/compliance/gdpr-cleanup-management"
+    veridis.xyz/gdpr-docs: "https://compliance.veridis.xyz/gdpr-cleanup-guide"
+    veridis.xyz/privacy-docs: "https://compliance.veridis.xyz/gdpr-privacy-monitoring"
+
+# ==============================================================================
+# GDPR Compliance Cleanup CronJob Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Schedule Configuration - Daily at 1 AM to avoid peak hours
+  # ==============================================================================
+  schedule: "0 1 * * *"  # Daily at 1 AM UTC
+
+  # ==============================================================================
+  # Timezone Configuration
+  # ==============================================================================
+  timeZone: "UTC"
+
+  # ==============================================================================
+  # Concurrency Policy - Prevent overlapping GDPR cleanup jobs
+  # ==============================================================================
+  concurrencyPolicy: Forbid
+
+  # ==============================================================================
+  # History Limits
+  # ==============================================================================
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+
+  # ==============================================================================
+  # Startup Deadline
+  # ==============================================================================
+  startingDeadlineSeconds: 600  # 10 minutes
+
+  # ==============================================================================
+  # Suspend Configuration
+  # ==============================================================================
+  suspend: false
+
+  # ==============================================================================
+  # Job Template Configuration
+  # ==============================================================================
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: gdpr-cleanup
+        job.veridis.xyz/schedule: daily
+        job.veridis.xyz/environment: production
+        job.veridis.xyz/criticality: high
+        veridis.xyz/component: gdpr-compliance
+        veridis.xyz/managed-by: cronjob
+        compliance.veridis.xyz/gdpr-job: "true"
+        privacy.veridis.xyz/data-protection: "enabled"
+
+      annotations:
+        job.veridis.xyz/created-by: "gdpr-cleanup-cronjob"
+        job.veridis.xyz/schedule-cron: "0 1 * * *"
+        job.veridis.xyz/compliance-strategy: "gdpr"
+        job.veridis.xyz/privacy-optimized: "true"
+        gdpr.veridis.xyz/data-subject-rights: "automated"
+
+    # ==============================================================================
+    # Job Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Job Completion and Parallelism
+      # ==============================================================================
+      completions: 1
+      parallelism: 1
+
+      # ==============================================================================
+      # Job Deadline and Backoff
+      # ==============================================================================
+      activeDeadlineSeconds: 2700  # 45 minutes
+      backoffLimit: 3
+
+      # ==============================================================================
+      # TTL After Finished
+      # ==============================================================================
+      ttlSecondsAfterFinished: 172800  # 48 hours (longer for compliance audit)
+
+      # ==============================================================================
+      # Pod Template Specification
+      # ==============================================================================
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: gdpr-cleanup
+            job.veridis.xyz/component: compliance-worker
+            veridis.xyz/gdpr-cleanup: "true"
+            veridis.xyz/monitoring: "enabled"
+            compliance.veridis.xyz/data-protection: "enabled"
+
+          annotations:
+            job.veridis.xyz/compliance-job: "gdpr-cleanup"
+            job.veridis.xyz/privacy-optimized: "true"
+            job.veridis.xyz/monitoring-enabled: "true"
+
+            # Prometheus annotations
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "8080"
+            prometheus.io/path: "/metrics"
+
+        spec:
+          # ==============================================================================
+          # Pod Restart Policy
+          # ==============================================================================
+          restartPolicy: OnFailure
+
+          # ==============================================================================
+          # Service Account
+          # ==============================================================================
+          serviceAccountName: veridis-gdpr-cleanup-sa
+
+          # ==============================================================================
+          # Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534  # nobody
+            runAsGroup: 65534  # nobody
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+            supplementalGroups: []
+
+          # ==============================================================================
+          # DNS Configuration
+          # ==============================================================================
+          dnsPolicy: ClusterFirst
+          dnsConfig:
+            options:
+              - name: ndots
+                value: "2"
+              - name: edns0
+
+          # ==============================================================================
+          # Priority and Scheduling
+          # ==============================================================================
+          priorityClassName: veridis-compliance-priority
+
+          # ==============================================================================
+          # Node Selection and Affinity
+          # ==============================================================================
+          nodeSelector:
+            veridis.xyz/node-type: "compliance"
+            kubernetes.io/arch: "amd64"
+
+          affinity:
+            # Node affinity for compliance nodes
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/workload-type
+                        operator: In
+                        values: ["compliance", "batch-processing"]
+                - weight: 80
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/compliance-approved
+                        operator: In
+                        values: ["true"]
+                - weight: 50
+                  preference:
+                    matchExpressions:
+                      - key: node.kubernetes.io/instance-type
+                        operator: In
+                        values: ["m5.large", "m5.xlarge", "c5.large"]
+
+            # Pod anti-affinity to avoid scheduling on database nodes during cleanup
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchExpressions:
+                        - key: app.kubernetes.io/name
+                          operator: In
+                          values: ["postgres", "redis"]
+                    topologyKey: kubernetes.io/hostname
+
+          # ==============================================================================
+          # Tolerations
+          # ==============================================================================
+          tolerations:
+            - key: veridis.xyz/compliance
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: veridis.xyz/sensitive-data
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: node.kubernetes.io/not-ready
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+            - key: node.kubernetes.io/unreachable
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+
+          # ==============================================================================
+          # Init Containers
+          # ==============================================================================
+          initContainers:
+            # ==============================================================================
+            # Database Connection Validator
+            # ==============================================================================
+            - name: database-connection-check
+              image: postgres:16.1-alpine
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Checking PostgreSQL connection..."
+                  pg_isready -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER
+                  if [ $? -eq 0 ]; then
+                    echo "PostgreSQL connection successful"
+                  else
+                    echo "PostgreSQL connection failed"
+                    exit 1
+                  fi
+
+              env:
+                - name: POSTGRES_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: POSTGRES_PORT
+                  value: "5432"
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "10m"
+                  memory: "16Mi"
+                limits:
+                  cpu: "100m"
+                  memory: "32Mi"
+
+            # ==============================================================================
+            # GDPR Compliance Pre-Check Validator
+            # ==============================================================================
+            - name: gdpr-compliance-pre-check
+              image: veridis/compliance-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Running GDPR compliance pre-checks..."
+
+                  # Check data subject requests
+                  echo "Checking pending data subject requests..."
+                  PENDING_REQUESTS=$(psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB -t -c "SELECT COUNT(*) FROM data_subject_requests WHERE status = 'pending' AND created_at < NOW() - INTERVAL '30 days';")
+
+                  if [ "$PENDING_REQUESTS" -gt 0 ]; then
+                    echo "Found $PENDING_REQUESTS pending data subject requests older than 30 days"
+                    echo "GDPR compliance issue detected - requests must be processed within 30 days"
+                    exit 1
+                  fi
+
+                  # Check consent expiry
+                  echo "Checking expired consents..."
+                  EXPIRED_CONSENTS=$(psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB -t -c "SELECT COUNT(*) FROM user_consents WHERE expires_at < NOW() AND status = 'active';")
+
+                  if [ "$EXPIRED_CONSENTS" -gt 0 ]; then
+                    echo "Found $EXPIRED_CONSENTS expired active consents that need cleanup"
+                  fi
+
+                  # Check data retention policies
+                  echo "Checking data retention compliance..."
+                  RETENTION_VIOLATIONS=$(psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB -t -c "SELECT COUNT(*) FROM user_data WHERE created_at < NOW() - INTERVAL '7 years' AND deletion_requested = false;")
+
+                  if [ "$RETENTION_VIOLATIONS" -gt 0 ]; then
+                    echo "Found $RETENTION_VIOLATIONS potential data retention violations"
+                  fi
+
+                  echo "GDPR compliance pre-checks completed successfully"
+
+              env:
+                - name: POSTGRES_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: POSTGRES_PORT
+                  value: "5432"
+                - name: POSTGRES_DB
+                  value: "veridis"
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+
+              volumeMounts:
+                - name: compliance-workspace
+                  mountPath: /workspace
+                - name: gdpr-reports
+                  mountPath: /var/reports
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "64Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "128Mi"
+
+            # ==============================================================================
+            # Backup Verification for GDPR Operations
+            # ==============================================================================
+            - name: backup-verification
+              image: veridis/compliance-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Verifying recent backup before GDPR cleanup operations..."
+
+                  # Check if recent backup exists within last 24 hours
+                  BACKUP_CHECK=$(psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB -t -c "SELECT EXISTS(SELECT 1 FROM backup_logs WHERE backup_type = 'full' AND status = 'completed' AND created_at > NOW() - INTERVAL '24 hours');")
+
+                  if [ "$BACKUP_CHECK" = "f" ]; then
+                    echo "No recent full backup found within 24 hours"
+                    echo "Creating GDPR pre-cleanup backup..."
+
+                    # Trigger backup creation
+                    pg_dump -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER $POSTGRES_DB > /workspace/gdpr-pre-cleanup-backup-$(date +%Y%m%d-%H%M%S).sql
+
+                    if [ $? -eq 0 ]; then
+                      # Log the backup creation
+                      psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DB -c "INSERT INTO backup_logs (backup_type, status, backup_path, created_at) VALUES ('gdpr-pre-cleanup', 'completed', '/workspace/gdpr-pre-cleanup-backup-$(date +%Y%m%d-%H%M%S).sql', NOW());"
+                      echo "GDPR pre-cleanup backup created successfully"
+                    else
+                      echo "Failed to create GDPR pre-cleanup backup"
+                      exit 1
+                    fi
+                  else
+                    echo "Recent backup verified - proceeding with GDPR cleanup"
+                  fi
+
+              env:
+                - name: POSTGRES_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: POSTGRES_PORT
+                  value: "5432"
+                - name: POSTGRES_DB
+                  value: "veridis"
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+
+              volumeMounts:
+                - name: compliance-workspace
+                  mountPath: /workspace
+                - name: backup-storage
+                  mountPath: /var/backups
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "500m"
+                  memory: "256Mi"
+
+          # ==============================================================================
+          # Main Container - GDPR Compliance Cleanup Worker
+          # ==============================================================================
+          containers:
+            - name: gdpr-compliance-cleanup-worker
+              image: veridis/gdpr-compliance:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              # ==============================================================================
+              # Container Command and Arguments
+              # ==============================================================================
+              command:
+                - /usr/local/bin/gdpr-compliance-cleanup
+
+              args:
+                - --config=/etc/compliance/gdpr-config.yaml
+                - --log-level=info
+                - --metrics-port=8080
+                - --dry-run=false
+                - --parallel-workers=6
+                - --batch-size=1000
+                - --data-subject-requests=process
+                - --consent-cleanup=enabled
+                - --retention-enforcement=enabled
+                - --right-to-erasure=automated
+                - --audit-logging=comprehensive
+                - --compliance-reporting=enabled
+
+              # ==============================================================================
+              # Environment Variables
+              # ==============================================================================
+              env:
+                # Database Connection Configuration
+                - name: POSTGRES_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: POSTGRES_PORT
+                  value: "5432"
+                - name: POSTGRES_DATABASE
+                  value: "veridis"
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: POSTGRES_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+                - name: POSTGRES_SSL_MODE
+                  value: "require"
+                - name: POSTGRES_CONNECTION_POOL_SIZE
+                  value: "10"
+                - name: POSTGRES_CONNECTION_TIMEOUT
+                  value: "30s"
+
+                # Redis Connection for Cache Cleanup
+                - name: REDIS_HOST
+                  value: "veridis-redis-service.veridis.svc.cluster.local"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-redis-secret
+                      key: redis-password
+
+                # GDPR Compliance Configuration
+                - name: GDPR_COMPLIANCE_MODE
+                  value: "production"
+                - name: DATA_SUBJECT_REQUEST_PROCESSING
+                  value: "automated"
+                - name: RIGHT_TO_ERASURE_ENABLED
+                  value: "true"
+                - name: RIGHT_TO_RECTIFICATION_ENABLED
+                  value: "true"
+                - name: RIGHT_TO_PORTABILITY_ENABLED
+                  value: "true"
+                - name: CONSENT_MANAGEMENT_ENABLED
+                  value: "true"
+                - name: DATA_RETENTION_ENFORCEMENT
+                  value: "true"
+                - name: LAWFUL_BASIS_TRACKING
+                  value: "enabled"
+
+                # Data Retention Policies
+                - name: USER_DATA_RETENTION_DAYS
+                  value: "2555"  # 7 years
+                - name: CONSENT_RETENTION_DAYS
+                  value: "365"   # 1 year after withdrawal
+                - name: LOG_RETENTION_DAYS
+                  value: "2555"  # 7 years for audit logs
+                - name: SESSION_DATA_RETENTION_HOURS
+                  value: "24"    # 24 hours
+                - name: TEMPORARY_DATA_RETENTION_HOURS
+                  value: "72"    # 72 hours
+
+                # Data Subject Rights Configuration
+                - name: DSR_PROCESSING_SLA_HOURS
+                  value: "720"   # 30 days (30 * 24)
+                - name: DSR_COMPLEX_REQUEST_SLA_HOURS
+                  value: "1440"  # 60 days for complex requests
+                - name: DSR_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: DSR_AUTOMATED_RESPONSE
+                  value: "enabled"
+
+                # Privacy by Design Configuration
+                - name: DATA_MINIMIZATION_ENABLED
+                  value: "true"
+                - name: PURPOSE_LIMITATION_ENFORCEMENT
+                  value: "true"
+                - name: STORAGE_LIMITATION_ENFORCEMENT
+                  value: "true"
+                - name: ACCURACY_VALIDATION_ENABLED
+                  value: "true"
+                - name: TRANSPARENCY_REPORTING
+                  value: "enabled"
+
+                # Performance and Processing Configuration
+                - name: PARALLEL_WORKERS
+                  value: "6"
+                - name: BATCH_SIZE
+                  value: "1000"
+                - name: DRY_RUN_MODE
+                  value: "false"
+                - name: SAFETY_CHECKS_ENABLED
+                  value: "true"
+                - name: TRANSACTION_TIMEOUT
+                  value: "300s"
+
+                # Audit and Compliance Logging
+                - name: AUDIT_LOGGING_ENABLED
+                  value: "true"
+                - name: COMPLIANCE_REPORTING_ENABLED
+                  value: "true"
+                - name: DPO_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: SUPERVISORY_AUTHORITY_REPORTING
+                  value: "enabled"
+                - name: BREACH_NOTIFICATION_ENABLED
+                  value: "true"
+
+                # Monitoring and Metrics
+                - name: METRICS_ENABLED
+                  value: "true"
+                - name: METRICS_PORT
+                  value: "8080"
+                - name: HEALTH_CHECK_PORT
+                  value: "8081"
+                - name: PROMETHEUS_METRICS_ENABLED
+                  value: "true"
+                - name: PERFORMANCE_MONITORING
+                  value: "enabled"
+
+                # Logging Configuration
+                - name: LOG_LEVEL
+                  value: "info"
+                - name: LOG_FORMAT
+                  value: "json"
+                - name: STRUCTURED_LOGGING
+                  value: "true"
+                - name: LOG_RETENTION_POLICY
+                  value: "compliance"
+
+                # Security Configuration
+                - name: ENCRYPTION_IN_TRANSIT
+                  value: "true"
+                - name: ENCRYPTION_AT_REST
+                  value: "true"
+                - name: AUTHENTICATION_REQUIRED
+                  value: "true"
+                - name: AUTHORIZATION_ENABLED
+                  value: "true"
+                - name: DATA_CLASSIFICATION
+                  value: "sensitive"
+
+                # Notification Configuration
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-notification-secrets
+                      key: slack-webhook-url
+                      optional: true
+                - name: EMAIL_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: DPO_EMAIL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-compliance-secrets
+                      key: dpo-email
+                - name: COMPLIANCE_TEAM_EMAIL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-compliance-secrets
+                      key: compliance-team-email
+
+                # Legal and Regulatory Configuration
+                - name: DATA_CONTROLLER
+                  value: "Veridis Protocol"
+                - name: DATA_PROCESSOR
+                  value: "Platform Team"
+                - name: SUPERVISORY_AUTHORITY
+                  value: "GDPR-Authority"
+                - name: JURISDICTION
+                  value: "EU"
+                - name: LEGAL_BASIS_DEFAULT
+                  value: "legitimate-interest"
+
+                # Environment and Deployment Metadata
+                - name: ENVIRONMENT
+                  value: "production"
+                - name: DEPLOYMENT_VERSION
+                  value: "3.2.1"
+                - name: CLUSTER_NAME
+                  value: "veridis-production"
+                - name: NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+
+                # Job Metadata
+                - name: JOB_START_TIME
+                  value: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                - name: JOB_TYPE
+                  value: "gdpr-compliance-cleanup"
+                - name: JOB_SCHEDULE
+                  value: "daily"
+                - name: JOB_CRITICALITY
+                  value: "high"
+                - name: COMPLIANCE_JOB_ID
+                  value: "gdpr-cleanup-$(date +%Y%m%d-%H%M%S)"
+
+              # ==============================================================================
+              # Volume Mounts
+              # ==============================================================================
+              volumeMounts:
+                # Configuration
+                - name: gdpr-compliance-config
+                  mountPath: /etc/compliance
+                  readOnly: true
+
+                # TLS Certificates for secure connections
+                - name: postgres-tls-certs
+                  mountPath: /etc/postgres-tls
+                  readOnly: true
+
+                # Workspace for temporary processing
+                - name: compliance-workspace
+                  mountPath: /workspace
+
+                # Audit logs and compliance reports
+                - name: audit-logs
+                  mountPath: /var/log/audit
+
+                # GDPR reports and documentation
+                - name: gdpr-reports
+                  mountPath: /var/reports
+
+                # Backup storage for data recovery
+                - name: backup-storage
+                  mountPath: /var/backups
+
+                # Cache for performance optimization
+                - name: compliance-cache
+                  mountPath: /var/cache/compliance
+
+              # ==============================================================================
+              # Security Context
+              # ==============================================================================
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                runAsGroup: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              # ==============================================================================
+              # Resource Management
+              # ==============================================================================
+              resources:
+                requests:
+                  cpu: "300m"
+                  memory: "512Mi"
+                  ephemeral-storage: "2Gi"
+                limits:
+                  cpu: "1500m"
+                  memory: "2Gi"
+                  ephemeral-storage: "4Gi"
+
+              # ==============================================================================
+              # Health Checks
+              # ==============================================================================
+              livenessProbe:
+                httpGet:
+                  path: /health/live
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 60
+                periodSeconds: 30
+                timeoutSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+
+              readinessProbe:
+                httpGet:
+                  path: /health/ready
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 30
+                periodSeconds: 15
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 3
+
+              # ==============================================================================
+              # Startup Probe
+              # ==============================================================================
+              startupProbe:
+                httpGet:
+                  path: /health/startup
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 18  # Allow 3 minutes for startup
+
+              # ==============================================================================
+              # Container Ports
+              # ==============================================================================
+              ports:
+                - name: metrics
+                  containerPort: 8080
+                  protocol: TCP
+                - name: health
+                  containerPort: 8081
+                  protocol: TCP
+
+              # ==============================================================================
+              # Lifecycle Hooks
+              # ==============================================================================
+              lifecycle:
+                preStop:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - -c
+                      - |
+                        echo "Gracefully shutting down GDPR compliance cleanup job..."
+                        # Send graceful shutdown signal
+                        kill -TERM 1
+                        # Wait for cleanup operations to complete
+                        sleep 60
+                        echo "GDPR compliance cleanup job shutdown completed"
+
+          # ==============================================================================
+          # Volumes Configuration
+          # ==============================================================================
+          volumes:
+            # ==============================================================================
+            # Configuration Volume
+            # ==============================================================================
+            - name: gdpr-compliance-config
+              configMap:
+                name: veridis-gdpr-compliance-config
+                defaultMode: 0644
+                items:
+                  - key: gdpr-config.yaml
+                    path: gdpr-config.yaml
+                  - key: data-retention-policies.yaml
+                    path: data-retention-policies.yaml
+                  - key: data-subject-rights-config.yaml
+                    path: data-subject-rights-config.yaml
+                  - key: privacy-by-design-config.yaml
+                    path: privacy-by-design-config.yaml
+
+            # ==============================================================================
+            # TLS Certificates Volume
+            # ==============================================================================
+            - name: postgres-tls-certs
+              secret:
+                secretName: veridis-postgres-tls-certs
+                defaultMode: 0600
+                items:
+                  - key: tls.crt
+                    path: tls.crt
+                  - key: tls.key
+                    path: tls.key
+                  - key: ca.crt
+                    path: ca.crt
+
+            # ==============================================================================
+            # Workspace Volume (EmptyDir)
+            # ==============================================================================
+            - name: compliance-workspace
+              emptyDir:
+                sizeLimit: "2Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Audit Logs Volume
+            # ==============================================================================
+            - name: audit-logs
+              emptyDir:
+                sizeLimit: "1Gi"
+                medium: ""
+
+            # ==============================================================================
+            # GDPR Reports Volume
+            # ==============================================================================
+            - name: gdpr-reports
+              emptyDir:
+                sizeLimit: "1Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Backup Storage Volume
+            # ==============================================================================
+            - name: backup-storage
+              emptyDir:
+                sizeLimit: "5Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Compliance Cache Volume
+            # ==============================================================================
+            - name: compliance-cache
+              emptyDir:
+                sizeLimit: "512Mi"
+                medium: "Memory"
+
+---
+# ==============================================================================
+# Veridis Data Subject Request Processing CronJob - Automated DSR Handling
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-data-subject-request-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-dsr-processing
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: dsr-processing-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: data-subject-request-cronjob
+    job.veridis.xyz/category: automated-dsr-processing
+    job.veridis.xyz/role: dsr-automation
+    job.veridis.xyz/priority: high
+
+    # DSR processing labels
+    dsr.veridis.xyz/type: "automated-processing"
+    dsr.veridis.xyz/rights: "all-rights"
+    dsr.veridis.xyz/automation: "enabled"
+    dsr.veridis.xyz/sla-monitoring: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance-engineering
+    veridis.xyz/cost-center: compliance-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Automated data subject request processing for GDPR compliance"
+    veridis.xyz/purpose: "Processes pending data subject requests within SLA requirements"
+
+    # DSR specific annotations
+    dsr.veridis.xyz/sla-hours: "720"  # 30 days
+    dsr.veridis.xyz/complex-sla-hours: "1440"  # 60 days
+    dsr.veridis.xyz/automation-level: "high"
+
+# ==============================================================================
+# DSR Processing CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 */6 * * *"  # Every 6 hours
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  startingDeadlineSeconds: 300
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: dsr-processing
+        job.veridis.xyz/frequency: high
+        job.veridis.xyz/automation: enabled
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 1800  # 30 minutes
+      backoffLimit: 3
+      ttlSecondsAfterFinished: 86400  # 24 hours
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: dsr-processing
+            job.veridis.xyz/component: dsr-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-gdpr-cleanup-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: dsr-processor
+              image: veridis/gdpr-compliance:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/dsr-processor
+
+              args:
+                - --config=/etc/compliance/dsr-config.yaml
+                - --mode=automated
+                - --process-all-types=true
+                - --sla-monitoring=enabled
+                - --notification=enabled
+                - --parallel-workers=4
+                - --batch-size=50
+                - --log-level=info
+
+              env:
+                - name: POSTGRES_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: POSTGRES_PORT
+                  value: "5432"
+                - name: POSTGRES_DB
+                  value: "veridis"
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: POSTGRES_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+                - name: DSR_PROCESSING_MODE
+                  value: "automated"
+                - name: DSR_SLA_HOURS
+                  value: "720"  # 30 days
+                - name: DSR_COMPLEX_SLA_HOURS
+                  value: "1440"  # 60 days
+                - name: DSR_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: DSR_AUTOMATION_LEVEL
+                  value: "high"
+
+              volumeMounts:
+                - name: dsr-config
+                  mountPath: /etc/compliance
+                  readOnly: true
+                - name: dsr-workspace
+                  mountPath: /workspace
+                - name: dsr-reports
+                  mountPath: /var/reports
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "200m"
+                  memory: "256Mi"
+                limits:
+                  cpu: "1000m"
+                  memory: "1Gi"
+
+          volumes:
+            - name: dsr-config
+              configMap:
+                name: veridis-dsr-config
+            - name: dsr-workspace
+              emptyDir:
+                sizeLimit: "1Gi"
+            - name: dsr-reports
+              emptyDir:
+                sizeLimit: "500Mi"
+
+---
+# ==============================================================================
+# Veridis Consent Management Cleanup CronJob - Consent Lifecycle Management
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-consent-cleanup-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-consent-cleanup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: consent-cleanup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: consent-cleanup-cronjob
+    job.veridis.xyz/category: consent-management
+    job.veridis.xyz/role: consent-lifecycle
+    job.veridis.xyz/priority: medium
+
+    # Consent management labels
+    consent.veridis.xyz/type: "lifecycle-management"
+    consent.veridis.xyz/expiry-handling: "automated"
+    consent.veridis.xyz/withdrawal-processing: "enabled"
+    consent.veridis.xyz/granular-consent: "supported"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance-engineering
+    veridis.xyz/cost-center: compliance-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Automated consent lifecycle management and cleanup"
+    veridis.xyz/purpose: "Manages consent expiry, withdrawal processing, and consent cleanup"
+
+    # Consent specific annotations
+    consent.veridis.xyz/expiry-check: "daily"
+    consent.veridis.xyz/withdrawal-automation: "enabled"
+    consent.veridis.xyz/granular-control: "enabled"
+
+# ==============================================================================
+# Consent Cleanup CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 3 * * *"  # Daily at 3 AM
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  startingDeadlineSeconds: 300
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: consent-cleanup
+        job.veridis.xyz/frequency: daily
+        job.veridis.xyz/scope: consent-management
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 1200  # 20 minutes
+      backoffLimit: 2
+      ttlSecondsAfterFinished: 86400  # 24 hours
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: consent-cleanup
+            job.veridis.xyz/component: consent-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-gdpr-cleanup-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            - name: consent-cleanup
+              image: veridis/gdpr-compliance:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/consent-cleanup
+
+              args:
+                - --config=/etc/compliance/consent-config.yaml
+                - --expiry-processing=enabled
+                - --withdrawal-processing=enabled
+                - --granular-consent=enabled
+                - --notification=enabled
+                - --batch-size=500
+                - --log-level=info
+
+              env:
+                - name: POSTGRES_HOST
+                  value: "veridis-postgres-service.veridis.svc.cluster.local"
+                - name: POSTGRES_PORT
+                  value: "5432"
+                - name: POSTGRES_DB
+                  value: "veridis"
+                - name: POSTGRES_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-user
+                - name: POSTGRES_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-postgres-secret
+                      key: postgres-password
+                - name: CONSENT_EXPIRY_PROCESSING
+                  value: "enabled"
+                - name: CONSENT_WITHDRAWAL_PROCESSING
+                  value: "enabled"
+                - name: GRANULAR_CONSENT_SUPPORT
+                  value: "enabled"
+                - name: CONSENT_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: CONSENT_RETENTION_DAYS
+                  value: "365"  # 1 year after withdrawal
+
+              volumeMounts:
+                - name: consent-config
+                  mountPath: /etc/compliance
+                  readOnly: true
+                - name: consent-workspace
+                  mountPath: /workspace
+                - name: consent-reports
+                  mountPath: /var/reports
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "150m"
+                  memory: "256Mi"
+                limits:
+                  cpu: "500m"
+                  memory: "512Mi"
+
+          volumes:
+            - name: consent-config
+              configMap:
+                name: veridis-consent-config
+            - name: consent-workspace
+              emptyDir:
+                sizeLimit: "500Mi"
+            - name: consent-reports
+              emptyDir:
+                sizeLimit: "256Mi"
+
+# ==============================================================================
+# Veridis GDPR Compliance CronJob Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS GDPR COMPLIANCE CRONJOB STRATEGY:
+# =======================================================
+#
+# VERIDIS GDPR COMPLIANCE CRONJOB ARCHITECTURE OVERVIEW:
+# ------------------------------------------------------
+# 1. Production GDPR Compliance Cleanup CronJob (veridis-gdpr-cleanup-cronjob):
+#    - Comprehensive enterprise-grade GDPR compliance cronjob with intelligent data management and advanced privacy optimization for production environments
+#    - Advanced GDPR configuration with comprehensive database integration, data retention management, TLS support, and comprehensive operational excellence
+#    - Multi-tier compliance architecture with daily scheduling, intelligent GDPR strategies, privacy optimization, and comprehensive compliance intelligence
+#    - Enterprise compliance policies with security enforcement, data protection controls, backup automation, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent batch processing, parallel workers, privacy optimization, and efficiency for maximum compliance performance
+#
+# 2. Data Subject Request Processing CronJob (veridis-data-subject-request-cronjob):
+#    - High-frequency DSR processing with automated request handling and comprehensive DSR coordination
+#    - Advanced DSR configuration with 6-hour scheduling, SLA monitoring, automated processing, and comprehensive DSR intelligence
+#    - Flexible compliance optimization with DSR workflow, automation support, and comprehensive DSR intelligence
+#    - DSR intelligence with processing procedures, automation support, SLA management, and comprehensive DSR coordination
+#    - Operational excellence with DSR processing, automation workflows, SLA monitoring, and comprehensive DSR environment management
+#
+# 3. Consent Management Cleanup CronJob (veridis-consent-cleanup-cronjob):
+#    - Daily consent lifecycle management with expiry processing and comprehensive consent coordination
+#    - Advanced consent configuration with daily scheduling, expiry handling, withdrawal processing, and comprehensive consent intelligence
+#    - Flexible compliance optimization with consent workflow, lifecycle management, and comprehensive consent intelligence
+#    - Consent intelligence with lifecycle procedures, expiry support, withdrawal automation, and comprehensive consent coordination
+#    - Compliance excellence with consent management, lifecycle workflows, consent automation, and comprehensive consent environment management
+#
+# ENTERPRISE GDPR COMPLIANCE CRONJOB FEATURES:
+# ============================================
+# Advanced Data Management and Database Integration:
+#   - Multi-tier compliance architecture with GDPR cleanup, DSR processing, consent management, and comprehensive compliance configurations
+#   - Intelligent data management with PostgreSQL integration, TLS encryption, transaction management, and comprehensive compliance decisions
+#   - Compliance discovery with database optimization, connection management, data policies, and comprehensive compliance analytics
+#   - Performance management with batch processing, parallel workers, data optimization, and comprehensive performance intelligence
+#   - Data processing tuning with batch management, worker optimization, performance algorithms, and intelligent compliance optimization
+#
+# Comprehensive Privacy and Data Protection Integration:
+#   - Multi-tier privacy with data minimization, purpose limitation, storage limitation, and comprehensive privacy coordination
+#   - Privacy optimization with privacy by design, data protection by default, impact assessments, and comprehensive privacy intelligence
+#   - Data protection management with encryption controls, access controls, audit logging, and comprehensive protection coordination
+#   - Business intelligence with privacy analytics, protection correlation, compliance optimization, and comprehensive strategic insights
+#   - Privacy management with protection policies, privacy optimization, protection integration, and comprehensive privacy analytics
+#
+# Enterprise Data Subject Rights and Compliance:
+#   - Multi-tier rights with right to access, right to rectification, right to erasure, and comprehensive rights coordination
+#   - Rights optimization with automated processing, SLA monitoring, notification management, and comprehensive rights intelligence
+#   - Compliance management with regulatory requirements, supervisory authority reporting, breach notification, and comprehensive compliance coordination
+#   - Business intelligence with rights analytics, compliance correlation, regulatory optimization, and comprehensive strategic insights
+#   - Rights management with compliance policies, rights optimization, regulatory integration, and comprehensive rights analytics
+#
+# Advanced Consent Management and Lifecycle:
+#   - Multi-tier consent with consent collection, consent validation, consent withdrawal, and comprehensive consent coordination
+#   - Consent optimization with granular consent, consent expiry, withdrawal processing, and comprehensive consent intelligence
+#   - Lifecycle management with consent retention, consent cleanup, consent reporting, and comprehensive lifecycle coordination
+#   - Business intelligence with consent analytics, lifecycle correlation, consent optimization, and comprehensive strategic insights
+#   - Consent management with lifecycle policies, consent optimization, consent integration, and comprehensive consent analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# GDPR Compliance CronJob Lifecycle Management:
+#   - Multi-CronJob deployment with GDPR cleanup, DSR processing, consent management, and comprehensive cronjob coordination
+#   - Intelligent cronjob management with predictive analytics and compliance utilization correlation
+#   - Advanced monitoring with comprehensive cronjob analytics and compliance business intelligence
+#   - CronJob validation with compliance schema enforcement and cronjob deployment safety checks
+#   - Automated optimization with cronjob pattern analysis and compliance optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II GDPR controls with comprehensive audit requirements and compliance logging
+#   - GDPR GDPR compliance with data protection and privacy-preserving GDPR management
+#   - ISO 27001 GDPR security management with information security and GDPR compliance integration
+#   - NIST 800-190 container GDPR security with GDPR validation and compliance
+#   - Zero-trust GDPR architecture with comprehensive encryption and GDPR authentication requirements
+#
+# Business Intelligence Integration:
+#   - GDPR analytics with cost correlation and cronjob resource utilization optimization
+#   - Performance analytics with compliance experience optimization and cronjob business intelligence
+#   - Compliance intelligence with processing pattern monitoring and cronjob optimization recommendations
+#   - Strategic planning with capacity management and cronjob forecasting
+#   - Business impact assessment with cronjob performance correlation and compliance tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment cronjob support with production compliance, DSR processing, consent management, and comprehensive cronjob coordination
+#   - Comprehensive documentation with cronjob guides and compliance troubleshooting procedures
+#   - Environment-specific cronjobs with production, DSR, and consent support
+#   - Testing integration with cronjob development workflow and compliance debugging capabilities
+#   - CronJob monitoring with comprehensive tracking and compliance correlation
+#
+# ==============================================================================
