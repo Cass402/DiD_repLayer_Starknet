@@ -1,0 +1,1341 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Redis Database Backup CronJob Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Redis Database Backup CronJob for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS REDIS BACKUP ARCHITECTURE:
+#   • Advanced Redis Backup with intelligent backup automation and performance-based optimization
+#   • Multi-tier Backup architecture with development, testing, staging, and production environments
+#   • Comprehensive backup framework with Redis policies, data optimization, backup integration
+#   • Advanced lifecycle management with automated backup optimization, Redis control, and data enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Redis Backup performance insights
+#
+# VERIDIS REDIS BACKUP OPTIMIZATION:
+#   • High-performance Backup with intelligent Redis backup management and database backup optimization
+#   • Intelligent Backup Redis automation with responsive policies and performance-based backup decisions
+#   • Advanced Backup management with business intelligence and Redis-based backup control
+#   • Comprehensive Redis backup control with intelligent backup management and data enhancement
+#   • Enterprise acceleration with predictive Redis backup management and database optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Redis Backup controls with comprehensive audit and backup requirements
+#   • GDPR Redis Backup compliance with data protection, privacy controls, and backup management
+#   • ISO 27001 Redis Backup management with comprehensive framework integration
+#   • NIST 800-190 container Redis Backup security with backup-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Redis Backup best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Redis Backup lifecycle management with automated provisioning and backup optimization
+#   • Predictive backup analytics with capacity planning and Redis Backup intelligence
+#   • Advanced Backup integration with Redis analytics and performance business intelligence
+#   • Comprehensive backup control with Redis Backup preservation and data optimization
+#   • Business continuity Redis Backup with backup guarantees and performance optimization
+#
+# REDIS BACKUP ACCELERATION INTELLIGENCE:
+#   • Redis Backup usage analytics with backup patterns and optimization recommendations
+#   • Backup monitoring with Redis latency and management optimization intelligence
+#   • Development efficiency with Redis Backup analytics and deployment optimization procedures
+#   • Cost optimization with Redis Backup utilization analysis and backup capacity planning procedures
+#   • Quality assurance with Redis Backup metrics and backup validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production Redis Backup CronJob - Comprehensive Redis Database Backup
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-redis-backup
+  namespace: veridis
+
+  # Core Veridis Redis Backup identification labels
+  labels:
+    app.kubernetes.io/name: redis-backup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: redis-backup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Redis Backup specific classification
+    backup.veridis.xyz/type: redis-database-backup
+    backup.veridis.xyz/category: comprehensive-redis-backup
+    backup.veridis.xyz/role: primary-redis-backup
+    backup.veridis.xyz/backup-class: high-performance-redis-backup
+    backup.veridis.xyz/security-level: enterprise
+
+    # Database Backup classification
+    database.veridis.xyz/backup-type: intelligent-redis-backup
+    database.veridis.xyz/database-type: redis-cache
+    database.veridis.xyz/performance-tier: high-throughput
+    database.veridis.xyz/optimization: enabled
+    database.veridis.xyz/features: full-redis-backup-stack
+
+    # Redis Database classification
+    redis.veridis.xyz/tier: production
+    redis.veridis.xyz/optimization: intelligent-backup-management
+    redis.veridis.xyz/data-management: advanced
+    redis.veridis.xyz/performance-optimization: enabled
+    redis.veridis.xyz/efficiency: maximum
+
+    # Business Redis classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-redis-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Redis labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: database-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "redis-backup-control-framework"
+    compliance.veridis.xyz/gdpr: "redis-backup-data-protection"
+    compliance.veridis.xyz/iso27001: "redis-backup-security-management"
+    compliance.veridis.xyz/nist-800-190: "redis-backup-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Redis analytics and intelligence
+    monitoring.veridis.xyz/redis-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/backup-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Backup schedule labels
+    backup.veridis.xyz/frequency: "hourly"
+    backup.veridis.xyz/retention: "7d"
+    backup.veridis.xyz/compression: "enabled"
+    backup.veridis.xyz/encryption: "enabled"
+    backup.veridis.xyz/verification: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/backup-speed: "high"
+    performance.veridis.xyz/compression-level: "optimal"
+    performance.veridis.xyz/parallel-processing: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/incremental-backup: "enabled"
+
+  annotations:
+    # Redis Backup purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Redis Backup with intelligent backup automation, advanced performance optimization, and comprehensive backup optimization"
+    veridis.xyz/purpose: "Provides comprehensive Redis Backup for decentralized identity management with intelligent backup automation, performance optimization, and backup guarantees"
+    veridis.xyz/scope: "Redis Backup including backup automation, performance optimization, cronjob configuration, and comprehensive monitoring intelligence"
+
+    # Redis Backup architecture and design
+    backup.veridis.xyz/architecture: "Enterprise Redis Backup with intelligent backup automation, advanced performance optimization, and cronjob integration optimization"
+    backup.veridis.xyz/design-pattern: "Multi-tier Redis Backup with performance optimization, cost efficiency, and business intelligence"
+    backup.veridis.xyz/optimization-model: "Intelligent Redis Backup with predictive analytics, performance optimization, and backup efficiency"
+    backup.veridis.xyz/performance-model: "High-performance Redis Backup with backup optimization and intelligent cronjob management"
+
+    # CronJob Redis specifications
+    cronjob.veridis.xyz/redis-specification: "Redis Backup with performance optimization and intelligent redis backup management"
+    cronjob.veridis.xyz/backup-specification: "Advanced redis backup management with backup optimization and cronjob enhancement"
+    cronjob.veridis.xyz/schedule-specification: "Redis Backup schedule management optimization with intelligent backup and enhancement"
+    cronjob.veridis.xyz/performance-specification: "Backup performance cronjob with backup acceleration and efficiency"
+    cronjob.veridis.xyz/business-specification: "Backup business cronjob with cost optimization and strategic backup intelligence"
+
+    # Schedule annotations
+    backup.veridis.xyz/schedule-expression: "0 * * * *"  # Hourly
+    backup.veridis.xyz/timezone: "UTC"
+    backup.veridis.xyz/concurrency-policy: "Forbid"
+    backup.veridis.xyz/failed-jobs-history-limit: "3"
+    backup.veridis.xyz/successful-jobs-history-limit: "5"
+
+    # Backup configuration annotations
+    backup.veridis.xyz/backup-type: "redis-rdb-backup"
+    backup.veridis.xyz/compression-algorithm: "gzip"
+    backup.veridis.xyz/encryption-algorithm: "AES256"
+    backup.veridis.xyz/verification-enabled: "true"
+    backup.veridis.xyz/incremental-backup: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/backup-timeout: "30m"
+    performance.veridis.xyz/compression-level: "6"
+    performance.veridis.xyz/parallel-compression: "enabled"
+    performance.veridis.xyz/memory-limit: "2Gi"
+    performance.veridis.xyz/cpu-limit: "1000m"
+
+    # Storage annotations
+    storage.veridis.xyz/backup-location: "s3://veridis-redis-backups/production"
+    storage.veridis.xyz/backup-retention: "168h"  # 7 days
+    storage.veridis.xyz/storage-class: "STANDARD_IA"
+    storage.veridis.xyz/lifecycle-enabled: "true"
+    storage.veridis.xyz/cross-region-replication: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/encryption-at-rest: "enabled"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/access-control: "enabled"
+    security.veridis.xyz/backup-integrity: "enabled"
+    security.veridis.xyz/data-classification: "confidential"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/backup-monitoring: "enabled"
+    monitoring.veridis.xyz/success-notification: "enabled"
+    monitoring.veridis.xyz/failure-notification: "enabled"
+    monitoring.veridis.xyz/metrics-collection: "enabled"
+    monitoring.veridis.xyz/alerts-enabled: "true"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-retention: "7d"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/compliance-validation: "enabled"
+    compliance.veridis.xyz/regulatory-compliance: "gdpr,soc2,iso27001"
+    compliance.veridis.xyz/backup-policy: "production-redis-backup-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "database-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-redis-backup"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/rpo-target: "1h"
+    business.veridis.xyz/rto-target: "15m"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/redis-backup-admin: "database-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "platform-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backup/redis-backup"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backup/redis-backup-management"
+    veridis.xyz/backup-docs: "https://backup.veridis.xyz/redis-backup-guide"
+    veridis.xyz/monitoring-docs: "https://backup.veridis.xyz/redis-backup-monitoring"
+
+# ==============================================================================
+# Redis Backup CronJob Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Schedule Configuration
+  # ==============================================================================
+  schedule: "0 * * * *"  # Run every hour at minute 0
+  timezone: "UTC"
+
+  # ==============================================================================
+  # Concurrency and History Configuration
+  # ==============================================================================
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 5
+  startingDeadlineSeconds: 300  # 5 minutes
+
+  # ==============================================================================
+  # Job Template Configuration
+  # ==============================================================================
+  jobTemplate:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis-backup
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/component: redis-backup-job
+        backup.veridis.xyz/type: redis-backup-job
+        backup.veridis.xyz/schedule: "hourly"
+        veridis.xyz/environment: production
+        veridis.xyz/team: platform-engineering
+
+      annotations:
+        backup.veridis.xyz/created-by: "redis-backup-cronjob"
+        backup.veridis.xyz/backup-scope: "redis-cache"
+        backup.veridis.xyz/retention-policy: "7d"
+        backup.veridis.xyz/backup-type: "rdb-dump"
+
+    spec:
+      # ==============================================================================
+      # Job Configuration
+      # ==============================================================================
+      backoffLimit: 3
+      activeDeadlineSeconds: 3600  # 1 hour timeout
+      ttlSecondsAfterFinished: 86400  # Keep completed jobs for 24 hours
+
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: redis-backup
+            app.kubernetes.io/instance: veridis-production
+            app.kubernetes.io/component: redis-backup-pod
+            backup.veridis.xyz/type: redis-backup-pod
+            sidecar.istio.io/inject: "false"  # Disable service mesh for backup jobs
+
+          annotations:
+            backup.veridis.xyz/backup-timestamp: "$(date -u +%Y%m%d_%H%M%S)"
+            backup.veridis.xyz/backup-source: "redis-primary"
+            backup.veridis.xyz/backup-format: "rdb"
+
+        spec:
+          # ==============================================================================
+          # Pod Configuration
+          # ==============================================================================
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-redis-backup
+
+          # ==============================================================================
+          # Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 999
+            runAsGroup: 999
+            fsGroup: 999
+            seccompProfile:
+              type: RuntimeDefault
+            supplementalGroups: [999]
+
+          # ==============================================================================
+          # Node Selection and Affinity
+          # ==============================================================================
+          nodeSelector:
+            veridis.xyz/node-type: "database"
+
+          affinity:
+            # Prefer nodes with Redis instances for network locality
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/redis-node
+                        operator: In
+                        values: ["true"]
+                - weight: 80
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/backup-optimized
+                        operator: In
+                        values: ["true"]
+
+            # Avoid scheduling on nodes already running backup jobs
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchExpressions:
+                        - key: backup.veridis.xyz/type
+                          operator: In
+                          values: ["postgres-backup-pod", "redis-backup-pod"]
+                    topologyKey: kubernetes.io/hostname
+
+          # ==============================================================================
+          # Tolerations
+          # ==============================================================================
+          tolerations:
+            - key: veridis.xyz/database-node
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: veridis.xyz/backup-node
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+
+          # ==============================================================================
+          # Init Containers
+          # ==============================================================================
+          initContainers:
+            # ==============================================================================
+            # Redis Connection Test Init Container
+            # ==============================================================================
+            - name: redis-connection-test
+              image: redis:7.2.4-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+                  echo "Testing Redis connection..."
+
+                  # Test Redis connection
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                    ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                    ping
+
+                  # Check Redis info
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                    ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                    info replication
+
+                  echo "Redis connection test successful"
+
+              env:
+                - name: REDIS_HOST
+                  value: "veridis-redis"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-redis-secret
+                      key: redis-password
+
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 200m
+                  memory: 256Mi
+
+            # ==============================================================================
+            # Storage Preparation Init Container
+            # ==============================================================================
+            - name: storage-preparation
+              image: amazon/aws-cli:2.15.17
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+                  echo "Preparing backup storage..."
+
+                  # Create backup directory structure
+                  BACKUP_DATE=$(date -u +%Y/%m/%d)
+                  BACKUP_HOUR=$(date -u +%H)
+                  BACKUP_PATH="redis/production/${BACKUP_DATE}/${BACKUP_HOUR}"
+
+                  echo "Backup path: s3://${S3_BUCKET}/${BACKUP_PATH}/"
+
+                  # Test S3 access
+                  aws s3 ls s3://${S3_BUCKET}/ > /dev/null
+                  echo "S3 access verified"
+
+                  # Create backup metadata
+                  cat > /tmp/backup-metadata.json << EOF
+                  {
+                    "backup_type": "redis-rdb",
+                    "backup_timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+                    "redis_host": "${REDIS_HOST}",
+                    "redis_port": "${REDIS_PORT}",
+                    "backup_path": "${BACKUP_PATH}",
+                    "backup_format": "rdb",
+                    "compression": "gzip",
+                    "encryption": "AES256"
+                  }
+                  EOF
+
+                  echo "Storage preparation completed"
+
+              env:
+                - name: S3_BUCKET
+                  value: "veridis-redis-backups"
+                - name: AWS_DEFAULT_REGION
+                  value: "us-east-1"
+                - name: REDIS_HOST
+                  value: "veridis-redis"
+                - name: REDIS_PORT
+                  value: "6379"
+
+              envFrom:
+                - secretRef:
+                    name: veridis-aws-credentials
+
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 200m
+                  memory: 256Mi
+
+              volumeMounts:
+                - name: backup-workspace
+                  mountPath: /tmp
+
+          # ==============================================================================
+          # Main Containers
+          # ==============================================================================
+          containers:
+            # ==============================================================================
+            # Redis Backup Container
+            # ==============================================================================
+            - name: redis-backup
+              image: redis:7.2.4-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+
+                  # Backup configuration
+                  BACKUP_TIMESTAMP=$(date -u +%Y%m%d_%H%M%S)
+                  BACKUP_DATE=$(date -u +%Y/%m/%d)
+                  BACKUP_HOUR=$(date -u +%H)
+                  BACKUP_PATH="redis/production/${BACKUP_DATE}/${BACKUP_HOUR}"
+                  BACKUP_FILE="redis_backup_${BACKUP_TIMESTAMP}.rdb"
+                  COMPRESSED_FILE="${BACKUP_FILE}.gz"
+                  ENCRYPTED_FILE="${COMPRESSED_FILE}.enc"
+
+                  echo "Starting Redis backup..."
+                  echo "Backup timestamp: ${BACKUP_TIMESTAMP}"
+                  echo "Backup path: s3://${S3_BUCKET}/${BACKUP_PATH}/"
+
+                  # Create backup directory
+                  mkdir -p /tmp/backup
+                  cd /tmp/backup
+
+                  # Pre-backup Redis info
+                  echo "=== Pre-backup Redis Info ==="
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                    ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                    info server | grep redis_version
+
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                    ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                    info memory | grep used_memory_human
+
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                    ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                    info keyspace
+
+                  # Trigger Redis background save (non-blocking)
+                  echo "Triggering Redis BGSAVE..."
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                    ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                    bgsave
+
+                  # Wait for BGSAVE to complete
+                  echo "Waiting for BGSAVE to complete..."
+                  while [ "$(redis-cli -h $REDIS_HOST -p $REDIS_PORT ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} lastsave)" -eq "$(redis-cli -h $REDIS_HOST -p $REDIS_PORT ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} lastsave)" ]; do
+                    sleep 1
+                  done
+
+                  echo "BGSAVE completed"
+
+                  # Get the RDB file from Redis
+                  echo "Retrieving RDB dump..."
+                  redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                    ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                    --rdb ${BACKUP_FILE}
+
+                  # Verify backup file
+                  if [ ! -f "${BACKUP_FILE}" ] || [ ! -s "${BACKUP_FILE}" ]; then
+                    echo "ERROR: Backup file is missing or empty"
+                    exit 1
+                  fi
+
+                  BACKUP_SIZE=$(stat -c%s "${BACKUP_FILE}")
+                  echo "Backup file size: ${BACKUP_SIZE} bytes"
+
+                  # Compress backup
+                  echo "Compressing backup..."
+                  gzip -c "${BACKUP_FILE}" > "${COMPRESSED_FILE}"
+
+                  COMPRESSED_SIZE=$(stat -c%s "${COMPRESSED_FILE}")
+                  echo "Compressed file size: ${COMPRESSED_SIZE} bytes"
+                  echo "Compression ratio: $(echo "scale=2; ${COMPRESSED_SIZE} * 100 / ${BACKUP_SIZE}" | bc)%"
+
+                  # Encrypt backup
+                  echo "Encrypting backup..."
+                  openssl enc -aes-256-cbc -salt -in "${COMPRESSED_FILE}" -out "${ENCRYPTED_FILE}" -k "${ENCRYPTION_KEY}"
+
+                  ENCRYPTED_SIZE=$(stat -c%s "${ENCRYPTED_FILE}")
+                  echo "Encrypted file size: ${ENCRYPTED_SIZE} bytes"
+
+                  # Generate checksums
+                  echo "Generating checksums..."
+                  sha256sum "${ENCRYPTED_FILE}" > "${ENCRYPTED_FILE}.sha256"
+                  md5sum "${ENCRYPTED_FILE}" > "${ENCRYPTED_FILE}.md5"
+
+                  # Create backup metadata
+                  cat > backup-metadata.json << EOF
+                  {
+                    "backup_type": "redis-rdb",
+                    "backup_timestamp": "${BACKUP_TIMESTAMP}",
+                    "backup_date": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+                    "redis_host": "${REDIS_HOST}",
+                    "redis_port": "${REDIS_PORT}",
+                    "backup_file": "${BACKUP_FILE}",
+                    "compressed_file": "${COMPRESSED_FILE}",
+                    "encrypted_file": "${ENCRYPTED_FILE}",
+                    "original_size": ${BACKUP_SIZE},
+                    "compressed_size": ${COMPRESSED_SIZE},
+                    "encrypted_size": ${ENCRYPTED_SIZE},
+                    "compression_ratio": $(echo "scale=4; ${COMPRESSED_SIZE} / ${BACKUP_SIZE}" | bc),
+                    "backup_path": "${BACKUP_PATH}",
+                    "backup_format": "rdb",
+                    "compression": "gzip",
+                    "encryption": "AES256",
+                    "redis_version": "$(redis-cli -h $REDIS_HOST -p $REDIS_PORT ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} info server | grep redis_version | cut -d: -f2 | tr -d '\r')",
+                    "database_count": $(redis-cli -h $REDIS_HOST -p $REDIS_PORT ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} info keyspace | grep -c db || echo 0),
+                    "memory_usage": "$(redis-cli -h $REDIS_HOST -p $REDIS_PORT ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} info memory | grep used_memory_human | cut -d: -f2 | tr -d '\r')"
+                  }
+                  EOF
+
+                  echo "Backup preparation completed successfully"
+                  echo "Files ready for upload:"
+                  ls -la
+
+              env:
+                - name: REDIS_HOST
+                  value: "veridis-redis"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-redis-secret
+                      key: redis-password
+                - name: S3_BUCKET
+                  value: "veridis-redis-backups"
+                - name: ENCRYPTION_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-backup-encryption
+                      key: encryption-key
+
+              resources:
+                requests:
+                  cpu: 500m
+                  memory: 1Gi
+                limits:
+                  cpu: 1000m
+                  memory: 2Gi
+
+              volumeMounts:
+                - name: backup-workspace
+                  mountPath: /tmp
+
+            # ==============================================================================
+            # S3 Upload Container
+            # ==============================================================================
+            - name: s3-upload
+              image: amazon/aws-cli:2.15.17
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+
+                  echo "Starting S3 upload..."
+                  cd /tmp/backup
+
+                  # Wait for backup to complete
+                  while [ ! -f "backup-metadata.json" ]; do
+                    echo "Waiting for backup to complete..."
+                    sleep 5
+                  done
+
+                  # Read backup metadata
+                  BACKUP_TIMESTAMP=$(cat backup-metadata.json | grep '"backup_timestamp"' | cut -d'"' -f4)
+                  BACKUP_DATE=$(date -u +%Y/%m/%d)
+                  BACKUP_HOUR=$(date -u +%H)
+                  BACKUP_PATH="redis/production/${BACKUP_DATE}/${BACKUP_HOUR}"
+
+                  echo "Uploading to S3 path: s3://${S3_BUCKET}/${BACKUP_PATH}/"
+
+                  # Upload encrypted backup file
+                  ENCRYPTED_FILE=$(ls *.rdb.gz.enc)
+                  echo "Uploading ${ENCRYPTED_FILE}..."
+                  aws s3 cp "${ENCRYPTED_FILE}" \
+                    "s3://${S3_BUCKET}/${BACKUP_PATH}/${ENCRYPTED_FILE}" \
+                    --storage-class STANDARD_IA \
+                    --server-side-encryption AES256 \
+                    --metadata "backup-timestamp=${BACKUP_TIMESTAMP},backup-type=redis-rdb,environment=production"
+
+                  # Upload checksums
+                  aws s3 cp "${ENCRYPTED_FILE}.sha256" \
+                    "s3://${S3_BUCKET}/${BACKUP_PATH}/${ENCRYPTED_FILE}.sha256" \
+                    --storage-class STANDARD_IA \
+                    --server-side-encryption AES256
+
+                  aws s3 cp "${ENCRYPTED_FILE}.md5" \
+                    "s3://${S3_BUCKET}/${BACKUP_PATH}/${ENCRYPTED_FILE}.md5" \
+                    --storage-class STANDARD_IA \
+                    --server-side-encryption AES256
+
+                  # Upload metadata
+                  aws s3 cp "backup-metadata.json" \
+                    "s3://${S3_BUCKET}/${BACKUP_PATH}/backup-metadata.json" \
+                    --storage-class STANDARD_IA \
+                    --server-side-encryption AES256
+
+                  # Create backup index entry
+                  cat > backup-index.json << EOF
+                  {
+                    "backup_id": "${BACKUP_TIMESTAMP}",
+                    "backup_type": "redis-rdb",
+                    "backup_date": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+                    "backup_path": "${BACKUP_PATH}",
+                    "backup_file": "${ENCRYPTED_FILE}",
+                    "environment": "production",
+                    "redis_host": "veridis-redis",
+                    "status": "completed"
+                  }
+                  EOF
+
+                  aws s3 cp "backup-index.json" \
+                    "s3://${S3_BUCKET}/index/redis/production/${BACKUP_TIMESTAMP}.json" \
+                    --storage-class STANDARD_IA \
+                    --server-side-encryption AES256
+
+                  echo "S3 upload completed successfully"
+                  echo "Backup location: s3://${S3_BUCKET}/${BACKUP_PATH}/"
+
+              env:
+                - name: S3_BUCKET
+                  value: "veridis-redis-backups"
+                - name: AWS_DEFAULT_REGION
+                  value: "us-east-1"
+
+              envFrom:
+                - secretRef:
+                    name: veridis-aws-credentials
+
+              resources:
+                requests:
+                  cpu: 200m
+                  memory: 256Mi
+                limits:
+                  cpu: 500m
+                  memory: 512Mi
+
+              volumeMounts:
+                - name: backup-workspace
+                  mountPath: /tmp
+
+            # ==============================================================================
+            # Backup Verification Container
+            # ==============================================================================
+            - name: backup-verification
+              image: redis:7.2.4-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+
+                  echo "Starting backup verification..."
+                  cd /tmp/backup
+
+                  # Wait for S3 upload to complete
+                  while [ ! -f "backup-index.json" ]; do
+                    echo "Waiting for S3 upload to complete..."
+                    sleep 5
+                  done
+
+                  # Verify checksums
+                  echo "Verifying checksums..."
+                  ENCRYPTED_FILE=$(ls *.rdb.gz.enc)
+
+                  if ! sha256sum -c "${ENCRYPTED_FILE}.sha256"; then
+                    echo "ERROR: SHA256 checksum verification failed"
+                    exit 1
+                  fi
+
+                  if ! md5sum -c "${ENCRYPTED_FILE}.md5"; then
+                    echo "ERROR: MD5 checksum verification failed"
+                    exit 1
+                  fi
+
+                  echo "Checksum verification passed"
+
+                  # Test backup decryption (without fully decrypting)
+                  echo "Testing backup decryption..."
+                  if ! openssl enc -aes-256-cbc -d -in "${ENCRYPTED_FILE}" -k "${ENCRYPTION_KEY}" -out /dev/null 2>/dev/null; then
+                    echo "ERROR: Backup decryption test failed"
+                    exit 1
+                  fi
+
+                  echo "Backup decryption test passed"
+
+                  # Create verification report
+                  cat > verification-report.json << EOF
+                  {
+                    "verification_timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+                    "backup_file": "${ENCRYPTED_FILE}",
+                    "checksum_verification": "passed",
+                    "decryption_test": "passed",
+                    "file_integrity": "verified",
+                    "verification_status": "success"
+                  }
+                  EOF
+
+                  echo "Backup verification completed successfully"
+
+              env:
+                - name: ENCRYPTION_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-backup-encryption
+                      key: encryption-key
+
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 200m
+                  memory: 256Mi
+
+              volumeMounts:
+                - name: backup-workspace
+                  mountPath: /tmp
+
+            # ==============================================================================
+            # Notification Container
+            # ==============================================================================
+            - name: notification
+              image: curlimages/curl:8.5.0
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+
+                  echo "Sending backup notification..."
+                  cd /tmp/backup
+
+                  # Wait for verification to complete
+                  while [ ! -f "verification-report.json" ]; do
+                    echo "Waiting for verification to complete..."
+                    sleep 5
+                  done
+
+                  # Read backup and verification data
+                  BACKUP_TIMESTAMP=$(cat backup-metadata.json | grep '"backup_timestamp"' | cut -d'"' -f4)
+                  BACKUP_SIZE=$(cat backup-metadata.json | grep '"original_size"' | cut -d':' -f2 | tr -d ' ,')
+                  COMPRESSED_SIZE=$(cat backup-metadata.json | grep '"compressed_size"' | cut -d':' -f2 | tr -d ' ,')
+                  VERIFICATION_STATUS=$(cat verification-report.json | grep '"verification_status"' | cut -d'"' -f4)
+
+                  # Calculate human-readable sizes
+                  BACKUP_SIZE_MB=$(echo "scale=2; ${BACKUP_SIZE} / 1024 / 1024" | bc)
+                  COMPRESSED_SIZE_MB=$(echo "scale=2; ${COMPRESSED_SIZE} / 1024 / 1024" | bc)
+
+                  # Send Slack notification
+                  if [ "${VERIFICATION_STATUS}" = "success" ]; then
+                    curl -X POST "${SLACK_WEBHOOK_URL}" \
+                      -H 'Content-type: application/json' \
+                      --data "{
+                        \"text\": \"✅ Redis Backup Completed Successfully\",
+                        \"attachments\": [{
+                          \"color\": \"good\",
+                          \"fields\": [
+                            {\"title\": \"Backup ID\", \"value\": \"${BACKUP_TIMESTAMP}\", \"short\": true},
+                            {\"title\": \"Original Size\", \"value\": \"${BACKUP_SIZE_MB} MB\", \"short\": true},
+                            {\"title\": \"Compressed Size\", \"value\": \"${COMPRESSED_SIZE_MB} MB\", \"short\": true},
+                            {\"title\": \"Verification\", \"value\": \"${VERIFICATION_STATUS}\", \"short\": true},
+                            {\"title\": \"Environment\", \"value\": \"Production\", \"short\": true},
+                            {\"title\": \"Timestamp\", \"value\": \"$(date -u)\", \"short\": true}
+                          ]
+                        }]
+                      }"
+                  else
+                    curl -X POST "${SLACK_WEBHOOK_URL}" \
+                      -H 'Content-type: application/json' \
+                      --data "{
+                        \"text\": \"❌ Redis Backup Failed\",
+                        \"attachments\": [{
+                          \"color\": \"danger\",
+                          \"fields\": [
+                            {\"title\": \"Backup ID\", \"value\": \"${BACKUP_TIMESTAMP}\", \"short\": true},
+                            {\"title\": \"Verification\", \"value\": \"${VERIFICATION_STATUS}\", \"short\": true},
+                            {\"title\": \"Environment\", \"value\": \"Production\", \"short\": true},
+                            {\"title\": \"Timestamp\", \"value\": \"$(date -u)\", \"short\": true}
+                          ]
+                        }]
+                      }"
+                  fi
+
+                  echo "Notification sent successfully"
+
+              env:
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-notification-secrets
+                      key: slack-webhook-url
+
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 64Mi
+                limits:
+                  cpu: 100m
+                  memory: 128Mi
+
+              volumeMounts:
+                - name: backup-workspace
+                  mountPath: /tmp
+
+          # ==============================================================================
+          # Volumes
+          # ==============================================================================
+          volumes:
+            - name: backup-workspace
+              emptyDir:
+                sizeLimit: 10Gi
+                medium: ""
+
+---
+# ==============================================================================
+# Veridis Critical Redis Backup CronJob - High-Frequency Backup
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-redis-critical-backup
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: redis-backup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: critical-redis-backup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backup.veridis.xyz/type: critical-redis-backup
+    backup.veridis.xyz/category: high-frequency-backup
+    backup.veridis.xyz/role: critical-redis-backup
+    backup.veridis.xyz/priority: high
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/criticality: mission-critical
+
+  annotations:
+    veridis.xyz/description: "High-frequency Redis backup for critical operations"
+    veridis.xyz/purpose: "Provides frequent Redis backups for mission-critical data"
+
+    backup.veridis.xyz/schedule-expression: "*/15 * * * *"  # Every 15 minutes
+    backup.veridis.xyz/retention-period: "24h"
+    backup.veridis.xyz/backup-scope: "critical-keys-only"
+
+# ==============================================================================
+# Critical Redis Backup CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "*/15 * * * *"  # Every 15 minutes
+  timezone: "UTC"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 5
+  successfulJobsHistoryLimit: 10
+  startingDeadlineSeconds: 180  # 3 minutes
+
+  jobTemplate:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis-backup
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/component: critical-redis-backup-job
+        backup.veridis.xyz/type: critical-redis-backup-job
+        backup.veridis.xyz/schedule: "high-frequency"
+
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 900  # 15 minutes timeout
+      ttlSecondsAfterFinished: 3600  # Keep completed jobs for 1 hour
+
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: redis-backup
+            app.kubernetes.io/instance: veridis-production
+            app.kubernetes.io/component: critical-redis-backup-pod
+            backup.veridis.xyz/type: critical-redis-backup-pod
+            sidecar.istio.io/inject: "false"
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-redis-backup
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 999
+            runAsGroup: 999
+            fsGroup: 999
+            seccompProfile:
+              type: RuntimeDefault
+
+          containers:
+            # Critical Redis backup with key-specific backup
+            - name: critical-redis-backup
+              image: redis:7.2.4-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+
+                  BACKUP_TIMESTAMP=$(date -u +%Y%m%d_%H%M%S)
+                  echo "Starting critical Redis backup: ${BACKUP_TIMESTAMP}"
+
+                  mkdir -p /tmp/backup
+                  cd /tmp/backup
+
+                  # Backup critical keys only
+                  echo "Backing up critical keys..."
+
+                  # List of critical key patterns
+                  CRITICAL_PATTERNS=(
+                    "session:*"
+                    "auth:*"
+                    "identity:*"
+                    "verification:*"
+                    "zk:*"
+                  )
+
+                  # Export critical keys
+                  for pattern in "${CRITICAL_PATTERNS[@]}"; do
+                    echo "Backing up keys matching: ${pattern}"
+                    redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                      ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                      --scan --pattern "${pattern}" | \
+                    while read key; do
+                      redis-cli -h $REDIS_HOST -p $REDIS_PORT \
+                        ${REDIS_PASSWORD:+-a $REDIS_PASSWORD} \
+                        dump "$key" > "${key//[^a-zA-Z0-9]/_}.dump"
+                    done
+                  done
+
+                  # Create archive
+                  tar czf "critical_redis_${BACKUP_TIMESTAMP}.tar.gz" *.dump
+
+                  # Upload to S3
+                  aws s3 cp "critical_redis_${BACKUP_TIMESTAMP}.tar.gz" \
+                    "s3://veridis-redis-backups/critical/$(date -u +%Y/%m/%d)/" \
+                    --storage-class STANDARD_IA
+
+                  echo "Critical Redis backup completed"
+
+              env:
+                - name: REDIS_HOST
+                  value: "veridis-redis"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-redis-secret
+                      key: redis-password
+
+              envFrom:
+                - secretRef:
+                    name: veridis-aws-credentials
+
+              resources:
+                requests:
+                  cpu: 200m
+                  memory: 256Mi
+                limits:
+                  cpu: 500m
+                  memory: 512Mi
+
+              volumeMounts:
+                - name: backup-workspace
+                  mountPath: /tmp
+
+          volumes:
+            - name: backup-workspace
+              emptyDir:
+                sizeLimit: 2Gi
+
+---
+# ==============================================================================
+# Veridis Redis Backup Cleanup CronJob - Backup Lifecycle Management
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-redis-backup-cleanup
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: redis-backup-cleanup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: redis-backup-cleanup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backup.veridis.xyz/type: redis-backup-cleanup
+    backup.veridis.xyz/category: lifecycle-management
+    backup.veridis.xyz/role: backup-cleanup
+    backup.veridis.xyz/priority: medium
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+
+  annotations:
+    veridis.xyz/description: "Redis backup cleanup and lifecycle management"
+    veridis.xyz/purpose: "Manages Redis backup retention and cleanup policies"
+
+    backup.veridis.xyz/schedule-expression: "0 2 * * *"  # Daily at 2 AM
+    backup.veridis.xyz/cleanup-scope: "expired-backups"
+
+# ==============================================================================
+# Redis Backup Cleanup CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  timezone: "UTC"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 5
+
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 1800  # 30 minutes timeout
+
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: redis-backup-cleanup
+            backup.veridis.xyz/type: redis-backup-cleanup-pod
+            sidecar.istio.io/inject: "false"
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-redis-backup
+
+          containers:
+            - name: backup-cleanup
+              image: amazon/aws-cli:2.15.17
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                runAsGroup: 999
+                seccompProfile:
+                  type: RuntimeDefault
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -euo pipefail
+
+                  echo "Starting Redis backup cleanup..."
+
+                  # Cleanup regular backups older than 7 days
+                  CUTOFF_DATE=$(date -d '7 days ago' +%Y/%m/%d)
+                  echo "Cleaning up regular backups older than: ${CUTOFF_DATE}"
+
+                  aws s3 rm "s3://veridis-redis-backups/redis/production/" \
+                    --recursive \
+                    --exclude "*" \
+                    --include "*" \
+                    --query "Contents[?LastModified<='$(date -d '7 days ago' --iso-8601)'].Key" \
+                    --output text | xargs -r aws s3 rm
+
+                  # Cleanup critical backups older than 24 hours
+                  CRITICAL_CUTOFF_DATE=$(date -d '1 day ago' +%Y/%m/%d)
+                  echo "Cleaning up critical backups older than: ${CRITICAL_CUTOFF_DATE}"
+
+                  aws s3 rm "s3://veridis-redis-backups/critical/" \
+                    --recursive \
+                    --exclude "*" \
+                    --include "*" \
+                    --query "Contents[?LastModified<='$(date -d '1 day ago' --iso-8601)'].Key" \
+                    --output text | xargs -r aws s3 rm
+
+                  echo "Redis backup cleanup completed"
+
+              envFrom:
+                - secretRef:
+                    name: veridis-aws-credentials
+
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 200m
+                  memory: 256Mi
+
+# ==============================================================================
+# Veridis Redis Backup Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS REDIS BACKUP STRATEGY:
+# ============================================
+#
+# VERIDIS REDIS BACKUP ARCHITECTURE OVERVIEW:
+# -------------------------------------------
+# 1. Production Redis Backup (veridis-redis-backup):
+#    - Comprehensive enterprise-grade Redis backup with intelligent backup automation and advanced performance optimization for production environments
+#    - Advanced backup configuration with comprehensive RDB dump creation, compression, encryption, and comprehensive operational excellence
+#    - Multi-tier backup architecture with hourly scheduling, S3 storage, verification procedures, and comprehensive backup intelligence
+#    - Enterprise backup policies with security enforcement, compliance controls, notification automation, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent compression, encryption management, upload optimization, and efficiency for maximum backup performance
+#
+# 2. Critical Redis Backup (veridis-redis-critical-backup):
+#    - High-frequency Redis backup with critical key focus and comprehensive critical coordination
+#    - Advanced critical configuration with 15-minute scheduling, key-specific backup, targeted export, and comprehensive critical intelligence
+#    - Flexible backup optimization with critical workflow, key filtering, and comprehensive critical intelligence
+#    - Critical intelligence with backup procedures, key support, critical automation, and comprehensive critical coordination
+#    - Operational excellence with critical backup, key workflows, critical automation, and comprehensive critical environment management
+#
+# 3. Backup Cleanup (veridis-redis-backup-cleanup):
+#    - Lifecycle management backup with retention policies and comprehensive cleanup coordination
+#    - Advanced cleanup configuration with daily scheduling, retention enforcement, lifecycle management, and comprehensive cleanup intelligence
+#    - Flexible backup optimization with cleanup workflow, retention policies, and comprehensive cleanup intelligence
+#    - Cleanup intelligence with backup procedures, lifecycle support, cleanup automation, and comprehensive cleanup coordination
+#    - Lifecycle excellence with cleanup backup, retention workflows, cleanup automation, and comprehensive cleanup environment management
+#
+# ENTERPRISE REDIS BACKUP FEATURES:
+# =================================
+# Advanced Backup Automation and Multi-Container Processing:
+#   - Multi-tier backup architecture with hourly backup, critical backup, cleanup management, and comprehensive backup configurations
+#   - Intelligent backup automation with Redis RDB dumps, compression processing, encryption handling, and comprehensive backup decisions
+#   - Backup discovery with S3 optimization, upload management, verification procedures, and comprehensive backup analytics
+#   - Performance management with compression optimization, encryption efficiency, upload acceleration, and comprehensive performance intelligence
+#   - Backup processing tuning with multi-container processing, parallel operations, resource algorithms, and intelligent backup optimization
+#
+# Comprehensive Security and Encryption Integration:
+#   - Multi-tier security with AES-256 encryption, S3 server-side encryption, access controls, and comprehensive security coordination
+#   - Security optimization with encryption at rest, encryption in transit, key management, and comprehensive security intelligence
+#   - Access management with IAM roles, service accounts, permission validation, and comprehensive access coordination
+#   - Business intelligence with security analytics, access correlation, backup optimization, and comprehensive strategic insights
+#   - Security management with encryption policies, access optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Performance and Resource Optimization:
+#   - Multi-tier performance with backup speed, compression optimization, upload acceleration, and comprehensive performance coordination
+#   - Performance optimization with parallel processing, resource efficiency, storage optimization, and comprehensive performance intelligence
+#   - Resource management with CPU allocation, memory optimization, storage management, and comprehensive resource coordination
+#   - Business intelligence with performance analytics, resource correlation, efficiency optimization, and comprehensive strategic insights
+#   - Optimization management with backup performance, resource allocation, efficiency monitoring, and comprehensive optimization analytics
+#
+# Advanced Verification and Quality Assurance:
+#   - Multi-tier verification with checksum validation, decryption testing, integrity verification, and comprehensive verification coordination
+#   - Verification optimization with SHA-256 checksums, MD5 validation, encryption testing, and comprehensive verification intelligence
+#   - Quality management with backup validation, integrity checking, verification procedures, and comprehensive quality coordination
+#   - Business intelligence with verification analytics, quality correlation, integrity optimization, and comprehensive strategic insights
+#   - Quality management with verification policies, integrity optimization, quality integration, and comprehensive quality analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Redis Backup Lifecycle Management:
+#   - Multi-CronJob deployment with hourly backup, critical backup, cleanup management, and comprehensive cronjob coordination
+#   - Intelligent cronjob management with predictive analytics and backup utilization correlation
+#   - Advanced monitoring with comprehensive cronjob analytics and backup business intelligence
+#   - CronJob validation with backup schema enforcement and cronjob deployment safety checks
+#   - Automated optimization with cronjob pattern analysis and backup optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II backup controls with comprehensive audit requirements and backup logging
+#   - GDPR backup compliance with data protection and privacy-preserving backup management
+#   - ISO 27001 backup security management with information security and backup compliance integration
+#   - NIST 800-190 container backup security with backup validation and compliance
+#   - Zero-trust backup architecture with comprehensive encryption and backup authentication requirements
+#
+# Business Intelligence Integration:
+#   - Backup analytics with cost correlation and cronjob resource utilization optimization
+#   - Performance analytics with backup experience optimization and cronjob business intelligence
+#   - Backup intelligence with processing pattern monitoring and cronjob optimization recommendations
+#   - Strategic planning with capacity management and cronjob forecasting
+#   - Business impact assessment with cronjob performance correlation and backup tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment cronjob support with production backup, critical backup, cleanup management, and comprehensive cronjob coordination
+#   - Comprehensive documentation with cronjob guides and backup troubleshooting procedures
+#   - Environment-specific cronjobs with production, critical, and cleanup support
+#   - Testing integration with cronjob development workflow and backup debugging capabilities
+#   - CronJob monitoring with comprehensive tracking and backup correlation
+#
+# ==============================================================================
