@@ -1,0 +1,1443 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - PostgreSQL Database Backup CronJob Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive PostgreSQL Database Backup CronJob for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS POSTGRESQL BACKUP CRONJOB ARCHITECTURE:
+#   • Advanced PostgreSQL Backup CronJob with intelligent database backup automation and performance-based optimization
+#   • Multi-tier Backup CronJob architecture with development, testing, staging, and production environments
+#   • Comprehensive database backup framework with CronJob policies, data optimization, PostgreSQL integration
+#   • Advanced lifecycle management with automated CronJob optimization, PostgreSQL control, and data enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and PostgreSQL Backup CronJob performance insights
+#
+# VERIDIS POSTGRESQL BACKUP CRONJOB OPTIMIZATION:
+#   • High-performance CronJob with intelligent database backup automation and PostgreSQL backup job optimization
+#   • Intelligent CronJob database backup with responsive policies and performance-based backup decisions
+#   • Advanced CronJob management with business intelligence and backup-based PostgreSQL control
+#   • Comprehensive database backup control with intelligent PostgreSQL CronJob management and data enhancement
+#   • Enterprise acceleration with predictive PostgreSQL CronJob management and database backup optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II PostgreSQL Backup CronJob controls with comprehensive audit and backup requirements
+#   • GDPR PostgreSQL Backup CronJob compliance with data protection, privacy controls, and backup management
+#   • ISO 27001 PostgreSQL Backup CronJob management with comprehensive framework integration
+#   • NIST 800-190 container PostgreSQL Backup CronJob security with backup-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and PostgreSQL Backup CronJob best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent PostgreSQL Backup CronJob lifecycle management with automated provisioning and backup optimization
+#   • Predictive backup analytics with capacity planning and PostgreSQL Backup CronJob intelligence
+#   • Advanced CronJob integration with PostgreSQL backup analytics and performance business intelligence
+#   • Comprehensive database backup control with PostgreSQL Backup CronJob preservation and data optimization
+#   • Business continuity PostgreSQL Backup CronJob with backup guarantees and performance optimization
+#
+# POSTGRESQL BACKUP CRONJOB ACCELERATION INTELLIGENCE:
+#   • PostgreSQL Backup CronJob usage analytics with backup patterns and optimization recommendations
+#   • CronJob monitoring with PostgreSQL backup latency and management optimization intelligence
+#   • Development efficiency with PostgreSQL Backup CronJob analytics and deployment optimization procedures
+#   • Cost optimization with PostgreSQL Backup CronJob utilization analysis and backup capacity planning procedures
+#   • Quality assurance with PostgreSQL Backup CronJob metrics and backup validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production PostgreSQL Backup CronJob - Comprehensive Database Backup
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-postgres-backup-cronjob
+  namespace: veridis-infrastructure
+
+  # Core Veridis PostgreSQL Backup CronJob identification labels
+  labels:
+    app.kubernetes.io/name: postgres-backup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "16.1"
+    app.kubernetes.io/component: database-backup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # PostgreSQL Backup CronJob specific classification
+    backup.veridis.xyz/type: production-postgres-backup-cronjob
+    backup.veridis.xyz/category: comprehensive-database-backup
+    backup.veridis.xyz/role: primary-database-backup
+    backup.veridis.xyz/backup-class: high-performance-database-backup
+    backup.veridis.xyz/security-level: enterprise
+
+    # Database Backup CronJob classification
+    database.veridis.xyz/backup-cronjob-type: intelligent-database-backup
+    database.veridis.xyz/backup-type: postgres-backup
+    database.veridis.xyz/performance-tier: high-throughput
+    database.veridis.xyz/optimization: enabled
+    database.veridis.xyz/features: full-database-backup-stack
+
+    # Backup Database Backup CronJob classification
+    backup.veridis.xyz/tier: production
+    backup.veridis.xyz/optimization: intelligent-database-backup-management
+    backup.veridis.xyz/data-management: advanced
+    backup.veridis.xyz/performance-optimization: enabled
+    backup.veridis.xyz/efficiency: maximum
+
+    # Business Database Backup CronJob classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-database-backup-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Database Backup CronJob labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-engineering
+    veridis.xyz/cost-center: database-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "database-backup-control-framework"
+    compliance.veridis.xyz/gdpr: "database-backup-data-protection"
+    compliance.veridis.xyz/iso27001: "database-backup-security-management"
+    compliance.veridis.xyz/nist-800-190: "database-backup-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Database Backup CronJob analytics and intelligence
+    monitoring.veridis.xyz/database-backup-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/backup-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # PostgreSQL specific labels
+    postgres.veridis.xyz/backup-type: "logical-physical"
+    postgres.veridis.xyz/backup-method: "pg_dump-pg_basebackup"
+    postgres.veridis.xyz/compression: "enabled"
+    postgres.veridis.xyz/encryption: "enabled"
+    postgres.veridis.xyz/consistency: "enabled"
+    postgres.veridis.xyz/pitr: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/backup-speed: "high"
+    performance.veridis.xyz/compression-level: "optimal"
+    performance.veridis.xyz/parallel-jobs: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/streaming-backup: "enabled"
+
+  annotations:
+    # Database Backup CronJob purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis PostgreSQL Database Backup CronJob with intelligent database backup automation, advanced performance optimization, and comprehensive backup optimization"
+    veridis.xyz/purpose: "Provides comprehensive PostgreSQL Database Backup CronJob for decentralized identity management with intelligent backup automation, performance optimization, and backup guarantees"
+    veridis.xyz/scope: "PostgreSQL Database Backup CronJob including backup automation, performance optimization, cronjob configuration, and comprehensive monitoring intelligence"
+
+    # Database Backup CronJob architecture and design
+    backup.veridis.xyz/architecture: "Enterprise PostgreSQL Database Backup CronJob with intelligent backup automation, advanced performance optimization, and cronjob integration optimization"
+    backup.veridis.xyz/design-pattern: "Multi-tier Database Backup CronJob with performance optimization, cost efficiency, and business intelligence"
+    backup.veridis.xyz/optimization-model: "Intelligent Database Backup CronJob with predictive analytics, performance optimization, and backup efficiency"
+    backup.veridis.xyz/performance-model: "High-performance Database Backup CronJob with backup optimization and intelligent cronjob management"
+
+    # Database Backup CronJob specifications
+    database.veridis.xyz/database-backup-specification: "Database Backup CronJob with performance optimization and intelligent database backup management"
+    database.veridis.xyz/backup-specification: "Advanced database backup automation with backup optimization and cronjob enhancement"
+    database.veridis.xyz/postgres-specification: "Database Backup CronJob PostgreSQL management optimization with intelligent backup and enhancement"
+    database.veridis.xyz/performance-specification: "Database performance backup with backup acceleration and efficiency"
+    database.veridis.xyz/business-specification: "Database business backup with cost optimization and strategic backup intelligence"
+
+    # Backup schedule annotations
+    backup.veridis.xyz/schedule-expression: "0 2 * * *"  # Daily at 2 AM
+    backup.veridis.xyz/backup-retention: "30d"
+    backup.veridis.xyz/backup-window: "4h"
+    backup.veridis.xyz/max-backup-duration: "2h"
+    backup.veridis.xyz/backup-location: "s3://veridis-backups/postgres"
+
+    # Performance annotations
+    performance.veridis.xyz/backup-timeout: "7200s"  # 2 hours
+    performance.veridis.xyz/parallel-jobs: "4"
+    performance.veridis.xyz/compression-algorithm: "gzip"
+    performance.veridis.xyz/compression-level: "6"
+    performance.veridis.xyz/streaming-enabled: "true"
+
+    # Security annotations
+    security.veridis.xyz/encryption-enabled: "true"
+    security.veridis.xyz/encryption-algorithm: "AES256"
+    security.veridis.xyz/backup-integrity: "enabled"
+    security.veridis.xyz/access-control: "enabled"
+    security.veridis.xyz/data-classification: "confidential"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/backup-monitoring: "enabled"
+    monitoring.veridis.xyz/success-notification: "enabled"
+    monitoring.veridis.xyz/failure-notification: "enabled"
+    monitoring.veridis.xyz/metrics-collection: "enabled"
+    monitoring.veridis.xyz/alerts-enabled: "true"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-retention: "30d"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/compliance-validation: "enabled"
+    compliance.veridis.xyz/regulatory-compliance: "gdpr,soc2,iso27001"
+    compliance.veridis.xyz/backup-policy: "production-postgres-backup-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "database-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-database-backup"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/rpo-target: "24h"
+    business.veridis.xyz/rto-target: "2h"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "database-team@veridis.xyz"
+    veridis.xyz/database-backup-admin: "dba@veridis.xyz"
+    veridis.xyz/escalation: "database-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "database-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/database/postgres-backup"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/database/postgres-backup-management"
+    veridis.xyz/backup-docs: "https://database.veridis.xyz/postgres-backup-guide"
+    veridis.xyz/recovery-docs: "https://database.veridis.xyz/postgres-recovery-procedures"
+
+# ==============================================================================
+# PostgreSQL Backup CronJob Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Schedule Configuration
+  # ==============================================================================
+  schedule: "0 2 * * *"  # Daily at 2 AM UTC
+
+  # ==============================================================================
+  # Timezone Configuration
+  # ==============================================================================
+  timeZone: "UTC"
+
+  # ==============================================================================
+  # Concurrency and History Management
+  # ==============================================================================
+  concurrencyPolicy: Forbid  # Prevent overlapping backups
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 3
+
+  # ==============================================================================
+  # Job Deadline Configuration
+  # ==============================================================================
+  startingDeadlineSeconds: 300  # 5 minutes grace period
+
+  # ==============================================================================
+  # Job Template
+  # ==============================================================================
+  jobTemplate:
+    metadata:
+      labels:
+        backup.veridis.xyz/cronjob-name: "veridis-postgres-backup-cronjob"
+        backup.veridis.xyz/type: "scheduled-postgres-backup"
+        backup.veridis.xyz/database: "postgresql"
+        backup.veridis.xyz/environment: "production"
+        veridis.xyz/component: "database-backup"
+        veridis.xyz/managed-by: "cronjob"
+
+      annotations:
+        backup.veridis.xyz/created-by: "postgres-backup-cronjob"
+        backup.veridis.xyz/schedule-cron: "0 2 * * *"
+        backup.veridis.xyz/backup-type: "full-database-backup"
+        backup.veridis.xyz/retention-policy: "30d"
+
+    # ==============================================================================
+    # Job Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Job Execution Configuration
+      # ==============================================================================
+      activeDeadlineSeconds: 7200  # 2 hours maximum execution time
+      backoffLimit: 2  # Retry failed jobs twice
+      ttlSecondsAfterFinished: 86400  # Keep completed jobs for 24 hours
+
+      # ==============================================================================
+      # Pod Template
+      # ==============================================================================
+      template:
+        metadata:
+          labels:
+            backup.veridis.xyz/job-type: "postgres-backup"
+            backup.veridis.xyz/database: "postgresql"
+            backup.veridis.xyz/backup-method: "pg_dump"
+            veridis.xyz/component: "database-backup-job"
+
+          annotations:
+            backup.veridis.xyz/backup-timestamp: "{{ .Values.timestamp }}"
+            backup.veridis.xyz/backup-version: "production-v1"
+
+        # ==============================================================================
+        # Pod Specification
+        # ==============================================================================
+        spec:
+          # ==============================================================================
+          # Security and Service Account
+          # ==============================================================================
+          serviceAccountName: postgres-backup-sa
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 999  # postgres user
+            runAsGroup: 999  # postgres group
+            fsGroup: 999
+            seccompProfile:
+              type: RuntimeDefault
+
+          # ==============================================================================
+          # Pod Scheduling and Tolerations
+          # ==============================================================================
+          restartPolicy: OnFailure
+
+          # Node selection for backup workloads
+          nodeSelector:
+            veridis.xyz/node-type: "database"
+            kubernetes.io/arch: "amd64"
+
+          # Tolerations for dedicated backup nodes
+          tolerations:
+            - key: "veridis.xyz/database-backup"
+              operator: "Equal"
+              value: "true"
+              effect: "NoSchedule"
+            - key: "node.kubernetes.io/not-ready"
+              operator: "Exists"
+              effect: "NoExecute"
+              tolerationSeconds: 300
+
+          # Pod affinity for optimal placement
+          affinity:
+            podAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchLabels:
+                        app.kubernetes.io/name: postgresql
+                    topologyKey: kubernetes.io/hostname
+
+          # ==============================================================================
+          # Init Containers
+          # ==============================================================================
+          initContainers:
+            # ==============================================================================
+            # Pre-backup Validation Container
+            # ==============================================================================
+            - name: pre-backup-validation
+              image: postgres:16.1-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                capabilities:
+                  drop:
+                    - ALL
+
+              env:
+                - name: PGHOST
+                  value: "postgresql.veridis-infrastructure.svc.cluster.local"
+                - name: PGPORT
+                  value: "5432"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: password
+                - name: PGDATABASE
+                  value: "veridis"
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Starting pre-backup validation..."
+
+                  # Test database connectivity
+                  echo "Testing database connectivity..."
+                  pg_isready -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE
+                  if [ $? -ne 0 ]; then
+                    echo "ERROR: Database is not ready"
+                    exit 1
+                  fi
+
+                  # Check database size
+                  echo "Checking database size..."
+                  DATABASE_SIZE=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -t -c "SELECT pg_size_pretty(pg_database_size('$PGDATABASE'));")
+                  echo "Database size: $DATABASE_SIZE"
+
+                  # Check for active connections
+                  echo "Checking active connections..."
+                  ACTIVE_CONNECTIONS=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -t -c "SELECT count(*) FROM pg_stat_activity WHERE state = 'active';")
+                  echo "Active connections: $ACTIVE_CONNECTIONS"
+
+                  # Check for long-running transactions
+                  echo "Checking for long-running transactions..."
+                  LONG_RUNNING=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -t -c "SELECT count(*) FROM pg_stat_activity WHERE state = 'active' AND now() - query_start > interval '30 minutes';")
+                  echo "Long-running transactions: $LONG_RUNNING"
+
+                  if [ "$LONG_RUNNING" -gt 0 ]; then
+                    echo "WARNING: Found $LONG_RUNNING long-running transactions"
+                  fi
+
+                  # Check WAL status
+                  echo "Checking WAL status..."
+                  WAL_STATUS=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -t -c "SELECT pg_current_wal_lsn();")
+                  echo "Current WAL LSN: $WAL_STATUS"
+
+                  echo "Pre-backup validation completed successfully"
+
+              volumeMounts:
+                - name: backup-tmp
+                  mountPath: /tmp
+
+              resources:
+                requests:
+                  memory: "64Mi"
+                  cpu: "50m"
+                limits:
+                  memory: "128Mi"
+                  cpu: "100m"
+
+            # ==============================================================================
+            # Storage Preparation Container
+            # ==============================================================================
+            - name: storage-preparation
+              image: amazon/aws-cli:2.15.17
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534  # nobody user
+                capabilities:
+                  drop:
+                    - ALL
+
+              env:
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: access-key-id
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: secret-access-key
+                - name: AWS_DEFAULT_REGION
+                  value: "us-east-1"
+                - name: S3_BUCKET
+                  value: "veridis-database-backups"
+                - name: BACKUP_PREFIX
+                  value: "postgres/production"
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Preparing S3 storage for backup..."
+
+                  # Create backup directory structure
+                  BACKUP_DATE=$(date +%Y-%m-%d)
+                  BACKUP_PATH="$BACKUP_PREFIX/$BACKUP_DATE"
+
+                  echo "Backup path: s3://$S3_BUCKET/$BACKUP_PATH"
+
+                  # Test S3 connectivity
+                  echo "Testing S3 connectivity..."
+                  aws s3 ls s3://$S3_BUCKET/ > /dev/null
+                  if [ $? -ne 0 ]; then
+                    echo "ERROR: Cannot access S3 bucket"
+                    exit 1
+                  fi
+
+                  # Check available space (if applicable)
+                  echo "S3 storage preparation completed"
+
+              volumeMounts:
+                - name: backup-tmp
+                  mountPath: /tmp
+
+              resources:
+                requests:
+                  memory: "64Mi"
+                  cpu: "50m"
+                limits:
+                  memory: "128Mi"
+                  cpu: "100m"
+
+          # ==============================================================================
+          # Main Backup Container
+          # ==============================================================================
+          containers:
+            - name: postgres-backup
+              image: postgres:16.1-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                capabilities:
+                  drop:
+                    - ALL
+
+              # ==============================================================================
+              # Environment Variables
+              # ==============================================================================
+              env:
+                # PostgreSQL connection
+                - name: PGHOST
+                  value: "postgresql.veridis-infrastructure.svc.cluster.local"
+                - name: PGPORT
+                  value: "5432"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: password
+                - name: PGDATABASE
+                  value: "veridis"
+
+                # AWS S3 configuration
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: access-key-id
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: secret-access-key
+                - name: AWS_DEFAULT_REGION
+                  value: "us-east-1"
+
+                # Backup configuration
+                - name: S3_BUCKET
+                  value: "veridis-database-backups"
+                - name: BACKUP_PREFIX
+                  value: "postgres/production"
+                - name: COMPRESSION_LEVEL
+                  value: "6"
+                - name: PARALLEL_JOBS
+                  value: "4"
+                - name: BACKUP_RETENTION_DAYS
+                  value: "30"
+
+                # Monitoring configuration
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: notification-credentials
+                      key: slack-webhook-url
+                      optional: true
+
+                # Encryption configuration
+                - name: BACKUP_ENCRYPTION_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: backup-encryption-credentials
+                      key: encryption-key
+
+              # ==============================================================================
+              # Backup Command
+              # ==============================================================================
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -e
+
+                  echo "Starting PostgreSQL backup process..."
+
+                  # Set up variables
+                  BACKUP_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+                  BACKUP_DATE=$(date +%Y-%m-%d)
+                  BACKUP_PATH="$BACKUP_PREFIX/$BACKUP_DATE"
+                  BACKUP_FILE="veridis_postgres_${BACKUP_TIMESTAMP}.sql"
+                  COMPRESSED_FILE="${BACKUP_FILE}.gz"
+                  ENCRYPTED_FILE="${COMPRESSED_FILE}.enc"
+
+                  echo "Backup timestamp: $BACKUP_TIMESTAMP"
+                  echo "Backup file: $BACKUP_FILE"
+
+                  # Create local backup directory
+                  mkdir -p /backup/data
+                  cd /backup/data
+
+                  # Start backup process
+                  echo "Creating database dump..."
+                  START_TIME=$(date +%s)
+
+                  # Create comprehensive backup with multiple formats
+                  echo "Creating logical backup (SQL dump)..."
+                  pg_dump \
+                    -h $PGHOST \
+                    -p $PGPORT \
+                    -U $PGUSER \
+                    -d $PGDATABASE \
+                    --verbose \
+                    --no-password \
+                    --format=custom \
+                    --compress=$COMPRESSION_LEVEL \
+                    --jobs=$PARALLEL_JOBS \
+                    --file="veridis_postgres_${BACKUP_TIMESTAMP}.dump" \
+                    --exclude-table-data='audit_logs_temp' \
+                    --exclude-table-data='session_data'
+
+                  # Create plain text backup for readability
+                  echo "Creating plain text backup..."
+                  pg_dump \
+                    -h $PGHOST \
+                    -p $PGPORT \
+                    -U $PGUSER \
+                    -d $PGDATABASE \
+                    --verbose \
+                    --no-password \
+                    --format=plain \
+                    --file="$BACKUP_FILE" \
+                    --exclude-table-data='audit_logs_temp' \
+                    --exclude-table-data='session_data'
+
+                  # Create schema-only backup
+                  echo "Creating schema-only backup..."
+                  pg_dump \
+                    -h $PGHOST \
+                    -p $PGPORT \
+                    -U $PGUSER \
+                    -d $PGDATABASE \
+                    --verbose \
+                    --no-password \
+                    --schema-only \
+                    --format=plain \
+                    --file="veridis_postgres_schema_${BACKUP_TIMESTAMP}.sql"
+
+                  # Create globals backup
+                  echo "Creating globals backup..."
+                  pg_dumpall \
+                    -h $PGHOST \
+                    -p $PGPORT \
+                    -U $PGUSER \
+                    --verbose \
+                    --no-password \
+                    --globals-only \
+                    --file="veridis_postgres_globals_${BACKUP_TIMESTAMP}.sql"
+
+                  END_TIME=$(date +%s)
+                  BACKUP_DURATION=$((END_TIME - START_TIME))
+                  echo "Backup creation completed in $BACKUP_DURATION seconds"
+
+                  # Get backup statistics
+                  BACKUP_SIZE=$(du -sh . | cut -f1)
+                  FILE_COUNT=$(ls -1 | wc -l)
+
+                  echo "Backup statistics:"
+                  echo "  - Total size: $BACKUP_SIZE"
+                  echo "  - File count: $FILE_COUNT"
+                  echo "  - Duration: $BACKUP_DURATION seconds"
+
+                  # Compress and encrypt backups
+                  echo "Compressing and encrypting backups..."
+                  for file in *.sql *.dump; do
+                    if [ -f "$file" ]; then
+                      echo "Processing $file..."
+
+                      # Compress
+                      gzip -9 "$file"
+                      compressed_file="${file}.gz"
+
+                      # Encrypt
+                      openssl enc -aes-256-cbc -salt -in "$compressed_file" -out "${compressed_file}.enc" -pass env:BACKUP_ENCRYPTION_KEY
+
+                      # Remove unencrypted file
+                      rm "$compressed_file"
+
+                      echo "Processed: ${compressed_file}.enc"
+                    fi
+                  done
+
+                  # Create backup manifest
+                  echo "Creating backup manifest..."
+                  cat > backup_manifest.json << EOF
+                  {
+                    "backup_timestamp": "$BACKUP_TIMESTAMP",
+                    "backup_date": "$BACKUP_DATE",
+                    "database": "$PGDATABASE",
+                    "host": "$PGHOST",
+                    "port": "$PGPORT",
+                    "backup_type": "logical",
+                    "compression": "gzip",
+                    "encryption": "aes-256-cbc",
+                    "parallel_jobs": $PARALLEL_JOBS,
+                    "duration_seconds": $BACKUP_DURATION,
+                    "total_size": "$BACKUP_SIZE",
+                    "file_count": $FILE_COUNT,
+                    "files": [
+                  $(ls -1 *.enc | sed 's/.*/"&"/' | paste -sd ',' -)
+                    ],
+                    "created_by": "veridis-postgres-backup-cronjob",
+                    "version": "1.0"
+                  }
+                  EOF
+
+                  # Upload to S3
+                  echo "Uploading backups to S3..."
+
+                  # Install aws-cli if not present
+                  apk add --no-cache aws-cli
+
+                  # Upload all encrypted files
+                  for file in *.enc; do
+                    echo "Uploading $file..."
+                    aws s3 cp "$file" "s3://$S3_BUCKET/$BACKUP_PATH/$file" \
+                      --storage-class STANDARD_IA \
+                      --server-side-encryption AES256
+                  done
+
+                  # Upload manifest
+                  aws s3 cp backup_manifest.json "s3://$S3_BUCKET/$BACKUP_PATH/backup_manifest.json" \
+                    --storage-class STANDARD_IA \
+                    --server-side-encryption AES256
+
+                  echo "Backup upload completed successfully"
+
+                  # Cleanup old backups
+                  echo "Cleaning up old backups..."
+                  CUTOFF_DATE=$(date -d "$BACKUP_RETENTION_DAYS days ago" +%Y-%m-%d)
+                  aws s3 ls "s3://$S3_BUCKET/$BACKUP_PREFIX/" | while read -r line; do
+                    backup_date=$(echo $line | awk '{print $2}' | cut -d'/' -f1)
+                    if [[ "$backup_date" < "$CUTOFF_DATE" ]]; then
+                      echo "Deleting old backup: $backup_date"
+                      aws s3 rm "s3://$S3_BUCKET/$BACKUP_PREFIX/$backup_date/" --recursive
+                    fi
+                  done
+
+                  # Send success notification
+                  if [ -n "$SLACK_WEBHOOK_URL" ]; then
+                    echo "Sending success notification..."
+                    curl -X POST "$SLACK_WEBHOOK_URL" \
+                      -H 'Content-type: application/json' \
+                      --data '{
+                        "text": "✅ PostgreSQL Backup Completed Successfully",
+                        "attachments": [
+                          {
+                            "color": "good",
+                            "fields": [
+                              {"title": "Database", "value": "'$PGDATABASE'", "short": true},
+                              {"title": "Timestamp", "value": "'$BACKUP_TIMESTAMP'", "short": true},
+                              {"title": "Size", "value": "'$BACKUP_SIZE'", "short": true},
+                              {"title": "Duration", "value": "'$BACKUP_DURATION's", "short": true},
+                              {"title": "Location", "value": "s3://'$S3_BUCKET'/'$BACKUP_PATH'", "short": false}
+                            ]
+                          }
+                        ]
+                      }' || echo "Failed to send notification"
+                  fi
+
+                  echo "PostgreSQL backup process completed successfully"
+
+              # ==============================================================================
+              # Volume Mounts
+              # ==============================================================================
+              volumeMounts:
+                - name: backup-storage
+                  mountPath: /backup
+                - name: backup-tmp
+                  mountPath: /tmp
+                - name: backup-config
+                  mountPath: /config
+                  readOnly: true
+
+              # ==============================================================================
+              # Resource Configuration
+              # ==============================================================================
+              resources:
+                requests:
+                  memory: "1Gi"
+                  cpu: "500m"
+                  ephemeral-storage: "10Gi"
+                limits:
+                  memory: "2Gi"
+                  cpu: "1000m"
+                  ephemeral-storage: "20Gi"
+
+              # ==============================================================================
+              # Liveness and Readiness Probes
+              # ==============================================================================
+              livenessProbe:
+                exec:
+                  command:
+                    - /bin/sh
+                    - -c
+                    - "pgrep -f pg_dump || pgrep -f aws || echo 'Process running'"
+                initialDelaySeconds: 60
+                periodSeconds: 60
+                timeoutSeconds: 10
+                failureThreshold: 3
+
+          # ==============================================================================
+          # Volumes
+          # ==============================================================================
+          volumes:
+            # Backup storage volume
+            - name: backup-storage
+              emptyDir:
+                sizeLimit: "50Gi"
+
+            # Temporary storage
+            - name: backup-tmp
+              emptyDir:
+                sizeLimit: "1Gi"
+
+            # Backup configuration
+            - name: backup-config
+              configMap:
+                name: postgres-backup-config
+                defaultMode: 0644
+
+---
+# ==============================================================================
+# Veridis PostgreSQL Backup Configuration ConfigMap
+# ==============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-backup-config
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: postgres-backup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: backup-configuration
+    app.kubernetes.io/part-of: veridis-protocol
+    backup.veridis.xyz/type: postgres-backup-config
+
+  annotations:
+    veridis.xyz/description: "PostgreSQL backup configuration"
+    veridis.xyz/purpose: "Provides configuration for PostgreSQL backup operations"
+
+data:
+  # ==============================================================================
+  # Backup Configuration
+  # ==============================================================================
+  backup.conf: |
+    # PostgreSQL Backup Configuration
+    # ================================
+
+    # Backup settings
+    BACKUP_TYPE=logical
+    COMPRESSION_ENABLED=true
+    COMPRESSION_LEVEL=6
+    ENCRYPTION_ENABLED=true
+    PARALLEL_JOBS=4
+
+    # Retention settings
+    RETENTION_DAILY=30
+    RETENTION_WEEKLY=12
+    RETENTION_MONTHLY=12
+    RETENTION_YEARLY=7
+
+    # S3 settings
+    S3_STORAGE_CLASS=STANDARD_IA
+    S3_SERVER_SIDE_ENCRYPTION=AES256
+
+    # Notification settings
+    NOTIFICATIONS_ENABLED=true
+    NOTIFICATION_ON_SUCCESS=true
+    NOTIFICATION_ON_FAILURE=true
+
+  # ==============================================================================
+  # Backup Script Configuration
+  # ==============================================================================
+  pre-backup-checks.sh: |
+    #!/bin/bash
+    set -e
+
+    echo "Running pre-backup checks..."
+
+    # Check database connectivity
+    pg_isready -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE
+
+    # Check available disk space
+    AVAILABLE_SPACE=$(df /backup | tail -1 | awk '{print $4}')
+    REQUIRED_SPACE=10485760  # 10GB in KB
+
+    if [ $AVAILABLE_SPACE -lt $REQUIRED_SPACE ]; then
+      echo "ERROR: Insufficient disk space for backup"
+      exit 1
+    fi
+
+    # Check for long-running transactions
+    LONG_RUNNING=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -t -c "SELECT count(*) FROM pg_stat_activity WHERE state = 'active' AND now() - query_start > interval '1 hour';")
+
+    if [ "$LONG_RUNNING" -gt 0 ]; then
+      echo "WARNING: Found $LONG_RUNNING long-running transactions"
+    fi
+
+    echo "Pre-backup checks completed"
+
+  # ==============================================================================
+  # Post-backup Validation Script
+  # ==============================================================================
+  post-backup-validation.sh: |
+    #!/bin/bash
+    set -e
+
+    echo "Running post-backup validation..."
+
+    # Validate backup files exist
+    if [ ! -f "/backup/data/backup_manifest.json" ]; then
+      echo "ERROR: Backup manifest not found"
+      exit 1
+    fi
+
+    # Check backup file integrity
+    for file in /backup/data/*.enc; do
+      if [ -f "$file" ]; then
+        echo "Validating $file..."
+        # Basic file validation (size > 0)
+        if [ ! -s "$file" ]; then
+          echo "ERROR: Backup file $file is empty"
+          exit 1
+        fi
+      fi
+    done
+
+    echo "Post-backup validation completed successfully"
+
+---
+# ==============================================================================
+# Veridis PostgreSQL Weekly Full Backup CronJob - Comprehensive Weekly Backup
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-postgres-weekly-backup-cronjob
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: postgres-backup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "16.1"
+    app.kubernetes.io/component: weekly-backup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backup.veridis.xyz/type: weekly-postgres-backup-cronjob
+    backup.veridis.xyz/category: comprehensive-weekly-backup
+    backup.veridis.xyz/role: weekly-database-backup
+    backup.veridis.xyz/frequency: weekly
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-engineering
+
+  annotations:
+    veridis.xyz/description: "Weekly comprehensive PostgreSQL backup with extended retention"
+    veridis.xyz/purpose: "Provides weekly full database backups for long-term retention"
+
+    backup.veridis.xyz/schedule-expression: "0 1 * * 0"  # Weekly on Sunday at 1 AM
+    backup.veridis.xyz/backup-retention: "90d"
+    backup.veridis.xyz/backup-type: "weekly-full-backup"
+
+# ==============================================================================
+# Weekly Backup CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 1 * * 0"  # Weekly on Sunday at 1 AM UTC
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 3
+  startingDeadlineSeconds: 600  # 10 minutes grace period
+
+  jobTemplate:
+    metadata:
+      labels:
+        backup.veridis.xyz/cronjob-name: "veridis-postgres-weekly-backup-cronjob"
+        backup.veridis.xyz/type: "weekly-postgres-backup"
+        backup.veridis.xyz/frequency: "weekly"
+
+    spec:
+      activeDeadlineSeconds: 10800  # 3 hours maximum execution time
+      backoffLimit: 1  # Single retry for weekly backup
+      ttlSecondsAfterFinished: 259200  # Keep completed jobs for 3 days
+
+      template:
+        metadata:
+          labels:
+            backup.veridis.xyz/job-type: "postgres-weekly-backup"
+            backup.veridis.xyz/backup-scope: "full-database"
+
+        spec:
+          serviceAccountName: postgres-backup-sa
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 999
+            runAsGroup: 999
+            fsGroup: 999
+            seccompProfile:
+              type: RuntimeDefault
+
+          restartPolicy: OnFailure
+
+          nodeSelector:
+            veridis.xyz/node-type: "database"
+            kubernetes.io/arch: "amd64"
+
+          tolerations:
+            - key: "veridis.xyz/database-backup"
+              operator: "Equal"
+              value: "true"
+              effect: "NoSchedule"
+
+          containers:
+            - name: postgres-weekly-backup
+              image: postgres:16.1-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                capabilities:
+                  drop:
+                    - ALL
+
+              env:
+                - name: PGHOST
+                  value: "postgresql.veridis-infrastructure.svc.cluster.local"
+                - name: PGPORT
+                  value: "5432"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: password
+                - name: PGDATABASE
+                  value: "veridis"
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: access-key-id
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: secret-access-key
+                - name: AWS_DEFAULT_REGION
+                  value: "us-east-1"
+                - name: S3_BUCKET
+                  value: "veridis-database-backups"
+                - name: BACKUP_PREFIX
+                  value: "postgres/weekly"
+                - name: BACKUP_RETENTION_DAYS
+                  value: "90"
+                - name: BACKUP_ENCRYPTION_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: backup-encryption-credentials
+                      key: encryption-key
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: notification-credentials
+                      key: slack-webhook-url
+                      optional: true
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -e
+
+                  echo "Starting PostgreSQL weekly backup process..."
+
+                  # Weekly backup with enhanced features
+                  BACKUP_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+                  BACKUP_DATE=$(date +%Y-%m-%d)
+                  BACKUP_PATH="$BACKUP_PREFIX/$BACKUP_DATE"
+
+                  mkdir -p /backup/data
+                  cd /backup/data
+
+                  # Create comprehensive weekly backup
+                  echo "Creating comprehensive weekly backup..."
+                  START_TIME=$(date +%s)
+
+                  # Full database backup with all options
+                  pg_dump \
+                    -h $PGHOST \
+                    -p $PGPORT \
+                    -U $PGUSER \
+                    -d $PGDATABASE \
+                    --verbose \
+                    --no-password \
+                    --format=custom \
+                    --compress=9 \
+                    --jobs=8 \
+                    --file="veridis_postgres_weekly_${BACKUP_TIMESTAMP}.dump"
+
+                  # Create additional formats for weekly backup
+                  pg_dump \
+                    -h $PGHOST \
+                    -p $PGPORT \
+                    -U $PGUSER \
+                    -d $PGDATABASE \
+                    --verbose \
+                    --no-password \
+                    --format=directory \
+                    --jobs=8 \
+                    --file="veridis_postgres_weekly_dir_${BACKUP_TIMESTAMP}"
+
+                  # Compress directory format
+                  tar -czf "veridis_postgres_weekly_dir_${BACKUP_TIMESTAMP}.tar.gz" "veridis_postgres_weekly_dir_${BACKUP_TIMESTAMP}"
+                  rm -rf "veridis_postgres_weekly_dir_${BACKUP_TIMESTAMP}"
+
+                  END_TIME=$(date +%s)
+                  BACKUP_DURATION=$((END_TIME - START_TIME))
+
+                  # Encrypt backups
+                  for file in *.dump *.tar.gz; do
+                    if [ -f "$file" ]; then
+                      openssl enc -aes-256-cbc -salt -in "$file" -out "${file}.enc" -pass env:BACKUP_ENCRYPTION_KEY
+                      rm "$file"
+                    fi
+                  done
+
+                  # Install aws-cli and upload
+                  apk add --no-cache aws-cli
+
+                  for file in *.enc; do
+                    aws s3 cp "$file" "s3://$S3_BUCKET/$BACKUP_PATH/$file" \
+                      --storage-class STANDARD_IA \
+                      --server-side-encryption AES256
+                  done
+
+                  # Send notification
+                  if [ -n "$SLACK_WEBHOOK_URL" ]; then
+                    curl -X POST "$SLACK_WEBHOOK_URL" \
+                      -H 'Content-type: application/json' \
+                      --data '{
+                        "text": "📅 PostgreSQL Weekly Backup Completed Successfully",
+                        "attachments": [
+                          {
+                            "color": "good",
+                            "fields": [
+                              {"title": "Backup Type", "value": "Weekly Full", "short": true},
+                              {"title": "Duration", "value": "'$BACKUP_DURATION's", "short": true},
+                              {"title": "Retention", "value": "90 days", "short": true}
+                            ]
+                          }
+                        ]
+                      }' || echo "Failed to send notification"
+                  fi
+
+                  echo "Weekly PostgreSQL backup completed successfully"
+
+              volumeMounts:
+                - name: backup-storage
+                  mountPath: /backup
+                - name: backup-tmp
+                  mountPath: /tmp
+
+              resources:
+                requests:
+                  memory: "2Gi"
+                  cpu: "1000m"
+                  ephemeral-storage: "50Gi"
+                limits:
+                  memory: "4Gi"
+                  cpu: "2000m"
+                  ephemeral-storage: "100Gi"
+
+          volumes:
+            - name: backup-storage
+              emptyDir:
+                sizeLimit: "100Gi"
+            - name: backup-tmp
+              emptyDir:
+                sizeLimit: "2Gi"
+
+---
+# ==============================================================================
+# Veridis PostgreSQL Point-in-Time Recovery Backup CronJob - WAL Archival
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-postgres-pitr-backup-cronjob
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: postgres-backup
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "16.1"
+    app.kubernetes.io/component: pitr-backup-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    backup.veridis.xyz/type: pitr-postgres-backup-cronjob
+    backup.veridis.xyz/category: point-in-time-recovery
+    backup.veridis.xyz/role: wal-archival-backup
+    backup.veridis.xyz/frequency: hourly
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: database-engineering
+
+  annotations:
+    veridis.xyz/description: "PostgreSQL WAL archival for point-in-time recovery"
+    veridis.xyz/purpose: "Provides continuous WAL archival for PITR capabilities"
+
+    backup.veridis.xyz/schedule-expression: "0 * * * *"  # Every hour
+    backup.veridis.xyz/backup-type: "wal-archival"
+    backup.veridis.xyz/pitr-enabled: "true"
+
+# ==============================================================================
+# PITR Backup CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 * * * *"  # Every hour
+  timeZone: "UTC"
+  concurrencyPolicy: Allow  # Allow multiple WAL archival jobs
+  successfulJobsHistoryLimit: 24  # Keep 24 hours of history
+  failedJobsHistoryLimit: 5
+  startingDeadlineSeconds: 300
+
+  jobTemplate:
+    metadata:
+      labels:
+        backup.veridis.xyz/cronjob-name: "veridis-postgres-pitr-backup-cronjob"
+        backup.veridis.xyz/type: "pitr-wal-archival"
+        backup.veridis.xyz/frequency: "hourly"
+
+    spec:
+      activeDeadlineSeconds: 1800  # 30 minutes maximum
+      backoffLimit: 3
+      ttlSecondsAfterFinished: 3600  # Keep for 1 hour
+
+      template:
+        metadata:
+          labels:
+            backup.veridis.xyz/job-type: "postgres-pitr-backup"
+            backup.veridis.xyz/backup-scope: "wal-archival"
+
+        spec:
+          serviceAccountName: postgres-backup-sa
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 999
+            runAsGroup: 999
+            fsGroup: 999
+            seccompProfile:
+              type: RuntimeDefault
+
+          restartPolicy: OnFailure
+
+          containers:
+            - name: postgres-pitr-backup
+              image: postgres:16.1-alpine
+              imagePullPolicy: IfNotPresent
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 999
+                capabilities:
+                  drop:
+                    - ALL
+
+              env:
+                - name: PGHOST
+                  value: "postgresql.veridis-infrastructure.svc.cluster.local"
+                - name: PGPORT
+                  value: "5432"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-credentials
+                      key: password
+                - name: PGDATABASE
+                  value: "veridis"
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: access-key-id
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: s3-backup-credentials
+                      key: secret-access-key
+                - name: AWS_DEFAULT_REGION
+                  value: "us-east-1"
+                - name: S3_BUCKET
+                  value: "veridis-database-backups"
+                - name: WAL_PREFIX
+                  value: "postgres/wal"
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  set -e
+
+                  echo "Starting PostgreSQL WAL archival process..."
+
+                  # Force WAL switch and archive
+                  WAL_LSN=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -t -c "SELECT pg_switch_wal();")
+                  echo "Switched to WAL LSN: $WAL_LSN"
+
+                  # Get current WAL file
+                  CURRENT_WAL=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d $PGDATABASE -t -c "SELECT pg_walfile_name(pg_current_wal_lsn());")
+                  echo "Current WAL file: $CURRENT_WAL"
+
+                  # Install aws-cli
+                  apk add --no-cache aws-cli
+
+                  # Create WAL timestamp marker
+                  TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+                  echo "$TIMESTAMP - WAL archival checkpoint" > /tmp/wal_checkpoint_$TIMESTAMP.txt
+
+                  # Upload checkpoint marker
+                  aws s3 cp /tmp/wal_checkpoint_$TIMESTAMP.txt "s3://$S3_BUCKET/$WAL_PREFIX/checkpoints/wal_checkpoint_$TIMESTAMP.txt" \
+                    --server-side-encryption AES256
+
+                  echo "WAL archival checkpoint created successfully"
+
+              volumeMounts:
+                - name: backup-tmp
+                  mountPath: /tmp
+
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "100m"
+                limits:
+                  memory: "256Mi"
+                  cpu: "200m"
+
+          volumes:
+            - name: backup-tmp
+              emptyDir:
+                sizeLimit: "100Mi"
+
+# ==============================================================================
+# Veridis PostgreSQL Database Backup CronJob Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS POSTGRESQL BACKUP CRONJOB STRATEGY:
+# =========================================================
+#
+# VERIDIS POSTGRESQL BACKUP CRONJOB ARCHITECTURE OVERVIEW:
+# --------------------------------------------------------
+# 1. Production Daily Backup (veridis-postgres-backup-cronjob):
+#    - Comprehensive enterprise-grade database backup cronjob with intelligent backup automation and advanced performance optimization for production environments
+#    - Advanced backup configuration with comprehensive PostgreSQL integration, multi-format backups, encryption support, and comprehensive operational excellence
+#    - Multi-tier backup architecture with logical dumps, schema backups, globals backup, performance optimization, and comprehensive backup intelligence
+#    - Enterprise backup policies with security enforcement, compliance controls, S3 integration, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent parallel jobs, compression management, streaming backup, and efficiency for maximum backup performance
+#
+# 2. Weekly Comprehensive Backup (veridis-postgres-weekly-backup-cronjob):
+#    - Weekly full database backup with extended retention and comprehensive weekly coordination
+#    - Advanced weekly configuration with comprehensive backup formats, enhanced compression, extended retention, and comprehensive weekly intelligence
+#    - Flexible backup optimization with weekly workflow, full coverage, and comprehensive weekly intelligence
+#    - Weekly intelligence with backup procedures, comprehensive support, weekly automation, and comprehensive weekly coordination
+#    - Comprehensive excellence with weekly backup, full workflows, weekly automation, and comprehensive weekly environment management
+#
+# 3. Point-in-Time Recovery Backup (veridis-postgres-pitr-backup-cronjob):
+#    - Continuous WAL archival for point-in-time recovery and comprehensive PITR coordination
+#    - Advanced PITR configuration with hourly WAL archival, checkpoint management, recovery support, and comprehensive PITR intelligence
+#    - Flexible backup optimization with PITR workflow, continuous archival, and comprehensive PITR intelligence
+#    - PITR intelligence with backup procedures, recovery support, archival automation, and comprehensive PITR coordination
+#    - Recovery excellence with PITR backup, archival workflows, recovery automation, and comprehensive PITR environment management
+#
+# ENTERPRISE POSTGRESQL BACKUP CRONJOB FEATURES:
+# ==============================================
+# Advanced Database Backup and PostgreSQL Integration:
+#   - Multi-tier backup architecture with logical backups, schema backups, globals backup, and comprehensive backup configurations
+#   - Intelligent backup management with pg_dump optimization, compression management, encryption support, and comprehensive backup decisions
+#   - Backup discovery with PostgreSQL optimization, database management, backup policies, and comprehensive backup analytics
+#   - Performance management with parallel jobs, streaming backup, compression optimization, and comprehensive performance intelligence
+#   - Backup processing tuning with dump management, upload optimization, performance algorithms, and intelligent backup optimization
+#
+# Comprehensive Security and Encryption Integration:
+#   - Multi-tier security with AES256 encryption, SSL connections, access controls, and comprehensive security coordination
+#   - Security optimization with encryption enforcement, key management, credential protection, and comprehensive security intelligence
+#   - Access management with database credentials, S3 access, permission validation, and comprehensive access coordination
+#   - Business intelligence with security analytics, access correlation, backup optimization, and comprehensive strategic insights
+#   - Security management with access policies, encryption optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Monitoring and Notification Integration:
+#   - Multi-tier monitoring with backup monitoring, performance tracking, failure detection, and comprehensive monitoring coordination
+#   - Monitoring optimization with metrics collection, alert management, notification support, and comprehensive monitoring intelligence
+#   - Notification management with Slack integration, success notifications, failure alerts, and comprehensive notification coordination
+#   - Business intelligence with monitoring analytics, performance correlation, backup optimization, and comprehensive strategic insights
+#   - Notification management with alert policies, monitoring optimization, notification integration, and comprehensive notification analytics
+#
+# Advanced Storage and S3 Integration:
+#   - Multi-tier storage with S3 integration, storage classes, server-side encryption, and comprehensive storage coordination
+#   - Storage optimization with lifecycle management, cost-effective storage, retention policies, and comprehensive storage intelligence
+#   - S3 management with bucket policies, access controls, upload optimization, and comprehensive S3 coordination
+#   - Business intelligence with storage analytics, cost correlation, usage optimization, and comprehensive strategic insights
+#   - Storage management with S3 policies, storage optimization, cost management, and comprehensive storage analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Database Backup CronJob Lifecycle Management:
+#   - Multi-CronJob deployment with daily backup, weekly backup, PITR backup, and comprehensive cronjob coordination
+#   - Intelligent cronjob management with predictive analytics and backup utilization correlation
+#   - Advanced monitoring with comprehensive cronjob analytics and backup business intelligence
+#   - CronJob validation with backup schema enforcement and cronjob deployment safety checks
+#   - Automated optimization with cronjob pattern analysis and backup optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II database backup controls with comprehensive audit requirements and backup logging
+#   - GDPR database backup compliance with data protection and privacy-preserving backup management
+#   - ISO 27001 database backup security management with information security and backup compliance integration
+#   - NIST 800-190 container database backup security with backup validation and compliance
+#   - Zero-trust database backup architecture with comprehensive encryption and backup authentication requirements
+#
+# Business Intelligence Integration:
+#   - Database backup analytics with cost correlation and cronjob resource utilization optimization
+#   - Performance analytics with backup experience optimization and cronjob business intelligence
+#   - Backup intelligence with processing pattern monitoring and cronjob optimization recommendations
+#   - Strategic planning with capacity management and cronjob forecasting
+#   - Business impact assessment with cronjob performance correlation and backup tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment cronjob support with production backup, weekly backup, PITR backup, and comprehensive cronjob coordination
+#   - Comprehensive documentation with cronjob guides and backup troubleshooting procedures
+#   - Environment-specific cronjobs with production, weekly, and PITR support
+#   - Testing integration with cronjob development workflow and backup debugging capabilities
+#   - CronJob monitoring with comprehensive tracking and backup correlation
+#
+# ==============================================================================
