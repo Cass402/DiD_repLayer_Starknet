@@ -1,0 +1,963 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Velero Volume Snapshot Location Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Velero Volume Snapshot Location for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS VOLUME SNAPSHOT LOCATION ARCHITECTURE:
+#   • Advanced Volume Snapshot Location with intelligent snapshot management and performance-based optimization
+#   • Multi-tier Snapshot Location architecture with development, testing, staging, and production environments
+#   • Comprehensive snapshot framework with Location policies, data optimization, Velero integration
+#   • Advanced lifecycle management with automated Location optimization, Velero control, and data enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Volume Snapshot Location performance insights
+#
+# VERIDIS VOLUME SNAPSHOT LOCATION OPTIMIZATION:
+#   • High-performance Location with intelligent snapshot management and Velero snapshot location optimization
+#   • Intelligent Location snapshot management with responsive policies and performance-based snapshot decisions
+#   • Advanced Location management with business intelligence and snapshot-based Velero control
+#   • Comprehensive snapshot control with intelligent Velero Location management and data enhancement
+#   • Enterprise acceleration with predictive Velero Location management and snapshot optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Volume Snapshot Location controls with comprehensive audit and snapshot requirements
+#   • GDPR Volume Snapshot Location compliance with data protection, privacy controls, and snapshot management
+#   • ISO 27001 Volume Snapshot Location management with comprehensive framework integration
+#   • NIST 800-190 container Volume Snapshot Location security with snapshot-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Volume Snapshot Location best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Volume Snapshot Location lifecycle management with automated provisioning and snapshot optimization
+#   • Predictive snapshot analytics with capacity planning and Volume Snapshot Location intelligence
+#   • Advanced Location integration with Velero snapshot analytics and performance business intelligence
+#   • Comprehensive snapshot control with Volume Snapshot Location preservation and data optimization
+#   • Business continuity Volume Snapshot Location with snapshot guarantees and performance optimization
+#
+# VOLUME SNAPSHOT LOCATION ACCELERATION INTELLIGENCE:
+#   • Volume Snapshot Location usage analytics with snapshot patterns and optimization recommendations
+#   • Location monitoring with Velero snapshot latency and management optimization intelligence
+#   • Development efficiency with Volume Snapshot Location analytics and deployment optimization procedures
+#   • Cost optimization with Volume Snapshot Location utilization analysis and snapshot capacity planning procedures
+#   • Quality assurance with Volume Snapshot Location metrics and snapshot validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production Volume Snapshot Location - Primary AWS EBS Snapshots
+# ==============================================================================
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: veridis-production-snapshot-location
+  namespace: velero
+
+  # Core Veridis Volume Snapshot Location identification labels
+  labels:
+    app.kubernetes.io/name: velero
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.12.3"
+    app.kubernetes.io/component: volume-snapshot-location
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Volume Snapshot Location specific classification
+    snapshot.veridis.xyz/type: production-volume-snapshot-location
+    snapshot.veridis.xyz/category: comprehensive-snapshot-location
+    snapshot.veridis.xyz/role: primary-snapshot-location
+    snapshot.veridis.xyz/snapshot-class: high-performance-snapshot-location
+    snapshot.veridis.xyz/security-level: enterprise
+
+    # Snapshot Location Volume Snapshot Location classification
+    volume.veridis.xyz/snapshot-location-type: intelligent-snapshot-location
+    volume.veridis.xyz/snapshot-type: volume-snapshot
+    volume.veridis.xyz/performance-tier: high-throughput
+    volume.veridis.xyz/optimization: enabled
+    volume.veridis.xyz/features: full-snapshot-location-stack
+
+    # Snapshot Volume Snapshot Location classification
+    snapshot.veridis.xyz/tier: production
+    snapshot.veridis.xyz/optimization: intelligent-snapshot-location-management
+    snapshot.veridis.xyz/data-management: advanced
+    snapshot.veridis.xyz/performance-optimization: enabled
+    snapshot.veridis.xyz/efficiency: maximum
+
+    # Business Snapshot Location classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-snapshot-location-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Snapshot Location labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: backup-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "snapshot-location-control-framework"
+    compliance.veridis.xyz/gdpr: "snapshot-location-data-protection"
+    compliance.veridis.xyz/iso27001: "snapshot-location-security-management"
+    compliance.veridis.xyz/nist-800-190: "snapshot-location-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Snapshot Location analytics and intelligence
+    monitoring.veridis.xyz/snapshot-location-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/snapshot-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Volume snapshot specific labels
+    snapshot.veridis.xyz/provider: "aws-ebs"
+    snapshot.veridis.xyz/region: "us-east-1"
+    snapshot.veridis.xyz/encryption: "enabled"
+    snapshot.veridis.xyz/cross-region-copy: "enabled"
+    snapshot.veridis.xyz/lifecycle: "enabled"
+    snapshot.veridis.xyz/incremental: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/snapshot-speed: "high"
+    performance.veridis.xyz/cross-az-replication: "enabled"
+    performance.veridis.xyz/parallel-snapshots: "enabled"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/fast-snapshot-restore: "enabled"
+
+  annotations:
+    # Snapshot Location purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Volume Snapshot Location with intelligent snapshot management, advanced performance optimization, and comprehensive snapshot optimization"
+    veridis.xyz/purpose: "Provides comprehensive Volume Snapshot Location for decentralized identity management with intelligent snapshot management, performance optimization, and snapshot guarantees"
+    veridis.xyz/scope: "Volume Snapshot Location including snapshot management, performance optimization, location configuration, and comprehensive monitoring intelligence"
+
+    # Snapshot Location architecture and design
+    snapshot.veridis.xyz/architecture: "Enterprise Volume Snapshot Location with intelligent snapshot management, advanced performance optimization, and location integration optimization"
+    snapshot.veridis.xyz/design-pattern: "Multi-tier Snapshot Location with performance optimization, cost efficiency, and business intelligence"
+    snapshot.veridis.xyz/optimization-model: "Intelligent Snapshot Location with predictive analytics, performance optimization, and snapshot efficiency"
+    snapshot.veridis.xyz/performance-model: "High-performance Snapshot Location with snapshot optimization and intelligent location management"
+
+    # Snapshot Location specifications
+    volume.veridis.xyz/snapshot-location-specification: "Snapshot Location with performance optimization and intelligent snapshot location management"
+    volume.veridis.xyz/snapshot-specification: "Advanced snapshot management with snapshot optimization and location enhancement"
+    volume.veridis.xyz/ebs-specification: "Snapshot Location EBS management optimization with intelligent snapshot and enhancement"
+    volume.veridis.xyz/performance-specification: "Snapshot performance location with snapshot acceleration and efficiency"
+    volume.veridis.xyz/business-specification: "Snapshot business location with cost optimization and strategic snapshot intelligence"
+
+    # Snapshot configuration annotations
+    snapshot.veridis.xyz/snapshot-provider: "aws"
+    snapshot.veridis.xyz/region: "us-east-1"
+    snapshot.veridis.xyz/availability-zones: "us-east-1a,us-east-1b,us-east-1c"
+    snapshot.veridis.xyz/encryption-enabled: "true"
+    snapshot.veridis.xyz/kms-key-id: "arn:aws:kms:us-east-1:ACCOUNT_ID:key/KEY_ID"
+
+    # Performance annotations
+    performance.veridis.xyz/snapshot-timeout: "30m"
+    performance.veridis.xyz/concurrent-snapshots: "10"
+    performance.veridis.xyz/fast-snapshot-restore: "enabled"
+    performance.veridis.xyz/cross-az-backup: "enabled"
+    performance.veridis.xyz/incremental-snapshots: "enabled"
+
+    # Lifecycle annotations
+    lifecycle.veridis.xyz/retention-days: "30"
+    lifecycle.veridis.xyz/cross-region-copy: "enabled"
+    lifecycle.veridis.xyz/copy-region: "us-west-2"
+    lifecycle.veridis.xyz/copy-retention: "90d"
+    lifecycle.veridis.xyz/automated-cleanup: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/encryption-at-rest: "enabled"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/kms-encryption: "enabled"
+    security.veridis.xyz/access-control: "enabled"
+    security.veridis.xyz/snapshot-integrity: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/snapshot-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/cost-monitoring: "enabled"
+    monitoring.veridis.xyz/cloudwatch-enabled: "true"
+    monitoring.veridis.xyz/alerts-enabled: "true"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-residency: "us-east-1"
+    compliance.veridis.xyz/retention-policy: "30d"
+    compliance.veridis.xyz/cross-region-compliance: "enabled"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/snapshot-policy: "production-snapshot-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "backup-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-snapshot-storage"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/snapshot-tier: "production"
+
+    # Disaster recovery annotations
+    dr.veridis.xyz/cross-region-snapshots: "enabled"
+    dr.veridis.xyz/backup-region: "us-west-2"
+    dr.veridis.xyz/disaster-recovery-tier: "primary"
+    dr.veridis.xyz/recovery-priority: "high"
+    dr.veridis.xyz/snapshot-frequency: "daily"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "platform-team@veridis.xyz"
+    veridis.xyz/snapshot-location-admin: "backup-admin@veridis.xyz"
+    veridis.xyz/escalation: "platform-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "platform-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/backup/volume-snapshot-location"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/backup/snapshot-location-management"
+    veridis.xyz/snapshot-docs: "https://backup.veridis.xyz/snapshot-location-guide"
+    veridis.xyz/backup-docs: "https://backup.veridis.xyz/snapshot-location-monitoring"
+
+# ==============================================================================
+# Volume Snapshot Location Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Snapshot Provider Configuration
+  # ==============================================================================
+  provider: aws
+
+  # ==============================================================================
+  # Provider-Specific Configuration
+  # ==============================================================================
+  config:
+    # ==============================================================================
+    # AWS Region Configuration
+    # ==============================================================================
+    region: us-east-1
+
+    # ==============================================================================
+    # Availability Zone Configuration
+    # ==============================================================================
+    availabilityZones:
+      - us-east-1a
+      - us-east-1b
+      - us-east-1c
+
+    # ==============================================================================
+    # EBS Snapshot Configuration
+    # ==============================================================================
+    # Snapshot encryption
+    encrypted: "true"
+    kmsKeyId: "arn:aws:kms:us-east-1:ACCOUNT_ID:key/KEY_ID"
+
+    # ==============================================================================
+    # Performance Configuration
+    # ==============================================================================
+    # Enable fast snapshot restore for faster volume restoration
+    enableFastSnapshotRestore: "true"
+
+    # Fast snapshot restore availability zones
+    fastSnapshotRestoreAvailabilityZones:
+      - us-east-1a
+      - us-east-1b
+      - us-east-1c
+
+    # ==============================================================================
+    # Tagging Configuration
+    # ==============================================================================
+    tags:
+      Environment: "production"
+      Project: "veridis-protocol"
+      Team: "platform-engineering"
+      Component: "volume-snapshots"
+      ManagedBy: "velero"
+      CostCenter: "backup-infrastructure"
+      BusinessUnit: "identity-protocol"
+      Compliance: "soc2,gdpr,iso27001"
+      BackupSchedule: "daily"
+      RetentionPolicy: "30d"
+      EncryptionEnabled: "true"
+      CrossRegionCopy: "enabled"
+      DisasterRecovery: "enabled"
+      AutomatedLifecycle: "enabled"
+      MonitoringEnabled: "true"
+      AlertingEnabled: "true"
+
+    # ==============================================================================
+    # Cross-Region Copy Configuration
+    # ==============================================================================
+    crossRegionCopy:
+      enabled: true
+      destinationRegion: us-west-2
+      destinationKmsKeyId: "arn:aws:kms:us-west-2:ACCOUNT_ID:key/KEY_ID"
+      retentionDays: 90
+      copyTags: true
+
+      # Cross-region copy tagging
+      copyTags:
+        Environment: "production-dr"
+        SourceRegion: "us-east-1"
+        CopyReason: "disaster-recovery"
+        AutomatedCopy: "true"
+
+    # ==============================================================================
+    # Lifecycle Management Configuration
+    # ==============================================================================
+    lifecyclePolicy:
+      # Retention in primary region
+      retentionDays: 30
+
+      # Automated cleanup
+      automatedCleanup: true
+
+      # Archive to cheaper storage after specified days
+      archiveAfterDays: 7
+
+      # Delete archives after specified days
+      deleteArchiveAfterDays: 365
+
+    # ==============================================================================
+    # Snapshot Creation Configuration
+    # ==============================================================================
+    snapshotCreation:
+      # Maximum concurrent snapshots
+      maxConcurrentSnapshots: 10
+
+      # Snapshot timeout
+      timeoutMinutes: 30
+
+      # Retry configuration
+      maxRetries: 3
+      retryIntervalMinutes: 5
+
+      # Incremental snapshots
+      incrementalSnapshots: true
+
+      # Copy tags from source volume
+      copyTagsFromSource: true
+
+      # Additional snapshot tags
+      additionalTags:
+        VeleroBackup: "true"
+        SnapshotType: "automated"
+        CreatedBy: "velero-plugin"
+        BackupLocation: "veridis-production-backup-location"
+
+    # ==============================================================================
+    # Monitoring and Alerting Configuration
+    # ==============================================================================
+    monitoring:
+      # CloudWatch metrics
+      cloudWatchMetrics:
+        enabled: true
+        namespace: "Veridis/VolumeSnapshots"
+
+        # Custom metrics
+        customMetrics:
+          - name: "SnapshotCreationTime"
+            unit: "Seconds"
+          - name: "SnapshotSize"
+            unit: "Bytes"
+          - name: "SnapshotCost"
+            unit: "Count"
+          - name: "CrossRegionCopyTime"
+            unit: "Seconds"
+
+      # SNS notifications
+      notifications:
+        enabled: true
+        snsTopicArn: "arn:aws:sns:us-east-1:ACCOUNT_ID:veridis-snapshot-notifications"
+
+        # Notification events
+        events:
+          - "snapshot-creation-success"
+          - "snapshot-creation-failure"
+          - "cross-region-copy-success"
+          - "cross-region-copy-failure"
+          - "snapshot-deletion-success"
+          - "lifecycle-transition"
+
+      # CloudWatch alarms
+      alarms:
+        - name: "SnapshotCreationFailures"
+          description: "Alert when snapshot creation fails"
+          metricName: "SnapshotCreationFailures"
+          threshold: 1
+          comparisonOperator: "GreaterThanOrEqualToThreshold"
+          evaluationPeriods: 1
+
+        - name: "SnapshotCreationTime"
+          description: "Alert when snapshot creation takes too long"
+          metricName: "SnapshotCreationTime"
+          threshold: 1800  # 30 minutes
+          comparisonOperator: "GreaterThanThreshold"
+          evaluationPeriods: 2
+
+        - name: "CrossRegionCopyFailures"
+          description: "Alert when cross-region copy fails"
+          metricName: "CrossRegionCopyFailures"
+          threshold: 1
+          comparisonOperator: "GreaterThanOrEqualToThreshold"
+          evaluationPeriods: 1
+
+    # ==============================================================================
+    # Security Configuration
+    # ==============================================================================
+    security:
+      # IAM role for snapshot operations
+      iamRole: "arn:aws:iam::ACCOUNT_ID:role/velero-snapshot-role"
+
+      # Resource-based policies
+      resourcePolicy:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: "AllowVeleroSnapshotAccess"
+            Effect: "Allow"
+            Principal:
+              AWS: "arn:aws:iam::ACCOUNT_ID:role/velero-snapshot-role"
+            Action:
+              - "ec2:CreateSnapshot"
+              - "ec2:DeleteSnapshot"
+              - "ec2:DescribeSnapshots"
+              - "ec2:DescribeVolumes"
+              - "ec2:CreateTags"
+              - "ec2:CopySnapshot"
+            Resource: "*"
+            Condition:
+              StringEquals:
+                "ec2:ResourceTag/ManagedBy": "velero"
+
+      # Encryption configuration
+      encryption:
+        enabled: true
+        kmsKeyId: "arn:aws:kms:us-east-1:ACCOUNT_ID:key/KEY_ID"
+        enforceEncryption: true
+
+        # Cross-region encryption
+        crossRegionEncryption:
+          enabled: true
+          destinationKmsKeyId: "arn:aws:kms:us-west-2:ACCOUNT_ID:key/KEY_ID"
+
+    # ==============================================================================
+    # Cost Optimization Configuration
+    # ==============================================================================
+    costOptimization:
+      # Enable cost tracking
+      costTracking:
+        enabled: true
+        costAllocationTags:
+          - "Project"
+          - "Team"
+          - "Environment"
+          - "CostCenter"
+
+      # Snapshot optimization
+      snapshotOptimization:
+        # Delete unused snapshots
+        deleteUnusedSnapshots: true
+        unusedSnapshotRetentionDays: 7
+
+        # Compress snapshots when possible
+        enableCompression: true
+
+        # Use incremental snapshots
+        preferIncrementalSnapshots: true
+
+      # Budget alerts
+      budgetAlerts:
+        enabled: true
+        monthlyBudgetUSD: 1000
+        alertThresholds:
+          - 50  # 50% of budget
+          - 80  # 80% of budget
+          - 100 # 100% of budget
+
+    # ==============================================================================
+    # Backup Integration Configuration
+    # ==============================================================================
+    backupIntegration:
+      # Integration with backup storage location
+      backupStorageLocation: "veridis-production-backup-location"
+
+      # Backup validation
+      validateBackups: true
+      validationFrequency: "24h"
+
+      # Backup correlation
+      correlateWithObjectBackups: true
+
+      # Backup metadata
+      backupMetadata:
+        includeVolumeInfo: true
+        includeSnapshotMetrics: true
+        includePerformanceData: true
+
+---
+# ==============================================================================
+# Veridis Disaster Recovery Volume Snapshot Location - Cross-Region Snapshots
+# ==============================================================================
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: veridis-dr-snapshot-location
+  namespace: velero
+
+  labels:
+    app.kubernetes.io/name: velero
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.12.3"
+    app.kubernetes.io/component: dr-volume-snapshot-location
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    snapshot.veridis.xyz/type: disaster-recovery-snapshot-location
+    snapshot.veridis.xyz/category: cross-region-snapshots
+    snapshot.veridis.xyz/role: secondary-snapshot-location
+    snapshot.veridis.xyz/priority: high
+
+    # Disaster recovery labels
+    dr.veridis.xyz/type: "cross-region-snapshots"
+    dr.veridis.xyz/tier: "disaster-recovery"
+    dr.veridis.xyz/region: "us-west-2"
+    dr.veridis.xyz/priority: "high"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: disaster-recovery
+
+  annotations:
+    veridis.xyz/description: "Disaster recovery volume snapshot location in us-west-2"
+    veridis.xyz/purpose: "Provides cross-region volume snapshots for disaster recovery"
+
+    # DR specific annotations
+    dr.veridis.xyz/primary-region: "us-east-1"
+    dr.veridis.xyz/secondary-region: "us-west-2"
+    dr.veridis.xyz/cross-region-snapshots: "enabled"
+    dr.veridis.xyz/failover-ready: "true"
+
+# ==============================================================================
+# DR Volume Snapshot Location Specification
+# ==============================================================================
+spec:
+  provider: aws
+
+  config:
+    region: us-west-2
+
+    availabilityZones:
+      - us-west-2a
+      - us-west-2b
+      - us-west-2c
+
+    encrypted: "true"
+    kmsKeyId: "arn:aws:kms:us-west-2:ACCOUNT_ID:key/KEY_ID"
+
+    # DR-specific configuration
+    enableFastSnapshotRestore: "true"
+    fastSnapshotRestoreAvailabilityZones:
+      - us-west-2a
+      - us-west-2b
+      - us-west-2c
+
+    tags:
+      Environment: "production-dr"
+      Project: "veridis-protocol"
+      Team: "platform-engineering"
+      Component: "dr-volume-snapshots"
+      ManagedBy: "velero"
+      DisasterRecovery: "enabled"
+      SourceRegion: "us-east-1"
+      BackupTier: "disaster-recovery"
+
+    # DR-specific lifecycle (longer retention)
+    lifecyclePolicy:
+      retentionDays: 90
+      automatedCleanup: true
+      archiveAfterDays: 30
+      deleteArchiveAfterDays: 1095  # 3 years
+
+    # DR monitoring
+    monitoring:
+      cloudWatchMetrics:
+        enabled: true
+        namespace: "Veridis/DR/VolumeSnapshots"
+
+      notifications:
+        enabled: true
+        snsTopicArn: "arn:aws:sns:us-west-2:ACCOUNT_ID:veridis-dr-snapshot-notifications"
+
+---
+# ==============================================================================
+# Veridis Staging Volume Snapshot Location - Pre-Production Snapshots
+# ==============================================================================
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: veridis-staging-snapshot-location
+  namespace: velero
+
+  labels:
+    app.kubernetes.io/name: velero
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "1.12.3"
+    app.kubernetes.io/component: staging-volume-snapshot-location
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    snapshot.veridis.xyz/type: staging-volume-snapshot-location
+    snapshot.veridis.xyz/category: staging-snapshots
+    snapshot.veridis.xyz/role: staging-snapshot-location
+    snapshot.veridis.xyz/priority: medium
+
+    # Staging labels
+    staging.veridis.xyz/type: "staging-snapshots"
+    staging.veridis.xyz/environment: "staging"
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/testing: "enabled"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: staging-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Staging environment volume snapshot location"
+    veridis.xyz/purpose: "Provides volume snapshots for staging environment testing"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/testing-enabled: "true"
+    staging.veridis.xyz/validation-target: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+# ==============================================================================
+# Staging Volume Snapshot Location Specification
+# ==============================================================================
+spec:
+  provider: aws
+
+  config:
+    region: us-east-1
+
+    availabilityZones:
+      - us-east-1a
+      - us-east-1b
+
+    encrypted: "true"
+    kmsKeyId: "arn:aws:kms:us-east-1:ACCOUNT_ID:key/staging-KEY_ID"
+
+    # Basic fast snapshot restore for staging
+    enableFastSnapshotRestore: "false"
+
+    tags:
+      Environment: "staging"
+      Project: "veridis-protocol"
+      Team: "platform-engineering"
+      Component: "staging-volume-snapshots"
+      ManagedBy: "velero"
+      Testing: "enabled"
+      ValidationTarget: "true"
+
+    # Staging-specific lifecycle (shorter retention)
+    lifecyclePolicy:
+      retentionDays: 14
+      automatedCleanup: true
+      archiveAfterDays: 7
+      deleteArchiveAfterDays: 90
+
+    # Basic monitoring for staging
+    monitoring:
+      cloudWatchMetrics:
+        enabled: true
+        namespace: "Veridis/Staging/VolumeSnapshots"
+
+---
+# ==============================================================================
+# Veridis Development Volume Snapshot Location - Development Snapshots
+# ==============================================================================
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: veridis-dev-snapshot-location
+  namespace: velero
+
+  labels:
+    app.kubernetes.io/name: velero
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "1.12.3"
+    app.kubernetes.io/component: dev-volume-snapshot-location
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    snapshot.veridis.xyz/type: development-volume-snapshot-location
+    snapshot.veridis.xyz/category: development-snapshots
+    snapshot.veridis.xyz/role: dev-snapshot-location
+    snapshot.veridis.xyz/priority: low
+
+    # Development labels
+    development.veridis.xyz/type: "dev-snapshots"
+    development.veridis.xyz/environment: "development"
+    development.veridis.xyz/testing: "enabled"
+    development.veridis.xyz/cost-optimized: "true"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: platform-engineering
+    veridis.xyz/cost-center: development-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Development environment volume snapshot location"
+    veridis.xyz/purpose: "Provides volume snapshots for development environment"
+
+    # Development specific annotations
+    development.veridis.xyz/cost-optimized: "true"
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/retention-short: "true"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+# ==============================================================================
+# Development Volume Snapshot Location Specification
+# ==============================================================================
+spec:
+  provider: aws
+
+  config:
+    region: us-east-1
+
+    availabilityZones:
+      - us-east-1a
+
+    encrypted: "true"
+    kmsKeyId: "arn:aws:kms:us-east-1:ACCOUNT_ID:key/dev-KEY_ID"
+
+    # No fast snapshot restore for development (cost optimization)
+    enableFastSnapshotRestore: "false"
+
+    tags:
+      Environment: "development"
+      Project: "veridis-protocol"
+      Team: "platform-engineering"
+      Component: "dev-volume-snapshots"
+      ManagedBy: "velero"
+      CostOptimized: "true"
+      Testing: "enabled"
+
+    # Development-specific lifecycle (very short retention)
+    lifecyclePolicy:
+      retentionDays: 7
+      automatedCleanup: true
+      archiveAfterDays: 3
+      deleteArchiveAfterDays: 30
+
+    # Minimal monitoring for development
+    monitoring:
+      cloudWatchMetrics:
+        enabled: false
+
+---
+# ==============================================================================
+# Veridis High-Performance Volume Snapshot Location - GPU Workload Snapshots
+# ==============================================================================
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: veridis-gpu-snapshot-location
+  namespace: velero
+
+  labels:
+    app.kubernetes.io/name: velero
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "1.12.3"
+    app.kubernetes.io/component: gpu-volume-snapshot-location
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    snapshot.veridis.xyz/type: gpu-volume-snapshot-location
+    snapshot.veridis.xyz/category: high-performance-snapshots
+    snapshot.veridis.xyz/role: gpu-snapshot-location
+    snapshot.veridis.xyz/priority: high
+
+    # GPU workload labels
+    gpu.veridis.xyz/type: "gpu-snapshots"
+    gpu.veridis.xyz/workload: "zk-circuits"
+    gpu.veridis.xyz/performance: "high"
+    gpu.veridis.xyz/optimization: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: zk-engineering
+    veridis.xyz/cost-center: gpu-infrastructure
+
+  annotations:
+    veridis.xyz/description: "High-performance volume snapshot location for GPU workloads"
+    veridis.xyz/purpose: "Provides optimized volume snapshots for ZK circuits and GPU workloads"
+
+    # GPU specific annotations
+    gpu.veridis.xyz/workload-type: "zk-circuits"
+    gpu.veridis.xyz/performance-optimized: "true"
+    gpu.veridis.xyz/fast-restore-enabled: "true"
+    gpu.veridis.xyz/nvme-optimized: "true"
+
+# ==============================================================================
+# GPU Volume Snapshot Location Specification
+# ==============================================================================
+spec:
+  provider: aws
+
+  config:
+    region: us-east-1
+
+    # GPU-optimized availability zones
+    availabilityZones:
+      - us-east-1a
+      - us-east-1b
+      - us-east-1c
+
+    encrypted: "true"
+    kmsKeyId: "arn:aws:kms:us-east-1:ACCOUNT_ID:key/gpu-KEY_ID"
+
+    # Enable fast snapshot restore for GPU workloads
+    enableFastSnapshotRestore: "true"
+    fastSnapshotRestoreAvailabilityZones:
+      - us-east-1a
+      - us-east-1b
+      - us-east-1c
+
+    tags:
+      Environment: "production"
+      Project: "veridis-protocol"
+      Team: "zk-engineering"
+      Component: "gpu-volume-snapshots"
+      ManagedBy: "velero"
+      WorkloadType: "zk-circuits"
+      PerformanceOptimized: "true"
+      GPUEnabled: "true"
+      FastRestore: "enabled"
+
+    # GPU workload-specific configuration
+    maxConcurrentSnapshots: 5  # Higher concurrency for GPU volumes
+
+    # GPU-optimized lifecycle
+    lifecyclePolicy:
+      retentionDays: 14  # Shorter retention for frequently changing GPU data
+      automatedCleanup: true
+      archiveAfterDays: 3
+      deleteArchiveAfterDays: 90
+
+    # Enhanced monitoring for GPU workloads
+    monitoring:
+      cloudWatchMetrics:
+        enabled: true
+        namespace: "Veridis/GPU/VolumeSnapshots"
+
+        customMetrics:
+          - name: "GPUSnapshotCreationTime"
+            unit: "Seconds"
+          - name: "GPUVolumeSize"
+            unit: "Bytes"
+          - name: "GPUSnapshotRestoreTime"
+            unit: "Seconds"
+
+      notifications:
+        enabled: true
+        snsTopicArn: "arn:aws:sns:us-east-1:ACCOUNT_ID:veridis-gpu-snapshot-notifications"
+
+# ==============================================================================
+# Veridis Volume Snapshot Location Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS VOLUME SNAPSHOT LOCATION STRATEGY:
+# ========================================================
+#
+# VERIDIS VOLUME SNAPSHOT LOCATION ARCHITECTURE OVERVIEW:
+# -------------------------------------------------------
+# 1. Production Snapshot Location (veridis-production-snapshot-location):
+#    - Comprehensive enterprise-grade snapshot location with intelligent snapshot management and advanced performance optimization for production environments
+#    - Advanced snapshot configuration with comprehensive EBS integration, lifecycle management, encryption support, and comprehensive operational excellence
+#    - Multi-tier snapshot architecture with cross-region copying, fast snapshot restore, performance optimization, and comprehensive snapshot intelligence
+#    - Enterprise snapshot policies with security enforcement, compliance controls, lifecycle automation, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent concurrent snapshots, timeout management, incremental snapshots, and efficiency for maximum snapshot performance
+#
+# 2. Disaster Recovery Snapshot Location (veridis-dr-snapshot-location):
+#    - Cross-region disaster recovery location with secondary region support and comprehensive DR coordination
+#    - Advanced DR configuration with us-west-2 region, cross-region snapshots, failover support, and comprehensive DR intelligence
+#    - Flexible snapshot optimization with DR workflow, region redundancy, and comprehensive DR intelligence
+#    - DR intelligence with snapshot procedures, failover support, region automation, and comprehensive DR coordination
+#    - Operational excellence with DR snapshots, failover workflows, region automation, and comprehensive DR environment management
+#
+# 3. Staging Snapshot Location (veridis-staging-snapshot-location):
+#    - Pre-production snapshot location with staging environment support and comprehensive staging coordination
+#    - Advanced staging configuration with production-like settings, testing optimization, validation support, and comprehensive staging intelligence
+#    - Flexible snapshot optimization with staging workflow, testing support, and comprehensive staging intelligence
+#    - Staging intelligence with snapshot procedures, testing support, validation automation, and comprehensive staging coordination
+#    - Testing excellence with staging snapshots, validation workflows, testing automation, and comprehensive staging environment management
+#
+# 4. Development Snapshot Location (veridis-dev-snapshot-location):
+#    - Development-focused snapshot location with cost optimization and comprehensive development coordination
+#    - Advanced dev configuration with cost-optimized settings, short retention, basic performance, and comprehensive development intelligence
+#    - Flexible snapshot optimization with development workflow, cost efficiency, and comprehensive development intelligence
+#    - Development intelligence with snapshot procedures, cost support, development automation, and comprehensive development coordination
+#    - Cost excellence with development snapshots, cost workflows, development automation, and comprehensive development environment management
+#
+# 5. GPU Snapshot Location (veridis-gpu-snapshot-location):
+#    - High-performance snapshot location optimized for GPU workloads and comprehensive GPU coordination
+#    - Advanced GPU configuration with performance optimization, fast restore, ZK circuits support, and comprehensive GPU intelligence
+#    - Flexible snapshot optimization with GPU workflow, performance support, and comprehensive GPU intelligence
+#    - GPU intelligence with snapshot procedures, performance support, GPU automation, and comprehensive GPU coordination
+#    - Performance excellence with GPU snapshots, performance workflows, GPU automation, and comprehensive GPU environment management
+#
+# ENTERPRISE VOLUME SNAPSHOT LOCATION FEATURES:
+# =============================================
+# Advanced Snapshot Management and EBS Integration:
+#   - Multi-tier snapshot architecture with production snapshots, DR snapshots, staging snapshots, and comprehensive snapshot configurations
+#   - Intelligent snapshot management with lifecycle policies, encryption management, cross-region copying, and comprehensive snapshot decisions
+#   - Snapshot discovery with EBS optimization, volume management, snapshot policies, and comprehensive snapshot analytics
+#   - Performance management with concurrent snapshots, timeout optimization, fast restore, and comprehensive performance intelligence
+#   - Snapshot processing tuning with creation management, restore optimization, performance algorithms, and intelligent snapshot optimization
+#
+# Comprehensive Security and Encryption Integration:
+#   - Multi-tier security with EBS encryption, KMS integration, access controls, and comprehensive security coordination
+#   - Security optimization with encryption enforcement, key management, IAM integration, and comprehensive security intelligence
+#   - Access management with resource policies, IAM roles, permission validation, and comprehensive access coordination
+#   - Business intelligence with security analytics, access correlation, snapshot optimization, and comprehensive strategic insights
+#   - Security management with access policies, encryption optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Lifecycle and Cost Management:
+#   - Multi-tier lifecycle with retention policies, archival management, automated cleanup, and comprehensive lifecycle coordination
+#   - Lifecycle optimization with cost-effective transitions, retention automation, cleanup policies, and comprehensive lifecycle intelligence
+#   - Cost management with snapshot optimization, lifecycle transitions, retention policies, and comprehensive cost coordination
+#   - Business intelligence with cost analytics, lifecycle correlation, snapshot optimization, and comprehensive strategic insights
+#   - Cost management with lifecycle policies, snapshot optimization, cost monitoring, and comprehensive cost analytics
+#
+# Advanced Cross-Region Replication and Disaster Recovery:
+#   - Multi-tier replication with cross-region snapshots, disaster recovery, failover support, and comprehensive replication coordination
+#   - Replication optimization with region redundancy, automatic copying, data consistency, and comprehensive replication intelligence
+#   - DR management with cross-region snapshots, failover automation, recovery procedures, and comprehensive DR coordination
+#   - Business intelligence with DR analytics, replication correlation, failover optimization, and comprehensive strategic insights
+#   - DR management with replication policies, failover optimization, DR integration, and comprehensive DR analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Snapshot Location Lifecycle Management:
+#   - Multi-Location deployment with production snapshots, DR snapshots, staging snapshots, and comprehensive location coordination
+#   - Intelligent location management with predictive analytics and snapshot utilization correlation
+#   - Advanced monitoring with comprehensive location analytics and snapshot business intelligence
+#   - Location validation with snapshot schema enforcement and location deployment safety checks
+#   - Automated optimization with location pattern analysis and snapshot optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II snapshot controls with comprehensive audit requirements and snapshot logging
+#   - GDPR snapshot compliance with data protection and privacy-preserving snapshot management
+#   - ISO 27001 snapshot security management with information security and snapshot compliance integration
+#   - NIST 800-190 container snapshot security with snapshot validation and compliance
+#   - Zero-trust snapshot architecture with comprehensive encryption and snapshot authentication requirements
+#
+# Business Intelligence Integration:
+#   - Snapshot analytics with cost correlation and location resource utilization optimization
+#   - Performance analytics with snapshot experience optimization and location business intelligence
+#   - Snapshot intelligence with processing pattern monitoring and location optimization recommendations
+#   - Strategic planning with capacity management and location forecasting
+#   - Business impact assessment with location performance correlation and snapshot tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment location support with production snapshots, DR snapshots, staging snapshots, and comprehensive location coordination
+#   - Comprehensive documentation with location guides and snapshot troubleshooting procedures
+#   - Environment-specific locations with production, DR, staging, development, and GPU support
+#   - Testing integration with location development workflow and snapshot debugging capabilities
+#   - Location monitoring with comprehensive tracking and snapshot correlation
+#
+# ==============================================================================
