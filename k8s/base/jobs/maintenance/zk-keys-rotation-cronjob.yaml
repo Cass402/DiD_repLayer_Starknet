@@ -1,0 +1,1528 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - ZK Keys Rotation CronJob Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive ZK Keys Rotation CronJob for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ZK KEYS ROTATION CRONJOB ARCHITECTURE:
+#   • Advanced ZK Keys Rotation CronJob with intelligent key management and security-based optimization
+#   • Multi-tier ZK Keys Rotation architecture with development, testing, staging, and production environments
+#   • Comprehensive key rotation framework with Rotation policies, cryptographic optimization, HSM integration
+#   • Advanced lifecycle management with automated Rotation optimization, key control, and security enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and ZK Keys Rotation CronJob security insights
+#
+# VERIDIS ZK KEYS ROTATION CRONJOB OPTIMIZATION:
+#   • High-security CronJob with intelligent key rotation and ZK cryptographic key optimization
+#   • Intelligent CronJob key rotation with responsive policies and security-based rotation decisions
+#   • Advanced CronJob management with business intelligence and key-based cryptographic control
+#   • Comprehensive key rotation control with intelligent cryptographic CronJob management and security enhancement
+#   • Enterprise acceleration with predictive cryptographic CronJob management and key rotation optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II ZK Keys Rotation CronJob controls with comprehensive audit and rotation requirements
+#   • GDPR ZK Keys Rotation CronJob compliance with data protection, privacy controls, and rotation management
+#   • ISO 27001 ZK Keys Rotation CronJob management with comprehensive framework integration
+#   • NIST 800-190 container ZK Keys Rotation CronJob security with rotation-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and ZK Keys Rotation CronJob best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent ZK Keys Rotation CronJob lifecycle management with automated provisioning and rotation optimization
+#   • Predictive rotation analytics with capacity planning and ZK Keys Rotation CronJob intelligence
+#   • Advanced CronJob integration with cryptographic rotation analytics and security business intelligence
+#   • Comprehensive key rotation control with ZK Keys Rotation CronJob preservation and security optimization
+#   • Business continuity ZK Keys Rotation CronJob with rotation guarantees and security optimization
+#
+# ZK KEYS ROTATION CRONJOB ACCELERATION INTELLIGENCE:
+#   • ZK Keys Rotation CronJob usage analytics with rotation patterns and optimization recommendations
+#   • CronJob monitoring with cryptographic rotation latency and management optimization intelligence
+#   • Development efficiency with ZK Keys Rotation CronJob analytics and deployment optimization procedures
+#   • Security optimization with ZK Keys Rotation CronJob utilization analysis and rotation capacity planning procedures
+#   • Quality assurance with ZK Keys Rotation CronJob metrics and rotation validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Production ZK Keys Rotation CronJob - Comprehensive Key Management
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-zk-keys-rotation-cronjob
+  namespace: veridis
+
+  # Core Veridis ZK Keys Rotation CronJob identification labels
+  labels:
+    app.kubernetes.io/name: veridis-zk-keys-rotation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: zk-keys-rotation-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # ZK Keys Rotation CronJob specific classification
+    job.veridis.xyz/type: production-zk-keys-rotation-cronjob
+    job.veridis.xyz/category: comprehensive-key-rotation-cronjob
+    job.veridis.xyz/role: primary-key-rotation-cronjob
+    job.veridis.xyz/rotation-class: high-security-rotation-cronjob
+    job.veridis.xyz/security-level: enterprise
+
+    # Key Rotation CronJob ZK Keys Rotation CronJob classification
+    rotation.veridis.xyz/key-rotation-cronjob-type: intelligent-rotation-cronjob
+    rotation.veridis.xyz/rotation-type: zk-key-rotation
+    rotation.veridis.xyz/security-tier: high-security
+    rotation.veridis.xyz/optimization: enabled
+    rotation.veridis.xyz/features: full-rotation-cronjob-stack
+
+    # ZK Key Rotation CronJob classification
+    zk.veridis.xyz/tier: production
+    zk.veridis.xyz/optimization: intelligent-rotation-cronjob-management
+    zk.veridis.xyz/key-management: advanced
+    zk.veridis.xyz/security-optimization: enabled
+    zk.veridis.xyz/efficiency: maximum
+
+    # Business Key Rotation CronJob classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-rotation-cronjob-security
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Key Rotation CronJob labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: cryptographic-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "rotation-cronjob-control-framework"
+    compliance.veridis.xyz/gdpr: "rotation-cronjob-data-protection"
+    compliance.veridis.xyz/iso27001: "rotation-cronjob-security-management"
+    compliance.veridis.xyz/nist-800-190: "rotation-cronjob-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Key Rotation CronJob analytics and intelligence
+    monitoring.veridis.xyz/rotation-cronjob-monitoring: "enabled"
+    monitoring.veridis.xyz/security-monitoring: "comprehensive"
+    monitoring.veridis.xyz/rotation-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # ZK key rotation specific labels
+    zk.veridis.xyz/key-provider: "vault-hsm"
+    zk.veridis.xyz/rotation-strategy: "intelligent"
+    zk.veridis.xyz/key-strength: "256-bit"
+    zk.veridis.xyz/hsm-integration: "enabled"
+    zk.veridis.xyz/key-escrow: "enabled"
+    zk.veridis.xyz/cryptographic-validation: "enabled"
+
+    # Security labels
+    security.veridis.xyz/key-rotation-speed: "high"
+    security.veridis.xyz/entropy-validation: "enabled"
+    security.veridis.xyz/key-verification: "enabled"
+    security.veridis.xyz/optimization-enabled: "true"
+    security.veridis.xyz/quantum-resistant: "enabled"
+
+  annotations:
+    # Key Rotation CronJob purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis ZK Keys Rotation CronJob with intelligent key management, advanced security optimization, and comprehensive rotation optimization"
+    veridis.xyz/purpose: "Provides comprehensive ZK Keys Rotation CronJob for decentralized identity management with intelligent rotation management, security optimization, and rotation guarantees"
+    veridis.xyz/scope: "ZK Keys Rotation CronJob including rotation management, security optimization, cronjob configuration, and comprehensive monitoring intelligence"
+
+    # Key Rotation CronJob architecture and design
+    zk.veridis.xyz/architecture: "Enterprise ZK Keys Rotation CronJob with intelligent rotation management, advanced security optimization, and cronjob integration optimization"
+    zk.veridis.xyz/design-pattern: "Multi-tier Key Rotation CronJob with security optimization, cryptographic efficiency, and business intelligence"
+    zk.veridis.xyz/optimization-model: "Intelligent Key Rotation CronJob with predictive analytics, security optimization, and rotation efficiency"
+    zk.veridis.xyz/security-model: "High-security Key Rotation CronJob with rotation optimization and intelligent cronjob management"
+
+    # Key Rotation CronJob specifications
+    rotation.veridis.xyz/key-rotation-cronjob-specification: "Key Rotation CronJob with security optimization and intelligent zk key rotation management"
+    rotation.veridis.xyz/rotation-specification: "Advanced rotation management with rotation optimization and cronjob enhancement"
+    rotation.veridis.xyz/vault-specification: "Key Rotation CronJob Vault management optimization with intelligent rotation and enhancement"
+    rotation.veridis.xyz/security-specification: "Rotation security cronjob with rotation acceleration and efficiency"
+    rotation.veridis.xyz/business-specification: "Rotation business cronjob with cost optimization and strategic rotation intelligence"
+
+    # ZK key rotation configuration annotations
+    zk.veridis.xyz/schedule: "0 3 */7 * *"  # Weekly at 3 AM on Sunday
+    zk.veridis.xyz/rotation-strategy: "intelligent"
+    zk.veridis.xyz/key-strength: "256"
+    zk.veridis.xyz/entropy-threshold: "128"
+    zk.veridis.xyz/batch-size: "10"
+
+    # Security annotations
+    security.veridis.xyz/rotation-timeout: "45m"
+    security.veridis.xyz/parallel-rotations: "3"
+    security.veridis.xyz/key-validation: "enabled"
+    security.veridis.xyz/hsm-integration: "enabled"
+    security.veridis.xyz/quantum-resistance: "enabled"
+
+    # Vault HSM annotations
+    vault.veridis.xyz/host: "veridis-vault-service.veridis.svc.cluster.local"
+    vault.veridis.xyz/port: "8200"
+    vault.veridis.xyz/api-version: "v1"
+    vault.veridis.xyz/hsm-enabled: "true"
+    vault.veridis.xyz/key-derivation: "pbkdf2"
+
+    # Key management annotations
+    keys.veridis.xyz/proving-keys: "enabled"
+    keys.veridis.xyz/verification-keys: "enabled"
+    keys.veridis.xyz/circuit-keys: "enabled"
+    keys.veridis.xyz/signing-keys: "enabled"
+    keys.veridis.xyz/encryption-keys: "enabled"
+
+    # Cryptographic annotations
+    crypto.veridis.xyz/algorithm: "ecdsa-secp256k1"
+    crypto.veridis.xyz/hash-function: "poseidon"
+    crypto.veridis.xyz/commitment-scheme: "pedersen"
+    crypto.veridis.xyz/proof-system: "plonk"
+    crypto.veridis.xyz/field-arithmetic: "bn254"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/rotation-monitoring: "enabled"
+    monitoring.veridis.xyz/security-tracking: "enabled"
+    monitoring.veridis.xyz/entropy-monitoring: "enabled"
+    monitoring.veridis.xyz/key-lifecycle-tracking: "enabled"
+    monitoring.veridis.xyz/hsm-monitoring: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/key-retention: "90d"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/compliance-validation: "enabled"
+    compliance.veridis.xyz/regulatory-compliance: "fips-140-2,common-criteria"
+    compliance.veridis.xyz/rotation-policy: "production-zk-key-rotation-policy-v1"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "cryptographic-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-key-rotation"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/security-tier: "production"
+
+    # Disaster recovery annotations
+    dr.veridis.xyz/key-backup: "enabled"
+    dr.veridis.xyz/key-escrow: "enabled"
+    dr.veridis.xyz/disaster-recovery-tier: "primary"
+    dr.veridis.xyz/recovery-priority: "high"
+    dr.veridis.xyz/rotation-frequency: "weekly"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "security-team@veridis.xyz"
+    veridis.xyz/key-rotation-cronjob-admin: "crypto-admin@veridis.xyz"
+    veridis.xyz/escalation: "security-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "security-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/maintenance/zk-key-rotation"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/maintenance/zk-key-rotation-management"
+    veridis.xyz/rotation-docs: "https://security.veridis.xyz/zk-key-rotation-guide"
+    veridis.xyz/crypto-docs: "https://security.veridis.xyz/zk-key-rotation-monitoring"
+
+# ==============================================================================
+# ZK Keys Rotation CronJob Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Schedule Configuration
+  # ==============================================================================
+  schedule: "0 3 */7 * *"  # Weekly on Sunday at 3 AM UTC
+
+  # ==============================================================================
+  # Timezone Configuration
+  # ==============================================================================
+  timeZone: "UTC"
+
+  # ==============================================================================
+  # Concurrency Policy
+  # ==============================================================================
+  concurrencyPolicy: Forbid
+
+  # ==============================================================================
+  # History Limits
+  # ==============================================================================
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+
+  # ==============================================================================
+  # Startup Deadline
+  # ==============================================================================
+  startingDeadlineSeconds: 600  # 10 minutes
+
+  # ==============================================================================
+  # Suspend Configuration
+  # ==============================================================================
+  suspend: false
+
+  # ==============================================================================
+  # Job Template Configuration
+  # ==============================================================================
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: zk-keys-rotation
+        job.veridis.xyz/schedule: weekly
+        job.veridis.xyz/environment: production
+        job.veridis.xyz/criticality: high
+        veridis.xyz/component: zk-keys-rotation
+        veridis.xyz/managed-by: cronjob
+
+      annotations:
+        job.veridis.xyz/created-by: "zk-keys-rotation-cronjob"
+        job.veridis.xyz/schedule-cron: "0 3 */7 * *"
+        job.veridis.xyz/rotation-strategy: "intelligent"
+        job.veridis.xyz/security-optimized: "true"
+
+    # ==============================================================================
+    # Job Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Job Completion and Parallelism
+      # ==============================================================================
+      completions: 1
+      parallelism: 1
+
+      # ==============================================================================
+      # Job Deadline and Backoff
+      # ==============================================================================
+      activeDeadlineSeconds: 2700  # 45 minutes
+      backoffLimit: 2
+
+      # ==============================================================================
+      # TTL After Finished
+      # ==============================================================================
+      ttlSecondsAfterFinished: 604800  # 7 days
+
+      # ==============================================================================
+      # Pod Template Specification
+      # ==============================================================================
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: zk-keys-rotation
+            job.veridis.xyz/component: rotation-worker
+            veridis.xyz/zk-keys-rotation: "true"
+            veridis.xyz/monitoring: "enabled"
+
+          annotations:
+            job.veridis.xyz/rotation-job: "zk-keys-rotation"
+            job.veridis.xyz/security-optimized: "true"
+            job.veridis.xyz/monitoring-enabled: "true"
+
+            # Prometheus annotations
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "8080"
+            prometheus.io/path: "/metrics"
+
+        spec:
+          # ==============================================================================
+          # Pod Restart Policy
+          # ==============================================================================
+          restartPolicy: OnFailure
+
+          # ==============================================================================
+          # Service Account
+          # ==============================================================================
+          serviceAccountName: veridis-zk-keys-rotation-sa
+
+          # ==============================================================================
+          # Security Context
+          # ==============================================================================
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534  # nobody
+            runAsGroup: 65534  # nobody
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+            supplementalGroups: []
+
+          # ==============================================================================
+          # DNS Configuration
+          # ==============================================================================
+          dnsPolicy: ClusterFirst
+          dnsConfig:
+            options:
+              - name: ndots
+                value: "2"
+              - name: edns0
+
+          # ==============================================================================
+          # Priority and Scheduling
+          # ==============================================================================
+          priorityClassName: veridis-security-priority
+
+          # ==============================================================================
+          # Node Selection and Affinity
+          # ==============================================================================
+          nodeSelector:
+            veridis.xyz/node-type: "security"
+            kubernetes.io/arch: "amd64"
+            veridis.xyz/hsm-enabled: "true"
+
+          affinity:
+            # Node affinity for security nodes with HSM support
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: veridis.xyz/workload-type
+                        operator: In
+                        values: ["security", "cryptographic"]
+                      - key: veridis.xyz/hsm-support
+                        operator: In
+                        values: ["enabled", "true"]
+
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  preference:
+                    matchExpressions:
+                      - key: node.kubernetes.io/instance-type
+                        operator: In
+                        values: ["m5.xlarge", "m5.2xlarge", "c5.xlarge"]
+                - weight: 50
+                  preference:
+                    matchExpressions:
+                      - key: veridis.xyz/dedicated-crypto
+                        operator: In
+                        values: ["true"]
+
+            # Pod anti-affinity to avoid scheduling on ZK circuits nodes during rotation
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 100
+                  podAffinityTerm:
+                    labelSelector:
+                      matchExpressions:
+                        - key: app.kubernetes.io/name
+                          operator: In
+                          values: ["zk-circuits"]
+                    topologyKey: kubernetes.io/hostname
+
+          # ==============================================================================
+          # Tolerations
+          # ==============================================================================
+          tolerations:
+            - key: veridis.xyz/security
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: veridis.xyz/hsm
+              operator: Equal
+              value: "true"
+              effect: NoSchedule
+            - key: node.kubernetes.io/not-ready
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+            - key: node.kubernetes.io/unreachable
+              operator: Exists
+              effect: NoExecute
+              tolerationSeconds: 300
+
+          # ==============================================================================
+          # Init Containers
+          # ==============================================================================
+          initContainers:
+            # ==============================================================================
+            # Vault Connection Validator
+            # ==============================================================================
+            - name: vault-connection-check
+              image: hashicorp/vault:1.15.6
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  echo "Checking Vault connection and HSM availability..."
+
+                  # Set Vault environment
+                  export VAULT_ADDR=https://$VAULT_HOST:$VAULT_PORT
+                  export VAULT_CACERT=/etc/vault-tls/ca.crt
+                  export VAULT_CLIENT_CERT=/etc/vault-tls/tls.crt
+                  export VAULT_CLIENT_KEY=/etc/vault-tls/tls.key
+
+                  # Check Vault status
+                  vault status
+                  if [ $? -ne 0 ]; then
+                    echo "Vault is not accessible"
+                    exit 1
+                  fi
+
+                  # Check HSM status
+                  vault auth -method=cert
+                  vault read sys/seal-status
+
+                  # Verify HSM is available for key operations
+                  vault read transit/keys/zk-master-key
+                  if [ $? -ne 0 ]; then
+                    echo "HSM key access verification failed"
+                    exit 1
+                  fi
+
+                  echo "Vault and HSM connection successful"
+
+              env:
+                - name: VAULT_HOST
+                  value: "veridis-vault-service.veridis.svc.cluster.local"
+                - name: VAULT_PORT
+                  value: "8200"
+                - name: VAULT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-vault-secret
+                      key: vault-token
+
+              volumeMounts:
+                - name: vault-tls-certs
+                  mountPath: /etc/vault-tls
+                  readOnly: true
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "64Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "128Mi"
+
+            # ==============================================================================
+            # Key Backup Validator
+            # ==============================================================================
+            - name: key-backup-validator
+              image: veridis/crypto-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Validating existing key backups before rotation..."
+
+                  # Check if key backup exists
+                  BACKUP_TIMESTAMP=$(vault kv get -field=timestamp secret/zk-keys/backup/latest)
+
+                  if [ -z "$BACKUP_TIMESTAMP" ]; then
+                    echo "No recent key backup found. Creating backup before rotation..."
+
+                    # Create comprehensive key backup
+                    /usr/local/bin/zk-key-backup \
+                      --vault-addr=https://$VAULT_HOST:$VAULT_PORT \
+                      --backup-location=secret/zk-keys/backup/$(date +%Y%m%d_%H%M%S) \
+                      --include-proving-keys=true \
+                      --include-verification-keys=true \
+                      --include-circuit-keys=true \
+                      --compression=enabled \
+                      --encryption=enabled
+
+                    if [ $? -ne 0 ]; then
+                      echo "Key backup creation failed"
+                      exit 1
+                    fi
+
+                    echo "Key backup completed successfully"
+                  else
+                    echo "Recent key backup found: $BACKUP_TIMESTAMP"
+
+                    # Validate backup integrity
+                    BACKUP_VALIDATION=$(vault kv get -field=validation secret/zk-keys/backup/latest)
+                    if [ "$BACKUP_VALIDATION" != "valid" ]; then
+                      echo "Backup validation failed. Creating new backup..."
+                      /usr/local/bin/zk-key-backup --force-backup=true
+                    fi
+                  fi
+
+              env:
+                - name: VAULT_HOST
+                  value: "veridis-vault-service.veridis.svc.cluster.local"
+                - name: VAULT_PORT
+                  value: "8200"
+                - name: VAULT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-vault-secret
+                      key: vault-token
+                - name: VAULT_ADDR
+                  value: "https://veridis-vault-service.veridis.svc.cluster.local:8200"
+
+              volumeMounts:
+                - name: vault-tls-certs
+                  mountPath: /etc/vault-tls
+                  readOnly: true
+                - name: rotation-workspace
+                  mountPath: /workspace
+                - name: key-backup-storage
+                  mountPath: /backup
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "100m"
+                  memory: "128Mi"
+                limits:
+                  cpu: "500m"
+                  memory: "256Mi"
+
+            # ==============================================================================
+            # ZK Circuits Health Validator
+            # ==============================================================================
+            - name: zk-circuits-health-check
+              image: veridis/crypto-tools:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  echo "Checking ZK Circuits service health before key rotation..."
+
+                  # Check ZK circuits service availability
+                  ZK_HEALTH=$(curl -s -f http://veridis-zk-circuits-service.veridis.svc.cluster.local:4000/health)
+                  if [ $? -ne 0 ]; then
+                    echo "ZK Circuits service is not healthy. Aborting key rotation."
+                    exit 1
+                  fi
+
+                  # Check current key usage
+                  ACTIVE_PROOFS=$(curl -s http://veridis-zk-circuits-service.veridis.svc.cluster.local:4000/metrics | grep "active_proof_generations" | awk '{print $2}')
+
+                  if [ "$ACTIVE_PROOFS" -gt "0" ]; then
+                    echo "Active proof generations detected: $ACTIVE_PROOFS. Waiting for completion..."
+
+                    # Wait for active proofs to complete (max 10 minutes)
+                    WAIT_TIME=0
+                    while [ "$ACTIVE_PROOFS" -gt "0" ] && [ "$WAIT_TIME" -lt "600" ]; do
+                      sleep 30
+                      WAIT_TIME=$((WAIT_TIME + 30))
+                      ACTIVE_PROOFS=$(curl -s http://veridis-zk-circuits-service.veridis.svc.cluster.local:4000/metrics | grep "active_proof_generations" | awk '{print $2}')
+                      echo "Waiting for proofs to complete. Active: $ACTIVE_PROOFS, Wait time: ${WAIT_TIME}s"
+                    done
+
+                    if [ "$ACTIVE_PROOFS" -gt "0" ]; then
+                      echo "Timeout waiting for proof completion. Aborting rotation."
+                      exit 1
+                    fi
+                  fi
+
+                  echo "ZK Circuits service is ready for key rotation"
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "64Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "128Mi"
+
+          # ==============================================================================
+          # Main Container - ZK Keys Rotation Worker
+          # ==============================================================================
+          containers:
+            - name: zk-keys-rotation-worker
+              image: veridis/zk-keys-rotation:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              # ==============================================================================
+              # Container Command and Arguments
+              # ==============================================================================
+              command:
+                - /usr/local/bin/zk-keys-rotation
+
+              args:
+                - --config=/etc/rotation/config.yaml
+                - --log-level=info
+                - --metrics-port=8080
+                - --dry-run=false
+                - --parallel-rotations=3
+                - --batch-size=10
+                - --entropy-threshold=128
+                - --rotation-strategy=intelligent
+                - --security-optimized=true
+                - --audit-logging=true
+                - --hsm-integration=true
+                - --quantum-resistant=true
+
+              # ==============================================================================
+              # Environment Variables
+              # ==============================================================================
+              env:
+                # Vault Configuration
+                - name: VAULT_ADDR
+                  value: "https://veridis-vault-service.veridis.svc.cluster.local:8200"
+                - name: VAULT_API_VERSION
+                  value: "v1"
+                - name: VAULT_TLS_ENABLED
+                  value: "true"
+                - name: VAULT_TLS_CERT_PATH
+                  value: "/etc/vault-tls/tls.crt"
+                - name: VAULT_TLS_KEY_PATH
+                  value: "/etc/vault-tls/tls.key"
+                - name: VAULT_TLS_CA_PATH
+                  value: "/etc/vault-tls/ca.crt"
+                - name: VAULT_HSM_ENABLED
+                  value: "true"
+
+                # Vault Authentication
+                - name: VAULT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-vault-secret
+                      key: vault-token
+                - name: VAULT_ROLE_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-vault-secret
+                      key: role-id
+                      optional: true
+                - name: VAULT_SECRET_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-vault-secret
+                      key: secret-id
+                      optional: true
+
+                # Key Rotation Configuration
+                - name: ROTATION_STRATEGY
+                  value: "intelligent"
+                - name: KEY_STRENGTH_BITS
+                  value: "256"
+                - name: ENTROPY_THRESHOLD_BITS
+                  value: "128"
+                - name: BATCH_SIZE
+                  value: "10"
+                - name: PARALLEL_ROTATIONS
+                  value: "3"
+                - name: DRY_RUN_MODE
+                  value: "false"
+                - name: SAFETY_CHECKS_ENABLED
+                  value: "true"
+
+                # Cryptographic Configuration
+                - name: KEY_ALGORITHM
+                  value: "ecdsa-secp256k1"
+                - name: HASH_FUNCTION
+                  value: "poseidon"
+                - name: COMMITMENT_SCHEME
+                  value: "pedersen"
+                - name: PROOF_SYSTEM
+                  value: "plonk"
+                - name: FIELD_ARITHMETIC
+                  value: "bn254"
+                - name: QUANTUM_RESISTANT_ENABLED
+                  value: "true"
+
+                # Key Types Configuration
+                - name: ROTATE_PROVING_KEYS
+                  value: "true"
+                - name: ROTATE_VERIFICATION_KEYS
+                  value: "true"
+                - name: ROTATE_CIRCUIT_KEYS
+                  value: "true"
+                - name: ROTATE_SIGNING_KEYS
+                  value: "true"
+                - name: ROTATE_ENCRYPTION_KEYS
+                  value: "true"
+
+                # HSM Configuration
+                - name: HSM_INTEGRATION_ENABLED
+                  value: "true"
+                - name: HSM_KEY_DERIVATION
+                  value: "pbkdf2"
+                - name: HSM_ENTROPY_SOURCE
+                  value: "hardware"
+                - name: HSM_KEY_WRAPPING
+                  value: "enabled"
+
+                # Security Configuration
+                - name: SECURITY_OPTIMIZED
+                  value: "true"
+                - name: KEY_VALIDATION_ENABLED
+                  value: "true"
+                - name: ENTROPY_VALIDATION_ENABLED
+                  value: "true"
+                - name: CRYPTOGRAPHIC_VALIDATION
+                  value: "true"
+                - name: KEY_ESCROW_ENABLED
+                  value: "true"
+
+                # Performance Configuration
+                - name: PERFORMANCE_OPTIMIZED
+                  value: "true"
+                - name: PROGRESS_TRACKING_ENABLED
+                  value: "true"
+                - name: METRICS_ENABLED
+                  value: "true"
+                - name: METRICS_PORT
+                  value: "8080"
+                - name: HEALTH_CHECK_PORT
+                  value: "8081"
+
+                # Logging Configuration
+                - name: LOG_LEVEL
+                  value: "info"
+                - name: LOG_FORMAT
+                  value: "json"
+                - name: AUDIT_LOGGING_ENABLED
+                  value: "true"
+                - name: STRUCTURED_LOGGING
+                  value: "true"
+                - name: SECURITY_LOGGING
+                  value: "true"
+
+                # Monitoring Configuration
+                - name: MONITORING_ENABLED
+                  value: "true"
+                - name: PROMETHEUS_METRICS_ENABLED
+                  value: "true"
+                - name: HEALTH_CHECKS_ENABLED
+                  value: "true"
+                - name: ROTATION_TRACKING_ENABLED
+                  value: "true"
+                - name: ENTROPY_MONITORING_ENABLED
+                  value: "true"
+
+                # Notification Configuration
+                - name: SUCCESS_NOTIFICATION_ENABLED
+                  value: "true"
+                - name: FAILURE_ALERTING_ENABLED
+                  value: "true"
+                - name: SECURITY_ALERTING_ENABLED
+                  value: "true"
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-notification-secrets
+                      key: slack-webhook-url
+                      optional: true
+
+                # ZK Circuits Integration
+                - name: ZK_CIRCUITS_SERVICE_URL
+                  value: "http://veridis-zk-circuits-service.veridis.svc.cluster.local:4000"
+                - name: ZK_CIRCUITS_HEALTH_ENDPOINT
+                  value: "/health"
+                - name: ZK_CIRCUITS_METRICS_ENDPOINT
+                  value: "/metrics"
+                - name: ZK_CIRCUITS_KEY_UPDATE_ENDPOINT
+                  value: "/api/v1/keys/update"
+
+                # Environment and Deployment
+                - name: ENVIRONMENT
+                  value: "production"
+                - name: DEPLOYMENT_VERSION
+                  value: "3.2.1"
+                - name: CLUSTER_NAME
+                  value: "veridis-production"
+                - name: NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.namespace
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+
+                # Job Metadata
+                - name: JOB_START_TIME
+                  value: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+                - name: JOB_TYPE
+                  value: "zk-keys-rotation"
+                - name: JOB_SCHEDULE
+                  value: "weekly"
+                - name: JOB_CRITICALITY
+                  value: "high"
+                - name: ROTATION_ID
+                  value: "$(uuidgen)"
+
+              # ==============================================================================
+              # Volume Mounts
+              # ==============================================================================
+              volumeMounts:
+                # Configuration
+                - name: rotation-config
+                  mountPath: /etc/rotation
+                  readOnly: true
+
+                # TLS Certificates
+                - name: vault-tls-certs
+                  mountPath: /etc/vault-tls
+                  readOnly: true
+
+                # Workspace for temporary files
+                - name: rotation-workspace
+                  mountPath: /workspace
+
+                # Key backup storage
+                - name: key-backup-storage
+                  mountPath: /backup
+
+                # Audit logs
+                - name: audit-logs
+                  mountPath: /var/log/audit
+
+                # Entropy source
+                - name: entropy-source
+                  mountPath: /dev/random
+                  readOnly: true
+
+                # HSM device (if available)
+                - name: hsm-device
+                  mountPath: /dev/hsm
+                  readOnly: false
+
+              # ==============================================================================
+              # Security Context
+              # ==============================================================================
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                runAsGroup: 65534
+                capabilities:
+                  drop:
+                    - ALL
+                  add:
+                    - SYS_RESOURCE  # For HSM access
+
+              # ==============================================================================
+              # Resource Management
+              # ==============================================================================
+              resources:
+                requests:
+                  cpu: "500m"
+                  memory: "1Gi"
+                  ephemeral-storage: "2Gi"
+                limits:
+                  cpu: "2000m"
+                  memory: "4Gi"
+                  ephemeral-storage: "4Gi"
+
+              # ==============================================================================
+              # Health Checks
+              # ==============================================================================
+              livenessProbe:
+                httpGet:
+                  path: /health/live
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 60
+                periodSeconds: 30
+                timeoutSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+
+              readinessProbe:
+                httpGet:
+                  path: /health/ready
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 30
+                periodSeconds: 15
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 3
+
+              # ==============================================================================
+              # Startup Probe
+              # ==============================================================================
+              startupProbe:
+                httpGet:
+                  path: /health/startup
+                  port: 8081
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                timeoutSeconds: 5
+                successThreshold: 1
+                failureThreshold: 18  # 3 minutes total
+
+              # ==============================================================================
+              # Container Ports
+              # ==============================================================================
+              ports:
+                - name: metrics
+                  containerPort: 8080
+                  protocol: TCP
+                - name: health
+                  containerPort: 8081
+                  protocol: TCP
+
+              # ==============================================================================
+              # Lifecycle Hooks
+              # ==============================================================================
+              lifecycle:
+                preStop:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - -c
+                      - |
+                        echo "Gracefully shutting down ZK keys rotation job..."
+                        # Send graceful shutdown signal
+                        kill -TERM 1
+                        # Wait for rotation to complete
+                        sleep 60
+                        echo "ZK keys rotation job shutdown completed"
+
+          # ==============================================================================
+          # Volumes Configuration
+          # ==============================================================================
+          volumes:
+            # ==============================================================================
+            # Configuration Volume
+            # ==============================================================================
+            - name: rotation-config
+              configMap:
+                name: veridis-zk-keys-rotation-config
+                defaultMode: 0644
+                items:
+                  - key: config.yaml
+                    path: config.yaml
+                  - key: rotation-strategies.yaml
+                    path: rotation-strategies.yaml
+                  - key: cryptographic-config.yaml
+                    path: cryptographic-config.yaml
+                  - key: hsm-config.yaml
+                    path: hsm-config.yaml
+
+            # ==============================================================================
+            # TLS Certificates Volume
+            # ==============================================================================
+            - name: vault-tls-certs
+              secret:
+                secretName: veridis-vault-tls-certs
+                defaultMode: 0600
+                items:
+                  - key: tls.crt
+                    path: tls.crt
+                  - key: tls.key
+                    path: tls.key
+                  - key: ca.crt
+                    path: ca.crt
+
+            # ==============================================================================
+            # Workspace Volume (EmptyDir)
+            # ==============================================================================
+            - name: rotation-workspace
+              emptyDir:
+                sizeLimit: "2Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Key Backup Storage Volume
+            # ==============================================================================
+            - name: key-backup-storage
+              persistentVolumeClaim:
+                claimName: veridis-key-backup-pvc
+
+            # ==============================================================================
+            # Audit Logs Volume
+            # ==============================================================================
+            - name: audit-logs
+              emptyDir:
+                sizeLimit: "1Gi"
+                medium: ""
+
+            # ==============================================================================
+            # Entropy Source Volume
+            # ==============================================================================
+            - name: entropy-source
+              hostPath:
+                path: /dev/random
+                type: CharDevice
+
+            # ==============================================================================
+            # HSM Device Volume (if available)
+            # ==============================================================================
+            - name: hsm-device
+              hostPath:
+                path: /dev/hsm0
+                type: CharDevice
+
+---
+# ==============================================================================
+# Veridis Emergency ZK Keys Rotation CronJob - Emergency Key Rotation
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-emergency-zk-keys-rotation-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-emergency-zk-keys-rotation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: emergency-zk-keys-rotation-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: emergency-zk-keys-rotation-cronjob
+    job.veridis.xyz/category: emergency-key-rotation
+    job.veridis.xyz/role: emergency-key-rotation
+    job.veridis.xyz/priority: critical
+
+    # Emergency rotation labels
+    emergency.veridis.xyz/type: "emergency-key-rotation"
+    emergency.veridis.xyz/trigger: "security-incident"
+    emergency.veridis.xyz/automation: "enabled"
+    emergency.veridis.xyz/notification: "critical"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: security-engineering
+    veridis.xyz/cost-center: security-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Emergency ZK keys rotation for security incidents"
+    veridis.xyz/purpose: "Provides emergency key rotation capabilities for security incidents"
+
+    # Emergency specific annotations
+    emergency.veridis.xyz/trigger-condition: "security-incident-detected"
+    emergency.veridis.xyz/automation-enabled: "true"
+    emergency.veridis.xyz/notification-critical: "true"
+
+    # Initially suspended - activated via external trigger
+    cronjob.kubernetes.io/suspend: "true"
+
+# ==============================================================================
+# Emergency ZK Keys Rotation CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "*/5 * * * *"  # Every 5 minutes when activated
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 10
+  failedJobsHistoryLimit: 10
+  startingDeadlineSeconds: 120  # 2 minutes
+  suspend: true  # Initially suspended
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: emergency-zk-keys-rotation
+        job.veridis.xyz/priority: critical
+        job.veridis.xyz/trigger: emergency
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 1800  # 30 minutes
+      backoffLimit: 1  # Only one retry for emergency
+      ttlSecondsAfterFinished: 86400  # 24 hours
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: emergency-zk-keys-rotation
+            job.veridis.xyz/component: emergency-rotation-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-emergency-zk-keys-rotation-sa
+
+          # Higher priority for emergency rotations
+          priorityClassName: veridis-critical-priority
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          # Emergency rotation requires security nodes
+          nodeSelector:
+            veridis.xyz/node-type: "security"
+            veridis.xyz/hsm-enabled: "true"
+            veridis.xyz/emergency-capable: "true"
+
+          containers:
+            - name: emergency-zk-keys-rotation
+              image: veridis/zk-keys-rotation:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/zk-keys-rotation
+
+              args:
+                - --config=/etc/rotation/emergency-config.yaml
+                - --emergency-mode=true
+                - --rotation-strategy=immediate
+                - --parallel-rotations=6
+                - --batch-size=20
+                - --skip-validation-delays=true
+                - --force-rotation=true
+                - --audit-logging=true
+                - --critical-alerting=true
+
+              env:
+                - name: VAULT_ADDR
+                  value: "https://veridis-vault-service.veridis.svc.cluster.local:8200"
+                - name: VAULT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-emergency-vault-secret
+                      key: emergency-vault-token
+                - name: ROTATION_STRATEGY
+                  value: "immediate"
+                - name: EMERGENCY_MODE
+                  value: "true"
+                - name: FORCE_ROTATION
+                  value: "true"
+                - name: SKIP_VALIDATION_DELAYS
+                  value: "true"
+                - name: CRITICAL_ALERTING
+                  value: "true"
+                - name: EMERGENCY_CONTACT_ENABLED
+                  value: "true"
+
+              volumeMounts:
+                - name: emergency-rotation-config
+                  mountPath: /etc/rotation
+                  readOnly: true
+                - name: vault-tls-certs
+                  mountPath: /etc/vault-tls
+                  readOnly: true
+                - name: rotation-workspace
+                  mountPath: /workspace
+                - name: audit-logs
+                  mountPath: /var/log/audit
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+                  add:
+                    - SYS_RESOURCE
+
+              resources:
+                requests:
+                  cpu: "1000m"
+                  memory: "2Gi"
+                limits:
+                  cpu: "4000m"
+                  memory: "8Gi"
+
+          volumes:
+            - name: emergency-rotation-config
+              configMap:
+                name: veridis-emergency-zk-keys-rotation-config
+            - name: vault-tls-certs
+              secret:
+                secretName: veridis-vault-tls-certs
+            - name: rotation-workspace
+              emptyDir:
+                sizeLimit: "4Gi"
+            - name: audit-logs
+              emptyDir:
+                sizeLimit: "2Gi"
+
+---
+# ==============================================================================
+# Veridis ZK Keys Compliance Rotation CronJob - Compliance-Driven Rotation
+# ==============================================================================
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: veridis-zk-keys-compliance-rotation-cronjob
+  namespace: veridis
+
+  labels:
+    app.kubernetes.io/name: veridis-zk-keys-compliance-rotation
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "3.2.1"
+    app.kubernetes.io/component: compliance-zk-keys-rotation-cronjob
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    job.veridis.xyz/type: compliance-zk-keys-rotation-cronjob
+    job.veridis.xyz/category: compliance-key-rotation
+    job.veridis.xyz/role: compliance-rotation
+    job.veridis.xyz/priority: high
+
+    # Compliance rotation labels
+    compliance.veridis.xyz/type: "regulatory-key-rotation"
+    compliance.veridis.xyz/framework: "fips-140-2,common-criteria"
+    compliance.veridis.xyz/audit-trail: "enabled"
+    compliance.veridis.xyz/retention: "7-years"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: compliance-engineering
+    veridis.xyz/cost-center: compliance-infrastructure
+
+  annotations:
+    veridis.xyz/description: "Compliance-driven ZK keys rotation for regulatory requirements"
+    veridis.xyz/purpose: "Provides regulatory-compliant key rotation with audit trails"
+
+    # Compliance specific annotations
+    compliance.veridis.xyz/frameworks: "fips-140-2,common-criteria,nist-sp-800-57"
+    compliance.veridis.xyz/audit-retention: "7-years"
+    compliance.veridis.xyz/regulatory-approval: "required"
+
+# ==============================================================================
+# Compliance ZK Keys Rotation CronJob Specification
+# ==============================================================================
+spec:
+  schedule: "0 1 1 */3 *"  # Quarterly on the 1st at 1 AM
+  timeZone: "UTC"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 12  # Keep 3 years of history
+  failedJobsHistoryLimit: 12
+  startingDeadlineSeconds: 900  # 15 minutes
+  suspend: false
+
+  jobTemplate:
+    metadata:
+      labels:
+        job.veridis.xyz/type: compliance-zk-keys-rotation
+        job.veridis.xyz/frequency: quarterly
+        job.veridis.xyz/compliance: regulatory
+
+    spec:
+      completions: 1
+      parallelism: 1
+      activeDeadlineSeconds: 7200  # 2 hours
+      backoffLimit: 1
+      ttlSecondsAfterFinished: 7776000  # 90 days
+
+      template:
+        metadata:
+          labels:
+            job.veridis.xyz/type: compliance-zk-keys-rotation
+            job.veridis.xyz/component: compliance-rotation-worker
+
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: veridis-compliance-zk-keys-rotation-sa
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroup: 65534
+            seccompProfile:
+              type: RuntimeDefault
+
+          # Compliance requires certified nodes
+          nodeSelector:
+            veridis.xyz/node-type: "security"
+            veridis.xyz/fips-140-2: "certified"
+            veridis.xyz/common-criteria: "certified"
+
+          containers:
+            - name: compliance-zk-keys-rotation
+              image: veridis/zk-keys-rotation:v3.2.1
+              imagePullPolicy: IfNotPresent
+
+              command:
+                - /usr/local/bin/zk-keys-rotation
+
+              args:
+                - --config=/etc/rotation/compliance-config.yaml
+                - --compliance-mode=true
+                - --rotation-strategy=regulatory
+                - --audit-trail=comprehensive
+                - --regulatory-validation=true
+                - --certification-required=true
+                - --documentation-generation=true
+                - --compliance-reporting=true
+
+              env:
+                - name: VAULT_ADDR
+                  value: "https://veridis-vault-service.veridis.svc.cluster.local:8200"
+                - name: VAULT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: veridis-compliance-vault-secret
+                      key: compliance-vault-token
+                - name: COMPLIANCE_MODE
+                  value: "true"
+                - name: REGULATORY_FRAMEWORKS
+                  value: "fips-140-2,common-criteria,nist-sp-800-57"
+                - name: AUDIT_TRAIL_COMPREHENSIVE
+                  value: "true"
+                - name: REGULATORY_VALIDATION
+                  value: "true"
+                - name: CERTIFICATION_REQUIRED
+                  value: "true"
+                - name: DOCUMENTATION_GENERATION
+                  value: "true"
+                - name: COMPLIANCE_REPORTING
+                  value: "true"
+                - name: AUDIT_RETENTION_YEARS
+                  value: "7"
+
+              volumeMounts:
+                - name: compliance-rotation-config
+                  mountPath: /etc/rotation
+                  readOnly: true
+                - name: vault-tls-certs
+                  mountPath: /etc/vault-tls
+                  readOnly: true
+                - name: compliance-workspace
+                  mountPath: /workspace
+                - name: compliance-audit-logs
+                  mountPath: /var/log/compliance
+                - name: regulatory-documentation
+                  mountPath: /var/lib/regulatory
+
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                runAsUser: 65534
+                capabilities:
+                  drop:
+                    - ALL
+
+              resources:
+                requests:
+                  cpu: "800m"
+                  memory: "1.5Gi"
+                limits:
+                  cpu: "3000m"
+                  memory: "6Gi"
+
+          volumes:
+            - name: compliance-rotation-config
+              configMap:
+                name: veridis-compliance-zk-keys-rotation-config
+            - name: vault-tls-certs
+              secret:
+                secretName: veridis-vault-tls-certs
+            - name: compliance-workspace
+              emptyDir:
+                sizeLimit: "3Gi"
+            - name: compliance-audit-logs
+              persistentVolumeClaim:
+                claimName: veridis-compliance-audit-pvc
+            - name: regulatory-documentation
+              persistentVolumeClaim:
+                claimName: veridis-regulatory-docs-pvc
+
+# ==============================================================================
+# Veridis ZK Keys Rotation CronJob Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ZK KEYS ROTATION CRONJOB STRATEGY:
+# =======================================================
+#
+# VERIDIS ZK KEYS ROTATION CRONJOB ARCHITECTURE OVERVIEW:
+# ------------------------------------------------------
+# 1. Production ZK Keys Rotation CronJob (veridis-zk-keys-rotation-cronjob):
+#    - Comprehensive enterprise-grade key rotation cronjob with intelligent cryptographic management and advanced security optimization for production environments
+#    - Advanced rotation configuration with comprehensive Vault HSM integration, key lifecycle management, TLS support, and comprehensive operational excellence
+#    - Multi-tier rotation architecture with weekly scheduling, intelligent rotation strategies, security optimization, and comprehensive cryptographic intelligence
+#    - Enterprise rotation policies with security enforcement, compliance controls, key backup automation, and comprehensive disaster recovery procedures
+#    - Security optimization with intelligent batch processing, parallel rotations, entropy validation, and efficiency for maximum cryptographic security
+#
+# 2. Emergency ZK Keys Rotation CronJob (veridis-emergency-zk-keys-rotation-cronjob):
+#    - Critical emergency key rotation with incident response and comprehensive emergency coordination
+#    - Advanced emergency configuration with 5-minute scheduling, immediate rotation, critical alerting, and comprehensive emergency intelligence
+#    - Flexible rotation optimization with emergency workflow, incident response, and comprehensive emergency intelligence
+#    - Emergency intelligence with rotation procedures, incident support, emergency automation, and comprehensive emergency coordination
+#    - Operational excellence with emergency rotation, incident workflows, emergency automation, and comprehensive emergency environment management
+#
+# 3. Compliance ZK Keys Rotation CronJob (veridis-zk-keys-compliance-rotation-cronjob):
+#    - Regulatory compliance key rotation with audit trails and comprehensive compliance coordination
+#    - Advanced compliance configuration with quarterly scheduling, regulatory validation, audit documentation, and comprehensive compliance intelligence
+#    - Flexible rotation optimization with compliance workflow, regulatory support, and comprehensive compliance intelligence
+#    - Compliance intelligence with rotation procedures, regulatory support, compliance automation, and comprehensive compliance coordination
+#    - Regulatory excellence with compliance rotation, audit workflows, compliance automation, and comprehensive compliance environment management
+#
+# ENTERPRISE ZK KEYS ROTATION CRONJOB FEATURES:
+# =============================================
+# Advanced Cryptographic Management and Vault HSM Integration:
+#   - Multi-tier rotation architecture with weekly rotation, emergency rotation, compliance rotation, and comprehensive rotation configurations
+#   - Intelligent rotation management with Vault HSM integration, key lifecycle management, entropy validation, and comprehensive rotation decisions
+#   - Rotation discovery with cryptographic optimization, key management, rotation policies, and comprehensive rotation analytics
+#   - Security management with parallel rotations, batch processing, entropy validation, and comprehensive security intelligence
+#   - Rotation processing tuning with batch management, worker optimization, cryptographic algorithms, and intelligent rotation optimization
+#
+# Comprehensive Security and HSM Integration:
+#   - Multi-tier security with Vault HSM, hardware entropy, quantum resistance, and comprehensive security coordination
+#   - Security optimization with HSM integration, key validation, entropy monitoring, and comprehensive security intelligence
+#   - Access management with Vault authentication, TLS certificates, key escrow, and comprehensive access coordination
+#   - Business intelligence with security analytics, key correlation, rotation optimization, and comprehensive strategic insights
+#   - Security management with cryptographic policies, HSM optimization, security integration, and comprehensive security analytics
+#
+# Enterprise Key Lifecycle and Compliance Management:
+#   - Multi-tier lifecycle with key rotation, key backup, key escrow, and comprehensive lifecycle coordination
+#   - Lifecycle optimization with automated rotation, backup validation, compliance documentation, and comprehensive lifecycle intelligence
+#   - Compliance management with regulatory frameworks, audit trails, documentation generation, and comprehensive compliance coordination
+#   - Business intelligence with compliance analytics, lifecycle correlation, rotation optimization, and comprehensive strategic insights
+#   - Compliance management with regulatory policies, audit optimization, compliance monitoring, and comprehensive compliance analytics
+#
+# Advanced Emergency Response and Incident Management:
+#   - Multi-tier emergency with incident detection, emergency rotation, critical alerting, and comprehensive emergency coordination
+#   - Emergency optimization with immediate rotation, force rotation, skip validations, and comprehensive emergency intelligence
+#   - Incident management with emergency contacts, critical notifications, incident response, and comprehensive incident coordination
+#   - Business intelligence with emergency analytics, incident correlation, response optimization, and comprehensive strategic insights
+#   - Emergency management with incident policies, response optimization, emergency integration, and comprehensive emergency analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# ZK Keys Rotation CronJob Lifecycle Management:
+#   - Multi-CronJob deployment with weekly rotation, emergency rotation, compliance rotation, and comprehensive cronjob coordination
+#   - Intelligent cronjob management with predictive analytics and rotation utilization correlation
+#   - Advanced monitoring with comprehensive cronjob analytics and rotation business intelligence
+#   - CronJob validation with rotation schema enforcement and cronjob deployment safety checks
+#   - Automated optimization with cronjob pattern analysis and rotation optimization recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II rotation controls with comprehensive audit requirements and rotation logging
+#   - GDPR rotation compliance with data protection and privacy-preserving rotation management
+#   - ISO 27001 rotation security management with information security and rotation compliance integration
+#   - NIST 800-190 container rotation security with rotation validation and compliance
+#   - Zero-trust rotation architecture with comprehensive encryption and rotation authentication requirements
+#
+# Business Intelligence Integration:
+#   - Rotation analytics with cost correlation and cronjob resource utilization optimization
+#   - Security analytics with rotation experience optimization and cronjob business intelligence
+#   - Rotation intelligence with processing pattern monitoring and cronjob optimization recommendations
+#   - Strategic planning with capacity management and cronjob forecasting
+#   - Business impact assessment with cronjob performance correlation and rotation tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment cronjob support with production rotation, emergency rotation, compliance rotation, and comprehensive cronjob coordination
+#   - Comprehensive documentation with cronjob guides and rotation troubleshooting procedures
+#   - Environment-specific cronjobs with production, emergency, and compliance support
+#   - Testing integration with cronjob development workflow and rotation debugging capabilities
+#   - CronJob monitoring with comprehensive tracking and rotation correlation
+#
+# ==============================================================================
