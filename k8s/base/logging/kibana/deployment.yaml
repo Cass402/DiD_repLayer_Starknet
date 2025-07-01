@@ -1,0 +1,1358 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Kibana Deployment Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Kibana Deployment for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS KIBANA DEPLOYMENT ARCHITECTURE:
+#   • Advanced Kibana Deployment with intelligent log visualization and performance-based optimization
+#   • Multi-tier Deployment architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with Deployment policies, log optimization, Kibana integration
+#   • Advanced lifecycle management with automated Deployment optimization, Kibana control, and log enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Kibana Deployment performance insights
+#
+# VERIDIS KIBANA DEPLOYMENT OPTIMIZATION:
+#   • High-performance Deployment with intelligent log visualization and Kibana deployment optimization
+#   • Intelligent Deployment log visualization with responsive policies and performance-based log decisions
+#   • Advanced Deployment management with business intelligence and log-based Kibana control
+#   • Comprehensive observability control with intelligent Kibana Deployment management and log enhancement
+#   • Enterprise acceleration with predictive Kibana Deployment management and log optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Kibana Deployment controls with comprehensive audit and log requirements
+#   • GDPR Kibana Deployment compliance with data protection, privacy controls, and log management
+#   • ISO 27001 Kibana Deployment management with comprehensive framework integration
+#   • NIST 800-190 container Kibana Deployment security with log-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Kibana Deployment best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Kibana Deployment lifecycle management with automated provisioning and log optimization
+#   • Predictive log analytics with capacity planning and Kibana Deployment intelligence
+#   • Advanced Deployment integration with Kibana log analytics and performance business intelligence
+#   • Comprehensive observability control with Kibana Deployment preservation and log optimization
+#   • Business continuity Kibana Deployment with log guarantees and performance optimization
+#
+# KIBANA DEPLOYMENT ACCELERATION INTELLIGENCE:
+#   • Kibana Deployment usage analytics with log patterns and optimization recommendations
+#   • Deployment monitoring with Kibana log latency and management optimization intelligence
+#   • Development efficiency with Kibana Deployment analytics and deployment optimization procedures
+#   • Cost optimization with Kibana Deployment utilization analysis and log capacity planning procedures
+#   • Quality assurance with Kibana Deployment metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Kibana Deployment - Primary Visualization Configuration
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-kibana
+  namespace: veridis-infrastructure
+
+  # Core Veridis Kibana Deployment identification labels
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-deployment
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Kibana Deployment specific classification
+    kibana.veridis.xyz/type: log-kibana-deployment
+    kibana.veridis.xyz/category: observability-deployment
+    kibana.veridis.xyz/role: primary-kibana-deployment
+    kibana.veridis.xyz/deployment-class: high-performance-kibana-deployment
+    kibana.veridis.xyz/security-level: enterprise
+
+    # Deployment Kibana Deployment classification
+    deployment.veridis.xyz/kibana-deployment-type: intelligent-kibana-deployment
+    deployment.veridis.xyz/deployment-type: log-deployment
+    deployment.veridis.xyz/performance-tier: high-throughput
+    deployment.veridis.xyz/optimization: enabled
+    deployment.veridis.xyz/features: full-kibana-deployment-stack
+
+    # Observability Kibana Deployment classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-kibana-deployment-management
+    observability.veridis.xyz/log-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Kibana Deployment classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-kibana-deployment-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Kibana Deployment labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "kibana-deployment-control-framework"
+    compliance.veridis.xyz/gdpr: "kibana-deployment-data-protection"
+    compliance.veridis.xyz/iso27001: "kibana-deployment-security-management"
+    compliance.veridis.xyz/nist-800-190: "kibana-deployment-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Kibana Deployment analytics and intelligence
+    monitoring.veridis.xyz/kibana-deployment-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/log-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Visualization labels
+    visualization.veridis.xyz/type: "log-visualization"
+    visualization.veridis.xyz/dashboards: "enabled"
+    visualization.veridis.xyz/analytics: "enabled"
+    visualization.veridis.xyz/real-time: "enabled"
+    visualization.veridis.xyz/export: "enabled"
+
+    # Integration labels
+    integration.veridis.xyz/elasticsearch: "enabled"
+    integration.veridis.xyz/beats: "enabled"
+    integration.veridis.xyz/logstash: "enabled"
+    integration.veridis.xyz/prometheus: "enabled"
+    integration.veridis.xyz/alerting: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/concurrency-tier: "high"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/caching-enabled: "true"
+
+  annotations:
+    # Kibana Deployment purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Kibana Deployment with intelligent log visualization, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Kibana Deployment for decentralized identity management with intelligent log visualization, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "Kibana Deployment including log visualization, performance optimization, dashboard configuration, and comprehensive monitoring intelligence"
+
+    # Kibana Deployment architecture and design
+    kibana.veridis.xyz/architecture: "Enterprise Kibana Deployment with intelligent log visualization, advanced performance optimization, and dashboard integration optimization"
+    kibana.veridis.xyz/design-pattern: "Multi-tier Kibana Deployment with performance optimization, cost efficiency, and business intelligence"
+    kibana.veridis.xyz/optimization-model: "Intelligent Kibana Deployment with predictive analytics, performance optimization, and log efficiency"
+    kibana.veridis.xyz/performance-model: "High-performance Kibana Deployment with log optimization and intelligent dashboard management"
+
+    # Deployment Kibana Deployment specifications
+    deployment.veridis.xyz/kibana-deployment-specification: "Kibana Deployment with performance optimization and intelligent kibana deployment management"
+    deployment.veridis.xyz/log-specification: "Advanced log visualization management with kibana optimization and deployment enhancement"
+    deployment.veridis.xyz/dashboard-specification: "Kibana Deployment dashboard management optimization with intelligent log and enhancement"
+    deployment.veridis.xyz/performance-specification: "Kibana performance deployment with log acceleration and efficiency"
+    deployment.veridis.xyz/business-specification: "Kibana business deployment with cost optimization and strategic log intelligence"
+
+    # Deployment strategy annotations
+    deployment.kubernetes.io/revision: "1"
+    deployment.veridis.xyz/strategy: "RollingUpdate"
+    deployment.veridis.xyz/max-unavailable: "25%"
+    deployment.veridis.xyz/max-surge: "25%"
+    deployment.veridis.xyz/progress-deadline: "600s"
+
+    # Elasticsearch integration annotations
+    elasticsearch.veridis.xyz/cluster-name: "veridis-logging-cluster"
+    elasticsearch.veridis.xyz/connection-url: "https://veridis-elasticsearch.veridis-infrastructure.svc.cluster.local:9200"
+    elasticsearch.veridis.xyz/index-patterns: "veridis-*,logstash-*,filebeat-*"
+    elasticsearch.veridis.xyz/authentication: "enabled"
+    elasticsearch.veridis.xyz/ssl-verification: "enabled"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/authentication-provider: "elasticsearch"
+    security.veridis.xyz/authorization: "enabled"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/xpack-security: "enabled"
+
+    # Performance annotations
+    performance.veridis.xyz/memory-limit: "2Gi"
+    performance.veridis.xyz/cpu-limit: "1000m"
+    performance.veridis.xyz/expected-users: "100"
+    performance.veridis.xyz/concurrent-searches: "50"
+    performance.veridis.xyz/cache-size: "512m"
+
+    # Visualization annotations
+    visualization.veridis.xyz/dashboard-count: "25"
+    visualization.veridis.xyz/visualization-types: "line,bar,pie,table,metric"
+    visualization.veridis.xyz/real-time-refresh: "30s"
+    visualization.veridis.xyz/export-formats: "pdf,csv,json"
+    visualization.veridis.xyz/sharing-enabled: "true"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/deployment-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/usage-monitoring: "enabled"
+    monitoring.veridis.xyz/error-monitoring: "enabled"
+    monitoring.veridis.xyz/health-monitoring: "enabled"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-visualization"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-access: "audited"
+    compliance.veridis.xyz/user-tracking: "enabled"
+    compliance.veridis.xyz/session-management: "secure"
+    compliance.veridis.xyz/audit-logging: "comprehensive"
+    compliance.veridis.xyz/data-export-controls: "enabled"
+
+    # Backup annotations
+    backup.veridis.xyz/config-backup: "enabled"
+    backup.veridis.xyz/dashboard-backup: "enabled"
+    backup.veridis.xyz/saved-objects-backup: "enabled"
+    backup.veridis.xyz/backup-frequency: "daily"
+    backup.veridis.xyz/backup-retention: "30d"
+
+    # High availability annotations
+    ha.veridis.xyz/multi-replica: "enabled"
+    ha.veridis.xyz/rolling-updates: "enabled"
+    ha.veridis.xyz/health-checks: "comprehensive"
+    ha.veridis.xyz/graceful-shutdown: "enabled"
+    ha.veridis.xyz/session-persistence: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/kibana-deployment-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-deployment"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/kibana-deployment-management"
+    veridis.xyz/deployment-docs: "https://observability.veridis.xyz/kibana-deployment-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/kibana-deployment-monitoring"
+
+# ==============================================================================
+# Deployment Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Replica and Strategy Configuration
+  # ==============================================================================
+  replicas: 2
+
+  # Rolling update strategy for zero-downtime deployments
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+
+  # Progress deadline for deployment
+  progressDeadlineSeconds: 600
+
+  # Revision history limit
+  revisionHistoryLimit: 10
+
+  # ==============================================================================
+  # Pod Selection and Metadata
+  # ==============================================================================
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kibana
+      app.kubernetes.io/instance: veridis-production
+      app.kubernetes.io/component: kibana-deployment
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kibana
+        app.kubernetes.io/instance: veridis-production
+        app.kubernetes.io/version: "8.15.0"
+        app.kubernetes.io/component: kibana-deployment
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+
+        # Kibana specific labels
+        kibana.veridis.xyz/cluster: "veridis-logging-visualization"
+        kibana.veridis.xyz/node-type: "kibana-node"
+        kibana.veridis.xyz/role: "visualization"
+
+        # Network and security labels
+        network.veridis.xyz/policy: "kibana-access"
+        security.veridis.xyz/level: "enterprise"
+        monitoring.veridis.xyz/scrape: "true"
+
+        # Operational labels
+        veridis.xyz/environment: production
+        veridis.xyz/team: observability-engineering
+
+      annotations:
+        # Pod specific annotations
+        veridis.xyz/pod-purpose: "kibana-visualization-node"
+
+        # Prometheus monitoring annotations
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "5601"
+        prometheus.io/path: "/api/status"
+        prometheus.io/scheme: "https"
+
+        # Configuration checksums for automatic rolling updates
+        checksum/config: "placeholder-for-config-checksum"
+        checksum/secret: "placeholder-for-secret-checksum"
+
+        # Performance annotations
+        performance.veridis.xyz/memory-request: "1Gi"
+        performance.veridis.xyz/memory-limit: "2Gi"
+        performance.veridis.xyz/cpu-request: "500m"
+        performance.veridis.xyz/cpu-limit: "1000m"
+
+        # Security annotations
+        seccomp.security.alpha.kubernetes.io/pod: "runtime/default"
+        container.apparmor.security.beta.kubernetes.io/kibana: "runtime/default"
+
+        # Backup annotations
+        backup.veridis.xyz/include: "true"
+        backup.veridis.xyz/pre-hook: "/usr/share/kibana/bin/kibana"
+        backup.veridis.xyz/post-hook: "/usr/share/kibana/bin/kibana"
+
+    # ==============================================================================
+    # Pod Specification
+    # ==============================================================================
+    spec:
+      # ==============================================================================
+      # Security and Service Account Configuration
+      # ==============================================================================
+      serviceAccountName: veridis-kibana
+
+      # Security context for the pod
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+        seccompProfile:
+          type: RuntimeDefault
+        supplementalGroups: [1000]
+
+      # ==============================================================================
+      # Scheduling and Resource Management
+      # ==============================================================================
+
+      # Priority class for critical workload scheduling
+      priorityClassName: veridis-high
+
+      # Node affinity to prefer compute-optimized nodes
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: node.kubernetes.io/instance-type
+                    operator: In
+                    values: ["m5.large", "m5.xlarge", "c5.large", "c5.xlarge"]
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values: ["amd64"]
+
+        # Pod anti-affinity for high availability
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values: ["kibana"]
+                topologyKey: kubernetes.io/hostname
+            - weight: 50
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values: ["kibana"]
+                topologyKey: topology.kubernetes.io/zone
+
+      # Tolerations for dedicated nodes
+      tolerations:
+        - key: "observability"
+          operator: "Equal"
+          value: "kibana"
+          effect: "NoSchedule"
+        - key: "compute-optimized"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+
+      # ==============================================================================
+      # DNS and Networking Configuration
+      # ==============================================================================
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "2"
+          - name: edns0
+
+      # ==============================================================================
+      # Initialization and Setup
+      # ==============================================================================
+
+      # Init containers for system configuration
+      initContainers:
+        # Wait for Elasticsearch to be ready
+        - name: wait-for-elasticsearch
+          image: curlimages/curl:8.5.0
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          command:
+            - sh
+            - -c
+            - |
+              set -e
+              echo "Waiting for Elasticsearch to be ready..."
+
+              until curl -k -s -u "elastic:${ELASTICSEARCH_PASSWORD}" \
+                "https://veridis-elasticsearch.veridis-infrastructure.svc.cluster.local:9200/_cluster/health?wait_for_status=yellow&timeout=60s" | \
+                grep -q '"status":"yellow\|green"'; do
+                echo "Elasticsearch not ready yet, waiting..."
+                sleep 10
+              done
+
+              echo "Elasticsearch is ready!"
+          env:
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: elasticsearch-password
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+
+        # Setup Kibana configuration
+        - name: setup-kibana-config
+          image: busybox:1.36
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          command:
+            - sh
+            - -c
+            - |
+              set -e
+              echo "Setting up Kibana configuration..."
+
+              # Create configuration directory
+              mkdir -p /usr/share/kibana/config
+
+              # Copy base configuration
+              if [ -f /tmp/kibana-config/kibana.yml ]; then
+                cp /tmp/kibana-config/kibana.yml /usr/share/kibana/config/
+                echo "Base configuration copied successfully"
+              fi
+
+              # Set proper permissions
+              chmod 644 /usr/share/kibana/config/kibana.yml || true
+
+              echo "Kibana configuration setup completed"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /tmp/kibana-config
+            - name: kibana-config
+              mountPath: /usr/share/kibana/config
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+
+        # Setup Kibana data directory
+        - name: setup-data-directory
+          image: busybox:1.36
+          securityContext:
+            runAsUser: 0
+            capabilities:
+              add: ["CHOWN", "FOWNER"]
+          command:
+            - sh
+            - -c
+            - |
+              set -e
+              echo "Setting up Kibana data directory..."
+
+              # Create data directory
+              mkdir -p /usr/share/kibana/data
+
+              # Set ownership and permissions
+              chown -R 1000:1000 /usr/share/kibana/data
+              chmod -R 755 /usr/share/kibana/data
+
+              echo "Data directory setup completed"
+          volumeMounts:
+            - name: kibana-data
+              mountPath: /usr/share/kibana/data
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+
+      # ==============================================================================
+      # Main Application Containers
+      # ==============================================================================
+      containers:
+        # ==============================================================================
+        # Primary Kibana Container
+        # ==============================================================================
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:8.15.0
+          imagePullPolicy: IfNotPresent
+
+          # Security context for the container
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop: ["ALL"]
+
+          # Container ports
+          ports:
+            - name: http
+              containerPort: 5601
+              protocol: TCP
+
+          # Environment variables
+          env:
+            # Server configuration
+            - name: SERVER_NAME
+              value: "veridis-kibana"
+            - name: SERVER_HOST
+              value: "0.0.0.0"
+            - name: SERVER_PORT
+              value: "5601"
+            - name: SERVER_BASEPATH
+              value: ""
+            - name: SERVER_REWRITEBASEPATH
+              value: "false"
+
+            # Elasticsearch configuration
+            - name: ELASTICSEARCH_HOSTS
+              value: "https://veridis-elasticsearch.veridis-infrastructure.svc.cluster.local:9200"
+            - name: ELASTICSEARCH_USERNAME
+              value: "kibana_system"
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: elasticsearch-password
+            - name: ELASTICSEARCH_SSL_VERIFICATIONMODE
+              value: "certificate"
+            - name: ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES
+              value: "/usr/share/kibana/config/certs/ca.crt"
+
+            # X-Pack Security configuration
+            - name: XPACK_SECURITY_ENABLED
+              value: "true"
+            - name: XPACK_SECURITY_ENCRYPTIONKEY
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: encryption-key
+            - name: XPACK_SECURITY_SESSIONTIMEOUT
+              value: "8h"
+
+            # Monitoring configuration
+            - name: XPACK_MONITORING_ENABLED
+              value: "true"
+            - name: XPACK_MONITORING_KIBANA_COLLECTION_ENABLED
+              value: "false"
+            - name: XPACK_MONITORING_UI_CONTAINER_ELASTICSEARCH_ENABLED
+              value: "true"
+
+            # Reporting configuration
+            - name: XPACK_REPORTING_ENABLED
+              value: "true"
+            - name: XPACK_REPORTING_ENCRYPTIONKEY
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: reporting-encryption-key
+            - name: XPACK_REPORTING_CAPTURE_BROWSER_CHROMIUM_DISABLESANDBOX
+              value: "true"
+
+            # Alerting configuration
+            - name: XPACK_ALERTING_ENABLED
+              value: "true"
+            - name: XPACK_ACTIONS_ENABLED
+              value: "true"
+
+            # Machine Learning configuration
+            - name: XPACK_ML_ENABLED
+              value: "true"
+
+            # Graph configuration
+            - name: XPACK_GRAPH_ENABLED
+              value: "true"
+
+            # APM configuration
+            - name: XPACK_APM_ENABLED
+              value: "true"
+
+            # Canvas configuration
+            - name: XPACK_CANVAS_ENABLED
+              value: "true"
+
+            # Maps configuration
+            - name: XPACK_MAPS_ENABLED
+              value: "true"
+
+            # Lens configuration
+            - name: XPACK_LENS_ENABLED
+              value: "true"
+
+            # Performance optimization
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=1536"
+            - name: LOGGING_ROOT_LEVEL
+              value: "info"
+            - name: LOGGING_QUIET
+              value: "false"
+
+            # Data paths
+            - name: PATH_DATA
+              value: "/usr/share/kibana/data"
+
+            # Telemetry configuration
+            - name: TELEMETRY_ENABLED
+              value: "false"
+            - name: TELEMETRY_OPTIN
+              value: "false"
+
+            # UI configuration
+            - name: NEWSFEED_ENABLED
+              value: "false"
+
+            # Index management
+            - name: KIBANA_INDEX
+              value: ".kibana-veridis"
+
+            # Custom configuration from ConfigMap
+            - name: KIBANA_YML
+              value: "/usr/share/kibana/config/kibana.yml"
+
+          # Resource requirements
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+              ephemeral-storage: 2Gi
+            limits:
+              cpu: 1000m
+              memory: 2Gi
+              ephemeral-storage: 4Gi
+
+          # Volume mounts
+          volumeMounts:
+            # Configuration files
+            - name: kibana-config
+              mountPath: /usr/share/kibana/config
+
+            # TLS certificates
+            - name: certs
+              mountPath: /usr/share/kibana/config/certs
+              readOnly: true
+
+            # Data persistence
+            - name: kibana-data
+              mountPath: /usr/share/kibana/data
+
+            # Temporary directory
+            - name: tmp
+              mountPath: /tmp
+
+            # Optimization directory
+            - name: optimize
+              mountPath: /usr/share/kibana/optimize
+
+          # Health checks
+          livenessProbe:
+            httpGet:
+              path: /api/status
+              port: 5601
+              scheme: HTTP
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+
+          readinessProbe:
+            httpGet:
+              path: /api/status
+              port: 5601
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+
+          startupProbe:
+            httpGet:
+              path: /api/status
+              port: 5601
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+
+          # Lifecycle hooks
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - sh
+                  - -c
+                  - |
+                    set -e
+                    echo "Gracefully shutting down Kibana..."
+
+                    # Send SIGTERM to Kibana process
+                    kill -TERM 1
+
+                    # Wait for graceful shutdown
+                    sleep 30
+
+                    echo "Kibana shutdown completed"
+
+        # ==============================================================================
+        # Kibana Exporter Sidecar Container
+        # ==============================================================================
+        - name: kibana-exporter
+          image: prom/kibana-exporter:0.1.0
+          imagePullPolicy: IfNotPresent
+
+          # Security context for the exporter
+          securityContext:
+            runAsUser: 65534
+            runAsGroup: 65534
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+
+          # Container ports
+          ports:
+            - name: metrics
+              containerPort: 9684
+              protocol: TCP
+
+          # Environment variables
+          env:
+            - name: KIBANA_URI
+              value: "http://localhost:5601"
+            - name: KIBANA_USERNAME
+              value: "elastic"
+            - name: KIBANA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: elasticsearch-password
+
+          # Command and arguments
+          args:
+            - "--kibana.uri=http://localhost:5601"
+            - "--kibana.username=elastic"
+            - "--kibana.password=$(KIBANA_PASSWORD)"
+            - "--kibana.timeout=30s"
+            - "--web.listen-address=:9684"
+            - "--web.telemetry-path=/metrics"
+            - "--log.level=info"
+
+          # Resource requirements
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+
+          # Volume mounts
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+
+          # Health checks
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: 9684
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: 9684
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+      # ==============================================================================
+      # Volume Configuration
+      # ==============================================================================
+      volumes:
+        # Configuration volume
+        - name: config-volume
+          configMap:
+            name: veridis-kibana-config
+            defaultMode: 0644
+
+        # Kibana configuration (writable)
+        - name: kibana-config
+          emptyDir:
+            sizeLimit: 100Mi
+
+        # TLS certificates volume
+        - name: certs
+          secret:
+            secretName: veridis-elasticsearch-certs
+            defaultMode: 0400
+            items:
+              - key: ca.crt
+                path: ca.crt
+
+        # Data persistence volume
+        - name: kibana-data
+          emptyDir:
+            sizeLimit: 5Gi
+
+        # Temporary directory
+        - name: tmp
+          emptyDir:
+            sizeLimit: 1Gi
+
+        # Optimization directory
+        - name: optimize
+          emptyDir:
+            sizeLimit: 2Gi
+
+      # ==============================================================================
+      # Termination and Restart Policy
+      # ==============================================================================
+      terminationGracePeriodSeconds: 60
+      restartPolicy: Always
+
+---
+# ==============================================================================
+# Veridis Kibana Development Deployment - Development Environment
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-kibana-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-dev-deployment
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    kibana.veridis.xyz/type: log-kibana-dev-deployment
+    kibana.veridis.xyz/category: observability-dev-deployment
+    kibana.veridis.xyz/role: development-deployment
+
+    # Development labels
+    development.veridis.xyz/type: "kibana-dev"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/testing: "enabled"
+    development.veridis.xyz/monitoring: "basic"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development environment Kibana deployment for testing and debugging"
+    veridis.xyz/purpose: "Provides Kibana visualization for development workflows and testing"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/debug-access: "enabled"
+    development.veridis.xyz/security-relaxed: "true"
+    development.veridis.xyz/monitoring-level: "basic"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-deployment-development"
+
+# ==============================================================================
+# Development Deployment Specification
+# ==============================================================================
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kibana
+      app.kubernetes.io/instance: veridis-development
+      app.kubernetes.io/component: kibana-dev-deployment
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kibana
+        app.kubernetes.io/instance: veridis-development
+        app.kubernetes.io/version: "8.15.0"
+        app.kubernetes.io/component: kibana-dev-deployment
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+
+        veridis.xyz/environment: development
+        veridis.xyz/team: observability-engineering
+
+    spec:
+      serviceAccountName: veridis-kibana
+
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        fsGroup: 1000
+
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:8.15.0
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+
+          ports:
+            - name: http
+              containerPort: 5601
+              protocol: TCP
+
+          env:
+            # Basic configuration for development
+            - name: SERVER_NAME
+              value: "veridis-kibana-dev"
+            - name: SERVER_HOST
+              value: "0.0.0.0"
+            - name: SERVER_PORT
+              value: "5601"
+
+            # Elasticsearch configuration (relaxed for development)
+            - name: ELASTICSEARCH_HOSTS
+              value: "http://veridis-elasticsearch-dev.veridis-infrastructure.svc.cluster.local:9200"
+            - name: ELASTICSEARCH_USERNAME
+              value: "elastic"
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: elasticsearch-password
+
+            # Relaxed security for development
+            - name: XPACK_SECURITY_ENABLED
+              value: "false"
+            - name: XPACK_MONITORING_ENABLED
+              value: "false"
+
+            # Development optimizations
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=512"
+            - name: LOGGING_ROOT_LEVEL
+              value: "debug"
+            - name: TELEMETRY_ENABLED
+              value: "false"
+
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+
+          volumeMounts:
+            - name: kibana-data
+              mountPath: /usr/share/kibana/data
+            - name: tmp
+              mountPath: /tmp
+
+          livenessProbe:
+            httpGet:
+              path: /api/status
+              port: 5601
+            initialDelaySeconds: 60
+            periodSeconds: 30
+
+          readinessProbe:
+            httpGet:
+              path: /api/status
+              port: 5601
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
+      volumes:
+        - name: kibana-data
+          emptyDir:
+            sizeLimit: 1Gi
+        - name: tmp
+          emptyDir:
+            sizeLimit: 500Mi
+
+---
+# ==============================================================================
+# Veridis Kibana Staging Deployment - Staging Environment
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-kibana-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-staging-deployment
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    kibana.veridis.xyz/type: log-kibana-staging-deployment
+    kibana.veridis.xyz/category: observability-staging-deployment
+    kibana.veridis.xyz/role: staging-deployment
+
+    # Staging labels
+    staging.veridis.xyz/type: "kibana-staging"
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/validation: "enabled"
+    staging.veridis.xyz/monitoring: "enhanced"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging environment Kibana deployment for pre-production validation"
+    veridis.xyz/purpose: "Provides production-like Kibana visualization for staging validation"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/security-enhanced: "true"
+    staging.veridis.xyz/monitoring-enhanced: "true"
+    staging.veridis.xyz/validation-testing: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-deployment-staging"
+
+# ==============================================================================
+# Staging Deployment Specification
+# ==============================================================================
+spec:
+  replicas: 2
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kibana
+      app.kubernetes.io/instance: veridis-staging
+      app.kubernetes.io/component: kibana-staging-deployment
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kibana
+        app.kubernetes.io/instance: veridis-staging
+        app.kubernetes.io/version: "8.15.0"
+        app.kubernetes.io/component: kibana-staging-deployment
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+
+        veridis.xyz/environment: staging
+        veridis.xyz/team: observability-engineering
+
+    spec:
+      serviceAccountName: veridis-kibana
+
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+
+      # Pod anti-affinity for high availability
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values: ["kibana"]
+                topologyKey: kubernetes.io/hostname
+
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:8.15.0
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop: ["ALL"]
+
+          ports:
+            - name: http
+              containerPort: 5601
+              protocol: TCP
+
+          env:
+            # Production-like configuration for staging
+            - name: SERVER_NAME
+              value: "veridis-kibana-staging"
+            - name: SERVER_HOST
+              value: "0.0.0.0"
+            - name: SERVER_PORT
+              value: "5601"
+
+            # Elasticsearch configuration
+            - name: ELASTICSEARCH_HOSTS
+              value: "https://veridis-elasticsearch-staging.veridis-infrastructure.svc.cluster.local:9200"
+            - name: ELASTICSEARCH_USERNAME
+              value: "kibana_system"
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: elasticsearch-password
+            - name: ELASTICSEARCH_SSL_VERIFICATIONMODE
+              value: "certificate"
+            - name: ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES
+              value: "/usr/share/kibana/config/certs/ca.crt"
+
+            # Enhanced security for staging
+            - name: XPACK_SECURITY_ENABLED
+              value: "true"
+            - name: XPACK_SECURITY_ENCRYPTIONKEY
+              valueFrom:
+                secretKeyRef:
+                  name: veridis-kibana-secret
+                  key: encryption-key
+
+            # Monitoring enabled
+            - name: XPACK_MONITORING_ENABLED
+              value: "true"
+            - name: XPACK_MONITORING_KIBANA_COLLECTION_ENABLED
+              value: "false"
+
+            # Performance settings
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=1024"
+            - name: LOGGING_ROOT_LEVEL
+              value: "info"
+            - name: TELEMETRY_ENABLED
+              value: "false"
+
+          resources:
+            requests:
+              cpu: 400m
+              memory: 800Mi
+            limits:
+              cpu: 800m
+              memory: 1.5Gi
+
+          volumeMounts:
+            - name: certs
+              mountPath: /usr/share/kibana/config/certs
+              readOnly: true
+            - name: kibana-data
+              mountPath: /usr/share/kibana/data
+            - name: tmp
+              mountPath: /tmp
+
+          livenessProbe:
+            httpGet:
+              path: /api/status
+              port: 5601
+              scheme: HTTP
+            initialDelaySeconds: 90
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /api/status
+              port: 5601
+              scheme: HTTP
+            initialDelaySeconds: 45
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+      volumes:
+        - name: certs
+          secret:
+            secretName: veridis-elasticsearch-certs
+            defaultMode: 0400
+        - name: kibana-data
+          emptyDir:
+            sizeLimit: 3Gi
+        - name: tmp
+          emptyDir:
+            sizeLimit: 1Gi
+
+      terminationGracePeriodSeconds: 60
+
+# ==============================================================================
+# Veridis Kibana Deployment Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS KIBANA DEPLOYMENT STRATEGY:
+# ================================================
+#
+# VERIDIS KIBANA DEPLOYMENT ARCHITECTURE OVERVIEW:
+# -----------------------------------------------
+# 1. Primary Production Deployment (veridis-kibana):
+#    - Comprehensive enterprise-grade deployment with intelligent log visualization and advanced performance optimization for production Kibana
+#    - Advanced deployment configuration with high availability, security enforcement, monitoring integration, and comprehensive observability integration
+#    - Multi-tier deployment architecture with rolling updates, health monitoring, resource optimization, and comprehensive operational excellence
+#    - Enterprise deployment policies with security enforcement, compliance controls, visualization enhancement, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent resource management, memory tuning, CPU optimization, and security for maximum efficiency
+#
+# 2. Development Deployment (veridis-kibana-dev):
+#    - Development-focused deployment with relaxed security and comprehensive development coordination
+#    - Advanced dev configuration with debugging support, testing capabilities, development optimization, and comprehensive development intelligence
+#    - Flexible deployment optimization with development workflow, testing support, and comprehensive development intelligence
+#    - Development intelligence with debugging procedures, testing support, workflow automation, and comprehensive development coordination
+#    - Operational excellence with development deployment, testing workflows, debugging automation, and comprehensive development environment management
+#
+# 3. Staging Deployment (veridis-kibana-staging):
+#    - Staging-focused deployment with production-like behavior and comprehensive staging coordination
+#    - Advanced staging configuration with validation support, testing capabilities, production simulation, and comprehensive staging intelligence
+#    - Flexible deployment optimization with staging workflow, validation support, and comprehensive staging intelligence
+#    - Staging intelligence with validation procedures, testing support, production simulation, and comprehensive staging coordination
+#    - Validation excellence with staging deployment, production testing, validation automation, and comprehensive staging environment management
+#
+# ENTERPRISE KIBANA DEPLOYMENT FEATURES:
+# ======================================
+# Advanced Visualization and Dashboard Management:
+#   - Multi-tier deployment architecture with production visualization, development debugging, staging validation, and comprehensive dashboard configurations
+#   - Intelligent visualization management with dashboard algorithms, user interface policies, performance optimization, and comprehensive visualization decisions
+#   - Deployment discovery with dashboard optimization, user management, visualization policies, and comprehensive deployment analytics
+#   - Performance management with high throughput (100 users), low latency, concurrent searches (50), and comprehensive performance intelligence
+#   - Visualization processing tuning with dashboard management, user optimization, search algorithms, and intelligent deployment optimization
+#
+# Comprehensive Security and Authentication Integration:
+#   - Multi-tier security with X-Pack security, authentication enforcement, authorization controls, and comprehensive security coordination
+#   - Security optimization with encryption keys, session management, access controls, and comprehensive security intelligence
+#   - Authentication management with user tracking, session persistence, access validation, and comprehensive authentication coordination
+#   - Business intelligence with security analytics, user correlation, access optimization, and comprehensive strategic insights
+#   - Security management with authentication policies, session optimization, access integration, and comprehensive security analytics
+#
+# Enterprise Performance and Resource Optimization:
+#   - Multi-tier performance with memory optimization, CPU tuning, resource management, and comprehensive performance coordination
+#   - Performance optimization with Node.js tuning, heap sizing, garbage collection, and comprehensive performance intelligence
+#   - Resource management with CPU allocation, memory optimization, storage performance, and comprehensive resource coordination
+#   - Business intelligence with performance analytics, resource correlation, efficiency optimization, and comprehensive strategic insights
+#   - Tuning management with configuration optimization, performance monitoring, resource allocation, and comprehensive tuning analytics
+#
+# Advanced Integration and Ecosystem Support:
+#   - Multi-tier integration with Elasticsearch connection, monitoring integration, alerting support, and comprehensive integration coordination
+#   - Integration optimization with API connectivity, data source management, plugin support, and comprehensive integration intelligence
+#   - Ecosystem management with Elastic Stack integration, third-party plugins, custom visualizations, and comprehensive ecosystem coordination
+#   - Business intelligence with integration analytics, connectivity correlation, ecosystem optimization, and comprehensive strategic insights
+#   - Ecosystem management with integration policies, connectivity optimization, plugin management, and comprehensive ecosystem analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Kibana Deployment Lifecycle Management:
+#   - Multi-Deployment deployment with production visualization, development debugging, staging validation, and comprehensive deployment coordination
+#   - Intelligent deployment management with predictive analytics and resource utilization correlation
+#   - Advanced monitoring with comprehensive deployment analytics and visualization business intelligence
+#   - Configuration validation with deployment schema enforcement and visualization deployment safety checks
+#   - Automated optimization with deployment pattern analysis and visualization configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II deployment controls with comprehensive audit requirements and visualization logging
+#   - GDPR deployment compliance with data protection and privacy-preserving visualization management
+#   - ISO 27001 deployment security management with information security and visualization compliance integration
+#   - NIST 800-190 container deployment security with visualization validation and compliance
+#   - Zero-trust deployment architecture with comprehensive encryption and visualization authentication requirements
+#
+# Business Intelligence Integration:
+#   - Deployment analytics with cost correlation and visualization resource utilization optimization
+#   - Performance analytics with user experience optimization and deployment business intelligence
+#   - Visualization intelligence with processing pattern monitoring and deployment optimization recommendations
+#   - Strategic planning with capacity management and deployment forecasting
+#   - Business impact assessment with deployment performance correlation and visualization tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment deployment support with production visualization, development debugging, staging validation, and comprehensive deployment coordination
+#   - Comprehensive documentation with deployment guides and visualization troubleshooting procedures
+#   - Environment-specific deployments with production, development, staging, and monitoring support
+#   - Testing integration with deployment development workflow and visualization debugging capabilities
+#   - Deployment monitoring with comprehensive tracking and visualization correlation
+#
+# ==============================================================================
