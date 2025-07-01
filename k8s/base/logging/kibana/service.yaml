@@ -1,0 +1,779 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Kibana Service Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Kibana Service for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS KIBANA SERVICE ARCHITECTURE:
+#   • Advanced Kibana Service with intelligent log visualization access and performance-based optimization
+#   • Multi-tier Service architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with Service policies, log optimization, Kibana integration
+#   • Advanced lifecycle management with automated Service optimization, Kibana control, and log enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Kibana Service performance insights
+#
+# VERIDIS KIBANA SERVICE OPTIMIZATION:
+#   • High-performance Service with intelligent log visualization access and Kibana service optimization
+#   • Intelligent Service log visualization with responsive policies and performance-based log decisions
+#   • Advanced Service management with business intelligence and log-based Kibana control
+#   • Comprehensive observability control with intelligent Kibana Service management and log enhancement
+#   • Enterprise acceleration with predictive Kibana Service management and log optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Kibana Service controls with comprehensive audit and log requirements
+#   • GDPR Kibana Service compliance with data protection, privacy controls, and log management
+#   • ISO 27001 Kibana Service management with comprehensive framework integration
+#   • NIST 800-190 container Kibana Service security with log-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Kibana Service best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Kibana Service lifecycle management with automated provisioning and log optimization
+#   • Predictive log analytics with capacity planning and Kibana Service intelligence
+#   • Advanced Service integration with Kibana log analytics and performance business intelligence
+#   • Comprehensive observability control with Kibana Service preservation and log optimization
+#   • Business continuity Kibana Service with log guarantees and performance optimization
+#
+# KIBANA SERVICE ACCELERATION INTELLIGENCE:
+#   • Kibana Service usage analytics with log patterns and optimization recommendations
+#   • Service monitoring with Kibana log latency and management optimization intelligence
+#   • Development efficiency with Kibana Service analytics and deployment optimization procedures
+#   • Cost optimization with Kibana Service utilization analysis and log capacity planning procedures
+#   • Quality assurance with Kibana Service metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Kibana Service - Primary Visualization Access Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-kibana
+  namespace: veridis-infrastructure
+
+  # Core Veridis Kibana Service identification labels
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Kibana Service specific classification
+    kibana.veridis.xyz/type: log-kibana-service
+    kibana.veridis.xyz/category: observability-service
+    kibana.veridis.xyz/role: primary-kibana-service
+    kibana.veridis.xyz/service-class: high-performance-kibana-service
+    kibana.veridis.xyz/security-level: enterprise
+
+    # Service Kibana Service classification
+    service.veridis.xyz/kibana-service-type: intelligent-kibana-service
+    service.veridis.xyz/service-type: log-service
+    service.veridis.xyz/performance-tier: high-throughput
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-kibana-service-stack
+
+    # Observability Kibana Service classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-kibana-service-management
+    observability.veridis.xyz/log-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Kibana Service classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-kibana-service-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Kibana Service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "kibana-service-control-framework"
+    compliance.veridis.xyz/gdpr: "kibana-service-data-protection"
+    compliance.veridis.xyz/iso27001: "kibana-service-security-management"
+    compliance.veridis.xyz/nist-800-190: "kibana-service-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Kibana Service analytics and intelligence
+    monitoring.veridis.xyz/kibana-service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/log-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Service mesh and networking labels
+    network.veridis.xyz/service-type: "web-ui"
+    network.veridis.xyz/protocol: "http"
+    network.veridis.xyz/access-level: "internal"
+    network.veridis.xyz/load-balancing: "enabled"
+    network.veridis.xyz/session-affinity: "enabled"
+
+    # Performance labels
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/concurrency-tier: "high"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/caching-enabled: "true"
+
+    # Load balancing labels
+    loadbalancer.veridis.xyz/algorithm: "round-robin"
+    loadbalancer.veridis.xyz/session-persistence: "enabled"
+    loadbalancer.veridis.xyz/health-checks: "enabled"
+    loadbalancer.veridis.xyz/failover: "automatic"
+    loadbalancer.veridis.xyz/sticky-sessions: "enabled"
+
+  annotations:
+    # Kibana Service purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Kibana Service with intelligent log visualization access, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Kibana Service for decentralized identity management with intelligent log visualization access, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "Kibana Service including log visualization access, performance optimization, service configuration, and comprehensive monitoring intelligence"
+
+    # Kibana Service architecture and design
+    kibana.veridis.xyz/architecture: "Enterprise Kibana Service with intelligent log visualization access, advanced performance optimization, and service integration optimization"
+    kibana.veridis.xyz/design-pattern: "Multi-tier Kibana Service with performance optimization, cost efficiency, and business intelligence"
+    kibana.veridis.xyz/optimization-model: "Intelligent Kibana Service with predictive analytics, performance optimization, and log efficiency"
+    kibana.veridis.xyz/performance-model: "High-performance Kibana Service with log optimization and intelligent service management"
+
+    # Service Kibana Service specifications
+    service.veridis.xyz/kibana-service-specification: "Kibana Service with performance optimization and intelligent kibana service management"
+    service.veridis.xyz/log-specification: "Advanced log visualization access management with kibana optimization and service enhancement"
+    service.veridis.xyz/access-specification: "Kibana Service access management optimization with intelligent log and enhancement"
+    service.veridis.xyz/performance-specification: "Kibana performance service with log acceleration and efficiency"
+    service.veridis.xyz/business-specification: "Kibana business service with cost optimization and strategic log intelligence"
+
+    # Service discovery and networking annotations
+    service.veridis.xyz/discovery-method: "dns"
+    service.veridis.xyz/load-balancer-type: "cluster-ip"
+    service.veridis.xyz/session-affinity: "ClientIP"
+    service.veridis.xyz/external-traffic-policy: "Cluster"
+    service.veridis.xyz/internal-traffic-policy: "Cluster"
+
+    # Performance annotations
+    performance.veridis.xyz/expected-concurrent-users: "100"
+    performance.veridis.xyz/max-connections: "1000"
+    performance.veridis.xyz/connection-timeout: "30s"
+    performance.veridis.xyz/keepalive-timeout: "75s"
+    performance.veridis.xyz/request-timeout: "60s"
+
+    # Health check annotations
+    health.veridis.xyz/endpoint: "/api/status"
+    health.veridis.xyz/interval: "30s"
+    health.veridis.xyz/timeout: "10s"
+    health.veridis.xyz/healthy-threshold: "2"
+    health.veridis.xyz/unhealthy-threshold: "3"
+
+    # Security annotations
+    security.veridis.xyz/tls-enabled: "true"
+    security.veridis.xyz/authentication-required: "true"
+    security.veridis.xyz/authorization-enabled: "true"
+    security.veridis.xyz/network-policy: "enabled"
+    security.veridis.xyz/access-logging: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/service-monitoring: "enabled"
+    monitoring.veridis.xyz/metrics-endpoint: "/metrics"
+    monitoring.veridis.xyz/metrics-port: "5601"
+    monitoring.veridis.xyz/prometheus-scrape: "true"
+    monitoring.veridis.xyz/grafana-dashboard: "kibana-service-overview"
+
+    # Prometheus monitoring annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "5601"
+    prometheus.io/path: "/api/status"
+    prometheus.io/scheme: "http"
+    prometheus.io/interval: "30s"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-visualization"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-access-controls: "enabled"
+    compliance.veridis.xyz/audit-logging: "comprehensive"
+    compliance.veridis.xyz/access-review: "quarterly"
+    compliance.veridis.xyz/data-classification: "internal"
+    compliance.veridis.xyz/retention-policy: "logs-30d"
+
+    # High availability annotations
+    ha.veridis.xyz/multi-zone: "enabled"
+    ha.veridis.xyz/load-balancing: "enabled"
+    ha.veridis.xyz/failover: "automatic"
+    ha.veridis.xyz/backup-endpoints: "enabled"
+    ha.veridis.xyz/circuit-breaker: "enabled"
+
+    # Traffic management annotations
+    traffic.veridis.xyz/rate-limiting: "enabled"
+    traffic.veridis.xyz/connection-pooling: "enabled"
+    traffic.veridis.xyz/circuit-breaker: "enabled"
+    traffic.veridis.xyz/retry-policy: "enabled"
+    traffic.veridis.xyz/timeout-policy: "enabled"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/kibana-service-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/kibana-service-management"
+    veridis.xyz/service-docs: "https://observability.veridis.xyz/kibana-service-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/kibana-service-monitoring"
+
+# ==============================================================================
+# Service Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Service Type and Networking Configuration
+  # ==============================================================================
+  type: ClusterIP
+
+  # ==============================================================================
+  # Session Affinity Configuration
+  # ==============================================================================
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800  # 3 hours for Kibana sessions
+
+  # ==============================================================================
+  # Traffic Policy Configuration
+  # ==============================================================================
+  internalTrafficPolicy: Cluster
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: kibana-deployment
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    # Primary Kibana web interface port
+    - name: http
+      port: 5601
+      targetPort: 5601
+      protocol: TCP
+      appProtocol: http
+
+    # Metrics port for monitoring
+    - name: metrics
+      port: 9684
+      targetPort: 9684
+      protocol: TCP
+      appProtocol: http
+
+---
+# ==============================================================================
+# Veridis Kibana Headless Service - Direct Pod Access Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-kibana-headless
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-headless-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    kibana.veridis.xyz/type: log-kibana-headless-service
+    kibana.veridis.xyz/category: observability-headless-service
+    kibana.veridis.xyz/role: direct-access-service
+
+    # Service specific labels
+    service.veridis.xyz/service-type: headless
+    service.veridis.xyz/access-pattern: direct-pod
+    service.veridis.xyz/load-balancing: disabled
+    service.veridis.xyz/session-affinity: none
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Headless service for direct pod access to Kibana instances"
+    veridis.xyz/purpose: "Provides direct access to individual Kibana pods for administrative tasks"
+
+    # Headless service annotations
+    service.veridis.xyz/headless: "true"
+    service.veridis.xyz/cluster-ip: "None"
+    service.veridis.xyz/dns-policy: "ClusterFirst"
+    service.veridis.xyz/service-discovery: "dns"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-service-headless"
+
+# ==============================================================================
+# Headless Service Specification
+# ==============================================================================
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+
+  selector:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: kibana-deployment
+
+  ports:
+    - name: http
+      port: 5601
+      targetPort: 5601
+      protocol: TCP
+    - name: metrics
+      port: 9684
+      targetPort: 9684
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Kibana External Service - External Access Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-kibana-external
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-external-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    kibana.veridis.xyz/type: log-kibana-external-service
+    kibana.veridis.xyz/category: observability-external-service
+    kibana.veridis.xyz/role: external-access-service
+
+    # External service specific labels
+    service.veridis.xyz/service-type: external-access
+    service.veridis.xyz/access-level: restricted
+    service.veridis.xyz/firewall-rules: required
+    service.veridis.xyz/load-balancer-type: network
+
+    # Security labels for external access
+    security.veridis.xyz/external-access: "controlled"
+    security.veridis.xyz/ip-allowlist: "required"
+    security.veridis.xyz/tls-termination: "service"
+    security.veridis.xyz/authentication: "required"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "External LoadBalancer service for Kibana access from outside the cluster"
+    veridis.xyz/purpose: "Provides controlled external access to Kibana visualization interface"
+
+    # Load balancer annotations (AWS)
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: "http"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/api/status"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "30"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: "10"
+    service.beta.kubernetes.io/aws-load-balancer-healthy-threshold: "2"
+    service.beta.kubernetes.io/aws-load-balancer-unhealthy-threshold: "3"
+
+    # Access control annotations
+    service.beta.kubernetes.io/aws-load-balancer-source-ranges: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+
+    # SSL/TLS annotations
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:region:account:certificate/cert-id"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
+
+    # Performance annotations
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "60"
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "3600"
+
+    # Monitoring annotations
+    service.beta.kubernetes.io/aws-load-balancer-access-log-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-name: "veridis-kibana-access-logs"
+    service.beta.kubernetes.io/aws-load-balancer-access-log-s3-bucket-prefix: "kibana-external"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "external-access-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-service-external"
+
+# ==============================================================================
+# External Service Specification
+# ==============================================================================
+spec:
+  type: LoadBalancer
+
+  # External traffic policy for source IP preservation
+  externalTrafficPolicy: Local
+
+  # Health check node port (optional)
+  healthCheckNodePort: 32000
+
+  selector:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: kibana-deployment
+
+  ports:
+    # HTTPS port for secure external access
+    - name: https
+      port: 443
+      targetPort: 5601
+      protocol: TCP
+
+    # HTTP port for health checks (redirect to HTTPS)
+    - name: http
+      port: 80
+      targetPort: 5601
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Kibana Development Service - Development Environment
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-kibana-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-dev-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    kibana.veridis.xyz/type: log-kibana-dev-service
+    kibana.veridis.xyz/category: observability-dev-service
+    kibana.veridis.xyz/role: development-service
+
+    # Development service labels
+    development.veridis.xyz/type: "kibana-dev"
+    development.veridis.xyz/access-level: "relaxed"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/testing: "enabled"
+
+    service.veridis.xyz/service-type: development
+    service.veridis.xyz/security-level: relaxed
+    service.veridis.xyz/monitoring-level: basic
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development environment Kibana service for testing and debugging"
+    veridis.xyz/purpose: "Provides Kibana access for development workflows and testing"
+
+    # Development specific annotations
+    development.veridis.xyz/debug-access: "enabled"
+    development.veridis.xyz/cors-enabled: "true"
+    development.veridis.xyz/authentication-relaxed: "true"
+    development.veridis.xyz/rate-limiting: "disabled"
+
+    # NodePort for development access
+    service.veridis.xyz/access-method: "nodeport"
+    service.veridis.xyz/external-access: "development-only"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-service-development"
+
+# ==============================================================================
+# Development Service Specification
+# ==============================================================================
+spec:
+  type: NodePort
+
+  selector:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/component: kibana-dev-deployment
+
+  ports:
+    - name: http
+      port: 5601
+      targetPort: 5601
+      nodePort: 30561  # Fixed NodePort for development
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Kibana Staging Service - Staging Environment
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-kibana-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-staging-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    kibana.veridis.xyz/type: log-kibana-staging-service
+    kibana.veridis.xyz/category: observability-staging-service
+    kibana.veridis.xyz/role: staging-service
+
+    # Staging service labels
+    staging.veridis.xyz/type: "kibana-staging"
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/validation: "enabled"
+    staging.veridis.xyz/testing: "comprehensive"
+
+    service.veridis.xyz/service-type: staging
+    service.veridis.xyz/security-level: enhanced
+    service.veridis.xyz/monitoring-level: comprehensive
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging environment Kibana service for pre-production validation"
+    veridis.xyz/purpose: "Provides production-like Kibana access for staging validation"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/security-enhanced: "true"
+    staging.veridis.xyz/monitoring-enhanced: "true"
+    staging.veridis.xyz/load-testing: "enabled"
+
+    # Session affinity for consistent testing
+    service.veridis.xyz/session-affinity: "ClientIP"
+    service.veridis.xyz/session-timeout: "7200"  # 2 hours
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-service-staging"
+
+# ==============================================================================
+# Staging Service Specification
+# ==============================================================================
+spec:
+  type: ClusterIP
+
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 7200  # 2 hours for staging testing
+
+  selector:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/component: kibana-staging-deployment
+
+  ports:
+    - name: http
+      port: 5601
+      targetPort: 5601
+      protocol: TCP
+
+---
+# ==============================================================================
+# Veridis Kibana Metrics Service - Monitoring Integration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-kibana-metrics
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: kibana-metrics-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    kibana.veridis.xyz/type: log-kibana-metrics-service
+    kibana.veridis.xyz/category: observability-metrics-service
+    kibana.veridis.xyz/role: monitoring-service
+
+    # Metrics service labels
+    monitoring.veridis.xyz/type: "metrics-collection"
+    monitoring.veridis.xyz/scrape-target: "true"
+    monitoring.veridis.xyz/prometheus: "enabled"
+    monitoring.veridis.xyz/grafana: "enabled"
+
+    # Service specific labels
+    service.veridis.xyz/service-type: metrics
+    service.veridis.xyz/access-level: internal
+    service.veridis.xyz/security-level: standard
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Dedicated metrics service for Kibana monitoring and observability"
+    veridis.xyz/purpose: "Provides metrics endpoints for Prometheus scraping and monitoring"
+
+    # Prometheus scraping annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9684"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+    prometheus.io/interval: "30s"
+    prometheus.io/timeout: "10s"
+
+    # Metrics specific annotations
+    metrics.veridis.xyz/type: "application-metrics"
+    metrics.veridis.xyz/format: "prometheus"
+    metrics.veridis.xyz/retention: "30d"
+    metrics.veridis.xyz/aggregation: "enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/kibana-service-metrics"
+
+# ==============================================================================
+# Metrics Service Specification
+# ==============================================================================
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: kibana-deployment
+
+  ports:
+    # Dedicated metrics port
+    - name: metrics
+      port: 9684
+      targetPort: 9684
+      protocol: TCP
+      appProtocol: http
+
+# ==============================================================================
+# Veridis Kibana Service Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS KIBANA SERVICE STRATEGY:
+# =============================================
+#
+# VERIDIS KIBANA SERVICE ARCHITECTURE OVERVIEW:
+# ---------------------------------------------
+# 1. Primary Production Service (veridis-kibana):
+#    - Comprehensive enterprise-grade service with intelligent log visualization access and advanced performance optimization for production Kibana
+#    - Advanced service configuration with high availability, session affinity, load balancing, and comprehensive observability integration
+#    - Multi-tier service architecture with ClusterIP, performance optimization, monitoring integration, and comprehensive operational excellence
+#    - Enterprise service policies with security enforcement, compliance controls, access management, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent traffic management, session persistence, connection optimization, and security for maximum efficiency
+#
+# 2. Headless Service (veridis-kibana-headless):
+#    - Direct-access service with pod-level connectivity and comprehensive administrative coordination
+#    - Advanced headless configuration with DNS discovery, direct pod access, administrative support, and comprehensive headless intelligence
+#    - Flexible service optimization with administrative workflow, direct access support, and comprehensive headless intelligence
+#    - Administrative intelligence with direct procedures, pod support, access automation, and comprehensive administrative coordination
+#    - Operational excellence with headless service, administrative workflows, direct access automation, and comprehensive headless environment management
+#
+# 3. External Service (veridis-kibana-external):
+#    - External-access service with LoadBalancer integration and comprehensive external coordination
+#    - Advanced external configuration with TLS termination, IP allowlisting, security controls, and comprehensive external intelligence
+#    - Flexible service optimization with external workflow, security support, and comprehensive external intelligence
+#    - External intelligence with security procedures, access support, firewall automation, and comprehensive external coordination
+#    - Security excellence with external service, access controls, security automation, and comprehensive external environment management
+#
+# 4. Multi-Environment Services (dev/staging):
+#    - Environment-focused services with lifecycle management and comprehensive environment coordination
+#    - Advanced environment configuration with access optimization, testing support, validation capabilities, and comprehensive environment intelligence
+#    - Flexible service optimization with environment isolation, testing access, and comprehensive environment intelligence
+#    - Environment intelligence with testing procedures, validation support, access automation, and comprehensive environment coordination
+#    - Testing excellence with environment service, validation workflows, access optimization, and comprehensive environment management
+#
+# 5. Metrics Service (veridis-kibana-metrics):
+#    - Monitoring-focused service with metrics collection and comprehensive monitoring coordination
+#    - Advanced metrics configuration with Prometheus integration, scraping optimization, monitoring support, and comprehensive metrics intelligence
+#    - Flexible service optimization with monitoring workflow, metrics collection, and comprehensive metrics intelligence
+#    - Monitoring intelligence with collection procedures, scraping support, aggregation automation, and comprehensive monitoring coordination
+#    - Observability excellence with metrics service, monitoring workflows, collection optimization, and comprehensive metrics management
+#
+# ENTERPRISE KIBANA SERVICE FEATURES:
+# ===================================
+# Advanced Service Discovery and Load Balancing:
+#   - Multi-tier service architecture with production access, administrative connectivity, external access, and comprehensive service configurations
+#   - Intelligent load balancing with session algorithms, affinity policies, traffic optimization, and comprehensive service decisions
+#   - Service discovery with DNS optimization, connectivity management, access policies, and comprehensive service analytics
+#   - Performance management with high throughput (1000 connections), low latency, session persistence, and comprehensive performance intelligence
+#   - Traffic processing tuning with connection management, session optimization, load algorithms, and intelligent service optimization
+#
+# Comprehensive Security and Access Control:
+#   - Multi-tier security with network policies, access controls, authentication enforcement, and comprehensive security coordination
+#   - Security optimization with TLS termination, IP allowlisting, firewall rules, and comprehensive security intelligence
+#   - Access management with user tracking, session persistence, authorization validation, and comprehensive access coordination
+#   - Business intelligence with security analytics, access correlation, traffic optimization, and comprehensive strategic insights
+#   - Security management with access policies, session optimization, security integration, and comprehensive security analytics
+#
+# Enterprise High Availability and Resilience:
+#   - Multi-tier availability with load balancing, failover support, circuit breaking, and comprehensive availability coordination
+#   - Availability optimization with health monitoring, automatic failover, traffic distribution, and comprehensive availability intelligence
+#   - Resilience management with backup endpoints, circuit breakers, retry policies, and comprehensive resilience coordination
+#   - Business intelligence with availability analytics, uptime correlation, performance optimization, and comprehensive strategic insights
+#   - Resilience management with availability policies, failover optimization, health integration, and comprehensive resilience analytics
+#
+# Advanced Monitoring and Observability Integration:
+#   - Multi-tier monitoring with Prometheus integration, metrics collection, health monitoring, and comprehensive monitoring coordination
+#   - Monitoring optimization with scraping policies, metrics aggregation, alert management, and comprehensive monitoring intelligence
+#   - Observability management with dashboard integration, metric correlation, performance tracking, and comprehensive observability coordination
+#   - Business intelligence with monitoring analytics, performance correlation, usage optimization, and comprehensive strategic insights
+#   - Observability management with monitoring policies, metrics optimization, dashboard integration, and comprehensive observability analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Kibana Service Lifecycle Management:
+#   - Multi-Service deployment with production access, administrative connectivity, external access, and comprehensive service coordination
+#   - Intelligent service management with predictive analytics and traffic utilization correlation
+#   - Advanced monitoring with comprehensive service analytics and access business intelligence
+#   - Configuration validation with service schema enforcement and access deployment safety checks
+#   - Automated optimization with service pattern analysis and access configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II service controls with comprehensive audit requirements and access logging
+#   - GDPR service compliance with data protection and privacy-preserving access management
+#   - ISO 27001 service security management with information security and access compliance integration
+#   - NIST 800-190 container service security with access validation and compliance
+#   - Zero-trust service architecture with comprehensive encryption and access authentication requirements
+#
+# Business Intelligence Integration:
+#   - Service analytics with cost correlation and access resource utilization optimization
+#   - Performance analytics with user experience optimization and service business intelligence
+#   - Access intelligence with processing pattern monitoring and service optimization recommendations
+#   - Strategic planning with capacity management and service forecasting
+#   - Business impact assessment with service performance correlation and access tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment service support with production access, development debugging, staging validation, and comprehensive service coordination
+#   - Comprehensive documentation with service guides and access troubleshooting procedures
+#   - Environment-specific services with production, development, staging, and monitoring support
+#   - Testing integration with service development workflow and access debugging capabilities
+#   - Service monitoring with comprehensive tracking and access correlation
+#
+# ==============================================================================

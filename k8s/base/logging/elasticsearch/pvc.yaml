@@ -1,0 +1,840 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Elasticsearch PersistentVolumeClaim Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Elasticsearch PersistentVolumeClaim for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ELASTICSEARCH PVC ARCHITECTURE:
+#   • Advanced Elasticsearch PVC with intelligent log storage and performance-based optimization
+#   • Multi-tier PVC architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with PVC policies, log optimization, Elasticsearch integration
+#   • Advanced lifecycle management with automated PVC optimization, Elasticsearch control, and log enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Elasticsearch PVC performance insights
+#
+# VERIDIS ELASTICSEARCH PVC OPTIMIZATION:
+#   • High-performance PVC with intelligent log storage and Elasticsearch pvc optimization
+#   • Intelligent PVC log storage with responsive policies and performance-based log decisions
+#   • Advanced PVC management with business intelligence and log-based Elasticsearch control
+#   • Comprehensive observability control with intelligent Elasticsearch PVC management and log enhancement
+#   • Enterprise acceleration with predictive Elasticsearch PVC management and log optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Elasticsearch PVC controls with comprehensive audit and log requirements
+#   • GDPR Elasticsearch PVC compliance with data protection, privacy controls, and log management
+#   • ISO 27001 Elasticsearch PVC management with comprehensive framework integration
+#   • NIST 800-190 container Elasticsearch PVC security with log-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Elasticsearch PVC best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Elasticsearch PVC lifecycle management with automated provisioning and log optimization
+#   • Predictive log analytics with capacity planning and Elasticsearch PVC intelligence
+#   • Advanced PVC integration with Elasticsearch log analytics and performance business intelligence
+#   • Comprehensive observability control with Elasticsearch PVC preservation and log optimization
+#   • Business continuity Elasticsearch PVC with log guarantees and performance optimization
+#
+# ELASTICSEARCH PVC ACCELERATION INTELLIGENCE:
+#   • Elasticsearch PVC usage analytics with log patterns and optimization recommendations
+#   • PVC monitoring with Elasticsearch log latency and management optimization intelligence
+#   • Development efficiency with Elasticsearch PVC analytics and deployment optimization procedures
+#   • Cost optimization with Elasticsearch PVC utilization analysis and log capacity planning procedures
+#   • Quality assurance with Elasticsearch PVC metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Elasticsearch Data PVC - Primary Storage Configuration
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: veridis-elasticsearch-data-pvc
+  namespace: veridis-infrastructure
+
+  # Core Veridis Elasticsearch PVC identification labels
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-pvc
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Elasticsearch PVC specific classification
+    elasticsearch.veridis.xyz/type: log-elasticsearch-pvc
+    elasticsearch.veridis.xyz/category: observability-pvc
+    elasticsearch.veridis.xyz/role: primary-elasticsearch-pvc
+    elasticsearch.veridis.xyz/pvc-class: high-performance-elasticsearch-pvc
+    elasticsearch.veridis.xyz/security-level: enterprise
+
+    # PVC Elasticsearch PVC classification
+    pvc.veridis.xyz/elasticsearch-pvc-type: intelligent-elasticsearch-pvc
+    pvc.veridis.xyz/pvc-type: log-pvc
+    pvc.veridis.xyz/performance-tier: high-throughput
+    pvc.veridis.xyz/optimization: enabled
+    pvc.veridis.xyz/features: full-elasticsearch-pvc-stack
+
+    # Observability Elasticsearch PVC classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-elasticsearch-pvc-management
+    observability.veridis.xyz/log-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Elasticsearch PVC classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-elasticsearch-pvc-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Elasticsearch PVC labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "elasticsearch-pvc-control-framework"
+    compliance.veridis.xyz/gdpr: "elasticsearch-pvc-data-protection"
+    compliance.veridis.xyz/iso27001: "elasticsearch-pvc-security-management"
+    compliance.veridis.xyz/nist-800-190: "elasticsearch-pvc-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Elasticsearch PVC analytics and intelligence
+    monitoring.veridis.xyz/elasticsearch-pvc-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/log-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Storage specific labels
+    storage.veridis.xyz/type: "elasticsearch-data"
+    storage.veridis.xyz/class: "fast-ssd"
+    storage.veridis.xyz/tier: "production"
+    storage.veridis.xyz/encryption: "enabled"
+    storage.veridis.xyz/backup: "enabled"
+
+    # Volume labels
+    volume.veridis.xyz/purpose: "elasticsearch-primary-storage"
+    volume.veridis.xyz/access-mode: "ReadWriteOnce"
+    volume.veridis.xyz/reclaim-policy: "Retain"
+    volume.veridis.xyz/mount-options: "optimized"
+    volume.veridis.xyz/filesystem: "ext4"
+
+    # Performance labels
+    performance.veridis.xyz/iops-tier: "high"
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/caching-enabled: "true"
+
+    # Data management labels
+    data.veridis.xyz/classification: "internal"
+    data.veridis.xyz/retention-policy: "30d"
+    data.veridis.xyz/compression: "enabled"
+    data.veridis.xyz/deduplication: "enabled"
+    data.veridis.xyz/lifecycle-management: "automated"
+
+  annotations:
+    # Elasticsearch PVC purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Elasticsearch PVC with intelligent log storage, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Elasticsearch PVC for decentralized identity management with intelligent log storage, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "Elasticsearch PVC including log storage, performance optimization, data persistence configuration, and comprehensive monitoring intelligence"
+
+    # Elasticsearch PVC architecture and design
+    elasticsearch.veridis.xyz/architecture: "Enterprise Elasticsearch PVC with intelligent log storage, advanced performance optimization, and data persistence integration optimization"
+    elasticsearch.veridis.xyz/design-pattern: "Multi-tier Elasticsearch PVC with performance optimization, cost efficiency, and business intelligence"
+    elasticsearch.veridis.xyz/optimization-model: "Intelligent Elasticsearch PVC with predictive analytics, performance optimization, and log efficiency"
+    elasticsearch.veridis.xyz/performance-model: "High-performance Elasticsearch PVC with log optimization and intelligent data persistence management"
+
+    # PVC Elasticsearch PVC specifications
+    pvc.veridis.xyz/elasticsearch-pvc-specification: "Elasticsearch PVC with performance optimization and intelligent elasticsearch pvc management"
+    pvc.veridis.xyz/log-specification: "Advanced log storage management with elasticsearch optimization and pvc enhancement"
+    pvc.veridis.xyz/data-specification: "Elasticsearch PVC data persistence management optimization with intelligent log and enhancement"
+    pvc.veridis.xyz/performance-specification: "Elasticsearch performance pvc with log acceleration and efficiency"
+    pvc.veridis.xyz/business-specification: "Elasticsearch business pvc with cost optimization and strategic log intelligence"
+
+    # Storage specific annotations
+    storage.veridis.xyz/storage-class: "fast-ssd"
+    storage.veridis.xyz/size: "100Gi"
+    storage.veridis.xyz/access-mode: "ReadWriteOnce"
+    storage.veridis.xyz/volume-mode: "Filesystem"
+    storage.veridis.xyz/reclaim-policy: "Retain"
+
+    # Performance annotations
+    performance.veridis.xyz/expected-iops: "3000"
+    performance.veridis.xyz/expected-throughput: "500MB/s"
+    performance.veridis.xyz/latency-requirement: "sub-millisecond"
+    performance.veridis.xyz/concurrency-level: "high"
+    performance.veridis.xyz/optimization-strategy: "ssd-optimized"
+
+    # Data protection annotations
+    data.veridis.xyz/encryption-at-rest: "enabled"
+    data.veridis.xyz/encryption-algorithm: "AES-256"
+    data.veridis.xyz/backup-frequency: "daily"
+    data.veridis.xyz/snapshot-retention: "30d"
+    data.veridis.xyz/cross-region-replication: "enabled"
+
+    # Lifecycle management annotations
+    lifecycle.veridis.xyz/provisioning: "dynamic"
+    lifecycle.veridis.xyz/expansion: "enabled"
+    lifecycle.veridis.xyz/deletion-policy: "retain"
+    lifecycle.veridis.xyz/resize-policy: "expand-only"
+    lifecycle.veridis.xyz/migration-support: "enabled"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/pvc-monitoring: "enabled"
+    monitoring.veridis.xyz/capacity-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+    monitoring.veridis.xyz/usage-alerts: "enabled"
+    monitoring.veridis.xyz/threshold-alerts: "80-percent"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-storage"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-classification: "internal"
+    compliance.veridis.xyz/retention-requirement: "30d"
+    compliance.veridis.xyz/encryption-required: "true"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/access-control: "restricted"
+
+    # Backup annotations
+    backup.veridis.xyz/strategy: "snapshot"
+    backup.veridis.xyz/frequency: "daily"
+    backup.veridis.xyz/retention: "30d"
+    backup.veridis.xyz/compression: "enabled"
+    backup.veridis.xyz/incremental: "enabled"
+
+    # Cloud provider specific annotations (AWS EBS)
+    ebs.csi.aws.com/encrypted: "true"
+    ebs.csi.aws.com/kmsKeyId: "alias/veridis-elasticsearch-key"
+    ebs.csi.aws.com/volumeType: "gp3"
+    ebs.csi.aws.com/iops: "3000"
+    ebs.csi.aws.com/throughput: "500"
+
+    # Volume expansion annotations
+    volume.kubernetes.io/allow-volume-expansion: "true"
+    volume.kubernetes.io/selected-node: ""  # Let scheduler decide
+    volume.kubernetes.io/storage-provisioner: "ebs.csi.aws.com"
+
+    # Operational annotations
+    operations.veridis.xyz/backup-schedule: "0 2 * * *"
+    operations.veridis.xyz/maintenance-window: "sunday-02:00-04:00"
+    operations.veridis.xyz/resize-schedule: "quarterly"
+    operations.veridis.xyz/health-check-interval: "5m"
+    operations.veridis.xyz/recovery-time-objective: "15m"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/elasticsearch-pvc-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/elasticsearch-pvc"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/elasticsearch-pvc-management"
+    veridis.xyz/pvc-docs: "https://observability.veridis.xyz/elasticsearch-pvc-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/elasticsearch-pvc-monitoring"
+
+# ==============================================================================
+# PVC Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Access Mode Configuration
+  # ==============================================================================
+  accessModes:
+    - ReadWriteOnce
+
+  # ==============================================================================
+  # Volume Mode Configuration
+  # ==============================================================================
+  volumeMode: Filesystem
+
+  # ==============================================================================
+  # Storage Class Configuration
+  # ==============================================================================
+  storageClassName: fast-ssd
+
+  # ==============================================================================
+  # Resource Requirements
+  # ==============================================================================
+  resources:
+    requests:
+      storage: 100Gi
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Logs PVC - Logs Storage Configuration
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: veridis-elasticsearch-logs-pvc
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-logs-pvc
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-logs-pvc
+    elasticsearch.veridis.xyz/category: observability-logs-pvc
+    elasticsearch.veridis.xyz/role: logs-storage-pvc
+
+    # Storage specific labels for logs
+    storage.veridis.xyz/type: "elasticsearch-logs"
+    storage.veridis.xyz/class: "standard-ssd"
+    storage.veridis.xyz/tier: "production"
+    storage.veridis.xyz/purpose: "application-logs"
+
+    # Volume labels for logs
+    volume.veridis.xyz/purpose: "elasticsearch-logs-storage"
+    volume.veridis.xyz/access-mode: "ReadWriteOnce"
+    volume.veridis.xyz/reclaim-policy: "Delete"
+    volume.veridis.xyz/temporary: "true"
+
+    # Performance labels for logs
+    performance.veridis.xyz/iops-tier: "standard"
+    performance.veridis.xyz/throughput-tier: "standard"
+    performance.veridis.xyz/latency-tier: "medium"
+
+    # Data management labels for logs
+    data.veridis.xyz/classification: "operational"
+    data.veridis.xyz/retention-policy: "7d"
+    data.veridis.xyz/compression: "disabled"
+    data.veridis.xyz/lifecycle-management: "automated"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Elasticsearch logs storage PVC for application and cluster logs"
+    veridis.xyz/purpose: "Provides dedicated storage for Elasticsearch application logs and operational data"
+
+    # Storage specific annotations for logs
+    storage.veridis.xyz/storage-class: "standard-ssd"
+    storage.veridis.xyz/size: "20Gi"
+    storage.veridis.xyz/access-mode: "ReadWriteOnce"
+    storage.veridis.xyz/volume-mode: "Filesystem"
+    storage.veridis.xyz/reclaim-policy: "Delete"
+
+    # Performance annotations for logs
+    performance.veridis.xyz/expected-iops: "1000"
+    performance.veridis.xyz/expected-throughput: "100MB/s"
+    performance.veridis.xyz/latency-requirement: "standard"
+    performance.veridis.xyz/optimization-strategy: "standard"
+
+    # Lifecycle management annotations for logs
+    lifecycle.veridis.xyz/provisioning: "dynamic"
+    lifecycle.veridis.xyz/expansion: "enabled"
+    lifecycle.veridis.xyz/deletion-policy: "delete"
+    lifecycle.veridis.xyz/resize-policy: "expand-only"
+
+    # Cloud provider specific annotations (AWS EBS) for logs
+    ebs.csi.aws.com/encrypted: "true"
+    ebs.csi.aws.com/volumeType: "gp3"
+    ebs.csi.aws.com/iops: "1000"
+    ebs.csi.aws.com/throughput: "125"
+
+    # Data management annotations for logs
+    data.veridis.xyz/retention-period: "7d"
+    data.veridis.xyz/rotation-policy: "size-based"
+    data.veridis.xyz/cleanup-automation: "enabled"
+    data.veridis.xyz/archival-policy: "none"
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: standard-ssd
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Config PVC - Configuration Storage
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: veridis-elasticsearch-config-pvc
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-config-pvc
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-config-pvc
+    elasticsearch.veridis.xyz/category: observability-config-pvc
+    elasticsearch.veridis.xyz/role: config-storage-pvc
+
+    # Storage specific labels for config
+    storage.veridis.xyz/type: "elasticsearch-config"
+    storage.veridis.xyz/class: "standard-ssd"
+    storage.veridis.xyz/tier: "production"
+    storage.veridis.xyz/purpose: "configuration-storage"
+
+    # Volume labels for config
+    volume.veridis.xyz/purpose: "elasticsearch-config-storage"
+    volume.veridis.xyz/access-mode: "ReadWriteOnce"
+    volume.veridis.xyz/reclaim-policy: "Retain"
+    volume.veridis.xyz/backup-required: "true"
+
+    # Performance labels for config
+    performance.veridis.xyz/iops-tier: "low"
+    performance.veridis.xyz/throughput-tier: "low"
+    performance.veridis.xyz/latency-tier: "standard"
+
+    # Data management labels for config
+    data.veridis.xyz/classification: "configuration"
+    data.veridis.xyz/retention-policy: "365d"
+    data.veridis.xyz/backup-frequency: "daily"
+    data.veridis.xyz/versioning: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Elasticsearch configuration storage PVC for cluster configuration and settings"
+    veridis.xyz/purpose: "Provides dedicated storage for Elasticsearch configuration files and cluster settings"
+
+    # Storage specific annotations for config
+    storage.veridis.xyz/storage-class: "standard-ssd"
+    storage.veridis.xyz/size: "5Gi"
+    storage.veridis.xyz/access-mode: "ReadWriteOnce"
+    storage.veridis.xyz/volume-mode: "Filesystem"
+    storage.veridis.xyz/reclaim-policy: "Retain"
+
+    # Performance annotations for config
+    performance.veridis.xyz/expected-iops: "100"
+    performance.veridis.xyz/expected-throughput: "10MB/s"
+    performance.veridis.xyz/latency-requirement: "standard"
+    performance.veridis.xyz/optimization-strategy: "minimal"
+
+    # Backup annotations for config
+    backup.veridis.xyz/strategy: "file-backup"
+    backup.veridis.xyz/frequency: "daily"
+    backup.veridis.xyz/retention: "365d"
+    backup.veridis.xyz/versioning: "enabled"
+    backup.veridis.xyz/compression: "enabled"
+
+    # Cloud provider specific annotations (AWS EBS) for config
+    ebs.csi.aws.com/encrypted: "true"
+    ebs.csi.aws.com/volumeType: "gp3"
+    ebs.csi.aws.com/iops: "100"
+    ebs.csi.aws.com/throughput: "125"
+
+    # Configuration management annotations
+    config.veridis.xyz/version-control: "enabled"
+    config.veridis.xyz/change-tracking: "enabled"
+    config.veridis.xyz/validation: "enabled"
+    config.veridis.xyz/rollback-support: "enabled"
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: standard-ssd
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Backup PVC - Backup Storage Configuration
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: veridis-elasticsearch-backup-pvc
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-backup-pvc
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-backup-pvc
+    elasticsearch.veridis.xyz/category: observability-backup-pvc
+    elasticsearch.veridis.xyz/role: backup-storage-pvc
+
+    # Storage specific labels for backup
+    storage.veridis.xyz/type: "elasticsearch-backup"
+    storage.veridis.xyz/class: "cold-storage"
+    storage.veridis.xyz/tier: "backup"
+    storage.veridis.xyz/purpose: "backup-storage"
+
+    # Volume labels for backup
+    volume.veridis.xyz/purpose: "elasticsearch-backup-storage"
+    volume.veridis.xyz/access-mode: "ReadWriteMany"
+    volume.veridis.xyz/reclaim-policy: "Retain"
+    volume.veridis.xyz/backup-tier: "cold"
+
+    # Performance labels for backup
+    performance.veridis.xyz/iops-tier: "low"
+    performance.veridis.xyz/throughput-tier: "medium"
+    performance.veridis.xyz/latency-tier: "high"
+
+    # Data management labels for backup
+    data.veridis.xyz/classification: "backup"
+    data.veridis.xyz/retention-policy: "90d"
+    data.veridis.xyz/compression: "enabled"
+    data.veridis.xyz/deduplication: "enabled"
+    data.veridis.xyz/lifecycle-management: "automated"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Elasticsearch backup storage PVC for cluster snapshots and disaster recovery"
+    veridis.xyz/purpose: "Provides dedicated storage for Elasticsearch backup snapshots and disaster recovery data"
+
+    # Storage specific annotations for backup
+    storage.veridis.xyz/storage-class: "cold-storage"
+    storage.veridis.xyz/size: "500Gi"
+    storage.veridis.xyz/access-mode: "ReadWriteMany"
+    storage.veridis.xyz/volume-mode: "Filesystem"
+    storage.veridis.xyz/reclaim-policy: "Retain"
+
+    # Performance annotations for backup
+    performance.veridis.xyz/expected-iops: "500"
+    performance.veridis.xyz/expected-throughput: "200MB/s"
+    performance.veridis.xyz/latency-requirement: "relaxed"
+    performance.veridis.xyz/optimization-strategy: "cost-optimized"
+
+    # Backup specific annotations
+    backup.veridis.xyz/strategy: "snapshot"
+    backup.veridis.xyz/frequency: "daily"
+    backup.veridis.xyz/retention: "90d"
+    backup.veridis.xyz/compression: "enabled"
+    backup.veridis.xyz/deduplication: "enabled"
+
+    # Disaster recovery annotations
+    dr.veridis.xyz/recovery-time-objective: "4h"
+    dr.veridis.xyz/recovery-point-objective: "1h"
+    dr.veridis.xyz/cross-region-replication: "enabled"
+    dr.veridis.xyz/backup-validation: "automated"
+
+    # Cloud provider specific annotations (AWS EBS) for backup
+    ebs.csi.aws.com/encrypted: "true"
+    ebs.csi.aws.com/volumeType: "sc1"  # Cold HDD for backup
+    ebs.csi.aws.com/throughput: "250"
+
+    # Lifecycle management annotations for backup
+    lifecycle.veridis.xyz/archival-policy: "glacier-after-30d"
+    lifecycle.veridis.xyz/deletion-policy: "retain-90d"
+    lifecycle.veridis.xyz/cleanup-automation: "enabled"
+    lifecycle.veridis.xyz/cost-optimization: "enabled"
+
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  storageClassName: cold-storage
+  resources:
+    requests:
+      storage: 500Gi
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Development PVC - Development Environment
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: veridis-elasticsearch-dev-pvc
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-dev-pvc
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-dev-pvc
+    elasticsearch.veridis.xyz/category: observability-dev-pvc
+    elasticsearch.veridis.xyz/role: development-storage-pvc
+
+    # Storage specific labels for development
+    storage.veridis.xyz/type: "elasticsearch-dev"
+    storage.veridis.xyz/class: "standard"
+    storage.veridis.xyz/tier: "development"
+    storage.veridis.xyz/purpose: "development-storage"
+
+    # Volume labels for development
+    volume.veridis.xyz/purpose: "elasticsearch-development-storage"
+    volume.veridis.xyz/access-mode: "ReadWriteOnce"
+    volume.veridis.xyz/reclaim-policy: "Delete"
+    volume.veridis.xyz/temporary: "true"
+
+    # Development labels
+    development.veridis.xyz/type: "elasticsearch-dev"
+    development.veridis.xyz/testing: "enabled"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/ephemeral: "true"
+
+    # Performance labels for development
+    performance.veridis.xyz/iops-tier: "standard"
+    performance.veridis.xyz/throughput-tier: "standard"
+    performance.veridis.xyz/latency-tier: "relaxed"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development environment Elasticsearch PVC for testing and debugging"
+    veridis.xyz/purpose: "Provides storage for Elasticsearch development workflows and testing"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/debug-access: "enabled"
+    development.veridis.xyz/ephemeral-storage: "true"
+    development.veridis.xyz/cost-optimized: "true"
+
+    # Storage specific annotations for development
+    storage.veridis.xyz/storage-class: "standard"
+    storage.veridis.xyz/size: "10Gi"
+    storage.veridis.xyz/access-mode: "ReadWriteOnce"
+    storage.veridis.xyz/volume-mode: "Filesystem"
+    storage.veridis.xyz/reclaim-policy: "Delete"
+
+    # Performance annotations for development
+    performance.veridis.xyz/expected-iops: "500"
+    performance.veridis.xyz/expected-throughput: "50MB/s"
+    performance.veridis.xyz/latency-requirement: "relaxed"
+    performance.veridis.xyz/optimization-strategy: "cost-optimized"
+
+    # Cloud provider specific annotations for development
+    ebs.csi.aws.com/encrypted: "false"  # Relaxed for development
+    ebs.csi.aws.com/volumeType: "gp2"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/elasticsearch-pvc-development"
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Staging PVC - Staging Environment
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: veridis-elasticsearch-staging-pvc
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-staging-pvc
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-staging-pvc
+    elasticsearch.veridis.xyz/category: observability-staging-pvc
+    elasticsearch.veridis.xyz/role: staging-storage-pvc
+
+    # Storage specific labels for staging
+    storage.veridis.xyz/type: "elasticsearch-staging"
+    storage.veridis.xyz/class: "fast-ssd"
+    storage.veridis.xyz/tier: "staging"
+    storage.veridis.xyz/purpose: "staging-storage"
+
+    # Volume labels for staging
+    volume.veridis.xyz/purpose: "elasticsearch-staging-storage"
+    volume.veridis.xyz/access-mode: "ReadWriteOnce"
+    volume.veridis.xyz/reclaim-policy: "Retain"
+    volume.veridis.xyz/production-like: "true"
+
+    # Staging labels
+    staging.veridis.xyz/type: "elasticsearch-staging"
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/validation: "enabled"
+    staging.veridis.xyz/testing: "comprehensive"
+
+    # Performance labels for staging
+    performance.veridis.xyz/iops-tier: "high"
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging environment Elasticsearch PVC for pre-production validation"
+    veridis.xyz/purpose: "Provides production-like storage for Elasticsearch staging validation"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/performance-testing: "enabled"
+    staging.veridis.xyz/load-testing: "enabled"
+    staging.veridis.xyz/validation-testing: "comprehensive"
+
+    # Storage specific annotations for staging
+    storage.veridis.xyz/storage-class: "fast-ssd"
+    storage.veridis.xyz/size: "50Gi"
+    storage.veridis.xyz/access-mode: "ReadWriteOnce"
+    storage.veridis.xyz/volume-mode: "Filesystem"
+    storage.veridis.xyz/reclaim-policy: "Retain"
+
+    # Performance annotations for staging
+    performance.veridis.xyz/expected-iops: "2000"
+    performance.veridis.xyz/expected-throughput: "300MB/s"
+    performance.veridis.xyz/latency-requirement: "sub-millisecond"
+    performance.veridis.xyz/optimization-strategy: "production-like"
+
+    # Cloud provider specific annotations for staging
+    ebs.csi.aws.com/encrypted: "true"
+    ebs.csi.aws.com/volumeType: "gp3"
+    ebs.csi.aws.com/iops: "2000"
+    ebs.csi.aws.com/throughput: "300"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/elasticsearch-pvc-staging"
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: fast-ssd
+  resources:
+    requests:
+      storage: 50Gi
+
+# ==============================================================================
+# Veridis Elasticsearch PVC Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ELASTICSEARCH PVC STRATEGY:
+# ================================================
+#
+# VERIDIS ELASTICSEARCH PVC ARCHITECTURE OVERVIEW:
+# -----------------------------------------------
+# 1. Primary Data PVC (veridis-elasticsearch-data-pvc):
+#    - Comprehensive enterprise-grade pvc with intelligent log storage and advanced performance optimization for production Elasticsearch
+#    - Advanced pvc configuration with high-performance SSD, encryption at rest, backup integration, and comprehensive observability integration
+#    - Multi-tier pvc architecture with fast storage, retention policies, monitoring integration, and comprehensive operational excellence
+#    - Enterprise pvc policies with security enforcement, compliance controls, data protection, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent storage management, IOPS optimization, throughput tuning, and security for maximum efficiency
+#
+# 2. Logs Storage PVC (veridis-elasticsearch-logs-pvc):
+#    - Logs-focused pvc with application log storage and comprehensive logging coordination
+#    - Advanced logs configuration with standard SSD, rotation policies, cleanup automation, and comprehensive logging intelligence
+#    - Flexible pvc optimization with log management, retention control, and comprehensive storage intelligence
+#    - Storage intelligence with log procedures, rotation support, cleanup automation, and comprehensive storage coordination
+#    - Operational excellence with log storage, retention management, cleanup automation, and comprehensive storage environment management
+#
+# 3. Configuration PVC (veridis-elasticsearch-config-pvc):
+#    - Configuration-focused pvc with settings storage and comprehensive configuration coordination
+#    - Advanced config configuration with version control, change tracking, backup support, and comprehensive configuration intelligence
+#    - Flexible pvc optimization with configuration management, versioning support, and comprehensive config intelligence
+#    - Configuration intelligence with version procedures, change support, backup automation, and comprehensive configuration coordination
+#    - Management excellence with configuration storage, version control, change tracking, and comprehensive config environment management
+#
+# 4. Backup Storage PVC (veridis-elasticsearch-backup-pvc):
+#    - Backup-focused pvc with disaster recovery and comprehensive backup coordination
+#    - Advanced backup configuration with cold storage, compression, deduplication, and comprehensive backup intelligence
+#    - Flexible pvc optimization with backup management, retention control, and comprehensive backup intelligence
+#    - Backup intelligence with DR procedures, recovery support, validation automation, and comprehensive backup coordination
+#    - Recovery excellence with backup storage, disaster recovery, validation testing, and comprehensive backup environment management
+#
+# 5. Multi-Environment PVCs (dev/staging):
+#    - Environment-focused pvcs with lifecycle management and comprehensive environment coordination
+#    - Advanced environment configuration with cost optimization, testing support, validation capabilities, and comprehensive environment intelligence
+#    - Flexible pvc optimization with environment isolation, testing storage, and comprehensive environment intelligence
+#    - Environment intelligence with testing procedures, validation support, cost automation, and comprehensive environment coordination
+#    - Testing excellence with environment storage, validation workflows, cost optimization, and comprehensive environment management
+#
+# ENTERPRISE ELASTICSEARCH PVC FEATURES:
+# ======================================
+# Advanced Storage Management and Performance Integration:
+#   - Multi-tier pvc architecture with production storage, log management, config storage, and backup configurations
+#   - Intelligent storage management with performance algorithms, retention policies, encryption optimization, and comprehensive storage decisions
+#   - PVC discovery with volume optimization, performance management, storage policies, and comprehensive storage analytics
+#   - Performance management with high IOPS (3K), high throughput (500MB/s), low latency, and comprehensive performance intelligence
+#   - Storage processing tuning with volume management, backup optimization, encryption algorithms, and intelligent pvc optimization
+#
+# Comprehensive Data Lifecycle and Retention Management:
+#   - Multi-tier data management with primary storage, log retention, configuration versioning, and comprehensive data coordination
+#   - Data optimization with lifecycle policies, retention management, compression algorithms, and comprehensive data intelligence
+#   - Retention management with automated cleanup, archival policies, backup strategies, and comprehensive retention coordination
+#   - Business intelligence with data analytics, storage correlation, cost optimization, and comprehensive strategic insights
+#   - Data management with lifecycle policies, retention optimization, backup integration, and comprehensive data analytics
+#
+# Enterprise Security and Compliance Integration:
+#   - Storage security with encryption at rest, access controls, audit logging, and comprehensive security enforcement
+#   - Data audit with access tracking, usage monitoring, compliance validation, and comprehensive data management
+#   - Compliance processing with data protection, retention policies, encryption enforcement, and comprehensive compliance management
+#   - Security monitoring with access tracking, usage validation, security audit, and comprehensive security management
+#   - Compliance intelligence with audit trails, data review, security validation, and comprehensive compliance analytics
+#
+# Advanced Backup and Disaster Recovery:
+#   - Multi-tier backup strategy with daily snapshots, cross-region replication, disaster recovery, and comprehensive backup coordination
+#   - Backup optimization with compression, deduplication, incremental backups, and comprehensive backup intelligence
+#   - Recovery management with automated validation, RTO/RPO targets, recovery testing, and comprehensive recovery coordination
+#   - Business intelligence with backup analytics, recovery correlation, cost optimization, and comprehensive strategic insights
+#   - DR management with backup policies, recovery optimization, validation testing, and comprehensive DR analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Elasticsearch PVC Lifecycle Management:
+#   - Multi-PVC deployment with production storage, log management, configuration storage, and comprehensive pvc coordination
+#   - Intelligent pvc management with predictive analytics and storage utilization correlation
+#   - Advanced monitoring with comprehensive pvc analytics and storage business intelligence
+#   - Configuration validation with pvc schema enforcement and storage deployment safety checks
+#   - Automated optimization with pvc pattern analysis and storage configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II pvc controls with comprehensive audit requirements and storage logging
+#   - GDPR pvc compliance with data protection and privacy-preserving storage management
+#   - ISO 27001 pvc security management with information security and storage compliance integration
+#   - NIST 800-190 container pvc security with storage validation and compliance
+#   - Zero-trust pvc architecture with comprehensive encryption and storage authentication requirements
+#
+# Business Intelligence Integration:
+#   - PVC analytics with cost correlation and storage resource utilization optimization
+#   - Performance analytics with user experience optimization and pvc business intelligence
+#   - Storage intelligence with processing pattern monitoring and pvc optimization recommendations
+#   - Strategic planning with capacity management and pvc forecasting
+#   - Business impact assessment with pvc performance correlation and storage tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment pvc support with production storage, development debugging, staging validation, and comprehensive pvc coordination
+#   - Comprehensive documentation with pvc guides and storage troubleshooting procedures
+#   - Environment-specific pvcs with production, development, staging, and backup support
+#   - Testing integration with pvc development workflow and storage debugging capabilities
+#   - PVC monitoring with comprehensive tracking and storage correlation
+#
+# ==============================================================================

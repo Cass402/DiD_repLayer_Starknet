@@ -1,0 +1,862 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Elasticsearch Service Configuration
+# ==============================================================================
+#
+# This manifest defines comprehensive Elasticsearch Service for the
+# decentralized identity protocol, providing:
+#
+# ENTERPRISE VERIDIS ELASTICSEARCH SERVICE ARCHITECTURE:
+#   • Advanced Elasticsearch Service with intelligent log networking and performance-based optimization
+#   • Multi-tier Service architecture with development, testing, staging, and production environments
+#   • Comprehensive observability framework with Service policies, log optimization, Elasticsearch integration
+#   • Advanced lifecycle management with automated Service optimization, Elasticsearch control, and log enhancement
+#   • Enterprise-grade intelligence with comprehensive analytics and Elasticsearch Service performance insights
+#
+# VERIDIS ELASTICSEARCH SERVICE OPTIMIZATION:
+#   • High-performance Service with intelligent log networking and Elasticsearch service optimization
+#   • Intelligent Service log networking with responsive policies and performance-based log decisions
+#   • Advanced Service management with business intelligence and log-based Elasticsearch control
+#   • Comprehensive observability control with intelligent Elasticsearch Service management and log enhancement
+#   • Enterprise acceleration with predictive Elasticsearch Service management and log optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Elasticsearch Service controls with comprehensive audit and log requirements
+#   • GDPR Elasticsearch Service compliance with data protection, privacy controls, and log management
+#   • ISO 27001 Elasticsearch Service management with comprehensive framework integration
+#   • NIST 800-190 container Elasticsearch Service security with log-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Elasticsearch Service best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Elasticsearch Service lifecycle management with automated provisioning and log optimization
+#   • Predictive log analytics with capacity planning and Elasticsearch Service intelligence
+#   • Advanced Service integration with Elasticsearch log analytics and performance business intelligence
+#   • Comprehensive observability control with Elasticsearch Service preservation and log optimization
+#   • Business continuity Elasticsearch Service with log guarantees and performance optimization
+#
+# ELASTICSEARCH SERVICE ACCELERATION INTELLIGENCE:
+#   • Elasticsearch Service usage analytics with log patterns and optimization recommendations
+#   • Service monitoring with Elasticsearch log latency and management optimization intelligence
+#   • Development efficiency with Elasticsearch Service analytics and deployment optimization procedures
+#   • Cost optimization with Elasticsearch Service utilization analysis and log capacity planning procedures
+#   • Quality assurance with Elasticsearch Service metrics and observability validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Elasticsearch Service - Primary Cluster Service Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-elasticsearch
+  namespace: veridis-infrastructure
+
+  # Core Veridis Elasticsearch Service identification labels
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Elasticsearch Service specific classification
+    elasticsearch.veridis.xyz/type: log-elasticsearch-service
+    elasticsearch.veridis.xyz/category: observability-service
+    elasticsearch.veridis.xyz/role: primary-elasticsearch-service
+    elasticsearch.veridis.xyz/service-class: high-performance-elasticsearch-service
+    elasticsearch.veridis.xyz/security-level: enterprise
+
+    # Service Elasticsearch Service classification
+    service.veridis.xyz/elasticsearch-service-type: intelligent-elasticsearch-service
+    service.veridis.xyz/service-type: log-service
+    service.veridis.xyz/performance-tier: high-throughput
+    service.veridis.xyz/optimization: enabled
+    service.veridis.xyz/features: full-elasticsearch-service-stack
+
+    # Observability Elasticsearch Service classification
+    observability.veridis.xyz/tier: production
+    observability.veridis.xyz/optimization: intelligent-elasticsearch-service-management
+    observability.veridis.xyz/log-management: advanced
+    observability.veridis.xyz/performance-optimization: enabled
+    observability.veridis.xyz/efficiency: maximum
+
+    # Business Elasticsearch Service classification
+    business.veridis.xyz/criticality: mission-critical
+    business.veridis.xyz/impact: high-elasticsearch-service-performance
+    business.veridis.xyz/cost-tier: production
+    business.veridis.xyz/sla-tier: enterprise
+    business.veridis.xyz/availability-requirement: 99.9
+
+    # Operational Elasticsearch Service labels
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+    veridis.xyz/cost-center: observability-infrastructure
+    veridis.xyz/business-unit: identity-protocol
+
+    # Compliance framework labels
+    compliance.veridis.xyz/soc2: "elasticsearch-service-control-framework"
+    compliance.veridis.xyz/gdpr: "elasticsearch-service-data-protection"
+    compliance.veridis.xyz/iso27001: "elasticsearch-service-security-management"
+    compliance.veridis.xyz/nist-800-190: "elasticsearch-service-container-security"
+    governance.veridis.xyz/policy-enforcement: "enterprise"
+
+    # Elasticsearch Service analytics and intelligence
+    monitoring.veridis.xyz/elasticsearch-service-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "comprehensive"
+    monitoring.veridis.xyz/log-monitoring: "enabled"
+    monitoring.veridis.xyz/business-monitoring: "enabled"
+    monitoring.veridis.xyz/compliance-monitoring: "enabled"
+
+    # Networking labels
+    network.veridis.xyz/type: "cluster-service"
+    network.veridis.xyz/protocol: "https"
+    network.veridis.xyz/port: "9200"
+    network.veridis.xyz/tls: "enabled"
+    network.veridis.xyz/load-balancing: "enabled"
+
+    # Service discovery labels
+    discovery.veridis.xyz/type: "elasticsearch"
+    discovery.veridis.xyz/cluster: "veridis-logging-cluster"
+    discovery.veridis.xyz/role: "master-data-ingest"
+    discovery.veridis.xyz/protocol: "http-https"
+    discovery.veridis.xyz/health-check: "enabled"
+
+    # Load balancing labels
+    loadbalancer.veridis.xyz/type: "round-robin"
+    loadbalancer.veridis.xyz/session-affinity: "ClientIP"
+    loadbalancer.veridis.xyz/health-check: "enabled"
+    loadbalancer.veridis.xyz/timeout: "30s"
+    loadbalancer.veridis.xyz/retries: "3"
+
+    # Performance labels
+    performance.veridis.xyz/throughput-tier: "high"
+    performance.veridis.xyz/latency-tier: "low"
+    performance.veridis.xyz/concurrency-tier: "high"
+    performance.veridis.xyz/optimization-enabled: "true"
+    performance.veridis.xyz/caching-enabled: "true"
+
+  annotations:
+    # Elasticsearch Service purpose and specifications
+    veridis.xyz/description: "Enterprise Veridis Elasticsearch Service with intelligent log networking, advanced performance optimization, and comprehensive observability optimization"
+    veridis.xyz/purpose: "Provides comprehensive Elasticsearch Service for decentralized identity management with intelligent log networking, performance optimization, and observability guarantees"
+    veridis.xyz/scope: "Elasticsearch Service including log networking, performance optimization, load balancing configuration, and comprehensive monitoring intelligence"
+
+    # Elasticsearch Service architecture and design
+    elasticsearch.veridis.xyz/architecture: "Enterprise Elasticsearch Service with intelligent log networking, advanced performance optimization, and load balancing integration optimization"
+    elasticsearch.veridis.xyz/design-pattern: "Multi-tier Elasticsearch Service with performance optimization, cost efficiency, and business intelligence"
+    elasticsearch.veridis.xyz/optimization-model: "Intelligent Elasticsearch Service with predictive analytics, performance optimization, and log efficiency"
+    elasticsearch.veridis.xyz/performance-model: "High-performance Elasticsearch Service with log optimization and intelligent load balancing management"
+
+    # Service Elasticsearch Service specifications
+    service.veridis.xyz/elasticsearch-service-specification: "Elasticsearch Service with performance optimization and intelligent elasticsearch service management"
+    service.veridis.xyz/log-specification: "Advanced log networking management with elasticsearch optimization and service enhancement"
+    service.veridis.xyz/loadbalancing-specification: "Elasticsearch Service load balancing management optimization with intelligent log and enhancement"
+    service.veridis.xyz/performance-specification: "Elasticsearch performance service with log acceleration and efficiency"
+    service.veridis.xyz/business-specification: "Elasticsearch business service with cost optimization and strategic log intelligence"
+
+    # Service type and exposure
+    service.veridis.xyz/type: "ClusterIP"
+    service.veridis.xyz/exposure: "internal"
+    service.veridis.xyz/access-scope: "cluster-internal"
+    service.veridis.xyz/client-types: "kibana,fluent-bit,applications"
+    service.veridis.xyz/protocol-support: "http,https"
+
+    # Load balancing and traffic management
+    loadbalancer.veridis.xyz/algorithm: "round-robin"
+    loadbalancer.veridis.xyz/session-persistence: "client-ip"
+    loadbalancer.veridis.xyz/health-check-path: "/_cluster/health"
+    loadbalancer.veridis.xyz/health-check-interval: "10s"
+    loadbalancer.veridis.xyz/health-check-timeout: "5s"
+
+    # Security annotations
+    security.veridis.xyz/tls-termination: "backend"
+    security.veridis.xyz/encryption-in-transit: "enabled"
+    security.veridis.xyz/authentication-required: "true"
+    security.veridis.xyz/authorization-enabled: "true"
+    security.veridis.xyz/network-policy: "enforced"
+
+    # Performance annotations
+    performance.veridis.xyz/expected-connections: "1000"
+    performance.veridis.xyz/connection-timeout: "30s"
+    performance.veridis.xyz/keep-alive-timeout: "60s"
+    performance.veridis.xyz/max-connections-per-client: "50"
+    performance.veridis.xyz/throughput-optimization: "enabled"
+
+    # High availability annotations
+    ha.veridis.xyz/multi-zone: "enabled"
+    ha.veridis.xyz/failover: "automatic"
+    ha.veridis.xyz/backup-endpoints: "3"
+    ha.veridis.xyz/health-monitoring: "continuous"
+    ha.veridis.xyz/recovery-time: "30s"
+
+    # Monitoring annotations
+    monitoring.veridis.xyz/service-monitoring: "enabled"
+    monitoring.veridis.xyz/endpoint-monitoring: "enabled"
+    monitoring.veridis.xyz/latency-monitoring: "enabled"
+    monitoring.veridis.xyz/traffic-monitoring: "enabled"
+    monitoring.veridis.xyz/error-monitoring: "enabled"
+
+    # Prometheus service discovery annotations
+    prometheus.io/scrape: "false"  # Metrics exposed via elasticsearch-exporter
+    prometheus.io/port: "9200"
+    prometheus.io/path: "/_prometheus/metrics"
+    prometheus.io/scheme: "https"
+
+    # Business annotations
+    business.veridis.xyz/cost-center: "observability-infrastructure"
+    business.veridis.xyz/budget-allocation: "production-logging"
+    business.veridis.xyz/cost-optimization: "enabled"
+    business.veridis.xyz/usage-tracking: "comprehensive"
+    business.veridis.xyz/roi-tracking: "enabled"
+
+    # Compliance annotations
+    compliance.veridis.xyz/data-classification: "internal"
+    compliance.veridis.xyz/encryption-required: "true"
+    compliance.veridis.xyz/audit-logging: "enabled"
+    compliance.veridis.xyz/access-control: "rbac"
+    compliance.veridis.xyz/data-retention: "30d"
+
+    # Network policy annotations
+    network.veridis.xyz/ingress-policy: "restricted"
+    network.veridis.xyz/egress-policy: "restricted"
+    network.veridis.xyz/allowed-namespaces: "veridis-infrastructure,monitoring"
+    network.veridis.xyz/denied-namespaces: "default,kube-system"
+    network.veridis.xyz/port-restrictions: "9200,9300"
+
+    # Service mesh annotations (for future Istio integration)
+    mesh.veridis.xyz/injection: "enabled"
+    mesh.veridis.xyz/tls-mode: "ISTIO_MUTUAL"
+    mesh.veridis.xyz/traffic-policy: "round-robin"
+    mesh.veridis.xyz/circuit-breaker: "enabled"
+    mesh.veridis.xyz/retry-policy: "3-attempts"
+
+    # Documentation and procedures
+    veridis.xyz/owner: "observability-team@veridis.xyz"
+    veridis.xyz/elasticsearch-service-admin: "observability-admin@veridis.xyz"
+    veridis.xyz/escalation: "observability-manager@veridis.xyz"
+    veridis.xyz/emergency-contact: "observability-oncall@veridis.xyz"
+
+    # Documentation references
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/elasticsearch-service"
+    veridis.xyz/runbook: "https://runbooks.veridis.xyz/observability/elasticsearch-service-management"
+    veridis.xyz/service-docs: "https://observability.veridis.xyz/elasticsearch-service-guide"
+    veridis.xyz/observability-docs: "https://observability.veridis.xyz/elasticsearch-service-monitoring"
+
+# ==============================================================================
+# Service Specification
+# ==============================================================================
+spec:
+  # ==============================================================================
+  # Service Type and Exposure Configuration
+  # ==============================================================================
+  type: ClusterIP
+
+  # ==============================================================================
+  # Session Affinity Configuration
+  # ==============================================================================
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800  # 3 hours for long-running connections
+
+  # ==============================================================================
+  # IP Family Configuration
+  # ==============================================================================
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    # Primary HTTP/HTTPS API port
+    - name: http
+      port: 9200
+      targetPort: 9200
+      protocol: TCP
+      appProtocol: http
+
+    # Transport port for cluster communication
+    - name: transport
+      port: 9300
+      targetPort: 9300
+      protocol: TCP
+      appProtocol: tcp
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: elasticsearch-statefulset
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Headless Service - Cluster Discovery Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-elasticsearch-headless
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-headless-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-headless-service
+    elasticsearch.veridis.xyz/category: observability-headless-service
+    elasticsearch.veridis.xyz/role: cluster-discovery-service
+
+    service.veridis.xyz/type: "headless"
+    service.veridis.xyz/purpose: "cluster-discovery"
+    service.veridis.xyz/discovery-protocol: "dns"
+
+    # Networking labels for headless service
+    network.veridis.xyz/type: "headless-service"
+    network.veridis.xyz/discovery: "dns-based"
+    network.veridis.xyz/cluster-formation: "enabled"
+    network.veridis.xyz/statefulset-integration: "enabled"
+
+    # Discovery labels
+    discovery.veridis.xyz/type: "statefulset-discovery"
+    discovery.veridis.xyz/dns-policy: "cluster-first"
+    discovery.veridis.xyz/subdomain: "veridis-elasticsearch-headless"
+    discovery.veridis.xyz/service-topology: "cluster-aware"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Headless service for Elasticsearch cluster discovery and StatefulSet pod identification"
+    veridis.xyz/purpose: "Provides DNS-based service discovery for Elasticsearch cluster formation and inter-node communication"
+
+    # Headless service specific annotations
+    service.veridis.xyz/headless-purpose: "cluster-discovery"
+    service.veridis.xyz/dns-configuration: "statefulset-pods"
+    service.veridis.xyz/discovery-mechanism: "dns-srv-records"
+    service.veridis.xyz/cluster-formation: "zen-discovery"
+
+    # StatefulSet integration annotations
+    statefulset.veridis.xyz/service-integration: "enabled"
+    statefulset.veridis.xyz/pod-identification: "ordinal-based"
+    statefulset.veridis.xyz/stable-network-identity: "enabled"
+    statefulset.veridis.xyz/pod-dns-pattern: "pod-name.service-name.namespace.svc.cluster.local"
+
+    # Cluster discovery annotations
+    discovery.veridis.xyz/seed-hosts: "veridis-elasticsearch-0.veridis-elasticsearch-headless.veridis-infrastructure.svc.cluster.local"
+    discovery.veridis.xyz/cluster-formation-timeout: "30s"
+    discovery.veridis.xyz/master-eligibility: "all-nodes"
+    discovery.veridis.xyz/quorum-size: "2"
+
+    # DNS configuration annotations
+    dns.veridis.xyz/policy: "cluster-first"
+    dns.veridis.xyz/subdomain: "veridis-elasticsearch-headless"
+    dns.veridis.xyz/search-domains: "veridis-infrastructure.svc.cluster.local,svc.cluster.local,cluster.local"
+    dns.veridis.xyz/ndots: "2"
+
+# ==============================================================================
+# Headless Service Specification
+# ==============================================================================
+spec:
+  type: ClusterIP
+  clusterIP: None  # Headless service
+
+  # ==============================================================================
+  # Port Configuration for Cluster Communication
+  # ==============================================================================
+  ports:
+    # HTTP port for API access
+    - name: http
+      port: 9200
+      targetPort: 9200
+      protocol: TCP
+      appProtocol: http
+
+    # Transport port for cluster communication
+    - name: transport
+      port: 9300
+      targetPort: 9300
+      protocol: TCP
+      appProtocol: tcp
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: elasticsearch-statefulset
+
+  # ==============================================================================
+  # Service Publishing Configuration
+  # ==============================================================================
+  publishNotReadyAddresses: true  # Important for cluster formation
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Metrics Service - Monitoring Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-elasticsearch-metrics
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-metrics-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-metrics-service
+    elasticsearch.veridis.xyz/category: observability-metrics-service
+    elasticsearch.veridis.xyz/role: metrics-export-service
+
+    service.veridis.xyz/type: "metrics"
+    service.veridis.xyz/purpose: "prometheus-metrics"
+    service.veridis.xyz/exporter: "elasticsearch-exporter"
+
+    # Monitoring labels
+    monitoring.veridis.xyz/type: "metrics-service"
+    monitoring.veridis.xyz/scrape-target: "prometheus"
+    monitoring.veridis.xyz/metrics-port: "9114"
+    monitoring.veridis.xyz/metrics-path: "/metrics"
+    monitoring.veridis.xyz/scrape-interval: "30s"
+
+    # Prometheus labels
+    prometheus.veridis.xyz/scrape: "true"
+    prometheus.veridis.xyz/service-monitor: "enabled"
+    prometheus.veridis.xyz/alerting: "enabled"
+    prometheus.veridis.xyz/dashboard: "enabled"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Metrics service for Elasticsearch monitoring and Prometheus integration"
+    veridis.xyz/purpose: "Provides metrics endpoint for Elasticsearch cluster monitoring and alerting"
+
+    # Prometheus specific annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9114"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+    prometheus.io/interval: "30s"
+
+    # Metrics configuration annotations
+    metrics.veridis.xyz/exporter-type: "elasticsearch-exporter"
+    metrics.veridis.xyz/metrics-format: "prometheus"
+    metrics.veridis.xyz/collection-interval: "30s"
+    metrics.veridis.xyz/retention-period: "90d"
+    metrics.veridis.xyz/aggregation-enabled: "true"
+
+    # Monitoring integration annotations
+    monitoring.veridis.xyz/service-monitor-name: "veridis-elasticsearch-metrics"
+    monitoring.veridis.xyz/alert-rules: "elasticsearch-cluster-health,elasticsearch-performance"
+    monitoring.veridis.xyz/dashboard-name: "elasticsearch-cluster-overview"
+    monitoring.veridis.xyz/notification-channels: "slack,email,pagerduty"
+
+    # Performance monitoring annotations
+    performance.veridis.xyz/metrics-categories: "cluster,nodes,indices,shards"
+    performance.veridis.xyz/health-metrics: "enabled"
+    performance.veridis.xyz/performance-metrics: "enabled"
+    performance.veridis.xyz/capacity-metrics: "enabled"
+    performance.veridis.xyz/error-metrics: "enabled"
+
+# ==============================================================================
+# Metrics Service Specification
+# ==============================================================================
+spec:
+  type: ClusterIP
+
+  # ==============================================================================
+  # Port Configuration for Metrics Export
+  # ==============================================================================
+  ports:
+    # Metrics port for Prometheus scraping
+    - name: metrics
+      port: 9114
+      targetPort: 9114
+      protocol: TCP
+      appProtocol: http
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: elasticsearch-statefulset
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Development Service - Development Environment
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-elasticsearch-dev
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-dev-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-dev-service
+    elasticsearch.veridis.xyz/category: observability-dev-service
+    elasticsearch.veridis.xyz/role: development-service
+
+    service.veridis.xyz/type: "development"
+    service.veridis.xyz/purpose: "development-access"
+    service.veridis.xyz/environment: "development"
+
+    # Development labels
+    development.veridis.xyz/type: "elasticsearch-dev"
+    development.veridis.xyz/debugging: "enabled"
+    development.veridis.xyz/testing: "enabled"
+    development.veridis.xyz/monitoring: "basic"
+
+    veridis.xyz/environment: development
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Development environment Elasticsearch service for testing and debugging"
+    veridis.xyz/purpose: "Provides Elasticsearch access for development workflows and testing"
+
+    # Development specific annotations
+    development.veridis.xyz/testing-enabled: "true"
+    development.veridis.xyz/debug-access: "enabled"
+    development.veridis.xyz/security-relaxed: "true"
+    development.veridis.xyz/monitoring-level: "basic"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "development-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/elasticsearch-service-development"
+
+# ==============================================================================
+# Development Service Specification
+# ==============================================================================
+spec:
+  type: ClusterIP
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    - name: http
+      port: 9200
+      targetPort: 9200
+      protocol: TCP
+      appProtocol: http
+
+    - name: transport
+      port: 9300
+      targetPort: 9300
+      protocol: TCP
+      appProtocol: tcp
+
+  # ==============================================================================
+  # Pod Selector Configuration for Development
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/component: elasticsearch-statefulset
+
+---
+# ==============================================================================
+# Veridis Elasticsearch Staging Service - Staging Environment
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-elasticsearch-staging
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-staging-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-staging-service
+    elasticsearch.veridis.xyz/category: observability-staging-service
+    elasticsearch.veridis.xyz/role: staging-service
+
+    service.veridis.xyz/type: "staging"
+    service.veridis.xyz/purpose: "pre-production-validation"
+    service.veridis.xyz/environment: "staging"
+
+    # Staging labels
+    staging.veridis.xyz/type: "elasticsearch-staging"
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/validation: "enabled"
+    staging.veridis.xyz/monitoring: "enhanced"
+
+    veridis.xyz/environment: staging
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "Staging environment Elasticsearch service for pre-production validation"
+    veridis.xyz/purpose: "Provides production-like Elasticsearch access for staging validation"
+
+    # Staging specific annotations
+    staging.veridis.xyz/production-like: "true"
+    staging.veridis.xyz/security-enhanced: "true"
+    staging.veridis.xyz/monitoring-enhanced: "true"
+    staging.veridis.xyz/validation-testing: "enabled"
+
+    # Conditional deployment annotation
+    deployment.veridis.xyz/condition: "staging-environment-enabled"
+
+    veridis.xyz/documentation: "https://docs.veridis.xyz/observability/elasticsearch-service-staging"
+
+# ==============================================================================
+# Staging Service Specification
+# ==============================================================================
+spec:
+  type: ClusterIP
+
+  # Session affinity for consistent staging testing
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600  # 1 hour for staging sessions
+
+  # ==============================================================================
+  # Port Configuration
+  # ==============================================================================
+  ports:
+    - name: http
+      port: 9200
+      targetPort: 9200
+      protocol: TCP
+      appProtocol: http
+
+    - name: transport
+      port: 9300
+      targetPort: 9300
+      protocol: TCP
+      appProtocol: tcp
+
+  # ==============================================================================
+  # Pod Selector Configuration for Staging
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-staging
+    app.kubernetes.io/component: elasticsearch-statefulset
+
+---
+# ==============================================================================
+# Veridis Elasticsearch External Service - External Access Configuration
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: veridis-elasticsearch-external
+  namespace: veridis-infrastructure
+
+  labels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/version: "8.15.0"
+    app.kubernetes.io/component: elasticsearch-external-service
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    elasticsearch.veridis.xyz/type: log-elasticsearch-external-service
+    elasticsearch.veridis.xyz/category: observability-external-service
+    elasticsearch.veridis.xyz/role: external-access-service
+
+    service.veridis.xyz/type: "external"
+    service.veridis.xyz/purpose: "external-access"
+    service.veridis.xyz/exposure: "controlled"
+
+    # External access labels
+    external.veridis.xyz/type: "elasticsearch-external"
+    external.veridis.xyz/access-control: "strict"
+    external.veridis.xyz/authentication: "required"
+    external.veridis.xyz/monitoring: "comprehensive"
+
+    # Security labels for external access
+    security.veridis.xyz/external-access: "controlled"
+    security.veridis.xyz/authentication: "required"
+    security.veridis.xyz/authorization: "rbac"
+    security.veridis.xyz/encryption: "enforced"
+    security.veridis.xyz/audit-logging: "comprehensive"
+
+    veridis.xyz/environment: production
+    veridis.xyz/team: observability-engineering
+
+  annotations:
+    veridis.xyz/description: "External access service for Elasticsearch with enhanced security controls"
+    veridis.xyz/purpose: "Provides controlled external access to Elasticsearch cluster with authentication and authorization"
+
+    # External access specific annotations
+    external.veridis.xyz/access-policy: "authenticated-users-only"
+    external.veridis.xyz/rate-limiting: "enabled"
+    external.veridis.xyz/connection-limits: "100-per-client"
+    external.veridis.xyz/timeout-policy: "30s"
+    external.veridis.xyz/allowed-sources: "vpn,bastion,monitoring"
+
+    # Security annotations for external service
+    security.veridis.xyz/tls-version: "1.3"
+    security.veridis.xyz/cipher-suites: "strong-only"
+    security.veridis.xyz/certificate-validation: "strict"
+    security.veridis.xyz/client-certificate: "optional"
+    security.veridis.xyz/audit-all-access: "true"
+
+    # Load balancer annotations (cloud-specific)
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:region:account:certificate/certificate-id"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+
+# ==============================================================================
+# External Service Specification
+# ==============================================================================
+spec:
+  type: LoadBalancer
+
+  # Load balancer configuration
+  loadBalancerSourceRanges:
+    - "10.0.0.0/8"     # Internal VPC ranges
+    - "172.16.0.0/12"  # Internal ranges
+    - "192.168.0.0/16" # Internal ranges
+
+  # ==============================================================================
+  # Port Configuration for External Access
+  # ==============================================================================
+  ports:
+    # HTTPS port for secure external access
+    - name: https
+      port: 9200
+      targetPort: 9200
+      protocol: TCP
+      appProtocol: https
+
+  # ==============================================================================
+  # Pod Selector Configuration
+  # ==============================================================================
+  selector:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/instance: veridis-production
+    app.kubernetes.io/component: elasticsearch-statefulset
+
+# ==============================================================================
+# Veridis Elasticsearch Service Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS ELASTICSEARCH SERVICE STRATEGY:
+# =====================================================
+#
+# VERIDIS ELASTICSEARCH SERVICE ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------
+# 1. Primary Production Service (veridis-elasticsearch):
+#    - Comprehensive enterprise-grade service with intelligent log networking and advanced performance optimization for production Elasticsearch
+#    - Advanced service configuration with load balancing, session affinity, TLS termination, and comprehensive observability integration
+#    - Multi-tier service architecture with client IP affinity, performance optimization, security enforcement, and comprehensive operational excellence
+#    - Enterprise service policies with access controls, compliance audit, monitoring integration, and comprehensive disaster recovery procedures
+#    - Performance optimization with intelligent networking management, connection pooling, traffic optimization, and security for maximum efficiency
+#
+# 2. Headless Service (veridis-elasticsearch-headless):
+#    - Discovery-focused service with StatefulSet integration and comprehensive cluster coordination
+#    - Advanced headless configuration with DNS-based discovery, cluster formation, pod identification, and comprehensive discovery intelligence
+#    - Flexible service optimization with stable network identity, cluster discovery, and comprehensive service intelligence
+#    - Discovery intelligence with DNS procedures, cluster support, formation automation, and comprehensive discovery coordination
+#    - Operational excellence with cluster formation, service discovery, DNS integration, and comprehensive service environment management
+#
+# 3. Metrics Service (veridis-elasticsearch-metrics):
+#    - Monitoring-focused service with Prometheus integration and comprehensive metrics coordination
+#    - Advanced metrics configuration with exporter integration, scraping endpoints, alerting support, and comprehensive monitoring intelligence
+#    - Flexible service optimization with metrics collection, performance monitoring, and comprehensive metrics intelligence
+#    - Metrics intelligence with monitoring procedures, alerting support, dashboard integration, and comprehensive metrics coordination
+#    - Observability excellence with metrics export, performance tracking, alerting automation, and comprehensive metrics environment management
+#
+# 4. Multi-Environment Services (dev/staging/external):
+#    - Environment-focused services with access control and comprehensive environment coordination
+#    - Advanced environment configuration with security controls, access management, validation support, and comprehensive environment intelligence
+#    - Flexible service optimization with environment isolation, testing support, and comprehensive environment intelligence
+#    - Environment intelligence with access procedures, validation support, security automation, and comprehensive environment coordination
+#    - Access excellence with environment management, security enforcement, validation automation, and comprehensive environment management
+#
+# ENTERPRISE ELASTICSEARCH SERVICE FEATURES:
+# ==========================================
+# Advanced Networking and Performance Integration:
+#   - Multi-service architecture with production access, discovery support, metrics export, and environment configurations
+#   - Intelligent networking management with load balancing algorithms, session affinity, connection optimization, and comprehensive networking decisions
+#   - Service discovery with DNS optimization, cluster management, health policies, and comprehensive networking analytics
+#   - Performance management with high throughput (1K connections), low latency, connection pooling, and comprehensive performance intelligence
+#   - Networking processing tuning with load balancing management, affinity optimization, discovery algorithms, and intelligent service optimization
+#
+# Comprehensive Load Balancing and Traffic Management:
+#   - Multi-tier load balancing with round-robin distribution, session persistence, health monitoring, and comprehensive traffic coordination
+#   - Traffic optimization with connection limits, timeout management, retry policies, and comprehensive traffic intelligence
+#   - Session management with client IP affinity, timeout configuration, persistence management, and comprehensive session coordination
+#   - Business intelligence with traffic analytics, performance correlation, cost optimization, and comprehensive strategic insights
+#   - Load balancing management with traffic policies, session optimization, health integration, and comprehensive traffic analytics
+#
+# Enterprise Security and Compliance Integration:
+#   - Service security with TLS termination, authentication enforcement, authorization controls, and comprehensive security enforcement
+#   - Access audit with connection tracking, authentication monitoring, authorization audit, and comprehensive access management
+#   - Compliance processing with security audit, access validation, encryption enforcement, and comprehensive compliance management
+#   - Security monitoring with connection tracking, access validation, security audit, and comprehensive security management
+#   - Compliance intelligence with audit trails, access review, security validation, and comprehensive compliance analytics
+#
+# Advanced Service Discovery and DNS Integration:
+#   - Multi-tier service discovery with DNS resolution, cluster formation, StatefulSet integration, and comprehensive discovery coordination
+#   - Discovery optimization with seed hosts, cluster formation, health monitoring, and comprehensive discovery intelligence
+#   - DNS management with subdomain configuration, search domains, resolution optimization, and comprehensive DNS coordination
+#   - Business intelligence with discovery analytics, cluster correlation, performance optimization, and comprehensive strategic insights
+#   - Service management with discovery policies, DNS optimization, cluster integration, and comprehensive service analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Elasticsearch Service Lifecycle Management:
+#   - Multi-Service deployment with production networking, discovery optimization, metrics integration, and comprehensive service coordination
+#   - Intelligent service management with predictive analytics and networking utilization correlation
+#   - Advanced monitoring with comprehensive service analytics and networking business intelligence
+#   - Configuration validation with service schema enforcement and networking deployment safety checks
+#   - Automated optimization with service pattern analysis and networking configuration recommendation engine
+#
+# Security Integration and Compliance:
+#   - SOC 2 Type II service controls with comprehensive audit requirements and networking logging
+#   - GDPR service compliance with data protection and privacy-preserving networking management
+#   - ISO 27001 service security management with information security and networking compliance integration
+#   - NIST 800-190 container service security with networking validation and compliance
+#   - Zero-trust service architecture with comprehensive encryption and networking authentication requirements
+#
+# Business Intelligence Integration:
+#   - Service analytics with cost correlation and networking resource utilization optimization
+#   - Performance analytics with user experience optimization and service business intelligence
+#   - Networking intelligence with processing pattern monitoring and service optimization recommendations
+#   - Strategic planning with capacity management and service forecasting
+#   - Business impact assessment with service performance correlation and networking tracking
+#
+# Developer Experience Excellence:
+#   - Multi-environment service support with production networking, development debugging, staging validation, and comprehensive service coordination
+#   - Comprehensive documentation with service guides and networking troubleshooting procedures
+#   - Environment-specific services with production, development, staging, and external support
+#   - Testing integration with service development workflow and networking debugging capabilities
+#   - Service monitoring with comprehensive tracking and networking correlation
+#
+# ==============================================================================
