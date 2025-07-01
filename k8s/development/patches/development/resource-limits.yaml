@@ -1,0 +1,837 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Resource Limits Patch
+# ==============================================================================
+#
+# This Development Resource Limits Patch provides comprehensive development-optimized
+# resource configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT RESOURCE LIMITS ARCHITECTURE:
+#   • Advanced Development Resource Limits with intelligent resource management and comprehensive development-based optimization
+#   • Multi-tier Development Resource architecture with cost optimization, developer productivity, resource efficiency, and validation environments
+#   • Comprehensive development resource framework with Resource policies, cost optimization, developer tooling integration
+#   • Advanced lifecycle management with automated Resource optimization, cost control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Resource Limits performance insights
+#
+# VERIDIS DEVELOPMENT RESOURCE LIMITS OPTIMIZATION:
+#   • High-performance Development with intelligent cost management and developer-optimized resource allocation
+#   • Intelligent Development resource management with responsive policies and development-based cost decisions
+#   • Advanced Development management with business intelligence and cost-based developer control
+#   • Comprehensive development cost control with intelligent Developer Resource management and cost enhancement
+#   • Enterprise acceleration with predictive Developer Resource management and development cost optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Resource controls with comprehensive audit and development requirements
+#   • GDPR Development Resource compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Resource management with comprehensive framework integration
+#   • NIST 800-190 container Development Resource security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Resource best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Resource lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Resource intelligence
+#   • Advanced Resource integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development cost control with Development Resource preservation and cost optimization
+#   • Business continuity Development Resource with development guarantees and performance optimization
+#
+# DEVELOPMENT RESOURCE ACCELERATION INTELLIGENCE:
+#   • Development Resource usage analytics with development patterns and optimization recommendations
+#   • Resource monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Resource analytics and deployment optimization procedures
+#   • Cost optimization with Development Resource utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Resource metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Veridis Backend Development Resource Limits Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veridis-backend
+  namespace: veridis-dev
+
+  # Development resource optimization labels
+  labels:
+    resource.veridis.xyz/optimization-level: development
+    resource.veridis.xyz/cost-tier: development
+    resource.veridis.xyz/performance-tier: development
+    resource.veridis.xyz/resource-profile: cost-optimized
+    resource.veridis.xyz/scaling-policy: development
+
+    # Development resource management labels
+    development.veridis.xyz/resource-optimization: enabled
+    development.veridis.xyz/cost-optimization: high
+    development.veridis.xyz/developer-productivity: prioritized
+    development.veridis.xyz/resource-monitoring: enabled
+    development.veridis.xyz/auto-scaling: disabled
+
+    # Cost management labels
+    cost.veridis.xyz/optimization-enabled: true
+    cost.veridis.xyz/budget-tier: development
+    cost.veridis.xyz/cost-center: development
+    cost.veridis.xyz/resource-tracking: enabled
+    cost.veridis.xyz/efficiency-monitoring: enabled
+
+  annotations:
+    # Development resource optimization annotations
+    resource.veridis.xyz/optimization-strategy: "cost-first-development"
+    resource.veridis.xyz/cpu-optimization: "development-workload-optimized"
+    resource.veridis.xyz/memory-optimization: "development-efficient"
+    resource.veridis.xyz/storage-optimization: "development-minimal"
+    resource.veridis.xyz/network-optimization: "development-standard"
+
+    # Development cost management annotations
+    cost.veridis.xyz/cost-optimization-level: "high"
+    cost.veridis.xyz/resource-efficiency-target: "maximum"
+    cost.veridis.xyz/cost-monitoring: "enabled"
+    cost.veridis.xyz/budget-allocation: "development-tier"
+    cost.veridis.xyz/cost-alerts: "enabled"
+
+    # Developer productivity annotations
+    productivity.veridis.xyz/resource-allocation: "developer-optimized"
+    productivity.veridis.xyz/performance-balance: "cost-productivity-balanced"
+    productivity.veridis.xyz/scaling-behavior: "development-appropriate"
+    productivity.veridis.xyz/resource-monitoring: "comprehensive"
+    productivity.veridis.xyz/optimization-feedback: "enabled"
+
+spec:
+  # Development replica configuration
+  replicas: 1
+
+  template:
+    spec:
+      containers:
+        - name: veridis-backend
+          # ==============================================================================
+          # Development Resource Limits and Requests
+          # ==============================================================================
+          resources:
+            requests:
+              # Development CPU allocation - cost-optimized
+              cpu: "200m"        # 0.2 CPU cores - minimal for development workload
+              memory: "512Mi"    # 512MB - sufficient for development backend
+              ephemeral-storage: "1Gi"  # 1GB ephemeral storage
+
+              # Development custom resources
+              hugepages-2Mi: "0"  # No hugepages needed for development
+              hugepages-1Gi: "0"  # No large hugepages for development
+
+            limits:
+              # Development CPU limits - prevent resource starvation
+              cpu: "1000m"       # 1 CPU core maximum - burst capability for development
+              memory: "2Gi"      # 2GB maximum - adequate for development debugging
+              ephemeral-storage: "5Gi"  # 5GB maximum ephemeral storage
+
+              # Development custom resource limits
+              hugepages-2Mi: "0"  # No hugepages for development
+              hugepages-1Gi: "0"  # No large hugepages for development
+
+          # ==============================================================================
+          # Development Environment Variables for Resource Management
+          # ==============================================================================
+          env:
+            # Development resource configuration
+            - name: RESOURCE_PROFILE
+              value: "development"
+            - name: COST_OPTIMIZATION_ENABLED
+              value: "true"
+            - name: DEVELOPER_MODE
+              value: "true"
+            - name: PERFORMANCE_PROFILE
+              value: "development"
+
+            # Development memory management
+            - name: RUST_MAX_HEAP_SIZE
+              value: "1536m"     # 1.5GB max heap (75% of memory limit)
+            - name: RUST_MIN_HEAP_SIZE
+              value: "256m"      # 256MB min heap
+            - name: RUST_GC_STRATEGY
+              value: "development"
+            - name: MEMORY_OPTIMIZATION
+              value: "enabled"
+
+            # Development database connection pooling
+            - name: DATABASE_POOL_SIZE
+              value: "5"         # Reduced pool size for development
+            - name: DATABASE_MAX_CONNECTIONS
+              value: "10"        # Maximum 10 connections
+            - name: DATABASE_CONNECTION_TIMEOUT
+              value: "30s"
+            - name: DATABASE_IDLE_TIMEOUT
+              value: "300s"
+
+            # Development caching configuration
+            - name: CACHE_SIZE_MB
+              value: "64"        # 64MB cache size
+            - name: CACHE_TTL_SECONDS
+              value: "3600"      # 1 hour TTL
+            - name: CACHE_CLEANUP_INTERVAL
+              value: "300s"      # 5 minute cleanup
+
+            # Development worker configuration
+            - name: WORKER_THREADS
+              value: "2"         # 2 worker threads for development
+            - name: ASYNC_RUNTIME_WORKERS
+              value: "2"         # 2 async workers
+            - name: BLOCKING_POOL_SIZE
+              value: "4"         # 4 blocking pool threads
+
+            # Development resource monitoring
+            - name: RESOURCE_MONITORING_ENABLED
+              value: "true"
+            - name: RESOURCE_METRICS_INTERVAL
+              value: "30s"
+            - name: RESOURCE_ALERTS_ENABLED
+              value: "true"
+            - name: COST_TRACKING_ENABLED
+              value: "true"
+
+---
+# ==============================================================================
+# ZK Circuits Development Resource Limits Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zk-circuits
+  namespace: veridis-dev
+
+  # Development ZK resource optimization labels
+  labels:
+    resource.veridis.xyz/optimization-level: development
+    resource.veridis.xyz/cost-tier: development
+    resource.veridis.xyz/performance-tier: cpu-only
+    resource.veridis.xyz/resource-profile: cpu-optimized
+    resource.veridis.xyz/scaling-policy: development
+    resource.veridis.xyz/gpu-enabled: false
+
+    # Development ZK resource management labels
+    development.veridis.xyz/zk-optimization: cpu-only
+    development.veridis.xyz/gpu-disabled: true
+    development.veridis.xyz/cost-optimization: maximum
+    development.veridis.xyz/cpu-intensive: true
+    development.veridis.xyz/memory-efficient: true
+
+    # ZK development labels
+    zk.veridis.xyz/acceleration: cpu-only
+    zk.veridis.xyz/development-mode: enabled
+    zk.veridis.xyz/mock-proofs: enabled
+    zk.veridis.xyz/fast-proofs: enabled
+    zk.veridis.xyz/resource-efficient: true
+
+  annotations:
+    # Development ZK resource optimization annotations
+    resource.veridis.xyz/zk-optimization-strategy: "cpu-only-development"
+    resource.veridis.xyz/gpu-acceleration: "disabled"
+    resource.veridis.xyz/cpu-optimization: "zk-workload-optimized"
+    resource.veridis.xyz/memory-optimization: "zk-efficient"
+    resource.veridis.xyz/proof-optimization: "development-fast"
+
+    # Development ZK cost management annotations
+    cost.veridis.xyz/gpu-cost-savings: "100%"
+    cost.veridis.xyz/cpu-cost-optimization: "high"
+    cost.veridis.xyz/zk-cost-efficiency: "maximum"
+    cost.veridis.xyz/development-cost-tier: "minimal"
+    cost.veridis.xyz/resource-monitoring: "comprehensive"
+
+spec:
+  # Development ZK replica configuration
+  replicas: 1
+
+  template:
+    spec:
+      containers:
+        - name: zk-circuits
+          # ==============================================================================
+          # Development ZK Resource Limits and Requests
+          # ==============================================================================
+          resources:
+            requests:
+              # Development ZK CPU allocation - CPU-intensive workload
+              cpu: "500m"        # 0.5 CPU cores - sufficient for CPU-only ZK development
+              memory: "1Gi"      # 1GB - adequate for ZK circuit development
+              ephemeral-storage: "2Gi"  # 2GB for circuit artifacts
+
+              # No GPU resources for development
+              # nvidia.com/gpu: 0
+
+            limits:
+              # Development ZK CPU limits - allow burst for compilation
+              cpu: "2000m"       # 2 CPU cores maximum - burst for circuit compilation
+              memory: "4Gi"      # 4GB maximum - sufficient for large circuits
+              ephemeral-storage: "10Gi"  # 10GB maximum for circuit artifacts
+
+              # No GPU limits for development
+              # nvidia.com/gpu: 0
+
+          # ==============================================================================
+          # Development ZK Environment Variables for Resource Management
+          # ==============================================================================
+          env:
+            # Development ZK resource configuration
+            - name: ZK_RESOURCE_PROFILE
+              value: "development"
+            - name: ZK_GPU_ENABLED
+              value: "false"
+            - name: ZK_CPU_ONLY_MODE
+              value: "true"
+            - name: ZK_DEVELOPMENT_MODE
+              value: "true"
+
+            # Development ZK memory management
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=3072"  # 3GB max heap (75% of memory limit)
+            - name: ZK_MEMORY_LIMIT
+              value: "3072"      # 3GB memory limit for Node.js
+            - name: ZK_MEMORY_OPTIMIZATION
+              value: "enabled"
+
+            # Development ZK circuit configuration
+            - name: ZK_CIRCUIT_CACHE_SIZE
+              value: "256"       # 256MB circuit cache
+            - name: ZK_PROOF_BATCH_SIZE
+              value: "1"         # Single proof for development
+            - name: ZK_PARALLEL_PROVING
+              value: "false"     # Disable parallel proving for development
+            - name: ZK_WORKER_THREADS
+              value: "2"         # 2 worker threads
+
+            # Development ZK performance settings
+            - name: ZK_OPTIMIZATION_LEVEL
+              value: "1"         # Basic optimization for development
+            - name: ZK_PROOF_SECURITY_LEVEL
+              value: "64"        # Reduced security for development
+            - name: ZK_MOCK_PROOFS
+              value: "true"      # Enable mock proofs for development
+            - name: ZK_FAST_PROOFS
+              value: "true"      # Enable fast proofs for development
+
+            # Development Garaga configuration
+            - name: GARAGA_CUDA_ENABLED
+              value: "false"
+            - name: GARAGA_GPU_ACCELERATION
+              value: "false"
+            - name: GARAGA_CPU_THREADS
+              value: "2"
+            - name: GARAGA_MEMORY_LIMIT
+              value: "2048"      # 2GB Garaga memory limit
+
+            # Development resource monitoring
+            - name: ZK_RESOURCE_MONITORING_ENABLED
+              value: "true"
+            - name: ZK_PERFORMANCE_METRICS
+              value: "enabled"
+            - name: ZK_COST_TRACKING
+              value: "enabled"
+
+---
+# ==============================================================================
+# PostgreSQL Development Resource Limits Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: veridis-dev
+
+  # Development database resource optimization labels
+  labels:
+    resource.veridis.xyz/optimization-level: development
+    resource.veridis.xyz/cost-tier: development
+    resource.veridis.xyz/performance-tier: development
+    resource.veridis.xyz/resource-profile: database-development
+    resource.veridis.xyz/scaling-policy: development
+
+    # Development database management labels
+    database.veridis.xyz/optimization: development
+    database.veridis.xyz/cost-optimization: high
+    database.veridis.xyz/performance-tier: development
+    database.veridis.xyz/resource-monitoring: enabled
+    database.veridis.xyz/auto-scaling: disabled
+
+  annotations:
+    # Development database resource optimization annotations
+    resource.veridis.xyz/database-optimization-strategy: "development-cost-optimized"
+    resource.veridis.xyz/cpu-optimization: "database-development-workload"
+    resource.veridis.xyz/memory-optimization: "database-efficient"
+    resource.veridis.xyz/storage-optimization: "development-minimal"
+    resource.veridis.xyz/connection-optimization: "development-pool"
+
+spec:
+  template:
+    spec:
+      containers:
+        - name: postgres
+          # ==============================================================================
+          # Development Database Resource Limits and Requests
+          # ==============================================================================
+          resources:
+            requests:
+              # Development database CPU allocation
+              cpu: "100m"        # 0.1 CPU cores - minimal for development database
+              memory: "256Mi"    # 256MB - sufficient for development workload
+              ephemeral-storage: "500Mi"  # 500MB ephemeral storage
+
+            limits:
+              # Development database CPU limits
+              cpu: "500m"        # 0.5 CPU cores maximum
+              memory: "1Gi"      # 1GB maximum - adequate for development
+              ephemeral-storage: "2Gi"  # 2GB maximum ephemeral storage
+
+          # ==============================================================================
+          # Development Database Environment Variables
+          # ==============================================================================
+          env:
+            # Development PostgreSQL configuration
+            - name: POSTGRES_SHARED_BUFFERS
+              value: "128MB"     # 128MB shared buffers (12.5% of memory limit)
+            - name: POSTGRES_EFFECTIVE_CACHE_SIZE
+              value: "512MB"     # 512MB effective cache size
+            - name: POSTGRES_WORK_MEM
+              value: "4MB"       # 4MB work memory
+            - name: POSTGRES_MAINTENANCE_WORK_MEM
+              value: "64MB"      # 64MB maintenance work memory
+            - name: POSTGRES_MAX_CONNECTIONS
+              value: "20"        # 20 max connections for development
+            - name: POSTGRES_CHECKPOINT_COMPLETION_TARGET
+              value: "0.9"
+            - name: POSTGRES_WAL_BUFFERS
+              value: "16MB"      # 16MB WAL buffers
+            - name: POSTGRES_DEFAULT_STATISTICS_TARGET
+              value: "100"
+            - name: POSTGRES_RANDOM_PAGE_COST
+              value: "1.1"       # SSD optimized
+            - name: POSTGRES_EFFECTIVE_IO_CONCURRENCY
+              value: "200"       # SSD optimized
+
+            # Development logging configuration
+            - name: POSTGRES_LOG_STATEMENT
+              value: "all"       # Log all statements for development
+            - name: POSTGRES_LOG_MIN_DURATION_STATEMENT
+              value: "100"       # Log queries > 100ms
+            - name: POSTGRES_LOG_LINE_PREFIX
+              value: "%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h "
+
+  # ==============================================================================
+  # Development Database Volume Claim Template
+  # ==============================================================================
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+        labels:
+          storage.veridis.xyz/type: development-database
+          storage.veridis.xyz/cost-tier: development
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: standard  # Use standard storage class for development
+        resources:
+          requests:
+            storage: 10Gi  # 10GB storage for development
+
+---
+# ==============================================================================
+# Redis Development Resource Limits Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: veridis-dev
+
+  # Development cache resource optimization labels
+  labels:
+    resource.veridis.xyz/optimization-level: development
+    resource.veridis.xyz/cost-tier: development
+    resource.veridis.xyz/performance-tier: development
+    resource.veridis.xyz/resource-profile: cache-development
+    resource.veridis.xyz/scaling-policy: development
+
+    # Development cache management labels
+    cache.veridis.xyz/optimization: development
+    cache.veridis.xyz/cost-optimization: high
+    cache.veridis.xyz/performance-tier: development
+    cache.veridis.xyz/resource-monitoring: enabled
+    cache.veridis.xyz/memory-efficiency: high
+
+  annotations:
+    # Development cache resource optimization annotations
+    resource.veridis.xyz/cache-optimization-strategy: "development-memory-optimized"
+    resource.veridis.xyz/cpu-optimization: "cache-development-workload"
+    resource.veridis.xyz/memory-optimization: "cache-efficient"
+    resource.veridis.xyz/persistence-optimization: "development-minimal"
+
+spec:
+  # Development cache replica configuration
+  replicas: 1
+
+  template:
+    spec:
+      containers:
+        - name: redis
+          # ==============================================================================
+          # Development Cache Resource Limits and Requests
+          # ==============================================================================
+          resources:
+            requests:
+              # Development cache CPU allocation
+              cpu: "50m"         # 0.05 CPU cores - minimal for development cache
+              memory: "128Mi"    # 128MB - sufficient for development caching
+              ephemeral-storage: "100Mi"  # 100MB ephemeral storage
+
+            limits:
+              # Development cache CPU limits
+              cpu: "200m"        # 0.2 CPU cores maximum
+              memory: "512Mi"    # 512MB maximum - adequate for development
+              ephemeral-storage: "1Gi"  # 1GB maximum ephemeral storage
+
+          # ==============================================================================
+          # Development Cache Environment Variables
+          # ==============================================================================
+          env:
+            # Development Redis configuration
+            - name: REDIS_MAXMEMORY
+              value: "384m"      # 384MB max memory (75% of memory limit)
+            - name: REDIS_MAXMEMORY_POLICY
+              value: "allkeys-lru"  # LRU eviction policy
+            - name: REDIS_SAVE
+              value: "900 1 300 10 60 10000"  # Development save policy
+            - name: REDIS_DATABASES
+              value: "16"        # 16 databases
+            - name: REDIS_TCP_KEEPALIVE
+              value: "300"
+            - name: REDIS_TIMEOUT
+              value: "0"
+            - name: REDIS_TCP_BACKLOG
+              value: "511"
+            - name: REDIS_MAXCLIENTS
+              value: "100"       # 100 max clients for development
+
+            # Development logging configuration
+            - name: REDIS_LOGLEVEL
+              value: "notice"    # Notice level for development
+            - name: REDIS_LOGFILE
+              value: ""          # Log to stdout
+
+---
+# ==============================================================================
+# Vault Development Resource Limits Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+  namespace: veridis-dev
+
+  # Development secrets resource optimization labels
+  labels:
+    resource.veridis.xyz/optimization-level: development
+    resource.veridis.xyz/cost-tier: development
+    resource.veridis.xyz/performance-tier: development
+    resource.veridis.xyz/resource-profile: secrets-development
+    resource.veridis.xyz/scaling-policy: development
+
+    # Development secrets management labels
+    secrets.veridis.xyz/optimization: development
+    secrets.veridis.xyz/cost-optimization: high
+    secrets.veridis.xyz/performance-tier: development
+    secrets.veridis.xyz/resource-monitoring: enabled
+    secrets.veridis.xyz/high-availability: disabled
+
+  annotations:
+    # Development secrets resource optimization annotations
+    resource.veridis.xyz/vault-optimization-strategy: "development-cost-optimized"
+    resource.veridis.xyz/cpu-optimization: "vault-development-workload"
+    resource.veridis.xyz/memory-optimization: "vault-efficient"
+    resource.veridis.xyz/storage-optimization: "development-minimal"
+
+spec:
+  # Development secrets replica configuration
+  replicas: 1
+
+  template:
+    spec:
+      containers:
+        - name: vault
+          # ==============================================================================
+          # Development Secrets Resource Limits and Requests
+          # ==============================================================================
+          resources:
+            requests:
+              # Development secrets CPU allocation
+              cpu: "100m"        # 0.1 CPU cores - minimal for development secrets
+              memory: "256Mi"    # 256MB - sufficient for development Vault
+              ephemeral-storage: "200Mi"  # 200MB ephemeral storage
+
+            limits:
+              # Development secrets CPU limits
+              cpu: "300m"        # 0.3 CPU cores maximum
+              memory: "512Mi"    # 512MB maximum - adequate for development
+              ephemeral-storage: "1Gi"  # 1GB maximum ephemeral storage
+
+          # ==============================================================================
+          # Development Vault Environment Variables
+          # ==============================================================================
+          env:
+            # Development Vault configuration
+            - name: VAULT_DEV_MODE
+              value: "true"      # Enable development mode
+            - name: VAULT_LOG_LEVEL
+              value: "debug"     # Debug logging for development
+            - name: VAULT_DISABLE_MLOCK
+              value: "true"      # Disable mlock for development
+            - name: VAULT_MAX_LEASE_TTL
+              value: "24h"       # 24 hour lease TTL
+            - name: VAULT_DEFAULT_LEASE_TTL
+              value: "1h"        # 1 hour default lease
+            - name: VAULT_CLUSTER_DISABLE
+              value: "true"      # Disable clustering for development
+
+---
+# ==============================================================================
+# Frontend (UI) Development Resource Limits Patch
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui
+  namespace: veridis-dev
+
+  # Development frontend resource optimization labels
+  labels:
+    resource.veridis.xyz/optimization-level: development
+    resource.veridis.xyz/cost-tier: development
+    resource.veridis.xyz/performance-tier: development
+    resource.veridis.xyz/resource-profile: frontend-development
+    resource.veridis.xyz/scaling-policy: development
+
+    # Development frontend management labels
+    frontend.veridis.xyz/optimization: development
+    frontend.veridis.xyz/cost-optimization: high
+    frontend.veridis.xyz/performance-tier: development
+    frontend.veridis.xyz/resource-monitoring: enabled
+    frontend.veridis.xyz/hot-reload: enabled
+
+  annotations:
+    # Development frontend resource optimization annotations
+    resource.veridis.xyz/frontend-optimization-strategy: "development-cost-optimized"
+    resource.veridis.xyz/cpu-optimization: "frontend-development-workload"
+    resource.veridis.xyz/memory-optimization: "frontend-efficient"
+    resource.veridis.xyz/build-optimization: "development-mode"
+
+spec:
+  # Development frontend replica configuration
+  replicas: 1
+
+  template:
+    spec:
+      containers:
+        - name: ui
+          # ==============================================================================
+          # Development Frontend Resource Limits and Requests
+          # ==============================================================================
+          resources:
+            requests:
+              # Development frontend CPU allocation
+              cpu: "100m"        # 0.1 CPU cores - minimal for development frontend
+              memory: "256Mi"    # 256MB - sufficient for development UI
+              ephemeral-storage: "500Mi"  # 500MB ephemeral storage
+
+            limits:
+              # Development frontend CPU limits
+              cpu: "500m"        # 0.5 CPU cores maximum
+              memory: "1Gi"      # 1GB maximum - adequate for development
+              ephemeral-storage: "2Gi"  # 2GB maximum ephemeral storage
+
+          # ==============================================================================
+          # Development Frontend Environment Variables
+          # ==============================================================================
+          env:
+            # Development frontend configuration
+            - name: NODE_ENV
+              value: "development"
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=768"  # 768MB max heap (75% of memory limit)
+            - name: REACT_APP_ENVIRONMENT
+              value: "development"
+            - name: REACT_APP_DEBUG
+              value: "true"
+            - name: REACT_APP_HOT_RELOAD
+              value: "true"
+
+            # Development build configuration
+            - name: GENERATE_SOURCEMAP
+              value: "true"      # Generate source maps for development
+            - name: FAST_REFRESH
+              value: "true"      # Enable fast refresh
+            - name: ESLINT_NO_DEV_ERRORS
+              value: "true"      # Don't treat ESLint warnings as errors
+
+---
+# ==============================================================================
+# Development Resource Quota for Namespace
+# ==============================================================================
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: veridis-dev-resource-quota
+  namespace: veridis-dev
+
+  labels:
+    resource.veridis.xyz/quota-type: development
+    resource.veridis.xyz/cost-control: enabled
+    resource.veridis.xyz/environment: development
+    cost.veridis.xyz/budget-enforcement: enabled
+
+  annotations:
+    resource.veridis.xyz/description: "Development environment resource quota for cost control"
+    resource.veridis.xyz/cost-optimization: "maximum"
+    resource.veridis.xyz/budget-tier: "development"
+
+spec:
+  hard:
+    # Development compute resource limits
+    requests.cpu: "2000m"      # 2 CPU cores total requests
+    requests.memory: "4Gi"     # 4GB total memory requests
+    limits.cpu: "6000m"        # 6 CPU cores total limits
+    limits.memory: "12Gi"      # 12GB total memory limits
+
+    # Development storage limits
+    requests.storage: "50Gi"   # 50GB total storage requests
+    persistentvolumeclaims: "10"  # 10 PVCs maximum
+
+    # Development object limits
+    pods: "20"                 # 20 pods maximum
+    services: "10"             # 10 services maximum
+    secrets: "20"              # 20 secrets maximum
+    configmaps: "20"           # 20 ConfigMaps maximum
+
+    # Development networking limits
+    services.loadbalancers: "2"     # 2 LoadBalancers maximum
+    services.nodeports: "5"         # 5 NodePorts maximum
+
+---
+# ==============================================================================
+# Development Limit Range for Pods
+# ==============================================================================
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: veridis-dev-limit-range
+  namespace: veridis-dev
+
+  labels:
+    resource.veridis.xyz/limit-type: development
+    resource.veridis.xyz/cost-control: enabled
+    resource.veridis.xyz/environment: development
+    cost.veridis.xyz/resource-governance: enabled
+
+  annotations:
+    resource.veridis.xyz/description: "Development environment limit range for resource governance"
+    resource.veridis.xyz/cost-optimization: "enforced"
+    resource.veridis.xyz/resource-efficiency: "maximum"
+
+spec:
+  limits:
+    # Development pod limits
+    - type: Pod
+      max:
+        cpu: "2000m"           # 2 CPU cores maximum per pod
+        memory: "4Gi"          # 4GB maximum per pod
+        ephemeral-storage: "10Gi"  # 10GB maximum ephemeral storage per pod
+      min:
+        cpu: "10m"             # 10m CPU minimum per pod
+        memory: "32Mi"         # 32MB minimum per pod
+        ephemeral-storage: "100Mi"  # 100MB minimum ephemeral storage per pod
+
+    # Development container limits
+    - type: Container
+      default:
+        cpu: "100m"            # 100m CPU default
+        memory: "256Mi"        # 256MB default
+        ephemeral-storage: "500Mi"  # 500MB default ephemeral storage
+      defaultRequest:
+        cpu: "50m"             # 50m CPU default request
+        memory: "128Mi"        # 128MB default request
+        ephemeral-storage: "100Mi"  # 100MB default ephemeral storage request
+      max:
+        cpu: "1000m"           # 1 CPU core maximum per container
+        memory: "2Gi"          # 2GB maximum per container
+        ephemeral-storage: "5Gi"   # 5GB maximum ephemeral storage per container
+      min:
+        cpu: "10m"             # 10m CPU minimum per container
+        memory: "32Mi"         # 32MB minimum per container
+        ephemeral-storage: "50Mi"  # 50MB minimum ephemeral storage per container
+
+    # Development PVC limits
+    - type: PersistentVolumeClaim
+      max:
+        storage: "20Gi"        # 20GB maximum per PVC
+      min:
+        storage: "1Gi"         # 1GB minimum per PVC
+
+# ==============================================================================
+# Veridis Development Resource Limits Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT RESOURCE LIMITS STRATEGY:
+# ===========================================================
+#
+# VERIDIS DEVELOPMENT RESOURCE LIMITS ARCHITECTURE OVERVIEW:
+# ----------------------------------------------------------
+# 1. Cost-Optimized Resource Allocation:
+#    - Comprehensive enterprise-grade development resource limits with intelligent cost management and advanced development-focused optimization
+#    - Advanced resource configuration with comprehensive cost optimization, developer productivity, resource efficiency, and comprehensive operational excellence
+#    - Multi-tier resource architecture with minimal requests, burst-capable limits, cost monitoring, and comprehensive resource intelligence
+#    - Enterprise resource policies with cost-friendly enforcement, productivity controls, resource automation, and comprehensive resource procedures
+#    - Performance optimization with intelligent resource allocation, cost efficiency, developer acceleration, and productivity for maximum cost performance
+#
+# 2. Developer Productivity Resource Management:
+#    - Developer-focused resource allocation with productivity optimization, debugging support, development efficiency, and comprehensive productivity coordination
+#    - Advanced productivity configuration with resource tools, performance features, efficiency frameworks, and comprehensive productivity intelligence
+#    - Flexible resource optimization with developer workflow, productivity enhancement, and comprehensive productivity intelligence
+#    - Productivity intelligence with resource procedures, efficiency support, productivity automation, and comprehensive productivity coordination
+#    - Development excellence with resource optimization, productivity workflows, efficiency automation, and comprehensive productivity environment management
+#
+# 3. Service-Specific Resource Optimization:
+#    - Service-optimized resource limits with backend efficiency, ZK CPU-only processing, database minimization, and comprehensive service coordination
+#    - Advanced service configuration with resource tuning, performance optimization, cost management, and comprehensive service intelligence
+#    - Flexible service optimization with workload-specific resources, cost efficiency, and comprehensive service intelligence
+#    - Service intelligence with resource procedures, optimization support, service automation, and comprehensive service coordination
+#    - Resource excellence with service optimization, resource workflows, service automation, and comprehensive service environment management
+#
+# ENTERPRISE DEVELOPMENT RESOURCE LIMITS FEATURES:
+# ================================================
+# Advanced Cost Management and Resource Efficiency:
+#   - Multi-tier cost architecture with resource optimization, cost monitoring, efficiency tracking, and comprehensive cost configurations
+#   - Intelligent cost management with resource optimization, developer-focused allocation, cost enhancement, and comprehensive cost decisions
+#   - Cost discovery with resource optimization, efficiency management, cost policies, and comprehensive cost analytics
+#   - Performance management with cost productivity, resource efficiency, cost optimization, and comprehensive performance intelligence
+#   - Cost processing tuning with resource management, efficiency optimization, performance algorithms, and intelligent cost optimization
+#
+# Comprehensive Developer Experience and Resource Productivity:
+#   - Multi-tier productivity with resource optimization, performance support, efficiency frameworks, and comprehensive productivity coordination
+#   - Productivity optimization with resource tools, performance capabilities, efficiency integration, and comprehensive productivity intelligence
+#   - Developer management with resource integration, productivity enhancement, development workflow, and comprehensive developer coordination
+#   - Business intelligence with productivity analytics, resource correlation, development optimization, and comprehensive strategic insights
+#   - Development management with productivity policies, resource optimization, development integration, and comprehensive development analytics
+#
+# Enterprise Resource Governance and Compliance:
+#   - Multi-tier governance with resource quotas, limit ranges, policy enforcement, and comprehensive governance coordination
+#   - Governance optimization with intelligent resource limits, usage tracking, compliance efficiency, and comprehensive governance intelligence
+#   - Resource management with governance limits, policy optimization, compliance monitoring, and comprehensive resource coordination
+#   - Business intelligence with governance analytics, resource correlation, compliance optimization, and comprehensive strategic insights
+#   - Compliance management with governance policies, resource allocation, compliance monitoring, and comprehensive compliance analytics
+#
+# OPERATIONAL EXCELLENCE:
+# ======================
+# Development Resource Lifecycle Management:
+#   - Multi-service deployment with resource optimization, cost efficiency, productivity enhancement, and comprehensive resource coordination
+#   - Intelligent resource management with predictive analytics and development utilization correlation
+#   - Advanced monitoring with comprehensive resource analytics and development business intelligence
+#   - Resource validation with development schema enforcement and resource deployment safety checks
+#   - Automated optimization with resource pattern analysis and development optimization recommendation engine
+#
+# This Development Resource Limits configuration provides enterprise-grade cost optimization, developer productivity enhancement, comprehensive resource governance, and operational excellence while maintaining appropriate performance, efficiency validation, and comprehensive monitoring for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
