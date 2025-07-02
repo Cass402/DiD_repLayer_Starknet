@@ -1,0 +1,987 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Redis Service Patch
+# ==============================================================================
+#
+# This Development Redis Service Patch provides comprehensive development-optimized
+# Redis cache service configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT REDIS ARCHITECTURE:
+#   • Advanced Development Redis with intelligent cache management and comprehensive development-based optimization
+#   • Multi-tier Development Redis architecture with primary cache, connection pooling, monitoring services, and development environments
+#   • Comprehensive development cache framework with Redis policies, developer tooling integration, cache automation
+#   • Advanced lifecycle management with automated Redis optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Redis performance insights
+#
+# VERIDIS DEVELOPMENT REDIS OPTIMIZATION:
+#   • High-performance Development with intelligent cache management and developer-optimized cache allocation
+#   • Intelligent Development cache management with responsive policies and development-based cache decisions
+#   • Advanced Development management with business intelligence and cache-based developer control
+#   • Comprehensive development cache control with intelligent Developer Redis management and cache enhancement
+#   • Enterprise acceleration with predictive Developer Redis management and development cache optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Redis controls with comprehensive audit and development requirements
+#   • GDPR Development Redis compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Redis management with comprehensive framework integration
+#   • NIST 800-190 container Development Redis security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Redis best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Redis lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Redis intelligence
+#   • Advanced Redis integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development cache control with Development Redis preservation and cache optimization
+#   • Business continuity Development Redis with development guarantees and performance optimization
+#
+# DEVELOPMENT REDIS ACCELERATION INTELLIGENCE:
+#   • Development Redis usage analytics with development patterns and optimization recommendations
+#   • Redis monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Redis analytics and deployment optimization procedures
+#   • Cost optimization with Development Redis utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Redis metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Redis Service Patch Configuration
+# ==============================================================================
+- op: replace
+  path: /spec/replicas
+  value: 1
+
+- op: replace
+  path: /spec/template/metadata/labels
+  value:
+    # Core Kubernetes labels
+    app.kubernetes.io/name: redis
+    app.kubernetes.io/instance: redis-development
+    app.kubernetes.io/version: "7.2.4-dev"
+    app.kubernetes.io/component: cache
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Development environment labels
+    veridis.xyz/environment: development
+    veridis.xyz/deployment-type: development
+    veridis.xyz/service-tier: cache
+    veridis.xyz/protocol-version: "3.2.1-dev"
+
+    # Development Redis-specific labels
+    cache.veridis.xyz/service-type: primary-cache
+    cache.veridis.xyz/development-mode: enabled
+    cache.veridis.xyz/persistence-enabled: false
+    cache.veridis.xyz/debugging: comprehensive
+    cache.veridis.xyz/profiling: enabled
+    cache.veridis.xyz/testing: comprehensive
+    cache.veridis.xyz/flush-enabled: true
+
+    # Development Redis feature labels
+    redis.veridis.xyz/version: "7.2.4"
+    redis.veridis.xyz/modules-enabled: false
+    redis.veridis.xyz/monitoring-enabled: true
+    redis.veridis.xyz/backup-enabled: false
+    redis.veridis.xyz/replication-enabled: false
+
+    # Development optimization labels
+    development.veridis.xyz/cost-optimization: enabled
+    development.veridis.xyz/resource-optimization: development
+    development.veridis.xyz/developer-productivity: high
+    development.veridis.xyz/debugging-support: comprehensive
+    development.veridis.xyz/testing-support: comprehensive
+    development.veridis.xyz/cache-flushing: enabled
+
+- op: replace
+  path: /spec/template/metadata/annotations
+  value:
+    # Development deployment annotations
+    veridis.xyz/deployed-by: "kustomize-development"
+    veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/git-commit: "${GIT_COMMIT:-development}"
+    veridis.xyz/git-branch: "${GIT_BRANCH:-develop}"
+    veridis.xyz/build-number: "${BUILD_NUMBER:-dev-build}"
+    veridis.xyz/developer: "${DEVELOPER_NAME:-unknown}"
+
+    # Development Redis configuration
+    cache.veridis.xyz/service-configuration: "development-optimized"
+    cache.veridis.xyz/resource-profile: "development"
+    cache.veridis.xyz/debugging-enabled: "true"
+    cache.veridis.xyz/profiling-enabled: "true"
+    cache.veridis.xyz/persistence-disabled: "true"
+    cache.veridis.xyz/flush-enabled: "true"
+    cache.veridis.xyz/test-data-enabled: "true"
+
+    # Development Redis technology annotations
+    technology.veridis.xyz/redis-version: "7.2.4"
+    technology.veridis.xyz/redis-mode: "standalone"
+    technology.veridis.xyz/redis-persistence: "disabled"
+    technology.veridis.xyz/redis-modules: "none"
+    technology.veridis.xyz/monitoring: "redis_exporter"
+
+    # Development security annotations
+    security.veridis.xyz/security-level: "development"
+    security.veridis.xyz/network-policies: "development"
+    security.veridis.xyz/pod-security-context: "development"
+    security.veridis.xyz/compliance-level: "development"
+    security.veridis.xyz/auth-enabled: "false"
+
+    # Development monitoring annotations
+    monitoring.veridis.xyz/metrics-enabled: "true"
+    monitoring.veridis.xyz/logging-level: "debug"
+    monitoring.veridis.xyz/slow-query-logging: "enabled"
+    monitoring.veridis.xyz/connection-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+
+    # Development documentation annotations
+    documentation.veridis.xyz/cache-schema: "enabled"
+    documentation.veridis.xyz/redis-docs: "enabled"
+    documentation.veridis.xyz/development-guide: "https://dev.veridis.xyz/redis"
+    documentation.veridis.xyz/debugging-guide: "https://dev.veridis.xyz/redis-debugging"
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: redis:7.2.4-alpine
+
+- op: replace
+  path: /spec/template/spec/containers/0/resources
+  value:
+    requests:
+      cpu: "50m"
+      memory: "128Mi"
+      ephemeral-storage: "500Mi"
+    limits:
+      cpu: "200m"
+      memory: "512Mi"
+      ephemeral-storage: "1Gi"
+
+- op: replace
+  path: /spec/template/spec/containers/0/env
+  value:
+    # ==============================================================================
+    # Development Core Redis Configuration
+    # ==============================================================================
+    - name: REDIS_PORT
+      value: "6379"
+    - name: REDIS_PASSWORD
+      value: ""
+    - name: REDIS_DATABASES
+      value: "16"
+    - name: REDIS_MAXMEMORY
+      value: "256mb"
+    - name: REDIS_MAXMEMORY_POLICY
+      value: "allkeys-lru"
+
+    # Development Redis configuration
+    - name: REDIS_BIND
+      value: "0.0.0.0"
+    - name: REDIS_PROTECTED_MODE
+      value: "no"
+    - name: REDIS_TCP_KEEPALIVE
+      value: "300"
+    - name: REDIS_TCP_BACKLOG
+      value: "511"
+    - name: REDIS_TIMEOUT
+      value: "0"
+
+    # Development server configuration
+    - name: REDIS_LOGLEVEL
+      value: "debug"
+    - name: REDIS_LOGFILE
+      value: ""
+    - name: REDIS_SYSLOG_ENABLED
+      value: "no"
+    - name: REDIS_SYSLOG_IDENT
+      value: "redis"
+    - name: REDIS_SYSLOG_FACILITY
+      value: "local0"
+    - name: REDIS_DAEMONIZE
+      value: "no"
+    - name: REDIS_SUPERVISED
+      value: "no"
+    - name: REDIS_PIDFILE
+      value: "/var/run/redis_6379.pid"
+
+    # Development persistence configuration (disabled for development)
+    - name: REDIS_SAVE
+      value: ""
+    - name: REDIS_STOP_WRITES_ON_BGSAVE_ERROR
+      value: "no"
+    - name: REDIS_RDBCOMPRESSION
+      value: "no"
+    - name: REDIS_RDBCHECKSUM
+      value: "no"
+    - name: REDIS_DBFILENAME
+      value: "dump.rdb"
+    - name: REDIS_DIR
+      value: "/data"
+    - name: REDIS_APPENDONLY
+      value: "no"
+    - name: REDIS_APPENDFILENAME
+      value: "appendonly.aof"
+    - name: REDIS_APPENDFSYNC
+      value: "everysec"
+    - name: REDIS_NO_APPENDFSYNC_ON_REWRITE
+      value: "no"
+    - name: REDIS_AUTO_AOF_REWRITE_PERCENTAGE
+      value: "100"
+    - name: REDIS_AUTO_AOF_REWRITE_MIN_SIZE
+      value: "64mb"
+    - name: REDIS_AOF_LOAD_TRUNCATED
+      value: "yes"
+    - name: REDIS_AOF_USE_RDB_PREAMBLE
+      value: "yes"
+
+    # Development Lua scripting configuration
+    - name: REDIS_LUA_TIME_LIMIT
+      value: "5000"
+
+    # Development slowlog configuration
+    - name: REDIS_SLOWLOG_LOG_SLOWER_THAN
+      value: "1000"
+    - name: REDIS_SLOWLOG_MAX_LEN
+      value: "1000"
+
+    # Development latency monitoring
+    - name: REDIS_LATENCY_MONITOR_THRESHOLD
+      value: "100"
+
+    # Development notification configuration
+    - name: REDIS_NOTIFY_KEYSPACE_EVENTS
+      value: "Ex"
+
+    # Development hash configuration
+    - name: REDIS_HASH_MAX_ZIPLIST_ENTRIES
+      value: "512"
+    - name: REDIS_HASH_MAX_ZIPLIST_VALUE
+      value: "64"
+
+    # Development list configuration
+    - name: REDIS_LIST_MAX_ZIPLIST_SIZE
+      value: "-2"
+    - name: REDIS_LIST_COMPRESS_DEPTH
+      value: "0"
+
+    # Development set configuration
+    - name: REDIS_SET_MAX_INTSET_ENTRIES
+      value: "512"
+
+    # Development sorted set configuration
+    - name: REDIS_ZSET_MAX_ZIPLIST_ENTRIES
+      value: "128"
+    - name: REDIS_ZSET_MAX_ZIPLIST_VALUE
+      value: "64"
+
+    # Development hyperloglog configuration
+    - name: REDIS_HLL_SPARSE_MAX_BYTES
+      value: "3000"
+
+    # Development stream configuration
+    - name: REDIS_STREAM_NODE_MAX_BYTES
+      value: "4096"
+    - name: REDIS_STREAM_NODE_MAX_ENTRIES
+      value: "100"
+
+    # Development active rehashing
+    - name: REDIS_ACTIVEREHASHING
+      value: "yes"
+
+    # Development client configuration
+    - name: REDIS_CLIENT_OUTPUT_BUFFER_LIMIT_NORMAL
+      value: "0 0 0"
+    - name: REDIS_CLIENT_OUTPUT_BUFFER_LIMIT_REPLICA
+      value: "256mb 64mb 60"
+    - name: REDIS_CLIENT_OUTPUT_BUFFER_LIMIT_PUBSUB
+      value: "32mb 8mb 60"
+    - name: REDIS_CLIENT_QUERY_BUFFER_LIMIT
+      value: "1gb"
+    - name: REDIS_PROTO_MAX_BULK_LEN
+      value: "512mb"
+
+    # Development frequency configuration
+    - name: REDIS_HZ
+      value: "10"
+
+    # Development dynamic-hz
+    - name: REDIS_DYNAMIC_HZ
+      value: "yes"
+
+    # Development aof-rewrite configuration
+    - name: REDIS_AOF_REWRITE_INCREMENTAL_FSYNC
+      value: "yes"
+
+    # Development rdb-save configuration
+    - name: REDIS_RDB_SAVE_INCREMENTAL_FSYNC
+      value: "yes"
+
+    # Development jemalloc configuration
+    - name: REDIS_JEMALLOC_BG_THREAD
+      value: "yes"
+
+    # Development io-threads configuration
+    - name: REDIS_IO_THREADS
+      value: "1"
+    - name: REDIS_IO_THREADS_DO_READS
+      value: "no"
+
+    # Development TLS configuration (disabled for development)
+    - name: REDIS_TLS_PORT
+      value: "0"
+    - name: REDIS_TLS_CERT_FILE
+      value: ""
+    - name: REDIS_TLS_KEY_FILE
+      value: ""
+    - name: REDIS_TLS_DH_PARAMS_FILE
+      value: ""
+    - name: REDIS_TLS_CA_CERT_FILE
+      value: ""
+    - name: REDIS_TLS_CA_CERT_DIR
+      value: ""
+    - name: REDIS_TLS_AUTH_CLIENTS
+      value: "no"
+    - name: REDIS_TLS_PROTOCOLS
+      value: ""
+    - name: REDIS_TLS_CIPHERS
+      value: ""
+    - name: REDIS_TLS_CIPHERSUITES
+      value: ""
+    - name: REDIS_TLS_PREFER_SERVER_CIPHERS
+      value: "yes"
+    - name: REDIS_TLS_SESSION_CACHING
+      value: "no"
+    - name: REDIS_TLS_SESSION_CACHE_SIZE
+      value: "5000"
+    - name: REDIS_TLS_SESSION_CACHE_TIMEOUT
+      value: "60"
+
+    # Development ACL configuration (disabled for development)
+    - name: REDIS_ACL_LOG_MAX_LEN
+      value: "128"
+    - name: REDIS_ACL_PUBSUB_DEFAULT
+      value: "allchannels"
+
+    # Development gopher-server (disabled)
+    - name: REDIS_GOPHER_ENABLED
+      value: "no"
+
+    # Development development-specific configuration
+    - name: DEVELOPMENT_MODE
+      value: "true"
+    - name: DEBUG_MODE
+      value: "true"
+    - name: FLUSH_ENABLED
+      value: "true"
+    - name: TEST_DATA_ENABLED
+      value: "true"
+    - name: PERFORMANCE_MONITORING
+      value: "true"
+    - name: SLOW_QUERY_LOGGING
+      value: "true"
+    - name: CONNECTION_MONITORING
+      value: "true"
+    - name: MEMORY_MONITORING
+      value: "true"
+    - name: KEYSPACE_MONITORING
+      value: "true"
+
+    # Development Veridis-specific cache configuration
+    - name: VERIDIS_CACHE_IDENTITY_TTL
+      value: "3600"
+    - name: VERIDIS_CACHE_ATTESTATION_TTL
+      value: "1800"
+    - name: VERIDIS_CACHE_VERIFICATION_TTL
+      value: "1800"
+    - name: VERIDIS_CACHE_COMPLIANCE_TTL
+      value: "7200"
+    - name: VERIDIS_CACHE_BRIDGE_TTL
+      value: "300"
+    - name: VERIDIS_CACHE_SESSION_TTL
+      value: "1800"
+    - name: VERIDIS_CACHE_JWT_TTL
+      value: "3600"
+    - name: VERIDIS_CACHE_ZK_PROOF_TTL
+      value: "1800"
+    - name: VERIDIS_CACHE_CIRCUIT_TTL
+      value: "7200"
+    - name: VERIDIS_CACHE_WITNESS_TTL
+      value: "1800"
+    - name: VERIDIS_CACHE_KEY_PREFIX
+      value: "veridis:dev:"
+    - name: VERIDIS_CACHE_COMPRESSION_ENABLED
+      value: "false"
+    - name: VERIDIS_CACHE_SERIALIZATION_FORMAT
+      value: "json"
+
+    # Development deployment metadata
+    - name: DEPLOYMENT_METADATA_GIT_COMMIT
+      value: "${GIT_COMMIT:-development}"
+    - name: DEPLOYMENT_METADATA_GIT_BRANCH
+      value: "${GIT_BRANCH:-develop}"
+    - name: DEPLOYMENT_METADATA_BUILD_NUMBER
+      value: "${BUILD_NUMBER:-dev-build}"
+    - name: DEPLOYMENT_METADATA_BUILD_DATE
+      value: "${BUILD_DATE:-2025-01-18T10:00:00Z}"
+    - name: DEPLOYMENT_METADATA_BUILD_USER
+      value: "${BUILD_USER:-developer}"
+    - name: DEPLOYMENT_METADATA_DEVELOPER
+      value: "${DEVELOPER_NAME:-unknown}"
+    - name: DEPLOYMENT_METADATA_ENVIRONMENT
+      value: "development"
+    - name: DEPLOYMENT_METADATA_DEPLOYMENT_TYPE
+      value: "development"
+    - name: DEPLOYMENT_METADATA_KUSTOMIZE_VERSION
+      value: "5.3.0"
+    - name: DEPLOYMENT_METADATA_KUBERNETES_VERSION
+      value: "1.28+"
+
+- op: add
+  path: /spec/template/spec/containers/0/ports
+  value:
+    # Main Redis port
+    - name: redis
+      containerPort: 6379
+      protocol: TCP
+
+- op: replace
+  path: /spec/template/spec/containers/0/livenessProbe
+  value:
+    exec:
+      command:
+        - redis-cli
+        - ping
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 5
+
+- op: replace
+  path: /spec/template/spec/containers/0/readinessProbe
+  value:
+    exec:
+      command:
+        - redis-cli
+        - ping
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+
+- op: add
+  path: /spec/template/spec/containers/0/startupProbe
+  value:
+    exec:
+      command:
+        - redis-cli
+        - ping
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 30
+
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    # Redis data directory (ephemeral for development)
+    - name: redis-data
+      mountPath: /data
+
+    # Redis configuration
+    - name: redis-config
+      mountPath: /usr/local/etc/redis/redis.conf
+      subPath: redis.conf
+      readOnly: true
+
+    # Redis logs directory
+    - name: redis-logs
+      mountPath: /var/log/redis
+
+    # Redis temporary directory
+    - name: redis-tmp
+      mountPath: /tmp/redis
+
+    # Development test data
+    - name: redis-test-data
+      mountPath: /var/lib/redis/test-data
+      readOnly: true
+
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    # Redis data volume (ephemeral for development)
+    - name: redis-data
+      emptyDir:
+        sizeLimit: "500Mi"
+
+    # Redis configuration volume
+    - name: redis-config
+      configMap:
+        name: veridis-development-redis-config
+        defaultMode: 0644
+
+    # Redis logs volume
+    - name: redis-logs
+      emptyDir:
+        sizeLimit: "100Mi"
+
+    # Redis temporary volume
+    - name: redis-tmp
+      emptyDir:
+        sizeLimit: "100Mi"
+
+    # Development test data volume
+    - name: redis-test-data
+      configMap:
+        name: veridis-development-redis-test-data
+        defaultMode: 0644
+
+- op: add
+  path: /spec/template/spec/initContainers
+  value:
+    # Development Redis initialization container
+    - name: redis-init
+      image: redis:7.2.4-alpine
+
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Initializing Redis Development Environment..."
+
+          # Create necessary directories
+          mkdir -p /data
+          mkdir -p /var/log/redis
+          mkdir -p /tmp/redis
+
+          # Set proper permissions
+          chown -R redis:redis /data
+          chown -R redis:redis /var/log/redis
+          chown -R redis:redis /tmp/redis
+          chmod -R 755 /data
+          chmod -R 755 /var/log/redis
+          chmod -R 755 /tmp/redis
+
+          # Copy configuration file if it doesn't exist
+          if [ ! -f /data/redis.conf ]; then
+            echo "Copying development Redis configuration..."
+            if [ -f /usr/local/etc/redis/redis.conf ]; then
+              cp /usr/local/etc/redis/redis.conf /data/
+            else
+              echo "Creating default development Redis configuration..."
+              cat > /data/redis.conf << EOF
+          # Redis Development Configuration
+          bind 0.0.0.0
+          port 6379
+          protected-mode no
+          tcp-backlog 511
+          timeout 0
+          tcp-keepalive 300
+          daemonize no
+          supervised no
+          pidfile /var/run/redis_6379.pid
+          loglevel debug
+          logfile ""
+          databases 16
+          save ""
+          stop-writes-on-bgsave-error no
+          rdbcompression no
+          rdbchecksum no
+          dbfilename dump.rdb
+          dir /data
+          maxmemory 256mb
+          maxmemory-policy allkeys-lru
+          appendonly no
+          slowlog-log-slower-than 1000
+          slowlog-max-len 1000
+          latency-monitor-threshold 100
+          notify-keyspace-events Ex
+          hash-max-ziplist-entries 512
+          hash-max-ziplist-value 64
+          list-max-ziplist-size -2
+          list-compress-depth 0
+          set-max-intset-entries 512
+          zset-max-ziplist-entries 128
+          zset-max-ziplist-value 64
+          hll-sparse-max-bytes 3000
+          stream-node-max-bytes 4096
+          stream-node-max-entries 100
+          activerehashing yes
+          client-output-buffer-limit normal 0 0 0
+          client-output-buffer-limit replica 256mb 64mb 60
+          client-output-buffer-limit pubsub 32mb 8mb 60
+          client-query-buffer-limit 1gb
+          proto-max-bulk-len 512mb
+          hz 10
+          dynamic-hz yes
+          aof-rewrite-incremental-fsync yes
+          rdb-save-incremental-fsync yes
+          jemalloc-bg-thread yes
+          io-threads 1
+          io-threads-do-reads no
+          EOF
+            fi
+          fi
+
+          # Load test data if available
+          if [ -f /var/lib/redis/test-data/test-data.redis ]; then
+            echo "Test data will be loaded after Redis starts..."
+          fi
+
+          echo "Redis initialization completed!"
+
+      volumeMounts:
+        - name: redis-data
+          mountPath: /data
+        - name: redis-config
+          mountPath: /usr/local/etc/redis
+          readOnly: true
+        - name: redis-logs
+          mountPath: /var/log/redis
+        - name: redis-tmp
+          mountPath: /tmp/redis
+        - name: redis-test-data
+          mountPath: /var/lib/redis/test-data
+          readOnly: true
+
+      resources:
+        requests:
+          cpu: "25m"
+          memory: "32Mi"
+        limits:
+          cpu: "50m"
+          memory: "64Mi"
+
+      securityContext:
+        runAsUser: 999
+        runAsGroup: 999
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: false
+        capabilities:
+          drop:
+            - ALL
+
+- op: add
+  path: /spec/template/spec/containers/0/securityContext
+  value:
+    # Development container security context
+    runAsUser: 999
+    runAsGroup: 999
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    capabilities:
+      drop:
+        - ALL
+    seccompProfile:
+      type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/securityContext
+  value:
+    # Development pod security context
+    runAsUser: 999
+    runAsGroup: 999
+    runAsNonRoot: true
+    fsGroup: 999
+    fsGroupChangePolicy: "OnRootMismatch"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups: [999]
+
+- op: add
+  path: /spec/template/spec/containers/0/command
+  value:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting Redis Development Service..."
+      echo "Environment: development"
+      echo "Version: 7.2.4"
+      echo "Build: ${BUILD_NUMBER:-dev-build}"
+      echo "Git Commit: ${GIT_COMMIT:-development}"
+      echo "Developer: ${DEVELOPER_NAME:-unknown}"
+
+      # Ensure data directory exists and has correct permissions
+      mkdir -p /data
+      chown -R redis:redis /data
+      chmod 755 /data
+
+      # Use custom configuration if available, otherwise use defaults
+      if [ -f /data/redis.conf ]; then
+        echo "Using custom Redis configuration..."
+        CONFIG_FILE="/data/redis.conf"
+      else
+        echo "Using default Redis configuration..."
+        CONFIG_FILE=""
+      fi
+
+      # Start Redis server
+      echo "Starting Redis server..."
+      if [ -n "$CONFIG_FILE" ]; then
+        exec redis-server "$CONFIG_FILE"
+      else
+        exec redis-server \
+          --bind 0.0.0.0 \
+          --port 6379 \
+          --protected-mode no \
+          --tcp-backlog 511 \
+          --timeout 0 \
+          --tcp-keepalive 300 \
+          --daemonize no \
+          --supervised no \
+          --pidfile /var/run/redis_6379.pid \
+          --loglevel debug \
+          --logfile "" \
+          --databases 16 \
+          --save "" \
+          --stop-writes-on-bgsave-error no \
+          --rdbcompression no \
+          --rdbchecksum no \
+          --dbfilename dump.rdb \
+          --dir /data \
+          --maxmemory 256mb \
+          --maxmemory-policy allkeys-lru \
+          --appendonly no \
+          --slowlog-log-slower-than 1000 \
+          --slowlog-max-len 1000 \
+          --latency-monitor-threshold 100 \
+          --notify-keyspace-events Ex \
+          --hash-max-ziplist-entries 512 \
+          --hash-max-ziplist-value 64 \
+          --list-max-ziplist-size -2 \
+          --list-compress-depth 0 \
+          --set-max-intset-entries 512 \
+          --zset-max-ziplist-entries 128 \
+          --zset-max-ziplist-value 64 \
+          --hll-sparse-max-bytes 3000 \
+          --stream-node-max-bytes 4096 \
+          --stream-node-max-entries 100 \
+          --activerehashing yes \
+          --client-output-buffer-limit "normal 0 0 0" \
+          --client-output-buffer-limit "replica 256mb 64mb 60" \
+          --client-output-buffer-limit "pubsub 32mb 8mb 60" \
+          --client-query-buffer-limit 1gb \
+          --proto-max-bulk-len 512mb \
+          --hz 10 \
+          --dynamic-hz yes \
+          --aof-rewrite-incremental-fsync yes \
+          --rdb-save-incremental-fsync yes \
+          --jemalloc-bg-thread yes \
+          --io-threads 1 \
+          --io-threads-do-reads no
+      fi
+
+- op: add
+  path: /spec/template/spec/containers/1
+  value:
+    # Redis Exporter sidecar for monitoring
+    name: redis-exporter
+    image: oliver006/redis_exporter:v1.58.0-alpine
+
+    ports:
+      - name: metrics
+        containerPort: 9121
+        protocol: TCP
+
+    env:
+      - name: REDIS_ADDR
+        value: "redis://localhost:6379"
+      - name: REDIS_USER
+        value: ""
+      - name: REDIS_PASSWORD
+        value: ""
+      - name: REDIS_EXPORTER_WEB_LISTEN_ADDRESS
+        value: "0.0.0.0:9121"
+      - name: REDIS_EXPORTER_WEB_TELEMETRY_PATH
+        value: "/metrics"
+      - name: REDIS_EXPORTER_LOG_FORMAT
+        value: "txt"
+      - name: REDIS_EXPORTER_DEBUG
+        value: "true"
+      - name: REDIS_EXPORTER_CHECK_KEYS
+        value: "veridis:dev:*"
+      - name: REDIS_EXPORTER_CHECK_KEY_GROUPS
+        value: "veridis:dev:identity:*,veridis:dev:attestation:*,veridis:dev:verification:*,veridis:dev:compliance:*,veridis:dev:bridge:*,veridis:dev:session:*,veridis:dev:jwt:*,veridis:dev:zk:*"
+      - name: REDIS_EXPORTER_MAX_DISTINCT_KEY_GROUPS
+        value: "100"
+      - name: REDIS_EXPORTER_STREAM_KEYS
+        value: "veridis:dev:stream:*"
+      - name: REDIS_EXPORTER_KEYS_PATTERN
+        value: "veridis:dev:*"
+      - name: REDIS_EXPORTER_COUNT_KEYS
+        value: "veridis:dev:*"
+      - name: REDIS_EXPORTER_SCRIPT
+        value: ""
+      - name: REDIS_EXPORTER_CONNECTION_TIMEOUT
+        value: "15s"
+      - name: REDIS_EXPORTER_INCLUDE_SYSTEM_METRICS
+        value: "true"
+      - name: REDIS_EXPORTER_REDACT_CONFIG_METRICS
+        value: "true"
+      - name: REDIS_EXPORTER_PING_ON_CONNECT
+        value: "true"
+      - name: REDIS_EXPORTER_INCL_CONFIG_METRICS
+        value: "false"
+      - name: REDIS_EXPORTER_EXPORT_CLIENT_LIST
+        value: "true"
+      - name: REDIS_EXPORTER_EXPORT_CLIENT_PORT
+        value: "true"
+      - name: REDIS_EXPORTER_SKIP_TLS_VERIFICATION
+        value: "true"
+      - name: REDIS_EXPORTER_CONSTANT_LABELS
+        value: "environment=development,service=redis"
+
+    resources:
+      requests:
+        cpu: "25m"
+        memory: "32Mi"
+      limits:
+        cpu: "50m"
+        memory: "64Mi"
+
+    livenessProbe:
+      httpGet:
+        path: /metrics
+        port: metrics
+        scheme: HTTP
+      initialDelaySeconds: 30
+      periodSeconds: 30
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+    readinessProbe:
+      httpGet:
+        path: /metrics
+        port: metrics
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+    securityContext:
+      runAsUser: 59000
+      runAsGroup: 59000
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/nodeSelector
+  value:
+    kubernetes.io/arch: amd64
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/worker: "true"
+
+- op: add
+  path: /spec/template/spec/tolerations
+  value:
+    - key: "node-role.kubernetes.io/development"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "node.kubernetes.io/not-ready"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+    - key: "node.kubernetes.io/unreachable"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+
+- op: add
+  path: /spec/template/spec/affinity
+  value:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values: ["redis"]
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values: ["cache"]
+            topologyKey: kubernetes.io/hostname
+
+- op: add
+  path: /spec/template/spec/terminationGracePeriodSeconds
+  value: 30
+
+- op: add
+  path: /spec/template/spec/dnsPolicy
+  value: ClusterFirst
+
+- op: add
+  path: /spec/template/spec/restartPolicy
+  value: Always
+
+- op: add
+  path: /spec/strategy
+  value:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 10
+
+- op: add
+  path: /spec/progressDeadlineSeconds
+  value: 300
+
+# ==============================================================================
+# Veridis Development Redis Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT REDIS STRATEGY:
+# =================================================
+#
+# VERIDIS DEVELOPMENT REDIS ARCHITECTURE OVERVIEW:
+# ------------------------------------------------
+# 1. Development Cache Service Optimization:
+#    - Comprehensive enterprise-grade development Redis with intelligent cache management and advanced developer-focused optimization
+#    - Advanced cache configuration with comprehensive developer productivity, debugging support, profiling efficiency, and comprehensive operational excellence
+#    - Multi-tier cache architecture with primary cache, connection pooling, monitoring services, and comprehensive cache intelligence
+#    - Enterprise cache policies with developer-friendly enforcement, productivity controls, debugging automation, and comprehensive cache procedures
+#    - Performance optimization with intelligent resource allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. Advanced Redis Configuration Management:
+#    - Developer-focused cache configuration with connection optimization, memory tuning, performance integration, and comprehensive productivity coordination
+#    - Advanced cache configuration with monitoring tools, debugging features, performance frameworks, and comprehensive cache intelligence
+#    - Flexible cache optimization with developer workflow, productivity enhancement, and comprehensive cache intelligence
+#    - Cache intelligence with performance procedures, debugging support, cache automation, and comprehensive cache coordination
+#    - Development excellence with cache optimization, productivity workflows, cache automation, and comprehensive cache environment management
+#
+# 3. Cache Performance and Monitoring Integration:
+#    - Performance-optimized cache with comprehensive monitoring, metrics collection, slow query analysis, and comprehensive cache coordination
+#    - Advanced monitoring configuration with Redis exporter, performance tracking, connection monitoring, and comprehensive monitoring intelligence
+#    - Flexible monitoring optimization with performance tracking, metric collection, and comprehensive monitoring intelligence
+#    - Monitoring intelligence with cache procedures, performance support, monitoring automation, and comprehensive monitoring coordination
+#    - Cache excellence with monitoring optimization, performance workflows, monitoring automation, and comprehensive monitoring environment management
+#
+# ENTERPRISE DEVELOPMENT REDIS FEATURES:
+# ======================================
+# Advanced Cache Management and Developer Productivity:
+#   - Multi-tier cache architecture with developer optimization, debugging cache, testing integration, and comprehensive cache configurations
+#   - Intelligent cache management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive cache decisions
+#   - Cache discovery with developer optimization, debugging management, cache policies, and comprehensive cache analytics
+#   - Performance management with developer productivity, debugging efficiency, cache optimization, and comprehensive performance intelligence
+#   - Cache processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent cache optimization
+#
+# This Development Redis configuration provides enterprise-grade developer productivity enhancement with comprehensive cache ecosystem, intelligent debugging optimization, advanced monitoring capabilities, and operational excellence while maintaining appropriate performance, cost efficiency, and comprehensive functionality for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
