@@ -1,0 +1,1532 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Prometheus Values
+# ==============================================================================
+#
+# This Development Prometheus Values file provides comprehensive development-optimized
+# Prometheus monitoring configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT PROMETHEUS ARCHITECTURE:
+#   • Advanced Development Prometheus with intelligent metrics collection and comprehensive development-based optimization
+#   • Multi-tier Development Prometheus architecture with development monitoring, alerting, service discovery, and development environments
+#   • Comprehensive development monitoring framework with Prometheus policies, developer tooling integration, metrics automation
+#   • Advanced lifecycle management with automated Prometheus optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Prometheus performance insights
+#
+# VERIDIS DEVELOPMENT PROMETHEUS OPTIMIZATION:
+#   • High-performance Development with intelligent metrics management and developer-optimized resource allocation
+#   • Intelligent Development metrics management with responsive policies and development-based monitoring decisions
+#   • Advanced Development management with business intelligence and metrics-based developer control
+#   • Comprehensive development monitoring control with intelligent Developer Prometheus management and metrics enhancement
+#   • Enterprise acceleration with predictive Developer Prometheus management and development monitoring optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Prometheus controls with comprehensive audit and development requirements
+#   • GDPR Development Prometheus compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Prometheus management with comprehensive framework integration
+#   • NIST 800-190 container Development Prometheus security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Prometheus best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Prometheus lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Prometheus intelligence
+#   • Advanced Prometheus integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development monitoring control with Development Prometheus preservation and metrics optimization
+#   • Business continuity Development Prometheus with development guarantees and performance optimization
+#
+# DEVELOPMENT PROMETHEUS ACCELERATION INTELLIGENCE:
+#   • Development Prometheus usage analytics with development patterns and optimization recommendations
+#   • Prometheus monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Prometheus analytics and deployment optimization procedures
+#   • Cost optimization with Development Prometheus utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Prometheus metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Prometheus Global Configuration
+# ==============================================================================
+global:
+  # Development Prometheus server configuration
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: veridis-development
+    environment: development
+    region: us-west-2
+    prometheus_replica: '$(HOSTNAME)'
+    deployment_type: development
+    cost_center: development
+    team: veridis-development
+    protocol_version: "3.2.1-dev"
+    compliance_level: development
+    security_level: development
+    monitoring_tier: development
+
+  # Development query configuration
+  query_log_file: /prometheus/query.log
+
+  # Development rule files
+  rule_files:
+    - "/etc/prometheus/rules/*.yml"
+    - "/etc/prometheus/alerts/*.yml"
+    - "/etc/prometheus/development/*.yml"
+
+# ==============================================================================
+# Development Prometheus Server Configuration
+# ==============================================================================
+prometheus:
+  enabled: true
+
+  # Development image configuration
+  image:
+    registry: quay.io
+    repository: prometheus/prometheus
+    tag: "v2.48.1"
+    pullPolicy: IfNotPresent
+
+  # Development replica configuration (single replica for cost optimization)
+  replicaCount: 1
+
+  # Development service configuration
+  service:
+    type: ClusterIP
+    port: 9090
+    targetPort: 9090
+    name: http-web
+    annotations:
+      # Development service annotations
+      veridis.xyz/service-type: "monitoring"
+      veridis.xyz/environment: "development"
+      veridis.xyz/cost-optimization: "enabled"
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9090"
+      prometheus.io/path: "/metrics"
+
+  # Development ingress configuration (disabled - using centralized ingress)
+  ingress:
+    enabled: false
+
+  # Development persistence configuration
+  persistence:
+    enabled: true
+    storageClass: "fast-ssd"
+    accessModes:
+      - ReadWriteOnce
+    size: 20Gi
+    annotations:
+      volume.beta.kubernetes.io/storage-class: "fast-ssd"
+      veridis.xyz/backup-policy: "development"
+      veridis.xyz/data-classification: "monitoring"
+
+  # Development resource configuration (optimized for development)
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+      ephemeral-storage: 5Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+      ephemeral-storage: 2Gi
+
+  # Development node selector (prefer cost-optimized nodes)
+  nodeSelector:
+    node-type: monitoring
+    cost-tier: development
+
+  # Development tolerations
+  tolerations:
+    - key: "monitoring"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "development"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
+  # Development affinity rules
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
+              - key: node-type
+                operator: In
+                values:
+                  - monitoring
+        - weight: 80
+          preference:
+            matchExpressions:
+              - key: cost-tier
+                operator: In
+                values:
+                  - development
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - prometheus
+            topologyKey: kubernetes.io/hostname
+
+  # Development security context
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+    seccompProfile:
+      type: RuntimeDefault
+
+  # Development container security context
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65534
+    runAsGroup: 65534
+    seccompProfile:
+      type: RuntimeDefault
+
+  # Development environment variables
+  extraEnvVars:
+    - name: PROMETHEUS_DEVELOPMENT_MODE
+      value: "true"
+    - name: PROMETHEUS_DEBUG_LOGGING
+      value: "true"
+    - name: PROMETHEUS_VERBOSE_LOGGING
+      value: "true"
+    - name: PROMETHEUS_RETENTION_TIME
+      value: "7d"
+    - name: PROMETHEUS_RETENTION_SIZE
+      value: "15GB"
+    - name: PROMETHEUS_QUERY_MAX_CONCURRENCY
+      value: "10"
+    - name: PROMETHEUS_QUERY_TIMEOUT
+      value: "2m"
+    - name: PROMETHEUS_ENABLE_LIFECYCLE
+      value: "true"
+    - name: PROMETHEUS_ENABLE_ADMIN_API
+      value: "true"
+    - name: PROMETHEUS_LOG_LEVEL
+      value: "debug"
+    - name: PROMETHEUS_LOG_FORMAT
+      value: "logfmt"
+    - name: PROMETHEUS_WEB_ENABLE_LIFECYCLE
+      value: "true"
+    - name: PROMETHEUS_WEB_ENABLE_ADMIN_API
+      value: "true"
+    - name: PROMETHEUS_STORAGE_TSDB_RETENTION_TIME
+      value: "7d"
+    - name: PROMETHEUS_STORAGE_TSDB_RETENTION_SIZE
+      value: "15GB"
+    - name: PROMETHEUS_STORAGE_TSDB_WAL_COMPRESSION
+      value: "true"
+    - name: PROMETHEUS_QUERY_LOG_FILE
+      value: "/prometheus/query.log"
+    - name: VERIDIS_ENVIRONMENT
+      value: "development"
+    - name: VERIDIS_PROTOCOL_VERSION
+      value: "3.2.1-dev"
+    - name: VERIDIS_DEPLOYMENT_TYPE
+      value: "development"
+    - name: VERIDIS_MONITORING_TIER
+      value: "development"
+    - name: VERIDIS_COST_CENTER
+      value: "development"
+    - name: VERIDIS_TEAM
+      value: "veridis-development"
+
+  # Development extra arguments
+  extraArgs:
+    - --web.enable-lifecycle
+    - --web.enable-admin-api
+    - --web.enable-remote-shutdown
+    - --storage.tsdb.retention.time=7d
+    - --storage.tsdb.retention.size=15GB
+    - --storage.tsdb.wal-compression
+    - --storage.tsdb.min-block-duration=2h
+    - --storage.tsdb.max-block-duration=24h
+    - --query.max-concurrency=10
+    - --query.timeout=2m
+    - --query.max-samples=50000000
+    - --query.lookback-delta=5m
+    - --log.level=debug
+    - --log.format=logfmt
+    - --enable-feature=exemplar-storage
+    - --enable-feature=memory-snapshot-on-shutdown
+    - --enable-feature=expand-external-labels
+    - --web.console.templates=/etc/prometheus/consoles
+    - --web.console.libraries=/etc/prometheus/console_libraries
+    - --web.page-title="Veridis Development Prometheus"
+    - --web.external-url=https://dev-monitoring.veridis.xyz/prometheus/
+    - --web.route-prefix=/prometheus/
+
+  # Development configuration file
+  configPath: /etc/config/prometheus.yml
+  storagePath: /prometheus/
+
+  # Development additional volumes
+  extraVolumes:
+    - name: development-rules
+      configMap:
+        name: prometheus-development-rules
+    - name: development-alerts
+      configMap:
+        name: prometheus-development-alerts
+    - name: query-log-volume
+      emptyDir:
+        sizeLimit: 1Gi
+    - name: tmp-volume
+      emptyDir:
+        sizeLimit: 2Gi
+
+  # Development additional volume mounts
+  extraVolumeMounts:
+    - name: development-rules
+      mountPath: /etc/prometheus/development
+      readOnly: true
+    - name: development-alerts
+      mountPath: /etc/prometheus/alerts
+      readOnly: true
+    - name: query-log-volume
+      mountPath: /prometheus/query-logs
+    - name: tmp-volume
+      mountPath: /tmp
+
+  # Development pod annotations
+  podAnnotations:
+    # Deployment annotations
+    veridis.xyz/deployed-by: "helm-development"
+    veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/prometheus-version: "2.48.1"
+    veridis.xyz/cost-optimization: "enabled"
+    veridis.xyz/monitoring-tier: "development"
+
+    # Development monitoring annotations
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9090"
+    prometheus.io/path: "/metrics"
+    prometheus.io/scheme: "http"
+
+    # Development backup annotations
+    backup.veridis.xyz/enabled: "true"
+    backup.veridis.xyz/schedule: "0 2 * * *"
+    backup.veridis.xyz/retention: "7d"
+
+    # Development security annotations
+    security.veridis.xyz/security-level: "development"
+    security.veridis.xyz/data-classification: "monitoring"
+    security.veridis.xyz/encryption-required: "false"
+
+  # Development pod labels
+  podLabels:
+    # Core labels
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/instance: prometheus-development
+    app.kubernetes.io/version: "2.48.1"
+    app.kubernetes.io/component: monitoring
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: helm
+
+    # Development labels
+    veridis.xyz/environment: development
+    veridis.xyz/deployment-type: development
+    veridis.xyz/monitoring-tier: development
+    veridis.xyz/cost-center: development
+    veridis.xyz/team: veridis-development
+
+    # Monitoring labels
+    monitoring.veridis.xyz/service-type: prometheus
+    monitoring.veridis.xyz/scrape-enabled: "true"
+    monitoring.veridis.xyz/metrics-port: "9090"
+
+# ==============================================================================
+# Development Prometheus Configuration
+# ==============================================================================
+config:
+  # Development global configuration
+  global:
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    evaluation_interval: 15s
+    query_log_file: /prometheus/query-logs/query.log
+    external_labels:
+      cluster: veridis-development
+      environment: development
+      prometheus_replica: '$(HOSTNAME)'
+      deployment_type: development
+      protocol_version: "3.2.1-dev"
+      monitoring_tier: development
+
+  # Development rule files configuration
+  rule_files:
+    - "/etc/prometheus/rules/*.yml"
+    - "/etc/prometheus/alerts/*.yml"
+    - "/etc/prometheus/development/*.yml"
+
+  # Development alerting configuration
+  alerting:
+    alertmanagers:
+      - static_configs:
+          - targets:
+              - "alertmanager.veridis-dev.svc.cluster.local:9093"
+        scheme: http
+        timeout: 10s
+        api_version: v2
+        path_prefix: /
+
+  # Development scrape configurations
+  scrape_configs:
+    # ==============================================================================
+    # Prometheus Self-Monitoring
+    # ==============================================================================
+    - job_name: 'prometheus-development'
+      static_configs:
+        - targets:
+            - 'localhost:9090'
+      scrape_interval: 15s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+      honor_labels: true
+      honor_timestamps: true
+
+    # ==============================================================================
+    # Kubernetes API Server Monitoring
+    # ==============================================================================
+    - job_name: 'kubernetes-apiservers'
+      kubernetes_sd_configs:
+        - role: endpoints
+          namespaces:
+            names:
+              - default
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecure_skip_verify: false
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+          action: keep
+          regex: default;kubernetes;https
+        - target_label: __address__
+          replacement: kubernetes.default.svc:443
+        - source_labels: [__meta_kubernetes_service_name]
+          target_label: job
+          replacement: ${1}
+      scrape_interval: 30s
+      scrape_timeout: 10s
+
+    # ==============================================================================
+    # Kubernetes Nodes Monitoring
+    # ==============================================================================
+    - job_name: 'kubernetes-nodes'
+      kubernetes_sd_configs:
+        - role: node
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        insecure_skip_verify: true
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+        - action: labelmap
+          regex: __meta_kubernetes_node_label_(.+)
+        - target_label: __address__
+          replacement: kubernetes.default.svc:443
+        - source_labels: [__meta_kubernetes_node_name]
+          regex: (.+)
+          target_label: __metrics_path__
+          replacement: /api/v1/nodes/${1}/proxy/metrics
+      scrape_interval: 30s
+      scrape_timeout: 10s
+
+    # ==============================================================================
+    # Kubernetes Pods Monitoring
+    # ==============================================================================
+    - job_name: 'kubernetes-pods'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - veridis-dev
+              - monitoring
+              - kube-system
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+          action: keep
+          regex: true
+        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scheme]
+          action: replace
+          target_label: __scheme__
+          regex: (https?)
+        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+          action: replace
+          target_label: __metrics_path__
+          regex: (.+)
+        - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+          action: replace
+          regex: ([^:]+)(?::\d+)?;(\d+)
+          replacement: $1:$2
+          target_label: __address__
+        - action: labelmap
+          regex: __meta_kubernetes_pod_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          action: replace
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          action: replace
+          target_label: kubernetes_pod_name
+        - source_labels: [__meta_kubernetes_pod_container_name]
+          action: replace
+          target_label: kubernetes_container_name
+      scrape_interval: 15s
+      scrape_timeout: 10s
+
+    # ==============================================================================
+    # Veridis Backend Service Monitoring
+    # ==============================================================================
+    - job_name: 'veridis-backend-development'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - veridis-dev
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          action: keep
+          regex: veridis-backend
+        - source_labels: [__meta_kubernetes_pod_label_veridis_xyz_environment]
+          action: keep
+          regex: development
+        - source_labels: [__address__]
+          action: replace
+          regex: ([^:]+)(?::\d+)?
+          replacement: $1:9090
+          target_label: __address__
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: instance
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: kubernetes_pod_name
+        - target_label: job
+          replacement: veridis-backend-development
+      scrape_interval: 10s
+      scrape_timeout: 5s
+      metrics_path: /metrics
+      scheme: http
+
+    # ==============================================================================
+    # ZK Circuits Service Monitoring
+    # ==============================================================================
+    - job_name: 'zk-circuits-development'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - veridis-dev
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          action: keep
+          regex: zk-circuits
+        - source_labels: [__meta_kubernetes_pod_label_veridis_xyz_environment]
+          action: keep
+          regex: development
+        - source_labels: [__address__]
+          action: replace
+          regex: ([^:]+)(?::\d+)?
+          replacement: $1:9090
+          target_label: __address__
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: instance
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: kubernetes_pod_name
+        - target_label: job
+          replacement: zk-circuits-development
+      scrape_interval: 15s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+
+    # ==============================================================================
+    # PostgreSQL Database Monitoring
+    # ==============================================================================
+    - job_name: 'postgres-development'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - veridis-dev
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          action: keep
+          regex: postgres
+        - source_labels: [__meta_kubernetes_pod_label_veridis_xyz_environment]
+          action: keep
+          regex: development
+        - source_labels: [__address__]
+          action: replace
+          regex: ([^:]+)(?::\d+)?
+          replacement: $1:9187
+          target_label: __address__
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: instance
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: kubernetes_pod_name
+        - target_label: job
+          replacement: postgres-development
+      scrape_interval: 30s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+
+    # ==============================================================================
+    # Redis Cache Monitoring
+    # ==============================================================================
+    - job_name: 'redis-development'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - veridis-dev
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          action: keep
+          regex: redis
+        - source_labels: [__meta_kubernetes_pod_label_veridis_xyz_environment]
+          action: keep
+          regex: development
+        - source_labels: [__address__]
+          action: replace
+          regex: ([^:]+)(?::\d+)?
+          replacement: $1:9121
+          target_label: __address__
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: instance
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: kubernetes_pod_name
+        - target_label: job
+          replacement: redis-development
+      scrape_interval: 30s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+
+    # ==============================================================================
+    # Vault Secrets Management Monitoring
+    # ==============================================================================
+    - job_name: 'vault-development'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - veridis-dev
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          action: keep
+          regex: vault
+        - source_labels: [__meta_kubernetes_pod_label_veridis_xyz_environment]
+          action: keep
+          regex: development
+        - source_labels: [__address__]
+          action: replace
+          regex: ([^:]+)(?::\d+)?
+          replacement: $1:9410
+          target_label: __address__
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: instance
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: kubernetes_pod_name
+        - target_label: job
+          replacement: vault-development
+      scrape_interval: 30s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+
+    # ==============================================================================
+    # NGINX Ingress Controller Monitoring
+    # ==============================================================================
+    - job_name: 'nginx-ingress-development'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - ingress-nginx
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          action: keep
+          regex: ingress-nginx
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_component]
+          action: keep
+          regex: controller
+        - source_labels: [__address__]
+          action: replace
+          regex: ([^:]+)(?::\d+)?
+          replacement: $1:10254
+          target_label: __address__
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: instance
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: kubernetes_pod_name
+        - target_label: job
+          replacement: nginx-ingress-development
+      scrape_interval: 30s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+
+    # ==============================================================================
+    # StarkNet DevNet Monitoring
+    # ==============================================================================
+    - job_name: 'starknet-devnet-development'
+      kubernetes_sd_configs:
+        - role: pod
+          namespaces:
+            names:
+              - veridis-dev
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
+          action: keep
+          regex: starknet-devnet
+        - source_labels: [__meta_kubernetes_pod_label_veridis_xyz_environment]
+          action: keep
+          regex: development
+        - source_labels: [__address__]
+          action: replace
+          regex: ([^:]+)(?::\d+)?
+          replacement: $1:9090
+          target_label: __address__
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: instance
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          target_label: kubernetes_pod_name
+        - target_label: job
+          replacement: starknet-devnet-development
+      scrape_interval: 30s
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+
+    # ==============================================================================
+    # Kubernetes Service Monitoring
+    # ==============================================================================
+    - job_name: 'kubernetes-services'
+      kubernetes_sd_configs:
+        - role: service
+          namespaces:
+            names:
+              - veridis-dev
+              - monitoring
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+          action: keep
+          regex: true
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+          action: replace
+          target_label: __scheme__
+          regex: (https?)
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+          action: replace
+          target_label: __metrics_path__
+          regex: (.+)
+        - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+          action: replace
+          target_label: __address__
+          regex: ([^:]+)(?::\d+)?;(\d+)
+          replacement: $1:$2
+        - action: labelmap
+          regex: __meta_kubernetes_service_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          action: replace
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_service_name]
+          action: replace
+          target_label: kubernetes_name
+      scrape_interval: 30s
+      scrape_timeout: 10s
+
+    # ==============================================================================
+    # Kubernetes Endpoints Monitoring
+    # ==============================================================================
+    - job_name: 'kubernetes-endpoints'
+      kubernetes_sd_configs:
+        - role: endpoints
+          namespaces:
+            names:
+              - veridis-dev
+              - monitoring
+              - kube-system
+      relabel_configs:
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+          action: keep
+          regex: true
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+          action: replace
+          target_label: __scheme__
+          regex: (https?)
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+          action: replace
+          target_label: __metrics_path__
+          regex: (.+)
+        - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+          action: replace
+          target_label: __address__
+          regex: ([^:]+)(?::\d+)?;(\d+)
+          replacement: $1:$2
+        - action: labelmap
+          regex: __meta_kubernetes_service_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          action: replace
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_service_name]
+          action: replace
+          target_label: kubernetes_name
+        - source_labels: [__meta_kubernetes_pod_name]
+          action: replace
+          target_label: kubernetes_pod_name
+      scrape_interval: 30s
+      scrape_timeout: 10s
+
+# ==============================================================================
+# Development Alertmanager Configuration
+# ==============================================================================
+alertmanager:
+  enabled: true
+
+  # Development image configuration
+  image:
+    registry: quay.io
+    repository: prometheus/alertmanager
+    tag: "v0.26.0"
+    pullPolicy: IfNotPresent
+
+  # Development replica configuration (single replica for cost optimization)
+  replicaCount: 1
+
+  # Development service configuration
+  service:
+    type: ClusterIP
+    port: 9093
+    targetPort: 9093
+    name: http-web
+    annotations:
+      veridis.xyz/service-type: "alerting"
+      veridis.xyz/environment: "development"
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9093"
+      prometheus.io/path: "/metrics"
+
+  # Development persistence configuration
+  persistence:
+    enabled: true
+    storageClass: "fast-ssd"
+    accessModes:
+      - ReadWriteOnce
+    size: 2Gi
+
+  # Development resource configuration
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+      ephemeral-storage: 1Gi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+      ephemeral-storage: 512Mi
+
+  # Development configuration
+  config:
+    global:
+      smtp_smarthost: 'localhost:587'
+      smtp_from: 'alertmanager@veridis.dev'
+      resolve_timeout: 5m
+
+    templates:
+      - '/etc/alertmanager/templates/*.tmpl'
+
+    route:
+      group_by: ['alertname', 'cluster', 'service', 'severity']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 12h
+      receiver: 'development-default'
+      routes:
+        - match:
+            severity: critical
+          receiver: 'development-critical'
+          group_wait: 10s
+          group_interval: 1m
+          repeat_interval: 1h
+        - match:
+            severity: warning
+          receiver: 'development-warning'
+          group_wait: 30s
+          group_interval: 5m
+          repeat_interval: 4h
+        - match:
+            environment: development
+          receiver: 'development-default'
+          group_wait: 1m
+          group_interval: 10m
+          repeat_interval: 24h
+
+    receivers:
+      - name: 'development-default'
+        slack_configs:
+          - api_url: 'https://hooks.slack.com/services/development/webhook'
+            channel: '#veridis-development-alerts'
+            title: 'Veridis Development Alert'
+            text: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+            send_resolved: true
+
+      - name: 'development-critical'
+        slack_configs:
+          - api_url: 'https://hooks.slack.com/services/development/webhook'
+            channel: '#veridis-development-critical'
+            title: 'Veridis Development CRITICAL Alert'
+            text: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+            send_resolved: true
+
+      - name: 'development-warning'
+        slack_configs:
+          - api_url: 'https://hooks.slack.com/services/development/webhook'
+            channel: '#veridis-development-warnings'
+            title: 'Veridis Development Warning'
+            text: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
+            send_resolved: true
+
+    inhibit_rules:
+      - source_match:
+          severity: 'critical'
+        target_match:
+          severity: 'warning'
+        equal: ['alertname', 'cluster', 'service']
+
+  # Development pod annotations
+  podAnnotations:
+    veridis.xyz/deployed-by: "helm-development"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/alertmanager-version: "0.26.0"
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9093"
+    prometheus.io/path: "/metrics"
+
+# ==============================================================================
+# Development Node Exporter Configuration
+# ==============================================================================
+nodeExporter:
+  enabled: true
+
+  # Development image configuration
+  image:
+    registry: quay.io
+    repository: prometheus/node-exporter
+    tag: "v1.7.0"
+    pullPolicy: IfNotPresent
+
+  # Development service configuration
+  service:
+    type: ClusterIP
+    port: 9100
+    targetPort: 9100
+    name: http-metrics
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9100"
+      prometheus.io/path: "/metrics"
+
+  # Development resource configuration
+  resources:
+    limits:
+      cpu: 200m
+      memory: 50Mi
+      ephemeral-storage: 100Mi
+    requests:
+      cpu: 100m
+      memory: 30Mi
+      ephemeral-storage: 50Mi
+
+  # Development host network (required for node metrics)
+  hostNetwork: true
+  hostPID: true
+
+  # Development extra arguments
+  extraArgs:
+    - --path.rootfs=/host/root
+    - --path.procfs=/host/proc
+    - --path.sysfs=/host/sys
+    - --collector.filesystem.ignored-mount-points
+    - "^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)"
+    - --collector.filesystem.ignored-fs-types
+    - "^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$"
+    - --collector.netdev.device-blacklist
+    - "^(veth.*)$"
+    - --collector.diskstats.ignored-devices
+    - "^(ram|loop|fd|(h|s|v)d[a-z]|nvme\\d+n\\d+p)\\d+$"
+    - --web.listen-address=0.0.0.0:9100
+    - --web.telemetry-path=/metrics
+    - --log.level=info
+    - --log.format=logfmt
+
+  # Development tolerations (run on all nodes)
+  tolerations:
+    - operator: Exists
+      effect: NoSchedule
+    - operator: Exists
+      effect: NoExecute
+
+  # Development update strategy
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+
+# ==============================================================================
+# Development Kube State Metrics Configuration
+# ==============================================================================
+kubeStateMetrics:
+  enabled: true
+
+  # Development image configuration
+  image:
+    registry: registry.k8s.io
+    repository: kube-state-metrics/kube-state-metrics
+    tag: "v2.10.1"
+    pullPolicy: IfNotPresent
+
+  # Development replica configuration
+  replicaCount: 1
+
+  # Development service configuration
+  service:
+    type: ClusterIP
+    port: 8080
+    targetPort: 8080
+    name: http-metrics
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "8080"
+      prometheus.io/path: "/metrics"
+
+  # Development resource configuration
+  resources:
+    limits:
+      cpu: 200m
+      memory: 150Mi
+      ephemeral-storage: 200Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+      ephemeral-storage: 100Mi
+
+  # Development extra arguments
+  extraArgs:
+    - --log-level=info
+    - --log-format=logfmt
+    - --telemetry-port=8081
+    - --metric-labels-allowlist=pods=[*],nodes=[*],namespaces=[*]
+    - --metric-annotations-allowlist=pods=[*],nodes=[*]
+    - --resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments
+
+  # Development security context
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+    fsGroup: 65534
+
+  # Development container security context
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+
+# ==============================================================================
+# Development Pushgateway Configuration (Optional)
+# ==============================================================================
+pushgateway:
+  enabled: false  # Disabled for development to reduce costs
+
+# ==============================================================================
+# Development Additional Exporters Configuration
+# ==============================================================================
+additionalScrapeConfigs: |
+  # Development custom metrics scraping configurations
+  - job_name: 'development-custom-metrics'
+    static_configs:
+      - targets:
+          - 'custom-metrics.veridis-dev.svc.cluster.local:8080'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: /custom-metrics
+    scheme: http
+    honor_labels: true
+
+  # Development application metrics
+  - job_name: 'development-app-metrics'
+    kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+            - veridis-dev
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_veridis_xyz_metrics_enabled]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_pod_annotation_veridis_xyz_metrics_port]
+        action: replace
+        target_label: __address__
+        regex: (.+)
+        replacement: $1
+      - source_labels: [__meta_kubernetes_pod_annotation_veridis_xyz_metrics_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+        replacement: $1
+    scrape_interval: 15s
+    scrape_timeout: 10s
+
+# ==============================================================================
+# Development Service Monitor Configurations
+# ==============================================================================
+serviceMonitor:
+  enabled: true
+
+  # Development service monitor labels
+  additionalLabels:
+    veridis.xyz/environment: development
+    veridis.xyz/monitoring-tier: development
+    prometheus: kube-prometheus
+
+  # Development namespace selector
+  namespaceSelector:
+    matchNames:
+      - veridis-dev
+      - monitoring
+
+  # Development selector
+  selector:
+    matchLabels:
+      app.kubernetes.io/part-of: veridis-protocol
+      veridis.xyz/environment: development
+
+  # Development endpoints configuration
+  endpoints:
+    - port: http-metrics
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s
+      honorLabels: true
+      relabelings:
+        - sourceLabels: [__meta_kubernetes_service_name]
+          targetLabel: service
+          replacement: ${1}
+        - sourceLabels: [__meta_kubernetes_namespace]
+          targetLabel: namespace
+          replacement: ${1}
+      metricRelabelings:
+        - sourceLabels: [__name__]
+          regex: 'go_.*'
+          action: drop
+        - sourceLabels: [__name__]
+          regex: 'process_.*'
+          action: drop
+
+# ==============================================================================
+# Development Prometheus Rules Configuration
+# ==============================================================================
+prometheusRule:
+  enabled: true
+
+  # Development rules labels
+  additionalLabels:
+    veridis.xyz/environment: development
+    veridis.xyz/rule-type: development
+    prometheus: kube-prometheus
+
+  # Development rules namespace
+  namespace: veridis-dev
+
+  # Development recording rules
+  rules:
+    - name: veridis.development.recording.rules
+      interval: 30s
+      rules:
+        # Backend service recording rules
+        - record: veridis:backend:request_rate_5m
+          expr: rate(http_requests_total{job="veridis-backend-development"}[5m])
+          labels:
+            service: veridis-backend
+            environment: development
+
+        - record: veridis:backend:error_rate_5m
+          expr: rate(http_requests_total{job="veridis-backend-development",status=~"5.."}[5m])
+          labels:
+            service: veridis-backend
+            environment: development
+
+        - record: veridis:backend:response_time_95p
+          expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job="veridis-backend-development"}[5m]))
+          labels:
+            service: veridis-backend
+            environment: development
+
+        # ZK Circuits recording rules
+        - record: veridis:zk_circuits:proof_generation_rate_5m
+          expr: rate(zk_proof_generations_total{job="zk-circuits-development"}[5m])
+          labels:
+            service: zk-circuits
+            environment: development
+
+        - record: veridis:zk_circuits:proof_generation_duration_95p
+          expr: histogram_quantile(0.95, rate(zk_proof_generation_duration_seconds_bucket{job="zk-circuits-development"}[5m]))
+          labels:
+            service: zk-circuits
+            environment: development
+
+        # Database recording rules
+        - record: veridis:postgres:connection_usage
+          expr: pg_stat_database_numbackends{job="postgres-development"} / pg_settings_max_connections{job="postgres-development"}
+          labels:
+            service: postgres
+            environment: development
+
+        - record: veridis:postgres:query_duration_95p
+          expr: histogram_quantile(0.95, rate(pg_stat_statements_mean_time_seconds_bucket{job="postgres-development"}[5m]))
+          labels:
+            service: postgres
+            environment: development
+
+    # Development alerting rules
+    - name: veridis.development.alerting.rules
+      rules:
+        # High error rate alert
+        - alert: VeridisBackendHighErrorRate
+          expr: veridis:backend:error_rate_5m > 0.1
+          for: 5m
+          labels:
+            severity: warning
+            service: veridis-backend
+            environment: development
+          annotations:
+            summary: "High error rate in Veridis Backend (development)"
+            description: "Veridis Backend error rate is {{ $value | humanizePercentage }} which is above the threshold of 10%"
+            runbook_url: "https://runbooks.veridis.xyz/backend-high-error-rate"
+
+        # High response time alert
+        - alert: VeridisBackendHighResponseTime
+          expr: veridis:backend:response_time_95p > 1.0
+          for: 5m
+          labels:
+            severity: warning
+            service: veridis-backend
+            environment: development
+          annotations:
+            summary: "High response time in Veridis Backend (development)"
+            description: "Veridis Backend 95th percentile response time is {{ $value }}s which is above the threshold of 1s"
+            runbook_url: "https://runbooks.veridis.xyz/backend-high-response-time"
+
+        # Database connection alert
+        - alert: VeridisPostgresHighConnectionUsage
+          expr: veridis:postgres:connection_usage > 0.8
+          for: 5m
+          labels:
+            severity: warning
+            service: postgres
+            environment: development
+          annotations:
+            summary: "High database connection usage (development)"
+            description: "PostgreSQL connection usage is {{ $value | humanizePercentage }} which is above the threshold of 80%"
+            runbook_url: "https://runbooks.veridis.xyz/postgres-high-connection-usage"
+
+        # ZK Circuits performance alert
+        - alert: VeridisZKCircuitsSlowProofGeneration
+          expr: veridis:zk_circuits:proof_generation_duration_95p > 30.0
+          for: 10m
+          labels:
+            severity: warning
+            service: zk-circuits
+            environment: development
+          annotations:
+            summary: "Slow ZK proof generation (development)"
+            description: "ZK Circuits 95th percentile proof generation time is {{ $value }}s which is above the threshold of 30s"
+            runbook_url: "https://runbooks.veridis.xyz/zk-circuits-slow-proof-generation"
+
+        # Pod restart alert
+        - alert: VeridisPodRestartingFrequently
+          expr: increase(kube_pod_container_status_restarts_total{namespace="veridis-dev"}[1h]) > 3
+          for: 5m
+          labels:
+            severity: warning
+            environment: development
+          annotations:
+            summary: "Pod restarting frequently (development)"
+            description: "Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has restarted {{ $value }} times in the last hour"
+            runbook_url: "https://runbooks.veridis.xyz/pod-restarting-frequently"
+
+        # Node resource alert
+        - alert: VeridisNodeHighCPUUsage
+          expr: (1 - avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m]))) > 0.9
+          for: 10m
+          labels:
+            severity: warning
+            environment: development
+          annotations:
+            summary: "High CPU usage on node (development)"
+            description: "Node {{ $labels.instance }} CPU usage is {{ $value | humanizePercentage }} which is above the threshold of 90%"
+            runbook_url: "https://runbooks.veridis.xyz/node-high-cpu-usage"
+
+        - alert: VeridisNodeHighMemoryUsage
+          expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) > 0.9
+          for: 10m
+          labels:
+            severity: warning
+            environment: development
+          annotations:
+            summary: "High memory usage on node (development)"
+            description: "Node {{ $labels.instance }} memory usage is {{ $value | humanizePercentage }} which is above the threshold of 90%"
+            runbook_url: "https://runbooks.veridis.xyz/node-high-memory-usage"
+
+# ==============================================================================
+# Development ConfigMap Configuration
+# ==============================================================================
+configmapReload:
+  prometheus:
+    enabled: true
+    image:
+      registry: quay.io
+      repository: prometheus-operator/prometheus-config-reloader
+      tag: "v0.69.1"
+      pullPolicy: IfNotPresent
+    resources:
+      limits:
+        cpu: 100m
+        memory: 25Mi
+      requests:
+        cpu: 10m
+        memory: 10Mi
+
+  alertmanager:
+    enabled: true
+    image:
+      registry: quay.io
+      repository: prometheus-operator/prometheus-config-reloader
+      tag: "v0.69.1"
+      pullPolicy: IfNotPresent
+    resources:
+      limits:
+        cpu: 100m
+        memory: 25Mi
+      requests:
+        cpu: 10m
+        memory: 10Mi
+
+# ==============================================================================
+# Development Network Policy Configuration
+# ==============================================================================
+networkPolicy:
+  enabled: true
+
+  # Development ingress rules
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-dev
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+        - namespaceSelector:
+            matchLabels:
+              name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 9090
+        - protocol: TCP
+          port: 9093
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 9100
+
+  # Development egress rules
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-dev
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+      ports:
+        - protocol: TCP
+          port: 443
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 9090
+        - protocol: TCP
+          port: 53
+        - protocol: UDP
+          port: 53
+
+# ==============================================================================
+# Development Pod Security Policy Configuration
+# ==============================================================================
+podSecurityPolicy:
+  enabled: false  # Using Pod Security Standards instead
+
+# ==============================================================================
+# Development RBAC Configuration
+# ==============================================================================
+rbac:
+  create: true
+
+  # Development service account
+  serviceAccount:
+    create: true
+    name: prometheus-development
+    annotations:
+      veridis.xyz/component: "monitoring"
+      veridis.xyz/environment: "development"
+
+  # Development cluster role rules
+  pspEnabled: false
+
+# ==============================================================================
+# Development Extra Configuration
+# ==============================================================================
+extraManifests:
+  - |
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: prometheus-development-rules
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: prometheus
+        app.kubernetes.io/component: rules
+        veridis.xyz/environment: development
+    data:
+      development.yml: |
+        groups:
+          - name: veridis.development.custom.rules
+            rules:
+              - record: veridis:development:total_requests
+                expr: sum(rate(http_requests_total{job=~".*-development"}[5m]))
+                labels:
+                  environment: development
+              - record: veridis:development:total_errors
+                expr: sum(rate(http_requests_total{job=~".*-development",status=~"5.."}[5m]))
+                labels:
+                  environment: development
+              - record: veridis:development:error_percentage
+                expr: (veridis:development:total_errors / veridis:development:total_requests) * 100
+                labels:
+                  environment: development
+
+  - |
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: prometheus-development-alerts
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: prometheus
+        app.kubernetes.io/component: alerts
+        veridis.xyz/environment: development
+    data:
+      development-alerts.yml: |
+        groups:
+          - name: veridis.development.custom.alerts
+            rules:
+              - alert: VeridisDevelopmentServiceDown
+                expr: up{job=~".*-development"} == 0
+                for: 1m
+                labels:
+                  severity: critical
+                  environment: development
+                annotations:
+                  summary: "Veridis development service is down"
+                  description: "Service {{ $labels.job }} has been down for more than 1 minute"
+                  runbook_url: "https://runbooks.veridis.xyz/service-down"
+              - alert: VeridisDevelopmentHighErrorRate
+                expr: veridis:development:error_percentage > 5
+                for: 5m
+                labels:
+                  severity: warning
+                  environment: development
+                annotations:
+                  summary: "High error rate in development environment"
+                  description: "Development environment error rate is {{ $value }}% which is above 5%"
+                  runbook_url: "https://runbooks.veridis.xyz/high-error-rate"
+
+# ==============================================================================
+# Veridis Development Prometheus Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT PROMETHEUS STRATEGY:
+# =====================================================
+#
+# VERIDIS DEVELOPMENT PROMETHEUS ARCHITECTURE OVERVIEW:
+# -----------------------------------------------------
+# 1. Development Monitoring and Metrics Collection:
+#    - Comprehensive enterprise-grade development Prometheus with intelligent metrics collection and advanced developer-focused optimization
+#    - Advanced monitoring configuration with comprehensive cost optimization, developer productivity, debugging support, and comprehensive operational excellence
+#    - Multi-tier monitoring architecture with service discovery, alerting, metrics retention, and comprehensive monitoring intelligence
+#    - Enterprise monitoring policies with developer-friendly enforcement, productivity controls, metrics automation, and comprehensive monitoring procedures
+#    - Performance optimization with intelligent metrics allocation, cost efficiency, monitoring acceleration, and productivity for maximum development performance
+#
+# 2. Service Discovery and Target Management:
+#    - Developer-focused service discovery with Kubernetes integration, pod monitoring, service tracking, and comprehensive discovery coordination
+#    - Advanced discovery configuration with debugging tools, development features, monitoring frameworks, and comprehensive discovery intelligence
+#    - Flexible discovery optimization with developer workflow, productivity enhancement, and comprehensive discovery intelligence
+#    - Discovery intelligence with monitoring procedures, debugging support, discovery automation, and comprehensive discovery coordination
+#    - Development excellence with discovery optimization, productivity workflows, discovery automation, and comprehensive discovery environment management
+#
+# 3. Development Alerting and Notification:
+#    - Performance-optimized alerting with comprehensive notification support, escalation policies, and comprehensive alerting coordination
+#    - Advanced alerting configuration with development rules, alert routing, notification channels, and comprehensive alerting intelligence
+#    - Flexible alerting optimization with performance tracking, rule collection, and comprehensive alerting intelligence
+#    - Alerting intelligence with development procedures, performance support, alerting automation, and comprehensive alerting coordination
+#    - Monitoring excellence with alerting optimization, performance workflows, alerting automation, and comprehensive alerting environment management
+#
+# ENTERPRISE DEVELOPMENT PROMETHEUS FEATURES:
+# ===========================================
+# Advanced Metrics Collection and Storage:
+#   - Multi-tier metrics architecture with development optimization, debugging metrics, testing integration, and comprehensive metrics configurations
+#   - Intelligent metrics management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive metrics decisions
+#   - Metrics discovery with developer optimization, debugging management, metrics policies, and comprehensive metrics analytics
+#   - Performance management with developer productivity, debugging efficiency, metrics optimization, and comprehensive performance intelligence
+#   - Metrics processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent metrics optimization
+#
+# This Development Prometheus configuration provides enterprise-grade monitoring foundation with comprehensive development optimization, intelligent metrics collection, advanced alerting capabilities, and operational excellence while maintaining appropriate cost efficiency, flexibility, and comprehensive functionality for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================

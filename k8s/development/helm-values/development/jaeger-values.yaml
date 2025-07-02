@@ -1,0 +1,1035 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Jaeger Helm Values
+# ==============================================================================
+#
+# This Development Jaeger Helm Values configuration provides comprehensive development-optimized
+# distributed tracing and observability for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT JAEGER ARCHITECTURE:
+#   • Advanced Development Jaeger with intelligent trace collection and comprehensive development-based optimization
+#   • Multi-tier Development Jaeger architecture with development tracing, span collection, performance monitoring, and development environments
+#   • Comprehensive development tracing framework with Jaeger policies, developer tooling integration, tracing automation
+#   • Advanced lifecycle management with automated Jaeger optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Jaeger performance insights
+#
+# VERIDIS DEVELOPMENT JAEGER OPTIMIZATION:
+#   • High-performance Development with intelligent trace management and developer-optimized tracing allocation
+#   • Intelligent Development tracing management with responsive policies and development-based trace decisions
+#   • Advanced Development management with business intelligence and tracing-based developer control
+#   • Comprehensive development trace control with intelligent Developer Jaeger management and tracing enhancement
+#   • Enterprise acceleration with predictive Developer Jaeger management and development tracing optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Jaeger controls with comprehensive audit and development requirements
+#   • GDPR Development Jaeger compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Jaeger management with comprehensive framework integration
+#   • NIST 800-190 container Development Jaeger security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Jaeger best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Jaeger lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Jaeger intelligence
+#   • Advanced Jaeger integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development trace control with Development Jaeger preservation and tracing optimization
+#   • Business continuity Development Jaeger with development guarantees and performance optimization
+#
+# DEVELOPMENT JAEGER ACCELERATION INTELLIGENCE:
+#   • Development Jaeger usage analytics with development patterns and optimization recommendations
+#   • Jaeger monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Jaeger analytics and deployment optimization procedures
+#   • Cost optimization with Development Jaeger utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Jaeger metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Global Jaeger Configuration
+# ==============================================================================
+global:
+  # Development cluster configuration
+  clusterDomain: cluster.local
+
+  # Development image configuration
+  imageRegistry: ""
+
+  # Development security context
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+    runAsGroup: 65534
+    fsGroup: 65534
+
+  # Development node selector
+  nodeSelector:
+    kubernetes.io/os: linux
+    node-type: development
+
+  # Development tolerations
+  tolerations:
+    - key: "development"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "spot-instance"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
+  # Development affinity (relaxed for development)
+  affinity: {}
+
+# ==============================================================================
+# Development Jaeger Agent Configuration
+# ==============================================================================
+agent:
+  # Enable agent for development
+  enabled: true
+
+  # Development agent image
+  image:
+    repository: jaegertracing/jaeger-agent
+    tag: "1.54.0"
+    pullPolicy: IfNotPresent
+
+  # Development agent resources (minimal for cost optimization)
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+  # Development agent replica count
+  replicaCount: 1
+
+  # Development agent configuration
+  config:
+    # Agent sampling configuration
+    sampling:
+      strategies-file: |
+        {
+          "service_strategies": [
+            {
+              "service": "veridis-backend",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "service": "zk-circuits",
+              "type": "probabilistic",
+              "param": 1.0
+            },
+            {
+              "service": "veridis-ui",
+              "type": "probabilistic",
+              "param": 0.5
+            }
+          ],
+          "default_strategy": {
+            "type": "probabilistic",
+            "param": 1.0
+          }
+        }
+
+    # Agent reporter configuration
+    reporter:
+      grpc:
+        host-port: "veridis-dev-jaeger-collector:14250"
+        tls:
+          enabled: false
+      log-spans: true
+
+    # Agent processor configuration
+    processor:
+      jaeger-compact:
+        server-host-port: ":6831"
+      jaeger-binary:
+        server-host-port: ":6832"
+
+  # Development agent command line arguments
+  cmdlineParams:
+    log-level: debug
+    metrics-backend: prometheus
+    metrics-http-route: /metrics
+
+  # Development agent service configuration
+  service:
+    type: ClusterIP
+    ports:
+      - name: agent-zipkin-thrift
+        port: 5775
+        protocol: UDP
+        targetPort: 5775
+      - name: agent-compact
+        port: 6831
+        protocol: UDP
+        targetPort: 6831
+      - name: agent-binary
+        port: 6832
+        protocol: UDP
+        targetPort: 6832
+      - name: agent-configs
+        port: 5778
+        protocol: TCP
+        targetPort: 5778
+      - name: agent-metrics
+        port: 14271
+        protocol: TCP
+        targetPort: 14271
+
+  # Development agent deployment strategy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  # Development agent pod annotations
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "14271"
+    prometheus.io/path: "/metrics"
+    veridis.xyz/component: "jaeger-agent"
+    veridis.xyz/environment: "development"
+
+  # Development agent pod labels
+  podLabels:
+    app.kubernetes.io/name: jaeger-agent
+    app.kubernetes.io/component: agent
+    app.kubernetes.io/part-of: veridis-protocol
+    veridis.xyz/environment: development
+    veridis.xyz/service-tier: tracing
+
+  # Development agent environment variables
+  env:
+    - name: SPAN_STORAGE_TYPE
+      value: "elasticsearch"
+    - name: ES_SERVER_URLS
+      value: "http://veridis-dev-elasticsearch:9200"
+    - name: LOG_LEVEL
+      value: "debug"
+    - name: JAEGER_DEVELOPMENT_MODE
+      value: "true"
+
+# ==============================================================================
+# Development Jaeger Collector Configuration
+# ==============================================================================
+collector:
+  # Enable collector for development
+  enabled: true
+
+  # Development collector image
+  image:
+    repository: jaegertracing/jaeger-collector
+    tag: "1.54.0"
+    pullPolicy: IfNotPresent
+
+  # Development collector resources
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+  # Development collector replica count
+  replicaCount: 1
+
+  # Development collector autoscaling (disabled for cost optimization)
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+
+  # Development collector configuration
+  config:
+    # Collector span storage
+    span-storage:
+      type: elasticsearch
+
+    # Collector sampling configuration
+    sampling:
+      initial-sampling-probability: 1.0
+      max-traces-per-second: 1000
+
+    # Development collector queue configuration
+    queue:
+      size: 2000
+      workers: 50
+
+    # Development collector write configuration
+    write:
+      timeout: 30s
+
+  # Development collector command line parameters
+  cmdlineParams:
+    log-level: debug
+    metrics-backend: prometheus
+    metrics-http-route: /metrics
+    es.server-urls: "http://veridis-dev-elasticsearch:9200"
+    es.num-shards: 1
+    es.num-replicas: 0
+    es.timeout: 30s
+    es.index-prefix: "jaeger-dev"
+    es.create-index-template: true
+    collector.queue-size: 2000
+    collector.num-workers: 50
+    collector.zipkin.host-port: ":9411"
+
+  # Development collector service configuration
+  service:
+    type: ClusterIP
+    ports:
+      - name: jaeger-collector-http
+        port: 14268
+        protocol: TCP
+        targetPort: 14268
+      - name: jaeger-collector-grpc
+        port: 14250
+        protocol: TCP
+        targetPort: 14250
+      - name: jaeger-collector-zipkin
+        port: 9411
+        protocol: TCP
+        targetPort: 9411
+      - name: jaeger-collector-metrics
+        port: 14269
+        protocol: TCP
+        targetPort: 14269
+
+  # Development collector ingress (disabled for development)
+  ingress:
+    enabled: false
+
+  # Development collector deployment strategy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  # Development collector pod annotations
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "14269"
+    prometheus.io/path: "/metrics"
+    veridis.xyz/component: "jaeger-collector"
+    veridis.xyz/environment: "development"
+
+  # Development collector pod labels
+  podLabels:
+    app.kubernetes.io/name: jaeger-collector
+    app.kubernetes.io/component: collector
+    app.kubernetes.io/part-of: veridis-protocol
+    veridis.xyz/environment: development
+    veridis.xyz/service-tier: tracing
+
+  # Development collector environment variables
+  env:
+    - name: SPAN_STORAGE_TYPE
+      value: "elasticsearch"
+    - name: ES_SERVER_URLS
+      value: "http://veridis-dev-elasticsearch:9200"
+    - name: LOG_LEVEL
+      value: "debug"
+    - name: JAEGER_DEVELOPMENT_MODE
+      value: "true"
+    - name: COLLECTOR_ZIPKIN_HOST_PORT
+      value: ":9411"
+
+# ==============================================================================
+# Development Jaeger Query Configuration
+# ==============================================================================
+query:
+  # Enable query service for development
+  enabled: true
+
+  # Development query image
+  image:
+    repository: jaegertracing/jaeger-query
+    tag: "1.54.0"
+    pullPolicy: IfNotPresent
+
+  # Development query resources
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi
+
+  # Development query replica count
+  replicaCount: 1
+
+  # Development query autoscaling (disabled for cost optimization)
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 2
+    targetCPUUtilizationPercentage: 80
+
+  # Development query configuration
+  config:
+    # Query span storage
+    span-storage:
+      type: elasticsearch
+
+    # Query UI configuration
+    ui:
+      base-path: /jaeger
+
+  # Development query command line parameters
+  cmdlineParams:
+    log-level: debug
+    metrics-backend: prometheus
+    metrics-http-route: /metrics
+    es.server-urls: "http://veridis-dev-elasticsearch:9200"
+    es.timeout: 30s
+    es.index-prefix: "jaeger-dev"
+    query.base-path: /jaeger
+    query.ui-config: /etc/jaeger/ui-config.json
+
+  # Development query service configuration
+  service:
+    type: ClusterIP
+    ports:
+      - name: jaeger-query-http
+        port: 16686
+        protocol: TCP
+        targetPort: 16686
+      - name: jaeger-query-grpc
+        port: 16685
+        protocol: TCP
+        targetPort: 16685
+      - name: jaeger-query-metrics
+        port: 16687
+        protocol: TCP
+        targetPort: 16687
+
+  # Development query ingress configuration
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/auth-type: basic
+      nginx.ingress.kubernetes.io/auth-secret: veridis-development-monitoring-auth
+      cert-manager.io/cluster-issuer: letsencrypt-staging
+    hosts:
+      - host: dev-monitoring.veridis.xyz
+        paths:
+          - path: /jaeger(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-dev-jaeger-query
+                port:
+                  number: 16686
+    tls:
+      - secretName: veridis-jaeger-development-tls-cert
+        hosts:
+          - dev-monitoring.veridis.xyz
+
+  # Development query deployment strategy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  # Development query pod annotations
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "16687"
+    prometheus.io/path: "/metrics"
+    veridis.xyz/component: "jaeger-query"
+    veridis.xyz/environment: "development"
+
+  # Development query pod labels
+  podLabels:
+    app.kubernetes.io/name: jaeger-query
+    app.kubernetes.io/component: query
+    app.kubernetes.io/part-of: veridis-protocol
+    veridis.xyz/environment: development
+    veridis.xyz/service-tier: tracing
+
+  # Development query environment variables
+  env:
+    - name: SPAN_STORAGE_TYPE
+      value: "elasticsearch"
+    - name: ES_SERVER_URLS
+      value: "http://veridis-dev-elasticsearch:9200"
+    - name: LOG_LEVEL
+      value: "debug"
+    - name: JAEGER_DEVELOPMENT_MODE
+      value: "true"
+    - name: QUERY_BASE_PATH
+      value: "/jaeger"
+
+  # Development query UI configuration
+  uiConfig:
+    enabled: true
+    config: |
+      {
+        "monitor": {
+          "menuEnabled": true
+        },
+        "dependencies": {
+          "menuEnabled": true
+        },
+        "archiveEnabled": true,
+        "tracking": {
+          "gaID": "",
+          "trackErrors": false
+        },
+        "menu": [
+          {
+            "label": "Veridis Development",
+            "items": [
+              {
+                "label": "Backend Traces",
+                "url": "/jaeger/search?service=veridis-backend"
+              },
+              {
+                "label": "ZK Circuits Traces",
+                "url": "/jaeger/search?service=zk-circuits"
+              },
+              {
+                "label": "UI Traces",
+                "url": "/jaeger/search?service=veridis-ui"
+              }
+            ]
+          },
+          {
+            "label": "Development Tools",
+            "items": [
+              {
+                "label": "Service Map",
+                "url": "/jaeger/dependencies"
+              },
+              {
+                "label": "System Architecture",
+                "url": "/jaeger/search?service=all&lookback=1h"
+              }
+            ]
+          }
+        ]
+      }
+
+# ==============================================================================
+# Development Elasticsearch Configuration (for Jaeger storage)
+# ==============================================================================
+elasticsearch:
+  # Enable Elasticsearch for development
+  enabled: true
+
+  # Development Elasticsearch image
+  image:
+    repository: elasticsearch
+    tag: "8.11.0"
+    pullPolicy: IfNotPresent
+
+  # Development Elasticsearch resources (minimal for cost optimization)
+  resources:
+    requests:
+      cpu: 200m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+
+  # Development Elasticsearch replica count
+  replicaCount: 1
+
+  # Development Elasticsearch configuration
+  config:
+    elasticsearch.yml: |
+      cluster.name: "jaeger-development"
+      network.host: 0.0.0.0
+      discovery.type: single-node
+      xpack.security.enabled: false
+      xpack.monitoring.collection.enabled: false
+      action.destructive_requires_name: false
+      cluster.routing.allocation.disk.threshold_enabled: false
+
+  # Development Elasticsearch environment variables
+  env:
+    - name: ES_JAVA_OPTS
+      value: "-Xms512m -Xmx1g"
+    - name: discovery.type
+      value: "single-node"
+    - name: xpack.security.enabled
+      value: "false"
+    - name: cluster.name
+      value: "jaeger-development"
+    - name: node.name
+      value: "jaeger-es-dev"
+
+  # Development Elasticsearch service configuration
+  service:
+    type: ClusterIP
+    ports:
+      - name: http
+        port: 9200
+        protocol: TCP
+        targetPort: 9200
+      - name: transport
+        port: 9300
+        protocol: TCP
+        targetPort: 9300
+
+  # Development Elasticsearch persistence (minimal for cost optimization)
+  persistence:
+    enabled: true
+    storageClass: "standard"
+    size: 10Gi
+    accessMode: ReadWriteOnce
+
+  # Development Elasticsearch pod annotations
+  podAnnotations:
+    veridis.xyz/component: "elasticsearch"
+    veridis.xyz/environment: "development"
+
+  # Development Elasticsearch pod labels
+  podLabels:
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/component: elasticsearch
+    app.kubernetes.io/part-of: veridis-protocol
+    veridis.xyz/environment: development
+    veridis.xyz/service-tier: storage
+
+# ==============================================================================
+# Development Jaeger All-in-One Configuration (Alternative deployment)
+# ==============================================================================
+allInOne:
+  # Disable all-in-one for production-like development setup
+  enabled: false
+
+  # Development all-in-one image (if enabled)
+  image:
+    repository: jaegertracing/all-in-one
+    tag: "1.54.0"
+    pullPolicy: IfNotPresent
+
+  # Development all-in-one resources
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+  # Development all-in-one configuration
+  config:
+    memory:
+      max-traces: 50000
+    sampling:
+      strategies-file: |
+        {
+          "default_strategy": {
+            "type": "probabilistic",
+            "param": 1.0
+          }
+        }
+
+  # Development all-in-one command line parameters
+  cmdlineParams:
+    log-level: debug
+    memory.max-traces: 50000
+
+  # Development all-in-one service configuration
+  service:
+    type: ClusterIP
+    ports:
+      - name: jaeger-ui
+        port: 16686
+        protocol: TCP
+        targetPort: 16686
+
+# ==============================================================================
+# Development Hotrod Example Application (for testing)
+# ==============================================================================
+hotrod:
+  # Enable hotrod for development testing
+  enabled: true
+
+  # Development hotrod image
+  image:
+    repository: jaegertracing/example-hotrod
+    tag: "1.54.0"
+    pullPolicy: IfNotPresent
+
+  # Development hotrod resources
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+  # Development hotrod replica count
+  replicaCount: 1
+
+  # Development hotrod service configuration
+  service:
+    type: ClusterIP
+    ports:
+      - name: hotrod-ui
+        port: 8080
+        protocol: TCP
+        targetPort: 8080
+
+  # Development hotrod ingress configuration
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-staging
+    hosts:
+      - host: dev-hotrod.veridis.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-dev-jaeger-hotrod
+                port:
+                  number: 8080
+    tls:
+      - secretName: veridis-hotrod-development-tls-cert
+        hosts:
+          - dev-hotrod.veridis.xyz
+
+  # Development hotrod environment variables
+  env:
+    - name: JAEGER_AGENT_HOST
+      value: "veridis-dev-jaeger-agent"
+    - name: JAEGER_AGENT_PORT
+      value: "6831"
+
+# ==============================================================================
+# Development Security Configuration
+# ==============================================================================
+security:
+  # Development security context
+  securityContext:
+    enabled: true
+    runAsNonRoot: true
+    runAsUser: 65534
+    runAsGroup: 65534
+    fsGroup: 65534
+
+  # Development pod security context
+  podSecurityContext:
+    enabled: true
+    runAsNonRoot: true
+    runAsUser: 65534
+    runAsGroup: 65534
+    fsGroup: 65534
+
+  # Development network policies (relaxed)
+  networkPolicy:
+    enabled: false  # Disabled for development flexibility
+
+  # Development RBAC
+  rbac:
+    enabled: true
+
+  # Development service account
+  serviceAccount:
+    create: true
+    automountServiceAccountToken: false
+    annotations:
+      veridis.xyz/component: "jaeger"
+      veridis.xyz/environment: "development"
+
+# ==============================================================================
+# Development Monitoring and Observability Configuration
+# ==============================================================================
+monitoring:
+  # Development metrics configuration
+  metrics:
+    enabled: true
+    backend: prometheus
+
+  # Development ServiceMonitor for Prometheus
+  serviceMonitor:
+    enabled: true
+    namespace: veridis-dev
+    labels:
+      app.kubernetes.io/name: jaeger
+      app.kubernetes.io/component: monitoring
+      veridis.xyz/environment: development
+    annotations:
+      veridis.xyz/monitoring-type: "jaeger-metrics"
+    interval: 30s
+    scrapeTimeout: 10s
+    path: /metrics
+
+  # Development PrometheusRule for alerting
+  prometheusRule:
+    enabled: true
+    namespace: veridis-dev
+    labels:
+      app.kubernetes.io/name: jaeger
+      app.kubernetes.io/component: alerting
+      veridis.xyz/environment: development
+    rules:
+      - alert: JaegerAgentDown
+        expr: up{job="jaeger-agent"} == 0
+        for: 5m
+        labels:
+          severity: warning
+          component: jaeger-agent
+          environment: development
+        annotations:
+          summary: "Jaeger Agent is down in development"
+          description: "Jaeger Agent has been down for more than 5 minutes in development environment"
+
+      - alert: JaegerCollectorDown
+        expr: up{job="jaeger-collector"} == 0
+        for: 5m
+        labels:
+          severity: warning
+          component: jaeger-collector
+          environment: development
+        annotations:
+          summary: "Jaeger Collector is down in development"
+          description: "Jaeger Collector has been down for more than 5 minutes in development environment"
+
+      - alert: JaegerQueryDown
+        expr: up{job="jaeger-query"} == 0
+        for: 5m
+        labels:
+          severity: warning
+          component: jaeger-query
+          environment: development
+        annotations:
+          summary: "Jaeger Query is down in development"
+          description: "Jaeger Query service has been down for more than 5 minutes in development environment"
+
+      - alert: JaegerHighErrorRate
+        expr: rate(jaeger_collector_spans_dropped_total[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+          component: jaeger-collector
+          environment: development
+        annotations:
+          summary: "High error rate in Jaeger Collector in development"
+          description: "Jaeger Collector is dropping spans at a rate of {{ $value }} per second in development environment"
+
+# ==============================================================================
+# Development Persistence Configuration
+# ==============================================================================
+persistence:
+  # Development storage configuration
+  enabled: true
+  storageClass: "standard"
+
+  # Development Elasticsearch persistence
+  elasticsearch:
+    size: 10Gi
+    accessMode: ReadWriteOnce
+
+  # Development backup configuration (disabled for development)
+  backup:
+    enabled: false
+
+# ==============================================================================
+# Development Networking Configuration
+# ==============================================================================
+networking:
+  # Development service type
+  serviceType: ClusterIP
+
+  # Development load balancer (disabled for development)
+  loadBalancer:
+    enabled: false
+
+  # Development ingress configuration
+  ingress:
+    enabled: true
+    className: nginx
+
+  # Development DNS configuration
+  dns:
+    enabled: true
+
+  # Development service mesh integration
+  serviceMesh:
+    enabled: false  # Disabled for development simplicity
+
+# ==============================================================================
+# Development Resource Optimization Configuration
+# ==============================================================================
+resources:
+  # Development global resource limits
+  global:
+    requests:
+      cpu: 400m
+      memory: 1.5Gi
+    limits:
+      cpu: 2000m
+      memory: 4Gi
+
+  # Development component-specific resource limits
+  agent:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
+
+  collector:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+  query:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi
+
+  elasticsearch:
+    requests:
+      cpu: 200m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+
+# ==============================================================================
+# Development Testing and Debugging Configuration
+# ==============================================================================
+testing:
+  # Development testing configuration
+  enabled: true
+
+  # Development test suite configuration
+  testSuite:
+    enabled: true
+    image:
+      repository: jaegertracing/jaeger-test
+      tag: "1.54.0"
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+
+  # Development debugging configuration
+  debugging:
+    enabled: true
+    logLevel: debug
+    verboseLogging: true
+
+  # Development profiling configuration
+  profiling:
+    enabled: true
+    pprofPort: 6060
+
+# ==============================================================================
+# Development Configuration Validation
+# ==============================================================================
+validation:
+  # Development schema validation
+  enabled: true
+
+  # Development configuration checks
+  configCheck:
+    enabled: true
+
+  # Development health checks
+  healthCheck:
+    enabled: true
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+
+# ==============================================================================
+# Development Feature Flags
+# ==============================================================================
+features:
+  # Development feature flags
+  developmentMode: true
+  debugMode: true
+  verboseLogging: true
+  profilingEnabled: true
+  testingEnabled: true
+  hotreloadEnabled: false  # Not applicable for Jaeger
+  mockDataEnabled: true
+
+  # Development experimental features
+  experimental:
+    enabled: true
+    features:
+      - adaptive-sampling
+      - streaming-ingestion
+      - advanced-analytics
+
+# ==============================================================================
+# Veridis Development Jaeger Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT JAEGER STRATEGY:
+# ==================================================
+#
+# VERIDIS DEVELOPMENT JAEGER ARCHITECTURE OVERVIEW:
+# -------------------------------------------------
+# 1. Development Distributed Tracing Optimization:
+#    - Comprehensive enterprise-grade development jaeger with intelligent trace collection and advanced developer-focused optimization
+#    - Advanced tracing configuration with comprehensive developer productivity, trace sampling, span collection, and comprehensive operational excellence
+#    - Multi-tier tracing architecture with development tracing, span storage, trace querying, and comprehensive tracing intelligence
+#    - Enterprise tracing policies with developer-friendly enforcement, productivity controls, tracing automation, and comprehensive tracing procedures
+#    - Performance optimization with intelligent trace allocation, developer efficiency, tracing acceleration, and productivity for maximum development performance
+#
+# 2. Span Collection and Storage Management:
+#    - Developer-focused span configuration with trace collection, span processing, storage optimization, and comprehensive span coordination
+#    - Advanced span configuration with debugging tools, development features, tracing frameworks, and comprehensive span intelligence
+#    - Flexible span optimization with developer workflow, productivity enhancement, and comprehensive span intelligence
+#    - Span intelligence with tracing procedures, debugging support, span automation, and comprehensive span coordination
+#    - Development excellence with span optimization, productivity workflows, span automation, and comprehensive span environment management
+#
+# 3. Development Query and UI Integration:
+#    - Performance-optimized query with comprehensive UI support, trace visualization, and comprehensive query coordination
+#    - Advanced query configuration with development features, UI customization, trace analysis, and comprehensive query intelligence
+#    - Flexible query optimization with performance tracking, trace collection, and comprehensive query intelligence
+#    - Query intelligence with development procedures, performance support, query automation, and comprehensive query coordination
+#    - Tracing excellence with query optimization, performance workflows, query automation, and comprehensive query environment management
+#
+# ENTERPRISE DEVELOPMENT JAEGER FEATURES:
+# =======================================
+# Advanced Trace Collection and Processing:
+#   - Multi-tier trace architecture with developer optimization, debugging tracing, testing integration, and comprehensive trace configurations
+#   - Intelligent trace management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive trace decisions
+#   - Trace discovery with developer optimization, debugging management, trace policies, and comprehensive trace analytics
+#   - Performance management with developer productivity, debugging efficiency, trace optimization, and comprehensive performance intelligence
+#   - Trace processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent trace optimization
+#
+# This Development Jaeger configuration provides enterprise-grade distributed tracing foundation with comprehensive development optimization, intelligent span collection, advanced query capabilities, and operational excellence while maintaining appropriate security, flexibility, and comprehensive functionality for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================

@@ -1,0 +1,1772 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Grafana Helm Values
+# ==============================================================================
+#
+# This Development Grafana Helm Values configuration provides comprehensive development-optimized
+# Grafana deployment with advanced dashboards, datasources, and visualization for the Veridis
+# Decentralized Identity Protocol development environment, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT GRAFANA ARCHITECTURE:
+#   • Advanced Development Grafana with intelligent dashboard management and comprehensive development-based optimization
+#   • Multi-tier Development Grafana architecture with development dashboards, data visualization, alerting, and development environments
+#   • Comprehensive development framework with Grafana policies, developer tooling integration, dashboard automation
+#   • Advanced lifecycle management with automated Grafana optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Grafana performance insights
+#
+# VERIDIS DEVELOPMENT GRAFANA OPTIMIZATION:
+#   • High-performance Development with intelligent dashboard management and developer-optimized resource allocation
+#   • Intelligent Development dashboard management with responsive policies and development-based visualization decisions
+#   • Advanced Development management with business intelligence and dashboard-based developer control
+#   • Comprehensive development visualization control with intelligent Developer Grafana management and dashboard enhancement
+#   • Enterprise acceleration with predictive Developer Grafana management and development dashboard optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Grafana controls with comprehensive audit and development requirements
+#   • GDPR Development Grafana compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Grafana management with comprehensive framework integration
+#   • NIST 800-190 container Development Grafana security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Grafana best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Grafana lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Grafana intelligence
+#   • Advanced Grafana integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development visualization control with Development Grafana preservation and dashboard optimization
+#   • Business continuity Development Grafana with development guarantees and performance optimization
+#
+# DEVELOPMENT GRAFANA ACCELERATION INTELLIGENCE:
+#   • Development Grafana usage analytics with development patterns and optimization recommendations
+#   • Grafana monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Grafana analytics and deployment optimization procedures
+#   • Cost optimization with Development Grafana utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Grafana metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Grafana Global Configuration
+# ==============================================================================
+global:
+  # Development image registry configuration
+  imageRegistry: "docker.io"
+  imagePullSecrets: []
+
+  # Development storage class configuration
+  storageClass: "fast-ssd"
+
+  # Development compatibility configuration
+  compatibility:
+    openshift:
+      adaptSecurityContext: disabled
+
+# ==============================================================================
+# Development Grafana Image Configuration
+# ==============================================================================
+image:
+  # Development Grafana image
+  registry: docker.io
+  repository: grafana/grafana
+  tag: "10.4.7"
+  sha: ""
+  pullPolicy: IfNotPresent
+
+  # Development image pull secrets
+  pullSecrets: []
+
+# ==============================================================================
+# Development Grafana Deployment Configuration
+# ==============================================================================
+# Development replica count - single instance for cost optimization
+replicaCount: 1
+
+# Development deployment strategy
+deploymentStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 0
+
+# Development pod disruption budget
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 1
+
+# ==============================================================================
+# Development Grafana Resource Configuration
+# ==============================================================================
+resources:
+  limits:
+    # Development CPU limit - optimized for cost
+    cpu: 500m
+    # Development memory limit - sufficient for development dashboards
+    memory: 1Gi
+    # Development ephemeral storage limit
+    ephemeral-storage: 2Gi
+
+  requests:
+    # Development CPU request - minimal for cost optimization
+    cpu: 100m
+    # Development memory request - baseline for Grafana
+    memory: 256Mi
+    # Development ephemeral storage request
+    ephemeral-storage: 500Mi
+
+# ==============================================================================
+# Development Grafana Security Configuration
+# ==============================================================================
+securityContext:
+  # Development security context - appropriate for development
+  runAsNonRoot: true
+  runAsUser: 472
+  runAsGroup: 472
+  fsGroup: 472
+  fsGroupChangePolicy: "OnRootMismatch"
+
+  # Development security capabilities
+  capabilities:
+    drop:
+      - ALL
+
+  # Development security settings
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false
+  privileged: false
+
+podSecurityContext:
+  # Development pod security context
+  runAsNonRoot: true
+  runAsUser: 472
+  runAsGroup: 472
+  fsGroup: 472
+  fsGroupChangePolicy: "OnRootMismatch"
+
+  # Development pod security settings
+  seccompProfile:
+    type: RuntimeDefault
+
+# ==============================================================================
+# Development Grafana Service Configuration
+# ==============================================================================
+service:
+  # Development service configuration
+  enabled: true
+  type: ClusterIP
+  port: 3000
+  targetPort: 3000
+  protocol: TCP
+
+  # Development service annotations
+  annotations:
+    # Development service identification
+    veridis.xyz/service-type: "grafana"
+    veridis.xyz/environment: "development"
+    veridis.xyz/component: "monitoring"
+
+    # Development service configuration
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "3000"
+    prometheus.io/path: "/metrics"
+
+    # Development load balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+
+  # Development service labels
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/component: monitoring
+    veridis.xyz/environment: development
+    veridis.xyz/service-tier: monitoring
+
+# ==============================================================================
+# Development Grafana Ingress Configuration
+# ==============================================================================
+ingress:
+  # Development ingress configuration
+  enabled: true
+
+  # Development ingress class
+  ingressClassName: nginx
+
+  # Development ingress annotations
+  annotations:
+    # Development ingress controller configuration
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Development SSL configuration
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    nginx.ingress.kubernetes.io/ssl-protocols: "TLSv1.2 TLSv1.3"
+
+    # Development authentication
+    nginx.ingress.kubernetes.io/auth-type: "basic"
+    nginx.ingress.kubernetes.io/auth-secret: "veridis-development-monitoring-auth"
+    nginx.ingress.kubernetes.io/auth-realm: "Veridis Development Grafana"
+
+    # Development proxy configuration
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+
+    # Development CORS configuration
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://dev.veridis.xyz,https://localhost:3000"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET,POST,PUT,DELETE,OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+
+    # Development configuration snippet
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      # Development Grafana configuration
+      set $grafana_development_mode "true";
+      more_set_headers "X-Grafana-Development-Mode: true";
+      more_set_headers "X-Grafana-Environment: development";
+
+      # Development request handling
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+
+  # Development ingress hosts
+  hosts:
+    - host: dev-grafana.veridis.xyz
+      paths:
+        - path: /
+          pathType: Prefix
+    - host: dev-monitoring.veridis.xyz
+      paths:
+        - path: /grafana
+          pathType: Prefix
+
+  # Development TLS configuration
+  tls:
+    - hosts:
+        - dev-grafana.veridis.xyz
+        - dev-monitoring.veridis.xyz
+      secretName: veridis-grafana-development-tls-cert
+
+# ==============================================================================
+# Development Grafana Persistence Configuration
+# ==============================================================================
+persistence:
+  # Development persistence configuration
+  enabled: true
+  type: pvc
+
+  # Development storage class and size
+  storageClassName: "fast-ssd"
+  size: 5Gi
+
+  # Development access modes
+  accessModes:
+    - ReadWriteOnce
+
+  # Development persistence annotations
+  annotations:
+    # Development storage configuration
+    veridis.xyz/storage-type: "development"
+    veridis.xyz/backup-enabled: "false"
+    veridis.xyz/encryption-enabled: "true"
+
+    # Development retention policy
+    veridis.xyz/retention-policy: "30d"
+    veridis.xyz/cleanup-policy: "automatic"
+
+  # Development persistence labels
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/component: storage
+    veridis.xyz/environment: development
+    veridis.xyz/storage-tier: development
+
+  # Development persistence finalizers
+  finalizers:
+    - kubernetes.io/pvc-protection
+
+  # Development subPath configuration
+  subPath: ""
+
+  # Development existing claim
+  existingClaim: ""
+
+# ==============================================================================
+# Development Grafana Configuration
+# ==============================================================================
+grafana.ini:
+  # Development server configuration
+  server:
+    # Development server settings
+    protocol: http
+    http_port: 3000
+    domain: dev-grafana.veridis.xyz
+    root_url: "https://dev-grafana.veridis.xyz"
+    serve_from_sub_path: false
+
+    # Development SSL configuration
+    cert_file: ""
+    cert_key: ""
+
+    # Development static files
+    static_root_path: public
+    enable_gzip: true
+
+    # Development router logging
+    router_logging: true
+
+    # Development graceful shutdown
+    graceful_shutdown_timeout: 30s
+
+    # Development read timeout
+    read_timeout: 0
+
+  # Development database configuration
+  database:
+    # Development database type - SQLite for simplicity
+    type: sqlite3
+    host: ""
+    name: grafana
+    user: ""
+    password: ""
+    url: ""
+    ssl_mode: disable
+    ca_cert_path: ""
+    client_key_path: ""
+    client_cert_path: ""
+    server_cert_name: ""
+    path: grafana.db
+    max_idle_conn: 2
+    max_open_conn: 5
+    conn_max_lifetime: 14400
+    log_queries: true
+
+    # Development database settings
+    cache_mode: private
+    locking_mode: exclusive
+    wal_enabled: true
+    query_retries: 0
+    transaction_retries: 5
+
+  # Development security configuration
+  security:
+    # Development admin credentials
+    admin_user: admin
+    admin_password: $__env{GF_SECURITY_ADMIN_PASSWORD}
+    admin_email: admin@veridis.xyz
+
+    # Development security settings
+    secret_key: $__env{GF_SECURITY_SECRET_KEY}
+    encryption_provider: secretKey.v1
+    available_languages: en-US
+
+    # Development login settings
+    login_remember_days: 7
+    login_maximum_inactive_lifetime_days: 7
+    login_maximum_lifetime_days: 30
+
+    # Development cookie settings
+    cookie_secure: true
+    cookie_samesite: lax
+
+    # Development password policy
+    password_policy_pattern: ^.{8,}$
+    password_policy_length: 8
+
+    # Development authentication
+    disable_gravatar: true
+    data_source_proxy_whitelist: ""
+    disable_brute_force_login_protection: false
+
+    # Development content security policy
+    content_security_policy: true
+    content_security_policy_template: """script-src 'self' 'unsafe-eval' 'unsafe-inline';object-src 'none';font-src 'self';style-src 'self' 'unsafe-inline';img-src * data:;base-uri 'self';connect-src 'self' grafana.com ws://localhost:* wss://localhost:*;manifest-src 'self';media-src 'none';form-action 'self';"""
+
+  # Development users configuration
+  users:
+    # Development user settings
+    allow_sign_up: false
+    allow_org_create: false
+    auto_assign_org: true
+    auto_assign_org_id: 1
+    auto_assign_org_role: Viewer
+    verify_email_enabled: false
+    login_hint: "admin"
+    password_hint: "admin password"
+    default_theme: dark
+    external_manage_link_url: ""
+    external_manage_link_name: ""
+    external_manage_info: ""
+    viewers_can_edit: true
+    editors_can_admin: false
+    user_invite_max_lifetime_duration: 24h
+    hidden_users: ""
+
+  # Development authentication configuration
+  auth:
+    # Development authentication settings
+    login_cookie_name: grafana_session
+    login_maximum_inactive_lifetime_duration: ""
+    login_maximum_lifetime_duration: ""
+    token_rotation_interval_minutes: 10
+    disable_login_form: false
+    disable_signout_menu: false
+    signout_redirect_url: ""
+    oauth_auto_login: false
+    oauth_state_cookie_max_age: 600
+    api_key_max_seconds_to_live: -1
+    sigv4_auth_enabled: false
+
+  # Development anonymous authentication
+  auth.anonymous:
+    enabled: false
+    org_name: "Veridis Development"
+    org_role: Viewer
+    hide_version: false
+
+  # Development LDAP authentication (disabled)
+  auth.ldap:
+    enabled: false
+    config_file: /etc/grafana/ldap.toml
+    allow_sign_up: false
+
+  # Development OAuth authentication (disabled for development)
+  auth.github:
+    enabled: false
+
+  auth.google:
+    enabled: false
+
+  auth.oauth:
+    enabled: false
+
+  # Development SMTP configuration (disabled for development)
+  smtp:
+    enabled: false
+    host: localhost:587
+    user: ""
+    password: ""
+    cert_file: ""
+    key_file: ""
+    skip_verify: true
+    from_address: admin@grafana.localhost
+    from_name: Grafana
+    ehlo_identity: dashboard.example.com
+    startTLS_policy: ""
+
+  # Development log configuration
+  log:
+    # Development logging settings
+    mode: console
+    level: debug
+    filters: ""
+
+    # Development console logging
+    console:
+      level: debug
+      format: text
+
+    # Development file logging (disabled)
+    file:
+      level: info
+      format: text
+      log_rotate: true
+      max_lines: 1000000
+      max_size_shift: 28
+      daily_rotate: true
+      max_days: 7
+
+  # Development metrics configuration
+  metrics:
+    enabled: true
+    interval_seconds: 10
+    disable_total_stats: false
+    basic_auth_username: ""
+    basic_auth_password: ""
+
+  # Development metrics.graphite (disabled)
+  metrics.graphite:
+    address: ""
+    prefix: prod.grafana.%(instance_name)s
+
+  # Development tracing configuration
+  tracing.jaeger:
+    enabled: true
+    address: veridis-jaeger-collector.veridis-dev.svc.cluster.local:14268
+    always_included_tag: ""
+    sampler_type: const
+    sampler_param: 1
+    zipkin_propagation: false
+    disable_shared_zipkin_spans: false
+
+  # Development snapshots configuration
+  snapshots:
+    enabled: false
+    external_enabled: false
+    external_snapshot_url: https://snapshots-origin.raintank.io
+    external_snapshot_name: Publish to snapshot.raintank.io
+    snapshot_remove_expired: true
+    snapshot_TTL_days: 90
+
+  # Development dashboards configuration
+  dashboards:
+    # Development dashboard settings
+    versions_to_keep: 20
+    min_refresh_interval: 5s
+    default_home_dashboard_path: ""
+
+  # Development data sources configuration
+  datasources:
+    # Development datasource settings
+    datasource_limit: 5000
+
+  # Development alerting configuration
+  alerting:
+    enabled: true
+    error_or_timeout: alerting
+    nodata_or_nullvalues: no_data
+    concurrent_render_limit: 5
+    evaluation_timeout_seconds: 30
+    notification_timeout_seconds: 30
+    max_attempts: 3
+    min_interval_seconds: 1
+    max_annotation_age: ""
+    max_annotations_to_keep: 0
+
+  # Development unified alerting configuration
+  unified_alerting:
+    enabled: true
+    disabled_orgs: ""
+    admin_config_poll_interval: 60s
+    alertmanager_config_poll_interval: 60s
+    ha_listen_address: "0.0.0.0:9094"
+    ha_advertise_address: ""
+    ha_peers: ""
+    ha_peer_timeout: 15s
+    ha_gossip_interval: 200ms
+    ha_push_pull_interval: 60s
+    ha_redis_address: ""
+    max_attempts: 1
+    min_interval_seconds: 10
+    execute_alerts: true
+    evaluation_timeout: 30s
+    max_annotation_age: ""
+    max_annotations_to_keep: 0
+
+  # Development annotations configuration
+  annotations:
+    # Development annotation settings
+    cleanupjob:
+      enabled: true
+      schedule: "0 0 * * *"
+      max_age: "168h"
+      max_annotations_per_dashboard: 1000000
+      max_annotations_per_alert: 100000
+
+    # Development dashboard annotations
+    dashboard:
+      enabled: true
+
+    # Development API annotations
+    api:
+      enabled: true
+
+  # Development explore configuration
+  explore:
+    enabled: true
+
+  # Development query history configuration
+  query_history:
+    enabled: true
+
+  # Development help configuration
+  help:
+    enabled: true
+
+  # Development profile configuration
+  profile:
+    enabled: true
+
+  # Development expressions configuration
+  expressions:
+    enabled: true
+
+  # Development feature toggles
+  feature_toggles:
+    # Development feature flags
+    enable: "ngalert,live,correlations,publicDashboards,lokiLive,swaggerUi,featureHighlights,migrationLocking,storage,cloudWatchDynamicLabels,datasourceQueryMultiStatus,traceToMetrics,newDBLibrary,validateDashboardsOnSave,autoMigrateOldPanels,disableSecretsCompatibility,logRequestsInstrumentedAsUnknown,dataConnectionsConsole,internationalization,cloudWatchLogsMonacoEditor,recordedQueriesMulti,pluginsFrontendSandbox,lokiQuerySplitting,lokiQuerySplittingConfig,individualCookiePreferences,prometheusMetricEncyclopedia,timeSeriesTable,prometheusResourceBrowserCache,influxdbBackendMigration,showDashboardValidationWarnings,mysqlAnsiQuotes,accessTokenExpirationCheck,elasticsearchBackendMigration,secureSocksDSProxy,authnService,disableSecretsCompatibility,logRequestsInstrumentedAsUnknown,httpClientprovider_azure_auth,influxdbSqlSupport,lokiMetricDataplane,lokiLogsDataplane,dataplaneFrontendFallback,disableSSEDataplane,alertingBacktesting,alertingNoNormalState,alertingNoDataErrorExecution,angularDeprecationUI,dashgpt,reportingRetries,sseGroupByDatasource,libraryPanelRBAC,lokiPredefinedOperations,publicDashboardsEmailSharing,logs:explore,commandPalette"
+
+  # Development panels configuration
+  panels:
+    enabled: true
+    disable_sanitize_html: false
+
+  # Development plugins configuration
+  plugins:
+    enabled: true
+    app_tls_skip_verify_insecure: false
+    allow_loading_unsigned_plugins: ""
+    marketplace_url: https://grafana.com/grafana/plugins/
+
+  # Development live configuration
+  live:
+    enabled: true
+    max_connections: 100
+    allowed_origins: "*"
+
+  # Development date formats
+  date_formats:
+    full_date: "MMM Do, YYYY"
+    interval_second: "HH:mm:ss"
+    interval_minute: "HH:mm"
+    interval_hour: "MM/DD HH:mm"
+    interval_day: "MM/DD"
+    interval_month: "YYYY-MM"
+    interval_year: "YYYY"
+    use_browser_locale: false
+    default_timezone: "browser"
+
+# ==============================================================================
+# Development Environment Variables
+# ==============================================================================
+env:
+  # Development Grafana configuration
+  GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-simple-json-datasource,grafana-worldmap-panel,grafana-piechart-panel,briangann-gauge-panel,natel-discrete-panel,vonage-status-panel,btplc-status-dot-panel,ryantxu-ajax-panel"
+
+  # Development security configuration
+  GF_SECURITY_ADMIN_PASSWORD: "admin123"
+  GF_SECURITY_SECRET_KEY: "dev_secret_key_123"
+
+  # Development server configuration
+  GF_SERVER_DOMAIN: "dev-grafana.veridis.xyz"
+  GF_SERVER_ROOT_URL: "https://dev-grafana.veridis.xyz"
+  GF_SERVER_SERVE_FROM_SUB_PATH: "false"
+
+  # Development database configuration
+  GF_DATABASE_TYPE: "sqlite3"
+  GF_DATABASE_PATH: "/var/lib/grafana/grafana.db"
+
+  # Development logging configuration
+  GF_LOG_LEVEL: "debug"
+  GF_LOG_MODE: "console"
+
+  # Development authentication configuration
+  GF_AUTH_ANONYMOUS_ENABLED: "false"
+  GF_AUTH_DISABLE_LOGIN_FORM: "false"
+
+  # Development users configuration
+  GF_USERS_ALLOW_SIGN_UP: "false"
+  GF_USERS_AUTO_ASSIGN_ORG: "true"
+  GF_USERS_AUTO_ASSIGN_ORG_ROLE: "Viewer"
+
+  # Development security configuration
+  GF_SECURITY_COOKIE_SECURE: "true"
+  GF_SECURITY_COOKIE_SAMESITE: "lax"
+
+  # Development metrics configuration
+  GF_METRICS_ENABLED: "true"
+  GF_METRICS_INTERVAL_SECONDS: "10"
+
+  # Development tracing configuration
+  GF_TRACING_JAEGER_ENABLED: "true"
+  GF_TRACING_JAEGER_ADDRESS: "veridis-jaeger-collector.veridis-dev.svc.cluster.local:14268"
+  GF_TRACING_JAEGER_SAMPLER_TYPE: "const"
+  GF_TRACING_JAEGER_SAMPLER_PARAM: "1"
+
+  # Development alerting configuration
+  GF_ALERTING_ENABLED: "true"
+  GF_UNIFIED_ALERTING_ENABLED: "true"
+
+  # Development explore configuration
+  GF_EXPLORE_ENABLED: "true"
+
+  # Development feature toggles
+  GF_FEATURE_TOGGLES_ENABLE: "ngalert,live,correlations,publicDashboards,lokiLive,swaggerUi,featureHighlights,migrationLocking,storage,cloudWatchDynamicLabels,datasourceQueryMultiStatus,traceToMetrics,newDBLibrary,validateDashboardsOnSave,autoMigrateOldPanels,disableSecretsCompatibility,logRequestsInstrumentedAsUnknown,dataConnectionsConsole,internationalization,cloudWatchLogsMonacoEditor,recordedQueriesMulti,pluginsFrontendSandbox,lokiQuerySplitting,lokiQuerySplittingConfig,individualCookiePreferences,prometheusMetricEncyclopedia,timeSeriesTable,prometheusResourceBrowserCache,influxdbBackendMigration,showDashboardValidationWarnings,mysqlAnsiQuotes,accessTokenExpirationCheck,elasticsearchBackendMigration,secureSocksDSProxy,authnService,disableSecretsCompatibility,logRequestsInstrumentedAsUnknown,httpClientprovider_azure_auth,influxdbSqlSupport,lokiMetricDataplane,lokiLogsDataplane,dataplaneFrontendFallback,disableSSEDataplane,alertingBacktesting,alertingNoNormalState,alertingNoDataErrorExecution,angularDeprecationUI,dashgpt,reportingRetries,sseGroupByDatasource,libraryPanelRBAC,lokiPredefinedOperations,publicDashboardsEmailSharing,logs:explore,commandPalette"
+
+  # Development environment identification
+  GF_ANALYTICS_REPORTING_ENABLED: "false"
+  GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+  GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+
+  # Development timezone
+  TZ: "UTC"
+
+# ==============================================================================
+# Development Grafana Environment Variables from Secrets
+# ==============================================================================
+envFromSecret: "veridis-development-grafana-secrets"
+
+envFromConfigMap: "veridis-development-grafana-config"
+
+envValueFrom:
+  GF_DATABASE_PASSWORD:
+    secretKeyRef:
+      name: veridis-development-grafana-secrets
+      key: database-password
+
+  GF_SECURITY_ADMIN_PASSWORD:
+    secretKeyRef:
+      name: veridis-development-grafana-secrets
+      key: admin-password
+
+  GF_SECURITY_SECRET_KEY:
+    secretKeyRef:
+      name: veridis-development-grafana-secrets
+      key: secret-key
+
+# ==============================================================================
+# Development Grafana Data Sources Configuration
+# ==============================================================================
+datasources:
+  # Development datasources configuration file
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      # Development Prometheus datasource
+      - name: "Veridis Development Prometheus"
+        type: prometheus
+        uid: "veridis-dev-prometheus"
+        url: "http://veridis-development-prometheus-server.veridis-dev.svc.cluster.local:9090"
+        access: proxy
+        isDefault: true
+        version: 1
+        editable: true
+        basicAuth: false
+        withCredentials: false
+        jsonData:
+          # Development Prometheus configuration
+          httpMethod: "POST"
+          queryTimeout: "60s"
+          timeInterval: "15s"
+          scrapeInterval: "15s"
+          exemplarTraceIdDestinations:
+            - name: "Jaeger"
+              datasourceUid: "veridis-dev-jaeger"
+              url: "http://veridis-jaeger-query.veridis-dev.svc.cluster.local:16686/trace/$${__value.raw}"
+
+          # Development alerting configuration
+          manageAlerts: true
+          alertmanagerUid: "veridis-dev-alertmanager"
+
+          # Development caching configuration
+          cacheLevel: "High"
+
+          # Development custom query parameters
+          customQueryParameters: "step=15s"
+
+          # Development metadata configuration
+          disableMetricsLookup: false
+          prometheusType: "Prometheus"
+          prometheusVersion: "2.45.0"
+
+        secureJsonData: {}
+
+      # Development Jaeger datasource
+      - name: "Veridis Development Jaeger"
+        type: jaeger
+        uid: "veridis-dev-jaeger"
+        url: "http://veridis-jaeger-query.veridis-dev.svc.cluster.local:16686"
+        access: proxy
+        isDefault: false
+        version: 1
+        editable: true
+        basicAuth: false
+        withCredentials: false
+        jsonData:
+          # Development Jaeger configuration
+          httpMethod: "GET"
+          queryTimeout: "30s"
+
+          # Development trace configuration
+          tracesToLogs:
+            datasourceUid: "veridis-dev-loki"
+            tags:
+              - key: "service.name"
+                value: "service"
+              - key: "service.version"
+                value: "version"
+            mapTagNamesEnabled: true
+            mappedTags:
+              - key: "service.name"
+                value: "service"
+            spanStartTimeShift: "1h"
+            spanEndTimeShift: "-1h"
+            filterByTraceID: true
+            filterBySpanID: true
+            lokiSearch: true
+
+          # Development node graph configuration
+          nodeGraph:
+            enabled: true
+
+          # Development span bar configuration
+          spanBar:
+            type: "Tag"
+            tag: "http.status_code"
+
+        secureJsonData: {}
+
+      # Development Loki datasource (if available)
+      - name: "Veridis Development Loki"
+        type: loki
+        uid: "veridis-dev-loki"
+        url: "http://veridis-loki-gateway.veridis-dev.svc.cluster.local:80"
+        access: proxy
+        isDefault: false
+        version: 1
+        editable: true
+        basicAuth: false
+        withCredentials: false
+        jsonData:
+          # Development Loki configuration
+          httpMethod: "POST"
+          queryTimeout: "300s"
+
+          # Development logs configuration
+          derivedFields:
+            - datasourceUid: "veridis-dev-jaeger"
+              matcherRegex: "traceID=(\\w+)"
+              name: "TraceID"
+              url: "$${__value.raw}"
+              urlDisplayLabel: "View Trace"
+
+            - datasourceUid: "veridis-dev-prometheus"
+              matcherRegex: "request_id=(\\w+)"
+              name: "RequestID"
+              url: "$${__value.raw}"
+              urlDisplayLabel: "View Metrics"
+
+          # Development alerting configuration
+          manageAlerts: false
+
+          # Development search configuration
+          maxLines: 5000
+
+        secureJsonData: {}
+
+      # Development AlertManager datasource
+      - name: "Veridis Development AlertManager"
+        type: alertmanager
+        uid: "veridis-dev-alertmanager"
+        url: "http://veridis-alertmanager.veridis-dev.svc.cluster.local:9093"
+        access: proxy
+        isDefault: false
+        version: 1
+        editable: true
+        basicAuth: false
+        withCredentials: false
+        jsonData:
+          # Development AlertManager configuration
+          httpMethod: "POST"
+          queryTimeout: "30s"
+
+          # Development implementation
+          implementation: "prometheus"
+
+        secureJsonData: {}
+
+# ==============================================================================
+# Development Grafana Dashboards Configuration
+# ==============================================================================
+dashboardProviders:
+  # Development dashboard providers configuration
+  dashboardproviders.yaml:
+    apiVersion: 1
+    providers:
+      # Development Veridis dashboards
+      - name: "veridis-development"
+        orgId: 1
+        type: file
+        disableDeletion: false
+        editable: true
+        updateIntervalSeconds: 30
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/veridis-development
+
+      # Development system dashboards
+      - name: "system-development"
+        orgId: 1
+        type: file
+        disableDeletion: false
+        editable: true
+        updateIntervalSeconds: 30
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/system-development
+
+      # Development application dashboards
+      - name: "application-development"
+        orgId: 1
+        type: file
+        disableDeletion: false
+        editable: true
+        updateIntervalSeconds: 30
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/application-development
+
+      # Development infrastructure dashboards
+      - name: "infrastructure-development"
+        orgId: 1
+        type: file
+        disableDeletion: false
+        editable: true
+        updateIntervalSeconds: 30
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/infrastructure-development
+
+# ==============================================================================
+# Development Grafana Dashboard Definitions
+# ==============================================================================
+dashboards:
+  # Development Veridis application dashboards
+  veridis-development:
+    # Veridis Backend Development Dashboard
+    veridis-backend-development:
+      gnetId: 0
+      revision: 1
+      datasource: "Veridis Development Prometheus"
+      json: |
+        {
+          "annotations": {
+            "list": [
+              {
+                "builtIn": 1,
+                "datasource": {
+                  "type": "grafana",
+                  "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+              }
+            ]
+          },
+          "description": "Veridis Backend Development Monitoring Dashboard",
+          "editable": true,
+          "fiscalYearStartMonth": 0,
+          "graphTooltip": 0,
+          "id": null,
+          "links": [],
+          "panels": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "veridis-dev-prometheus"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "displayMode": "list",
+                    "filterable": false,
+                    "footerOptions": {
+                      "countRows": false,
+                      "fields": "",
+                      "reducer": [
+                        "sum"
+                      ],
+                      "show": false
+                    },
+                    "fullMetaSearch": false,
+                    "includeByName": {},
+                    "indexByName": {},
+                    "labelsOfField": "",
+                    "maxHeight": 25,
+                    "noValue": "0",
+                    "searchColumns": null,
+                    "showTypeIcons": false,
+                    "sortBy": null,
+                    "tableDisplayMode": "list",
+                    "targetWidth": 120,
+                    "unitScale": true
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "reqps"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 0
+              },
+              "id": 1,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "pluginVersion": "10.4.7",
+              "targets": [
+                {
+                  "datasource": {
+                    "type": "prometheus",
+                    "uid": "veridis-dev-prometheus"
+                  },
+                  "editorMode": "code",
+                  "expr": "rate(http_requests_total{job=\"veridis-backend\"}[5m])",
+                  "instant": false,
+                  "legendFormat": "RPS",
+                  "range": true,
+                  "refId": "A"
+                }
+              ],
+              "title": "Veridis Backend Request Rate",
+              "type": "stat"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "veridis-dev-prometheus"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "vis": false
+                    }
+                  },
+                  "mappings": []
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 0
+              },
+              "id": 2,
+              "options": {
+                "displayLabels": [
+                  "name"
+                ],
+                "legend": {
+                  "displayMode": "visible",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "tooltip": {
+                  "mode": "single",
+                  "sort": "none"
+                }
+              },
+              "targets": [
+                {
+                  "datasource": {
+                    "type": "prometheus",
+                    "uid": "veridis-dev-prometheus"
+                  },
+                  "editorMode": "code",
+                  "expr": "sum by (status) (http_requests_total{job=\"veridis-backend\"})",
+                  "instant": false,
+                  "legendFormat": "Status {{status}}",
+                  "range": true,
+                  "refId": "A"
+                }
+              ],
+              "title": "HTTP Status Codes Distribution",
+              "type": "piechart"
+            }
+          ],
+          "refresh": "30s",
+          "schemaVersion": 39,
+          "tags": [
+            "veridis",
+            "development",
+            "backend"
+          ],
+          "templating": {
+            "list": []
+          },
+          "time": {
+            "from": "now-1h",
+            "to": "now"
+          },
+          "timepicker": {},
+          "timezone": "browser",
+          "title": "Veridis Backend Development",
+          "uid": "veridis-backend-dev",
+          "version": 1,
+          "weekStart": ""
+        }
+
+    # ZK Circuits Development Dashboard
+    zk-circuits-development:
+      gnetId: 0
+      revision: 1
+      datasource: "Veridis Development Prometheus"
+      json: |
+        {
+          "annotations": {
+            "list": [
+              {
+                "builtIn": 1,
+                "datasource": {
+                  "type": "grafana",
+                  "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+              }
+            ]
+          },
+          "description": "ZK Circuits Development Monitoring Dashboard",
+          "editable": true,
+          "fiscalYearStartMonth": 0,
+          "graphTooltip": 0,
+          "id": null,
+          "links": [],
+          "panels": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "veridis-dev-prometheus"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "displayMode": "list",
+                    "filterable": false,
+                    "footerOptions": {
+                      "countRows": false,
+                      "fields": "",
+                      "reducer": [
+                        "sum"
+                      ],
+                      "show": false
+                    },
+                    "fullMetaSearch": false,
+                    "includeByName": {},
+                    "indexByName": {},
+                    "labelsOfField": "",
+                    "maxHeight": 25,
+                    "noValue": "0",
+                    "searchColumns": null,
+                    "showTypeIcons": false,
+                    "sortBy": null,
+                    "tableDisplayMode": "list",
+                    "targetWidth": 120,
+                    "unitScale": true
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "ms"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 0
+              },
+              "id": 1,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+              },
+              "pluginVersion": "10.4.7",
+              "targets": [
+                {
+                  "datasource": {
+                    "type": "prometheus",
+                    "uid": "veridis-dev-prometheus"
+                  },
+                  "editorMode": "code",
+                  "expr": "avg(zk_proof_generation_duration_ms{job=\"zk-circuits\"})",
+                  "instant": false,
+                  "legendFormat": "Avg Proof Generation Time",
+                  "range": true,
+                  "refId": "A"
+                }
+              ],
+              "title": "ZK Proof Generation Performance",
+              "type": "stat"
+            }
+          ],
+          "refresh": "30s",
+          "schemaVersion": 39,
+          "tags": [
+            "veridis",
+            "development",
+            "zk-circuits"
+          ],
+          "templating": {
+            "list": []
+          },
+          "time": {
+            "from": "now-1h",
+            "to": "now"
+          },
+          "timepicker": {},
+          "timezone": "browser",
+          "title": "ZK Circuits Development",
+          "uid": "zk-circuits-dev",
+          "version": 1,
+          "weekStart": ""
+        }
+
+  # Development system dashboards
+  system-development:
+    # Kubernetes Development Dashboard
+    kubernetes-development:
+      gnetId: 15757
+      revision: 37
+      datasource: "Veridis Development Prometheus"
+
+    # Node Exporter Development Dashboard
+    node-exporter-development:
+      gnetId: 1860
+      revision: 37
+      datasource: "Veridis Development Prometheus"
+
+  # Development infrastructure dashboards
+  infrastructure-development:
+    # PostgreSQL Development Dashboard
+    postgresql-development:
+      gnetId: 9628
+      revision: 7
+      datasource: "Veridis Development Prometheus"
+
+    # Redis Development Dashboard
+    redis-development:
+      gnetId: 763
+      revision: 5
+      datasource: "Veridis Development Prometheus"
+
+    # NGINX Development Dashboard
+    nginx-development:
+      gnetId: 14900
+      revision: 1
+      datasource: "Veridis Development Prometheus"
+
+# ==============================================================================
+# Development Grafana Alerting Configuration
+# ==============================================================================
+alerting:
+  # Development alerting configuration
+  enabled: true
+
+  # Development contact points
+  contactpoints.yaml:
+    apiVersion: 1
+    contactPoints:
+      - orgId: 1
+        name: "development-notifications"
+        receivers:
+          - uid: "development-slack"
+            type: "slack"
+            settings:
+              url: "$SLACK_WEBHOOK_URL"
+              channel: "#veridis-development"
+              title: "Veridis Development Alert"
+              text: "{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}"
+              username: "Grafana Development"
+              iconEmoji: ":exclamation:"
+
+          - uid: "development-email"
+            type: "email"
+            settings:
+              addresses: "dev-team@veridis.xyz"
+              subject: "Veridis Development Alert"
+              message: "{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}"
+
+  # Development notification policies
+  policies.yaml:
+    apiVersion: 1
+    policies:
+      - orgId: 1
+        receiver: "development-notifications"
+        group_by:
+          - "alertname"
+          - "cluster"
+          - "service"
+        group_wait: "30s"
+        group_interval: "5m"
+        repeat_interval: "1h"
+        routes:
+          - receiver: "development-notifications"
+            matchers:
+              - "environment=development"
+            group_wait: "30s"
+            group_interval: "5m"
+            repeat_interval: "1h"
+            continue: false
+
+  # Development alert rules
+  rules.yaml:
+    apiVersion: 1
+    groups:
+      - orgId: 1
+        name: "veridis-development-alerts"
+        folder: "Development Alerts"
+        interval: "1m"
+        rules:
+          # Development high CPU usage alert
+          - uid: "dev-high-cpu-usage"
+            title: "Development High CPU Usage"
+            condition: "A"
+            data:
+              - refId: "A"
+                queryType: ""
+                relativeTimeRange:
+                  from: 300
+                  to: 0
+                model:
+                  datasource:
+                    type: "prometheus"
+                    uid: "veridis-dev-prometheus"
+                  expr: "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100) > 80"
+                  interval: "1m"
+                  refId: "A"
+            noDataState: "NoData"
+            execErrState: "Alerting"
+            for: "2m"
+            annotations:
+              summary: "High CPU usage detected in development environment"
+              description: "CPU usage is above 80% for more than 2 minutes"
+            labels:
+              severity: "warning"
+              environment: "development"
+              team: "development"
+
+          # Development high memory usage alert
+          - uid: "dev-high-memory-usage"
+            title: "Development High Memory Usage"
+            condition: "A"
+            data:
+              - refId: "A"
+                queryType: ""
+                relativeTimeRange:
+                  from: 300
+                  to: 0
+                model:
+                  datasource:
+                    type: "prometheus"
+                    uid: "veridis-dev-prometheus"
+                  expr: "(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85"
+                  interval: "1m"
+                  refId: "A"
+            noDataState: "NoData"
+            execErrState: "Alerting"
+            for: "2m"
+            annotations:
+              summary: "High memory usage detected in development environment"
+              description: "Memory usage is above 85% for more than 2 minutes"
+            labels:
+              severity: "warning"
+              environment: "development"
+              team: "development"
+
+          # Development service down alert
+          - uid: "dev-service-down"
+            title: "Development Service Down"
+            condition: "A"
+            data:
+              - refId: "A"
+                queryType: ""
+                relativeTimeRange:
+                  from: 300
+                  to: 0
+                model:
+                  datasource:
+                    type: "prometheus"
+                    uid: "veridis-dev-prometheus"
+                  expr: "up{job=~\"veridis-backend|zk-circuits\"} == 0"
+                  interval: "1m"
+                  refId: "A"
+            noDataState: "NoData"
+            execErrState: "Alerting"
+            for: "1m"
+            annotations:
+              summary: "Development service is down"
+              description: "{{ $labels.job }} service is down in development environment"
+            labels:
+              severity: "critical"
+              environment: "development"
+              team: "development"
+
+# ==============================================================================
+# Development Grafana Plugins Configuration
+# ==============================================================================
+plugins:
+  # Development plugins list
+  - grafana-clock-panel
+  - grafana-simple-json-datasource
+  - grafana-worldmap-panel
+  - grafana-piechart-panel
+  - briangann-gauge-panel
+  - natel-discrete-panel
+  - vonage-status-panel
+  - btplc-status-dot-panel
+  - ryantxu-ajax-panel
+  - grafana-polystat-panel
+  - jdbranham-diagram-panel
+  - marcusolsson-hexmap-panel
+  - marcusolsson-treemap-panel
+  - cloudflare-app
+  - grafana-kubernetes-app
+
+# ==============================================================================
+# Development Grafana Notification Channels (Legacy)
+# ==============================================================================
+notifiers:
+  # Development notification channels configuration
+  notifiers.yaml:
+    apiVersion: 1
+    notifiers:
+      # Development Slack notifications
+      - name: "development-slack"
+        type: "slack"
+        uid: "dev-slack-001"
+        org_id: 1
+        is_default: true
+        send_reminder: true
+        disable_resolve_message: false
+        frequency: "1m"
+        settings:
+          url: "$SLACK_WEBHOOK_URL"
+          channel: "#veridis-development"
+          title: "Grafana Development Alert"
+          text: "{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}"
+          username: "Grafana Development"
+          iconEmoji: ":exclamation:"
+
+      # Development email notifications
+      - name: "development-email"
+        type: "email"
+        uid: "dev-email-001"
+        org_id: 1
+        is_default: false
+        send_reminder: true
+        disable_resolve_message: false
+        frequency: "5m"
+        settings:
+          addresses: "dev-team@veridis.xyz"
+          subject: "Grafana Development Alert"
+          message: "{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}"
+
+# ==============================================================================
+# Development Grafana Node Selector and Tolerations
+# ==============================================================================
+nodeSelector:
+  # Development node selection
+  kubernetes.io/os: linux
+  node-type: "development"
+
+tolerations:
+  # Development tolerations
+  - key: "development"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
+
+affinity:
+  # Development pod affinity
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+              - key: "app.kubernetes.io/name"
+                operator: In
+                values:
+                  - "grafana"
+          topologyKey: "kubernetes.io/hostname"
+
+# ==============================================================================
+# Development Grafana Additional Configuration
+# ==============================================================================
+# Development extra configuration files
+extraConfigmapMounts:
+  - name: development-dashboards
+    mountPath: /var/lib/grafana/dashboards/development
+    configMap: veridis-development-dashboards
+    readOnly: true
+
+  - name: development-provisioning
+    mountPath: /etc/grafana/provisioning/development
+    configMap: veridis-development-provisioning
+    readOnly: true
+
+# Development extra secret mounts
+extraSecretMounts:
+  - name: development-certificates
+    mountPath: /etc/ssl/certs/development
+    secretName: veridis-development-certificates
+    readOnly: true
+
+  - name: development-keys
+    mountPath: /etc/grafana/keys
+    secretName: veridis-development-keys
+    readOnly: true
+
+# Development extra volumes
+extraVolumes:
+  - name: development-plugins
+    emptyDir: {}
+
+  - name: development-logs
+    emptyDir: {}
+
+# Development extra volume mounts
+extraVolumeMounts:
+  - name: development-plugins
+    mountPath: /var/lib/grafana/plugins/development
+
+  - name: development-logs
+    mountPath: /var/log/grafana/development
+
+# ==============================================================================
+# Development Grafana Service Monitor
+# ==============================================================================
+serviceMonitor:
+  # Development service monitor configuration
+  enabled: true
+
+  # Development service monitor labels
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/component: monitoring
+    veridis.xyz/environment: development
+    veridis.xyz/monitoring-tier: application
+
+  # Development service monitor annotations
+  annotations:
+    veridis.xyz/scrape-interval: "30s"
+    veridis.xyz/scrape-timeout: "10s"
+    veridis.xyz/monitoring-enabled: "true"
+
+  # Development service monitor interval
+  interval: "30s"
+  scrapeTimeout: "10s"
+
+  # Development service monitor path
+  path: "/metrics"
+
+  # Development service monitor namespace
+  namespace: "veridis-dev"
+
+  # Development service monitor selector
+  namespaceSelector:
+    matchNames:
+      - "veridis-dev"
+
+# ==============================================================================
+# Development Grafana RBAC Configuration
+# ==============================================================================
+rbac:
+  # Development RBAC configuration
+  create: true
+  pspEnabled: false
+  pspUseAppArmor: false
+
+  # Development extra rules
+  extraRoleRules:
+    - apiGroups: [""]
+      resources: ["configmaps", "secrets"]
+      verbs: ["get", "list", "watch"]
+
+    - apiGroups: [""]
+      resources: ["pods", "services", "endpoints"]
+      verbs: ["get", "list", "watch"]
+
+    - apiGroups: ["apps"]
+      resources: ["deployments", "replicasets"]
+      verbs: ["get", "list", "watch"]
+
+# Development service account
+serviceAccount:
+  # Development service account configuration
+  create: true
+  name: "veridis-grafana-development"
+  nameTest: "veridis-grafana-development-test"
+
+  # Development service account labels
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/component: monitoring
+    veridis.xyz/environment: development
+    veridis.xyz/service-account-type: monitoring
+
+  # Development service account annotations
+  annotations:
+    veridis.xyz/created-by: "grafana-helm-chart"
+    veridis.xyz/purpose: "grafana-development-monitoring"
+    veridis.xyz/environment: "development"
+
+# ==============================================================================
+# Development Grafana Testing Configuration
+# ==============================================================================
+testFramework:
+  # Development testing framework
+  enabled: true
+  image: "bats/bats"
+  tag: "v1.4.1"
+  imagePullPolicy: "IfNotPresent"
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+    runAsGroup: 65534
+
+# ==============================================================================
+# Development Grafana Image Renderer Configuration
+# ==============================================================================
+imageRenderer:
+  # Development image renderer (disabled for cost optimization)
+  enabled: false
+
+  # Development image renderer image
+  image:
+    registry: docker.io
+    repository: grafana/grafana-image-renderer
+    tag: "3.10.4"
+    sha: ""
+    pullPolicy: "IfNotPresent"
+
+  # Development image renderer service
+  service:
+    enabled: true
+    portName: "http"
+    port: 8081
+    targetPort: 8081
+
+  # Development image renderer resources
+  resources:
+    limits:
+      cpu: 100m
+      memory: 100Mi
+    requests:
+      cpu: 50m
+      memory: 50Mi
+
+# ==============================================================================
+# Veridis Development Grafana Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT GRAFANA STRATEGY:
+# ==================================================
+#
+# VERIDIS DEVELOPMENT GRAFANA ARCHITECTURE OVERVIEW:
+# --------------------------------------------------
+# 1. Development Dashboard and Visualization Management:
+#    - Comprehensive enterprise-grade development Grafana with intelligent dashboard management and advanced developer-focused optimization
+#    - Advanced visualization configuration with comprehensive cost optimization, developer productivity, dashboard automation, and comprehensive operational excellence
+#    - Multi-tier dashboard architecture with application dashboards, system dashboards, infrastructure dashboards, and comprehensive dashboard intelligence
+#    - Enterprise dashboard policies with developer-friendly enforcement, productivity controls, visualization automation, and comprehensive dashboard procedures
+#    - Performance optimization with intelligent dashboard allocation, cost efficiency, developer acceleration, and productivity for maximum development performance
+#
+# 2. Data Source Integration and Management:
+#    - Developer-focused data source configuration with Prometheus integration, Jaeger tracing, log aggregation, and comprehensive data coordination
+#    - Advanced data source configuration with debugging tools, development features, monitoring frameworks, and comprehensive data intelligence
+#    - Flexible data source optimization with developer workflow, productivity enhancement, and comprehensive data intelligence
+#    - Data source intelligence with monitoring procedures, debugging support, data automation, and comprehensive data coordination
+#    - Development excellence with data source optimization, productivity workflows, data automation, and comprehensive data environment management
+#
+# 3. Alerting and Notification System:
+#    - Performance-optimized alerting with comprehensive notification management, alert rules, contact points, and comprehensive alerting coordination
+#    - Advanced alerting configuration with development-appropriate thresholds, notification channels, alert management, and comprehensive alerting intelligence
+#    - Flexible alerting optimization with performance tracking, alert correlation, and comprehensive alerting intelligence
+#    - Alerting intelligence with notification procedures, alert support, alerting automation, and comprehensive alerting coordination
+#    - Development excellence with alerting optimization, notification workflows, alerting automation, and comprehensive alerting environment management
+#
+# ENTERPRISE DEVELOPMENT GRAFANA FEATURES:
+# ========================================
+# Advanced Dashboard Architecture and Management:
+#   - Multi-tier dashboard architecture with application optimization, system monitoring, infrastructure visualization, and comprehensive dashboard configurations
+#   - Intelligent dashboard management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive dashboard decisions
+#   - Dashboard discovery with developer optimization, debugging management, dashboard policies, and comprehensive dashboard analytics
+#   - Performance management with developer productivity, debugging efficiency, dashboard optimization, and comprehensive performance intelligence
+#   - Dashboard processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent dashboard optimization
+#
+# This Development Grafana configuration provides enterprise-grade developer productivity enhancement with comprehensive dashboard management, intelligent data source integration, advanced alerting capabilities, and operational excellence while maintaining appropriate security, flexibility, and comprehensive functionality for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
