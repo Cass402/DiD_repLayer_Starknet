@@ -1,0 +1,1200 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Backend Service Patch
+# ==============================================================================
+#
+# This Development Backend Service Patch provides comprehensive development-optimized
+# backend service configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT BACKEND ARCHITECTURE:
+#   • Advanced Development Backend with intelligent service management and comprehensive development-based optimization
+#   • Multi-tier Development Backend architecture with identity services, attestation services, verification services, and compliance environments
+#   • Comprehensive development backend framework with Backend policies, developer tooling integration, service automation
+#   • Advanced lifecycle management with automated Backend optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Backend performance insights
+#
+# VERIDIS DEVELOPMENT BACKEND OPTIMIZATION:
+#   • High-performance Development with intelligent service management and developer-optimized service allocation
+#   • Intelligent Development service management with responsive policies and development-based service decisions
+#   • Advanced Development management with business intelligence and service-based developer control
+#   • Comprehensive development service control with intelligent Developer Backend management and service enhancement
+#   • Enterprise acceleration with predictive Developer Backend management and development service optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Backend controls with comprehensive audit and development requirements
+#   • GDPR Development Backend compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Backend management with comprehensive framework integration
+#   • NIST 800-190 container Development Backend security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Backend best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Backend lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Backend intelligence
+#   • Advanced Backend integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development service control with Development Backend preservation and service optimization
+#   • Business continuity Development Backend with development guarantees and performance optimization
+#
+# DEVELOPMENT BACKEND ACCELERATION INTELLIGENCE:
+#   • Development Backend usage analytics with development patterns and optimization recommendations
+#   • Backend monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Backend analytics and deployment optimization procedures
+#   • Cost optimization with Development Backend utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Backend metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Backend Service Patch Configuration
+# ==============================================================================
+- op: replace
+  path: /spec/replicas
+  value: 1
+
+- op: replace
+  path: /spec/template/metadata/labels
+  value:
+    # Core Kubernetes labels
+    app.kubernetes.io/name: veridis
+    app.kubernetes.io/instance: veridis-development
+    app.kubernetes.io/version: "3.2.1-dev"
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Development environment labels
+    veridis.xyz/environment: development
+    veridis.xyz/deployment-type: development
+    veridis.xyz/service-tier: backend
+    veridis.xyz/protocol-version: "3.2.1-dev"
+
+    # Development backend-specific labels
+    backend.veridis.xyz/service-type: unified-backend
+    backend.veridis.xyz/development-mode: enabled
+    backend.veridis.xyz/hot-reload: enabled
+    backend.veridis.xyz/debugging: comprehensive
+    backend.veridis.xyz/profiling: enabled
+    backend.veridis.xyz/testing: comprehensive
+
+    # Development feature labels
+    identity.veridis.xyz/service: enabled
+    attestation.veridis.xyz/service: enabled
+    verification.veridis.xyz/service: enabled
+    compliance.veridis.xyz/service: enabled
+    bridge.veridis.xyz/service: enabled
+
+    # Development optimization labels
+    development.veridis.xyz/cost-optimization: enabled
+    development.veridis.xyz/resource-optimization: development
+    development.veridis.xyz/developer-productivity: high
+    development.veridis.xyz/debugging-support: comprehensive
+    development.veridis.xyz/testing-support: comprehensive
+
+- op: replace
+  path: /spec/template/metadata/annotations
+  value:
+    # Development deployment annotations
+    veridis.xyz/deployed-by: "kustomize-development"
+    veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/git-commit: "${GIT_COMMIT:-development}"
+    veridis.xyz/git-branch: "${GIT_BRANCH:-develop}"
+    veridis.xyz/build-number: "${BUILD_NUMBER:-dev-build}"
+    veridis.xyz/developer: "${DEVELOPER_NAME:-unknown}"
+
+    # Development backend configuration
+    backend.veridis.xyz/service-configuration: "development-optimized"
+    backend.veridis.xyz/resource-profile: "development"
+    backend.veridis.xyz/debugging-enabled: "true"
+    backend.veridis.xyz/profiling-enabled: "true"
+    backend.veridis.xyz/hot-reload-enabled: "true"
+    backend.veridis.xyz/test-data-enabled: "true"
+
+    # Development security annotations
+    security.veridis.xyz/security-level: "development"
+    security.veridis.xyz/network-policies: "development"
+    security.veridis.xyz/pod-security-context: "development"
+    security.veridis.xyz/compliance-level: "development"
+
+    # Development monitoring annotations
+    monitoring.veridis.xyz/metrics-enabled: "true"
+    monitoring.veridis.xyz/logging-level: "debug"
+    monitoring.veridis.xyz/tracing-enabled: "true"
+    monitoring.veridis.xyz/profiling-enabled: "true"
+    monitoring.veridis.xyz/debug-endpoints: "enabled"
+
+    # Development documentation annotations
+    documentation.veridis.xyz/api-docs: "enabled"
+    documentation.veridis.xyz/swagger-ui: "enabled"
+    documentation.veridis.xyz/development-guide: "https://dev.veridis.xyz/backend"
+    documentation.veridis.xyz/debugging-guide: "https://dev.veridis.xyz/debugging"
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: veridis/veridis-backend:v3.2.1-dev
+
+- op: replace
+  path: /spec/template/spec/containers/0/resources
+  value:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+      ephemeral-storage: "2Gi"
+    limits:
+      cpu: "2000m"
+      memory: "4Gi"
+      ephemeral-storage: "5Gi"
+
+- op: replace
+  path: /spec/template/spec/containers/0/env
+  value:
+    # ==============================================================================
+    # Development Core Service Configuration
+    # ==============================================================================
+    - name: ENVIRONMENT
+      value: "development"
+    - name: SERVICE_NAME
+      value: "veridis-backend"
+    - name: SERVICE_VERSION
+      value: "3.2.1-dev"
+    - name: DEPLOYMENT_TYPE
+      value: "development"
+    - name: DEVELOPER_MODE
+      value: "true"
+
+    # Development runtime configuration
+    - name: RUST_ENV
+      value: "development"
+    - name: RUST_LOG
+      value: "debug,veridis=trace,axum=debug,tower=debug,hyper=debug"
+    - name: RUST_BACKTRACE
+      value: "full"
+    - name: RUST_LOG_STYLE
+      value: "always"
+    - name: TOKIO_CONSOLE_ENABLED
+      value: "true"
+
+    # Development server configuration
+    - name: SERVER_HOST
+      value: "0.0.0.0"
+    - name: SERVER_PORT
+      value: "8080"
+    - name: SERVER_WORKERS
+      value: "4"
+    - name: SERVER_KEEP_ALIVE
+      value: "75"
+    - name: SERVER_CLIENT_TIMEOUT
+      value: "60"
+    - name: SERVER_CLIENT_SHUTDOWN
+      value: "30"
+    - name: SERVER_TLS_ENABLED
+      value: "false"
+    - name: SERVER_CORS_ORIGINS
+      value: "*"
+    - name: SERVER_CORS_METHODS
+      value: "GET,POST,PUT,DELETE,OPTIONS,PATCH"
+    - name: SERVER_CORS_HEADERS
+      value: "*"
+
+    # Development API configuration
+    - name: API_PREFIX
+      value: "/api/v1"
+    - name: API_RATE_LIMIT_ENABLED
+      value: "false"
+    - name: API_RATE_LIMIT_REQUESTS
+      value: "1000"
+    - name: API_RATE_LIMIT_WINDOW
+      value: "60"
+    - name: API_DOCUMENTATION_ENABLED
+      value: "true"
+    - name: API_SWAGGER_UI_ENABLED
+      value: "true"
+    - name: API_OPENAPI_SPEC_ENABLED
+      value: "true"
+    - name: API_METRICS_ENABLED
+      value: "true"
+    - name: API_HEALTH_CHECK_ENABLED
+      value: "true"
+    - name: API_DEBUG_ENDPOINTS_ENABLED
+      value: "true"
+
+    # Development database configuration
+    - name: DATABASE_URL
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: DATABASE_URL
+    - name: DATABASE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-database-config
+          key: POSTGRES_HOST
+    - name: DATABASE_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-database-config
+          key: POSTGRES_PORT
+    - name: DATABASE_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-database-config
+          key: POSTGRES_DB
+    - name: DATABASE_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: POSTGRES_USER
+    - name: DATABASE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: POSTGRES_PASSWORD
+    - name: DATABASE_MAX_CONNECTIONS
+      value: "20"
+    - name: DATABASE_MIN_CONNECTIONS
+      value: "5"
+    - name: DATABASE_CONNECTION_TIMEOUT
+      value: "30"
+    - name: DATABASE_IDLE_TIMEOUT
+      value: "300"
+    - name: DATABASE_ACQUIRE_TIMEOUT
+      value: "30"
+    - name: DATABASE_MAX_LIFETIME
+      value: "1800"
+    - name: DATABASE_STATEMENT_CACHE_SIZE
+      value: "1000"
+    - name: DATABASE_MIGRATION_AUTO
+      value: "true"
+    - name: DATABASE_MIGRATION_LOCK_TIMEOUT
+      value: "60"
+    - name: DATABASE_QUERY_LOGGING
+      value: "true"
+    - name: DATABASE_SLOW_QUERY_THRESHOLD
+      value: "1000"
+
+    # Development cache configuration
+    - name: CACHE_ENABLED
+      value: "true"
+    - name: CACHE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-cache-config
+          key: REDIS_HOST
+    - name: CACHE_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-cache-config
+          key: REDIS_PORT
+    - name: CACHE_DATABASE
+      value: "0"
+    - name: CACHE_MAX_CONNECTIONS
+      value: "10"
+    - name: CACHE_MIN_CONNECTIONS
+      value: "2"
+    - name: CACHE_CONNECTION_TIMEOUT
+      value: "5"
+    - name: CACHE_IDLE_TIMEOUT
+      value: "60"
+    - name: CACHE_TTL_DEFAULT
+      value: "3600"
+    - name: CACHE_TTL_SESSION
+      value: "7200"
+    - name: CACHE_TTL_USER_DATA
+      value: "1800"
+    - name: CACHE_TTL_ATTESTATION
+      value: "86400"
+    - name: CACHE_TTL_VERIFICATION
+      value: "1800"
+    - name: CACHE_KEY_PREFIX
+      value: "veridis:dev:"
+    - name: CACHE_COMPRESSION_ENABLED
+      value: "true"
+    - name: CACHE_SERIALIZATION_FORMAT
+      value: "json"
+
+    # Development JWT configuration
+    - name: JWT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-backend-secrets
+          key: JWT_SECRET
+    - name: JWT_ALGORITHM
+      value: "HS256"
+    - name: JWT_EXPIRATION
+      value: "86400"
+    - name: JWT_REFRESH_EXPIRATION
+      value: "604800"
+    - name: JWT_AUDIENCE
+      value: "veridis-development"
+    - name: JWT_ISSUER
+      value: "veridis-backend-dev"
+    - name: JWT_LEEWAY
+      value: "60"
+
+    # Development encryption configuration
+    - name: ENCRYPTION_KEY
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-backend-secrets
+          key: ENCRYPTION_KEY
+    - name: ENCRYPTION_ALGORITHM
+      value: "AES-256-GCM"
+    - name: ENCRYPTION_KEY_DERIVATION
+      value: "PBKDF2"
+    - name: ENCRYPTION_ITERATIONS
+      value: "10000"
+    - name: ENCRYPTION_SALT_LENGTH
+      value: "32"
+
+    # Development identity service configuration
+    - name: IDENTITY_SERVICE_ENABLED
+      value: "true"
+    - name: IDENTITY_DID_METHOD
+      value: "did:veridis:starknet"
+    - name: IDENTITY_KEY_ALGORITHM
+      value: "ed25519"
+    - name: IDENTITY_VERIFICATION_TIMEOUT
+      value: "300"
+    - name: IDENTITY_RESOLUTION_CACHE_TTL
+      value: "3600"
+    - name: IDENTITY_REGISTRY_ENABLED
+      value: "true"
+    - name: IDENTITY_METADATA_VALIDATION
+      value: "true"
+    - name: IDENTITY_SCHEMA_REGISTRY_URL
+      value: "https://schema.veridis.xyz/dev"
+
+    # Development attestation service configuration
+    - name: ATTESTATION_SERVICE_ENABLED
+      value: "true"
+    - name: ATTESTATION_SCHEMA_VALIDATION
+      value: "true"
+    - name: ATTESTATION_PROOF_VERIFICATION
+      value: "true"
+    - name: ATTESTATION_EXPIRATION_DEFAULT
+      value: "31536000"
+    - name: ATTESTATION_REVOCATION_ENABLED
+      value: "true"
+    - name: ATTESTATION_BATCH_SIZE
+      value: "10"
+    - name: ATTESTATION_QUEUE_SIZE
+      value: "1000"
+    - name: ATTESTATION_RETRY_ATTEMPTS
+      value: "3"
+    - name: ATTESTATION_RETRY_DELAY
+      value: "1000"
+
+    # Development verification service configuration
+    - name: VERIFICATION_SERVICE_ENABLED
+      value: "true"
+    - name: VERIFICATION_PARALLEL_PROCESSING
+      value: "true"
+    - name: VERIFICATION_MAX_PARALLEL_JOBS
+      value: "4"
+    - name: VERIFICATION_TIMEOUT
+      value: "300"
+    - name: VERIFICATION_CACHE_ENABLED
+      value: "true"
+    - name: VERIFICATION_CACHE_TTL
+      value: "1800"
+    - name: VERIFICATION_PROOF_VALIDATION
+      value: "true"
+    - name: VERIFICATION_SIGNATURE_VALIDATION
+      value: "true"
+    - name: VERIFICATION_TIMESTAMP_VALIDATION
+      value: "true"
+    - name: VERIFICATION_SCHEMA_VALIDATION
+      value: "true"
+
+    # Development compliance service configuration
+    - name: COMPLIANCE_SERVICE_ENABLED
+      value: "true"
+    - name: COMPLIANCE_GDPR_ENABLED
+      value: "true"
+    - name: COMPLIANCE_SOC2_ENABLED
+      value: "true"
+    - name: COMPLIANCE_ISO27001_ENABLED
+      value: "true"
+    - name: COMPLIANCE_AUDIT_LOGGING
+      value: "true"
+    - name: COMPLIANCE_DATA_RETENTION_DAYS
+      value: "30"
+    - name: COMPLIANCE_CONSENT_MANAGEMENT
+      value: "true"
+    - name: COMPLIANCE_DATA_PORTABILITY
+      value: "true"
+    - name: COMPLIANCE_RIGHT_TO_ERASURE
+      value: "true"
+    - name: COMPLIANCE_PRIVACY_BY_DESIGN
+      value: "true"
+    - name: COMPLIANCE_AUTOMATED_DECISION_MAKING
+      value: "false"
+
+    # Development bridge service configuration
+    - name: BRIDGE_SERVICE_ENABLED
+      value: "true"
+    - name: BRIDGE_STARKNET_ENABLED
+      value: "true"
+    - name: BRIDGE_ETHEREUM_ENABLED
+      value: "true"
+    - name: BRIDGE_COSMOS_ENABLED
+      value: "true"
+    - name: BRIDGE_SECURITY_THRESHOLD
+      value: "1"
+    - name: BRIDGE_FINALITY_CONFIRMATIONS
+      value: "1"
+    - name: BRIDGE_BATCH_SIZE
+      value: "10"
+    - name: BRIDGE_RETRY_ATTEMPTS
+      value: "3"
+    - name: BRIDGE_RETRY_DELAY
+      value: "5000"
+    - name: BRIDGE_TIMEOUT
+      value: "300"
+    - name: BRIDGE_MONITORING_ENABLED
+      value: "true"
+
+    # Development StarkNet configuration
+    - name: STARKNET_NETWORK
+      value: "devnet"
+    - name: STARKNET_RPC_URL
+      value: "http://starknet-devnet-service.veridis-dev.svc.cluster.local:5050"
+    - name: STARKNET_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-api-keys
+          key: STARKNET_API_KEY
+    - name: STARKNET_ACCOUNT_ADDRESS
+      value: "0x0123456789abcdef0123456789abcdef01234567"
+    - name: STARKNET_PRIVATE_KEY
+      value: "0x123456789abcdef123456789abcdef123456789abcdef123456789abcdef1234"
+    - name: STARKNET_CHAIN_ID
+      value: "0x534e5f474f45524c49"
+    - name: STARKNET_TIMEOUT
+      value: "30"
+    - name: STARKNET_RETRY_ATTEMPTS
+      value: "3"
+    - name: STARKNET_RETRY_DELAY
+      value: "1000"
+
+    # Development Ethereum configuration
+    - name: ETHEREUM_NETWORK
+      value: "sepolia"
+    - name: ETHEREUM_RPC_URL
+      value: "https://sepolia.infura.io/v3/${INFURA_PROJECT_ID}"
+    - name: ETHEREUM_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-api-keys
+          key: ETHEREUM_API_KEY
+    - name: ETHEREUM_ACCOUNT_ADDRESS
+      value: "0x1234567890abcdef1234567890abcdef12345678"
+    - name: ETHEREUM_PRIVATE_KEY
+      value: "0xabcdef123456789abcdef123456789abcdef123456789abcdef123456789abcdef"
+    - name: ETHEREUM_CHAIN_ID
+      value: "11155111"
+    - name: ETHEREUM_GAS_LIMIT
+      value: "21000"
+    - name: ETHEREUM_GAS_PRICE
+      value: "20000000000"
+    - name: ETHEREUM_TIMEOUT
+      value: "30"
+
+    # Development Cosmos configuration
+    - name: COSMOS_NETWORK
+      value: "theta-testnet-001"
+    - name: COSMOS_RPC_URL
+      value: "https://rpc.sentry-01.theta-testnet.polypore.xyz"
+    - name: COSMOS_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-api-keys
+          key: COSMOS_API_KEY
+    - name: COSMOS_ACCOUNT_ADDRESS
+      value: "cosmos1abcdef123456789abcdef123456789abcdef123"
+    - name: COSMOS_PRIVATE_KEY
+      value: "0xdef123456789abcdef123456789abcdef123456789abcdef123456789abcdef12"
+    - name: COSMOS_CHAIN_ID
+      value: "theta-testnet-001"
+    - name: COSMOS_TIMEOUT
+      value: "30"
+
+    # Development ZK circuits integration
+    - name: ZK_CIRCUITS_ENABLED
+      value: "true"
+    - name: ZK_CIRCUITS_HOST
+      value: "zk-circuits-service.veridis-dev.svc.cluster.local"
+    - name: ZK_CIRCUITS_PORT
+      value: "4000"
+    - name: ZK_CIRCUITS_TIMEOUT
+      value: "300"
+    - name: ZK_CIRCUITS_RETRY_ATTEMPTS
+      value: "3"
+    - name: ZK_CIRCUITS_RETRY_DELAY
+      value: "2000"
+    - name: ZK_CIRCUITS_PROOF_CACHE_ENABLED
+      value: "true"
+    - name: ZK_CIRCUITS_PROOF_CACHE_TTL
+      value: "3600"
+    - name: ZK_CIRCUITS_VERIFICATION_CACHE_ENABLED
+      value: "true"
+    - name: ZK_CIRCUITS_VERIFICATION_CACHE_TTL
+      value: "1800"
+    - name: ZK_CIRCUITS_BATCH_PROCESSING
+      value: "true"
+    - name: ZK_CIRCUITS_BATCH_SIZE
+      value: "5"
+
+    # Development monitoring configuration
+    - name: MONITORING_ENABLED
+      value: "true"
+    - name: METRICS_ENABLED
+      value: "true"
+    - name: METRICS_HOST
+      value: "0.0.0.0"
+    - name: METRICS_PORT
+      value: "9090"
+    - name: METRICS_PATH
+      value: "/metrics"
+    - name: METRICS_DETAILED
+      value: "true"
+    - name: METRICS_HISTOGRAM_BUCKETS
+      value: "0.001,0.01,0.1,1,10"
+    - name: METRICS_CUSTOM_LABELS
+      value: "environment=development,service=backend"
+
+    # Development tracing configuration
+    - name: TRACING_ENABLED
+      value: "true"
+    - name: TRACING_ENDPOINT
+      value: "http://veridis-development-jaeger-collector.veridis-dev.svc.cluster.local:14268/api/traces"
+    - name: TRACING_SERVICE_NAME
+      value: "veridis-backend-dev"
+    - name: TRACING_SAMPLING_RATE
+      value: "1.0"
+    - name: TRACING_MAX_TAG_VALUE_LENGTH
+      value: "1024"
+    - name: TRACING_MAX_LOGS_PER_SPAN
+      value: "100"
+    - name: TRACING_TIMEOUT
+      value: "10"
+
+    # Development logging configuration
+    - name: LOGGING_LEVEL
+      value: "debug"
+    - name: LOGGING_FORMAT
+      value: "pretty"
+    - name: LOGGING_TIMESTAMP
+      value: "true"
+    - name: LOGGING_COLORS
+      value: "true"
+    - name: LOGGING_TARGETS
+      value: "stdout"
+    - name: LOGGING_STRUCTURED
+      value: "false"
+    - name: LOGGING_CORRELATION_ID
+      value: "true"
+    - name: LOGGING_REQUEST_ID
+      value: "true"
+    - name: LOGGING_PERFORMANCE
+      value: "true"
+    - name: LOGGING_AUDIT
+      value: "true"
+    - name: LOGGING_SECURITY
+      value: "true"
+
+    # Development health check configuration
+    - name: HEALTH_CHECK_ENABLED
+      value: "true"
+    - name: HEALTH_CHECK_PORT
+      value: "8081"
+    - name: HEALTH_CHECK_PATH
+      value: "/health"
+    - name: HEALTH_CHECK_INTERVAL
+      value: "30"
+    - name: HEALTH_CHECK_TIMEOUT
+      value: "5"
+    - name: HEALTH_CHECK_RETRIES
+      value: "3"
+    - name: HEALTH_CHECK_START_PERIOD
+      value: "60"
+    - name: HEALTH_CHECK_DEPENDENCIES
+      value: "database,cache,zk-circuits"
+
+    # Development readiness check configuration
+    - name: READINESS_CHECK_ENABLED
+      value: "true"
+    - name: READINESS_CHECK_PORT
+      value: "8081"
+    - name: READINESS_CHECK_PATH
+      value: "/ready"
+    - name: READINESS_CHECK_INTERVAL
+      value: "10"
+    - name: READINESS_CHECK_TIMEOUT
+      value: "3"
+    - name: READINESS_CHECK_RETRIES
+      value: "3"
+    - name: READINESS_CHECK_DEPENDENCIES
+      value: "database,cache"
+
+    # Development security configuration
+    - name: SECURITY_ENABLED
+      value: "true"
+    - name: SECURITY_LEVEL
+      value: "development"
+    - name: SECURITY_AUTHENTICATION_REQUIRED
+      value: "false"
+    - name: SECURITY_AUTHORIZATION_REQUIRED
+      value: "false"
+    - name: SECURITY_CORS_ENABLED
+      value: "true"
+    - name: SECURITY_CORS_ORIGINS
+      value: "*"
+    - name: SECURITY_CORS_METHODS
+      value: "GET,POST,PUT,DELETE,OPTIONS,PATCH"
+    - name: SECURITY_CORS_HEADERS
+      value: "*"
+    - name: SECURITY_CORS_CREDENTIALS
+      value: "true"
+    - name: SECURITY_CSRF_ENABLED
+      value: "false"
+    - name: SECURITY_RATE_LIMITING_ENABLED
+      value: "false"
+    - name: SECURITY_AUDIT_LOGGING
+      value: "true"
+    - name: SECURITY_ENCRYPTION_AT_REST
+      value: "true"
+    - name: SECURITY_ENCRYPTION_IN_TRANSIT
+      value: "true"
+
+    # Development webhook configuration
+    - name: WEBHOOK_ENABLED
+      value: "true"
+    - name: WEBHOOK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-backend-secrets
+          key: WEBHOOK_SECRET
+    - name: WEBHOOK_TIMEOUT
+      value: "30"
+    - name: WEBHOOK_RETRY_ATTEMPTS
+      value: "3"
+    - name: WEBHOOK_RETRY_DELAY
+      value: "1000"
+    - name: WEBHOOK_SIGNATURE_VALIDATION
+      value: "true"
+    - name: WEBHOOK_PAYLOAD_VALIDATION
+      value: "true"
+
+    # Development feature flags
+    - name: FEATURE_FLAGS_ENABLED
+      value: "true"
+    - name: FEATURE_FLAG_GDPR_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_BRIDGE_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_ZK_PROOFS
+      value: "true"
+    - name: FEATURE_FLAG_COMPLIANCE_AUTOMATION
+      value: "true"
+    - name: FEATURE_FLAG_ENTERPRISE_FEATURES
+      value: "false"
+    - name: FEATURE_FLAG_AUDIT_LOGGING
+      value: "true"
+    - name: FEATURE_FLAG_DEVELOPMENT_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_TESTING_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_DEBUGGING_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_PROFILING_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_MOCK_EXTERNAL_SERVICES
+      value: "true"
+
+    # Development API versioning
+    - name: API_VERSIONING_ENABLED
+      value: "true"
+    - name: API_VERSION_CURRENT
+      value: "v1"
+    - name: API_VERSION_SUPPORTED
+      value: "v1"
+    - name: API_VERSION_DEPRECATED
+      value: ""
+    - name: API_VERSION_HEADER
+      value: "X-API-Version"
+    - name: API_VERSION_QUERY_PARAM
+      value: "version"
+
+    # Development performance tuning
+    - name: PERFORMANCE_TUNING_ENABLED
+      value: "true"
+    - name: PERFORMANCE_ASYNC_RUNTIME
+      value: "tokio"
+    - name: PERFORMANCE_WORKER_THREADS
+      value: "4"
+    - name: PERFORMANCE_BLOCKING_THREADS
+      value: "4"
+    - name: PERFORMANCE_THREAD_STACK_SIZE
+      value: "2097152"
+    - name: PERFORMANCE_ENABLE_IO_DRIVER
+      value: "true"
+    - name: PERFORMANCE_ENABLE_TIME_DRIVER
+      value: "true"
+    - name: PERFORMANCE_TCP_NODELAY
+      value: "true"
+    - name: PERFORMANCE_TCP_KEEPALIVE
+      value: "true"
+    - name: PERFORMANCE_CONNECTION_POOLING
+      value: "true"
+    - name: PERFORMANCE_REQUEST_BUFFERING
+      value: "true"
+    - name: PERFORMANCE_RESPONSE_COMPRESSION
+      value: "true"
+
+    # Development debugging configuration
+    - name: DEBUG_ENABLED
+      value: "true"
+    - name: DEBUG_LEVEL
+      value: "verbose"
+    - name: DEBUG_ENDPOINTS_ENABLED
+      value: "true"
+    - name: DEBUG_PROFILING_ENABLED
+      value: "true"
+    - name: DEBUG_MEMORY_PROFILING
+      value: "true"
+    - name: DEBUG_CPU_PROFILING
+      value: "true"
+    - name: DEBUG_HEAP_PROFILING
+      value: "true"
+    - name: DEBUG_PANIC_HANDLER
+      value: "backtrace"
+    - name: DEBUG_ASYNC_BACKTRACE
+      value: "true"
+    - name: DEBUG_TOKIO_CONSOLE
+      value: "true"
+    - name: DEBUG_FLAMEGRAPH_ENABLED
+      value: "true"
+
+    # Development testing configuration
+    - name: TESTING_ENABLED
+      value: "true"
+    - name: TESTING_MODE
+      value: "development"
+    - name: TESTING_MOCK_EXTERNAL_SERVICES
+      value: "true"
+    - name: TESTING_MOCK_BLOCKCHAIN_CALLS
+      value: "true"
+    - name: TESTING_MOCK_DATABASE_CALLS
+      value: "false"
+    - name: TESTING_MOCK_CACHE_CALLS
+      value: "false"
+    - name: TESTING_TEST_DATA_ENABLED
+      value: "true"
+    - name: TESTING_FIXTURES_ENABLED
+      value: "true"
+    - name: TESTING_SEED_DATA_ENABLED
+      value: "true"
+    - name: TESTING_CLEANUP_ENABLED
+      value: "true"
+    - name: TESTING_PARALLEL_EXECUTION
+      value: "true"
+    - name: TESTING_COVERAGE_ENABLED
+      value: "true"
+
+    # Development hot reload configuration
+    - name: HOT_RELOAD_ENABLED
+      value: "true"
+    - name: HOT_RELOAD_WATCH_PATHS
+      value: "/app/src,/app/config"
+    - name: HOT_RELOAD_IGNORE_PATTERNS
+      value: "target/**,node_modules/**,.git/**"
+    - name: HOT_RELOAD_DEBOUNCE_MS
+      value: "500"
+    - name: HOT_RELOAD_GRACEFUL_SHUTDOWN
+      value: "true"
+    - name: HOT_RELOAD_PRESERVE_STATE
+      value: "false"
+    - name: HOT_RELOAD_NOTIFICATION_WEBHOOK
+      value: "http://localhost:8082/reload"
+
+    # Development deployment metadata
+    - name: DEPLOYMENT_METADATA_GIT_COMMIT
+      value: "${GIT_COMMIT:-development}"
+    - name: DEPLOYMENT_METADATA_GIT_BRANCH
+      value: "${GIT_BRANCH:-develop}"
+    - name: DEPLOYMENT_METADATA_BUILD_NUMBER
+      value: "${BUILD_NUMBER:-dev-build}"
+    - name: DEPLOYMENT_METADATA_BUILD_DATE
+      value: "${BUILD_DATE:-2025-01-18T10:00:00Z}"
+    - name: DEPLOYMENT_METADATA_BUILD_USER
+      value: "${BUILD_USER:-developer}"
+    - name: DEPLOYMENT_METADATA_DEVELOPER
+      value: "${DEVELOPER_NAME:-unknown}"
+    - name: DEPLOYMENT_METADATA_ENVIRONMENT
+      value: "development"
+    - name: DEPLOYMENT_METADATA_DEPLOYMENT_TYPE
+      value: "development"
+    - name: DEPLOYMENT_METADATA_KUSTOMIZE_VERSION
+      value: "5.3.0"
+    - name: DEPLOYMENT_METADATA_KUBERNETES_VERSION
+      value: "1.28+"
+
+- op: add
+  path: /spec/template/spec/containers/0/ports
+  value:
+    # Main HTTP API port
+    - name: http
+      containerPort: 8080
+      protocol: TCP
+
+    # Health check port
+    - name: health
+      containerPort: 8081
+      protocol: TCP
+
+    # Metrics port
+    - name: metrics
+      containerPort: 9090
+      protocol: TCP
+
+    # Development debugging port
+    - name: debug
+      containerPort: 8082
+      protocol: TCP
+
+    # Development profiling port
+    - name: profiling
+      containerPort: 8083
+      protocol: TCP
+
+    # Tokio console port
+    - name: tokio-console
+      containerPort: 6669
+      protocol: TCP
+
+    # Development hot reload port
+    - name: hot-reload
+      containerPort: 8084
+      protocol: TCP
+
+    # Development testing port
+    - name: testing
+      containerPort: 8085
+      protocol: TCP
+
+- op: replace
+  path: /spec/template/spec/containers/0/livenessProbe
+  value:
+    httpGet:
+      path: /health
+      port: health
+      scheme: HTTP
+    initialDelaySeconds: 60
+    periodSeconds: 30
+    timeoutSeconds: 10
+    successThreshold: 1
+    failureThreshold: 5
+
+- op: replace
+  path: /spec/template/spec/containers/0/readinessProbe
+  value:
+    httpGet:
+      path: /ready
+      port: health
+      scheme: HTTP
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+
+- op: add
+  path: /spec/template/spec/containers/0/startupProbe
+  value:
+    httpGet:
+      path: /startup
+      port: health
+      scheme: HTTP
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 30
+
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    # Application configuration
+    - name: app-config
+      mountPath: /app/config
+      readOnly: true
+
+    # Development certificates (self-signed)
+    - name: dev-certificates
+      mountPath: /app/certs
+      readOnly: true
+
+    # Development data directory
+    - name: app-data
+      mountPath: /app/data
+      readOnly: false
+
+    # Development logs directory
+    - name: app-logs
+      mountPath: /app/logs
+      readOnly: false
+
+    # Development cache directory
+    - name: app-cache
+      mountPath: /app/cache
+      readOnly: false
+
+    # Development temporary directory
+    - name: app-tmp
+      mountPath: /app/tmp
+      readOnly: false
+
+    # Development profiling data
+    - name: profiling-data
+      mountPath: /app/profiling
+      readOnly: false
+
+    # Development debugging data
+    - name: debug-data
+      mountPath: /app/debug
+      readOnly: false
+
+    # Development testing data
+    - name: test-data
+      mountPath: /app/test-data
+      readOnly: false
+
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    # Application configuration volume
+    - name: app-config
+      configMap:
+        name: veridis-development-backend-config
+        defaultMode: 0644
+
+    # Development certificates volume
+    - name: dev-certificates
+      secret:
+        secretName: veridis-development-tls-certificates
+        defaultMode: 0600
+
+    # Application data volume
+    - name: app-data
+      emptyDir:
+        sizeLimit: "2Gi"
+        medium: ""
+
+    # Application logs volume
+    - name: app-logs
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # Application cache volume
+    - name: app-cache
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # Application temporary volume
+    - name: app-tmp
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # Profiling data volume
+    - name: profiling-data
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # Debug data volume
+    - name: debug-data
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # Test data volume
+    - name: test-data
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+- op: add
+  path: /spec/template/spec/securityContext
+  value:
+    # Development pod security context
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: "OnRootMismatch"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups: [1000]
+
+- op: add
+  path: /spec/template/spec/containers/0/securityContext
+  value:
+    # Development container security context
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_BIND_SERVICE
+    seccompProfile:
+      type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/containers/0/command
+  value:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting Veridis Backend Development Service..."
+      echo "Environment: development"
+      echo "Version: 3.2.1-dev"
+      echo "Build: ${BUILD_NUMBER:-dev-build}"
+      echo "Git Commit: ${GIT_COMMIT:-development}"
+      echo "Developer: ${DEVELOPER_NAME:-unknown}"
+
+      # Create necessary directories
+      mkdir -p /app/data /app/logs /app/cache /app/tmp /app/profiling /app/debug /app/test-data
+
+      # Set permissions
+      chmod -R 755 /app/data /app/logs /app/cache /app/tmp /app/profiling /app/debug /app/test-data
+
+      # Display configuration
+      echo "Configuration:"
+      echo "  Database: ${DATABASE_HOST:-localhost}:${DATABASE_PORT:-5432}"
+      echo "  Cache: ${CACHE_HOST:-localhost}:${CACHE_PORT:-6379}"
+      echo "  ZK Circuits: ${ZK_CIRCUITS_HOST:-localhost}:${ZK_CIRCUITS_PORT:-4000}"
+      echo "  Debugging: ${DEBUG_ENABLED:-false}"
+      echo "  Profiling: ${DEBUG_PROFILING_ENABLED:-false}"
+      echo "  Hot Reload: ${HOT_RELOAD_ENABLED:-false}"
+      echo "  Testing: ${TESTING_ENABLED:-false}"
+
+      # Start the backend service
+      echo "Starting Veridis Backend..."
+      exec /app/veridis_backend --config /app/config/development.toml
+
+- op: add
+  path: /spec/template/spec/nodeSelector
+  value:
+    kubernetes.io/arch: amd64
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/worker: "true"
+
+- op: add
+  path: /spec/template/spec/tolerations
+  value:
+    - key: "node-role.kubernetes.io/development"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "node.kubernetes.io/not-ready"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+    - key: "node.kubernetes.io/unreachable"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+
+- op: add
+  path: /spec/template/spec/affinity
+  value:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values: ["veridis"]
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values: ["backend"]
+            topologyKey: kubernetes.io/hostname
+
+- op: add
+  path: /spec/template/spec/terminationGracePeriodSeconds
+  value: 60
+
+- op: add
+  path: /spec/template/spec/dnsPolicy
+  value: ClusterFirst
+
+- op: add
+  path: /spec/template/spec/restartPolicy
+  value: Always
+
+- op: add
+  path: /spec/strategy
+  value:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 10
+
+- op: add
+  path: /spec/progressDeadlineSeconds
+  value: 600
+
+# ==============================================================================
+# Veridis Development Backend Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT BACKEND STRATEGY:
+# ===================================================
+#
+# VERIDIS DEVELOPMENT BACKEND ARCHITECTURE OVERVIEW:
+# --------------------------------------------------
+# 1. Development Backend Service Optimization:
+#    - Comprehensive enterprise-grade development backend with intelligent service management and advanced developer-focused optimization
+#    - Advanced backend configuration with comprehensive developer productivity, debugging support, testing efficiency, and comprehensive operational excellence
+#    - Multi-tier backend architecture with identity services, attestation services, verification services, and comprehensive backend intelligence
+#    - Enterprise backend policies with developer-friendly enforcement, productivity controls, debugging automation, and comprehensive backend procedures
+#    - Performance optimization with intelligent service allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. Advanced Service Configuration and Integration:
+#    - Developer-focused service configuration with productivity optimization, debugging efficiency, integration testing, and comprehensive productivity coordination
+#    - Advanced service configuration with backend tools, debugging features, testing frameworks, and comprehensive service intelligence
+#    - Flexible service optimization with developer workflow, productivity enhancement, and comprehensive service intelligence
+#    - Service intelligence with backend procedures, debugging support, service automation, and comprehensive service coordination
+#    - Development excellence with service optimization, productivity workflows, service automation, and comprehensive service environment management
+#
+# 3. Database and Cache Integration:
+#    - Database-optimized backend with comprehensive integration, performance monitoring, debugging analytics, and comprehensive database coordination
+#    - Advanced database configuration with connection pooling, query optimization, performance monitoring, and comprehensive database intelligence
+#    - Flexible database optimization with caching strategies, performance enhancement, and comprehensive database intelligence
+#    - Database intelligence with backend procedures, performance support, database automation, and comprehensive database coordination
+#    - Backend excellence with database optimization, performance workflows, database automation, and comprehensive database environment management
+#
+# ENTERPRISE DEVELOPMENT BACKEND FEATURES:
+# ========================================
+# Advanced Backend Service Management and Developer Productivity:
+#   - Multi-tier backend architecture with developer optimization, debugging backend, testing integration, and comprehensive backend configurations
+#   - Intelligent backend management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive backend decisions
+#   - Backend discovery with developer optimization, debugging management, backend policies, and comprehensive backend analytics
+#   - Performance management with developer productivity, debugging efficiency, backend optimization, and comprehensive performance intelligence
+#   - Backend processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent backend optimization
+#
+# This Development Backend configuration provides enterprise-grade developer productivity enhancement with comprehensive backend support, intelligent debugging optimization, advanced service features, and operational excellence while maintaining appropriate performance, efficiency validation, and comprehensive backend for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
