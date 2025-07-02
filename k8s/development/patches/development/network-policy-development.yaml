@@ -1,0 +1,1261 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Network Policy Patch
+# ==============================================================================
+#
+# This Development Network Policy Patch provides comprehensive development-optimized
+# network security policies for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT NETWORK POLICY ARCHITECTURE:
+#   • Advanced Development Network Policies with intelligent microsegmentation and comprehensive development-based optimization
+#   • Multi-tier Development Network architecture with development zones, service isolation, debugging access, and development environments
+#   • Comprehensive development network framework with Network policies, developer tooling integration, traffic automation
+#   • Advanced lifecycle management with automated Network optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Network performance insights
+#
+# VERIDIS DEVELOPMENT NETWORK OPTIMIZATION:
+#   • High-performance Development with intelligent traffic management and developer-optimized network allocation
+#   • Intelligent Development network management with responsive policies and development-based traffic decisions
+#   • Advanced Development management with business intelligence and network-based developer control
+#   • Comprehensive development network control with intelligent Developer Network management and traffic enhancement
+#   • Enterprise acceleration with predictive Developer Network management and development traffic optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Network controls with comprehensive audit and development requirements
+#   • GDPR Development Network compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Network management with comprehensive framework integration
+#   • NIST 800-190 container Development Network security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Network best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Network lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Network intelligence
+#   • Advanced Network integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development network control with Development Network preservation and traffic optimization
+#   • Business continuity Development Network with development guarantees and performance optimization
+#
+# DEVELOPMENT NETWORK ACCELERATION INTELLIGENCE:
+#   • Development Network usage analytics with development patterns and optimization recommendations
+#   • Network monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Network analytics and deployment optimization procedures
+#   • Cost optimization with Development Network utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Network metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Veridis Backend Network Policy Patch
+# ==============================================================================
+- op: replace
+  path: /spec/podSelector
+  value:
+    matchLabels:
+      app.kubernetes.io/name: veridis-backend
+      app.kubernetes.io/component: backend
+      veridis.xyz/environment: development
+
+- op: replace
+  path: /spec/policyTypes
+  value:
+    - Ingress
+    - Egress
+
+- op: replace
+  path: /spec/ingress
+  value:
+    # ==============================================================================
+    # Development Frontend and UI Access
+    # ==============================================================================
+    - from:
+        # Frontend/UI pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-ui
+              app.kubernetes.io/component: frontend
+              veridis.xyz/environment: development
+
+        # Development tools and debugging access
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: development-tools
+              veridis.xyz/environment: development
+
+        # Testing pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: testing
+              veridis.xyz/environment: development
+
+        # Load testing pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: load-testing
+              veridis.xyz/environment: development
+
+      ports:
+        # Main API port
+        - protocol: TCP
+          port: 8080
+
+        # Development API port
+        - protocol: TCP
+          port: 8090
+
+        # Debug API port
+        - protocol: TCP
+          port: 8091
+
+        # Health check port
+        - protocol: TCP
+          port: 8081
+
+        # Metrics port
+        - protocol: TCP
+          port: 9090
+
+    # ==============================================================================
+    # Development API Gateway and Load Balancer Access
+    # ==============================================================================
+    - from:
+        # API Gateway pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: api-gateway
+              veridis.xyz/environment: development
+
+        # Load balancer pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: nginx
+              app.kubernetes.io/component: load-balancer
+              veridis.xyz/environment: development
+
+        # Ingress controller pods
+        - namespaceSelector:
+            matchLabels:
+              name: ingress-nginx
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: ingress-nginx
+
+        # Development reverse proxy
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: reverse-proxy
+              veridis.xyz/environment: development
+
+      ports:
+        # Main API port
+        - protocol: TCP
+          port: 8080
+
+        # Development API port
+        - protocol: TCP
+          port: 8090
+
+        # Health check port
+        - protocol: TCP
+          port: 8081
+
+    # ==============================================================================
+    # Development ZK Circuits Service Communication
+    # ==============================================================================
+    - from:
+        # ZK Circuits service pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: zk-circuits
+              app.kubernetes.io/component: zk-processing
+              veridis.xyz/environment: development
+
+      ports:
+        # Internal communication port
+        - protocol: TCP
+          port: 8080
+
+        # Development API port
+        - protocol: TCP
+          port: 8090
+
+    # ==============================================================================
+    # Development Monitoring and Observability Access
+    # ==============================================================================
+    - from:
+        # Prometheus monitoring
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+
+        # Prometheus in same namespace
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+              veridis.xyz/environment: development
+
+        # Grafana dashboard
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: grafana
+
+        # Grafana in same namespace
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: grafana
+              veridis.xyz/environment: development
+
+        # Jaeger tracing
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: jaeger
+
+        # Jaeger in same namespace
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: jaeger
+              veridis.xyz/environment: development
+
+        # Custom monitoring tools
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: monitoring
+              veridis.xyz/environment: development
+
+        # Development monitoring sidecars
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: monitoring-sidecar
+              veridis.xyz/environment: development
+
+      ports:
+        # Metrics port
+        - protocol: TCP
+          port: 9090
+
+        # Health check port
+        - protocol: TCP
+          port: 8081
+
+        # Debug metrics port
+        - protocol: TCP
+          port: 9091
+
+    # ==============================================================================
+    # Development Debugging and Development Tools Access
+    # ==============================================================================
+    - from:
+        # Development tooling pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: development-tools
+              veridis.xyz/environment: development
+
+        # Debugging pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: debugging
+              veridis.xyz/environment: development
+
+        # Profiling tools
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: profiling
+              veridis.xyz/environment: development
+
+        # Development IDE extensions
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: ide-extension
+              veridis.xyz/environment: development
+
+        # Development proxy tools
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: dev-proxy
+              veridis.xyz/environment: development
+
+      ports:
+        # Main API port
+        - protocol: TCP
+          port: 8080
+
+        # Development API port
+        - protocol: TCP
+          port: 8090
+
+        # Debug API port
+        - protocol: TCP
+          port: 8091
+
+        # Profiling port
+        - protocol: TCP
+          port: 6060
+
+        # Development WebSocket port
+        - protocol: TCP
+          port: 8092
+
+    # ==============================================================================
+    # Development Service Mesh and Inter-Service Communication
+    # ==============================================================================
+    - from:
+        # Service mesh sidecars (Istio)
+        - podSelector:
+            matchLabels:
+              app: istio-proxy
+
+        # Service mesh sidecars (Linkerd)
+        - podSelector:
+            matchLabels:
+              linkerd.io/proxy-deployment: veridis-backend
+
+        # Service mesh control plane
+        - namespaceSelector:
+            matchLabels:
+              name: istio-system
+
+        # Development service mesh
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: service-mesh
+              veridis.xyz/environment: development
+
+      ports:
+        # Main API port
+        - protocol: TCP
+          port: 8080
+
+        # Service mesh management
+        - protocol: TCP
+          port: 15000
+
+        # Service mesh metrics
+        - protocol: TCP
+          port: 15090
+
+    # ==============================================================================
+    # Development Kubernetes System Access
+    # ==============================================================================
+    - from:
+        # Kubernetes system components
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+
+        # Kubernetes DNS
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+
+        # Development kubelet health checks
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              component: kubelet
+
+      ports:
+        # Health check port
+        - protocol: TCP
+          port: 8081
+
+        # Metrics port
+        - protocol: TCP
+          port: 9090
+
+    # ==============================================================================
+    # Development External Development Access (Relaxed for Development)
+    # ==============================================================================
+    - from:
+        # Allow development namespace
+        - namespaceSelector:
+            matchLabels:
+              name: veridis-dev
+
+        # Allow development tools namespace
+        - namespaceSelector:
+            matchLabels:
+              name: development-tools
+
+        # Allow testing namespace
+        - namespaceSelector:
+            matchLabels:
+              name: testing
+
+      ports:
+        # All development ports
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 8090
+        - protocol: TCP
+          port: 8091
+        - protocol: TCP
+          port: 8081
+        - protocol: TCP
+          port: 9090
+
+- op: replace
+  path: /spec/egress
+  value:
+    # ==============================================================================
+    # Development Database Access (PostgreSQL)
+    # ==============================================================================
+    - to:
+        # PostgreSQL pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: postgres
+              app.kubernetes.io/component: database
+              veridis.xyz/environment: development
+
+        # PostgreSQL StatefulSet
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: postgresql
+              veridis.xyz/environment: development
+
+      ports:
+        # PostgreSQL port
+        - protocol: TCP
+          port: 5432
+
+    # ==============================================================================
+    # Development Cache Access (Redis)
+    # ==============================================================================
+    - to:
+        # Redis pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/component: cache
+              veridis.xyz/environment: development
+
+      ports:
+        # Redis port
+        - protocol: TCP
+          port: 6379
+
+    # ==============================================================================
+    # Development Secrets Management Access (Vault)
+    # ==============================================================================
+    - to:
+        # Vault pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vault
+              app.kubernetes.io/component: secrets-management
+              veridis.xyz/environment: development
+
+      ports:
+        # Vault API port
+        - protocol: TCP
+          port: 8200
+
+        # Vault cluster port
+        - protocol: TCP
+          port: 8201
+
+    # ==============================================================================
+    # Development ZK Circuits Service Communication
+    # ==============================================================================
+    - to:
+        # ZK Circuits service pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: zk-circuits
+              app.kubernetes.io/component: zk-processing
+              veridis.xyz/environment: development
+
+      ports:
+        # ZK Circuits API port
+        - protocol: TCP
+          port: 4000
+
+        # ZK Circuits gRPC port
+        - protocol: TCP
+          port: 4001
+
+        # ZK Circuits health port
+        - protocol: TCP
+          port: 4002
+
+    # ==============================================================================
+    # Development Blockchain Network Access (StarkNet DevNet)
+    # ==============================================================================
+    - to:
+        # StarkNet DevNet pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: starknet-devnet
+              app.kubernetes.io/component: blockchain
+              veridis.xyz/environment: development
+
+      ports:
+        # StarkNet RPC port
+        - protocol: TCP
+          port: 5050
+
+        # StarkNet gateway port
+        - protocol: TCP
+          port: 5051
+
+    # ==============================================================================
+    # Development External API Access (Relaxed for Development)
+    # ==============================================================================
+    - to: []
+      ports:
+        # HTTPS for external APIs
+        - protocol: TCP
+          port: 443
+
+        # HTTP for development APIs
+        - protocol: TCP
+          port: 80
+
+        # Alternative HTTPS ports
+        - protocol: TCP
+          port: 8443
+
+        # Development API ports
+        - protocol: TCP
+          port: 3000
+        - protocol: TCP
+          port: 4000
+        - protocol: TCP
+          port: 8000
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 9000
+
+    # ==============================================================================
+    # Development DNS Resolution
+    # ==============================================================================
+    - to:
+        # Kubernetes DNS
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+
+        # CoreDNS
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: coredns
+
+      ports:
+        # DNS TCP
+        - protocol: TCP
+          port: 53
+
+        # DNS UDP
+        - protocol: UDP
+          port: 53
+
+    # ==============================================================================
+    # Development External DNS Resolution
+    # ==============================================================================
+    - to: []
+      ports:
+        # External DNS TCP
+        - protocol: TCP
+          port: 53
+
+        # External DNS UDP
+        - protocol: UDP
+          port: 53
+
+    # ==============================================================================
+    # Development Service Mesh Communication
+    # ==============================================================================
+    - to:
+        # Service mesh control plane
+        - namespaceSelector:
+            matchLabels:
+              name: istio-system
+
+        # Service mesh monitoring
+        - namespaceSelector:
+            matchLabels:
+              name: istio-system
+          podSelector:
+            matchLabels:
+              app: istiod
+
+      ports:
+        # Service mesh control
+        - protocol: TCP
+          port: 15010
+
+        # Service mesh webhook
+        - protocol: TCP
+          port: 15017
+
+        # Service mesh discovery
+        - protocol: TCP
+          port: 8080
+
+---
+# ==============================================================================
+# Development ZK Circuits Network Policy Patch
+# ==============================================================================
+- op: replace
+  path: /metadata/name
+  value: veridis-zk-circuits-development-network-policy
+
+- op: replace
+  path: /spec/podSelector
+  value:
+    matchLabels:
+      app.kubernetes.io/name: zk-circuits
+      app.kubernetes.io/component: zk-processing
+      veridis.xyz/environment: development
+
+- op: replace
+  path: /spec/policyTypes
+  value:
+    - Ingress
+    - Egress
+
+- op: replace
+  path: /spec/ingress
+  value:
+    # ==============================================================================
+    # Development Veridis Backend Communication
+    # ==============================================================================
+    - from:
+        # Veridis Backend pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: veridis-backend
+              app.kubernetes.io/component: backend
+              veridis.xyz/environment: development
+
+        # Development testing pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: testing
+              veridis.xyz/environment: development
+
+        # Development tools
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: development-tools
+              veridis.xyz/environment: development
+
+      ports:
+        # ZK Circuits API port
+        - protocol: TCP
+          port: 4000
+
+        # ZK Circuits gRPC port
+        - protocol: TCP
+          port: 4001
+
+        # ZK Circuits health port
+        - protocol: TCP
+          port: 4002
+
+        # ZK Circuits metrics port
+        - protocol: TCP
+          port: 9090
+
+    # ==============================================================================
+    # Development Monitoring Access
+    # ==============================================================================
+    - from:
+        # Prometheus monitoring
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+
+        # Prometheus in same namespace
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+              veridis.xyz/environment: development
+
+        # Development monitoring
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: monitoring
+              veridis.xyz/environment: development
+
+      ports:
+        # Metrics port
+        - protocol: TCP
+          port: 9090
+
+        # Health port
+        - protocol: TCP
+          port: 4002
+
+    # ==============================================================================
+    # Development Debugging Access
+    # ==============================================================================
+    - from:
+        # Development debugging tools
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: debugging
+              veridis.xyz/environment: development
+
+        # Development profiling
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/component: profiling
+              veridis.xyz/environment: development
+
+      ports:
+        # All ZK Circuits ports
+        - protocol: TCP
+          port: 4000
+        - protocol: TCP
+          port: 4001
+        - protocol: TCP
+          port: 4002
+        - protocol: TCP
+          port: 9090
+
+- op: replace
+  path: /spec/egress
+  value:
+    # ==============================================================================
+    # Development Secrets Management Access
+    # ==============================================================================
+    - to:
+        # Vault pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: vault
+              app.kubernetes.io/component: secrets-management
+              veridis.xyz/environment: development
+
+      ports:
+        # Vault API port
+        - protocol: TCP
+          port: 8200
+
+    # ==============================================================================
+    # Development Cache Access
+    # ==============================================================================
+    - to:
+        # Redis pods
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: redis
+              app.kubernetes.io/component: cache
+              veridis.xyz/environment: development
+
+      ports:
+        # Redis port
+        - protocol: TCP
+          port: 6379
+
+    # ==============================================================================
+    # Development External API Access
+    # ==============================================================================
+    - to: []
+      ports:
+        # HTTPS for external APIs
+        - protocol: TCP
+          port: 443
+
+        # HTTP for development
+        - protocol: TCP
+          port: 80
+
+        # Development API ports
+        - protocol: TCP
+          port: 3000
+        - protocol: TCP
+          port: 8000
+        - protocol: TCP
+          port: 8080
+
+    # ==============================================================================
+    # Development DNS Resolution
+    # ==============================================================================
+    - to:
+        # Kubernetes DNS
+        - namespaceSelector:
+            matchLabels:
+              name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+
+      ports:
+        # DNS
+        - protocol: TCP
+          port: 53
+        - protocol: UDP
+          port: 53
+
+    # ==============================================================================
+    # Development External DNS
+    # ==============================================================================
+    - to: []
+      ports:
+        # External DNS
+        - protocol: TCP
+          port: 53
+        - protocol: UDP
+          port: 53
+
+---
+# ==============================================================================
+# Development Database Network Policy Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: veridis-postgres-development-network-policy
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: postgres
+        app.kubernetes.io/component: database
+        app.kubernetes.io/part-of: veridis-protocol
+        veridis.xyz/environment: development
+        veridis.xyz/network-policy-type: database
+      annotations:
+        veridis.xyz/policy-description: "Development PostgreSQL database network policy with relaxed access controls"
+        veridis.xyz/policy-version: "3.2.1-dev"
+        veridis.xyz/last-updated: "2025-01-18T10:00:00Z"
+    spec:
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: postgres
+          app.kubernetes.io/component: database
+          veridis.xyz/environment: development
+      policyTypes:
+        - Ingress
+        - Egress
+      ingress:
+        # Development backend service access
+        - from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: veridis-backend
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: testing
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: development-tools
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: database-tools
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 5432
+
+        # Development monitoring access
+        - from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: prometheus
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: monitoring
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 9187  # PostgreSQL exporter
+      egress:
+        # Development DNS resolution
+        - to:
+            - namespaceSelector:
+                matchLabels:
+                  name: kube-system
+              podSelector:
+                matchLabels:
+                  k8s-app: kube-dns
+          ports:
+            - protocol: TCP
+              port: 53
+            - protocol: UDP
+              port: 53
+
+        # Development external DNS
+        - to: []
+          ports:
+            - protocol: TCP
+              port: 53
+            - protocol: UDP
+              port: 53
+
+---
+# ==============================================================================
+# Development Cache Network Policy Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: veridis-redis-development-network-policy
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: redis
+        app.kubernetes.io/component: cache
+        app.kubernetes.io/part-of: veridis-protocol
+        veridis.xyz/environment: development
+        veridis.xyz/network-policy-type: cache
+      annotations:
+        veridis.xyz/policy-description: "Development Redis cache network policy with development-optimized access"
+        veridis.xyz/policy-version: "3.2.1-dev"
+        veridis.xyz/last-updated: "2025-01-18T10:00:00Z"
+    spec:
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: redis
+          app.kubernetes.io/component: cache
+          veridis.xyz/environment: development
+      policyTypes:
+        - Ingress
+        - Egress
+      ingress:
+        # Development services access
+        - from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: veridis-backend
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: zk-circuits
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: testing
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: development-tools
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 6379
+
+        # Development monitoring access
+        - from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: prometheus
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: monitoring
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 9121  # Redis exporter
+      egress:
+        # Development DNS resolution
+        - to:
+            - namespaceSelector:
+                matchLabels:
+                  name: kube-system
+              podSelector:
+                matchLabels:
+                  k8s-app: kube-dns
+          ports:
+            - protocol: TCP
+              port: 53
+            - protocol: UDP
+              port: 53
+
+---
+# ==============================================================================
+# Development Secrets Management Network Policy Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: veridis-vault-development-network-policy
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: vault
+        app.kubernetes.io/component: secrets-management
+        app.kubernetes.io/part-of: veridis-protocol
+        veridis.xyz/environment: development
+        veridis.xyz/network-policy-type: secrets
+      annotations:
+        veridis.xyz/policy-description: "Development Vault secrets management network policy"
+        veridis.xyz/policy-version: "3.2.1-dev"
+        veridis.xyz/last-updated: "2025-01-18T10:00:00Z"
+    spec:
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: vault
+          app.kubernetes.io/component: secrets-management
+          veridis.xyz/environment: development
+      policyTypes:
+        - Ingress
+        - Egress
+      ingress:
+        # Development services access
+        - from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: veridis-backend
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: zk-circuits
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: development-tools
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 8200  # Vault API
+            - protocol: TCP
+              port: 8201  # Vault cluster
+
+        # Development monitoring access
+        - from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: prometheus
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 9410  # Vault exporter
+      egress:
+        # Development database access for dynamic secrets
+        - to:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: postgres
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 5432
+
+        # Development DNS resolution
+        - to:
+            - namespaceSelector:
+                matchLabels:
+                  name: kube-system
+              podSelector:
+                matchLabels:
+                  k8s-app: kube-dns
+          ports:
+            - protocol: TCP
+              port: 53
+            - protocol: UDP
+              port: 53
+
+        # Development Kubernetes API access
+        - to: []
+          ports:
+            - protocol: TCP
+              port: 443  # Kubernetes API
+
+---
+# ==============================================================================
+# Development Monitoring Network Policy Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: veridis-monitoring-development-network-policy
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/component: monitoring
+        app.kubernetes.io/part-of: veridis-protocol
+        veridis.xyz/environment: development
+        veridis.xyz/network-policy-type: monitoring
+      annotations:
+        veridis.xyz/policy-description: "Development monitoring network policy with comprehensive access"
+        veridis.xyz/policy-version: "3.2.1-dev"
+        veridis.xyz/last-updated: "2025-01-18T10:00:00Z"
+    spec:
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/component: monitoring
+          veridis.xyz/environment: development
+      policyTypes:
+        - Ingress
+        - Egress
+      ingress:
+        # Development tools and dashboard access
+        - from:
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/component: development-tools
+                  veridis.xyz/environment: development
+            - podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: grafana
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 9090  # Prometheus
+            - protocol: TCP
+              port: 3000  # Grafana
+            - protocol: TCP
+              port: 16686 # Jaeger UI
+      egress:
+        # Development metrics collection
+        - to:
+            - podSelector:
+                matchLabels:
+                  veridis.xyz/environment: development
+          ports:
+            - protocol: TCP
+              port: 9090  # Metrics
+            - protocol: TCP
+              port: 9121  # Redis exporter
+            - protocol: TCP
+              port: 9187  # PostgreSQL exporter
+            - protocol: TCP
+              port: 9410  # Vault exporter
+
+        # Development DNS resolution
+        - to:
+            - namespaceSelector:
+                matchLabels:
+                  name: kube-system
+              podSelector:
+                matchLabels:
+                  k8s-app: kube-dns
+          ports:
+            - protocol: TCP
+              port: 53
+            - protocol: UDP
+              port: 53
+
+---
+# ==============================================================================
+# Development Default Deny Policy (Relaxed for Development)
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: veridis-development-default-policy
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/part-of: veridis-protocol
+        veridis.xyz/environment: development
+        veridis.xyz/network-policy-type: default
+        veridis.xyz/policy-enforcement: relaxed
+      annotations:
+        veridis.xyz/policy-description: "Development default network policy with relaxed enforcement for developer productivity"
+        veridis.xyz/policy-version: "3.2.1-dev"
+        veridis.xyz/last-updated: "2025-01-18T10:00:00Z"
+        veridis.xyz/development-note: "This policy is intentionally relaxed for development productivity"
+    spec:
+      podSelector: {}  # Apply to all pods in namespace
+      policyTypes:
+        - Ingress
+        - Egress
+      ingress:
+        # Allow all traffic from same namespace (development productivity)
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  name: veridis-dev
+
+        # Allow development tooling access
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  name: development-tools
+
+        # Allow testing access
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  name: testing
+
+        # Allow monitoring access
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  name: monitoring
+      egress:
+        # Allow all egress (development flexibility)
+        - to: []
+
+# ==============================================================================
+# Veridis Development Network Policy Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT NETWORK POLICY STRATEGY:
+# ==========================================================
+#
+# VERIDIS DEVELOPMENT NETWORK POLICY ARCHITECTURE OVERVIEW:
+# ---------------------------------------------------------
+# 1. Development Network Microsegmentation:
+#    - Comprehensive enterprise-grade development network policies with intelligent traffic management and advanced developer-focused optimization
+#    - Advanced network configuration with comprehensive developer productivity, debugging support, monitoring access, and comprehensive operational excellence
+#    - Multi-tier network architecture with service isolation, development zones, debugging access, and comprehensive network intelligence
+#    - Enterprise network policies with developer-friendly enforcement, productivity controls, network automation, and comprehensive network procedures
+#    - Performance optimization with intelligent traffic allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. Service-to-Service Communication Security:
+#    - Developer-focused network configuration with service isolation, communication optimization, monitoring integration, and comprehensive productivity coordination
+#    - Advanced network configuration with debugging tools, development features, monitoring frameworks, and comprehensive network intelligence
+#    - Flexible network optimization with developer workflow, productivity enhancement, and comprehensive network intelligence
+#    - Network intelligence with traffic procedures, debugging support, network automation, and comprehensive network coordination
+#    - Development excellence with network optimization, productivity workflows, network automation, and comprehensive network environment management
+#
+# 3. Development Access Control and Monitoring:
+#    - Performance-optimized network with comprehensive monitoring, traffic analysis, access logging, and comprehensive network coordination
+#    - Advanced monitoring configuration with network metrics, traffic tracking, access monitoring, and comprehensive monitoring intelligence
+#    - Flexible monitoring optimization with performance tracking, metric collection, and comprehensive monitoring intelligence
+#    - Monitoring intelligence with network procedures, performance support, monitoring automation, and comprehensive monitoring coordination
+#    - Network excellence with monitoring optimization, performance workflows, monitoring automation, and comprehensive monitoring environment management
+#
+# ENTERPRISE DEVELOPMENT NETWORK POLICY FEATURES:
+# ===============================================
+# Advanced Network Security and Developer Productivity:
+#   - Multi-tier network architecture with developer optimization, debugging network, testing integration, and comprehensive network configurations
+#   - Intelligent network management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive network decisions
+#   - Network discovery with developer optimization, debugging management, network policies, and comprehensive network analytics
+#   - Performance management with developer productivity, debugging efficiency, network optimization, and comprehensive performance intelligence
+#   - Network processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent network optimization
+#
+# This Development Network Policy configuration provides enterprise-grade developer productivity enhancement with comprehensive network security, intelligent traffic management, advanced monitoring capabilities, and operational excellence while maintaining appropriate security, flexibility, and comprehensive functionality for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
