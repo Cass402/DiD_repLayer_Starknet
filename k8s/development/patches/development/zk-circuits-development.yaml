@@ -1,0 +1,1382 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development ZK Circuits Service Patch
+# ==============================================================================
+#
+# This Development ZK Circuits Service Patch provides comprehensive development-optimized
+# zero-knowledge circuits service configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT ZK CIRCUITS ARCHITECTURE:
+#   • Advanced Development ZK Circuits with intelligent proof management and comprehensive development-based optimization
+#   • Multi-tier Development ZK Circuits architecture with circuit compilation, proof generation, verification services, and development environments
+#   • Comprehensive development ZK framework with Circuits policies, developer tooling integration, proof automation
+#   • Advanced lifecycle management with automated Circuits optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development ZK Circuits performance insights
+#
+# VERIDIS DEVELOPMENT ZK CIRCUITS OPTIMIZATION:
+#   • High-performance Development with intelligent proof management and developer-optimized proof allocation
+#   • Intelligent Development proof management with responsive policies and development-based proof decisions
+#   • Advanced Development management with business intelligence and proof-based developer control
+#   • Comprehensive development proof control with intelligent Developer ZK Circuits management and proof enhancement
+#   • Enterprise acceleration with predictive Developer ZK Circuits management and development proof optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development ZK Circuits controls with comprehensive audit and development requirements
+#   • GDPR Development ZK Circuits compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development ZK Circuits management with comprehensive framework integration
+#   • NIST 800-190 container Development ZK Circuits security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development ZK Circuits best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development ZK Circuits lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development ZK Circuits intelligence
+#   • Advanced Circuits integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development proof control with Development ZK Circuits preservation and proof optimization
+#   • Business continuity Development ZK Circuits with development guarantees and performance optimization
+#
+# DEVELOPMENT ZK CIRCUITS ACCELERATION INTELLIGENCE:
+#   • Development ZK Circuits usage analytics with development patterns and optimization recommendations
+#   • Circuits monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development ZK Circuits analytics and deployment optimization procedures
+#   • Cost optimization with Development ZK Circuits utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development ZK Circuits metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development ZK Circuits Service Patch Configuration
+# ==============================================================================
+- op: replace
+  path: /spec/replicas
+  value: 1
+
+- op: replace
+  path: /spec/template/metadata/labels
+  value:
+    # Core Kubernetes labels
+    app.kubernetes.io/name: zk-circuits
+    app.kubernetes.io/instance: zk-circuits-development
+    app.kubernetes.io/version: "3.2.1-dev"
+    app.kubernetes.io/component: zk-circuits
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Development environment labels
+    veridis.xyz/environment: development
+    veridis.xyz/deployment-type: development
+    veridis.xyz/service-tier: zk-circuits
+    veridis.xyz/protocol-version: "3.2.1-dev"
+
+    # Development ZK circuits-specific labels
+    zk.veridis.xyz/service-type: proof-generation
+    zk.veridis.xyz/development-mode: enabled
+    zk.veridis.xyz/cpu-only-mode: enabled
+    zk.veridis.xyz/debugging: comprehensive
+    zk.veridis.xyz/profiling: enabled
+    zk.veridis.xyz/testing: comprehensive
+    zk.veridis.xyz/mock-proofs: enabled
+
+    # Development ZK feature labels
+    circuits.veridis.xyz/garaga-enabled: true
+    circuits.veridis.xyz/cairo-enabled: true
+    circuits.veridis.xyz/nodejs-enabled: true
+    circuits.veridis.xyz/gpu-acceleration: disabled
+    circuits.veridis.xyz/cuda-support: disabled
+
+    # Development optimization labels
+    development.veridis.xyz/cost-optimization: enabled
+    development.veridis.xyz/resource-optimization: development
+    development.veridis.xyz/developer-productivity: high
+    development.veridis.xyz/debugging-support: comprehensive
+    development.veridis.xyz/testing-support: comprehensive
+    development.veridis.xyz/proof-caching: enabled
+
+- op: replace
+  path: /spec/template/metadata/annotations
+  value:
+    # Development deployment annotations
+    veridis.xyz/deployed-by: "kustomize-development"
+    veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/git-commit: "${GIT_COMMIT:-development}"
+    veridis.xyz/git-branch: "${GIT_BRANCH:-develop}"
+    veridis.xyz/build-number: "${BUILD_NUMBER:-dev-build}"
+    veridis.xyz/developer: "${DEVELOPER_NAME:-unknown}"
+
+    # Development ZK circuits configuration
+    zk.veridis.xyz/service-configuration: "development-optimized"
+    zk.veridis.xyz/resource-profile: "development"
+    zk.veridis.xyz/debugging-enabled: "true"
+    zk.veridis.xyz/profiling-enabled: "true"
+    zk.veridis.xyz/cpu-only-enabled: "true"
+    zk.veridis.xyz/mock-proofs-enabled: "true"
+    zk.veridis.xyz/fast-proofs-enabled: "true"
+
+    # Development technology annotations
+    technology.veridis.xyz/garaga-version: "0.18.1"
+    technology.veridis.xyz/cairo-version: "2.11.4"
+    technology.veridis.xyz/nodejs-version: "22.14.0"
+    technology.veridis.xyz/rust-version: "1.87.0"
+    technology.veridis.xyz/gpu-support: "disabled"
+
+    # Development security annotations
+    security.veridis.xyz/security-level: "development"
+    security.veridis.xyz/network-policies: "development"
+    security.veridis.xyz/pod-security-context: "development"
+    security.veridis.xyz/compliance-level: "development"
+
+    # Development monitoring annotations
+    monitoring.veridis.xyz/metrics-enabled: "true"
+    monitoring.veridis.xyz/logging-level: "debug"
+    monitoring.veridis.xyz/tracing-enabled: "true"
+    monitoring.veridis.xyz/profiling-enabled: "true"
+    monitoring.veridis.xyz/debug-endpoints: "enabled"
+
+    # Development documentation annotations
+    documentation.veridis.xyz/api-docs: "enabled"
+    documentation.veridis.xyz/circuit-docs: "enabled"
+    documentation.veridis.xyz/development-guide: "https://dev.veridis.xyz/zk-circuits"
+    documentation.veridis.xyz/debugging-guide: "https://dev.veridis.xyz/zk-debugging"
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: veridis/zk-circuits:v3.2.1-dev
+
+- op: replace
+  path: /spec/template/spec/containers/0/resources
+  value:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+      ephemeral-storage: "1Gi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+      ephemeral-storage: "3Gi"
+
+- op: replace
+  path: /spec/template/spec/containers/0/env
+  value:
+    # ==============================================================================
+    # Development Core ZK Circuits Configuration
+    # ==============================================================================
+    - name: ENVIRONMENT
+      value: "development"
+    - name: SERVICE_NAME
+      value: "zk-circuits"
+    - name: SERVICE_VERSION
+      value: "3.2.1-dev"
+    - name: DEPLOYMENT_TYPE
+      value: "development"
+    - name: DEVELOPER_MODE
+      value: "true"
+
+    # Development runtime configuration
+    - name: NODE_ENV
+      value: "development"
+    - name: LOG_LEVEL
+      value: "debug"
+    - name: DEBUG
+      value: "zk-circuits:*,garaga:*,cairo:*"
+    - name: VERBOSE_LOGGING
+      value: "true"
+    - name: PRETTY_LOGGING
+      value: "true"
+
+    # Development server configuration
+    - name: SERVER_HOST
+      value: "0.0.0.0"
+    - name: SERVER_PORT
+      value: "4000"
+    - name: HEALTH_CHECK_PORT
+      value: "4001"
+    - name: METRICS_PORT
+      value: "4002"
+    - name: DEBUG_PORT
+      value: "4003"
+    - name: PROFILING_PORT
+      value: "4004"
+    - name: WEBSOCKET_PORT
+      value: "4005"
+
+    # Development API configuration
+    - name: API_PREFIX
+      value: "/api/v1"
+    - name: API_RATE_LIMIT_ENABLED
+      value: "false"
+    - name: API_RATE_LIMIT_REQUESTS
+      value: "1000"
+    - name: API_RATE_LIMIT_WINDOW
+      value: "60"
+    - name: API_DOCUMENTATION_ENABLED
+      value: "true"
+    - name: API_SWAGGER_UI_ENABLED
+      value: "true"
+    - name: API_OPENAPI_SPEC_ENABLED
+      value: "true"
+    - name: API_METRICS_ENABLED
+      value: "true"
+    - name: API_HEALTH_CHECK_ENABLED
+      value: "true"
+    - name: API_DEBUG_ENDPOINTS_ENABLED
+      value: "true"
+
+    # Development Garaga configuration
+    - name: GARAGA_ENABLED
+      value: "true"
+    - name: GARAGA_VERSION
+      value: "0.18.1"
+    - name: GARAGA_CUDA_ENABLED
+      value: "false"
+    - name: GARAGA_CPU_ONLY_MODE
+      value: "true"
+    - name: GARAGA_DEVELOPMENT_MODE
+      value: "true"
+    - name: GARAGA_DEBUG_MODE
+      value: "true"
+    - name: GARAGA_OPTIMIZATION_LEVEL
+      value: "1"
+    - name: GARAGA_PARALLELISM
+      value: "1"
+    - name: GARAGA_MEMORY_LIMIT
+      value: "1Gi"
+    - name: GARAGA_TIMEOUT
+      value: "300"
+    - name: GARAGA_VERBOSE_OUTPUT
+      value: "true"
+    - name: GARAGA_PROFILING_ENABLED
+      value: "true"
+    - name: GARAGA_BENCHMARKING_ENABLED
+      value: "true"
+
+    # Development Cairo configuration
+    - name: CAIRO_ENABLED
+      value: "true"
+    - name: CAIRO_VERSION
+      value: "2.11.4"
+    - name: CAIRO_DEVELOPMENT_MODE
+      value: "true"
+    - name: CAIRO_DEBUG_MODE
+      value: "true"
+    - name: CAIRO_COMPILER_PATH
+      value: "/usr/local/bin/cairo-compile"
+    - name: CAIRO_RUNNER_PATH
+      value: "/usr/local/bin/cairo-run"
+    - name: CAIRO_LANG_PATH
+      value: "/usr/local/lib/cairo"
+    - name: CAIRO_ARTIFACTS_DIR
+      value: "/app/cairo-artifacts"
+    - name: CAIRO_CACHE_DIR
+      value: "/app/cairo-cache"
+    - name: CAIRO_OPTIMIZATION_LEVEL
+      value: "1"
+    - name: CAIRO_PROFILING_ENABLED
+      value: "true"
+    - name: CAIRO_VERBOSE_OUTPUT
+      value: "true"
+
+    # Development ZK proof configuration
+    - name: ZK_PROOF_ENABLED
+      value: "true"
+    - name: ZK_PROOF_SECURITY_LEVEL
+      value: "64"
+    - name: ZK_PROOF_DEVELOPMENT_MODE
+      value: "true"
+    - name: ZK_PROOF_MOCK_ENABLED
+      value: "true"
+    - name: ZK_PROOF_FAST_MODE
+      value: "true"
+    - name: ZK_PROOF_CACHE_ENABLED
+      value: "true"
+    - name: ZK_PROOF_CACHE_TTL
+      value: "3600"
+    - name: ZK_PROOF_CACHE_SIZE
+      value: "512"
+    - name: ZK_PROOF_PARALLEL_ENABLED
+      value: "false"
+    - name: ZK_PROOF_BATCH_SIZE
+      value: "1"
+    - name: ZK_PROOF_TIMEOUT
+      value: "300"
+    - name: ZK_PROOF_RETRY_ATTEMPTS
+      value: "3"
+    - name: ZK_PROOF_RETRY_DELAY
+      value: "1000"
+    - name: ZK_PROOF_VALIDATION_ENABLED
+      value: "true"
+    - name: ZK_PROOF_VERIFICATION_ENABLED
+      value: "true"
+    - name: ZK_PROOF_DEBUGGING_ENABLED
+      value: "true"
+    - name: ZK_PROOF_PROFILING_ENABLED
+      value: "true"
+
+    # Development circuit configuration
+    - name: CIRCUIT_COMPILATION_ENABLED
+      value: "true"
+    - name: CIRCUIT_COMPILATION_PARALLEL
+      value: "false"
+    - name: CIRCUIT_COMPILATION_TIMEOUT
+      value: "300"
+    - name: CIRCUIT_COMPILATION_CACHE_ENABLED
+      value: "true"
+    - name: CIRCUIT_COMPILATION_CACHE_TTL
+      value: "7200"
+    - name: CIRCUIT_ARTIFACTS_DIR
+      value: "/app/circuit-artifacts"
+    - name: CIRCUIT_CACHE_DIR
+      value: "/app/circuit-cache"
+    - name: CIRCUIT_TEMP_DIR
+      value: "/app/circuit-temp"
+    - name: CIRCUIT_DEBUGGING_ENABLED
+      value: "true"
+    - name: CIRCUIT_PROFILING_ENABLED
+      value: "true"
+    - name: CIRCUIT_VALIDATION_ENABLED
+      value: "true"
+    - name: CIRCUIT_OPTIMIZATION_LEVEL
+      value: "1"
+    - name: CIRCUIT_CONSTRAINTS_LIMIT
+      value: "1000000"
+    - name: CIRCUIT_VARIABLES_LIMIT
+      value: "100000"
+
+    # Development witness generation configuration
+    - name: WITNESS_GENERATION_ENABLED
+      value: "true"
+    - name: WITNESS_GENERATION_PARALLEL
+      value: "false"
+    - name: WITNESS_GENERATION_TIMEOUT
+      value: "60"
+    - name: WITNESS_GENERATION_CACHE_ENABLED
+      value: "true"
+    - name: WITNESS_GENERATION_CACHE_TTL
+      value: "1800"
+    - name: WITNESS_DEBUGGING_ENABLED
+      value: "true"
+    - name: WITNESS_VALIDATION_ENABLED
+      value: "true"
+    - name: WITNESS_ARTIFACTS_DIR
+      value: "/app/witness-artifacts"
+    - name: WITNESS_TEMP_DIR
+      value: "/app/witness-temp"
+
+    # Development proving key configuration
+    - name: PROVING_KEY_ENABLED
+      value: "true"
+    - name: PROVING_KEY_GENERATION_ENABLED
+      value: "true"
+    - name: PROVING_KEY_CACHE_ENABLED
+      value: "true"
+    - name: PROVING_KEY_CACHE_TTL
+      value: "86400"
+    - name: PROVING_KEY_VALIDATION_ENABLED
+      value: "true"
+    - name: PROVING_KEY_ARTIFACTS_DIR
+      value: "/app/proving-keys"
+    - name: PROVING_KEY_TEMP_DIR
+      value: "/app/proving-keys-temp"
+
+    # Development verification key configuration
+    - name: VERIFICATION_KEY_ENABLED
+      value: "true"
+    - name: VERIFICATION_KEY_GENERATION_ENABLED
+      value: "true"
+    - name: VERIFICATION_KEY_CACHE_ENABLED
+      value: "true"
+    - name: VERIFICATION_KEY_CACHE_TTL
+      value: "86400"
+    - name: VERIFICATION_KEY_VALIDATION_ENABLED
+      value: "true"
+    - name: VERIFICATION_KEY_ARTIFACTS_DIR
+      value: "/app/verification-keys"
+    - name: VERIFICATION_KEY_TEMP_DIR
+      value: "/app/verification-keys-temp"
+
+    # Development database configuration
+    - name: DATABASE_ENABLED
+      value: "true"
+    - name: DATABASE_URL
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: DATABASE_URL
+    - name: DATABASE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-database-config
+          key: POSTGRES_HOST
+    - name: DATABASE_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-database-config
+          key: POSTGRES_PORT
+    - name: DATABASE_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-database-config
+          key: POSTGRES_DB
+    - name: DATABASE_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: POSTGRES_USER
+    - name: DATABASE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: POSTGRES_PASSWORD
+    - name: DATABASE_MAX_CONNECTIONS
+      value: "10"
+    - name: DATABASE_MIN_CONNECTIONS
+      value: "2"
+    - name: DATABASE_CONNECTION_TIMEOUT
+      value: "30"
+    - name: DATABASE_IDLE_TIMEOUT
+      value: "300"
+    - name: DATABASE_STATEMENT_CACHE_SIZE
+      value: "100"
+    - name: DATABASE_QUERY_LOGGING
+      value: "true"
+    - name: DATABASE_SLOW_QUERY_THRESHOLD
+      value: "1000"
+
+    # Development cache configuration
+    - name: CACHE_ENABLED
+      value: "true"
+    - name: CACHE_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-cache-config
+          key: REDIS_HOST
+    - name: CACHE_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-cache-config
+          key: REDIS_PORT
+    - name: CACHE_DATABASE
+      value: "1"
+    - name: CACHE_MAX_CONNECTIONS
+      value: "5"
+    - name: CACHE_MIN_CONNECTIONS
+      value: "1"
+    - name: CACHE_CONNECTION_TIMEOUT
+      value: "5"
+    - name: CACHE_IDLE_TIMEOUT
+      value: "60"
+    - name: CACHE_TTL_DEFAULT
+      value: "3600"
+    - name: CACHE_TTL_CIRCUITS
+      value: "7200"
+    - name: CACHE_TTL_PROOFS
+      value: "1800"
+    - name: CACHE_TTL_WITNESSES
+      value: "1800"
+    - name: CACHE_TTL_KEYS
+      value: "86400"
+    - name: CACHE_KEY_PREFIX
+      value: "veridis:dev:zk:"
+    - name: CACHE_COMPRESSION_ENABLED
+      value: "true"
+    - name: CACHE_SERIALIZATION_FORMAT
+      value: "json"
+
+    # Development monitoring configuration
+    - name: MONITORING_ENABLED
+      value: "true"
+    - name: METRICS_ENABLED
+      value: "true"
+    - name: METRICS_HOST
+      value: "0.0.0.0"
+    - name: METRICS_PORT
+      value: "4002"
+    - name: METRICS_PATH
+      value: "/metrics"
+    - name: METRICS_DETAILED
+      value: "true"
+    - name: METRICS_HISTOGRAM_BUCKETS
+      value: "0.001,0.01,0.1,1,10,100"
+    - name: METRICS_CUSTOM_LABELS
+      value: "environment=development,service=zk-circuits"
+
+    # Development tracing configuration
+    - name: TRACING_ENABLED
+      value: "true"
+    - name: TRACING_ENDPOINT
+      value: "http://veridis-development-jaeger-collector.veridis-dev.svc.cluster.local:14268/api/traces"
+    - name: TRACING_SERVICE_NAME
+      value: "zk-circuits-dev"
+    - name: TRACING_SAMPLING_RATE
+      value: "1.0"
+    - name: TRACING_MAX_TAG_VALUE_LENGTH
+      value: "1024"
+    - name: TRACING_MAX_LOGS_PER_SPAN
+      value: "100"
+    - name: TRACING_TIMEOUT
+      value: "10"
+
+    # Development logging configuration
+    - name: LOGGING_LEVEL
+      value: "debug"
+    - name: LOGGING_FORMAT
+      value: "pretty"
+    - name: LOGGING_TIMESTAMP
+      value: "true"
+    - name: LOGGING_COLORS
+      value: "true"
+    - name: LOGGING_TARGETS
+      value: "stdout"
+    - name: LOGGING_STRUCTURED
+      value: "false"
+    - name: LOGGING_CORRELATION_ID
+      value: "true"
+    - name: LOGGING_REQUEST_ID
+      value: "true"
+    - name: LOGGING_PERFORMANCE
+      value: "true"
+    - name: LOGGING_ZK_OPERATIONS
+      value: "true"
+    - name: LOGGING_CIRCUIT_OPERATIONS
+      value: "true"
+    - name: LOGGING_PROOF_OPERATIONS
+      value: "true"
+
+    # Development health check configuration
+    - name: HEALTH_CHECK_ENABLED
+      value: "true"
+    - name: HEALTH_CHECK_PORT
+      value: "4001"
+    - name: HEALTH_CHECK_PATH
+      value: "/health"
+    - name: HEALTH_CHECK_INTERVAL
+      value: "30"
+    - name: HEALTH_CHECK_TIMEOUT
+      value: "5"
+    - name: HEALTH_CHECK_RETRIES
+      value: "3"
+    - name: HEALTH_CHECK_START_PERIOD
+      value: "60"
+    - name: HEALTH_CHECK_DEPENDENCIES
+      value: "database,cache,garaga,cairo"
+
+    # Development readiness check configuration
+    - name: READINESS_CHECK_ENABLED
+      value: "true"
+    - name: READINESS_CHECK_PORT
+      value: "4001"
+    - name: READINESS_CHECK_PATH
+      value: "/ready"
+    - name: READINESS_CHECK_INTERVAL
+      value: "10"
+    - name: READINESS_CHECK_TIMEOUT
+      value: "3"
+    - name: READINESS_CHECK_RETRIES
+      value: "3"
+    - name: READINESS_CHECK_DEPENDENCIES
+      value: "database,cache"
+
+    # Development security configuration
+    - name: SECURITY_ENABLED
+      value: "true"
+    - name: SECURITY_LEVEL
+      value: "development"
+    - name: SECURITY_AUTHENTICATION_REQUIRED
+      value: "false"
+    - name: SECURITY_AUTHORIZATION_REQUIRED
+      value: "false"
+    - name: SECURITY_CORS_ENABLED
+      value: "true"
+    - name: SECURITY_CORS_ORIGINS
+      value: "*"
+    - name: SECURITY_CORS_METHODS
+      value: "GET,POST,PUT,DELETE,OPTIONS,PATCH"
+    - name: SECURITY_CORS_HEADERS
+      value: "*"
+    - name: SECURITY_CORS_CREDENTIALS
+      value: "true"
+    - name: SECURITY_CSRF_ENABLED
+      value: "false"
+    - name: SECURITY_RATE_LIMITING_ENABLED
+      value: "false"
+    - name: SECURITY_AUDIT_LOGGING
+      value: "true"
+    - name: SECURITY_CIRCUIT_VALIDATION
+      value: "true"
+    - name: SECURITY_PROOF_VALIDATION
+      value: "true"
+
+    # Development performance configuration
+    - name: PERFORMANCE_TUNING_ENABLED
+      value: "true"
+    - name: PERFORMANCE_CPU_ONLY_MODE
+      value: "true"
+    - name: PERFORMANCE_MEMORY_OPTIMIZATION
+      value: "true"
+    - name: PERFORMANCE_DISK_OPTIMIZATION
+      value: "true"
+    - name: PERFORMANCE_NETWORK_OPTIMIZATION
+      value: "true"
+    - name: PERFORMANCE_GARBAGE_COLLECTION_TUNING
+      value: "true"
+    - name: PERFORMANCE_THREAD_POOL_SIZE
+      value: "4"
+    - name: PERFORMANCE_ASYNC_OPERATIONS
+      value: "true"
+    - name: PERFORMANCE_BATCH_PROCESSING
+      value: "false"
+    - name: PERFORMANCE_STREAMING_ENABLED
+      value: "false"
+    - name: PERFORMANCE_COMPRESSION_ENABLED
+      value: "true"
+
+    # Development debugging configuration
+    - name: DEBUG_ENABLED
+      value: "true"
+    - name: DEBUG_LEVEL
+      value: "verbose"
+    - name: DEBUG_ENDPOINTS_ENABLED
+      value: "true"
+    - name: DEBUG_PROFILING_ENABLED
+      value: "true"
+    - name: DEBUG_MEMORY_PROFILING
+      value: "true"
+    - name: DEBUG_CPU_PROFILING
+      value: "true"
+    - name: DEBUG_HEAP_PROFILING
+      value: "true"
+    - name: DEBUG_CIRCUIT_DEBUGGING
+      value: "true"
+    - name: DEBUG_PROOF_DEBUGGING
+      value: "true"
+    - name: DEBUG_WITNESS_DEBUGGING
+      value: "true"
+    - name: DEBUG_GARAGA_DEBUGGING
+      value: "true"
+    - name: DEBUG_CAIRO_DEBUGGING
+      value: "true"
+    - name: DEBUG_NODEJS_DEBUGGING
+      value: "true"
+    - name: DEBUG_INSPECTOR_ENABLED
+      value: "true"
+    - name: DEBUG_INSPECTOR_PORT
+      value: "9229"
+
+    # Development testing configuration
+    - name: TESTING_ENABLED
+      value: "true"
+    - name: TESTING_MODE
+      value: "development"
+    - name: TESTING_UNIT_TESTS_ENABLED
+      value: "true"
+    - name: TESTING_INTEGRATION_TESTS_ENABLED
+      value: "true"
+    - name: TESTING_E2E_TESTS_ENABLED
+      value: "true"
+    - name: TESTING_PERFORMANCE_TESTS_ENABLED
+      value: "true"
+    - name: TESTING_CIRCUIT_TESTS_ENABLED
+      value: "true"
+    - name: TESTING_PROOF_TESTS_ENABLED
+      value: "true"
+    - name: TESTING_MOCK_PROOFS_ENABLED
+      value: "true"
+    - name: TESTING_FAST_TESTS_ENABLED
+      value: "true"
+    - name: TESTING_PARALLEL_EXECUTION
+      value: "false"
+    - name: TESTING_COVERAGE_ENABLED
+      value: "true"
+    - name: TESTING_FIXTURES_ENABLED
+      value: "true"
+    - name: TESTING_SEED_DATA_ENABLED
+      value: "true"
+    - name: TESTING_CLEANUP_ENABLED
+      value: "true"
+
+    # Development file system configuration
+    - name: FS_CIRCUITS_DIR
+      value: "/app/circuits"
+    - name: FS_ARTIFACTS_DIR
+      value: "/app/artifacts"
+    - name: FS_CACHE_DIR
+      value: "/app/cache"
+    - name: FS_TEMP_DIR
+      value: "/app/tmp"
+    - name: FS_LOGS_DIR
+      value: "/app/logs"
+    - name: FS_CONFIG_DIR
+      value: "/app/config"
+    - name: FS_SCRIPTS_DIR
+      value: "/app/scripts"
+    - name: FS_DATA_DIR
+      value: "/app/data"
+    - name: FS_BACKUP_DIR
+      value: "/app/backup"
+    - name: FS_PROFILING_DIR
+      value: "/app/profiling"
+    - name: FS_DEBUG_DIR
+      value: "/app/debug"
+    - name: FS_TESTING_DIR
+      value: "/app/testing"
+
+    # Development WebSocket configuration
+    - name: WEBSOCKET_ENABLED
+      value: "true"
+    - name: WEBSOCKET_PORT
+      value: "4005"
+    - name: WEBSOCKET_PATH
+      value: "/ws"
+    - name: WEBSOCKET_HEARTBEAT_INTERVAL
+      value: "30"
+    - name: WEBSOCKET_COMPRESSION_ENABLED
+      value: "true"
+    - name: WEBSOCKET_MAX_CONNECTIONS
+      value: "100"
+    - name: WEBSOCKET_MAX_MESSAGE_SIZE
+      value: "1048576"
+    - name: WEBSOCKET_DEVELOPMENT_MODE
+      value: "true"
+
+    # Development feature flags
+    - name: FEATURE_FLAGS_ENABLED
+      value: "true"
+    - name: FEATURE_FLAG_GARAGA_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_CAIRO_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_NODEJS_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_PROOF_CACHING
+      value: "true"
+    - name: FEATURE_FLAG_CIRCUIT_CACHING
+      value: "true"
+    - name: FEATURE_FLAG_WITNESS_CACHING
+      value: "true"
+    - name: FEATURE_FLAG_KEY_CACHING
+      value: "true"
+    - name: FEATURE_FLAG_PARALLEL_PROVING
+      value: "false"
+    - name: FEATURE_FLAG_BATCH_PROVING
+      value: "false"
+    - name: FEATURE_FLAG_GPU_ACCELERATION
+      value: "false"
+    - name: FEATURE_FLAG_CUDA_SUPPORT
+      value: "false"
+    - name: FEATURE_FLAG_DEVELOPMENT_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_TESTING_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_DEBUGGING_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_PROFILING_FEATURES
+      value: "true"
+    - name: FEATURE_FLAG_MOCK_FEATURES
+      value: "true"
+
+    # Development external service configuration
+    - name: EXTERNAL_SERVICES_ENABLED
+      value: "true"
+    - name: BACKEND_SERVICE_URL
+      value: "http://veridis-backend-service.veridis-dev.svc.cluster.local:8080"
+    - name: BACKEND_SERVICE_TIMEOUT
+      value: "30"
+    - name: BACKEND_SERVICE_RETRY_ATTEMPTS
+      value: "3"
+    - name: BACKEND_SERVICE_RETRY_DELAY
+      value: "1000"
+    - name: STARKNET_RPC_URL
+      value: "http://starknet-devnet-service.veridis-dev.svc.cluster.local:5050"
+    - name: STARKNET_RPC_TIMEOUT
+      value: "30"
+    - name: BLOCKCHAIN_MOCK_ENABLED
+      value: "true"
+    - name: BLOCKCHAIN_DEVELOPMENT_MODE
+      value: "true"
+
+    # Development deployment metadata
+    - name: DEPLOYMENT_METADATA_GIT_COMMIT
+      value: "${GIT_COMMIT:-development}"
+    - name: DEPLOYMENT_METADATA_GIT_BRANCH
+      value: "${GIT_BRANCH:-develop}"
+    - name: DEPLOYMENT_METADATA_BUILD_NUMBER
+      value: "${BUILD_NUMBER:-dev-build}"
+    - name: DEPLOYMENT_METADATA_BUILD_DATE
+      value: "${BUILD_DATE:-2025-01-18T10:00:00Z}"
+    - name: DEPLOYMENT_METADATA_BUILD_USER
+      value: "${BUILD_USER:-developer}"
+    - name: DEPLOYMENT_METADATA_DEVELOPER
+      value: "${DEVELOPER_NAME:-unknown}"
+    - name: DEPLOYMENT_METADATA_ENVIRONMENT
+      value: "development"
+    - name: DEPLOYMENT_METADATA_DEPLOYMENT_TYPE
+      value: "development"
+    - name: DEPLOYMENT_METADATA_KUSTOMIZE_VERSION
+      value: "5.3.0"
+    - name: DEPLOYMENT_METADATA_KUBERNETES_VERSION
+      value: "1.28+"
+
+- op: add
+  path: /spec/template/spec/containers/0/ports
+  value:
+    # Main ZK circuits API port
+    - name: http
+      containerPort: 4000
+      protocol: TCP
+
+    # Health check port
+    - name: health
+      containerPort: 4001
+      protocol: TCP
+
+    # Metrics port
+    - name: metrics
+      containerPort: 4002
+      protocol: TCP
+
+    # Development debugging port
+    - name: debug
+      containerPort: 4003
+      protocol: TCP
+
+    # Development profiling port
+    - name: profiling
+      containerPort: 4004
+      protocol: TCP
+
+    # WebSocket port
+    - name: websocket
+      containerPort: 4005
+      protocol: TCP
+
+    # Node.js Inspector port
+    - name: inspector
+      containerPort: 9229
+      protocol: TCP
+
+- op: replace
+  path: /spec/template/spec/containers/0/livenessProbe
+  value:
+    httpGet:
+      path: /health
+      port: health
+      scheme: HTTP
+    initialDelaySeconds: 90
+    periodSeconds: 30
+    timeoutSeconds: 10
+    successThreshold: 1
+    failureThreshold: 5
+
+- op: replace
+  path: /spec/template/spec/containers/0/readinessProbe
+  value:
+    httpGet:
+      path: /ready
+      port: health
+      scheme: HTTP
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+
+- op: add
+  path: /spec/template/spec/containers/0/startupProbe
+  value:
+    httpGet:
+      path: /startup
+      port: health
+      scheme: HTTP
+    initialDelaySeconds: 60
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 30
+
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    # Application configuration
+    - name: zk-config
+      mountPath: /app/config
+      readOnly: true
+
+    # ZK circuits directory
+    - name: zk-circuits
+      mountPath: /app/circuits
+      readOnly: false
+
+    # ZK artifacts directory
+    - name: zk-artifacts
+      mountPath: /app/artifacts
+      readOnly: false
+
+    # ZK cache directory
+    - name: zk-cache
+      mountPath: /app/cache
+      readOnly: false
+
+    # ZK temporary directory
+    - name: zk-temp
+      mountPath: /app/tmp
+      readOnly: false
+
+    # ZK logs directory
+    - name: zk-logs
+      mountPath: /app/logs
+      readOnly: false
+
+    # ZK data directory
+    - name: zk-data
+      mountPath: /app/data
+      readOnly: false
+
+    # Proving keys directory
+    - name: proving-keys
+      mountPath: /app/proving-keys
+      readOnly: false
+
+    # Verification keys directory
+    - name: verification-keys
+      mountPath: /app/verification-keys
+      readOnly: false
+
+    # Cairo artifacts directory
+    - name: cairo-artifacts
+      mountPath: /app/cairo-artifacts
+      readOnly: false
+
+    # Cairo cache directory
+    - name: cairo-cache
+      mountPath: /app/cairo-cache
+      readOnly: false
+
+    # Witness artifacts directory
+    - name: witness-artifacts
+      mountPath: /app/witness-artifacts
+      readOnly: false
+
+    # Development profiling data
+    - name: profiling-data
+      mountPath: /app/profiling
+      readOnly: false
+
+    # Development debugging data
+    - name: debug-data
+      mountPath: /app/debug
+      readOnly: false
+
+    # Development testing data
+    - name: testing-data
+      mountPath: /app/testing
+      readOnly: false
+
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    # ZK circuits configuration volume
+    - name: zk-config
+      configMap:
+        name: veridis-development-zk-circuits-config
+        defaultMode: 0644
+
+    # ZK circuits volume
+    - name: zk-circuits
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # ZK artifacts volume
+    - name: zk-artifacts
+      emptyDir:
+        sizeLimit: "2Gi"
+        medium: ""
+
+    # ZK cache volume
+    - name: zk-cache
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # ZK temporary volume
+    - name: zk-temp
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # ZK logs volume
+    - name: zk-logs
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # ZK data volume
+    - name: zk-data
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # Proving keys volume
+    - name: proving-keys
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # Verification keys volume
+    - name: verification-keys
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # Cairo artifacts volume
+    - name: cairo-artifacts
+      emptyDir:
+        sizeLimit: "1Gi"
+        medium: ""
+
+    # Cairo cache volume
+    - name: cairo-cache
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # Witness artifacts volume
+    - name: witness-artifacts
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # Profiling data volume
+    - name: profiling-data
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+    # Debug data volume
+    - name: debug-data
+      emptyDir:
+        sizeLimit: "200Mi"
+        medium: ""
+
+    # Testing data volume
+    - name: testing-data
+      emptyDir:
+        sizeLimit: "500Mi"
+        medium: ""
+
+- op: add
+  path: /spec/template/spec/initContainers
+  value:
+    # Development ZK circuits initialization container
+    - name: zk-circuits-init
+      image: veridis/zk-circuits-init:v3.2.1-dev
+
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Initializing ZK Circuits Development Environment..."
+
+          # Create necessary directories
+          mkdir -p /app/circuits /app/artifacts /app/cache /app/tmp /app/logs /app/data
+          mkdir -p /app/proving-keys /app/verification-keys
+          mkdir -p /app/cairo-artifacts /app/cairo-cache /app/witness-artifacts
+          mkdir -p /app/profiling /app/debug /app/testing
+
+          # Set permissions
+          chmod -R 755 /app/circuits /app/artifacts /app/cache /app/tmp /app/logs /app/data
+          chmod -R 755 /app/proving-keys /app/verification-keys
+          chmod -R 755 /app/cairo-artifacts /app/cairo-cache /app/witness-artifacts
+          chmod -R 755 /app/profiling /app/debug /app/testing
+
+          # Copy development circuits
+          if [ -d "/circuits-source" ]; then
+            echo "Copying development circuits..."
+            cp -r /circuits-source/* /app/circuits/
+          fi
+
+          # Initialize Cairo environment
+          echo "Initializing Cairo environment..."
+          cairo-compile --version || echo "Cairo compiler not found"
+
+          # Initialize Garaga environment
+          echo "Initializing Garaga environment..."
+          node -e "console.log('Node.js version:', process.version)"
+
+          # Create development configuration
+          echo "Creating development configuration..."
+          cat > /app/config/development.json << EOF
+          {
+            "environment": "development",
+            "garaga": {
+              "cuda_enabled": false,
+              "cpu_only_mode": true,
+              "development_mode": true,
+              "debug_mode": true
+            },
+            "cairo": {
+              "development_mode": true,
+              "debug_mode": true,
+              "optimization_level": 1
+            },
+            "zk_proof": {
+              "security_level": 64,
+              "mock_enabled": true,
+              "fast_mode": true,
+              "cache_enabled": true
+            }
+          }
+          EOF
+
+          echo "ZK Circuits initialization completed!"
+
+      env:
+        - name: ENVIRONMENT
+          value: "development"
+        - name: DEVELOPMENT_MODE
+          value: "true"
+        - name: DEBUG_MODE
+          value: "true"
+
+      volumeMounts:
+        # Configuration volume
+        - name: zk-config
+          mountPath: /app/config
+          readOnly: false
+
+        # Circuits volume
+        - name: zk-circuits
+          mountPath: /app/circuits
+          readOnly: false
+
+        # Artifacts volume
+        - name: zk-artifacts
+          mountPath: /app/artifacts
+          readOnly: false
+
+        # Cache volume
+        - name: zk-cache
+          mountPath: /app/cache
+          readOnly: false
+
+        # Temporary volume
+        - name: zk-temp
+          mountPath: /app/tmp
+          readOnly: false
+
+        # Logs volume
+        - name: zk-logs
+          mountPath: /app/logs
+          readOnly: false
+
+        # Data volume
+        - name: zk-data
+          mountPath: /app/data
+          readOnly: false
+
+        # Keys volumes
+        - name: proving-keys
+          mountPath: /app/proving-keys
+          readOnly: false
+
+        - name: verification-keys
+          mountPath: /app/verification-keys
+          readOnly: false
+
+        # Cairo volumes
+        - name: cairo-artifacts
+          mountPath: /app/cairo-artifacts
+          readOnly: false
+
+        - name: cairo-cache
+          mountPath: /app/cairo-cache
+          readOnly: false
+
+        # Witness volume
+        - name: witness-artifacts
+          mountPath: /app/witness-artifacts
+          readOnly: false
+
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "200m"
+          memory: "256Mi"
+
+- op: add
+  path: /spec/template/spec/containers/0/securityContext
+  value:
+    # Development container security context
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - NET_BIND_SERVICE
+    seccompProfile:
+      type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/securityContext
+  value:
+    # Development pod security context
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: "OnRootMismatch"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups: [1000]
+
+- op: add
+  path: /spec/template/spec/containers/0/command
+  value:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting Veridis ZK Circuits Development Service..."
+      echo "Environment: development"
+      echo "Version: 3.2.1-dev"
+      echo "Build: ${BUILD_NUMBER:-dev-build}"
+      echo "Git Commit: ${GIT_COMMIT:-development}"
+      echo "Developer: ${DEVELOPER_NAME:-unknown}"
+
+      # Verify directories exist
+      echo "Verifying directories..."
+      ls -la /app/
+
+      # Display configuration
+      echo "Configuration:"
+      echo "  Garaga CUDA: ${GARAGA_CUDA_ENABLED:-false}"
+      echo "  CPU Only Mode: ${GARAGA_CPU_ONLY_MODE:-true}"
+      echo "  Development Mode: ${GARAGA_DEVELOPMENT_MODE:-true}"
+      echo "  Mock Proofs: ${ZK_PROOF_MOCK_ENABLED:-true}"
+      echo "  Fast Proofs: ${ZK_PROOF_FAST_MODE:-true}"
+      echo "  Debugging: ${DEBUG_ENABLED:-false}"
+      echo "  Profiling: ${DEBUG_PROFILING_ENABLED:-false}"
+      echo "  Testing: ${TESTING_ENABLED:-false}"
+
+      # Check dependencies
+      echo "Checking dependencies..."
+      node --version || echo "Node.js not found"
+      cairo-compile --version || echo "Cairo compiler not found"
+
+      # Start the ZK circuits service
+      echo "Starting ZK Circuits Service..."
+      exec node /app/server.js
+
+- op: add
+  path: /spec/template/spec/nodeSelector
+  value:
+    kubernetes.io/arch: amd64
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/worker: "true"
+
+- op: add
+  path: /spec/template/spec/tolerations
+  value:
+    - key: "node-role.kubernetes.io/development"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "node.kubernetes.io/not-ready"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+    - key: "node.kubernetes.io/unreachable"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+
+- op: add
+  path: /spec/template/spec/affinity
+  value:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values: ["zk-circuits"]
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values: ["zk-circuits"]
+            topologyKey: kubernetes.io/hostname
+
+- op: add
+  path: /spec/template/spec/terminationGracePeriodSeconds
+  value: 60
+
+- op: add
+  path: /spec/template/spec/dnsPolicy
+  value: ClusterFirst
+
+- op: add
+  path: /spec/template/spec/restartPolicy
+  value: Always
+
+- op: add
+  path: /spec/strategy
+  value:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 10
+
+- op: add
+  path: /spec/progressDeadlineSeconds
+  value: 600
+
+# ==============================================================================
+# Veridis Development ZK Circuits Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT ZK CIRCUITS STRATEGY:
+# =======================================================
+#
+# VERIDIS DEVELOPMENT ZK CIRCUITS ARCHITECTURE OVERVIEW:
+# ------------------------------------------------------
+# 1. Development ZK Circuits Service Optimization:
+#    - Comprehensive enterprise-grade development ZK circuits with intelligent proof management and advanced developer-focused optimization
+#    - Advanced ZK configuration with comprehensive developer productivity, debugging support, profiling efficiency, and comprehensive operational excellence
+#    - Multi-tier ZK architecture with circuit compilation, proof generation, verification services, and comprehensive ZK intelligence
+#    - Enterprise ZK policies with developer-friendly enforcement, productivity controls, debugging automation, and comprehensive ZK procedures
+#    - Performance optimization with intelligent proof allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. Advanced ZK Technology Stack Integration:
+#    - Developer-focused ZK configuration with Garaga optimization, Cairo integration, Node.js runtime, and comprehensive productivity coordination
+#    - Advanced ZK configuration with proof tools, debugging features, testing frameworks, and comprehensive ZK intelligence
+#    - Flexible ZK optimization with developer workflow, productivity enhancement, and comprehensive ZK intelligence
+#    - ZK intelligence with proof procedures, debugging support, ZK automation, and comprehensive ZK coordination
+#    - Development excellence with ZK optimization, productivity workflows, ZK automation, and comprehensive ZK environment management
+#
+# 3. Proof Generation and Verification Optimization:
+#    - Proof-optimized ZK with comprehensive generation, verification monitoring, caching analytics, and comprehensive proof coordination
+#    - Advanced proof configuration with circuit compilation, witness generation, key management, and comprehensive proof intelligence
+#    - Flexible proof optimization with caching strategies, performance enhancement, and comprehensive proof intelligence
+#    - Proof intelligence with ZK procedures, performance support, proof automation, and comprehensive proof coordination
+#    - ZK excellence with proof optimization, performance workflows, proof automation, and comprehensive proof environment management
+#
+# ENTERPRISE DEVELOPMENT ZK CIRCUITS FEATURES:
+# ============================================
+# Advanced ZK Circuits Management and Developer Productivity:
+#   - Multi-tier ZK architecture with developer optimization, debugging circuits, testing integration, and comprehensive ZK configurations
+#   - Intelligent ZK management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive ZK decisions
+#   - ZK discovery with developer optimization, debugging management, ZK policies, and comprehensive ZK analytics
+#   - Performance management with developer productivity, debugging efficiency, ZK optimization, and comprehensive performance intelligence
+#   - ZK processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent ZK optimization
+#
+# This Development ZK Circuits configuration provides enterprise-grade developer productivity enhancement with comprehensive ZK support, intelligent debugging optimization, advanced proof features, and operational excellence while maintaining appropriate performance, efficiency validation, and comprehensive ZK for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
