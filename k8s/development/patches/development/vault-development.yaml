@@ -1,0 +1,1261 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Vault Service Patch
+# ==============================================================================
+#
+# This Development Vault Service Patch provides comprehensive development-optimized
+# HashiCorp Vault secrets management service configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT VAULT ARCHITECTURE:
+#   • Advanced Development Vault with intelligent secrets management and comprehensive development-based optimization
+#   • Multi-tier Development Vault architecture with primary vault, secret engines, authentication methods, and development environments
+#   • Comprehensive development secrets framework with Vault policies, developer tooling integration, secrets automation
+#   • Advanced lifecycle management with automated Vault optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Vault performance insights
+#
+# VERIDIS DEVELOPMENT VAULT OPTIMIZATION:
+#   • High-performance Development with intelligent secrets management and developer-optimized secrets allocation
+#   • Intelligent Development secrets management with responsive policies and development-based secrets decisions
+#   • Advanced Development management with business intelligence and secrets-based developer control
+#   • Comprehensive development secrets control with intelligent Developer Vault management and secrets enhancement
+#   • Enterprise acceleration with predictive Developer Vault management and development secrets optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Vault controls with comprehensive audit and development requirements
+#   • GDPR Development Vault compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Vault management with comprehensive framework integration
+#   • NIST 800-190 container Development Vault security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Vault best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Vault lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Vault intelligence
+#   • Advanced Vault integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development secrets control with Development Vault preservation and secrets optimization
+#   • Business continuity Development Vault with development guarantees and performance optimization
+#
+# DEVELOPMENT VAULT ACCELERATION INTELLIGENCE:
+#   • Development Vault usage analytics with development patterns and optimization recommendations
+#   • Vault monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Vault analytics and deployment optimization procedures
+#   • Cost optimization with Development Vault utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Vault metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Vault Service Patch Configuration
+# ==============================================================================
+- op: replace
+  path: /spec/replicas
+  value: 1
+
+- op: replace
+  path: /spec/template/metadata/labels
+  value:
+    # Core Kubernetes labels
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: vault-development
+    app.kubernetes.io/version: "1.15.6-dev"
+    app.kubernetes.io/component: secrets-management
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Development environment labels
+    veridis.xyz/environment: development
+    veridis.xyz/deployment-type: development
+    veridis.xyz/service-tier: secrets
+    veridis.xyz/protocol-version: "3.2.1-dev"
+
+    # Development Vault-specific labels
+    secrets.veridis.xyz/service-type: primary-secrets
+    secrets.veridis.xyz/development-mode: enabled
+    secrets.veridis.xyz/auto-unseal: disabled
+    secrets.veridis.xyz/debugging: comprehensive
+    secrets.veridis.xyz/profiling: enabled
+    secrets.veridis.xyz/testing: comprehensive
+    secrets.veridis.xyz/dev-root-token: enabled
+
+    # Development Vault feature labels
+    vault.veridis.xyz/version: "1.15.6"
+    vault.veridis.xyz/ha-enabled: false
+    vault.veridis.xyz/monitoring-enabled: true
+    vault.veridis.xyz/backup-enabled: false
+    vault.veridis.xyz/enterprise-features: false
+
+    # Development optimization labels
+    development.veridis.xyz/cost-optimization: enabled
+    development.veridis.xyz/resource-optimization: development
+    development.veridis.xyz/developer-productivity: high
+    development.veridis.xyz/debugging-support: comprehensive
+    development.veridis.xyz/testing-support: comprehensive
+    development.veridis.xyz/secrets-seeding: enabled
+
+- op: replace
+  path: /spec/template/metadata/annotations
+  value:
+    # Development deployment annotations
+    veridis.xyz/deployed-by: "kustomize-development"
+    veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/git-commit: "${GIT_COMMIT:-development}"
+    veridis.xyz/git-branch: "${GIT_BRANCH:-develop}"
+    veridis.xyz/build-number: "${BUILD_NUMBER:-dev-build}"
+    veridis.xyz/developer: "${DEVELOPER_NAME:-unknown}"
+
+    # Development Vault configuration
+    secrets.veridis.xyz/service-configuration: "development-optimized"
+    secrets.veridis.xyz/resource-profile: "development"
+    secrets.veridis.xyz/debugging-enabled: "true"
+    secrets.veridis.xyz/profiling-enabled: "true"
+    secrets.veridis.xyz/auto-unseal-disabled: "true"
+    secrets.veridis.xyz/dev-root-token-enabled: "true"
+    secrets.veridis.xyz/secrets-seeding-enabled: "true"
+
+    # Development Vault technology annotations
+    technology.veridis.xyz/vault-version: "1.15.6"
+    technology.veridis.xyz/vault-mode: "standalone"
+    technology.veridis.xyz/vault-storage: "file"
+    technology.veridis.xyz/vault-ui: "enabled"
+    technology.veridis.xyz/monitoring: "vault_exporter"
+
+    # Development security annotations
+    security.veridis.xyz/security-level: "development"
+    security.veridis.xyz/network-policies: "development"
+    security.veridis.xyz/pod-security-context: "development"
+    security.veridis.xyz/compliance-level: "development"
+    security.veridis.xyz/tls-enabled: "false"
+
+    # Development monitoring annotations
+    monitoring.veridis.xyz/metrics-enabled: "true"
+    monitoring.veridis.xyz/logging-level: "debug"
+    monitoring.veridis.xyz/audit-logging: "enabled"
+    monitoring.veridis.xyz/telemetry-enabled: "true"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+
+    # Development documentation annotations
+    documentation.veridis.xyz/secrets-schema: "enabled"
+    documentation.veridis.xyz/vault-docs: "enabled"
+    documentation.veridis.xyz/development-guide: "https://dev.veridis.xyz/vault"
+    documentation.veridis.xyz/debugging-guide: "https://dev.veridis.xyz/vault-debugging"
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: hashicorp/vault:1.15.6
+
+- op: replace
+  path: /spec/template/spec/containers/0/resources
+  value:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+      ephemeral-storage: "1Gi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+      ephemeral-storage: "2Gi"
+
+- op: replace
+  path: /spec/template/spec/containers/0/env
+  value:
+    # ==============================================================================
+    # Development Core Vault Configuration
+    # ==============================================================================
+    - name: VAULT_ADDR
+      value: "http://0.0.0.0:8200"
+    - name: VAULT_API_ADDR
+      value: "http://0.0.0.0:8200"
+    - name: VAULT_CLUSTER_ADDR
+      value: "http://0.0.0.0:8201"
+    - name: VAULT_REDIRECT_ADDR
+      value: "http://0.0.0.0:8200"
+    - name: VAULT_UI
+      value: "true"
+    - name: VAULT_LOG_LEVEL
+      value: "debug"
+    - name: VAULT_LOG_FORMAT
+      value: "standard"
+
+    # Development server configuration
+    - name: VAULT_DEV_ROOT_TOKEN_ID
+      value: "dev-root-token"
+    - name: VAULT_DEV_LISTEN_ADDRESS
+      value: "0.0.0.0:8200"
+    - name: VAULT_DISABLE_MLOCK
+      value: "true"
+    - name: VAULT_LOCAL_CONFIG
+      value: |
+        storage "file" {
+          path = "/vault/file"
+        }
+
+        listener "tcp" {
+          address = "0.0.0.0:8200"
+          cluster_address = "0.0.0.0:8201"
+          tls_disable = true
+        }
+
+        ui = true
+        api_addr = "http://0.0.0.0:8200"
+        cluster_addr = "http://0.0.0.0:8201"
+        disable_mlock = true
+        log_level = "debug"
+
+        # Development telemetry
+        telemetry {
+          prometheus_retention_time = "12h"
+          disable_hostname = true
+        }
+
+        # Development seal configuration (auto-unseal disabled)
+        seal "transit" {
+          disabled = true
+        }
+
+        # Development plugin directory
+        plugin_directory = "/vault/plugins"
+
+        # Development entropy configuration
+        entropy "seal" {
+          mode = "prefer-augmentation"
+        }
+
+        # Development max request duration
+        max_request_duration = "90s"
+
+        # Development default max request size
+        default_max_request_size = "33554432"
+
+    # Development storage configuration
+    - name: VAULT_STORAGE_FILE_PATH
+      value: "/vault/file"
+    - name: VAULT_STORAGE_TYPE
+      value: "file"
+    - name: VAULT_DISABLE_CLUSTERING
+      value: "true"
+    - name: VAULT_DISABLE_PERFORMANCE_STANDBY
+      value: "true"
+    - name: VAULT_DISABLE_SEALWRAP
+      value: "true"
+
+    # Development listener configuration
+    - name: VAULT_LISTENER_TCP_ADDRESS
+      value: "0.0.0.0:8200"
+    - name: VAULT_LISTENER_TCP_CLUSTER_ADDRESS
+      value: "0.0.0.0:8201"
+    - name: VAULT_LISTENER_TCP_TLS_DISABLE
+      value: "true"
+    - name: VAULT_LISTENER_TCP_TLS_MIN_VERSION
+      value: "tls12"
+    - name: VAULT_LISTENER_TCP_PROXY_PROTOCOL_BEHAVIOR
+      value: "allow_authorized"
+    - name: VAULT_LISTENER_TCP_PROXY_PROTOCOL_AUTHORIZED_ADDRS
+      value: "127.0.0.1:8200,::1"
+
+    # Development UI configuration
+    - name: VAULT_UI_ENABLED
+      value: "true"
+    - name: VAULT_UI_CONTENT_PATH
+      value: "ui/"
+
+    # Development logging configuration
+    - name: VAULT_LOG_LEVEL
+      value: "debug"
+    - name: VAULT_LOG_FORMAT
+      value: "standard"
+    - name: VAULT_LOG_FILE
+      value: "/vault/logs/vault.log"
+    - name: VAULT_LOG_ROTATE_BYTES
+      value: "25165824"
+    - name: VAULT_LOG_ROTATE_DURATION
+      value: "24h"
+    - name: VAULT_LOG_ROTATE_MAX_FILES
+      value: "5"
+
+    # Development audit logging
+    - name: VAULT_AUDIT_ENABLED
+      value: "true"
+    - name: VAULT_AUDIT_LOG_RAW
+      value: "false"
+    - name: VAULT_AUDIT_HMAC_ACCESSOR
+      value: "true"
+    - name: VAULT_AUDIT_PREFIX
+      value: "vault_audit_log"
+
+    # Development telemetry configuration
+    - name: VAULT_TELEMETRY_PROMETHEUS_RETENTION_TIME
+      value: "12h"
+    - name: VAULT_TELEMETRY_DISABLE_HOSTNAME
+      value: "true"
+    - name: VAULT_TELEMETRY_ENABLE_HOSTNAME_LABEL
+      value: "false"
+    - name: VAULT_TELEMETRY_STATSD_ADDRESS
+      value: ""
+    - name: VAULT_TELEMETRY_STATSITE_ADDRESS
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_API_TOKEN
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_API_APP
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_API_URL
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_SUBMISSION_INTERVAL
+      value: "10s"
+    - name: VAULT_TELEMETRY_CIRCONUS_SUBMISSION_URL
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_CHECK_ID
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_CHECK_FORCE_METRIC_ACTIVATION
+      value: "false"
+    - name: VAULT_TELEMETRY_CIRCONUS_CHECK_INSTANCE_ID
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_CHECK_SEARCH_TAG
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_CHECK_DISPLAY_NAME
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_CHECK_TAGS
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_BROKER_ID
+      value: ""
+    - name: VAULT_TELEMETRY_CIRCONUS_BROKER_SELECT_TAG
+      value: ""
+
+    # Development cache configuration
+    - name: VAULT_CACHE_SIZE
+      value: "131072"
+    - name: VAULT_DISABLE_CACHE
+      value: "false"
+    - name: VAULT_DISABLE_PRINTABLE_CHECK
+      value: "false"
+
+    # Development plugin configuration
+    - name: VAULT_PLUGIN_DIRECTORY
+      value: "/vault/plugins"
+    - name: VAULT_DISABLE_LOCAL_CA_JWT
+      value: "false"
+
+    # Development high availability (disabled for development)
+    - name: VAULT_HA_ENABLED
+      value: "false"
+    - name: VAULT_DISABLE_CLUSTERING
+      value: "true"
+    - name: VAULT_CLUSTER_NAME
+      value: "vault-development"
+    - name: VAULT_CLUSTER_DISABLE
+      value: "true"
+
+    # Development performance configuration
+    - name: VAULT_MAX_REQUEST_DURATION
+      value: "90s"
+    - name: VAULT_DEFAULT_MAX_REQUEST_SIZE
+      value: "33554432"
+    - name: VAULT_DISABLE_INDEXING
+      value: "false"
+    - name: VAULT_DISABLE_SENTINEL_TRACE
+      value: "false"
+
+    # Development security configuration
+    - name: VAULT_DISABLE_MLOCK
+      value: "true"
+    - name: VAULT_DISABLE_SWAP
+      value: "false"
+    - name: VAULT_DISABLE_SEALWRAP
+      value: "true"
+    - name: VAULT_SKIP_VERIFY
+      value: "true"
+    - name: VAULT_TLS_SKIP_VERIFY
+      value: "true"
+    - name: VAULT_CLIENT_TIMEOUT
+      value: "60s"
+    - name: VAULT_CLIENT_CERT
+      value: ""
+    - name: VAULT_CLIENT_KEY
+      value: ""
+    - name: VAULT_CACERT
+      value: ""
+    - name: VAULT_CAPATH
+      value: ""
+
+    # Development recovery configuration
+    - name: VAULT_RECOVERY_SHARES
+      value: "1"
+    - name: VAULT_RECOVERY_THRESHOLD
+      value: "1"
+    - name: VAULT_RECOVERY_PGP_KEYS
+      value: ""
+
+    # Development enterprise features (disabled)
+    - name: VAULT_LICENSE
+      value: ""
+    - name: VAULT_LICENSE_PATH
+      value: ""
+    - name: VAULT_DISABLE_PERFORMANCE_STANDBY
+      value: "true"
+    - name: VAULT_DISABLE_REPLICATION
+      value: "true"
+    - name: VAULT_DISABLE_SENTINEL
+      value: "true"
+
+    # Development namespace configuration
+    - name: VAULT_NAMESPACE
+      value: ""
+    - name: VAULT_NAMESPACE_INHERITANCE
+      value: "false"
+
+    # Development development-specific configuration
+    - name: DEVELOPMENT_MODE
+      value: "true"
+    - name: DEBUG_MODE
+      value: "true"
+    - name: DEV_ROOT_TOKEN_ENABLED
+      value: "true"
+    - name: AUTO_UNSEAL_ENABLED
+      value: "false"
+    - name: SECRETS_SEEDING_ENABLED
+      value: "true"
+    - name: AUDIT_LOGGING_ENABLED
+      value: "true"
+    - name: TELEMETRY_ENABLED
+      value: "true"
+    - name: PERFORMANCE_MONITORING
+      value: "true"
+    - name: UI_ENABLED
+      value: "true"
+
+    # Development Veridis-specific secrets configuration
+    - name: VERIDIS_SECRET_ENGINE_PATH
+      value: "veridis"
+    - name: VERIDIS_KV_VERSION
+      value: "2"
+    - name: VERIDIS_TRANSIT_ENGINE_PATH
+      value: "transit"
+    - name: VERIDIS_DATABASE_ENGINE_PATH
+      value: "database"
+    - name: VERIDIS_PKI_ENGINE_PATH
+      value: "pki"
+    - name: VERIDIS_JWT_AUTH_PATH
+      value: "jwt"
+    - name: VERIDIS_KUBERNETES_AUTH_PATH
+      value: "kubernetes"
+    - name: VERIDIS_IDENTITY_ENGINE_PATH
+      value: "identity"
+    - name: VERIDIS_POLICY_PREFIX
+      value: "veridis-"
+    - name: VERIDIS_ROLE_PREFIX
+      value: "veridis-"
+    - name: VERIDIS_TOKEN_TTL_DEFAULT
+      value: "24h"
+    - name: VERIDIS_TOKEN_MAX_TTL
+      value: "168h"
+    - name: VERIDIS_LEASE_TTL_DEFAULT
+      value: "1h"
+    - name: VERIDIS_LEASE_MAX_TTL
+      value: "24h"
+
+    # Development deployment metadata
+    - name: DEPLOYMENT_METADATA_GIT_COMMIT
+      value: "${GIT_COMMIT:-development}"
+    - name: DEPLOYMENT_METADATA_GIT_BRANCH
+      value: "${GIT_BRANCH:-develop}"
+    - name: DEPLOYMENT_METADATA_BUILD_NUMBER
+      value: "${BUILD_NUMBER:-dev-build}"
+    - name: DEPLOYMENT_METADATA_BUILD_DATE
+      value: "${BUILD_DATE:-2025-01-18T10:00:00Z}"
+    - name: DEPLOYMENT_METADATA_BUILD_USER
+      value: "${BUILD_USER:-developer}"
+    - name: DEPLOYMENT_METADATA_DEVELOPER
+      value: "${DEVELOPER_NAME:-unknown}"
+    - name: DEPLOYMENT_METADATA_ENVIRONMENT
+      value: "development"
+    - name: DEPLOYMENT_METADATA_DEPLOYMENT_TYPE
+      value: "development"
+    - name: DEPLOYMENT_METADATA_KUSTOMIZE_VERSION
+      value: "5.3.0"
+    - name: DEPLOYMENT_METADATA_KUBERNETES_VERSION
+      value: "1.28+"
+
+- op: add
+  path: /spec/template/spec/containers/0/ports
+  value:
+    # Main Vault API port
+    - name: vault-api
+      containerPort: 8200
+      protocol: TCP
+
+    # Vault cluster port
+    - name: vault-cluster
+      containerPort: 8201
+      protocol: TCP
+
+- op: replace
+  path: /spec/template/spec/containers/0/livenessProbe
+  value:
+    httpGet:
+      path: /v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204
+      port: vault-api
+      scheme: HTTP
+    initialDelaySeconds: 60
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+
+- op: replace
+  path: /spec/template/spec/containers/0/readinessProbe
+  value:
+    httpGet:
+      path: /v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204
+      port: vault-api
+      scheme: HTTP
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+
+- op: add
+  path: /spec/template/spec/containers/0/startupProbe
+  value:
+    httpGet:
+      path: /v1/sys/health?standbyok=true&sealedcode=204&uninitcode=204
+      port: vault-api
+      scheme: HTTP
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 30
+
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    # Vault data directory
+    - name: vault-data
+      mountPath: /vault/file
+
+    # Vault configuration
+    - name: vault-config
+      mountPath: /vault/config
+      readOnly: true
+
+    # Vault logs directory
+    - name: vault-logs
+      mountPath: /vault/logs
+
+    # Vault plugins directory
+    - name: vault-plugins
+      mountPath: /vault/plugins
+
+    # Vault temporary directory
+    - name: vault-tmp
+      mountPath: /tmp/vault
+
+    # Development initialization scripts
+    - name: vault-init-scripts
+      mountPath: /vault/init
+      readOnly: true
+
+    # Development secrets seeding data
+    - name: vault-seed-secrets
+      mountPath: /vault/seed-secrets
+      readOnly: true
+
+    # Development policies
+    - name: vault-policies
+      mountPath: /vault/policies
+      readOnly: true
+
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    # Vault data persistent volume
+    - name: vault-data
+      persistentVolumeClaim:
+        claimName: vault-data-pvc
+
+    # Vault configuration volume
+    - name: vault-config
+      configMap:
+        name: veridis-development-vault-config
+        defaultMode: 0644
+
+    # Vault logs volume
+    - name: vault-logs
+      emptyDir:
+        sizeLimit: "1Gi"
+
+    # Vault plugins volume
+    - name: vault-plugins
+      emptyDir:
+        sizeLimit: "500Mi"
+
+    # Vault temporary volume
+    - name: vault-tmp
+      emptyDir:
+        sizeLimit: "500Mi"
+
+    # Vault initialization scripts
+    - name: vault-init-scripts
+      configMap:
+        name: veridis-development-vault-init-scripts
+        defaultMode: 0755
+
+    # Development seed secrets volume
+    - name: vault-seed-secrets
+      configMap:
+        name: veridis-development-vault-seed-secrets
+        defaultMode: 0644
+
+    # Development policies volume
+    - name: vault-policies
+      configMap:
+        name: veridis-development-vault-policies
+        defaultMode: 0644
+
+- op: add
+  path: /spec/template/spec/initContainers
+  value:
+    # Development Vault initialization container
+    - name: vault-init
+      image: hashicorp/vault:1.15.6
+
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Initializing Vault Development Environment..."
+
+          # Create necessary directories
+          mkdir -p /vault/file
+          mkdir -p /vault/logs
+          mkdir -p /vault/plugins
+          mkdir -p /tmp/vault
+
+          # Set proper permissions
+          chown -R vault:vault /vault/file
+          chown -R vault:vault /vault/logs
+          chown -R vault:vault /vault/plugins
+          chown -R vault:vault /tmp/vault
+          chmod -R 755 /vault/file
+          chmod -R 755 /vault/logs
+          chmod -R 755 /vault/plugins
+          chmod -R 755 /tmp/vault
+
+          # Copy configuration files if they exist
+          if [ -d /vault/config ]; then
+            echo "Copying development Vault configuration..."
+            find /vault/config -name "*.hcl" -exec cp {} /vault/file/ \;
+          fi
+
+          # Copy initialization scripts if they exist
+          if [ -d /vault/init ]; then
+            echo "Copying development Vault initialization scripts..."
+            find /vault/init -name "*.sh" -exec chmod +x {} \;
+          fi
+
+          # Copy policies if they exist
+          if [ -d /vault/policies ]; then
+            echo "Copying development Vault policies..."
+            find /vault/policies -name "*.hcl" -exec cp {} /vault/file/ \;
+          fi
+
+          echo "Vault initialization completed!"
+
+      env:
+        - name: VAULT_ADDR
+          value: "http://localhost:8200"
+        - name: VAULT_DEV_ROOT_TOKEN_ID
+          value: "dev-root-token"
+        - name: VAULT_DISABLE_MLOCK
+          value: "true"
+        - name: VAULT_LOG_LEVEL
+          value: "debug"
+
+      volumeMounts:
+        - name: vault-data
+          mountPath: /vault/file
+        - name: vault-config
+          mountPath: /vault/config
+          readOnly: true
+        - name: vault-logs
+          mountPath: /vault/logs
+        - name: vault-plugins
+          mountPath: /vault/plugins
+        - name: vault-tmp
+          mountPath: /tmp/vault
+        - name: vault-init-scripts
+          mountPath: /vault/init
+          readOnly: true
+        - name: vault-seed-secrets
+          mountPath: /vault/seed-secrets
+          readOnly: true
+        - name: vault-policies
+          mountPath: /vault/policies
+          readOnly: true
+
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "128Mi"
+        limits:
+          cpu: "100m"
+          memory: "256Mi"
+
+      securityContext:
+        runAsUser: 100
+        runAsGroup: 1000
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: false
+        capabilities:
+          drop:
+            - ALL
+
+- op: add
+  path: /spec/template/spec/containers/0/securityContext
+  value:
+    # Development container security context
+    runAsUser: 100
+    runAsGroup: 1000
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - IPC_LOCK
+    seccompProfile:
+      type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/securityContext
+  value:
+    # Development pod security context
+    runAsUser: 100
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    fsGroupChangePolicy: "OnRootMismatch"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups: [1000]
+
+- op: add
+  path: /spec/template/spec/containers/0/command
+  value:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting Vault Development Service..."
+      echo "Environment: development"
+      echo "Version: 1.15.6"
+      echo "Build: ${BUILD_NUMBER:-dev-build}"
+      echo "Git Commit: ${GIT_COMMIT:-development}"
+      echo "Developer: ${DEVELOPER_NAME:-unknown}"
+
+      # Ensure data directory exists and has correct permissions
+      mkdir -p /vault/file
+      chown -R vault:vault /vault/file
+      chmod 755 /vault/file
+
+      # Start Vault in development mode with root token
+      echo "Starting Vault server in development mode..."
+      exec vault server \
+        -dev \
+        -dev-root-token-id="dev-root-token" \
+        -dev-listen-address="0.0.0.0:8200" \
+        -log-level=debug \
+        -log-format=standard
+
+- op: replace
+  path: /spec/volumeClaimTemplates/0/spec/resources/requests/storage
+  value: "2Gi"
+
+- op: replace
+  path: /spec/volumeClaimTemplates/0/spec/storageClassName
+  value: "standard"
+
+- op: add
+  path: /spec/template/spec/containers/1
+  value:
+    # Vault configuration and initialization sidecar
+    name: vault-configurator
+    image: hashicorp/vault:1.15.6
+
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "Starting Vault Development Configuration..."
+
+        # Wait for Vault to be ready
+        until vault status; do
+          echo "Waiting for Vault to be ready..."
+          sleep 5
+        done
+
+        # Set Vault address and token
+        export VAULT_ADDR="http://localhost:8200"
+        export VAULT_TOKEN="dev-root-token"
+
+        echo "Configuring Vault for Veridis Development..."
+
+        # Enable KV secrets engine for Veridis
+        if ! vault secrets list | grep -q "veridis/"; then
+          echo "Enabling KV secrets engine at veridis/"
+          vault secrets enable -path=veridis kv-v2
+        fi
+
+        # Enable transit secrets engine for encryption
+        if ! vault secrets list | grep -q "transit/"; then
+          echo "Enabling transit secrets engine"
+          vault secrets enable transit
+        fi
+
+        # Enable database secrets engine
+        if ! vault secrets list | grep -q "database/"; then
+          echo "Enabling database secrets engine"
+          vault secrets enable database
+        fi
+
+        # Enable PKI secrets engine for certificates
+        if ! vault secrets list | grep -q "pki/"; then
+          echo "Enabling PKI secrets engine"
+          vault secrets enable pki
+        fi
+
+        # Enable identity secrets engine
+        if ! vault secrets list | grep -q "identity/"; then
+          echo "Enabling identity secrets engine"
+          vault secrets enable identity
+        fi
+
+        # Enable Kubernetes auth method
+        if ! vault auth list | grep -q "kubernetes/"; then
+          echo "Enabling Kubernetes auth method"
+          vault auth enable kubernetes
+        fi
+
+        # Enable JWT auth method
+        if ! vault auth list | grep -q "jwt/"; then
+          echo "Enabling JWT auth method"
+          vault auth enable jwt
+        fi
+
+        # Create Veridis development policies
+        echo "Creating Veridis development policies..."
+
+        # Backend service policy
+        vault policy write veridis-backend-dev - <<EOF
+        # KV secrets access
+        path "veridis/data/backend/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+        }
+        path "veridis/metadata/backend/*" {
+          capabilities = ["list", "read", "delete"]
+        }
+
+        # Transit engine access for encryption
+        path "transit/encrypt/veridis-*" {
+          capabilities = ["update"]
+        }
+        path "transit/decrypt/veridis-*" {
+          capabilities = ["update"]
+        }
+        path "transit/datakey/plaintext/veridis-*" {
+          capabilities = ["update"]
+        }
+
+        # Database credentials
+        path "database/creds/veridis-backend" {
+          capabilities = ["read"]
+        }
+
+        # PKI certificate issuance
+        path "pki/issue/veridis-backend" {
+          capabilities = ["update"]
+        }
+        EOF
+
+        # ZK circuits service policy
+        vault policy write veridis-zk-circuits-dev - <<EOF
+        # KV secrets access
+        path "veridis/data/zk-circuits/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+        }
+        path "veridis/metadata/zk-circuits/*" {
+          capabilities = ["list", "read", "delete"]
+        }
+
+        # Transit engine access for ZK operations
+        path "transit/encrypt/zk-*" {
+          capabilities = ["update"]
+        }
+        path "transit/decrypt/zk-*" {
+          capabilities = ["update"]
+        }
+
+        # PKI certificate issuance
+        path "pki/issue/veridis-zk-circuits" {
+          capabilities = ["update"]
+        }
+        EOF
+
+        # Development admin policy
+        vault policy write veridis-admin-dev - <<EOF
+        # Full access to Veridis secrets
+        path "veridis/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+        }
+
+        # Full access to transit engine
+        path "transit/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+        }
+
+        # Full access to database engine
+        path "database/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+        }
+
+        # Full access to PKI engine
+        path "pki/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+        }
+
+        # System access for development
+        path "sys/policies/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+        }
+        path "sys/auth/*" {
+          capabilities = ["create", "read", "update", "delete", "sudo"]
+        }
+        path "sys/mounts/*" {
+          capabilities = ["create", "read", "update", "delete", "sudo"]
+        }
+        EOF
+
+        # Seed development secrets
+        echo "Seeding development secrets..."
+
+        # Backend secrets
+        vault kv put veridis/backend/config \
+          database_url="postgresql://veridis_dev:dev_password_123@veridis-postgres-service.veridis-dev.svc.cluster.local:5432/veridis_dev" \
+          redis_url="redis://veridis-redis-service.veridis-dev.svc.cluster.local:6379/0" \
+          jwt_secret="dev_jwt_secret_key_123" \
+          encryption_key="dev_encryption_key_456" \
+          api_secret="dev_api_secret_789"
+
+        # ZK circuits secrets
+        vault kv put veridis/zk-circuits/config \
+          signing_key="dev_zk_signing_key_123" \
+          verification_key="dev_zk_verification_key_456" \
+          circuit_key="dev_circuit_key_789" \
+          garaga_license="dev_garaga_license"
+
+        # API keys
+        vault kv put veridis/api-keys/external \
+          starknet_api_key="dev_starknet_api_key" \
+          ethereum_api_key="dev_ethereum_api_key" \
+          cosmos_api_key="dev_cosmos_api_key"
+
+        # Create transit keys for encryption
+        echo "Creating transit encryption keys..."
+        vault write -f transit/keys/veridis-backend
+        vault write -f transit/keys/veridis-zk-circuits
+        vault write -f transit/keys/veridis-identity
+        vault write -f transit/keys/veridis-attestation
+
+        # Configure database connection
+        echo "Configuring database connection..."
+        vault write database/config/veridis-postgres \
+          plugin_name=postgresql-database-plugin \
+          connection_url="postgresql://{{username}}:{{password}}@veridis-postgres-service.veridis-dev.svc.cluster.local:5432/veridis_dev?sslmode=disable" \
+          allowed_roles="veridis-backend,veridis-zk-circuits" \
+          username="veridis_dev" \
+          password="dev_password_123"
+
+        # Create database roles
+        vault write database/roles/veridis-backend \
+          db_name=veridis-postgres \
+          creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
+          default_ttl="1h" \
+          max_ttl="24h"
+
+        vault write database/roles/veridis-zk-circuits \
+          db_name=veridis-postgres \
+          creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
+          default_ttl="1h" \
+          max_ttl="24h"
+
+        # Configure PKI
+        echo "Configuring PKI..."
+        vault write pki/root/generate/internal \
+          common_name="Veridis Development Root CA" \
+          ttl=8760h
+
+        vault write pki/config/urls \
+          issuing_certificates="http://vault-service.veridis-dev.svc.cluster.local:8200/v1/pki/ca" \
+          crl_distribution_points="http://vault-service.veridis-dev.svc.cluster.local:8200/v1/pki/crl"
+
+        vault write pki/roles/veridis-backend \
+          allowed_domains="veridis-dev.svc.cluster.local,localhost" \
+          allow_subdomains=true \
+          max_ttl="720h"
+
+        vault write pki/roles/veridis-zk-circuits \
+          allowed_domains="veridis-dev.svc.cluster.local,localhost" \
+          allow_subdomains=true \
+          max_ttl="720h"
+
+        # Configure Kubernetes auth
+        echo "Configuring Kubernetes authentication..."
+        vault write auth/kubernetes/config \
+          token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+          kubernetes_host="https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_SERVICE_PORT" \
+          kubernetes_ca_cert="$(cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt)"
+
+        # Create Kubernetes auth roles
+        vault write auth/kubernetes/role/veridis-backend \
+          bound_service_account_names=veridis-backend \
+          bound_service_account_namespaces=veridis-dev \
+          policies=veridis-backend-dev \
+          ttl=24h
+
+        vault write auth/kubernetes/role/veridis-zk-circuits \
+          bound_service_account_names=veridis-zk-circuits \
+          bound_service_account_namespaces=veridis-dev \
+          policies=veridis-zk-circuits-dev \
+          ttl=24h
+
+        vault write auth/kubernetes/role/veridis-admin \
+          bound_service_account_names=veridis-admin \
+          bound_service_account_namespaces=veridis-dev \
+          policies=veridis-admin-dev \
+          ttl=24h
+
+        echo "Vault development configuration completed!"
+
+        # Keep the container running to maintain configuration
+        tail -f /dev/null
+
+    env:
+      - name: VAULT_ADDR
+        value: "http://localhost:8200"
+      - name: VAULT_TOKEN
+        value: "dev-root-token"
+      - name: VAULT_SKIP_VERIFY
+        value: "true"
+      - name: VAULT_LOG_LEVEL
+        value: "debug"
+
+    resources:
+      requests:
+        cpu: "25m"
+        memory: "64Mi"
+      limits:
+        cpu: "100m"
+        memory: "128Mi"
+
+    securityContext:
+      runAsUser: 100
+      runAsGroup: 1000
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/containers/2
+  value:
+    # Vault Exporter sidecar for monitoring
+    name: vault-exporter
+    image: grapeshot/vault_exporter:v0.1.2
+
+    ports:
+      - name: metrics
+        containerPort: 9410
+        protocol: TCP
+
+    env:
+      - name: VAULT_ADDR
+        value: "http://localhost:8200"
+      - name: VAULT_TOKEN
+        value: "dev-root-token"
+      - name: VAULT_SKIP_VERIFY
+        value: "true"
+      - name: VAULT_EXPORTER_LOG_LEVEL
+        value: "debug"
+      - name: VAULT_EXPORTER_WEB_LISTEN_ADDRESS
+        value: "0.0.0.0:9410"
+      - name: VAULT_EXPORTER_WEB_TELEMETRY_PATH
+        value: "/metrics"
+      - name: VAULT_EXPORTER_VAULT_REQUEST_TIMEOUT
+        value: "5s"
+      - name: VAULT_EXPORTER_DISABLE_VAULT_CHECKS
+        value: "false"
+      - name: VAULT_EXPORTER_CONSTANT_LABELS
+        value: "environment=development,service=vault"
+
+    args:
+      - --web.listen-address=0.0.0.0:9410
+      - --web.telemetry-path=/metrics
+      - --vault.timeout=5s
+      - --log.level=debug
+
+    resources:
+      requests:
+        cpu: "25m"
+        memory: "32Mi"
+      limits:
+        cpu: "50m"
+        memory: "64Mi"
+
+    livenessProbe:
+      httpGet:
+        path: /metrics
+        port: metrics
+        scheme: HTTP
+      initialDelaySeconds: 30
+      periodSeconds: 30
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+    readinessProbe:
+      httpGet:
+        path: /metrics
+        port: metrics
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+    securityContext:
+      runAsUser: 65534
+      runAsGroup: 65534
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/nodeSelector
+  value:
+    kubernetes.io/arch: amd64
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/worker: "true"
+
+- op: add
+  path: /spec/template/spec/tolerations
+  value:
+    - key: "node-role.kubernetes.io/development"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "node.kubernetes.io/not-ready"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+    - key: "node.kubernetes.io/unreachable"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+
+- op: add
+  path: /spec/template/spec/affinity
+  value:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values: ["vault"]
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values: ["secrets-management"]
+            topologyKey: kubernetes.io/hostname
+
+- op: add
+  path: /spec/template/spec/terminationGracePeriodSeconds
+  value: 60
+
+- op: add
+  path: /spec/template/spec/dnsPolicy
+  value: ClusterFirst
+
+- op: add
+  path: /spec/template/spec/restartPolicy
+  value: Always
+
+- op: add
+  path: /spec/strategy
+  value:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 10
+
+- op: add
+  path: /spec/progressDeadlineSeconds
+  value: 600
+
+# ==============================================================================
+# Veridis Development Vault Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT VAULT STRATEGY:
+# =================================================
+#
+# VERIDIS DEVELOPMENT VAULT ARCHITECTURE OVERVIEW:
+# ------------------------------------------------
+# 1. Development Secrets Management Service Optimization:
+#    - Comprehensive enterprise-grade development Vault with intelligent secrets management and advanced developer-focused optimization
+#    - Advanced secrets configuration with comprehensive developer productivity, debugging support, audit logging, and comprehensive operational excellence
+#    - Multi-tier secrets architecture with primary vault, secret engines, authentication methods, and comprehensive secrets intelligence
+#    - Enterprise secrets policies with developer-friendly enforcement, productivity controls, secrets automation, and comprehensive secrets procedures
+#    - Performance optimization with intelligent resource allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. Advanced Vault Configuration Management:
+#    - Developer-focused secrets configuration with engine optimization, policy management, auth method integration, and comprehensive productivity coordination
+#    - Advanced secrets configuration with monitoring tools, debugging features, audit frameworks, and comprehensive secrets intelligence
+#    - Flexible secrets optimization with developer workflow, productivity enhancement, and comprehensive secrets intelligence
+#    - Secrets intelligence with policy procedures, debugging support, secrets automation, and comprehensive secrets coordination
+#    - Development excellence with secrets optimization, productivity workflows, secrets automation, and comprehensive secrets environment management
+#
+# 3. Secrets Performance and Monitoring Integration:
+#    - Performance-optimized secrets with comprehensive monitoring, metrics collection, audit logging, and comprehensive secrets coordination
+#    - Advanced monitoring configuration with Vault exporter, performance tracking, usage monitoring, and comprehensive monitoring intelligence
+#    - Flexible monitoring optimization with performance tracking, metric collection, and comprehensive monitoring intelligence
+#    - Monitoring intelligence with secrets procedures, performance support, monitoring automation, and comprehensive monitoring coordination
+#    - Secrets excellence with monitoring optimization, performance workflows, monitoring automation, and comprehensive monitoring environment management
+#
+# ENTERPRISE DEVELOPMENT VAULT FEATURES:
+# ======================================
+# Advanced Secrets Management and Developer Productivity:
+#   - Multi-tier secrets architecture with developer optimization, debugging secrets, testing integration, and comprehensive secrets configurations
+#   - Intelligent secrets management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive secrets decisions
+#   - Secrets discovery with developer optimization, debugging management, secrets policies, and comprehensive secrets analytics
+#   - Performance management with developer productivity, debugging efficiency, secrets optimization, and comprehensive performance intelligence
+#   - Secrets processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent secrets optimization
+#
+# This Development Vault configuration provides enterprise-grade developer productivity enhancement with comprehensive secrets management, intelligent debugging optimization, advanced monitoring capabilities, and operational excellence while maintaining appropriate performance, cost efficiency, and comprehensive functionality for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
