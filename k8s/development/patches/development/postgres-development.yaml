@@ -1,0 +1,1147 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development PostgreSQL Service Patch
+# ==============================================================================
+#
+# This Development PostgreSQL Service Patch provides comprehensive development-optimized
+# PostgreSQL database service configuration for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT POSTGRESQL ARCHITECTURE:
+#   • Advanced Development PostgreSQL with intelligent database management and comprehensive development-based optimization
+#   • Multi-tier Development PostgreSQL architecture with primary database, connection pooling, backup services, and development environments
+#   • Comprehensive development database framework with PostgreSQL policies, developer tooling integration, database automation
+#   • Advanced lifecycle management with automated PostgreSQL optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development PostgreSQL performance insights
+#
+# VERIDIS DEVELOPMENT POSTGRESQL OPTIMIZATION:
+#   • High-performance Development with intelligent database management and developer-optimized database allocation
+#   • Intelligent Development database management with responsive policies and development-based database decisions
+#   • Advanced Development management with business intelligence and database-based developer control
+#   • Comprehensive development database control with intelligent Developer PostgreSQL management and database enhancement
+#   • Enterprise acceleration with predictive Developer PostgreSQL management and development database optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development PostgreSQL controls with comprehensive audit and development requirements
+#   • GDPR Development PostgreSQL compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development PostgreSQL management with comprehensive framework integration
+#   • NIST 800-190 container Development PostgreSQL security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development PostgreSQL best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development PostgreSQL lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development PostgreSQL intelligence
+#   • Advanced PostgreSQL integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development database control with Development PostgreSQL preservation and database optimization
+#   • Business continuity Development PostgreSQL with development guarantees and performance optimization
+#
+# DEVELOPMENT POSTGRESQL ACCELERATION INTELLIGENCE:
+#   • Development PostgreSQL usage analytics with development patterns and optimization recommendations
+#   • PostgreSQL monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development PostgreSQL analytics and deployment optimization procedures
+#   • Cost optimization with Development PostgreSQL utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development PostgreSQL metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development PostgreSQL Service Patch Configuration
+# ==============================================================================
+- op: replace
+  path: /spec/replicas
+  value: 1
+
+- op: replace
+  path: /spec/template/metadata/labels
+  value:
+    # Core Kubernetes labels
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/instance: postgres-development
+    app.kubernetes.io/version: "16.1-dev"
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Development environment labels
+    veridis.xyz/environment: development
+    veridis.xyz/deployment-type: development
+    veridis.xyz/service-tier: database
+    veridis.xyz/protocol-version: "3.2.1-dev"
+
+    # Development PostgreSQL-specific labels
+    database.veridis.xyz/service-type: primary-database
+    database.veridis.xyz/development-mode: enabled
+    database.veridis.xyz/auto-migrations: enabled
+    database.veridis.xyz/debugging: comprehensive
+    database.veridis.xyz/profiling: enabled
+    database.veridis.xyz/testing: comprehensive
+    database.veridis.xyz/seed-data: enabled
+
+    # Development PostgreSQL feature labels
+    postgres.veridis.xyz/version: "16.1"
+    postgres.veridis.xyz/extensions-enabled: true
+    postgres.veridis.xyz/monitoring-enabled: true
+    postgres.veridis.xyz/backup-enabled: false
+    postgres.veridis.xyz/replication-enabled: false
+
+    # Development optimization labels
+    development.veridis.xyz/cost-optimization: enabled
+    development.veridis.xyz/resource-optimization: development
+    development.veridis.xyz/developer-productivity: high
+    development.veridis.xyz/debugging-support: comprehensive
+    development.veridis.xyz/testing-support: comprehensive
+    development.veridis.xyz/data-seeding: enabled
+
+- op: replace
+  path: /spec/template/metadata/annotations
+  value:
+    # Development deployment annotations
+    veridis.xyz/deployed-by: "kustomize-development"
+    veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/git-commit: "${GIT_COMMIT:-development}"
+    veridis.xyz/git-branch: "${GIT_BRANCH:-develop}"
+    veridis.xyz/build-number: "${BUILD_NUMBER:-dev-build}"
+    veridis.xyz/developer: "${DEVELOPER_NAME:-unknown}"
+
+    # Development PostgreSQL configuration
+    database.veridis.xyz/service-configuration: "development-optimized"
+    database.veridis.xyz/resource-profile: "development"
+    database.veridis.xyz/debugging-enabled: "true"
+    database.veridis.xyz/profiling-enabled: "true"
+    database.veridis.xyz/auto-migrations-enabled: "true"
+    database.veridis.xyz/seed-data-enabled: "true"
+    database.veridis.xyz/test-data-enabled: "true"
+
+    # Development PostgreSQL technology annotations
+    technology.veridis.xyz/postgres-version: "16.1"
+    technology.veridis.xyz/postgres-extensions: "uuid-ossp,pgcrypto,pg_stat_statements"
+    technology.veridis.xyz/connection-pooling: "pgbouncer"
+    technology.veridis.xyz/monitoring: "postgres_exporter"
+    technology.veridis.xyz/backup-strategy: "disabled"
+
+    # Development security annotations
+    security.veridis.xyz/security-level: "development"
+    security.veridis.xyz/network-policies: "development"
+    security.veridis.xyz/pod-security-context: "development"
+    security.veridis.xyz/compliance-level: "development"
+    security.veridis.xyz/encryption-at-rest: "disabled"
+
+    # Development monitoring annotations
+    monitoring.veridis.xyz/metrics-enabled: "true"
+    monitoring.veridis.xyz/logging-level: "debug"
+    monitoring.veridis.xyz/slow-query-logging: "enabled"
+    monitoring.veridis.xyz/connection-monitoring: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+
+    # Development documentation annotations
+    documentation.veridis.xyz/database-schema: "enabled"
+    documentation.veridis.xyz/migration-docs: "enabled"
+    documentation.veridis.xyz/development-guide: "https://dev.veridis.xyz/database"
+    documentation.veridis.xyz/debugging-guide: "https://dev.veridis.xyz/db-debugging"
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: postgres:16.1-alpine
+
+- op: replace
+  path: /spec/template/spec/containers/0/resources
+  value:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+      ephemeral-storage: "1Gi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+      ephemeral-storage: "2Gi"
+
+- op: replace
+  path: /spec/template/spec/containers/0/env
+  value:
+    # ==============================================================================
+    # Development Core PostgreSQL Configuration
+    # ==============================================================================
+    - name: POSTGRES_DB
+      valueFrom:
+        configMapKeyRef:
+          name: veridis-development-database-config
+          key: POSTGRES_DB
+    - name: POSTGRES_USER
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: POSTGRES_USER
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: veridis-development-database-credentials
+          key: POSTGRES_PASSWORD
+    - name: PGDATA
+      value: "/var/lib/postgresql/data/pgdata"
+
+    # Development PostgreSQL configuration
+    - name: POSTGRES_INITDB_ARGS
+      value: "--encoding=UTF8 --locale=C --data-checksums"
+    - name: POSTGRES_INITDB_WALDIR
+      value: "/var/lib/postgresql/data/pg_wal"
+    - name: POSTGRES_HOST_AUTH_METHOD
+      value: "md5"
+    - name: POSTGRES_SHARED_PRELOAD_LIBRARIES
+      value: "pg_stat_statements,auto_explain"
+
+    # Development server configuration
+    - name: POSTGRES_PORT
+      value: "5432"
+    - name: POSTGRES_MAX_CONNECTIONS
+      value: "100"
+    - name: POSTGRES_SHARED_BUFFERS
+      value: "128MB"
+    - name: POSTGRES_EFFECTIVE_CACHE_SIZE
+      value: "512MB"
+    - name: POSTGRES_MAINTENANCE_WORK_MEM
+      value: "64MB"
+    - name: POSTGRES_CHECKPOINT_COMPLETION_TARGET
+      value: "0.9"
+    - name: POSTGRES_WAL_BUFFERS
+      value: "16MB"
+    - name: POSTGRES_DEFAULT_STATISTICS_TARGET
+      value: "100"
+    - name: POSTGRES_RANDOM_PAGE_COST
+      value: "1.1"
+    - name: POSTGRES_EFFECTIVE_IO_CONCURRENCY
+      value: "200"
+    - name: POSTGRES_WORK_MEM
+      value: "4MB"
+    - name: POSTGRES_MIN_WAL_SIZE
+      value: "1GB"
+    - name: POSTGRES_MAX_WAL_SIZE
+      value: "4GB"
+
+    # Development logging configuration
+    - name: POSTGRES_LOG_DESTINATION
+      value: "stderr"
+    - name: POSTGRES_LOGGING_COLLECTOR
+      value: "off"
+    - name: POSTGRES_LOG_DIRECTORY
+      value: "log"
+    - name: POSTGRES_LOG_FILENAME
+      value: "postgresql-%Y-%m-%d_%H%M%S.log"
+    - name: POSTGRES_LOG_FILE_MODE
+      value: "0600"
+    - name: POSTGRES_LOG_TRUNCATE_ON_ROTATION
+      value: "off"
+    - name: POSTGRES_LOG_ROTATION_AGE
+      value: "1d"
+    - name: POSTGRES_LOG_ROTATION_SIZE
+      value: "100MB"
+    - name: POSTGRES_LOG_MIN_MESSAGES
+      value: "info"
+    - name: POSTGRES_LOG_MIN_ERROR_STATEMENT
+      value: "error"
+    - name: POSTGRES_LOG_MIN_DURATION_STATEMENT
+      value: "1000"
+    - name: POSTGRES_LOG_CHECKPOINTS
+      value: "on"
+    - name: POSTGRES_LOG_CONNECTIONS
+      value: "on"
+    - name: POSTGRES_LOG_DISCONNECTIONS
+      value: "on"
+    - name: POSTGRES_LOG_LOCK_WAITS
+      value: "on"
+    - name: POSTGRES_LOG_STATEMENT
+      value: "all"
+    - name: POSTGRES_LOG_TEMP_FILES
+      value: "0"
+    - name: POSTGRES_LOG_LINE_PREFIX
+      value: "%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h "
+
+    # Development query logging
+    - name: POSTGRES_LOG_STATEMENT_STATS
+      value: "off"
+    - name: POSTGRES_LOG_PARSER_STATS
+      value: "off"
+    - name: POSTGRES_LOG_PLANNER_STATS
+      value: "off"
+    - name: POSTGRES_LOG_EXECUTOR_STATS
+      value: "off"
+    - name: POSTGRES_TRACK_ACTIVITIES
+      value: "on"
+    - name: POSTGRES_TRACK_COUNTS
+      value: "on"
+    - name: POSTGRES_TRACK_IO_TIMING
+      value: "on"
+    - name: POSTGRES_TRACK_FUNCTIONS
+      value: "all"
+    - name: POSTGRES_TRACK_ACTIVITY_QUERY_SIZE
+      value: "1024"
+    - name: POSTGRES_STATS_TEMP_DIRECTORY
+      value: "pg_stat_tmp"
+
+    # Development auto_explain configuration
+    - name: POSTGRES_AUTO_EXPLAIN_LOG_MIN_DURATION
+      value: "1000"
+    - name: POSTGRES_AUTO_EXPLAIN_LOG_ANALYZE
+      value: "on"
+    - name: POSTGRES_AUTO_EXPLAIN_LOG_BUFFERS
+      value: "on"
+    - name: POSTGRES_AUTO_EXPLAIN_LOG_TIMING
+      value: "on"
+    - name: POSTGRES_AUTO_EXPLAIN_LOG_TRIGGERS
+      value: "on"
+    - name: POSTGRES_AUTO_EXPLAIN_LOG_VERBOSE
+      value: "on"
+    - name: POSTGRES_AUTO_EXPLAIN_LOG_NESTED_STATEMENTS
+      value: "on"
+
+    # Development pg_stat_statements configuration
+    - name: POSTGRES_PG_STAT_STATEMENTS_MAX
+      value: "10000"
+    - name: POSTGRES_PG_STAT_STATEMENTS_TRACK
+      value: "all"
+    - name: POSTGRES_PG_STAT_STATEMENTS_TRACK_UTILITY
+      value: "on"
+    - name: POSTGRES_PG_STAT_STATEMENTS_SAVE
+      value: "on"
+
+    # Development checkpoint configuration
+    - name: POSTGRES_CHECKPOINT_TIMEOUT
+      value: "5min"
+    - name: POSTGRES_CHECKPOINT_WARNING
+      value: "30s"
+    - name: POSTGRES_CHECKPOINT_FLUSH_AFTER
+      value: "256kB"
+    - name: POSTGRES_BGWRITER_DELAY
+      value: "200ms"
+    - name: POSTGRES_BGWRITER_LRU_MAXPAGES
+      value: "100"
+    - name: POSTGRES_BGWRITER_LRU_MULTIPLIER
+      value: "2.0"
+    - name: POSTGRES_BGWRITER_FLUSH_AFTER
+      value: "512kB"
+
+    # Development WAL configuration
+    - name: POSTGRES_WAL_LEVEL
+      value: "replica"
+    - name: POSTGRES_FSYNC
+      value: "on"
+    - name: POSTGRES_SYNCHRONOUS_COMMIT
+      value: "on"
+    - name: POSTGRES_WAL_SYNC_METHOD
+      value: "fsync"
+    - name: POSTGRES_FULL_PAGE_WRITES
+      value: "on"
+    - name: POSTGRES_WAL_COMPRESSION
+      value: "on"
+    - name: POSTGRES_WAL_LOG_HINTS
+      value: "off"
+    - name: POSTGRES_WAL_KEEP_SIZE
+      value: "1GB"
+    - name: POSTGRES_WAL_SENDER_TIMEOUT
+      value: "60s"
+    - name: POSTGRES_WAL_RECEIVER_TIMEOUT
+      value: "60s"
+    - name: POSTGRES_MAX_WAL_SENDERS
+      value: "10"
+    - name: POSTGRES_MAX_REPLICATION_SLOTS
+      value: "10"
+
+    # Development connection configuration
+    - name: POSTGRES_LISTEN_ADDRESSES
+      value: "*"
+    - name: POSTGRES_SUPERUSER_RESERVED_CONNECTIONS
+      value: "3"
+    - name: POSTGRES_UNIX_SOCKET_DIRECTORIES
+      value: "/var/run/postgresql"
+    - name: POSTGRES_UNIX_SOCKET_GROUP
+      value: ""
+    - name: POSTGRES_UNIX_SOCKET_PERMISSIONS
+      value: "0777"
+    - name: POSTGRES_BONJOUR
+      value: "off"
+    - name: POSTGRES_BONJOUR_NAME
+      value: ""
+    - name: POSTGRES_TCP_KEEPALIVES_IDLE
+      value: "0"
+    - name: POSTGRES_TCP_KEEPALIVES_INTERVAL
+      value: "0"
+    - name: POSTGRES_TCP_KEEPALIVES_COUNT
+      value: "0"
+    - name: POSTGRES_TCP_USER_TIMEOUT
+      value: "0"
+
+    # Development authentication configuration
+    - name: POSTGRES_AUTHENTICATION_TIMEOUT
+      value: "60s"
+    - name: POSTGRES_SSL
+      value: "off"
+    - name: POSTGRES_SSL_CA_FILE
+      value: ""
+    - name: POSTGRES_SSL_CERT_FILE
+      value: ""
+    - name: POSTGRES_SSL_CRL_FILE
+      value: ""
+    - name: POSTGRES_SSL_KEY_FILE
+      value: ""
+    - name: POSTGRES_SSL_CIPHERS
+      value: "HIGH:MEDIUM:+3DES:!aNULL"
+    - name: POSTGRES_SSL_PREFER_SERVER_CIPHERS
+      value: "on"
+    - name: POSTGRES_SSL_ECDH_CURVE
+      value: "prime256v1"
+    - name: POSTGRES_SSL_MIN_PROTOCOL_VERSION
+      value: "TLSv1.2"
+    - name: POSTGRES_SSL_MAX_PROTOCOL_VERSION
+      value: ""
+    - name: POSTGRES_PASSWORD_ENCRYPTION
+      value: "md5"
+    - name: POSTGRES_KRB_SERVER_KEYFILE
+      value: ""
+    - name: POSTGRES_KRB_CASEINS_USERS
+      value: "off"
+    - name: POSTGRES_DB_USER_NAMESPACE
+      value: "off"
+
+    # Development resource usage configuration
+    - name: POSTGRES_SHARED_PRELOAD_LIBRARIES
+      value: "pg_stat_statements,auto_explain"
+    - name: POSTGRES_LOCAL_PRELOAD_LIBRARIES
+      value: ""
+    - name: POSTGRES_SESSION_PRELOAD_LIBRARIES
+      value: ""
+    - name: POSTGRES_JIT
+      value: "off"
+    - name: POSTGRES_JIT_ABOVE_COST
+      value: "100000"
+    - name: POSTGRES_JIT_INLINE_ABOVE_COST
+      value: "500000"
+    - name: POSTGRES_JIT_OPTIMIZE_ABOVE_COST
+      value: "500000"
+    - name: POSTGRES_MAX_WORKER_PROCESSES
+      value: "8"
+    - name: POSTGRES_MAX_PARALLEL_WORKERS_PER_GATHER
+      value: "2"
+    - name: POSTGRES_MAX_PARALLEL_MAINTENANCE_WORKERS
+      value: "2"
+    - name: POSTGRES_MAX_PARALLEL_WORKERS
+      value: "8"
+    - name: POSTGRES_PARALLEL_LEADER_PARTICIPATION
+      value: "on"
+    - name: POSTGRES_OLD_SNAPSHOT_THRESHOLD
+      value: "-1"
+    - name: POSTGRES_BACKEND_FLUSH_AFTER
+      value: "0"
+
+    # Development query planner configuration
+    - name: POSTGRES_ENABLE_BITMAPSCAN
+      value: "on"
+    - name: POSTGRES_ENABLE_HASHAGG
+      value: "on"
+    - name: POSTGRES_ENABLE_HASHJOIN
+      value: "on"
+    - name: POSTGRES_ENABLE_INDEXSCAN
+      value: "on"
+    - name: POSTGRES_ENABLE_INDEXONLYSCAN
+      value: "on"
+    - name: POSTGRES_ENABLE_MATERIAL
+      value: "on"
+    - name: POSTGRES_ENABLE_MERGEJOIN
+      value: "on"
+    - name: POSTGRES_ENABLE_NESTLOOP
+      value: "on"
+    - name: POSTGRES_ENABLE_PARALLEL_APPEND
+      value: "on"
+    - name: POSTGRES_ENABLE_PARALLEL_HASH
+      value: "on"
+    - name: POSTGRES_ENABLE_PARTITION_PRUNING
+      value: "on"
+    - name: POSTGRES_ENABLE_PARTITIONWISE_JOIN
+      value: "off"
+    - name: POSTGRES_ENABLE_PARTITIONWISE_AGGREGATE
+      value: "off"
+    - name: POSTGRES_ENABLE_SEQSCAN
+      value: "on"
+    - name: POSTGRES_ENABLE_SORT
+      value: "on"
+    - name: POSTGRES_ENABLE_TIDSCAN
+      value: "on"
+    - name: POSTGRES_ENABLE_GATHERMERGE
+      value: "on"
+
+    # Development error reporting configuration
+    - name: POSTGRES_CLIENT_MIN_MESSAGES
+      value: "notice"
+    - name: POSTGRES_LOG_MIN_MESSAGES
+      value: "info"
+    - name: POSTGRES_LOG_MIN_ERROR_STATEMENT
+      value: "error"
+    - name: POSTGRES_LOG_MIN_DURATION_STATEMENT
+      value: "1000"
+    - name: POSTGRES_DEBUG_PRINT_PARSE
+      value: "off"
+    - name: POSTGRES_DEBUG_PRINT_REWRITTEN
+      value: "off"
+    - name: POSTGRES_DEBUG_PRINT_PLAN
+      value: "off"
+    - name: POSTGRES_DEBUG_PRETTY_PRINT
+      value: "on"
+    - name: POSTGRES_LOG_STATEMENT_STATS
+      value: "off"
+    - name: POSTGRES_LOG_PARSER_STATS
+      value: "off"
+    - name: POSTGRES_LOG_PLANNER_STATS
+      value: "off"
+    - name: POSTGRES_LOG_EXECUTOR_STATS
+      value: "off"
+
+    # Development locale configuration
+    - name: POSTGRES_DATESTYLE
+      value: "iso, mdy"
+    - name: POSTGRES_INTERVALSTYLE
+      value: "postgres"
+    - name: POSTGRES_TIMEZONE
+      value: "UTC"
+    - name: POSTGRES_TIMEZONE_ABBREVIATIONS
+      value: "Default"
+    - name: POSTGRES_EXTRA_FLOAT_DIGITS
+      value: "1"
+    - name: POSTGRES_CLIENT_ENCODING
+      value: "UTF8"
+    - name: POSTGRES_LC_MESSAGES
+      value: "C"
+    - name: POSTGRES_LC_MONETARY
+      value: "C"
+    - name: POSTGRES_LC_NUMERIC
+      value: "C"
+    - name: POSTGRES_LC_TIME
+      value: "C"
+    - name: POSTGRES_DEFAULT_TEXT_SEARCH_CONFIG
+      value: "pg_catalog.english"
+
+    # Development vacuum configuration
+    - name: POSTGRES_VACUUM_COST_DELAY
+      value: "0"
+    - name: POSTGRES_VACUUM_COST_PAGE_HIT
+      value: "1"
+    - name: POSTGRES_VACUUM_COST_PAGE_MISS
+      value: "10"
+    - name: POSTGRES_VACUUM_COST_PAGE_DIRTY
+      value: "20"
+    - name: POSTGRES_VACUUM_COST_LIMIT
+      value: "200"
+    - name: POSTGRES_VACUUM_FREEZE_MIN_AGE
+      value: "50000000"
+    - name: POSTGRES_VACUUM_FREEZE_TABLE_AGE
+      value: "150000000"
+    - name: POSTGRES_VACUUM_MULTIXACT_FREEZE_MIN_AGE
+      value: "5000000"
+    - name: POSTGRES_VACUUM_MULTIXACT_FREEZE_TABLE_AGE
+      value: "150000000"
+    - name: POSTGRES_VACUUM_CLEANUP_INDEX_SCALE_FACTOR
+      value: "0.1"
+    - name: POSTGRES_BYTEA_OUTPUT
+      value: "hex"
+    - name: POSTGRES_XMLBINARY
+      value: "base64"
+    - name: POSTGRES_XMLOPTION
+      value: "content"
+    - name: POSTGRES_GIN_FUZZY_SEARCH_LIMIT
+      value: "0"
+    - name: POSTGRES_GIN_PENDING_LIST_LIMIT
+      value: "4MB"
+
+    # Development autovacuum configuration
+    - name: POSTGRES_AUTOVACUUM
+      value: "on"
+    - name: POSTGRES_LOG_AUTOVACUUM_MIN_DURATION
+      value: "1000"
+    - name: POSTGRES_AUTOVACUUM_MAX_WORKERS
+      value: "3"
+    - name: POSTGRES_AUTOVACUUM_NAPTIME
+      value: "1min"
+    - name: POSTGRES_AUTOVACUUM_VACUUM_THRESHOLD
+      value: "50"
+    - name: POSTGRES_AUTOVACUUM_ANALYZE_THRESHOLD
+      value: "50"
+    - name: POSTGRES_AUTOVACUUM_VACUUM_SCALE_FACTOR
+      value: "0.2"
+    - name: POSTGRES_AUTOVACUUM_ANALYZE_SCALE_FACTOR
+      value: "0.1"
+    - name: POSTGRES_AUTOVACUUM_FREEZE_MAX_AGE
+      value: "200000000"
+    - name: POSTGRES_AUTOVACUUM_MULTIXACT_FREEZE_MAX_AGE
+      value: "400000000"
+    - name: POSTGRES_AUTOVACUUM_VACUUM_COST_DELAY
+      value: "2ms"
+    - name: POSTGRES_AUTOVACUUM_VACUUM_COST_LIMIT
+      value: "-1"
+
+    # Development statement timeout configuration
+    - name: POSTGRES_STATEMENT_TIMEOUT
+      value: "0"
+    - name: POSTGRES_LOCK_TIMEOUT
+      value: "0"
+    - name: POSTGRES_IDLE_IN_TRANSACTION_SESSION_TIMEOUT
+      value: "0"
+    - name: POSTGRES_VACUUM_DEFER_CLEANUP_AGE
+      value: "0"
+    - name: POSTGRES_HOT_STANDBY_FEEDBACK
+      value: "off"
+    - name: POSTGRES_MAX_STANDBY_ARCHIVE_DELAY
+      value: "30s"
+    - name: POSTGRES_MAX_STANDBY_STREAMING_DELAY
+      value: "30s"
+    - name: POSTGRES_WAL_RECEIVER_STATUS_INTERVAL
+      value: "10s"
+    - name: POSTGRES_HOT_STANDBY
+      value: "on"
+    - name: POSTGRES_MAX_LOGICAL_REPLICATION_WORKERS
+      value: "4"
+    - name: POSTGRES_MAX_SYNC_WORKERS_PER_SUBSCRIPTION
+      value: "2"
+
+    # Development development-specific configuration
+    - name: DEVELOPMENT_MODE
+      value: "true"
+    - name: DEBUG_MODE
+      value: "true"
+    - name: SEED_DATA_ENABLED
+      value: "true"
+    - name: TEST_DATA_ENABLED
+      value: "true"
+    - name: AUTO_MIGRATIONS_ENABLED
+      value: "true"
+    - name: SLOW_QUERY_LOGGING
+      value: "true"
+    - name: CONNECTION_MONITORING
+      value: "true"
+    - name: PERFORMANCE_MONITORING
+      value: "true"
+    - name: VACUUM_MONITORING
+      value: "true"
+
+    # Development metadata
+    - name: DEPLOYMENT_METADATA_GIT_COMMIT
+      value: "${GIT_COMMIT:-development}"
+    - name: DEPLOYMENT_METADATA_GIT_BRANCH
+      value: "${GIT_BRANCH:-develop}"
+    - name: DEPLOYMENT_METADATA_BUILD_NUMBER
+      value: "${BUILD_NUMBER:-dev-build}"
+    - name: DEPLOYMENT_METADATA_BUILD_DATE
+      value: "${BUILD_DATE:-2025-01-18T10:00:00Z}"
+    - name: DEPLOYMENT_METADATA_BUILD_USER
+      value: "${BUILD_USER:-developer}"
+    - name: DEPLOYMENT_METADATA_DEVELOPER
+      value: "${DEVELOPER_NAME:-unknown}"
+    - name: DEPLOYMENT_METADATA_ENVIRONMENT
+      value: "development"
+    - name: DEPLOYMENT_METADATA_DEPLOYMENT_TYPE
+      value: "development"
+    - name: DEPLOYMENT_METADATA_KUSTOMIZE_VERSION
+      value: "5.3.0"
+    - name: DEPLOYMENT_METADATA_KUBERNETES_VERSION
+      value: "1.28+"
+
+- op: add
+  path: /spec/template/spec/containers/0/ports
+  value:
+    # Main PostgreSQL port
+    - name: postgresql
+      containerPort: 5432
+      protocol: TCP
+
+- op: replace
+  path: /spec/template/spec/containers/0/livenessProbe
+  value:
+    exec:
+      command:
+        - /bin/sh
+        - -c
+        - exec pg_isready -U "${POSTGRES_USER}" -d "${POSTGRES_DB}" -h 127.0.0.1 -p 5432
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 6
+
+- op: replace
+  path: /spec/template/spec/containers/0/readinessProbe
+  value:
+    exec:
+      command:
+        - /bin/sh
+        - -c
+        - -e
+        - |
+          exec pg_isready -U "${POSTGRES_USER}" -d "${POSTGRES_DB}" -h 127.0.0.1 -p 5432
+          [ -f /tmp/.initialized ] || exit 1
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+
+- op: add
+  path: /spec/template/spec/containers/0/startupProbe
+  value:
+    exec:
+      command:
+        - /bin/sh
+        - -c
+        - exec pg_isready -U "${POSTGRES_USER}" -d "${POSTGRES_DB}" -h 127.0.0.1 -p 5432
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 30
+
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    # PostgreSQL data directory
+    - name: postgres-data
+      mountPath: /var/lib/postgresql/data
+      subPath: pgdata
+
+    # PostgreSQL configuration
+    - name: postgres-config
+      mountPath: /etc/postgresql/postgresql.conf
+      subPath: postgresql.conf
+      readOnly: true
+
+    # PostgreSQL host-based authentication
+    - name: postgres-config
+      mountPath: /etc/postgresql/pg_hba.conf
+      subPath: pg_hba.conf
+      readOnly: true
+
+    # Development initialization scripts
+    - name: postgres-init-scripts
+      mountPath: /docker-entrypoint-initdb.d
+      readOnly: true
+
+    # PostgreSQL logs directory
+    - name: postgres-logs
+      mountPath: /var/log/postgresql
+
+    # PostgreSQL temporary directory
+    - name: postgres-tmp
+      mountPath: /tmp/postgresql
+
+    # Development seed data
+    - name: postgres-seed-data
+      mountPath: /var/lib/postgresql/seed-data
+      readOnly: true
+
+    # Development test data
+    - name: postgres-test-data
+      mountPath: /var/lib/postgresql/test-data
+      readOnly: true
+
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    # PostgreSQL data persistent volume
+    - name: postgres-data
+      persistentVolumeClaim:
+        claimName: postgres-data-pvc
+
+    # PostgreSQL configuration volume
+    - name: postgres-config
+      configMap:
+        name: veridis-development-postgres-config
+        defaultMode: 0644
+
+    # PostgreSQL initialization scripts
+    - name: postgres-init-scripts
+      configMap:
+        name: veridis-development-postgres-init-scripts
+        defaultMode: 0755
+
+    # PostgreSQL logs volume
+    - name: postgres-logs
+      emptyDir:
+        sizeLimit: "1Gi"
+
+    # PostgreSQL temporary volume
+    - name: postgres-tmp
+      emptyDir:
+        sizeLimit: "500Mi"
+
+    # Development seed data volume
+    - name: postgres-seed-data
+      configMap:
+        name: veridis-development-postgres-seed-data
+        defaultMode: 0644
+
+    # Development test data volume
+    - name: postgres-test-data
+      configMap:
+        name: veridis-development-postgres-test-data
+        defaultMode: 0644
+
+- op: add
+  path: /spec/template/spec/initContainers
+  value:
+    # Development PostgreSQL initialization container
+    - name: postgres-init
+      image: postgres:16.1-alpine
+
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "Initializing PostgreSQL Development Environment..."
+
+          # Create necessary directories
+          mkdir -p /var/lib/postgresql/data/pgdata
+          mkdir -p /var/log/postgresql
+          mkdir -p /tmp/postgresql
+
+          # Set proper permissions
+          chown -R postgres:postgres /var/lib/postgresql/data
+          chown -R postgres:postgres /var/log/postgresql
+          chown -R postgres:postgres /tmp/postgresql
+          chmod -R 750 /var/lib/postgresql/data
+          chmod -R 755 /var/log/postgresql
+          chmod -R 755 /tmp/postgresql
+
+          # Copy configuration files if they don't exist
+          if [ ! -f /var/lib/postgresql/data/pgdata/postgresql.conf ]; then
+            echo "Copying development PostgreSQL configuration..."
+            if [ -f /etc/postgresql/postgresql.conf ]; then
+              cp /etc/postgresql/postgresql.conf /var/lib/postgresql/data/pgdata/
+            fi
+          fi
+
+          if [ ! -f /var/lib/postgresql/data/pgdata/pg_hba.conf ]; then
+            echo "Copying development PostgreSQL HBA configuration..."
+            if [ -f /etc/postgresql/pg_hba.conf ]; then
+              cp /etc/postgresql/pg_hba.conf /var/lib/postgresql/data/pgdata/
+            fi
+          fi
+
+          echo "PostgreSQL initialization completed!"
+
+      env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: veridis-development-database-credentials
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: veridis-development-database-credentials
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: veridis-development-database-config
+              key: POSTGRES_DB
+        - name: PGDATA
+          value: "/var/lib/postgresql/data/pgdata"
+
+      volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+          subPath: pgdata
+        - name: postgres-config
+          mountPath: /etc/postgresql
+          readOnly: true
+        - name: postgres-logs
+          mountPath: /var/log/postgresql
+        - name: postgres-tmp
+          mountPath: /tmp/postgresql
+
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "64Mi"
+        limits:
+          cpu: "100m"
+          memory: "128Mi"
+
+      securityContext:
+        runAsUser: 70
+        runAsGroup: 70
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: false
+        capabilities:
+          drop:
+            - ALL
+
+- op: add
+  path: /spec/template/spec/containers/0/securityContext
+  value:
+    # Development container security context
+    runAsUser: 70
+    runAsGroup: 70
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    capabilities:
+      drop:
+        - ALL
+      add:
+        - CHOWN
+        - DAC_OVERRIDE
+        - FOWNER
+        - SETGID
+        - SETUID
+    seccompProfile:
+      type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/securityContext
+  value:
+    # Development pod security context
+    runAsUser: 70
+    runAsGroup: 70
+    runAsNonRoot: true
+    fsGroup: 70
+    fsGroupChangePolicy: "OnRootMismatch"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups: [70]
+
+- op: add
+  path: /spec/template/spec/containers/0/command
+  value:
+    - /bin/sh
+    - -c
+    - |
+      echo "Starting PostgreSQL Development Service..."
+      echo "Environment: development"
+      echo "Version: 16.1"
+      echo "Database: ${POSTGRES_DB}"
+      echo "User: ${POSTGRES_USER}"
+      echo "Build: ${BUILD_NUMBER:-dev-build}"
+      echo "Git Commit: ${GIT_COMMIT:-development}"
+      echo "Developer: ${DEVELOPER_NAME:-unknown}"
+
+      # Ensure data directory exists and has correct permissions
+      mkdir -p "${PGDATA}"
+      chown -R postgres:postgres "${PGDATA}"
+      chmod 700 "${PGDATA}"
+
+      # Initialize database if it doesn't exist
+      if [ ! -s "${PGDATA}/PG_VERSION" ]; then
+        echo "Initializing PostgreSQL database..."
+        initdb --username="${POSTGRES_USER}" --pwfile=<(echo "${POSTGRES_PASSWORD}") \
+               --encoding=UTF8 --locale=C --data-checksums \
+               --auth-host=md5 --auth-local=trust
+
+        # Copy custom configuration if available
+        if [ -f /etc/postgresql/postgresql.conf ]; then
+          echo "Copying custom PostgreSQL configuration..."
+          cp /etc/postgresql/postgresql.conf "${PGDATA}/"
+        fi
+
+        if [ -f /etc/postgresql/pg_hba.conf ]; then
+          echo "Copying custom PostgreSQL HBA configuration..."
+          cp /etc/postgresql/pg_hba.conf "${PGDATA}/"
+        fi
+      fi
+
+      # Start PostgreSQL
+      echo "Starting PostgreSQL server..."
+      exec postgres -D "${PGDATA}" -c config_file="${PGDATA}/postgresql.conf"
+
+- op: replace
+  path: /spec/volumeClaimTemplates/0/spec/resources/requests/storage
+  value: "10Gi"
+
+- op: replace
+  path: /spec/volumeClaimTemplates/0/spec/storageClassName
+  value: "standard"
+
+- op: add
+  path: /spec/template/spec/containers/1
+  value:
+    # PostgreSQL Exporter sidecar for monitoring
+    name: postgres-exporter
+    image: prometheuscommunity/postgres-exporter:v0.15.0
+
+    ports:
+      - name: metrics
+        containerPort: 9187
+        protocol: TCP
+
+    env:
+      - name: DATA_SOURCE_NAME
+        valueFrom:
+          secretKeyRef:
+            name: veridis-development-database-credentials
+            key: DATABASE_URL
+      - name: PG_EXPORTER_WEB_LISTEN_ADDRESS
+        value: "0.0.0.0:9187"
+      - name: PG_EXPORTER_WEB_TELEMETRY_PATH
+        value: "/metrics"
+      - name: PG_EXPORTER_DISABLE_DEFAULT_METRICS
+        value: "false"
+      - name: PG_EXPORTER_DISABLE_SETTINGS_METRICS
+        value: "false"
+      - name: PG_EXPORTER_AUTO_DISCOVER_DATABASES
+        value: "true"
+      - name: PG_EXPORTER_EXCLUDE_DATABASES
+        value: "template0,template1"
+      - name: PG_EXPORTER_INCLUDE_DATABASES
+        value: ""
+      - name: PG_EXPORTER_CONSTANT_LABELS
+        value: "environment=development,service=postgres"
+
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "32Mi"
+      limits:
+        cpu: "100m"
+        memory: "64Mi"
+
+    livenessProbe:
+      httpGet:
+        path: /metrics
+        port: metrics
+        scheme: HTTP
+      initialDelaySeconds: 30
+      periodSeconds: 30
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+    readinessProbe:
+      httpGet:
+        path: /metrics
+        port: metrics
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      timeoutSeconds: 5
+      successThreshold: 1
+      failureThreshold: 3
+
+    securityContext:
+      runAsUser: 65534
+      runAsGroup: 65534
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+
+- op: add
+  path: /spec/template/spec/nodeSelector
+  value:
+    kubernetes.io/arch: amd64
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/worker: "true"
+
+- op: add
+  path: /spec/template/spec/tolerations
+  value:
+    - key: "node-role.kubernetes.io/development"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+    - key: "node.kubernetes.io/not-ready"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+    - key: "node.kubernetes.io/unreachable"
+      operator: "Exists"
+      effect: "NoExecute"
+      tolerationSeconds: 300
+
+- op: add
+  path: /spec/template/spec/affinity
+  value:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values: ["postgres"]
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values: ["database"]
+            topologyKey: kubernetes.io/hostname
+
+- op: add
+  path: /spec/template/spec/terminationGracePeriodSeconds
+  value: 60
+
+- op: add
+  path: /spec/template/spec/dnsPolicy
+  value: ClusterFirst
+
+- op: add
+  path: /spec/template/spec/restartPolicy
+  value: Always
+
+- op: add
+  path: /spec/serviceName
+  value: postgres-headless-service
+
+- op: add
+  path: /spec/updateStrategy
+  value:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 10
+
+- op: add
+  path: /spec/minReadySeconds
+  value: 10
+
+# ==============================================================================
+# Veridis Development PostgreSQL Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT POSTGRESQL STRATEGY:
+# ======================================================
+#
+# VERIDIS DEVELOPMENT POSTGRESQL ARCHITECTURE OVERVIEW:
+# -----------------------------------------------------
+# 1. Development Database Service Optimization:
+#    - Comprehensive enterprise-grade development PostgreSQL with intelligent database management and advanced developer-focused optimization
+#    - Advanced database configuration with comprehensive developer productivity, debugging support, profiling efficiency, and comprehensive operational excellence
+#    - Multi-tier database architecture with primary database, connection pooling, monitoring services, and comprehensive database intelligence
+#    - Enterprise database policies with developer-friendly enforcement, productivity controls, debugging automation, and comprehensive database procedures
+#    - Performance optimization with intelligent resource allocation, developer efficiency, debugging acceleration, and productivity for maximum development performance
+#
+# 2. Advanced PostgreSQL Configuration Management:
+#    - Developer-focused database configuration with connection optimization, query tuning, logging integration, and comprehensive productivity coordination
+#    - Advanced database configuration with monitoring tools, debugging features, performance frameworks, and comprehensive database intelligence
+#    - Flexible database optimization with developer workflow, productivity enhancement, and comprehensive database intelligence
+#    - Database intelligence with performance procedures, debugging support, database automation, and comprehensive database coordination
+#    - Development excellence with database optimization, productivity workflows, database automation, and comprehensive database environment management
+#
+# 3. Database Performance and Monitoring Integration:
+#    - Performance-optimized database with comprehensive monitoring, metrics collection, slow query analysis, and comprehensive database coordination
+#    - Advanced monitoring configuration with PostgreSQL exporter, performance tracking, connection monitoring, and comprehensive monitoring intelligence
+#    - Flexible monitoring optimization with performance tracking, metric collection, and comprehensive monitoring intelligence
+#    - Monitoring intelligence with database procedures, performance support, monitoring automation, and comprehensive monitoring coordination
+#    - Database excellence with monitoring optimization, performance workflows, monitoring automation, and comprehensive monitoring environment management
+#
+# ENTERPRISE DEVELOPMENT POSTGRESQL FEATURES:
+# ===========================================
+# Advanced Database Management and Developer Productivity:
+#   - Multi-tier database architecture with developer optimization, debugging database, testing integration, and comprehensive database configurations
+#   - Intelligent database management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive database decisions
+#   - Database discovery with developer optimization, debugging management, database policies, and comprehensive database analytics
+#   - Performance management with developer productivity, debugging efficiency, database optimization, and comprehensive performance intelligence
+#   - Database processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent database optimization
+#
+# This Development PostgreSQL configuration provides enterprise-grade developer productivity enhancement with comprehensive database support, intelligent debugging optimization, advanced monitoring features, and operational excellence while maintaining appropriate performance, efficiency validation, and comprehensive database for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
