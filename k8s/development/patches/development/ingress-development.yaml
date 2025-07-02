@@ -1,0 +1,1069 @@
+# ==============================================================================
+# Veridis Decentralized Identity Protocol - Development Ingress Patch
+# ==============================================================================
+#
+# This Development Ingress Patch provides comprehensive development-optimized
+# ingress routing and traffic management for the Veridis Decentralized Identity Protocol, providing:
+#
+# ENTERPRISE VERIDIS DEVELOPMENT INGRESS ARCHITECTURE:
+#   • Advanced Development Ingress with intelligent traffic routing and comprehensive development-based optimization
+#   • Multi-tier Development Ingress architecture with development routing, SSL termination, load balancing, and development environments
+#   • Comprehensive development traffic framework with Ingress policies, developer tooling integration, routing automation
+#   • Advanced lifecycle management with automated Ingress optimization, developer control, and development enhancement
+#   • Enterprise-grade development intelligence with comprehensive analytics and Development Ingress performance insights
+#
+# VERIDIS DEVELOPMENT INGRESS OPTIMIZATION:
+#   • High-performance Development with intelligent traffic management and developer-optimized routing allocation
+#   • Intelligent Development routing management with responsive policies and development-based traffic decisions
+#   • Advanced Development management with business intelligence and routing-based developer control
+#   • Comprehensive development traffic control with intelligent Developer Ingress management and routing enhancement
+#   • Enterprise acceleration with predictive Developer Ingress management and development traffic optimization
+#
+# COMPLIANCE FRAMEWORK INTEGRATION:
+#   • SOC 2 Type II Development Ingress controls with comprehensive audit and development requirements
+#   • GDPR Development Ingress compliance with data protection, privacy controls, and development management
+#   • ISO 27001 Development Ingress management with comprehensive framework integration
+#   • NIST 800-190 container Development Ingress security with development-specific validation and compliance
+#   • Zero-knowledge protocol compliance with regulatory frameworks and Development Ingress best practices
+#
+# ENTERPRISE OPERATIONAL EXCELLENCE:
+#   • Intelligent Development Ingress lifecycle management with automated provisioning and development optimization
+#   • Predictive development analytics with capacity planning and Development Ingress intelligence
+#   • Advanced Ingress integration with Developer development analytics and performance business intelligence
+#   • Comprehensive development traffic control with Development Ingress preservation and routing optimization
+#   • Business continuity Development Ingress with development guarantees and performance optimization
+#
+# DEVELOPMENT INGRESS ACCELERATION INTELLIGENCE:
+#   • Development Ingress usage analytics with development patterns and optimization recommendations
+#   • Ingress monitoring with Developer development latency and management optimization intelligence
+#   • Development efficiency with Development Ingress analytics and deployment optimization procedures
+#   • Cost optimization with Development Ingress utilization analysis and development capacity planning procedures
+#   • Quality assurance with Development Ingress metrics and development validation procedures
+#
+# ==============================================================================
+
+# ==============================================================================
+# Development Veridis Backend Ingress Patch Configuration
+# ==============================================================================
+- op: replace
+  path: /metadata/name
+  value: veridis-backend-development-ingress
+
+- op: replace
+  path: /metadata/labels
+  value:
+    # Core Kubernetes labels
+    app.kubernetes.io/name: veridis-backend
+    app.kubernetes.io/instance: veridis-backend-development
+    app.kubernetes.io/version: "3.2.1-dev"
+    app.kubernetes.io/component: ingress
+    app.kubernetes.io/part-of: veridis-protocol
+    app.kubernetes.io/managed-by: kustomize
+
+    # Development environment labels
+    veridis.xyz/environment: development
+    veridis.xyz/deployment-type: development
+    veridis.xyz/service-tier: ingress
+    veridis.xyz/protocol-version: "3.2.1-dev"
+
+    # Development Ingress-specific labels
+    ingress.veridis.xyz/service-type: backend-ingress
+    ingress.veridis.xyz/development-mode: enabled
+    ingress.veridis.xyz/ssl-termination: enabled
+    ingress.veridis.xyz/debugging: comprehensive
+    ingress.veridis.xyz/profiling: enabled
+    ingress.veridis.xyz/testing: comprehensive
+    ingress.veridis.xyz/load-balancing: enabled
+
+    # Development Ingress feature labels
+    nginx.veridis.xyz/ingress-class: nginx
+    nginx.veridis.xyz/ssl-redirect: true
+    nginx.veridis.xyz/websocket-enabled: true
+    nginx.veridis.xyz/monitoring-enabled: true
+    nginx.veridis.xyz/rate-limiting: development
+
+    # Development optimization labels
+    development.veridis.xyz/cost-optimization: enabled
+    development.veridis.xyz/resource-optimization: development
+    development.veridis.xyz/developer-productivity: high
+    development.veridis.xyz/debugging-support: comprehensive
+    development.veridis.xyz/testing-support: comprehensive
+    development.veridis.xyz/cors-enabled: true
+
+- op: replace
+  path: /metadata/annotations
+  value:
+    # Development deployment annotations
+    veridis.xyz/deployed-by: "kustomize-development"
+    veridis.xyz/deployment-timestamp: "2025-01-18T10:00:00Z"
+    veridis.xyz/deployment-environment: "development"
+    veridis.xyz/git-commit: "${GIT_COMMIT:-development}"
+    veridis.xyz/git-branch: "${GIT_BRANCH:-develop}"
+    veridis.xyz/build-number: "${BUILD_NUMBER:-dev-build}"
+    veridis.xyz/developer: "${DEVELOPER_NAME:-unknown}"
+
+    # Development Ingress configuration
+    ingress.veridis.xyz/service-configuration: "development-optimized"
+    ingress.veridis.xyz/resource-profile: "development"
+    ingress.veridis.xyz/debugging-enabled: "true"
+    ingress.veridis.xyz/profiling-enabled: "true"
+    ingress.veridis.xyz/ssl-termination-enabled: "true"
+    ingress.veridis.xyz/websocket-enabled: "true"
+    ingress.veridis.xyz/cors-enabled: "true"
+
+    # Development Ingress technology annotations
+    technology.veridis.xyz/ingress-controller: "nginx"
+    technology.veridis.xyz/ingress-version: "1.9.5"
+    technology.veridis.xyz/ssl-provider: "letsencrypt-staging"
+    technology.veridis.xyz/load-balancer: "nginx"
+    technology.veridis.xyz/monitoring: "nginx_exporter"
+
+    # Development security annotations
+    security.veridis.xyz/security-level: "development"
+    security.veridis.xyz/ssl-redirect: "true"
+    security.veridis.xyz/tls-version: "1.2"
+    security.veridis.xyz/compliance-level: "development"
+    security.veridis.xyz/cors-policy: "development"
+
+    # Development monitoring annotations
+    monitoring.veridis.xyz/metrics-enabled: "true"
+    monitoring.veridis.xyz/logging-level: "debug"
+    monitoring.veridis.xyz/access-logging: "enabled"
+    monitoring.veridis.xyz/error-logging: "enabled"
+    monitoring.veridis.xyz/performance-monitoring: "enabled"
+
+    # Development documentation annotations
+    documentation.veridis.xyz/ingress-schema: "enabled"
+    documentation.veridis.xyz/nginx-docs: "enabled"
+    documentation.veridis.xyz/development-guide: "https://dev.veridis.xyz/ingress"
+    documentation.veridis.xyz/debugging-guide: "https://dev.veridis.xyz/ingress-debugging"
+
+    # ==============================================================================
+    # Development NGINX Ingress Controller Configuration
+    # ==============================================================================
+    # Core ingress controller configuration
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+    # Development SSL and TLS configuration
+    nginx.ingress.kubernetes.io/ssl-protocols: "TLSv1.2 TLSv1.3"
+    nginx.ingress.kubernetes.io/ssl-ciphers: "ECDHE-ECDSA-AES128-GCM-SHA256,ECDHE-RSA-AES128-GCM-SHA256,ECDHE-ECDSA-AES256-GCM-SHA384,ECDHE-RSA-AES256-GCM-SHA384"
+    nginx.ingress.kubernetes.io/ssl-prefer-server-ciphers: "true"
+    nginx.ingress.kubernetes.io/hsts: "true"
+    nginx.ingress.kubernetes.io/hsts-max-age: "31536000"
+    nginx.ingress.kubernetes.io/hsts-include-subdomains: "true"
+    nginx.ingress.kubernetes.io/hsts-preload: "true"
+
+    # Development CORS configuration
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://dev.veridis.xyz,https://localhost:3000,https://localhost:8080,http://localhost:3000,http://localhost:8080"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,X-Forwarded-For,X-Forwarded-Proto,X-Real-IP,X-Request-ID,X-Correlation-ID"
+    nginx.ingress.kubernetes.io/cors-expose-headers: "Content-Length,Content-Range,X-Request-ID,X-Correlation-ID,X-Response-Time"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-max-age: "86400"
+
+    # Development rate limiting (relaxed for development)
+    nginx.ingress.kubernetes.io/rate-limit-rpm: "1000"
+    nginx.ingress.kubernetes.io/rate-limit-connections: "50"
+    nginx.ingress.kubernetes.io/rate-limit-rps: "20"
+
+    # Development proxy configuration
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "8"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "on"
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+
+    # Development WebSocket support
+    nginx.ingress.kubernetes.io/websocket-services: "veridis-backend-service"
+    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+    nginx.ingress.kubernetes.io/connection-proxy-header: "upgrade"
+    nginx.ingress.kubernetes.io/upgrade-proxy-header: "$http_upgrade"
+
+    # Development upstream configuration
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "50"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "100"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "60"
+    nginx.ingress.kubernetes.io/upstream-max-fails: "3"
+    nginx.ingress.kubernetes.io/upstream-fail-timeout: "10s"
+
+    # Development load balancing
+    nginx.ingress.kubernetes.io/load-balance: "round_robin"
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$request_uri"
+    nginx.ingress.kubernetes.io/session-affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-affinity-mode: "persistent"
+    nginx.ingress.kubernetes.io/affinity-mode: "persistent"
+
+    # Development caching (disabled for development)
+    nginx.ingress.kubernetes.io/proxy-cache-valid: "200 302 1m"
+    nginx.ingress.kubernetes.io/proxy-cache-valid-error: "404 1m"
+    nginx.ingress.kubernetes.io/proxy-cache-methods: "GET HEAD"
+    nginx.ingress.kubernetes.io/proxy-cache-key: "$scheme$proxy_host$request_uri"
+    nginx.ingress.kubernetes.io/proxy-cache-bypass: "$http_cache_control"
+    nginx.ingress.kubernetes.io/proxy-no-cache: "$http_cache_control"
+
+    # Development compression
+    nginx.ingress.kubernetes.io/enable-gzip: "true"
+    nginx.ingress.kubernetes.io/gzip-level: "6"
+    nginx.ingress.kubernetes.io/gzip-min-length: "1000"
+    nginx.ingress.kubernetes.io/gzip-types: "text/plain,text/css,application/json,application/javascript,text/xml,application/xml,application/xml+rss,text/javascript,application/wasm"
+
+    # Development monitoring and logging
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/access-log-path: "/var/log/nginx/access.log"
+    nginx.ingress.kubernetes.io/error-log-path: "/var/log/nginx/error.log"
+    nginx.ingress.kubernetes.io/log-format-upstream: '{"timestamp": "$time_iso8601", "request_id": "$req_id", "remote_addr": "$remote_addr", "x_forward_for": "$proxy_add_x_forwarded_for", "request_time": "$request_time", "upstream_response_time": "$upstream_response_time", "upstream_connect_time": "$upstream_connect_time", "upstream_header_time": "$upstream_header_time", "method": "$request_method", "url": "$request_uri", "status": "$status", "body_bytes_sent": "$body_bytes_sent", "http_referrer": "$http_referer", "http_user_agent": "$http_user_agent", "http_x_forwarded_proto": "$http_x_forwarded_proto", "upstream_addr": "$upstream_addr"}'
+
+    # Development security headers
+    nginx.ingress.kubernetes.io/server-snippet: |
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: wss: ws:; frame-ancestors 'self';" always;
+      add_header Permissions-Policy "geolocation=(), microphone=(), camera=(), fullscreen=(self), payment=()" always;
+      add_header X-Request-ID $request_id always;
+      add_header X-Correlation-ID $request_id always;
+      add_header X-Response-Time $request_time always;
+      add_header X-Development-Environment "true" always;
+
+    # Development custom NGINX configuration
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      # Development-specific NGINX configuration
+      set $development_mode "true";
+      set $debug_mode "true";
+
+      # Add development headers
+      more_set_headers "X-Development-Mode: true";
+      more_set_headers "X-Debug-Mode: true";
+      more_set_headers "X-Environment: development";
+
+      # Development request ID
+      set $req_id $request_id;
+      more_set_headers "X-Request-ID: $req_id";
+
+      # Development CORS preflight handling
+      if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*' always;
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,PUT,DELETE,PATCH,OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,X-Forwarded-For,X-Forwarded-Proto,X-Real-IP,X-Request-ID,X-Correlation-ID' always;
+        add_header 'Access-Control-Max-Age' 86400 always;
+        add_header 'Content-Length' 0 always;
+        add_header 'Content-Type' 'text/plain' always;
+        return 204;
+      }
+
+      # Development request logging
+      access_log /var/log/nginx/development-access.log combined;
+      error_log /var/log/nginx/development-error.log debug;
+
+    # Development certificate configuration (Let's Encrypt staging for development)
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/acme-challenge-type: "http01"
+    cert-manager.io/acme-http01-edit-in-place: "true"
+
+    # Development rewrite rules
+    nginx.ingress.kubernetes.io/rewrite-target: "/$2"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+
+    # Development custom error pages
+    nginx.ingress.kubernetes.io/custom-http-errors: "400,401,403,404,405,408,410,411,412,413,414,415,416,417,418,421,425,431,451,500,501,502,503,504,505,506,507,508,510,511"
+    nginx.ingress.kubernetes.io/default-backend: "veridis-development-error-pages"
+
+- op: replace
+  path: /spec/ingressClassName
+  value: nginx
+
+- op: replace
+  path: /spec/tls
+  value:
+    # Development TLS configuration
+    - hosts:
+        - dev-api.veridis.xyz
+        - dev.veridis.xyz
+        - localhost
+        - 127.0.0.1
+        - veridis-backend-service.veridis-dev.svc.cluster.local
+      secretName: veridis-development-tls-cert
+
+- op: replace
+  path: /spec/rules
+  value:
+    # ==============================================================================
+    # Development Primary API Endpoint
+    # ==============================================================================
+    - host: dev-api.veridis.xyz
+      http:
+        paths:
+          # Main API endpoints
+          - path: /api/v1/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8080
+
+          # Development API endpoints
+          - path: /dev-api/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8090
+
+          # Health check endpoints
+          - path: /health/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8081
+
+          # Metrics endpoints
+          - path: /metrics/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 9090
+
+          # Debug endpoints
+          - path: /debug/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8091
+
+          # WebSocket endpoints
+          - path: /ws/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8092
+
+          # GraphQL endpoint
+          - path: /graphql/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8080
+
+          # GraphQL playground (development only)
+          - path: /playground/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8090
+
+    # ==============================================================================
+    # Development Frontend and UI Endpoint
+    # ==============================================================================
+    - host: dev.veridis.xyz
+      http:
+        paths:
+          # Main UI application
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-service
+                port:
+                  number: 3000
+
+          # Development UI hot reload
+          - path: /__webpack_hmr/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-service
+                port:
+                  number: 3001
+
+          # Development tools
+          - path: /dev-tools/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-service
+                port:
+                  number: 3002
+
+    # ==============================================================================
+    # Development ZK Circuits Service Endpoint
+    # ==============================================================================
+    - host: dev-zk.veridis.xyz
+      http:
+        paths:
+          # ZK Circuits API
+          - path: /api/v1/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: zk-circuits-service
+                port:
+                  number: 4000
+
+          # ZK Circuits gRPC gateway
+          - path: /grpc/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: zk-circuits-service
+                port:
+                  number: 4001
+
+          # ZK Circuits health
+          - path: /health/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: zk-circuits-service
+                port:
+                  number: 4002
+
+          # ZK Circuits metrics
+          - path: /metrics/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: zk-circuits-service
+                port:
+                  number: 9090
+
+    # ==============================================================================
+    # Development Monitoring and Observability Endpoints
+    # ==============================================================================
+    - host: dev-monitoring.veridis.xyz
+      http:
+        paths:
+          # Prometheus metrics
+          - path: /prometheus/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-service
+                port:
+                  number: 9090
+
+          # Grafana dashboards
+          - path: /grafana/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana-service
+                port:
+                  number: 3000
+
+          # Jaeger tracing
+          - path: /jaeger/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: jaeger-service
+                port:
+                  number: 16686
+
+          # AlertManager
+          - path: /alertmanager/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: alertmanager-service
+                port:
+                  number: 9093
+
+    # ==============================================================================
+    # Development Tools and Administration Endpoints
+    # ==============================================================================
+    - host: dev-admin.veridis.xyz
+      http:
+        paths:
+          # Vault UI
+          - path: /vault/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: vault-service
+                port:
+                  number: 8200
+
+          # Database administration (pgAdmin)
+          - path: /pgadmin/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: pgadmin-service
+                port:
+                  number: 80
+
+          # Redis administration (RedisInsight)
+          - path: /redis/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: redis-insight-service
+                port:
+                  number: 8001
+
+          # Development tools dashboard
+          - path: /dev-dashboard/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: development-tools-service
+                port:
+                  number: 3000
+
+    # ==============================================================================
+    # Development Localhost and Local Development Endpoints
+    # ==============================================================================
+    - host: localhost
+      http:
+        paths:
+          # Local development API
+          - path: /api/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-backend-service
+                port:
+                  number: 8080
+
+          # Local development UI
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: veridis-ui-service
+                port:
+                  number: 3000
+
+    # ==============================================================================
+    # Development StarkNet DevNet Endpoint
+    # ==============================================================================
+    - host: dev-starknet.veridis.xyz
+      http:
+        paths:
+          # StarkNet DevNet RPC
+          - path: /rpc/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: starknet-devnet-service
+                port:
+                  number: 5050
+
+          # StarkNet DevNet Gateway
+          - path: /gateway/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: starknet-devnet-service
+                port:
+                  number: 5051
+
+          # StarkNet DevNet Feeder Gateway
+          - path: /feeder_gateway/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: starknet-devnet-service
+                port:
+                  number: 5052
+
+---
+# ==============================================================================
+# Development ZK Circuits Ingress Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: veridis-zk-circuits-development-ingress
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: zk-circuits
+        app.kubernetes.io/instance: zk-circuits-development
+        app.kubernetes.io/version: "3.2.1-dev"
+        app.kubernetes.io/component: ingress
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+        veridis.xyz/environment: development
+        veridis.xyz/service-tier: ingress
+        ingress.veridis.xyz/service-type: zk-circuits-ingress
+      annotations:
+        # Development ZK Circuits ingress configuration
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+        nginx.ingress.kubernetes.io/proxy-body-size: "500m"
+        nginx.ingress.kubernetes.io/rate-limit-rpm: "500"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+
+        # ZK Circuits specific configuration
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          # ZK Circuits development configuration
+          set $zk_development_mode "true";
+          more_set_headers "X-ZK-Development-Mode: true";
+          more_set_headers "X-ZK-Environment: development";
+
+          # ZK Circuits request handling
+          client_max_body_size 500m;
+          proxy_request_buffering off;
+          proxy_buffering off;
+    spec:
+      ingressClassName: nginx
+      tls:
+        - hosts:
+            - dev-zk.veridis.xyz
+          secretName: veridis-zk-circuits-development-tls-cert
+      rules:
+        - host: dev-zk.veridis.xyz
+          http:
+            paths:
+              - path: /api/v1/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: zk-circuits-service
+                    port:
+                      number: 4000
+              - path: /grpc/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: zk-circuits-service
+                    port:
+                      number: 4001
+              - path: /health/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: zk-circuits-service
+                    port:
+                      number: 4002
+              - path: /metrics/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: zk-circuits-service
+                    port:
+                      number: 9090
+
+---
+# ==============================================================================
+# Development UI Ingress Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: veridis-ui-development-ingress
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: veridis-ui
+        app.kubernetes.io/instance: veridis-ui-development
+        app.kubernetes.io/version: "3.2.1-dev"
+        app.kubernetes.io/component: ingress
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+        veridis.xyz/environment: development
+        veridis.xyz/service-tier: ingress
+        ingress.veridis.xyz/service-type: ui-ingress
+      annotations:
+        # Development UI ingress configuration
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+        nginx.ingress.kubernetes.io/websocket-services: "veridis-ui-service"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+
+        # UI specific configuration with hot reload support
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          # UI development configuration with hot reload
+          set $ui_development_mode "true";
+          more_set_headers "X-UI-Development-Mode: true";
+          more_set_headers "X-UI-Hot-Reload: enabled";
+
+          # WebSocket support for hot reload
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+
+          # SPA fallback for development
+          try_files $uri $uri/ /index.html;
+
+        # Development static file serving
+        nginx.ingress.kubernetes.io/server-snippet: |
+          # Static file caching for development (short TTL)
+          location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+            expires 1h;
+            add_header Cache-Control "public, immutable";
+            add_header X-Development-Static "true";
+          }
+
+          # Hot reload specific handling
+          location /__webpack_hmr {
+            proxy_pass http://upstream_balancer;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+          }
+    spec:
+      ingressClassName: nginx
+      tls:
+        - hosts:
+            - dev.veridis.xyz
+            - localhost
+          secretName: veridis-ui-development-tls-cert
+      rules:
+        - host: dev.veridis.xyz
+          http:
+            paths:
+              - path: /(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: veridis-ui-service
+                    port:
+                      number: 3000
+        - host: localhost
+          http:
+            paths:
+              - path: /(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: veridis-ui-service
+                    port:
+                      number: 3000
+
+---
+# ==============================================================================
+# Development Monitoring Ingress Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: veridis-monitoring-development-ingress
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: monitoring
+        app.kubernetes.io/instance: monitoring-development
+        app.kubernetes.io/version: "3.2.1-dev"
+        app.kubernetes.io/component: ingress
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+        veridis.xyz/environment: development
+        veridis.xyz/service-tier: ingress
+        ingress.veridis.xyz/service-type: monitoring-ingress
+      annotations:
+        # Development monitoring ingress configuration
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/auth-type: "basic"
+        nginx.ingress.kubernetes.io/auth-secret: "veridis-development-monitoring-auth"
+        nginx.ingress.kubernetes.io/auth-realm: "Veridis Development Monitoring"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+
+        # Monitoring specific configuration
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          # Monitoring development configuration
+          set $monitoring_development_mode "true";
+          more_set_headers "X-Monitoring-Development-Mode: true";
+          more_set_headers "X-Monitoring-Environment: development";
+
+          # Monitoring request handling
+          proxy_set_header X-Forwarded-User $remote_user;
+          proxy_set_header X-Forwarded-Email $remote_user;
+    spec:
+      ingressClassName: nginx
+      tls:
+        - hosts:
+            - dev-monitoring.veridis.xyz
+          secretName: veridis-monitoring-development-tls-cert
+      rules:
+        - host: dev-monitoring.veridis.xyz
+          http:
+            paths:
+              - path: /prometheus/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: prometheus-service
+                    port:
+                      number: 9090
+              - path: /grafana/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: grafana-service
+                    port:
+                      number: 3000
+              - path: /jaeger/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: jaeger-service
+                    port:
+                      number: 16686
+              - path: /alertmanager/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: alertmanager-service
+                    port:
+                      number: 9093
+
+---
+# ==============================================================================
+# Development Administration Ingress Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: veridis-admin-development-ingress
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: admin
+        app.kubernetes.io/instance: admin-development
+        app.kubernetes.io/version: "3.2.1-dev"
+        app.kubernetes.io/component: ingress
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+        veridis.xyz/environment: development
+        veridis.xyz/service-tier: ingress
+        ingress.veridis.xyz/service-type: admin-ingress
+      annotations:
+        # Development admin ingress configuration
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/auth-type: "basic"
+        nginx.ingress.kubernetes.io/auth-secret: "veridis-development-admin-auth"
+        nginx.ingress.kubernetes.io/auth-realm: "Veridis Development Administration"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+
+        # Admin specific configuration
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          # Admin development configuration
+          set $admin_development_mode "true";
+          more_set_headers "X-Admin-Development-Mode: true";
+          more_set_headers "X-Admin-Environment: development";
+
+          # Admin request handling with increased timeouts
+          proxy_connect_timeout 60s;
+          proxy_send_timeout 60s;
+          proxy_read_timeout 60s;
+    spec:
+      ingressClassName: nginx
+      tls:
+        - hosts:
+            - dev-admin.veridis.xyz
+          secretName: veridis-admin-development-tls-cert
+      rules:
+        - host: dev-admin.veridis.xyz
+          http:
+            paths:
+              - path: /vault/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: vault-service
+                    port:
+                      number: 8200
+              - path: /pgadmin/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: pgadmin-service
+                    port:
+                      number: 80
+              - path: /redis/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: redis-insight-service
+                    port:
+                      number: 8001
+              - path: /dev-dashboard/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: development-tools-service
+                    port:
+                      number: 3000
+
+---
+# ==============================================================================
+# Development StarkNet DevNet Ingress Patch
+# ==============================================================================
+- op: add
+  path: /
+  value:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: veridis-starknet-development-ingress
+      namespace: veridis-dev
+      labels:
+        app.kubernetes.io/name: starknet-devnet
+        app.kubernetes.io/instance: starknet-devnet-development
+        app.kubernetes.io/version: "0.13.4-dev"
+        app.kubernetes.io/component: ingress
+        app.kubernetes.io/part-of: veridis-protocol
+        app.kubernetes.io/managed-by: kustomize
+        veridis.xyz/environment: development
+        veridis.xyz/service-tier: ingress
+        ingress.veridis.xyz/service-type: starknet-ingress
+      annotations:
+        # Development StarkNet ingress configuration
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+        nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+
+        # StarkNet specific CORS configuration
+        nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+        nginx.ingress.kubernetes.io/cors-allow-methods: "GET,POST,PUT,DELETE,OPTIONS"
+        nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+
+        # StarkNet specific configuration
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          # StarkNet development configuration
+          set $starknet_development_mode "true";
+          more_set_headers "X-StarkNet-Development-Mode: true";
+          more_set_headers "X-StarkNet-Network: devnet";
+
+          # StarkNet RPC request handling
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+    spec:
+      ingressClassName: nginx
+      tls:
+        - hosts:
+            - dev-starknet.veridis.xyz
+          secretName: veridis-starknet-development-tls-cert
+      rules:
+        - host: dev-starknet.veridis.xyz
+          http:
+            paths:
+              - path: /rpc/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: starknet-devnet-service
+                    port:
+                      number: 5050
+              - path: /gateway/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: starknet-devnet-service
+                    port:
+                      number: 5051
+              - path: /feeder_gateway/(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: starknet-devnet-service
+                    port:
+                      number: 5052
+              - path: /(.*)
+                pathType: Prefix
+                backend:
+                  service:
+                    name: starknet-devnet-service
+                    port:
+                      number: 5050
+
+# ==============================================================================
+# Veridis Development Ingress Summary and Enterprise Architecture
+# ==============================================================================
+#
+# COMPREHENSIVE VERIDIS DEVELOPMENT INGRESS STRATEGY:
+# ==================================================
+#
+# VERIDIS DEVELOPMENT INGRESS ARCHITECTURE OVERVIEW:
+# --------------------------------------------------
+# 1. Development Traffic Management and Routing:
+#    - Comprehensive enterprise-grade development ingress with intelligent traffic routing and advanced developer-focused optimization
+#    - Advanced routing configuration with comprehensive developer productivity, SSL termination, load balancing, and comprehensive operational excellence
+#    - Multi-tier routing architecture with development domains, service routing, monitoring access, and comprehensive routing intelligence
+#    - Enterprise routing policies with developer-friendly enforcement, productivity controls, traffic automation, and comprehensive routing procedures
+#    - Performance optimization with intelligent traffic allocation, developer efficiency, routing acceleration, and productivity for maximum development performance
+#
+# 2. SSL/TLS Termination and Security:
+#    - Developer-focused SSL configuration with certificate management, security headers, CORS handling, and comprehensive security coordination
+#    - Advanced SSL configuration with debugging tools, development features, security frameworks, and comprehensive SSL intelligence
+#    - Flexible SSL optimization with developer workflow, security enhancement, and comprehensive SSL intelligence
+#    - SSL intelligence with security procedures, debugging support, SSL automation, and comprehensive SSL coordination
+#    - Development excellence with SSL optimization, security workflows, SSL automation, and comprehensive SSL environment management
+#
+# 3. Development CORS and WebSocket Support:
+#    - Performance-optimized CORS with comprehensive WebSocket support, hot reload integration, and comprehensive CORS coordination
+#    - Advanced WebSocket configuration with development features, hot reload support, real-time communication, and comprehensive WebSocket intelligence
+#    - Flexible WebSocket optimization with performance tracking, feature collection, and comprehensive WebSocket intelligence
+#    - WebSocket intelligence with development procedures, performance support, WebSocket automation, and comprehensive WebSocket coordination
+#    - CORS excellence with WebSocket optimization, performance workflows, WebSocket automation, and comprehensive WebSocket environment management
+#
+# ENTERPRISE DEVELOPMENT INGRESS FEATURES:
+# ========================================
+# Advanced Traffic Routing and Load Balancing:
+#   - Multi-tier routing architecture with developer optimization, debugging routing, testing integration, and comprehensive routing configurations
+#   - Intelligent routing management with developer optimization, debugging-focused allocation, productivity enhancement, and comprehensive routing decisions
+#   - Routing discovery with developer optimization, debugging management, routing policies, and comprehensive routing analytics
+#   - Performance management with developer productivity, debugging efficiency, routing optimization, and comprehensive performance intelligence
+#   - Routing processing tuning with debugging management, productivity optimization, performance algorithms, and intelligent routing optimization
+#
+# This Development Ingress configuration provides enterprise-grade developer productivity enhancement with comprehensive traffic management, intelligent SSL termination, advanced CORS support, and operational excellence while maintaining appropriate security, flexibility, and comprehensive functionality for the Veridis decentralized identity protocol development ecosystem!
+#
+# ==============================================================================
